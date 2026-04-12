@@ -14,6 +14,44 @@ The important framing change is this:
 - Step 3 added the other three methods so RQ1-RQ3 are supported by all four methods together
 - Step 4 introduced prompt-language variation and became `RQ4`
 
+## Experimental setup
+The final project uses one fixed 50-person persona roster:
+- persona file: `text-files/us_50_gpt4o_w_interests.json`
+- the same personas are reused across studies so the changed variable is the prompt condition, not the underlying people
+
+LLM models used in the final capstone studies:
+- `gpt-4.1-nano`
+- `gpt-4.1-mini`
+- `gpt-4.1`
+
+Generation methods used across the project:
+- `sequential`
+- `global`
+- `local`
+- `iterative`
+
+Cultures used in the cultural-context experiments:
+- `us`
+- `india`
+- `japan`
+- `brazil`
+
+Prompt languages used in the fixed-culture language experiment:
+- `english`
+- `spanish`
+- `hindi`
+- `japanese`
+
+Study structure:
+- Step 2: `sequential` only, 4 cultures, 3 models, 2 seeds
+- Step 3: `global`, `local`, `iterative`, 4 cultures, 3 models, 2 seeds
+- Step 4: all 4 methods, culture fixed to `us`, 4 prompt languages, 3 models, 2 seeds
+
+Why this matters:
+- RQ1, RQ2, and RQ3 are not based on one single prompting strategy
+- Step 2 and Step 3 together give coverage across all four methods
+- RQ4 isolates prompt language by holding culture constant
+
 ## Final verification status
 - Step 2 cultural study artifacts were generated and analyzed
 - Step 3 method-study verification passed `72/72`
@@ -25,14 +63,28 @@ The important framing change is this:
 ### RQ1
 When language is held constant, does varying cultural context alter homophily patterns and network topology?
 
+How this was tested:
+- prompt language was held fixed to `english`
+- cultures were varied across `us`, `india`, `japan`, and `brazil`
+- the same 50 personas were reused
+- models were varied across `gpt-4.1-nano`, `gpt-4.1-mini`, and `gpt-4.1`
+- evidence comes from Step 2 plus the method expansion added in Step 3
+
 Answer:
 - Yes. Holding prompt language fixed to English while varying culture still changed both homophily and graph structure.
 - In the sequential cultural study, the largest culture-driven homophily shift appeared in `political affiliation`.
 - The topology metric with the widest spread across cultures was `prop_nodes_lcc`.
 - After adding `global`, `local`, and `iterative`, the broader project still showed meaningful method-sensitive structural differences, which means the culture question cannot be reduced to just one prompting method.
+- In plain terms: changing only the cultural frame changed who clustered with whom and how connected the network became, even when the language stayed the same.
 
 ### RQ2
 Which demographic dimensions dominate tie formation under varying linguistic and cultural conditions?
+
+How this was tested:
+- for the culture studies, language was held at `english` while culture varied
+- for the language study, culture was held at `us` while prompt language varied
+- dominance was measured by looking at which demographic had the highest `same_ratio` within each condition
+- all four methods were considered by combining the Step 2 sequential baseline with the Step 3 method expansion
 
 Answer:
 - Across the English-language cultural study, `political affiliation` most often dominated tie formation.
@@ -40,24 +92,38 @@ Answer:
 - `global` most often elevated `age`
 - `local`, `sequential`, and `iterative` most often elevated `political affiliation`
 - In the fixed-culture language study, `political affiliation` still appeared most often as the strongest homophily dimension, which suggests it remains the most stable dominant factor across many conditions.
+- In plain terms: the strongest tie-formation signal was usually political similarity, but the `global` method behaved differently often enough that age became the leading factor there.
 
 ### RQ3
 Do different LLM models produce consistent or divergent patterns under identical conditions?
+
+How this was tested:
+- the same personas, methods, seeds, and study conditions were matched across models
+- graph disagreement was measured with pairwise edge distance
+- lower edge distance means two models produced more similar networks under the same setup
 
 Answer:
 - They diverge in a repeatable way rather than behaving as interchangeable substitutes.
 - In the cultural study, `gpt-4.1` and `gpt-4.1-mini` were the most similar pair, while `gpt-4.1` and `gpt-4.1-nano` were the most different.
 - In the method study, the same pattern held again: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.074` average edge distance), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.119`).
 - In the language study, the same ranking held for a third time: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.081`), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.126`).
+- In plain terms: the models are not interchangeable. The nano model behaved like a meaningfully different network generator, while `gpt-4.1` and `gpt-4.1-mini` stayed the closest pair throughout the project.
 
 ### RQ4
 When culture is held constant, does changing the prompt language alter homophily patterns and network topology?
+
+How this was tested:
+- culture was fixed to `us`
+- prompt language was varied across `english`, `spanish`, `hindi`, and `japanese`
+- the same personas were reused
+- all four methods and all three GPT models were included
 
 Answer:
 - Yes. Keeping culture fixed to `us` while changing prompt language still shifted both homophily and topology.
 - The largest language-driven homophily shift appeared in `religion`.
 - The topology metric with the widest cross-language spread was `prop_nodes_lcc`.
 - The closest language pair was `hindi vs japanese`, while the farthest was `japanese vs spanish`.
+- In plain terms: even when the people and the culture stayed fixed, changing the language of the instructions still changed the network that came out.
 
 ## Method-level takeaways
 - `iterative` produced the highest average density (`0.182`)
