@@ -1,7 +1,10 @@
 """
 Step 4 study runner.
 
-This keeps culture fixed while varying the language of the prompt across all
+This file is the dedicated Research Question 4 runner.
+
+Unlike Step 2 and Step 3, which together answer RQ1 to RQ3, this study keeps
+culture fixed and changes the surface language of the prompt itself across all
 methods and models.
 """
 
@@ -102,6 +105,8 @@ def main():
     graphs_by_condition = {}
     verification_rows = []
 
+    # This loop spans every method because RQ4 is a full-project question, not
+    # a sequential-only follow-up.
     for method in args.methods:
         for prompt_language in args.prompt_languages:
             for model in args.models:

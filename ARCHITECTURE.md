@@ -76,7 +76,7 @@ Changes made:
 
 ## Step 2 Changes
 
-Step 2 added a controlled cultural-context experiment.
+Step 2 added the first controlled cultural-context experiment.
 
 Changes made:
 - `generate_networks.py` now accepts `--culture_context`
@@ -84,6 +84,8 @@ Changes made:
 - language remains fixed to English
 - `run_cultural_study.py` automates the full study matrix
 - aggregate outputs summarize demographic dominance and inter-model divergence
+
+In the final capstone framing, Step 2 is not the whole story for the first three research questions. It is the sequential baseline that later gets combined with Step 3.
 
 ## Step 3 Changes
 
@@ -94,6 +96,8 @@ Changes made:
 - `global`, `local`, and `iterative` now have the same study-level aggregation and verification path as Step 2
 - aggregate outputs summarize method effects, demographic dominance, and model divergence
 
+This is what turns RQ1, RQ2, and RQ3 into four-method results instead of sequential-only results.
+
 ## Step 4 Changes
 
 Step 4 added prompt-language variation while keeping culture fixed.
@@ -103,6 +107,8 @@ Changes made:
 - prompt instructions and persona labels can be rendered in English, Spanish, Hindi, or Japanese
 - `run_language_study.py` automates the fixed-culture language study
 - aggregate outputs summarize cross-language shifts in homophily and topology
+
+In the final project write-up, this becomes Research Question 4.
 
 ## What To Read First
 

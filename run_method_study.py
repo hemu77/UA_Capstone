@@ -1,8 +1,12 @@
 """
 Step 3 study runner.
 
-This expands the project beyond sequential generation by running the missing
-methods across the same culture/model/seed matrix used for Step 2.
+This file does not replace Step 2. It complements it.
+
+Step 2 already answered the first version of RQ1 to RQ3 with the sequential
+method. Step 3 adds the missing methods, `global`, `local`, and `iterative`,
+so the final capstone can say those three research questions were studied
+across all four methods together.
 """
 
 import argparse
@@ -94,6 +98,8 @@ def main():
     graphs_by_condition = {}
     verification_rows = []
 
+    # We intentionally run only the three missing methods here because
+    # sequential already exists in the Step 2 cultural study outputs.
     for method in args.methods:
         for culture in args.cultures:
             for model in args.models:
@@ -120,6 +126,8 @@ def main():
                 })
                 verification_rows.extend(verify_condition_outputs(save_prefix, args.start_seed, args.num_seeds, expected_nodes=len(personas)))
 
+    # These aggregate files are the "method expansion" layer that gets read
+    # together with Step 2 when we explain RQ1, RQ2, and RQ3 in the README and notebook.
     condition_summaries, homophily_summary, _ = build_condition_summaries(condition_records)
     dominance_df = build_dominance_df(homophily_summary)
     model_divergence_df = build_model_divergence(condition_records, graphs_by_condition, group_keys=['method', 'culture', 'prompt_language'])

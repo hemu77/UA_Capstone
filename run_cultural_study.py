@@ -1,11 +1,16 @@
 """
 Step 2 study runner.
 
-This file automates the cultural-context experiment:
-- keep personas fixed
+This file is the sequential baseline for Research Questions 1 to 3.
+
+What it does:
+- keep the personas fixed
 - keep the prompt language fixed to English unless explicitly overridden
 - vary culture and model
 - write aggregate summaries and verification outputs
+
+Later, Step 3 adds the other three methods so those same research questions
+are supported by all four methods together.
 """
 
 import argparse
@@ -102,6 +107,8 @@ def main():
     graphs_by_condition = {}
     verification_rows = []
 
+    # Each condition here is one sequential cultural study run. Step 3 reuses
+    # the same idea but swaps in the other three generation methods.
     for culture in args.cultures:
         for model in args.models:
             print(f'=== Running method={args.method} culture={culture} model={model} ===')

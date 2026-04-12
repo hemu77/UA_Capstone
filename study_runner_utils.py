@@ -48,6 +48,9 @@ def make_save_prefix(
     prompt_language=None,
     num_iter=3,
 ):
+    # Global prompting does not use mean_choices in the same way as the
+    # person-by-person methods, so we normalize its save name here to avoid
+    # misleading output folder names.
     effective_mean_choices = mean_choices if method != 'global' else -1
     namespace = SimpleNamespace(
         method=method,
@@ -86,6 +89,9 @@ def run_generation(
     prompt_language=None,
     num_iter=3,
 ):
+    # This wrapper keeps every study runner on the same command path. That
+    # matters because we want differences in outputs to come from the
+    # experiment variables, not from slightly different shell commands.
     effective_mean_choices = mean_choices if method != 'global' else -1
     save_prefix = make_save_prefix(
         method=method,
@@ -127,6 +133,8 @@ def run_generation(
 
 
 def analyze_condition(personas, save_prefix, start_seed, num_seeds):
+    # Reuse the repo's existing metric pipeline instead of inventing a second
+    # analysis path for the capstone studies.
     list_of_graphs = load_list_of_graphs(save_prefix, start_seed, start_seed + num_seeds, directed=False)
     summarize_network_metrics(list_of_graphs, personas, DEFAULT_DEMOS, save_name=save_prefix)
     return list_of_graphs
@@ -147,6 +155,9 @@ def load_condition_metrics(record):
 
 
 def build_condition_summaries(condition_records):
+    # Each runner writes one folder per condition. This function folds those
+    # per-condition CSVs back together so the README and notebook can compare
+    # culture, method, model, or language at the study level.
     all_homophily = []
     all_network = []
     for record in condition_records:
@@ -186,6 +197,8 @@ def build_condition_summaries(condition_records):
 
 
 def build_dominance_df(homophily_summary):
+    # "Dominance" here means: for a given condition, which demographic had the
+    # strongest same-group lift above baseline.
     same_ratio_df = homophily_summary[homophily_summary['metric_name'] == 'same_ratio'].copy()
     same_ratio_df['rank'] = same_ratio_df.groupby('condition')['_metric_value'].rank(method='dense', ascending=False)
     dominance_df = same_ratio_df.sort_values(['condition', 'rank', 'demo']).groupby('condition', as_index=False).first()
@@ -193,6 +206,8 @@ def build_dominance_df(homophily_summary):
 
 
 def build_pairwise_graph_divergence(condition_records, graphs_by_condition, group_keys, compare_key, pair_label):
+    # Pairwise edge distance is our shared way to ask "how different are these
+    # generated networks if we hold some variables fixed and change one thing?"
     grouped = {}
     for record in condition_records:
         group_key = tuple(record.get(key) for key in group_keys)
@@ -250,6 +265,9 @@ def build_focus_summary(condition_summaries, group_keys):
 
 
 def verify_condition_outputs(save_prefix, start_seed, num_seeds, expected_nodes=50):
+    # These checks are intentionally simple and operational:
+    # the graph exists, the PNG opens, the stats files were written, the node
+    # count is right, and the graph is not empty.
     rows = []
     homophily_path = os.path.join(PATH_TO_STATS_FILES, save_prefix, 'homophily.csv')
     network_metrics_path = os.path.join(PATH_TO_STATS_FILES, save_prefix, 'network_metrics.csv')

@@ -17,6 +17,10 @@ import numpy as np
 import pandas as pd
 import time
 
+# The project uses culture and prompt language as two different knobs:
+# - culture_context changes the simulated social setting
+# - prompt_language changes the language the instructions are written in
+# Keeping those separate is what lets the capstone ask RQ1-RQ3 and RQ4 cleanly.
 SUPPORTED_PROMPT_LANGUAGES = {'english', 'spanish', 'hindi', 'japanese'}
 LANGUAGE_NAME_BY_CODE = {
     'english': 'English',

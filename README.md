@@ -1,68 +1,80 @@
 # Generating social networks with LLMs
 This repo contains code and results for the paper ["LLMs generate structurally realistic social networks but overestimate political homophily"](https://arxiv.org/abs/2408.16629), by Serina Chang*, Alicja Chaszczewicz*, Emma Wang, Maya Josifovska, Emma Pierson, and Jure Leskovec (ICWSM 2025).
 
-## Project status
-This repository has been fully adapted for the `UA_Capstone` project.
+## UA Capstone framing
+This repository has been adapted into a four-question capstone project.
 
-Completed project scope:
-- Step 1: OpenAI-only compatibility using `OPENAI_API_KEY`
-- Step 2: English-language cultural-context study across `us`, `india`, `japan`, and `brazil`
-- Step 3: full method expansion for `global`, `local`, and `iterative`
-- Step 4: fixed-culture prompt-language study across English, Spanish, Hindi, and Japanese
-- final notebook and documentation updates for all four steps
+The final project is organized like this:
+- `Step 1`: make the repo run with only `OPENAI_API_KEY`
+- `RQ1-RQ3`: use all four generation methods, `sequential`, `global`, `local`, and `iterative`, to study culture, dominant demographics, and model consistency
+- `RQ4`: keep culture fixed and vary prompt language
 
-Verification status:
-- Step 3: `72/72` generated method-study graphs passed artifact and sanity checks
-- Step 4: `96/96` generated language-study graphs passed artifact and sanity checks
+The important framing change is this:
+- Step 2 gave the first `sequential` evidence for RQ1-RQ3
+- Step 3 added the other three methods so RQ1-RQ3 are supported by all four methods together
+- Step 4 introduced prompt-language variation and became `RQ4`
 
-## Final project findings
+## Final verification status
+- Step 2 cultural study artifacts were generated and analyzed
+- Step 3 method-study verification passed `72/72`
+- Step 4 language-study verification passed `96/96`
+- the notebook and documentation now reflect the final four-RQ structure
 
-### Research question 1
+## Final research questions and answers
+
+### RQ1
 When language is held constant, does varying cultural context alter homophily patterns and network topology?
 
-Answer from Step 2:
-- Yes. Cultural framing changed both homophily and topology.
-- The largest culture-driven homophily shift appeared in `political affiliation`.
+Answer:
+- Yes. Holding prompt language fixed to English while varying culture still changed both homophily and graph structure.
+- In the sequential cultural study, the largest culture-driven homophily shift appeared in `political affiliation`.
 - The topology metric with the widest spread across cultures was `prop_nodes_lcc`.
+- After adding `global`, `local`, and `iterative`, the broader project still showed meaningful method-sensitive structural differences, which means the culture question cannot be reduced to just one prompting method.
 
-### Research question 2
+### RQ2
 Which demographic dimensions dominate tie formation under varying linguistic and cultural conditions?
 
-Answer across the final project:
-- In the English-language cultural-context study, `political affiliation` most often dominated tie formation.
-- In the Step 3 method study, `global` most often elevated `age`, while `local` and `iterative` most often elevated `political affiliation`.
-- In the Step 4 fixed-culture language study, `political affiliation` was still the most frequent top-ranked homophily dimension, appearing in `29` conditions.
+Answer:
+- Across the English-language cultural study, `political affiliation` most often dominated tie formation.
+- After extending the project to all four methods, the answer became more nuanced:
+- `global` most often elevated `age`
+- `local`, `sequential`, and `iterative` most often elevated `political affiliation`
+- In the fixed-culture language study, `political affiliation` still appeared most often as the strongest homophily dimension, which suggests it remains the most stable dominant factor across many conditions.
 
-### Research question 3
+### RQ3
 Do different LLM models produce consistent or divergent patterns under identical conditions?
 
-Answer across all phases:
-- They are not fully consistent.
-- In Step 2, `gpt-4.1` and `gpt-4.1-mini` were the most similar pair, while `gpt-4.1` and `gpt-4.1-nano` were the most different.
-- In Step 3, the same pattern held: `gpt-4.1` vs `gpt-4.1-mini` was the closest pair (`0.074` average edge distance), and `gpt-4.1` vs `gpt-4.1-nano` was the farthest (`0.119`).
-- In Step 4, the same pattern held again: `gpt-4.1` vs `gpt-4.1-mini` was the closest pair (`0.081`), and `gpt-4.1` vs `gpt-4.1-nano` was the farthest (`0.126`).
+Answer:
+- They diverge in a repeatable way rather than behaving as interchangeable substitutes.
+- In the cultural study, `gpt-4.1` and `gpt-4.1-mini` were the most similar pair, while `gpt-4.1` and `gpt-4.1-nano` were the most different.
+- In the method study, the same pattern held again: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.074` average edge distance), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.119`).
+- In the language study, the same ranking held for a third time: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.081`), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.126`).
 
-### Additional final findings
+### RQ4
+When culture is held constant, does changing the prompt language alter homophily patterns and network topology?
 
-Step 3 method study:
-- `iterative` produced the highest average density (`0.182`).
-- `global` produced the lowest average density (`0.056`).
-- The most similar method pair was `global vs local` and the most different pair was `iterative vs local`, although the gap between them was small.
-
-Step 4 fixed-culture language study:
-- With culture fixed to `us`, the largest language-driven homophily shift appeared on `religion`.
+Answer:
+- Yes. Keeping culture fixed to `us` while changing prompt language still shifted both homophily and topology.
+- The largest language-driven homophily shift appeared in `religion`.
 - The topology metric with the widest cross-language spread was `prop_nodes_lcc`.
-- The closest language pair was `hindi vs japanese`; the farthest was `japanese vs spanish`.
+- The closest language pair was `hindi vs japanese`, while the farthest was `japanese vs spanish`.
 
-For the exact study summaries, see:
-- `stats/cultural_study/condition_summary.csv`
+## Method-level takeaways
+- `iterative` produced the highest average density (`0.182`)
+- `global` produced the lowest average density (`0.056`)
+- the most similar method pair was `global vs local`
+- the most different method pair was `iterative vs local`, although the gap was small
+
+## Where the final answers live
+For the exact generated summaries and tables, see:
 - `stats/cultural_study/research_answers.md`
-- `stats/method_study/condition_summary.csv`
-- `stats/method_study/method_summary.csv`
+- `stats/cultural_study/condition_summary.csv`
 - `stats/method_study/research_answers.md`
-- `stats/language_study/condition_summary.csv`
-- `stats/language_study/language_summary.csv`
+- `stats/method_study/method_summary.csv`
+- `stats/method_study/verification_summary.csv`
 - `stats/language_study/research_answers.md`
+- `stats/language_study/language_summary.csv`
+- `stats/language_study/verification_summary.csv`
 
 ## Prerequisites 
 To run OpenAI models, set `OPENAI_API_KEY` in your environment. As a backward-compatible fallback, you can still put an OpenAI key on the first line of `api-key.txt`.
@@ -101,13 +113,13 @@ To run the Step 2 cultural study matrix described in this project extension, use
 
 ```python run_cultural_study.py```
 
-This runs the full set of English-language cultural-context conditions across the configured GPT models and writes aggregate outputs under `stats/cultural_study`.
+This runs the `sequential` cultural-context matrix and writes aggregate outputs under `stats/cultural_study`. In the final capstone framing, these outputs are the first piece of evidence for `RQ1-RQ3`.
 
 To run the Step 3 method-expansion study, use:
 
 ```python run_method_study.py```
 
-This runs the missing three methods (`global`, `local`, `iterative`) across the same culture/model/seed matrix and writes aggregate outputs under `stats/method_study`.
+This runs the missing three methods, `global`, `local`, and `iterative`, across the same culture/model/seed matrix and writes aggregate outputs under `stats/method_study`. Together with Step 2, this is what makes `RQ1-RQ3` a four-method result rather than a sequential-only result.
 
 To run the Step 4 fixed-culture language study, use:
 
@@ -119,3 +131,37 @@ To analyze the generated networks, see `analyze_networks.py` and `plotting.py`.
 
 ## Our results
 See `analyze_networks.ipynb` for our figures and tables. You can also find our generated networks and generated personas (with interests) in `text-files` and the summary statistics in `stats`.
+
+## How to run the full project
+If you want to reproduce the project from the command line, run the sections below in order.
+
+Step 1: verify the repo works with OpenAI only
+```powershell
+$env:OPENAI_API_KEY="YOUR_KEY"
+python generate_networks.py sequential --persona_fn us_50_gpt4o_w_interests.json --model gpt-4.1-mini --num_networks 1 --start_seed 0 --mean_choices 5
+python analyze_networks.py --persona_fn us_50_gpt4o_w_interests.json --network_fn sequential_gpt-4.1-mini_n5 --num_networks 1
+```
+
+RQ1-RQ3 part A: sequential cultural study
+```powershell
+python run_cultural_study.py
+```
+
+RQ1-RQ3 part B: add the other three methods
+```powershell
+python run_method_study.py
+```
+
+RQ4: fixed-culture language study
+```powershell
+python run_language_study.py
+```
+
+Notebook review
+```powershell
+jupyter notebook analyze_networks.ipynb
+```
+
+The notebook now has dedicated UA Capstone sections for:
+- `RQ1-RQ3`, which combine the sequential cultural study with the added method study
+- `RQ4`, which covers prompt-language variation with culture held constant
