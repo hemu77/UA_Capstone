@@ -2,51 +2,67 @@
 This repo contains code and results for the paper ["LLMs generate structurally realistic social networks but overestimate political homophily"](https://arxiv.org/abs/2408.16629), by Serina Chang*, Alicja Chaszczewicz*, Emma Wang, Maya Josifovska, Emma Pierson, and Jure Leskovec (ICWSM 2025).
 
 ## Project status
-This repository is currently being adapted for the `UA_Capstone` project and is still a work in progress.
+This repository has been fully adapted for the `UA_Capstone` project.
 
-Current completed work:
-- OpenAI-only compatibility using `OPENAI_API_KEY`
-- support for newer GPT models such as `gpt-4.1-mini`
-- a Step 2 cultural-context study runner for `us`, `india`, `japan`, and `brazil`
-- aggregate outputs written under `stats/cultural_study`
+Completed project scope:
+- Step 1: OpenAI-only compatibility using `OPENAI_API_KEY`
+- Step 2: English-language cultural-context study across `us`, `india`, `japan`, and `brazil`
+- Step 3: full method expansion for `global`, `local`, and `iterative`
+- Step 4: fixed-culture prompt-language study across English, Spanish, Hindi, and Japanese
+- final notebook and documentation updates for all four steps
 
-Planned / ongoing work:
-- more notebook-level explanations and documentation
-- more robust verification and repeatability checks
-- further experiment extensions beyond the current Step 2 setup
+Verification status:
+- Step 3: `72/72` generated method-study graphs passed artifact and sanity checks
+- Step 4: `96/96` generated language-study graphs passed artifact and sanity checks
 
-## Current Step 2 findings
-These are the current answers from the implemented Step 2 study. They should be treated as current project findings, not final polished claims.
+## Final project findings
 
 ### Research question 1
 When language is held constant, does varying cultural context alter homophily patterns and network topology?
 
-Current answer:
-- Yes. In the current study, cultural framing changed both homophily and topology.
+Answer from Step 2:
+- Yes. Cultural framing changed both homophily and topology.
 - The largest culture-driven homophily shift appeared in `political affiliation`.
-- The topology metric with the widest spread across conditions was `prop_nodes_lcc`, meaning connectedness changed across cultural contexts.
+- The topology metric with the widest spread across cultures was `prop_nodes_lcc`.
 
 ### Research question 2
 Which demographic dimensions dominate tie formation under varying linguistic and cultural conditions?
 
-Current answer:
-- In the current English-language cultural-context study, `political affiliation` most often dominated tie formation.
-- It was the top-ranked same-group homophily dimension in most conditions, especially for `gpt-4.1` and `gpt-4.1-mini`.
-- `gpt-4.1-nano` was less consistent and in some conditions elevated `age` or `race/ethnicity` instead.
+Answer across the final project:
+- In the English-language cultural-context study, `political affiliation` most often dominated tie formation.
+- In the Step 3 method study, `global` most often elevated `age`, while `local` and `iterative` most often elevated `political affiliation`.
+- In the Step 4 fixed-culture language study, `political affiliation` was still the most frequent top-ranked homophily dimension, appearing in `29` conditions.
 
 ### Research question 3
 Do different LLM models produce consistent or divergent patterns under identical conditions?
 
-Current answer:
+Answer across all phases:
 - They are not fully consistent.
-- `gpt-4.1` and `gpt-4.1-mini` produced the most similar network structures.
-- `gpt-4.1` and `gpt-4.1-nano` showed the largest divergence in edge structure under the same culture and seed.
+- In Step 2, `gpt-4.1` and `gpt-4.1-mini` were the most similar pair, while `gpt-4.1` and `gpt-4.1-nano` were the most different.
+- In Step 3, the same pattern held: `gpt-4.1` vs `gpt-4.1-mini` was the closest pair (`0.074` average edge distance), and `gpt-4.1` vs `gpt-4.1-nano` was the farthest (`0.119`).
+- In Step 4, the same pattern held again: `gpt-4.1` vs `gpt-4.1-mini` was the closest pair (`0.081`), and `gpt-4.1` vs `gpt-4.1-nano` was the farthest (`0.126`).
+
+### Additional final findings
+
+Step 3 method study:
+- `iterative` produced the highest average density (`0.182`).
+- `global` produced the lowest average density (`0.056`).
+- The most similar method pair was `global vs local` and the most different pair was `iterative vs local`, although the gap between them was small.
+
+Step 4 fixed-culture language study:
+- With culture fixed to `us`, the largest language-driven homophily shift appeared on `religion`.
+- The topology metric with the widest cross-language spread was `prop_nodes_lcc`.
+- The closest language pair was `hindi vs japanese`; the farthest was `japanese vs spanish`.
 
 For the exact study summaries, see:
 - `stats/cultural_study/condition_summary.csv`
-- `stats/cultural_study/demographic_dominance.csv`
-- `stats/cultural_study/model_divergence.csv`
 - `stats/cultural_study/research_answers.md`
+- `stats/method_study/condition_summary.csv`
+- `stats/method_study/method_summary.csv`
+- `stats/method_study/research_answers.md`
+- `stats/language_study/condition_summary.csv`
+- `stats/language_study/language_summary.csv`
+- `stats/language_study/research_answers.md`
 
 ## Prerequisites 
 To run OpenAI models, set `OPENAI_API_KEY` in your environment. As a backward-compatible fallback, you can still put an OpenAI key on the first line of `api-key.txt`.
@@ -86,6 +102,18 @@ To run the Step 2 cultural study matrix described in this project extension, use
 ```python run_cultural_study.py```
 
 This runs the full set of English-language cultural-context conditions across the configured GPT models and writes aggregate outputs under `stats/cultural_study`.
+
+To run the Step 3 method-expansion study, use:
+
+```python run_method_study.py```
+
+This runs the missing three methods (`global`, `local`, `iterative`) across the same culture/model/seed matrix and writes aggregate outputs under `stats/method_study`.
+
+To run the Step 4 fixed-culture language study, use:
+
+```python run_language_study.py```
+
+This keeps culture fixed to `us`, varies prompt language across English, Spanish, Hindi, and Japanese, and writes aggregate outputs under `stats/language_study`.
 
 To analyze the generated networks, see `analyze_networks.py` and `plotting.py`.
 

@@ -33,6 +33,15 @@ Visualization helpers for graphs and analysis tables.
 [run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
 Step 2 experiment orchestrator. It runs the full culture/model/seed matrix and writes aggregate outputs.
 
+[study_runner_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\study_runner_utils.py)
+Shared experiment helper layer. This keeps the Step 2, Step 3, and Step 4 runners on the same generation, aggregation, and verification path.
+
+[run_method_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_method_study.py)
+Step 3 experiment orchestrator. It compares `global`, `local`, and `iterative` under the same culture/model/seed setup used for Step 2.
+
+[run_language_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_language_study.py)
+Step 4 experiment orchestrator. It keeps culture fixed and varies the prompt language across English, Spanish, Hindi, and Japanese.
+
 [analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
 Exploratory notebook. This is where results are compared, plotted, and interpreted interactively.
 
@@ -51,6 +60,8 @@ The normal flow is:
 3. Graph images are written to `plots/*.png`
 4. Analysis writes per-condition CSVs into `stats/<condition>/`
 5. The Step 2 runner writes study-level summary files into `stats/cultural_study/`
+6. The Step 3 runner writes study-level summary files into `stats/method_study/`
+7. The Step 4 runner writes study-level summary files into `stats/language_study/`
 
 ## Step 1 Changes
 
@@ -73,6 +84,25 @@ Changes made:
 - language remains fixed to English
 - `run_cultural_study.py` automates the full study matrix
 - aggregate outputs summarize demographic dominance and inter-model divergence
+
+## Step 3 Changes
+
+Step 3 expanded the project beyond sequential generation.
+
+Changes made:
+- `run_method_study.py` automates the full method-comparison matrix
+- `global`, `local`, and `iterative` now have the same study-level aggregation and verification path as Step 2
+- aggregate outputs summarize method effects, demographic dominance, and model divergence
+
+## Step 4 Changes
+
+Step 4 added prompt-language variation while keeping culture fixed.
+
+Changes made:
+- `generate_networks.py` now accepts `--prompt_language`
+- prompt instructions and persona labels can be rendered in English, Spanish, Hindi, or Japanese
+- `run_language_study.py` automates the fixed-culture language study
+- aggregate outputs summarize cross-language shifts in homophily and topology
 
 ## What To Read First
 
@@ -99,6 +129,16 @@ For the Step 2 study:
 - [demographic_dominance.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\demographic_dominance.csv)
 - [model_divergence.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\model_divergence.csv)
 - [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\research_answers.md)
+
+For the Step 3 study:
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\condition_summary.csv)
+- [method_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\method_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\research_answers.md)
+
+For the Step 4 study:
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\condition_summary.csv)
+- [language_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\language_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\research_answers.md)
 
 ## Practical Reading Advice
 
