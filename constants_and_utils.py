@@ -19,6 +19,7 @@ import random
 import json
 from PIL import Image
 import os
+import sys
 import time
 
 import plotting
@@ -29,6 +30,11 @@ PATH_TO_STATS_FILES = PATH_TO_FOLDER + '/stats'  # folder holding stats files, e
 DEFAULT_TEMPERATURE = 0.8
 SHOW_PLOTS = False
 OPENAI_MODEL_PREFIXES = ('gpt-', 'o1', 'o3', 'o4')
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 
 def _read_api_key_file(path='api-key.txt'):
@@ -268,7 +274,10 @@ def repeat_prompt_until_parsed(model, system_prompt, user_prompt, parse_method,
                 print('\nRESPONSE:')
                 print(response)
                 messages.append({"role": "assistant", "content": response})
-                messages.append({"role": "user", "content": f"Invalid response: {e}!"})
+                messages.append({
+                    "role": "user",
+                    "content": f"Invalid response: {e}! Re-answer using only the provided persona IDs. Do not use ages, counts, or any other numbers as IDs.",
+                })
         except Exception as e:
             print('Failed to get response:', e)
         num_tries += 1

@@ -1,30 +1,30 @@
 """
 Step 2 study runner.
 
-This file automates the cultural-context experiment added for the project
-proposal. It loops over cultures, models, and seeds, runs generation and
-analysis for each condition, then aggregates the results into summary tables.
+This file automates the cultural-context experiment:
+- keep personas fixed
+- keep the prompt language fixed to English unless explicitly overridden
+- vary culture and model
+- write aggregate summaries and verification outputs
 """
 
 import argparse
-import itertools
-import json
 import os
-import subprocess
-import sys
-from types import SimpleNamespace
 
-import pandas as pd
-import networkx as nx
-
-from analyze_networks import compute_edge_distance, load_list_of_graphs, summarize_network_metrics
-from constants_and_utils import PATH_TO_STATS_FILES, PATH_TO_TEXT_FILES, DEFAULT_TEMPERATURE
-from generate_networks import get_save_prefix_and_demos
-
-
-DEFAULT_MODELS = ['gpt-4.1-nano', 'gpt-4.1-mini', 'gpt-4.1']
-DEFAULT_CULTURES = ['us', 'india', 'japan', 'brazil']
-DEFAULT_DEMOS = ['gender', 'age', 'race/ethnicity', 'religion', 'political affiliation']
+from study_runner_utils import (
+    DEFAULT_CULTURES,
+    DEFAULT_MODELS,
+    analyze_condition,
+    build_condition_summaries,
+    build_dominance_df,
+    build_focus_summary,
+    build_model_divergence,
+    load_personas,
+    run_generation,
+    save_common_outputs,
+    verify_condition_outputs,
+)
+from constants_and_utils import DEFAULT_TEMPERATURE, PATH_TO_STATS_FILES
 
 
 def parse_args():
@@ -37,80 +37,10 @@ def parse_args():
     parser.add_argument('--start_seed', type=int, default=0)
     parser.add_argument('--mean_choices', type=int, default=5)
     parser.add_argument('--temp', type=float, default=DEFAULT_TEMPERATURE)
+    parser.add_argument('--prompt_language', type=str, default=None)
+    parser.add_argument('--output_subdir', type=str, default='cultural_study')
+    parser.add_argument('--num_iter', type=int, default=3)
     return parser.parse_args()
-
-
-def make_save_prefix(args, model, culture):
-    # Reuse the main generator's naming logic so all files line up cleanly.
-    namespace = SimpleNamespace(
-        method=args.method,
-        persona_fn=args.persona_fn,
-        mean_choices=args.mean_choices,
-        include_names=False,
-        include_interests=False,
-        only_interests=False,
-        shuffle_all=False,
-        shuffle_interests=False,
-        include_friend_list=False,
-        include_reason=False,
-        prompt_all=False,
-        model=model,
-        num_networks=args.num_seeds,
-        start_seed=args.start_seed,
-        temp=args.temp,
-        num_iter=3,
-        culture_context=culture,
-        verbose=False,
-    )
-    save_prefix, _ = get_save_prefix_and_demos(namespace)
-    return save_prefix
-
-
-def run_generation(args, model, culture):
-    # Delegate graph creation to generate_networks.py rather than duplicating
-    # the generation logic in two places.
-    save_prefix = make_save_prefix(args, model, culture)
-    command = [
-        sys.executable,
-        'generate_networks.py',
-        args.method,
-        '--persona_fn', args.persona_fn,
-        '--model', model,
-        '--num_networks', str(args.num_seeds),
-        '--start_seed', str(args.start_seed),
-        '--mean_choices', str(args.mean_choices),
-        '--temp', str(args.temp),
-        '--culture_context', culture,
-    ]
-    subprocess.run(command, check=True)
-    return save_prefix
-
-
-def analyze_condition(personas, save_prefix, start_seed, num_seeds):
-    # Analyze each condition immediately after generation so failures are local.
-    list_of_graphs = load_list_of_graphs(save_prefix, start_seed, start_seed + num_seeds, directed=False)
-    summarize_network_metrics(list_of_graphs, personas, DEFAULT_DEMOS, save_name=save_prefix)
-    return list_of_graphs
-
-
-def extract_condition_parts(save_prefix):
-    prefix, _, culture = save_prefix.partition('_culture_')
-    method, model, _ = prefix.split('_', 2)
-    return method, model, culture
-
-
-def load_condition_metrics(save_prefix):
-    homophily_path = os.path.join(PATH_TO_STATS_FILES, save_prefix, 'homophily.csv')
-    network_metrics_path = os.path.join(PATH_TO_STATS_FILES, save_prefix, 'network_metrics.csv')
-    homophily_df = pd.read_csv(homophily_path)
-    network_metrics_df = pd.read_csv(network_metrics_path)
-    method, model, culture = extract_condition_parts(save_prefix)
-    for df in (homophily_df, network_metrics_df):
-        df['condition'] = save_prefix
-        df['method'] = method
-        df['model'] = model
-        df['culture'] = culture
-    return homophily_df, network_metrics_df
 
 
 def build_research_summary(condition_summaries, dominance_df, divergence_df):
@@ -161,90 +91,53 @@ def build_research_summary(condition_summaries, dominance_df, divergence_df):
         lines.append(
             f'- The most divergent pair is `{most_different["model_pair"]}` with average edge distance {most_different["edge_distance"]:.3f}.'
         )
-    lines.append('')
-    return '\n'.join(lines)
-
-
-def summarize_study(save_prefixes, graphs_by_condition):
-    # This converts many condition-level outputs into one study-level view.
-    all_homophily = []
-    all_network = []
-    for save_prefix in save_prefixes:
-        homophily_df, network_metrics_df = load_condition_metrics(save_prefix)
-        all_homophily.append(homophily_df)
-        all_network.append(network_metrics_df)
-
-    all_homophily_df = pd.concat(all_homophily, ignore_index=True)
-    all_network_df = pd.concat(all_network, ignore_index=True)
-
-    homophily_summary = (
-        all_homophily_df
-        .groupby(['condition', 'culture', 'model', 'metric_name', 'demo'], as_index=False)['_metric_value']
-        .agg(['mean', 'std'])
-        .reset_index()
-        .rename(columns={'mean': '_metric_value', 'std': 'std_value'})
-    )
-    homophily_summary['table'] = 'homophily'
-
-    scalar_network_df = all_network_df[pd.isnull(all_network_df.get('node'))].copy()
-    network_summary = (
-        scalar_network_df
-        .groupby(['condition', 'culture', 'model', 'metric_name'], as_index=False)['_metric_value']
-        .agg(['mean', 'std'])
-        .reset_index()
-        .rename(columns={'mean': '_metric_value', 'std': 'std_value'})
-    )
-    network_summary['demo'] = None
-    network_summary['table'] = 'network'
-
-    condition_summaries = pd.concat([homophily_summary, network_summary], ignore_index=True)
-
-    same_ratio_df = homophily_summary[homophily_summary['metric_name'] == 'same_ratio'].copy()
-    same_ratio_df['rank'] = same_ratio_df.groupby('condition')['_metric_value'].rank(method='dense', ascending=False)
-    dominance_df = same_ratio_df.sort_values(['condition', 'rank', 'demo']).groupby('condition', as_index=False).first()
-    dominance_df = dominance_df.rename(columns={'demo': 'top_demo', '_metric_value': 'top_demo_same_ratio'})
-
-    divergence_rows = []
-    for culture in sorted({extract_condition_parts(prefix)[2] for prefix in save_prefixes}):
-        culture_prefixes = sorted([prefix for prefix in save_prefixes if prefix.endswith(f'_culture_{culture}')])
-        by_model = {extract_condition_parts(prefix)[1]: graphs_by_condition[prefix] for prefix in culture_prefixes}
-        for model_a, model_b in itertools.combinations(sorted(by_model.keys()), 2):
-            graphs_a = by_model[model_a]
-            graphs_b = by_model[model_b]
-            for offset, (graph_a, graph_b) in enumerate(zip(graphs_a, graphs_b)):
-                divergence_rows.append({
-                    'culture': culture,
-                    'seed': offset,
-                    'model_pair': f'{model_a} vs {model_b}',
-                    'edge_distance': compute_edge_distance(graph_a, graph_b),
-                })
-    divergence_df = pd.DataFrame(divergence_rows)
-
-    output_dir = os.path.join(PATH_TO_STATS_FILES, 'cultural_study')
-    os.makedirs(output_dir, exist_ok=True)
-    condition_summaries.to_csv(os.path.join(output_dir, 'condition_summary.csv'), index=False)
-    dominance_df.to_csv(os.path.join(output_dir, 'demographic_dominance.csv'), index=False)
-    divergence_df.to_csv(os.path.join(output_dir, 'model_divergence.csv'), index=False)
-    with open(os.path.join(output_dir, 'research_answers.md'), 'w', encoding='utf-8') as f:
-        f.write(build_research_summary(condition_summaries, dominance_df, divergence_df))
+    return '\n'.join(lines) + '\n'
 
 
 def main():
     args = parse_args()
-    personas_path = os.path.join(PATH_TO_TEXT_FILES, args.persona_fn)
-    with open(personas_path, 'r', encoding='utf-8') as f:
-        personas = json.load(f)
+    personas = load_personas(args.persona_fn)
 
-    save_prefixes = []
+    condition_records = []
     graphs_by_condition = {}
+    verification_rows = []
+
     for culture in args.cultures:
         for model in args.models:
-            print(f'=== Running culture={culture} model={model} ===')
-            save_prefix = run_generation(args, model, culture)
-            save_prefixes.append(save_prefix)
+            print(f'=== Running method={args.method} culture={culture} model={model} ===')
+            save_prefix = run_generation(
+                method=args.method,
+                persona_fn=args.persona_fn,
+                model=model,
+                num_seeds=args.num_seeds,
+                start_seed=args.start_seed,
+                mean_choices=args.mean_choices,
+                temp=args.temp,
+                culture_context=culture,
+                prompt_language=args.prompt_language,
+                num_iter=args.num_iter,
+            )
             graphs_by_condition[save_prefix] = analyze_condition(personas, save_prefix, args.start_seed, args.num_seeds)
+            condition_records.append({
+                'save_prefix': save_prefix,
+                'method': args.method,
+                'culture': culture,
+                'model': model,
+                'prompt_language': args.prompt_language or 'english',
+            })
+            verification_rows.extend(verify_condition_outputs(save_prefix, args.start_seed, args.num_seeds, expected_nodes=len(personas)))
 
-    summarize_study(save_prefixes, graphs_by_condition)
+    condition_summaries, homophily_summary, _ = build_condition_summaries(condition_records)
+    dominance_df = build_dominance_df(homophily_summary)
+    divergence_df = build_model_divergence(condition_records, graphs_by_condition, group_keys=['method', 'culture', 'prompt_language'])
+
+    output_dir = os.path.join(PATH_TO_STATS_FILES, args.output_subdir)
+    save_common_outputs(output_dir, condition_summaries, dominance_df, divergence_df, verification_rows)
+
+    culture_summary = build_focus_summary(condition_summaries, ['culture'])
+    culture_summary.to_csv(os.path.join(output_dir, 'culture_summary.csv'), index=False)
+    with open(os.path.join(output_dir, 'research_answers.md'), 'w', encoding='utf-8') as f:
+        f.write(build_research_summary(condition_summaries, dominance_df, divergence_df))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,613 @@
+index,condition,method,culture,model,prompt_language,metric_name,demo,_metric_value,std_value,table
+0,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,cross_ratio,age,0.5898691945399359,0.05920160416529066,homophily
+1,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,cross_ratio,gender,0.47957350773765656,0.07467573633817884,homophily
+2,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,cross_ratio,political affiliation,0.06654715341156014,0.09411188689195134,homophily
+3,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.2845804794357518,0.2203620157114138,homophily
+4,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,cross_ratio,religion,0.536540224367295,0.0760097509653489,homophily
+5,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,same_ratio,age,1.853019555805416,0.20473167087207725,homophily
+6,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,same_ratio,gender,1.540342980318972,0.07753354321967337,homophily
+7,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,same_ratio,political affiliation,1.9691756676725234,0.09771350652342367,homophily
+8,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.7955958461447241,0.24505775885148595,homophily
+9,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,same_ratio,religion,1.9012955732857169,0.1478170397379018,homophily
+10,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,cross_ratio,age,0.5988714293680621,0.005215360869295151,homophily
+11,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,cross_ratio,gender,0.369469325140733,0.021864148586035987,homophily
+12,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,cross_ratio,political affiliation,0.14450636286460775,0.06782348132811153,homophily
+13,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.1773464500808583,0.14547597145579277,homophily
+14,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,cross_ratio,religion,0.5699600961379911,0.033728624765603,homophily
+15,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,same_ratio,age,1.8463610445586607,0.07367477461686377,homophily
+16,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,same_ratio,gender,1.6546608005194388,0.02270087972992732,homophily
+17,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,same_ratio,political affiliation,1.8882329942969793,0.07041905548875466,homophily
+18,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.914847482237666,0.16177931308445928,homophily
+19,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,same_ratio,religion,1.8363035630393392,0.06559244575810795,homophily
+20,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,cross_ratio,age,0.5597513722251755,0.07304653287170339,homophily
+21,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,cross_ratio,gender,0.4180319484317566,0.000484182187532707,homophily
+22,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,cross_ratio,political affiliation,0.09483607675315031,0.0430922146904113,homophily
+23,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.337514837376941,0.037005031188546644,homophily
+24,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,cross_ratio,religion,0.6311430139566087,0.15535964025771484,homophily
+25,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,same_ratio,age,2.0717742003147563,0.49005227261042766,homophily
+26,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,same_ratio,gender,1.6042397074518866,0.0005027116223303876,homophily
+27,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,same_ratio,political affiliation,1.9398041399434844,0.04474133438738174,homophily
+28,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.7367291894687464,0.04115214675278016,homophily
+29,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,same_ratio,religion,1.7173204368007295,0.3021296850204117,homophily
+30,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,cross_ratio,age,0.5982726428699008,0.0029824782663915705,homophily
+31,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,cross_ratio,gender,0.39123286158893045,0.10549638933855841,homophily
+32,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,cross_ratio,political affiliation,0.1639528658647712,0.0975272376259335,homophily
+33,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.2030062600395861,0.059474758828041895,homophily
+34,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,cross_ratio,religion,0.6273354166934182,0.09278721301847727,homophily
+35,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,same_ratio,age,1.8102065049723903,0.06347153528994927,homophily
+36,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,same_ratio,gender,1.6320643833086645,0.10953368876416052,homophily
+37,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,same_ratio,political affiliation,1.8680422823633656,0.10125956119564498,homophily
+38,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.8863120039214945,0.06614003352428782,homophily
+39,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,same_ratio,religion,1.7247251151322707,0.18044436377872133,homophily
+40,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,cross_ratio,age,0.8660100864859022,0.05632924590341656,homophily
+41,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,cross_ratio,gender,0.926422688001778,0.21528039503476185,homophily
+42,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,cross_ratio,political affiliation,1.04917597299775,0.08035415942415289,homophily
+43,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,cross_ratio,race/ethnicity,1.0032586694886072,0.05695242201096025,homophily
+44,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,cross_ratio,religion,0.9754160601146098,0.03811541601024052,homophily
+45,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,same_ratio,age,1.0655992524004723,0.002303553828797757,homophily
+46,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,same_ratio,gender,1.0763930826736947,0.22351907903775597,homophily
+47,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,same_ratio,political affiliation,0.9489420846079935,0.08342927700610857,homophily
+48,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,same_ratio,race/ethnicity,0.9963761347928419,0.06333502102942967,homophily
+49,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,same_ratio,religion,1.047808671555963,0.07412348930837621,homophily
+50,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,cross_ratio,age,0.9328205125852638,0.24395231093463968,homophily
+51,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,cross_ratio,gender,0.6823278356481481,0.16291486531243887,homophily
+52,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,cross_ratio,political affiliation,1.128124443554131,0.05301963072298305,homophily
+53,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.7085823105081827,0.04709667662699485,homophily
+54,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,cross_ratio,religion,0.7555302327976926,0.06915013395024498,homophily
+55,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,same_ratio,age,1.0648297298587248,0.4475313984474925,homophily
+56,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,same_ratio,gender,1.329829335366981,0.16914954401823926,homophily
+57,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,same_ratio,political affiliation,0.8669722915511184,0.05504866817161629,homophily
+58,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.32407656848659,0.052374752455882224,homophily
+59,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,same_ratio,religion,1.4754231770833333,0.1344770633792025,homophily
+60,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,cross_ratio,age,0.8199994128181791,0.0724783931715903,homophily
+61,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,cross_ratio,gender,0.9161324786324787,0.02313583886093805,homophily
+62,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,cross_ratio,political affiliation,0.9079527243589743,0.24292630803984958,homophily
+63,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.6726421188630491,0.05595644747761765,homophily
+64,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,cross_ratio,religion,0.9526936547177585,0.0981485772197026,homophily
+65,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,same_ratio,age,1.2628865979381443,0.2976652257572235,homophily
+66,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,same_ratio,gender,1.0870770937326677,0.024021237020341573,homophily
+67,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,same_ratio,political affiliation,1.095569883527454,0.25222298871358745,homophily
+68,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.3640445402298849,0.06222742866045389,homophily
+69,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,same_ratio,religion,1.0919971955128205,0.1908706706027389,homophily
+70,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,cross_ratio,age,0.9103167671857733,0.025782827610447017,homophily
+71,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,cross_ratio,gender,0.9471379503648525,0.10904935905797886,homophily
+72,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,cross_ratio,political affiliation,0.983510375494071,0.12345210459393821,homophily
+73,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.9163009008180899,0.10549891480957946,homophily
+74,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,cross_ratio,religion,1.0679555470326418,0.02592138133542242,homophily
+75,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,same_ratio,age,0.9816905043260937,0.035296271828919805,homophily
+76,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,same_ratio,gender,1.0548850565263428,0.11322262903856696,homophily
+77,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,same_ratio,political affiliation,1.0171206750277864,0.12817656117573617,homophily
+78,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.0930791706419516,0.11732206905548054,homophily
+79,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,same_ratio,religion,0.867846063583156,0.050409609375858234,homophily
+80,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,cross_ratio,age,0.5024783631411562,0.12523598545735076,homophily
+81,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,cross_ratio,gender,0.5367445515399055,0.027137613080649818,homophily
+82,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,cross_ratio,political affiliation,0.10613280524784946,0.051818322919430004,homophily
+83,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,cross_ratio,race/ethnicity,0.5442509058479423,0.08600096320292906,homophily
+84,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,cross_ratio,religion,0.7003397020844541,0.09974933292218147,homophily
+85,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,same_ratio,age,2.2128455432898457,0.44254653032932406,homophily
+86,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,same_ratio,gender,1.4809840263545737,0.028176157341639755,homophily
+87,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,same_ratio,political affiliation,1.9280750907243625,0.05380138685811014,homophily
+88,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,same_ratio,race/ethnicity,1.5068244236690986,0.09563900218256757,homophily
+89,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,same_ratio,religion,1.5827528389751842,0.19398367868760796,homophily
+90,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,cross_ratio,age,0.37817623105782583,0.029284199261248558,homophily
+91,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,cross_ratio,gender,0.4461684149184149,0.0,homophily
+92,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,cross_ratio,political affiliation,0.0892336829836829,0.04206516156534193,homophily
+93,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,cross_ratio,race/ethnicity,0.4460300681230913,0.020347799082770075,homophily
+94,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,cross_ratio,religion,0.5850376446791774,0.21089776923241874,homophily
+95,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,same_ratio,age,2.6150682078517136,0.18040316712558993,homophily
+96,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,same_ratio,gender,1.5750264710331263,0.0,homophily
+97,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,same_ratio,political affiliation,1.945620934805627,0.04367497640062142,homophily
+98,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,same_ratio,race/ethnicity,1.6160527690700104,0.022628155876528853,homophily
+99,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,same_ratio,religion,1.8069820804195804,0.41013532526208374,homophily
+100,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,cross_ratio,age,0.4218523877155363,0.027717121487016032,homophily
+101,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,cross_ratio,gender,0.5659945807711645,0.011096827688956704,homophily
+102,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,cross_ratio,political affiliation,0.08379621572494869,0.009631208937585086,homophily
+103,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,cross_ratio,race/ethnicity,0.4705093128485741,0.045575387085842335,homophily
+104,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,cross_ratio,religion,0.6093402465103185,0.10400277043107936,homophily
+105,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,same_ratio,age,2.3594201095717167,0.4184373912605313,homophily
+106,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,same_ratio,gender,1.4506146116452467,0.011521498299349456,homophily
+107,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,same_ratio,political affiliation,1.951266491493564,0.009999790976794242,homophily
+108,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,same_ratio,race/ethnicity,1.5888301607114996,0.05068297356960057,homophily
+109,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,same_ratio,religion,1.759720530223924,0.20225538768928672,homophily
+110,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,cross_ratio,age,0.3655120484528622,0.07368583212609262,homophily
+111,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,cross_ratio,gender,0.6145760819120547,0.045404270705758205,homophily
+112,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,cross_ratio,political affiliation,0.1317220675252349,0.08829605212345075,homophily
+113,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,cross_ratio,race/ethnicity,0.5170998632010944,0.03611306862421032,homophily
+114,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,cross_ratio,religion,0.6540391187377299,0.007198062194875133,homophily
+115,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,same_ratio,age,2.8125826063970396,0.40560975817467815,homophily
+116,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,same_ratio,gender,1.4001739182809947,0.04714187174774237,homophily
+117,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,same_ratio,political affiliation,1.9015065388756298,0.09167510237110348,homophily
+118,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,same_ratio,race/ethnicity,1.5370182555780934,0.04016022286657888,homophily
+119,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,same_ratio,religion,1.6727941176470589,0.013998154604937339,homophily
+120,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,cross_ratio,age,0.6648783288331523,0.06855370879691386,homophily
+121,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,cross_ratio,gender,0.9627216867357242,0.01923300167827117,homophily
+122,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,cross_ratio,political affiliation,0.0,0.0,homophily
+123,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.6592350566980589,0.04439519799877107,homophily
+124,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,cross_ratio,religion,0.7245338808121804,0.028368395943645035,homophily
+125,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,same_ratio,age,1.5287251477228874,0.19390928658953802,homophily
+126,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,same_ratio,gender,1.038704937565571,0.019969040012048644,homophily
+127,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+128,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3789541179823313,0.04937052191242614,homophily
+129,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,same_ratio,religion,1.5357021404397742,0.05516834691925224,homophily
+130,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,cross_ratio,age,0.6695529820630208,0.02481997728812006,homophily
+131,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,cross_ratio,gender,0.9628824809419048,0.04073969629819302,homophily
+132,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,cross_ratio,political affiliation,0.0,0.0,homophily
+133,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.6861952279306941,0.015128896507915886,homophily
+134,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,cross_ratio,religion,0.7567613403500608,0.0436634614320501,homophily
+135,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,same_ratio,age,1.514823444608628,0.005815707353919669,homophily
+136,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,same_ratio,gender,1.0385379898373568,0.04229878617316554,homophily
+137,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+138,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.348972548249487,0.01682437628897568,homophily
+139,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,same_ratio,religion,1.4730290280211558,0.08491283725607826,homophily
+140,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,cross_ratio,age,0.6550129984500317,0.0177353477740437,homophily
+141,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,cross_ratio,gender,0.9731813684835537,0.004596238914492304,homophily
+142,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,cross_ratio,political affiliation,0.0,0.0,homophily
+143,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.7096693647575336,0.04738401653010188,homophily
+144,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,cross_ratio,religion,0.7775694826738501,0.034543377285542465,homophily
+145,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,same_ratio,age,1.567141834020256,0.027904382440664652,homophily
+146,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,same_ratio,gender,1.027844968496277,0.0047721349128836904,homophily
+147,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+148,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3228676891920532,0.052694294244682145,homophily
+149,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,same_ratio,religion,1.4325631935501328,0.06717690438462448,homophily
+150,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,cross_ratio,age,0.6362471396952877,0.09191729721546643,homophily
+151,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,cross_ratio,gender,0.9705737607222087,0.0211717977880443,homophily
+152,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,cross_ratio,political affiliation,0.0,0.0,homophily
+153,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.7000805532017282,0.03314019792775043,homophily
+154,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,cross_ratio,religion,0.7785478111091279,0.043325718110665615,homophily
+155,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,same_ratio,age,1.5484335637166167,0.1411077147142934,homophily
+156,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,same_ratio,gender,1.0305523682351776,0.021982032977936397,homophily
+157,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+158,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3335311089394573,0.036854185626550066,homophily
+159,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,same_ratio,religion,1.430660626953643,0.08425602392194323,homophily
+160,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,cross_ratio,age,0.8447846482974773,0.03135692150786768,homophily
+161,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,cross_ratio,gender,0.9111937590711177,0.020953212553302413,homophily
+162,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8472990747460087,0.05893091030616288,homophily
+163,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8170250109697237,0.06081304480586367,homophily
+164,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,cross_ratio,religion,0.9670977447116167,0.054545693000315025,homophily
+165,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,same_ratio,age,1.0603481812876874,0.01684897504286173,homophily
+166,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,same_ratio,gender,1.092204815872916,0.02175508258446035,homophily
+167,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,same_ratio,political affiliation,1.1585447210623805,0.06118616976879497,homophily
+168,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.2034808067664282,0.06762829982721036,homophily
+169,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,same_ratio,religion,1.0639853955007257,0.1060756385510934,homophily
+170,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,cross_ratio,age,0.7831921214932929,0.031101250643102502,homophily
+171,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,cross_ratio,gender,0.8537258599961008,0.036746305597209414,homophily
+172,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8552461747864453,0.04397829127325593,homophily
+173,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8018622333702266,0.03157891319209958,homophily
+174,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,cross_ratio,religion,1.0065628547330283,0.041158027056622415,homophily
+175,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,same_ratio,age,1.2066654424822012,0.06265974549521958,homophily
+176,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,same_ratio,gender,1.1518719856280084,0.03815257020409089,homophily
+177,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,same_ratio,political affiliation,1.150293489073641,0.04566132072298133,homophily
+178,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.2203428611658689,0.035117929325697024,homophily
+179,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,same_ratio,religion,0.9872371406754328,0.08004049011732577,homophily
+180,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,cross_ratio,age,0.823834766005469,0.030370623353350612,homophily
+181,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,cross_ratio,gender,0.8944838056680162,0.04383632626282998,homophily
+182,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8494644062078273,0.051142380639968336,homophily
+183,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8258533931728547,0.047121218928520094,homophily
+184,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,cross_ratio,religion,0.9722854726432892,0.09016520012527723,homophily
+185,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,same_ratio,age,1.194836317598119,0.011190422020948299,homophily
+186,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,same_ratio,gender,1.1095542516857868,0.045513922775384574,homophily
+187,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,same_ratio,political affiliation,1.156296523338296,0.053099576571281615,homophily
+188,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.1936630369026013,0.05240204518775082,homophily
+189,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,same_ratio,religion,1.0538967611336032,0.1753453050513201,homophily
+190,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,cross_ratio,age,0.8178784164833761,0.06692386622243712,homophily
+191,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,cross_ratio,gender,0.9137765426097786,0.08290178453356525,homophily
+192,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,cross_ratio,political affiliation,0.7567141410964425,0.09715283226014133,homophily
+193,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8216661836798764,0.04288251115107145,homophily
+194,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,cross_ratio,religion,0.95386222908591,0.038093504327566786,homophily
+195,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,same_ratio,age,1.2452421896973394,0.0472083054160418,homophily
+196,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,same_ratio,gender,1.0895231903685494,0.08607439858393512,homophily
+197,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,same_ratio,political affiliation,1.2525962994273212,0.10087082750470586,homophily
+198,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.1983195026318616,0.04768830981455394,homophily
+199,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,same_ratio,religion,1.0897246554555258,0.07408087740625349,homophily
+200,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,cross_ratio,age,0.6927484633262889,0.014123030342175484,homophily
+201,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,cross_ratio,gender,0.9469244358224622,0.061173709268896405,homophily
+202,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+203,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,cross_ratio,race/ethnicity,0.6850378530305091,0.09704727231707114,homophily
+204,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,cross_ratio,religion,0.8169318967656747,0.056278708742215626,homophily
+205,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,same_ratio,age,1.4531753448148819,0.007667511384723875,homophily
+206,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,same_ratio,gender,1.0551067421743487,0.06351479964025163,homophily
+207,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+208,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,same_ratio,race/ethnicity,1.3502596289574509,0.10792325973191545,homophily
+209,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,same_ratio,religion,1.3560146526840606,0.10944585426070325,homophily
+210,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,cross_ratio,age,0.6429650312228121,0.029026898515859687,homophily
+211,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,cross_ratio,gender,0.939350982005436,0.035773806667843494,homophily
+212,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+213,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,cross_ratio,race/ethnicity,0.6719057837575614,0.058774177728269365,homophily
+214,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,cross_ratio,religion,0.8040555287182669,0.07205962366904083,homophily
+215,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,same_ratio,age,1.5338219707442957,0.19327059335222013,homophily
+216,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,same_ratio,gender,1.0629700286665689,0.037142854177594636,homophily
+217,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+218,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,same_ratio,race/ethnicity,1.3648633956489187,0.06536093902540323,homophily
+219,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,same_ratio,religion,1.381055474199332,0.14013518160637978,homophily
+220,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,cross_ratio,age,0.6185700909309664,0.0821456239465099,homophily
+221,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,cross_ratio,gender,1.0363710517774476,0.024785095861684536,homophily
+222,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+223,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,cross_ratio,race/ethnicity,0.6924599793075074,0.01801342799545967,homophily
+224,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,cross_ratio,religion,0.8480848641765262,0.03849616534884591,homophily
+225,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,same_ratio,age,1.652204181557465,0.2014181529829579,homophily
+226,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,same_ratio,gender,0.96223704441077,0.025733610345575985,homophily
+227,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+228,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,same_ratio,race/ethnicity,1.3420057126666514,0.02003217423633011,homophily
+229,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,same_ratio,religion,1.2954311175028612,0.07486393694042377,homophily
+230,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,cross_ratio,age,0.6331113902104664,0.04140799535078757,homophily
+231,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,cross_ratio,gender,0.9712163934869631,0.014642935987935434,homophily
+232,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+233,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,cross_ratio,race/ethnicity,0.6454116721496608,0.0061138290381941365,homophily
+234,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,cross_ratio,religion,0.828951211484611,0.056519694276841705,homophily
+235,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,same_ratio,age,1.6034985839909708,0.08229917967304998,homophily
+236,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,same_ratio,gender,1.0298851422032196,0.01520331456983664,homophily
+237,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+238,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,same_ratio,race/ethnicity,1.3943266749370151,0.0067989995338538015,homophily
+239,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,same_ratio,religion,1.332640552665744,0.1099145016104925,homophily
+240,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,cross_ratio,age,0.7754140911411953,0.053530063053602174,homophily
+241,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,cross_ratio,gender,0.8451981452601092,0.025700187715414338,homophily
+242,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,cross_ratio,political affiliation,0.01959423369694055,0.01589638566272315,homophily
+243,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.6523415135838098,0.019627454808680257,homophily
+244,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,cross_ratio,religion,0.7465820838943857,0.04677878455313151,homophily
+245,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,same_ratio,age,1.3611751987802354,0.10100125628344694,homophily
+246,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,same_ratio,gender,1.16072605217586,0.026683722353441824,homophily
+247,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,same_ratio,political affiliation,2.017925454530963,0.016504733200564663,homophily
+248,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3866202133421424,0.021827083364825528,homophily
+249,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,same_ratio,religion,1.492824745503466,0.09097124207568115,homophily
+250,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,cross_ratio,age,0.7926838818738786,0.09206678300082656,homophily
+251,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,cross_ratio,gender,0.8848443099104338,0.01583235046206998,homophily
+252,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,cross_ratio,political affiliation,0.00407290669220125,0.005759959882391148,homophily
+253,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.6771334080723153,0.05487818785013506,homophily
+254,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,cross_ratio,religion,0.7479461293873567,0.026284553435316563,homophily
+255,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,same_ratio,age,1.3781799968809307,0.17046024094545872,homophily
+256,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,same_ratio,gender,1.1195626466154565,0.016438247401550476,homophily
+257,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,same_ratio,political affiliation,2.0340407757471985,0.005980390959421262,homophily
+258,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3590499168850978,0.061028329591960244,homophily
+259,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,same_ratio,religion,1.4901720704942991,0.0511158743489692,homophily
+260,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,cross_ratio,age,0.7978139302362754,0.0852039924182312,homophily
+261,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,cross_ratio,gender,0.8675733024691358,0.022401367785987714,homophily
+262,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,cross_ratio,political affiliation,0.0,0.0,homophily
+263,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.7260892190640252,0.053203034982687185,homophily
+264,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,cross_ratio,religion,0.7683239481756169,0.05551838711417522,homophily
+265,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,same_ratio,age,1.3155068728522337,0.12402717739884304,homophily
+266,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,same_ratio,gender,1.1374946077525112,0.02325865806731482,homophily
+267,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+268,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.304607678799489,0.05916544407557445,homophily
+269,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,same_ratio,religion,1.450543091168091,0.10796724801771074,homophily
+270,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,cross_ratio,age,0.8078244465360918,0.08985995608002172,homophily
+271,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,cross_ratio,gender,0.861912801473841,0.06693679694905158,homophily
+272,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,cross_ratio,political affiliation,0.00407290669220125,0.005759959882391148,homophily
+273,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,cross_ratio,race/ethnicity,0.7097725375873343,0.05645747703572689,homophily
+274,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,cross_ratio,religion,0.7521637717845022,0.03809105575831851,homophily
+275,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,same_ratio,age,1.3401564665824635,0.14138935706965752,homophily
+276,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,same_ratio,gender,1.1433717335779088,0.06949843809685206,homophily
+277,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,same_ratio,political affiliation,2.0340407757471985,0.005980390959421262,homophily
+278,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,same_ratio,race/ethnicity,1.3227529538899474,0.06278460808283423,homophily
+279,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,same_ratio,religion,1.4819699726594653,0.07407611564538376,homophily
+280,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,cross_ratio,age,0.9152119966993181,0.048980195153715586,homophily
+281,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,cross_ratio,gender,0.8330472033555576,0.025679962650775802,homophily
+282,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8825308583356011,0.08768019120205144,homophily
+283,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8528874369240895,0.010095915641598495,homophily
+284,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,cross_ratio,religion,0.9243988436399467,0.014362436524967265,homophily
+285,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,same_ratio,age,1.0935150880584192,0.05813773940570768,homophily
+286,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,same_ratio,gender,1.173342005168273,0.02666272328466571,homophily
+287,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,same_ratio,political affiliation,1.121964632942737,0.09103567272891894,homophily
+288,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.1635993158344178,0.01122735446350159,homophily
+289,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,same_ratio,religion,1.1470224410944303,0.027930796030525083,homophily
+290,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,cross_ratio,age,0.892811464477218,0.009393450163225797,homophily
+291,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,cross_ratio,gender,0.8735469768562094,0.044019245292912526,homophily
+292,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8140846389942609,0.07693564085437225,homophily
+293,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.7941185487942868,0.052805766632832075,homophily
+294,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,cross_ratio,religion,0.964734962422958,0.022250961941857487,homophily
+295,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,same_ratio,age,1.1092094181265426,0.14206068563338017,homophily
+296,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,same_ratio,gender,1.131292323530325,0.04570384203457153,homophily
+297,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,same_ratio,political affiliation,1.193030258348721,0.07987993326643611,homophily
+298,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.228954372461526,0.05872365427271858,homophily
+299,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,same_ratio,religion,1.0685803254803532,0.04327170243019893,homophily
+300,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,cross_ratio,age,0.91066558053321,0.0514911830143562,homophily
+301,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,cross_ratio,gender,0.9164976462339742,0.026957383672789475,homophily
+302,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,cross_ratio,political affiliation,0.833458533653846,0.05081621749813172,homophily
+303,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8055101340439277,0.03752079647829533,homophily
+304,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,cross_ratio,religion,1.0009423606819117,0.0018721522440446569,homophily
+305,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,same_ratio,age,1.14965904209622,0.09501367697161382,homophily
+306,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,same_ratio,gender,1.0866979513311148,0.027989030635308706,homophily
+307,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,same_ratio,political affiliation,1.1729149334442597,0.05276093131253595,homophily
+308,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.2162861440373565,0.041725713325000996,homophily
+309,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,same_ratio,religion,0.9981673803084936,0.00364079607075011,homophily
+310,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,cross_ratio,age,0.93960177285965,0.027758709843967173,homophily
+311,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,cross_ratio,gender,0.9060324448213553,0.04741196549971735,homophily
+312,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,cross_ratio,political affiliation,0.8356398772406798,0.09069788969803534,homophily
+313,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,cross_ratio,race/ethnicity,0.8349992906066264,0.06260928926592065,homophily
+314,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,cross_ratio,religion,0.9465208115003942,0.06959086322538365,homophily
+315,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,same_ratio,age,1.0113800353497762,0.052227613828998376,homophily
+316,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,same_ratio,gender,1.09756365130029,0.04922640011950685,homophily
+317,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,same_ratio,political affiliation,1.1706501108183291,0.09416885719063901,homophily
+318,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,same_ratio,race/ethnicity,1.1834921682047002,0.06962584754572212,homophily
+319,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,same_ratio,religion,1.1040015949427426,0.13533415468590235,homophily
+320,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,cross_ratio,age,0.7394797184717443,0.0725161047388128,homophily
+321,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,cross_ratio,gender,0.8409251746025082,0.025383753335417855,homophily
+322,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+323,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,cross_ratio,race/ethnicity,0.7109782272942691,0.0437083386137942,homophily
+324,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,cross_ratio,religion,0.7899107121169593,0.0798504328859182,homophily
+325,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,same_ratio,age,1.5723370902049352,0.03987554993882016,homophily
+326,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,same_ratio,gender,1.16516254750089,0.02635517817188164,homophily
+327,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+328,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,same_ratio,race/ethnicity,1.3214121437848216,0.04860668690671944,homophily
+329,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,same_ratio,religion,1.408563062253317,0.15528605818439384,homophily
+330,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,cross_ratio,age,0.7326311838225303,0.05105093346864066,homophily
+331,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,cross_ratio,gender,0.8518935386129477,0.006180255014872423,homophily
+332,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+333,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,cross_ratio,race/ethnicity,0.6857965663034468,0.05878337832309854,homophily
+334,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,cross_ratio,religion,0.7799222439096392,0.1233892678277331,homophily
+335,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,same_ratio,age,1.5216428171801337,0.0013950005893583913,homophily
+336,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,same_ratio,gender,1.1537744291273222,0.006416770597804037,homophily
+337,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+338,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,same_ratio,race/ethnicity,1.3494158874728912,0.06537117072137677,homophily
+339,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,same_ratio,religion,1.4279877516276485,0.23995653286691343,homophily
+340,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,cross_ratio,age,0.7546089039111445,0.07765600123646357,homophily
+341,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,cross_ratio,gender,0.8424206700068768,0.04254866916954121,homophily
+342,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+343,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,cross_ratio,race/ethnicity,0.6992584672349441,0.06272512557972679,homophily
+344,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,cross_ratio,religion,0.8010856669934501,0.11318073727753432,homophily
+345,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,same_ratio,age,1.460810259246093,0.01303405476769408,homophily
+346,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,same_ratio,gender,1.163609820159249,0.04417698762361689,homophily
+347,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+348,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,same_ratio,race/ethnicity,1.3344453252301052,0.06975466551538584,homophily
+349,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,same_ratio,religion,1.3868309985632186,0.22010388571520526,homophily
+350,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,cross_ratio,age,0.7296209850083781,0.0616937589699696,homophily
+351,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,cross_ratio,gender,0.843464553031439,0.011693552640657844,homophily
+352,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,cross_ratio,political affiliation,0.0,0.0,homophily
+353,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,cross_ratio,race/ethnicity,0.6665268900071022,0.02374759842826208,homophily
+354,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,cross_ratio,religion,0.7982730225508834,0.063881925022621,homophily
+355,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,same_ratio,age,1.5715746267157011,0.049113518869717446,homophily
+356,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,same_ratio,gender,1.162525988200303,0.012141059646872742,homophily
+357,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,same_ratio,political affiliation,2.038269550748752,0.0,homophily
+358,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,same_ratio,race/ethnicity,1.370845096457619,0.026408967217636494,homophily
+359,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,same_ratio,religion,1.3923007806642675,0.12423191669062625,homophily
+0,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,avg_clustering_coef,,0.5053333333333333,0.06976786907707261,network
+1,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,avg_shortest_path,,1.4917671758838718,0.02822658324712886,network
+2,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,density,,0.05224489795918365,0.0057723002545840936,network
+3,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,diameter,,3.5371419555844676,0.10734470764334131,network
+4,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,modularity,,0.7934148747957601,0.005331362023213135,network
+5,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,prop_nodes_lcc,,0.44999999999999996,0.04242640687119283,network
+6,global_gpt-4.1-mini_culture_brazil,global,brazil,gpt-4.1-mini,english,radius,,1.9293501575915277,0.058551658714549856,network
+7,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,avg_clustering_coef,,0.40233333333333327,0.16829141392239824,network
+8,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,avg_shortest_path,,1.422880441426075,0.02185169379576726,network
+9,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,density,,0.04571428571428565,0.005772300254584099,network
+10,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,diameter,,3.299799262123785,0.15628385418725194,network
+11,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,modularity,,0.8251967722500627,0.04847973862649182,network
+12,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,prop_nodes_lcc,,0.37,0.12727922061357852,network
+13,global_gpt-4.1-mini_culture_india,global,india,gpt-4.1-mini,english,radius,,1.7446304264843806,0.21211150275449925,network
+14,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,avg_clustering_coef,,0.31233333333333324,0.22485995641732207,network
+15,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,avg_shortest_path,,1.5751667887874032,0.256404582375953,network
+16,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,density,,0.0440816326530612,0.008081220356417666,network
+17,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,diameter,,3.679423502557239,0.37063901726354975,network
+18,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,modularity,,0.814091719285243,0.0018108898399157366,network
+19,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,prop_nodes_lcc,,0.45999999999999996,0.05656854249492379,network
+20,global_gpt-4.1-mini_culture_japan,global,japan,gpt-4.1-mini,english,radius,,1.917378618098571,0.07548197222797436,network
+21,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,avg_clustering_coef,,0.4136190476190476,0.030708637354387166,network
+22,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,avg_shortest_path,,1.364911961298779,0.0803911831207402,network
+23,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,density,,0.04938775510204075,0.0017316900763751902,network
+24,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,diameter,,3.4241003288851433,0.26720970923424225,network
+25,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,modularity,,0.7819945558481436,0.007362787002694316,network
+26,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,prop_nodes_lcc,,0.43,0.014142135623730963,network
+27,global_gpt-4.1-mini_culture_us,global,us,gpt-4.1-mini,english,radius,,1.7941648491308344,0.24973255537325267,network
+28,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,avg_clustering_coef,,0.3926043205160852,0.12793182837453604,network
+29,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,avg_shortest_path,,0.601851550993836,0.11542369440267765,network
+30,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,density,,0.06612244897959176,0.011544600509168126,network
+31,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,diameter,,1.2905670105692657,0.3716133585776494,network
+32,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,modularity,,0.3888810462096331,0.06751267753382166,network
+33,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,prop_nodes_lcc,,0.74,0.33941125496954283,network
+34,global_gpt-4.1-nano_culture_brazil,global,brazil,gpt-4.1-nano,english,radius,,0.7229503721045842,0.29564421569262506,network
+35,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,avg_clustering_coef,,0.07438383838383834,0.10519463306379259,network
+36,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,avg_shortest_path,,0.75147311845368,0.09044620268364445,network
+37,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,density,,0.0444897959183673,0.010967370483709674,network
+38,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,diameter,,1.444669033086842,0.3068254090312068,network
+39,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,modularity,,0.5602454668209876,0.11558345075384849,network
+40,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,prop_nodes_lcc,,0.63,0.15556349186104043,network
+41,global_gpt-4.1-nano_culture_india,global,india,gpt-4.1-nano,english,radius,,0.8608034632478496,0.3492373669125237,network
+42,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,avg_clustering_coef,,0.1606666666666666,0.10370899457402692,network
+43,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,avg_shortest_path,,1.054653334023688,0.11239849845614032,network
+44,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,density,,0.0261224489795918,0.009235680407334555,network
+45,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,diameter,,2.2542162492119897,0.306144168887878,network
+46,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,modularity,,0.5047048611111111,0.0017432146341750884,network
+47,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,prop_nodes_lcc,,0.36,0.02828427124746191,network
+48,global_gpt-4.1-nano_culture_japan,global,japan,gpt-4.1-nano,english,radius,,1.2153471555721853,0.277860918766985,network
+49,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,avg_clustering_coef,,0.1401312576312576,0.14342525713979298,network
+50,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,avg_shortest_path,,0.9036122811560121,0.2890883556291652,network
+51,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,density,,0.05469387755102035,0.024243661069253065,network
+52,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,diameter,,1.8215829125615675,0.6322171357188004,network
+53,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,modularity,,0.48158596349732075,0.09320984094391062,network
+54,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,prop_nodes_lcc,,0.72,0.05656854249492373,network
+55,global_gpt-4.1-nano_culture_us,global,us,gpt-4.1-nano,english,radius,,1.1213075967420738,0.4194343363769109,network
+56,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,avg_clustering_coef,,0.4516269841269841,0.126863935678596,network
+57,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,avg_shortest_path,,1.00147968885469,0.15837753417242412,network
+58,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,density,,0.09102040816326526,0.001731690076375195,network
+59,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,diameter,,2.3059077779161585,0.3539980312692242,network
+60,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,modularity,,0.6318825422365245,0.0989039299896162,network
+61,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,prop_nodes_lcc,,0.99,0.014142135623730963,network
+62,global_gpt-4.1_culture_brazil,global,brazil,gpt-4.1,english,radius,,1.1529538889580795,0.17699901563461187,network
+63,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,avg_clustering_coef,,0.3273333333333333,0.02545584412271573,network
+64,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,avg_shortest_path,,1.7280845113539813,0.030915551199535308,network
+65,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,density,,0.0538775510204081,0.0,network
+66,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,diameter,,4.290101603740561,0.5421065503552308,network
+67,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,modularity,,0.758321854912764,0.015015467690485756,network
+68,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,prop_nodes_lcc,,0.74,0.028284271247461926,network
+69,global_gpt-4.1_culture_india,global,india,gpt-4.1,english,radius,,2.213777696305904,0.3682477813882582,network
+70,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,avg_clustering_coef,,0.4156587301587301,0.07965614009652265,network
+71,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,avg_shortest_path,,1.4701708535406675,0.624241966310398,network
+72,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,density,,0.0681632653061224,0.021357510941960985,network
+73,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,diameter,,3.3913289724474875,1.0809624269565679,network
+74,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,modularity,,0.691605834351376,0.08651484099010817,network
+75,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,prop_nodes_lcc,,0.9199999999999999,0.028284271247461888,network
+76,global_gpt-4.1_culture_japan,global,japan,gpt-4.1,english,radius,,1.8270131417306754,0.3547261634609098,network
+77,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,avg_clustering_coef,,0.37,0.04740982609098374,network
+78,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,avg_shortest_path,,1.2815316046540501,0.42281993537078605,network
+79,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,density,,0.0718367346938775,0.003463380152750395,network
+80,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,diameter,,3.0360494564892457,1.2470385172865222,network
+81,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,modularity,,0.6465526328874746,0.03422353222294947,network
+82,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,prop_nodes_lcc,,0.87,0.07071067811865482,network
+83,global_gpt-4.1_culture_us,global,us,gpt-4.1,english,radius,,1.7179632964178744,0.525452118380827,network
+84,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,avg_clustering_coef,,0.6639836726740753,0.07715184382665988,network
+85,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,avg_shortest_path,,0.5129172843574359,0.04659813558880173,network
+86,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,density,,0.1751020408163265,0.03174765140021229,network
+87,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,diameter,,0.9646750787957639,0.029275829357274928,network
+88,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,modularity,,0.504549897677967,0.0390828559484788,network
+89,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,prop_nodes_lcc,,0.44999999999999996,0.04242640687119287,network
+90,iterative_gpt-4.1-mini_n5_culture_brazil,iterative,brazil,gpt-4.1-mini,english,radius,,0.643116719197176,0.019517219571516673,network
+91,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,avg_clustering_coef,,0.6759566119295222,0.037736129836948844,network
+92,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,avg_shortest_path,,0.5228377194399305,0.07352611416487582,network
+93,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,density,,0.1804081632653061,0.031170421374753912,network
+94,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,diameter,,1.1098449484737893,0.23457702790387325,network
+95,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,modularity,,0.4902510067131908,0.01730052254104445,network
+96,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,prop_nodes_lcc,,0.47,0.014142135623730944,network
+97,iterative_gpt-4.1-mini_n5_culture_india,iterative,india,gpt-4.1-mini,english,radius,,0.6335869693479259,0.006040118088684274,network
+98,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,avg_clustering_coef,,0.6663781562434812,0.0559202586721759,network
+99,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,avg_shortest_path,,0.4922155232443326,0.04183159006174973,network
+100,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,density,,0.18122448979591832,0.03578826157842119,network
+101,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,diameter,,0.9791057843987028,0.03156357466951188,network
+102,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,modularity,,0.4906155595909236,0.013252220023554744,network
+103,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,prop_nodes_lcc,,0.43000000000000005,0.04242640687119283,network
+104,iterative_gpt-4.1-mini_n5_culture_japan,iterative,japan,gpt-4.1-mini,english,radius,,0.6527371895991351,0.021042383113007736,network
+105,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,avg_clustering_coef,,0.6744885926766733,0.052932856105279744,network
+106,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,avg_shortest_path,,0.5302078727209153,0.05418943392150428,network
+107,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,density,,0.17795918367346936,0.03347934147658761,network
+108,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,diameter,,1.2591929123672139,0.02336711185298509,network
+109,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,modularity,,0.49447539370474225,0.017789788404361722,network
+110,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,prop_nodes_lcc,,0.48,0.02828427124746191,network
+111,iterative_gpt-4.1-mini_n5_culture_us,iterative,us,gpt-4.1-mini,english,radius,,0.6295964561836069,0.011683555926492428,network
+112,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,avg_clustering_coef,,0.5795530483527607,0.0719929488749708,network
+113,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,avg_shortest_path,,0.4835965213092276,0.005824663441218514,network
+114,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,density,,0.1946938775510204,0.03059319134929554,network
+115,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,diameter,,0.9318161437425445,0.15972252779818338,network
+116,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,modularity,,0.12947134211463152,0.002550014842798124,network
+117,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,prop_nodes_lcc,,0.8500000000000001,0.09899494936611662,network
+118,iterative_gpt-4.1-nano_n5_culture_brazil,iterative,brazil,gpt-4.1-nano,english,radius,,0.5341476769736215,0.016644111127634958,network
+119,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,avg_clustering_coef,,0.6251286817825097,0.061249476625959254,network
+120,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,avg_shortest_path,,0.47513108455551567,0.011849686348981373,network
+121,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,density,,0.19591836734693874,0.03232488142567073,network
+122,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,diameter,,0.7953655461493756,0.010286442304486209,network
+123,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,modularity,,0.13973861687812314,0.01233747788009209,network
+124,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,prop_nodes_lcc,,0.87,0.04242640687119289,network
+125,iterative_gpt-4.1-nano_n5_culture_india,iterative,india,gpt-4.1-nano,english,radius,,0.530243697432917,0.006857628202990767,network
+126,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,avg_clustering_coef,,0.5928741807407463,0.08932972933151312,network
+127,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,avg_shortest_path,,0.47565909443290233,0.013945767002696422,network
+128,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,density,,0.19428571428571426,0.03232488142567074,network
+129,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,diameter,,0.8079471256513062,0.007506598063219479,network
+130,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,modularity,,0.1405666892795899,0.031908281777795436,network
+131,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,prop_nodes_lcc,,0.8200000000000001,0.028284271247461808,network
+132,iterative_gpt-4.1-nano_n5_culture_japan,iterative,japan,gpt-4.1-nano,english,radius,,0.5386314171008708,0.005004398708812921,network
+133,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,avg_clustering_coef,,0.6355453213501403,0.027801563393792632,network
+134,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,avg_shortest_path,,0.46984312300630104,0.014056564349673869,network
+135,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,density,,0.19510204081632648,0.028861501272920292,network
+136,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,diameter,,0.8027326406088646,0.007233537734888635,network
+137,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,modularity,,0.14252463806281146,0.02079636541710727,network
+138,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,prop_nodes_lcc,,0.84,0.028284271247461926,network
+139,iterative_gpt-4.1-nano_n5_culture_us,iterative,us,gpt-4.1-nano,english,radius,,0.5351550937392431,0.004822358489925796,network
+140,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,avg_clustering_coef,,0.6544513184613805,0.05844986956634914,network
+141,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,avg_shortest_path,,0.5153167255487663,0.029933076084633196,network
+142,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,density,,0.170204081632653,0.022511970992877873,network
+143,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,diameter,,1.1305460859371785,0.2053011985465983,network
+144,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,modularity,,0.4972464842468341,0.011000560664569798,network
+145,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,prop_nodes_lcc,,0.44,0.028284271247461926,network
+146,iterative_gpt-4.1_n5_culture_brazil,iterative,brazil,gpt-4.1,english,radius,,0.647387727656852,0.013477101482832397,network
+147,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,avg_clustering_coef,,0.66153609007092,0.03722929740521186,network
+148,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,avg_shortest_path,,0.5187670202058119,0.003171729958082744,network
+149,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,density,,0.1718367346938775,0.024820891094711528,network
+150,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,diameter,,1.2873572521533134,0.4043698316504714,network
+151,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,modularity,,0.49613244794922073,0.02247368008701631,network
+152,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,prop_nodes_lcc,,0.44,0.056568542494923775,network
+153,iterative_gpt-4.1_n5_culture_india,iterative,india,gpt-4.1,english,radius,,0.8057951713615213,0.19541429052481277,network
+154,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,avg_clustering_coef,,0.6727688250861625,0.051717989969668886,network
+155,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,avg_shortest_path,,0.4972777267443975,0.022249498357131216,network
+156,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,density,,0.17428571428571427,0.027129811196545072,network
+157,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,diameter,,0.9791057843987028,0.03156357466951188,network
+158,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,modularity,,0.4980194988323968,0.010165731105319178,network
+159,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,prop_nodes_lcc,,0.43000000000000005,0.04242640687119283,network
+160,iterative_gpt-4.1_n5_culture_japan,iterative,japan,gpt-4.1,english,radius,,0.6527371895991351,0.021042383113007736,network
+161,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,avg_clustering_coef,,0.6217051583607311,0.046581653535417086,network
+162,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,avg_shortest_path,,0.5145932560720732,0.06634751570859473,network
+163,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,density,,0.17428571428571427,0.027129811196545072,network
+164,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,diameter,,1.1353109608618037,0.2524710537365118,network
+165,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,modularity,,0.4900460284847731,0.02128522144641062,network
+166,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,prop_nodes_lcc,,0.44,0.028284271247461926,network
+167,iterative_gpt-4.1_n5_culture_us,iterative,us,gpt-4.1,english,radius,,0.647387727656852,0.013477101482832397,network
+168,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,avg_clustering_coef,,0.6052982524011936,0.03348668151079645,network
+169,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,avg_shortest_path,,0.6857978951387893,0.029953222413433053,network
+170,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,density,,0.17387755102040808,0.02539812112016989,network
+171,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,diameter,,1.405922202494323,0.18075220421899318,network
+172,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,modularity,,0.48020402467017775,0.01264449722330224,network
+173,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,prop_nodes_lcc,,1.0,0.0,network
+174,local_gpt-4.1-mini_n5_culture_brazil,local,brazil,gpt-4.1-mini,english,radius,,0.7668666559059943,0.0,network
+175,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,avg_clustering_coef,,0.5599294904441964,0.012763064326053961,network
+176,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,avg_shortest_path,,0.6538361880824457,0.13801140323138858,network
+177,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,density,,0.17632653061224485,0.02886150127292034,network
+178,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,diameter,,1.2272581705511967,0.4334213013012225,network
+179,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,modularity,,0.48649774711762084,0.02227386118072032,network
+180,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,prop_nodes_lcc,,0.76,0.33941125496954283,network
+181,local_gpt-4.1-mini_n5_culture_india,local,india,gpt-4.1-mini,english,radius,,0.6903610043831321,0.10819532998182169,network
+182,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,avg_clustering_coef,,0.5656267353703415,0.022102405440493834,network
+183,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,avg_shortest_path,,0.5118609250004095,0.050751780743557004,network
+184,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,density,,0.17510204081632647,0.029438731298378724,network
+185,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,diameter,,0.9207830292904046,0.0,network
+186,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,modularity,,0.4875226757369614,0.0208524346696848,network
+187,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,prop_nodes_lcc,,0.52,0.0,network
+188,local_gpt-4.1-mini_n5_culture_japan,local,japan,gpt-4.1-mini,english,radius,,0.6138553528602697,0.0,network
+189,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,avg_clustering_coef,,0.5827102097249156,0.0058726549488325955,network
+190,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,avg_shortest_path,,0.6332218485091037,0.11286504415979005,network
+191,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,density,,0.17591836734693875,0.029438731298378713,network
+192,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,diameter,,1.099447061233531,0.2526690970822291,network
+193,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,modularity,,0.4846989955664649,0.025184215616500156,network
+194,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,prop_nodes_lcc,,0.76,0.33941125496954283,network
+195,local_gpt-4.1-mini_n5_culture_us,local,us,gpt-4.1-mini,english,radius,,0.6903610043831321,0.10819532998182169,network
+196,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,avg_clustering_coef,,0.3600493824216196,0.060010404903186064,network
+197,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,avg_shortest_path,,0.5147918476517247,0.025083979361003195,network
+198,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,density,,0.19102040816326532,0.025398121120169873,network
+199,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,diameter,,1.022488874541326,0.0,network
+200,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,modularity,,0.19822629315439766,0.011157338200906001,network
+201,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,prop_nodes_lcc,,1.0,0.0,network
+202,local_gpt-4.1-nano_n5_culture_brazil,local,brazil,gpt-4.1-nano,english,radius,,0.6390555465883286,0.1807522042189931,network
+203,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,avg_clustering_coef,,0.4107604677563239,0.011096660163931436,network
+204,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,avg_shortest_path,,0.509470732080132,0.027592377297103527,network
+205,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,density,,0.19510204081632648,0.02539812112016989,network
+206,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,diameter,,1.022488874541326,0.0,network
+207,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,modularity,,0.1840702476097661,0.010370802660864535,network
+208,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,prop_nodes_lcc,,1.0,0.0,network
+209,local_gpt-4.1-nano_n5_culture_india,local,india,gpt-4.1-nano,english,radius,,0.5112444372706629,0.0,network
+210,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,avg_clustering_coef,,0.37577609053671257,0.08085370305859849,network
+211,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,avg_shortest_path,,0.5164612172428125,0.03069098651228624,network
+212,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,density,,0.19020408163265307,0.026552581171086696,network
+213,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,diameter,,0.8946777652236602,0.1807522042189933,network
+214,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,modularity,,0.1838759607847045,0.024438320010638667,network
+215,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,prop_nodes_lcc,,1.0,0.0,network
+216,local_gpt-4.1-nano_n5_culture_japan,local,japan,gpt-4.1-nano,english,radius,,0.6390555465883286,0.1807522042189931,network
+217,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,avg_clustering_coef,,0.3833433743771272,0.030660731976661148,network
+218,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,avg_shortest_path,,0.5133311492595228,0.016821021453849175,network
+219,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,density,,0.1930612244897959,0.023666431043794622,network
+220,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,diameter,,1.022488874541326,0.0,network
+221,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,modularity,,0.19389675029866735,0.002926673321305327,network
+222,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,prop_nodes_lcc,,1.0,0.0,network
+223,local_gpt-4.1-nano_n5_culture_us,local,us,gpt-4.1-nano,english,radius,,0.5112444372706629,0.0,network
+224,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,avg_clustering_coef,,0.5804933307296345,0.02660838557258765,network
+225,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,avg_shortest_path,,0.5189438713795664,0.047412847799901826,network
+226,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,density,,0.1718367346938775,0.02135751094196097,network
+227,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,diameter,,0.9207830292904046,0.0,network
+228,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,modularity,,0.48844529637738376,0.016033914587415193,network
+229,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,prop_nodes_lcc,,0.52,0.0,network
+230,local_gpt-4.1_n5_culture_brazil,local,brazil,gpt-4.1,english,radius,,0.6138553528602697,0.0,network
+231,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,avg_clustering_coef,,0.6002464544548942,0.020389432192541496,network
+232,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,avg_shortest_path,,0.5260268177587233,0.05075178074355688,network
+233,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,density,,0.1693877551020408,0.022511970992877873,network
+234,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,diameter,,0.9207830292904046,0.0,network
+235,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,modularity,,0.48925444064904455,0.015116490103812552,network
+236,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,prop_nodes_lcc,,0.52,0.0,network
+237,local_gpt-4.1_n5_culture_india,local,india,gpt-4.1,english,radius,,0.6138553528602697,0.0,network
+238,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,avg_clustering_coef,,0.5745460476915586,0.03137533472899476,network
+239,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,avg_shortest_path,,0.5151662999773494,0.043406128267515845,network
+240,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,density,,0.1718367346938775,0.024820891094711528,network
+241,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,diameter,,0.9207830292904046,0.0,network
+242,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,modularity,,0.4918949660769364,0.018806293460078585,network
+243,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,prop_nodes_lcc,,0.52,0.0,network
+244,local_gpt-4.1_n5_culture_japan,local,japan,gpt-4.1,english,radius,,0.6138553528602697,0.0,network
+245,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,avg_clustering_coef,,0.5644640909486112,0.005741321218452837,network
+246,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,avg_shortest_path,,0.5241380320576148,0.053422927098480906,network
+247,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,density,,0.170204081632653,0.022511970992877873,network
+248,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,diameter,,0.9207830292904046,0.0,network
+249,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,modularity,,0.4885007158820346,0.020518426255203823,network
+250,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,prop_nodes_lcc,,0.52,0.0,network
+251,local_gpt-4.1_n5_culture_us,local,us,gpt-4.1,english,radius,,0.6138553528602697,0.0,network
