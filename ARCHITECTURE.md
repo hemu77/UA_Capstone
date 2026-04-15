@@ -146,6 +146,66 @@ For the Step 4 study:
 - [language_summary.csv](stats/language_study/language_summary.csv)
 - [research_answers.md](stats/language_study/research_answers.md)
 
+## Results & Plots
+
+### Plot Naming Convention
+
+Every file in `plots/` follows this pattern:
+
+```
+{method}_{model}[_n{n}]_culture_{culture}[_lang_{language}]_{seed}.png
+```
+
+| Segment | Values | Meaning |
+|---|---|---|
+| `method` | `global`, `sequential`, `local`, `iterative` | How friendships were proposed (Step 3) |
+| `model` | `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano` | OpenAI model used |
+| `_n{n}` | `_n5` | Neighbourhood size (local/iterative/sequential only) |
+| `culture` | `us`, `india`, `japan`, `brazil` | Cultural context injected into the prompt |
+| `lang` | `english`, `spanish`, `hindi`, `japanese` | Prompt language (Step 4 only; absent = English) |
+| `seed` | `0`, `1` | Random seed index (two replicas per condition) |
+
+Examples:
+- `global_gpt-4.1-mini_culture_us_0.png` — global method, mini model, US culture, seed 0
+- `iterative_gpt-4.1_n5_culture_india_1.png` — iterative method, full model, India culture, seed 1
+- `local_gpt-4.1-nano_n5_culture_us_lang_hindi_0.png` — local method, nano model, US culture, Hindi prompt, seed 0
+
+### What Each Plot Shows
+
+Each PNG is a force-directed graph visualization of the generated social network:
+
+- **Nodes** — individual personas (labelled by index)
+- **Edges** — friendship connections proposed by the model
+- Layout uses spring positioning; tightly connected clusters appear as dense clumps
+
+### Visual Patterns by Method
+
+| Method | Typical Structure | Why |
+|---|---|---|
+| `global` | Sparse, tree-like; many isolated or lightly connected nodes | The model decides all friendships in one shot — it tends to under-connect |
+| `sequential` | Denser; a large main component with a few small satellites | Each persona is added one at a time; connections accumulate |
+| `local` | Two or more tight dense clusters with near-isolation between them | Only nearby personas are considered; clique-like subgraphs form |
+| `iterative` | Dense main component, fewer isolates than global | Repeated revision passes fill in missing links |
+
+### Plot Coverage
+
+The `plots/` directory contains **192 PNGs** spanning:
+
+- **4 methods**: global, sequential, local, iterative
+- **3 models**: gpt-4.1, gpt-4.1-mini, gpt-4.1-nano
+- **4 cultures** (Step 2/3): us, india, japan, brazil
+- **4 languages** (Step 4, culture fixed to `us`): english, spanish, hindi, japanese
+- **2 seeds** per condition
+
+Step 2 plots (cultural study, global method only):
+- `global_{model}_culture_{culture}_{seed}.png`
+
+Step 3 plots (method comparison, all four methods):
+- `{method}_{model}_n5_culture_{culture}_{seed}.png`
+
+Step 4 plots (language study, all methods, culture=us):
+- `{method}_{model}_n5_culture_us_lang_{language}_{seed}.png`
+
 ## Practical Reading Advice
 
 Do not try to understand every utility or plot helper first.
