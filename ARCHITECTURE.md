@@ -247,6 +247,136 @@ For the Step 4 study:
 - [language_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\language_summary.csv)
 - [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\research_answers.md)
 
+## Results & Plots
+
+### Plot Naming Convention
+
+Every file in `plots/` follows this pattern:
+
+```
+{method}_{model}[_n{n}]_culture_{culture}[_lang_{language}]_{seed}.png
+```
+
+| Segment | Values | Meaning |
+|---|---|---|
+| `method` | `global`, `sequential`, `local`, `iterative` | How friendships were generated |
+| `model` | `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano` | OpenAI model used |
+| `_n{n}` | `_n5` | Neighbourhood size (absent for global) |
+| `culture` | `us`, `india`, `japan`, `brazil` | Cultural context injected into prompt |
+| `lang` | `english`, `spanish`, `hindi`, `japanese` | Prompt language (Step 4 only; absent = English) |
+| `seed` | `0`, `1` | Random seed index |
+
+**Examples**
+- `global_gpt-4.1-mini_culture_us_0.png` — global method, mini model, US culture, seed 0
+- `sequential_gpt-4.1_n5_culture_india_1.png` — sequential, full model, India, seed 1
+- `local_gpt-4.1-nano_n5_culture_us_lang_hindi_0.png` — local, nano model, US culture, Hindi prompt, seed 0
+
+### What Each Plot Shows
+
+Each PNG is a force-directed graph of the generated social network.
+
+- **Nodes** — individual personas (50 per graph), labelled by index
+- **Edges** — friendship ties proposed by the model
+- Spring layout: tightly connected subgroups pull together into visible clumps
+
+### Visual Patterns by Method
+
+#### global
+
+The model receives all 50 personas at once and proposes friendship pairs for the whole network in a single call.
+
+| Model | Visual result |
+|---|---|
+| `gpt-4.1` | One or two medium-sized connected components in a loose elongated chain; 1–3 isolated nodes; low density (~0.056) |
+| `gpt-4.1-mini` | Highly fragmented forest — 4 to 6 separate small trees of 3–8 nodes each with many isolated nodes scattered across the canvas |
+| `gpt-4.1-nano` | Hub-and-spoke star: one dense central core with long radial arms extending outward; ~15–20 isolated nodes around the periphery |
+
+The global method consistently produces the sparsest graphs (mean density 0.056 vs 0.18 for local/iterative). The nano model collapses into a centralized star rather than a distributed network, suggesting it defaults to assigning one or two highly popular nodes.
+
+#### sequential
+
+Each persona is added one at a time to a growing network. The model chooses friends from the existing pool as each new node arrives.
+
+Visual result across all cultures and models: **two dense horizontal clumps bridged by a thin chain**. The first clump forms from early arrivals; the second clump forms from later arrivals; a few bridge edges connect them. Almost no isolated nodes. The bipartite-clump structure is consistent across all four cultures and all three models, making sequential the most structurally predictable method.
+
+#### local
+
+A focal persona is asked to choose friends from a neighbourhood of `n=5` candidates, without access to the full growing network.
+
+Visual result: **two tight, well-separated dense cliques**. Each clique occupies a distinct canvas quadrant with minimal cross-cluster edges. The separation is the cleanest of all four methods. The nano model is the exception — it occasionally collapses all 50 nodes into a single massive highly connected ball (single giant component, very high within-cluster density), suggesting the smaller model over-connects when working locally.
+
+#### iterative
+
+The network is built through add/drop revision passes — existing friendship decisions can be reconsidered and updated.
+
+Visual result: **two tight clumps in opposite corners of the canvas plus a notable fringe of ~10–15 scattered isolated nodes**. The two clusters themselves are as dense as local, but iterative uniquely leaves more nodes completely unconnected compared to sequential or local. Despite this, measured density (mean 0.182) is comparable to local because the two active clusters are very dense internally.
+
+### Visual Patterns by Culture (global and sequential, gpt-4.1)
+
+| Culture | global gpt-4.1 | sequential gpt-4.1 |
+|---|---|---|
+| **US** | Elongated chain + satellite cluster bottom-right + 1–2 isolates | Two dense clumps (top-left and bottom-right) joined by a diagonal bridge chain |
+| **India** | Most fragmented: 3 separate components of different sizes + isolated nodes; no dominant cluster | Two near-identical dense bundles; cleanest separation of all four cultures |
+| **Japan** | One dominant dense cluster upper-center + small satellite bottom-left + scattered isolates | Dense tight cluster upper-left + loose chain lower-right + isolated pair |
+| **Brazil** | Compact single component with most nodes; 1 isolated node far left | Two parallel horizontal bundles connected by bridge edges |
+
+**Key cultural observation**: India consistently produces the most fragmented global-method graphs — three separate components with no single dominant cluster. Japan tends to produce one highly dense core with isolated outliers. Brazil and US produce more connected single-component graphs under the global method.
+
+### Visual Patterns by Prompt Language (global gpt-4.1-mini, culture = US)
+
+| Language | Visual structure |
+|---|---|
+| **English** | Large tree-like spanning component covering most of the canvas; a few satellite clusters; fewest isolates — most connected output |
+| **Spanish** | Three components: one large dense cluster (upper center), one medium chain (lower left), one small group; moderately fragmented |
+| **Japanese** | Multiple small trees (4–6 nodes each) spread evenly across canvas; many isolated nodes; very fragmented, no dominant component |
+| **Hindi** | Highest fragmentation: 5+ separate small trees (3–8 nodes each) spread across four quadrants; most isolated nodes of any language condition |
+
+**Key language observation**: English prompts produce the most connected global-method networks. Hindi and Japanese prompts produce the most fragmented outputs, with the network fragmenting into many small disconnected trees. Spanish sits between the two extremes. This pattern is consistent with the measured density ranking: Spanish (0.164) > English (0.147) ≈ Japanese (0.146) > Hindi (0.145), though Hindi and Japanese are visually far more fragmented than density alone suggests because the few edges that exist cluster within small trees rather than bridging across the network.
+
+### Plot Coverage Summary
+
+| Study | Method(s) | Cultures | Languages | Models | Seeds | Total PNGs |
+|---|---|---|---|---|---|---|
+| Step 2 (cultural) | sequential | us, india, japan, brazil | english only | 3 | 2 | 24 |
+| Step 3 (method) | global, local, iterative | us, india, japan, brazil | english only | 3 | 2 | 72 |
+| Step 4 (language) | global, sequential, local, iterative | us only | english, spanish, hindi, japanese | 3 | 2 | 96 |
+| **Total** | | | | | | **192** |
+
+### Numeric Summary of Key Metrics
+
+These values come from the validated study CSV files (`stats/*/method_summary.csv`, `stats/*/language_summary.csv`).
+
+**Density by method (Step 3):**
+
+| Method | Mean density | Std |
+|---|---|---|
+| iterative | 0.182 | 0.010 |
+| local | 0.179 | 0.010 |
+| sequential | — (Step 2 baseline) | — |
+| global | 0.056 | 0.017 |
+
+**Homophily (same_ratio) by method — top demographic per method:**
+
+| Method | Top demographic | Mean same_ratio |
+|---|---|---|
+| global | age | 1.83 |
+| iterative | political affiliation | 1.75 |
+| local | political affiliation | 1.74 |
+| sequential | political affiliation | ~2.0 (Step 2 baseline) |
+
+A same_ratio above 1.0 means the model forms more same-group ties than chance. All methods show homophily (>1.0) on most demographics. Below-1.0 cases are concentrated in the `gpt-4.1-nano` + `global` combination, where the star topology reduces meaningful demographic clustering.
+
+**Density by prompt language (Step 4):**
+
+| Language | Mean density | Std |
+|---|---|---|
+| Spanish | 0.164 | 0.036 |
+| English | 0.147 | 0.058 |
+| Japanese | 0.146 | 0.061 |
+| Hindi | 0.145 | 0.064 |
+
+Spanish-prompt networks are measurably denser and visually more connected. Hindi and Japanese show the highest variance — the nano model in those languages sometimes produces near-empty graphs (heterophily on religion down to 0.79).
+
 ## Practical Reading Advice
 
 Do not try to understand every utility or plot helper first.
