@@ -15,40 +15,40 @@ It does that in four stages:
 
 ## Main Files And Responsibilities
 
-[generate_personas.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_personas.py)
+[generate_personas.py](generate_personas.py)
 Creates or enriches personas. This is the "who exists?" layer.
 
-[generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
+[generate_networks.py](generate_networks.py)
 Main generation engine. This is the "who becomes friends?" layer.
 
-[constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
+[constants_and_utils.py](constants_and_utils.py)
 Shared infrastructure. It handles paths, API calls, retries, saving graphs, and drawing PNGs.
 
-[analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
+[analyze_networks.py](analyze_networks.py)
 Main metrics layer. This is the "what kind of network came out?" layer.
 
-[plotting.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\plotting.py)
+[plotting.py](plotting.py)
 Visualization helpers for graphs and analysis tables.
 
-[run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
+[run_cultural_study.py](run_cultural_study.py)
 Step 2 experiment orchestrator. It runs the full culture/model/seed matrix and writes aggregate outputs.
 
-[study_runner_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\study_runner_utils.py)
+[study_runner_utils.py](study_runner_utils.py)
 Shared experiment helper layer. This keeps the Step 2, Step 3, and Step 4 runners on the same generation, aggregation, and verification path.
 
-[run_method_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_method_study.py)
+[run_method_study.py](run_method_study.py)
 Step 3 experiment orchestrator. It compares `global`, `local`, and `iterative` under the same culture/model/seed setup used for Step 2.
 
-[run_language_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_language_study.py)
+[run_language_study.py](run_language_study.py)
 Step 4 experiment orchestrator. It keeps culture fixed and varies the prompt language across English, Spanish, Hindi, and Japanese.
 
-[analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
+[analyze_networks.ipynb](analyze_networks.ipynb)
 Exploratory notebook. This is where results are compared, plotted, and interpreted interactively.
 
-[network_datasets.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\network_datasets.py)
+[network_datasets.py](network_datasets.py)
 Loads or converts real/reference datasets for comparison.
 
-[bias.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\bias.py)
+[bias.py](bias.py)
 Bias-oriented text analysis helpers.
 
 ## Data Flow
@@ -215,12 +215,12 @@ When culture was fixed to `us` and prompt language varied across English, Spanis
 
 If you are new, read files in this order:
 
-1. [ARCHITECTURE.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\ARCHITECTURE.md)
-2. [generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
-3. [constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
-4. [analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
-5. [run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
-6. [analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
+1. [ARCHITECTURE.md](ARCHITECTURE.md)
+2. [generate_networks.py](generate_networks.py)
+3. [constants_and_utils.py](constants_and_utils.py)
+4. [analyze_networks.py](analyze_networks.py)
+5. [run_cultural_study.py](run_cultural_study.py)
+6. [analyze_networks.ipynb](analyze_networks.ipynb)
 
 ## Outputs To Care About
 
@@ -232,20 +232,20 @@ For one generation run:
 - `stats/<condition>/network_metrics.csv`
 
 For the Step 2 study:
-- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\condition_summary.csv)
-- [demographic_dominance.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\demographic_dominance.csv)
-- [model_divergence.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\model_divergence.csv)
-- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\research_answers.md)
+- [condition_summary.csv](stats/cultural_study/condition_summary.csv)
+- [demographic_dominance.csv](stats/cultural_study/demographic_dominance.csv)
+- [model_divergence.csv](stats/cultural_study/model_divergence.csv)
+- [research_answers.md](stats/cultural_study/research_answers.md)
 
 For the Step 3 study:
-- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\condition_summary.csv)
-- [method_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\method_summary.csv)
-- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\research_answers.md)
+- [condition_summary.csv](stats/method_study/condition_summary.csv)
+- [method_summary.csv](stats/method_study/method_summary.csv)
+- [research_answers.md](stats/method_study/research_answers.md)
 
 For the Step 4 study:
-- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\condition_summary.csv)
-- [language_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\language_summary.csv)
-- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\research_answers.md)
+- [condition_summary.csv](stats/language_study/condition_summary.csv)
+- [language_summary.csv](stats/language_study/language_summary.csv)
+- [research_answers.md](stats/language_study/research_answers.md)
 
 ## Results & Plots
 
