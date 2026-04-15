@@ -15,40 +15,40 @@ It does that in four stages:
 
 ## Main Files And Responsibilities
 
-[generate_personas.py](generate_personas.py)
+[generate_personas.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_personas.py)
 Creates or enriches personas. This is the "who exists?" layer.
 
-[generate_networks.py](generate_networks.py)
+[generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
 Main generation engine. This is the "who becomes friends?" layer.
 
-[constants_and_utils.py](constants_and_utils.py)
+[constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
 Shared infrastructure. It handles paths, API calls, retries, saving graphs, and drawing PNGs.
 
-[analyze_networks.py](analyze_networks.py)
+[analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
 Main metrics layer. This is the "what kind of network came out?" layer.
 
-[plotting.py](plotting.py)
+[plotting.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\plotting.py)
 Visualization helpers for graphs and analysis tables.
 
-[run_cultural_study.py](run_cultural_study.py)
+[run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
 Step 2 experiment orchestrator. It runs the full culture/model/seed matrix and writes aggregate outputs.
 
-[study_runner_utils.py](study_runner_utils.py)
+[study_runner_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\study_runner_utils.py)
 Shared experiment helper layer. This keeps the Step 2, Step 3, and Step 4 runners on the same generation, aggregation, and verification path.
 
-[run_method_study.py](run_method_study.py)
+[run_method_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_method_study.py)
 Step 3 experiment orchestrator. It compares `global`, `local`, and `iterative` under the same culture/model/seed setup used for Step 2.
 
-[run_language_study.py](run_language_study.py)
+[run_language_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_language_study.py)
 Step 4 experiment orchestrator. It keeps culture fixed and varies the prompt language across English, Spanish, Hindi, and Japanese.
 
-[analyze_networks.ipynb](analyze_networks.ipynb)
+[analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
 Exploratory notebook. This is where results are compared, plotted, and interpreted interactively.
 
-[network_datasets.py](network_datasets.py)
+[network_datasets.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\network_datasets.py)
 Loads or converts real/reference datasets for comparison.
 
-[bias.py](bias.py)
+[bias.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\bias.py)
 Bias-oriented text analysis helpers.
 
 ## Data Flow
@@ -110,16 +110,117 @@ Changes made:
 
 In the final project write-up, this becomes Research Question 4.
 
+## Full Experiment Summary
+
+The final capstone is one connected experiment, not four unrelated scripts.
+
+The structure is:
+
+1. Step 1 makes the original repo runnable with OpenAI only.
+2. Step 2 runs the first cultural study using the `sequential` method.
+3. Step 3 adds the other three methods, `global`, `local`, and `iterative`, so RQ1 to RQ3 are supported by all four methods together.
+4. Step 4 keeps culture fixed and changes prompt language, which becomes RQ4.
+
+Shared experimental settings:
+- one fixed 50-person roster from `text-files/us_50_gpt4o_w_interests.json`
+- three GPT models: `gpt-4.1-nano`, `gpt-4.1-mini`, `gpt-4.1`
+- two seeds per condition
+
+Cultural contexts used:
+- `us`
+- `india`
+- `japan`
+- `brazil`
+
+Prompt languages used:
+- `english`
+- `spanish`
+- `hindi`
+- `japanese`
+
+Method coverage:
+- `sequential`
+- `global`
+- `local`
+- `iterative`
+
+Verification status after the final refresh:
+- Step 2 cultural study: `24/24` conditions passed
+- Step 3 method study: `72/72` conditions passed
+- Step 4 language study: `96/96` conditions passed
+
+## Report Format
+
+If you are writing the final capstone report or proposal follow-up, this is the cleanest structure:
+
+1. Introduction
+   Explain that the project studies how LLM-generated social networks change under controlled variations in culture, method, model, and prompt language.
+
+2. Research Questions
+   Present the four RQs exactly:
+   - RQ1: cultural context effects with language held constant
+   - RQ2: dominant demographic dimensions in tie formation
+   - RQ3: consistency or divergence across LLM models
+   - RQ4: prompt-language effects with culture held constant
+
+3. Experimental Design
+   State:
+   - same 50 personas reused across conditions
+   - same three GPT models across studies
+   - Step 2 plus Step 3 together answer RQ1 to RQ3 across all four methods
+   - Step 4 answers RQ4 by fixing culture to `us` and varying prompt language
+
+4. Methods
+   Describe the four generation methods:
+   - `sequential`: people choose friends one at a time as the network grows
+   - `global`: the model proposes friendship pairs for the whole network at once
+   - `local`: one focal person chooses from the candidate list without the full sequential buildup
+   - `iterative`: the network is revised through add/drop style friendship updates
+
+5. Metrics
+   Explain the two main families:
+   - homophily metrics such as `same_ratio`
+   - topology metrics such as density, clustering, modularity, and `prop_nodes_lcc`
+
+6. Results
+   Present one subsection per RQ using the brief findings below.
+
+7. Verification and Reliability
+   Include the pass counts from the final verification refresh and note that the study-level outputs were rebuilt from saved artifacts without re-running expensive generation.
+
+8. Limitations
+   State clearly that:
+   - LLM outputs are stochastic
+   - prompt wording still matters
+   - these findings are empirical results for this setup, not universal social laws
+
+9. Conclusion
+   Summarize that culture, method, model, and prompt language all influence generated network structure, and that model choice is not interchangeable.
+
+## Brief RQ Results
+
+### RQ1 Brief Result
+When language was fixed to English and culture varied across `us`, `india`, `japan`, and `brazil`, both homophily and topology changed. The strongest culture-driven homophily shift appeared in `political affiliation`, and the topology metric with the widest spread was `prop_nodes_lcc`.
+
+### RQ2 Brief Result
+The dominant demographic dimension was usually `political affiliation`, especially in `sequential`, `local`, and `iterative`. The main exception was `global`, where `age` most often emerged as the strongest homophily dimension.
+
+### RQ3 Brief Result
+The three GPT models were not interchangeable. Across cultural, method, and language studies, `gpt-4.1` and `gpt-4.1-mini` were consistently the closest pair, while `gpt-4.1-nano` was the most divergent relative to `gpt-4.1`.
+
+### RQ4 Brief Result
+When culture was fixed to `us` and prompt language varied across English, Spanish, Hindi, and Japanese, the network still changed. The largest language-driven homophily shift appeared in `religion`, and the topology metric with the widest spread was again `prop_nodes_lcc`.
+
 ## What To Read First
 
 If you are new, read files in this order:
 
-1. [ARCHITECTURE.md](ARCHITECTURE.md)
-2. [generate_networks.py](generate_networks.py)
-3. [constants_and_utils.py](constants_and_utils.py)
-4. [analyze_networks.py](analyze_networks.py)
-5. [run_cultural_study.py](run_cultural_study.py)
-6. [analyze_networks.ipynb](analyze_networks.ipynb)
+1. [ARCHITECTURE.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\ARCHITECTURE.md)
+2. [generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
+3. [constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
+4. [analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
+5. [run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
+6. [analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
 
 ## Outputs To Care About
 
@@ -131,80 +232,20 @@ For one generation run:
 - `stats/<condition>/network_metrics.csv`
 
 For the Step 2 study:
-- [condition_summary.csv](stats/cultural_study/condition_summary.csv)
-- [demographic_dominance.csv](stats/cultural_study/demographic_dominance.csv)
-- [model_divergence.csv](stats/cultural_study/model_divergence.csv)
-- [research_answers.md](stats/cultural_study/research_answers.md)
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\condition_summary.csv)
+- [demographic_dominance.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\demographic_dominance.csv)
+- [model_divergence.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\model_divergence.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\research_answers.md)
 
 For the Step 3 study:
-- [condition_summary.csv](stats/method_study/condition_summary.csv)
-- [method_summary.csv](stats/method_study/method_summary.csv)
-- [research_answers.md](stats/method_study/research_answers.md)
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\condition_summary.csv)
+- [method_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\method_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\research_answers.md)
 
 For the Step 4 study:
-- [condition_summary.csv](stats/language_study/condition_summary.csv)
-- [language_summary.csv](stats/language_study/language_summary.csv)
-- [research_answers.md](stats/language_study/research_answers.md)
-
-## Results & Plots
-
-### Plot Naming Convention
-
-Every file in `plots/` follows this pattern:
-
-```
-{method}_{model}[_n{n}]_culture_{culture}[_lang_{language}]_{seed}.png
-```
-
-| Segment | Values | Meaning |
-|---|---|---|
-| `method` | `global`, `sequential`, `local`, `iterative` | How friendships were proposed (Step 3) |
-| `model` | `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano` | OpenAI model used |
-| `_n{n}` | `_n5` | Neighbourhood size (local/iterative/sequential only) |
-| `culture` | `us`, `india`, `japan`, `brazil` | Cultural context injected into the prompt |
-| `lang` | `english`, `spanish`, `hindi`, `japanese` | Prompt language (Step 4 only; absent = English) |
-| `seed` | `0`, `1` | Random seed index (two replicas per condition) |
-
-Examples:
-- `global_gpt-4.1-mini_culture_us_0.png` — global method, mini model, US culture, seed 0
-- `iterative_gpt-4.1_n5_culture_india_1.png` — iterative method, full model, India culture, seed 1
-- `local_gpt-4.1-nano_n5_culture_us_lang_hindi_0.png` — local method, nano model, US culture, Hindi prompt, seed 0
-
-### What Each Plot Shows
-
-Each PNG is a force-directed graph visualization of the generated social network:
-
-- **Nodes** — individual personas (labelled by index)
-- **Edges** — friendship connections proposed by the model
-- Layout uses spring positioning; tightly connected clusters appear as dense clumps
-
-### Visual Patterns by Method
-
-| Method | Typical Structure | Why |
-|---|---|---|
-| `global` | Sparse, tree-like; many isolated or lightly connected nodes | The model decides all friendships in one shot — it tends to under-connect |
-| `sequential` | Denser; a large main component with a few small satellites | Each persona is added one at a time; connections accumulate |
-| `local` | Two or more tight dense clusters with near-isolation between them | Only nearby personas are considered; clique-like subgraphs form |
-| `iterative` | Dense main component, fewer isolates than global | Repeated revision passes fill in missing links |
-
-### Plot Coverage
-
-The `plots/` directory contains **192 PNGs** spanning:
-
-- **4 methods**: global, sequential, local, iterative
-- **3 models**: gpt-4.1, gpt-4.1-mini, gpt-4.1-nano
-- **4 cultures** (Step 2/3): us, india, japan, brazil
-- **4 languages** (Step 4, culture fixed to `us`): english, spanish, hindi, japanese
-- **2 seeds** per condition
-
-Step 2 plots (cultural study, global method only):
-- `global_{model}_culture_{culture}_{seed}.png`
-
-Step 3 plots (method comparison, all four methods):
-- `{method}_{model}_n5_culture_{culture}_{seed}.png`
-
-Step 4 plots (language study, all methods, culture=us):
-- `{method}_{model}_n5_culture_us_lang_{language}_{seed}.png`
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\condition_summary.csv)
+- [language_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\language_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\research_answers.md)
 
 ## Practical Reading Advice
 
