@@ -1,4 +1,4 @@
-# Cross-Cultural Agentic Graph Simulation Framework
+# Cross-Cultural and Linguistic Agentic Graph Simulation Framework
 This repo contains code and results for the paper ["LLMs generate structurally realistic social networks but overestimate political homophily"](https://arxiv.org/abs/2408.16629), by Serina Chang*, Alicja Chaszczewicz*, Emma Wang, Maya Josifovska, Emma Pierson, and Jure Leskovec (ICWSM 2025).
 
 ## UA Capstone framing
