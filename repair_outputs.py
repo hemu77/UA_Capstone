@@ -1,5 +1,5 @@
 """
-Rebuild capstone study summaries from existing saved artifacts.
+Rebuild project summaries from existing saved artifacts.
 
 This script does not call any LLM APIs. It only reads graphs and per-condition
 CSV files that already exist in the repo, then rebuilds the study-level
