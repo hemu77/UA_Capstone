@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Social Network Research Workbench</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body>
+  <a class="skip" href="#persona-table">Skip to accessible network table</a>
+  <header><div><p class="eyebrow">UA Capstone</p><h1>Network Research Workbench</h1></div>
+    <nav aria-label="Workbench sections"><a href="./layers.html">3D layer laboratory</a><a href="#analysis">Condition plots / archive</a><a href="#networks">Network comparison</a><a href="#evidence">Evidence notes</a></nav>
+    <p id="status" role="status">Loading local research exports...</p>
+  </header>
+  <main>
+    <section id="analysis" aria-labelledby="analysis-heading">
+      <div class="section-heading"><h2 id="analysis-heading">Condition selection</h2><label>Dataset <select id="study" aria-label="Dataset"><option value="engineering_pilot">Engineering pilots</option><option value="historical">Historical: all studies</option><option value="cultural">Historical: culture study</option><option value="method">Historical: method study</option><option value="language">Historical: language study</option></select></label><button id="reset-filters">Reset selection</button><button id="share">Copy view link</button></div>
+      <div class="condition-filters"><fieldset id="filter-model"></fieldset><fieldset id="filter-method"></fieldset><fieldset id="filter-culture"></fieldset><fieldset id="filter-language"></fieldset><fieldset id="filter-seed"></fieldset></div>
+      <div class="selection-meta"><p id="selection-count" role="status"></p><p id="model-coverage"></p></div>
+      <div class="plot-panels">
+        <article class="plot-card"><div class="section-heading"><h2>Topology</h2><label>Metric <select id="plot-metric" aria-label="Topology metric"></select></label><button data-figure="topology">Export topology SVG</button></div><div id="topology-plot" class="plot-scroll" tabindex="0" role="region" aria-label="Topology chart; scroll horizontally or vertically"></div></article>
+        <article class="plot-card"><div class="section-heading"><h2>Demographic mixing</h2><button data-figure="mixing">Export mixing SVG</button></div><div id="mixing-plot" class="plot-scroll" tabindex="0" role="region" aria-label="Mixing chart; scroll horizontally or vertically"></div></article>
+      </div>
+      <p class="caption">Descriptive measurements only. Rows keep study, roster and prompt variants separate. Age assortativity and categorical Coleman scores are different measures.</p>
+      <details class="run-inventory"><summary>Selected runs and exact measurements</summary><div class="downloads"><button id="selection-csv">Export selected CSV</button><button id="selection-json">Export selection + provenance JSON</button></div><div class="table-scroll"><table><caption>Saved runs in the current filter intersection</caption><thead><tr><th>Model</th><th>Method</th><th>Country</th><th>Instructions</th><th>Seed</th><th id="selected-metric">Metric</th><th>Network view</th></tr></thead><tbody id="selected-runs"></tbody></table></div></details>
+    </section>
+    <section id="networks" aria-labelledby="networks-heading"><h2 id="networks-heading">Network comparison</h2>
+    <section class="toolbar" aria-label="Display controls">
+      <label>Color by <select id="color"><option>political affiliation</option><option>religion</option><option>gender</option><option>race/ethnicity</option><option>age</option></select></label>
+      <label>Persona <select id="persona"><option value="">All personas</option></select></label>
+      <label><input id="neighbors" type="checkbox">Selected ties only</label>
+      <label><input id="flat" type="checkbox">2D projection</label>
+      <label>Edges <select id="edge-mode"><option value="all">All edges</option><option value="shared">Shared only</option><option value="different">Differences only</option></select></label>
+      <button id="reset">Reset cameras</button>
+    </section>
+    <div id="legend" class="legend" aria-label="Attribute color legend"></div>
+    <p id="comparison" class="comparison" role="status"></p>
+    <div class="panels">
+      <section id="panel-a" class="panel" aria-labelledby="heading-a"><h2 id="heading-a">A / Reference</h2><div class="filters"></div><p class="run-id"></p><div class="scene" role="img" aria-label="Network A. Use the table below to inspect connections with a keyboard."></div><div class="metrics"></div><p class="provenance"></p><div class="downloads"><button data-download="json">Download A JSON</button><button data-download="csv">Download A edges</button><button data-download="png">Download A PNG</button></div></section>
+      <section id="panel-b" class="panel" aria-labelledby="heading-b"><h2 id="heading-b">B / Comparison</h2><div class="filters"></div><p class="run-id"></p><div class="scene" role="img" aria-label="Network B. Use the table below to inspect connections with a keyboard."></div><div class="metrics"></div><p class="provenance"></p><div class="downloads"><button data-download="json">Download B JSON</button><button data-download="csv">Download B edges</button><button data-download="png">Download B PNG</button></div></section>
+    </div>
+    <p class="caption">A shared force layout uses the union of the two selected networks. Drag to rotate; scroll to zoom. Coordinates are algorithmic and do not measure social or geographic distance. Teal edges are shared; orange edges appear in only one network.</p>
+    </section>
+    <details><summary>Persona inspection, replay and sandbox</summary><section class="details-grid">
+      <article><h2>Inspect a persona</h2><p id="inspection">Choose a node or a persona in the table. Names and interests are omitted because the historical study did not show them to the model.</p>
+        <h3>Generation history</h3><p id="replay-note">Historical graphs contain final edges only. No replay has been invented.</p><label>Recorded step for A <input id="replay" type="range" min="0" max="0" value="0" disabled></label>
+      </article>
+      <article><h2>Manual simulation</h2><p>Temporarily change network A. This is your edit, not an LLM result. Research metrics are hidden while editing. Saved research files never change.</p>
+        <label><input id="sandbox" type="checkbox">Enable sandbox for A</label>
+        <div class="sandbox-fields"><label>From <select id="from" disabled></select></label><label>To <select id="to" disabled></select></label><button id="toggle-edge" disabled>Add / remove tie</button><button id="discard" disabled>Discard edits</button></div>
+        <p id="sandbox-status" role="status"></p>
+      </article>
+    </section></details>
+    <section id="persona-table" tabindex="-1"><h2>Persona and degree inventory</h2><p>Degree is the number of connections in the displayed network. Choose an ID to inspect its neighbors.</p><div class="table-scroll"><table><caption>Accessible persona and connection inventory</caption><thead><tr><th scope="col">Persona</th><th scope="col">Selected attribute</th><th scope="col">Degree A</th><th scope="col">Degree B</th></tr></thead><tbody id="people"></tbody></table></div></section>
+    <details id="evidence"><summary>Evidence limitations and metric definitions</summary><p>One US-structured roster, including nine minors with political labels. Historical conditions have two intended seeds; pilot conditions have one. Old language prompts also changed participants' spoken language. Pilot prompt variants and draft translations are not confirmatory replicates. Missing combinations mean no saved result, not a zero effect.</p><p>Density: observed edges divided by all 1,225 possible undirected ties. Clustering: mean local clustering, including isolates as zero. Largest component: fraction of all 50 people in the largest connected group. Modularity: seeded Louvain partition score, not proof of real social communities.</p><p>Categorical homophily uses the population-weighted Coleman index, (same-group incident-tie share minus population share) / (1 minus population share). Age uses numeric assortativity instead. Undefined values remain unavailable, not zero. These scores are not a causal ranking of demographic importance.</p><p>All research metrics come from the shared Python analysis, not a second JavaScript implementation. Missing request logs prevent verification of historical retry rates, model snapshots and costs. Runs with self-links are quarantined, not repaired invisibly. Exclusions may be nonrandom. Browser filters never send API requests.</p></details>
+  </main><footer>Audit LLM simulations. Do not use synthetic demographic connections to make decisions about real people. No API requests or keys in this viewer.</footer>
+  <noscript>This explorer needs JavaScript. Corrected CSV tables remain available in stats/revision_v1.</noscript>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,10 +1,15 @@
 matplotlib==3.6.2
 networkx==3.1
-numpy==1.23.4
+numpy==1.26.4
 openai==1.43.1
 pandas==1.5.0
-Pillow==9.3.0
 Pillow==10.4.0
 scikit_learn==1.5.1
 scipy==1.14.1
 seaborn==0.13.2
+httpx==0.27.2
+nbformat==5.10.4
+nbclient==0.10.2
+ipykernel==6.29.5
+# The 0.2.x inline backend calls private Matplotlib APIs absent in 3.6.2.
+matplotlib-inline==0.1.7

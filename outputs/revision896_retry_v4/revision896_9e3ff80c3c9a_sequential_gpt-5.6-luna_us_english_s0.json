@@ -1,0 +1,2986 @@
+{
+  "cell": {
+    "run_id": "revision896_9e3ff80c3c9a_sequential_gpt-5.6-luna_us_english_s0",
+    "model": "gpt-5.6-luna",
+    "method": "sequential",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "9e3ff80c3c9ad8ddbb62f99cf8dde7205d0b0c9ee7becd15071caaf80fb05de7",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "d09bab833d2776d79cc5aa37e8adf6362c8488e5c4f37173c5021b7f401a7cdc",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "b5ab6eb696481ce9e73047ca86574e1788e1f29d2c8c4b78836b7e8140df4e35"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "4",
+      "added": [
+        [
+          "4",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 1,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "1",
+      "added": [
+        [
+          "1",
+          "25"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 2,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "3",
+      "added": [
+        [
+          "1",
+          "3"
+        ],
+        [
+          "25",
+          "3"
+        ],
+        [
+          "3",
+          "5"
+        ],
+        [
+          "3",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 3,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "47",
+      "added": [
+        [
+          "10",
+          "47"
+        ],
+        [
+          "13",
+          "47"
+        ],
+        [
+          "20",
+          "47"
+        ],
+        [
+          "32",
+          "47"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "47",
+          "5"
+        ],
+        [
+          "47",
+          "6"
+        ],
+        [
+          "47",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 4,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "41",
+      "added": [
+        [
+          "13",
+          "41"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 5,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "2",
+      "added": [
+        [
+          "16",
+          "2"
+        ],
+        [
+          "17",
+          "2"
+        ],
+        [
+          "2",
+          "28"
+        ],
+        [
+          "2",
+          "42"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 6,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "15",
+      "added": [
+        [
+          "0",
+          "15"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 7,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "17",
+      "added": [
+        [
+          "16",
+          "17"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "3"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 8,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "44",
+      "added": [
+        [
+          "1",
+          "44"
+        ],
+        [
+          "14",
+          "44"
+        ],
+        [
+          "15",
+          "44"
+        ],
+        [
+          "16",
+          "44"
+        ],
+        [
+          "17",
+          "44"
+        ],
+        [
+          "2",
+          "44"
+        ],
+        [
+          "21",
+          "44"
+        ],
+        [
+          "25",
+          "44"
+        ],
+        [
+          "28",
+          "44"
+        ],
+        [
+          "3",
+          "44"
+        ],
+        [
+          "4",
+          "44"
+        ],
+        [
+          "42",
+          "44"
+        ],
+        [
+          "44",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 9,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "26",
+      "added": [
+        [
+          "23",
+          "26"
+        ],
+        [
+          "26",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 10,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "40",
+      "added": [
+        [
+          "0",
+          "40"
+        ],
+        [
+          "27",
+          "40"
+        ],
+        [
+          "39",
+          "40"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 11,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "16",
+      "added": [
+        [
+          "1",
+          "16"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "16",
+          "21"
+        ],
+        [
+          "16",
+          "25"
+        ],
+        [
+          "16",
+          "27"
+        ],
+        [
+          "16",
+          "3"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "16",
+          "42"
+        ],
+        [
+          "16",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 12,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "21",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 13,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "0",
+      "added": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "20"
+        ],
+        [
+          "0",
+          "25"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "0",
+          "7"
+        ],
+        [
+          "0",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 14,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "19",
+      "added": [
+        [
+          "19",
+          "24"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 15,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "12",
+      "added": [
+        [
+          "12",
+          "13"
+        ],
+        [
+          "12",
+          "20"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "29"
+        ],
+        [
+          "12",
+          "30"
+        ],
+        [
+          "12",
+          "33"
+        ],
+        [
+          "12",
+          "34"
+        ],
+        [
+          "12",
+          "41"
+        ],
+        [
+          "12",
+          "5"
+        ],
+        [
+          "12",
+          "6"
+        ],
+        [
+          "12",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 16,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "39",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 17,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "20",
+      "added": [
+        [
+          "13",
+          "20"
+        ],
+        [
+          "20",
+          "30"
+        ],
+        [
+          "20",
+          "32"
+        ],
+        [
+          "20",
+          "33"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "36"
+        ],
+        [
+          "20",
+          "41"
+        ],
+        [
+          "20",
+          "48"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 18,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "28",
+      "added": [
+        [
+          "1",
+          "28"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "16",
+          "28"
+        ],
+        [
+          "17",
+          "28"
+        ],
+        [
+          "21",
+          "28"
+        ],
+        [
+          "23",
+          "28"
+        ],
+        [
+          "25",
+          "28"
+        ],
+        [
+          "28",
+          "3"
+        ],
+        [
+          "28",
+          "4"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "28",
+          "5"
+        ],
+        [
+          "28",
+          "7"
+        ],
+        [
+          "28",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 19,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "14",
+      "added": [
+        [
+          "12",
+          "14"
+        ],
+        [
+          "14",
+          "15"
+        ],
+        [
+          "14",
+          "16"
+        ],
+        [
+          "14",
+          "2"
+        ],
+        [
+          "14",
+          "21"
+        ],
+        [
+          "14",
+          "3"
+        ],
+        [
+          "14",
+          "4"
+        ],
+        [
+          "14",
+          "42"
+        ],
+        [
+          "14",
+          "7"
+        ],
+        [
+          "14",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 20,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "18",
+      "added": [
+        [
+          "10",
+          "18"
+        ],
+        [
+          "16",
+          "18"
+        ],
+        [
+          "17",
+          "18"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "28"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "18",
+          "42"
+        ],
+        [
+          "18",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 21,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "27",
+      "added": [
+        [
+          "10",
+          "27"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "18",
+          "27"
+        ],
+        [
+          "19",
+          "27"
+        ],
+        [
+          "27",
+          "31"
+        ],
+        [
+          "27",
+          "39"
+        ],
+        [
+          "27",
+          "43"
+        ],
+        [
+          "27",
+          "46"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 22,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "8",
+      "added": [
+        [
+          "5",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 23,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "32",
+      "added": [
+        [
+          "10",
+          "32"
+        ],
+        [
+          "12",
+          "32"
+        ],
+        [
+          "13",
+          "32"
+        ],
+        [
+          "30",
+          "32"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "41"
+        ],
+        [
+          "32",
+          "48"
+        ],
+        [
+          "32",
+          "5"
+        ],
+        [
+          "32",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 24,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "48",
+      "added": [
+        [
+          "12",
+          "48"
+        ],
+        [
+          "13",
+          "48"
+        ],
+        [
+          "33",
+          "48"
+        ],
+        [
+          "41",
+          "48"
+        ],
+        [
+          "47",
+          "48"
+        ],
+        [
+          "48",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 25,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "31",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 26,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "13",
+      "added": [
+        [
+          "13",
+          "33"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 27,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "24",
+      "added": [
+        [
+          "11",
+          "24"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 28,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "43",
+      "added": [
+        [
+          "0",
+          "43"
+        ],
+        [
+          "15",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 29,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "37",
+      "added": [
+        [
+          "11",
+          "37"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "37",
+          "40"
+        ],
+        [
+          "37",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 30,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "49",
+      "added": [
+        [
+          "15",
+          "49"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 31,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "29",
+      "added": [
+        [
+          "13",
+          "29"
+        ],
+        [
+          "20",
+          "29"
+        ],
+        [
+          "22",
+          "29"
+        ],
+        [
+          "29",
+          "30"
+        ],
+        [
+          "29",
+          "33"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "48"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "29",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 32,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "33",
+      "added": [
+        [
+          "33",
+          "41"
+        ],
+        [
+          "33",
+          "5"
+        ],
+        [
+          "33",
+          "6"
+        ],
+        [
+          "33",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 33,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "6",
+      "added": [
+        [
+          "13",
+          "6"
+        ],
+        [
+          "30",
+          "6"
+        ],
+        [
+          "36",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 34,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "9",
+      "added": [
+        [
+          "13",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 35,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "23",
+      "added": [
+        [
+          "1",
+          "23"
+        ],
+        [
+          "16",
+          "23"
+        ],
+        [
+          "23",
+          "25"
+        ],
+        [
+          "23",
+          "3"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "23",
+          "45"
+        ],
+        [
+          "23",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 36,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "10",
+      "added": [
+        [
+          "10",
+          "12"
+        ],
+        [
+          "10",
+          "13"
+        ],
+        [
+          "10",
+          "30"
+        ],
+        [
+          "10",
+          "41"
+        ],
+        [
+          "10",
+          "6"
+        ],
+        [
+          "10",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 37,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "35",
+      "added": [
+        [
+          "11",
+          "35"
+        ],
+        [
+          "13",
+          "35"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "24",
+          "35"
+        ],
+        [
+          "27",
+          "35"
+        ],
+        [
+          "31",
+          "35"
+        ],
+        [
+          "35",
+          "37"
+        ],
+        [
+          "35",
+          "39"
+        ],
+        [
+          "35",
+          "40"
+        ],
+        [
+          "35",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 38,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "30",
+      "added": [
+        [
+          "30",
+          "41"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 39,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "25",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 40,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "7",
+      "added": [
+        [
+          "3",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 41,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "34",
+      "added": [
+        [
+          "33",
+          "34"
+        ],
+        [
+          "34",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 42,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "45",
+      "added": [
+        [
+          "10",
+          "45"
+        ],
+        [
+          "17",
+          "45"
+        ],
+        [
+          "18",
+          "45"
+        ],
+        [
+          "2",
+          "45"
+        ],
+        [
+          "21",
+          "45"
+        ],
+        [
+          "30",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 43,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "11",
+      "added": [
+        [
+          "11",
+          "15"
+        ],
+        [
+          "11",
+          "4"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 44,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "36",
+      "added": [
+        [
+          "33",
+          "36"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 45,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "42",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 46,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "5",
+      "added": [
+        [
+          "13",
+          "5"
+        ],
+        [
+          "4",
+          "5"
+        ],
+        [
+          "41",
+          "5"
+        ],
+        [
+          "48",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 47,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "46",
+      "added": [
+        [
+          "35",
+          "46"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 48,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "38",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 49,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "22",
+      "added": [
+        [
+          "13",
+          "22"
+        ],
+        [
+          "20",
+          "22"
+        ],
+        [
+          "22",
+          "30"
+        ],
+        [
+          "22",
+          "33"
+        ],
+        [
+          "22",
+          "41"
+        ],
+        [
+          "22",
+          "48"
+        ],
+        [
+          "22",
+          "5"
+        ],
+        [
+          "22",
+          "6"
+        ],
+        [
+          "22",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.17224489795918368,
+    "avg_clustering_coef": 0.5356048885754765,
+    "prop_nodes_lcc": 1.0,
+    "global_efficiency": 0.5053469387755088,
+    "num_components": 1,
+    "modularity": 0.5013701399339637,
+    "radius_lcc": 3,
+    "diameter_lcc": 5,
+    "avg_shortest_path_lcc": 2.3502040816326533
+  },
+  "homophily": {
+    "gender": [
+      0.24870264660093408,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 152,
+          "within_group_share": 0.5,
+          "coleman": 0.16666666666666663
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 82,
+          "within_group_share": 0.2926829268292683,
+          "coleman": 0.11585365853658533
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 188,
+          "within_group_share": 0.6382978723404256,
+          "coleman": 0.3971631205673759
+        }
+      ]
+    ],
+    "religion": [
+      0.21525525362650558,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 101,
+          "within_group_share": 0.3564356435643564,
+          "coleman": 0.1955445544554455
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 62,
+          "within_group_share": 0.3225806451612903,
+          "coleman": 0.15322580645161288
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 86,
+          "within_group_share": 0.3023255813953488,
+          "coleman": 0.127906976744186
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 85,
+          "within_group_share": 0.47058823529411764,
+          "coleman": 0.338235294117647
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 88,
+          "within_group_share": 0.4090909090909091,
+          "coleman": 0.26136363636363635
+        }
+      ]
+    ],
+    "political orientation": [
+      0.7147504123465497,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 100,
+          "within_group_share": 0.7,
+          "coleman": 0.5588235294117647
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 183,
+          "within_group_share": 0.9289617486338798,
+          "coleman": 0.892366285808909
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 139,
+          "within_group_share": 0.7913669064748201,
+          "coleman": 0.683889252234576
+        }
+      ]
+    ],
+    "age_assortativity": 0.3511364779312291
+  },
+  "cumulative_conservative_charge_usd": 3.9270433750000002,
+  "artifact_sha256": {
+    ".adj": "f11c2eb62724e11b3bf3c88ad653f799a0e06a890d8aae96cbc418a40615a6e7",
+    ".png": "9e68d85686387693ca7c8a5d48c5011c4aa6bf8a87f640afa3e00af294f6a6a3"
+  },
+  "requests": [
+    {
+      "request_id": "0f2baf36f2b6b6d2fe4116803f052a240760b96bdc5b47696d5826b368d23db5",
+      "response_id": "chatcmpl-ETmxZf3MDalozoKZOzMCHKd7658rF",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 861,
+        "total_tokens": 865,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00022005000000000004
+    },
+    {
+      "request_id": "5b027303e39b1e76e99249fde5ed07fa0f0c7c433708a22c91a20b3e471fe2f3",
+      "response_id": "chatcmpl-ETmxZsgRJvM37gj4AIjhucdzUKnEl",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 861,
+        "total_tokens": 865,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00022005000000000004
+    },
+    {
+      "request_id": "b2fcaa1d214a8b5ae64e9487f2b65379d0efe272b79c260b878c010f614d45e3",
+      "response_id": "chatcmpl-ETmxav6kitEokbS1mO8zOnwMkILRy",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 861,
+        "total_tokens": 871,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00022725000000000002
+    },
+    {
+      "request_id": "6d52900a5241945318ded8b1458382daadaff1285cc181656873ea48144c85de",
+      "response_id": "chatcmpl-ETmxb7OY5SaHzzXsUaYTa1xibsYt0",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 20,
+        "prompt_tokens": 974,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002675
+    },
+    {
+      "request_id": "ad3c5e807f22b67f73385f38a59c499ce3cf66b9f98223e83c7df8efa98d5b41",
+      "response_id": "chatcmpl-ETmxcnvir2HeRHbDLF9Lag158Cdth",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "0ec81e339e953deb2f6b0df90e50cd07c57219c6db45188767b637730679eacb",
+      "response_id": "chatcmpl-ETmxdWdUewB3CAOEhO5BgB02uMJeg",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 974,
+        "total_tokens": 984,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002555
+    },
+    {
+      "request_id": "161e9a470f7c3aca13e6d0f69371af64e0187312c644d9797f4a4da69bafbd6c",
+      "response_id": "chatcmpl-ETmxepiSlKlWtmk6MZFAuB6L1qZTo",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "d954ac49048c95557c49b04df7b8f45c95215e52f526afa8db74b57febed1c14",
+      "response_id": "chatcmpl-ETmxglcE99lcCQOJktvctIh73iyBy",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 974,
+        "total_tokens": 984,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002555
+    },
+    {
+      "request_id": "d5433ced723e0dd64c992e1eb40f79599ce7f57ab6d82d1498d3009496e2582f",
+      "response_id": "chatcmpl-ETmxgfxUBEJ7jgbR5cxa8d59LlTER",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 974,
+        "total_tokens": 1002,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002771
+    },
+    {
+      "request_id": "766dd668e8f87b07cba592b04d91155dfa71ef901411c21cc9563c123da799a5",
+      "response_id": "chatcmpl-ETmxi2yC8pekGxd3v5bxemJG0AmkA",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "f8f3e670f275d022731a0dd8d94fe29181cf1a311e15c3b56340fb89edf838fa",
+      "response_id": "chatcmpl-ETmxjOEvREQYARqdMijU6l7cRP4ci",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 974,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025309999999999997
+    },
+    {
+      "request_id": "65b74adaecb2355e78e438b7120ba77e047f305b81ede70b672c336a18d7d57d",
+      "response_id": "chatcmpl-ETmxkLYoeiNSJGWovQS5XLvvThPil",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 974,
+        "total_tokens": 1000,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002747
+    },
+    {
+      "request_id": "07d64fc643bc27a9301519d7d13daae5fcfacdd4f903510fecde98871ea3c5d5",
+      "response_id": "chatcmpl-ETmxmZs2mwZBE1StzEV3j5pnxNsEh",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "e4f580bf7f17b50e7493a7cf4f48dca2428d9a9555f74e6cd48c3bcad1574f7e",
+      "response_id": "chatcmpl-ETmxnuLr6JFzY7GPMWmnLDGYdFO50",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 18,
+        "prompt_tokens": 974,
+        "total_tokens": 992,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00026510000000000005
+    },
+    {
+      "request_id": "843474abed13a075e2776df0b0b92841fbe1adc4af3c1b46df8f1b345d7a7441",
+      "response_id": "chatcmpl-ETmxrjzTC7N3VkX4e08B8an5FQJkj",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "d6c890f208f45782ef39b6a85575cf17c14e12e41937029c2a19305600ed91d8",
+      "response_id": "chatcmpl-ETmxrKxwcP7jiEfxlpPeJA5PgGMdP",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 974,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002723
+    },
+    {
+      "request_id": "81321480b0faf1c9433604fa27a4b809bf8653a8a864e2ba06a58a5f42bd9c32",
+      "response_id": "chatcmpl-ETmxtdohPkD0WRjuyGlKvXW95yLJc",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "88032a142960fc66c1854f8acea00f07f773846250c5832e985fbe407a6f1c90",
+      "response_id": "chatcmpl-ETmxtfJt3O8x8gyPvsJe6cFl5c2d3",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 974,
+        "total_tokens": 1000,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002747
+    },
+    {
+      "request_id": "9b9204c64f7ab90356f5b6851a9296434e2704a2c7eb53037a9aa9bf306ffe6b",
+      "response_id": "chatcmpl-ETmxvNldU8tSHens3g2AKWUu8da2f",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 974,
+        "total_tokens": 1006,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00028189999999999997
+    },
+    {
+      "request_id": "6bd930ffdaab418b0f838e64bb9c8c7fb781673d4ab598e0f9a7dbd688fa96d9",
+      "response_id": "chatcmpl-ETmxwYmoMClJvMM50nPyU469szgut",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 974,
+        "total_tokens": 1000,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002747
+    },
+    {
+      "request_id": "80cf942fb3ed5b8f9b0fa4cfd7d196e722a66235e101f194522c1771f56e81d9",
+      "response_id": "chatcmpl-ETmxxZSnQ0QJzNFGqxjoRY1V3LXWH",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 18,
+        "prompt_tokens": 974,
+        "total_tokens": 992,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00026510000000000005
+    },
+    {
+      "request_id": "a4be8ef5de859a6b131987519741c85f7105051e7e9ce893c10b362ff3ea5e19",
+      "response_id": "chatcmpl-ETmxzTRcMPIUo0bUtKeE8GtJA9Xlt",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 974,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002699
+    },
+    {
+      "request_id": "b30e9846f93a0fc97e6671bf1341f19a41d9a8043b14f89a5ccabb6134b188a6",
+      "response_id": "chatcmpl-ETmy0ke5MW2oSSIk6xa3ytWTJ8ack",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "c7b3cbabde8b20bff84009eba3ed98a2b36b6c4b5bb50df5c54a57f30edefde4",
+      "response_id": "chatcmpl-ETmy0MYUpqXxD5L6ayQjR2G3kX90K",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 974,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002723
+    },
+    {
+      "request_id": "b7f8c5a3c791575dfa2fca2224350816c90da82c227981e96a5964c0553ca2c4",
+      "response_id": "chatcmpl-ETmy1nvYQ4fhAdLaCFf7IiZTrEucl",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 974,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002627
+    },
+    {
+      "request_id": "2e0c855439d692081c140f46ac67b179186fd2eb870c3a28974a7fc81895d091",
+      "response_id": "chatcmpl-ETmy3oj9pFdMbqlN9JcI4HeoXGI6N",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "d7566beaa31ad993d00b07b845e6db8b7f9193d8cf31117eedd88556954f7ff9",
+      "response_id": "chatcmpl-ETmy3GYU1rdioaaZFGSkzLrSQ4VAB",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 974,
+        "total_tokens": 984,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002555
+    },
+    {
+      "request_id": "4c099f26372d538b26c372a7a40288d457dd9a6cff19778c323425127092d496",
+      "response_id": "chatcmpl-ETmy5BgGa41HRRgnFzaKiWqnQ8r76",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "818c6b000f5c701d547d29b916b096d60bf508c5dd67cb6a5c390c430fa79651",
+      "response_id": "chatcmpl-ETmy63uinLR5mxBn6FLuk3HPzjwYG",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 974,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025309999999999997
+    },
+    {
+      "request_id": "8136854d902c8f783ff17466b6eb8cbbcacb2af7160828abf54aa8ac0926f50e",
+      "response_id": "chatcmpl-ETmy7o4AZXCB0lKaATh2opRaod7Xk",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 974,
+        "total_tokens": 984,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002555
+    },
+    {
+      "request_id": "fc8f0a81e03c80c7bad2602310b33dd75b6333e204b26153cac7fb794d7bf31f",
+      "response_id": "chatcmpl-ETmy8oF8e1zqA0LDSsW5uQBJXGBOd",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "bffe181668eebef7e190f905ebd0ace8bcd991ca53481c4455a41d2bee723995",
+      "response_id": "chatcmpl-ETmy9FGeIkoSVmc323ggJvJR9Gvpo",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 974,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002699
+    },
+    {
+      "request_id": "3e0451b6a45b75c0482a4fd2ebc7652fbcae05784cd1993cdaeef82193955e41",
+      "response_id": "chatcmpl-ETmyAKvr91fkb2s9RffaO02ehtAMf",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 974,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002699
+    },
+    {
+      "request_id": "4c0b63309d3b9606e1d87bfab6be31b1522c744eff0d49d17fefea0a64a7444c",
+      "response_id": "chatcmpl-ETmyBCFpo6F9nf74sZInU6of1dGs2",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 974,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002627
+    },
+    {
+      "request_id": "e9603e10cc74e7d25fdeb8109c2b8d5e482fb0b29a496f4fb26f2de3322e7b62",
+      "response_id": "chatcmpl-ETmyCLbh04ImdVqpgsXSzMRbQCDBB",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "73b57876a973c2e7993f89b2b42c395aac327249b45cd58fbfc651f61aa7903f",
+      "response_id": "chatcmpl-ETmyDvZajggBSShQap78eJDdASlL8",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 974,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002627
+    },
+    {
+      "request_id": "d5d5fd8c275645371d3571ebae8268827805b76ae647288bc712815ac7d72db8",
+      "response_id": "chatcmpl-ETmyEFjKlmXi0Eohz3hoPi8wbq1bc",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 20,
+        "prompt_tokens": 974,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002675
+    },
+    {
+      "request_id": "7757ef66956d658ff491403b90eb050a5a99e88df3b62961c54e4248d721a4aa",
+      "response_id": "chatcmpl-ETmyFsOf3FGLCHUkYsKcN7eJrHzC6",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 974,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002699
+    },
+    {
+      "request_id": "7daf7730f7611b8c0946c4ab8e856221a44787fec2a28b74b5e82b1e360afeb1",
+      "response_id": "chatcmpl-ETmyGeO74WpoPmEClKXt8oiF94xYZ",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "65b6c628ac84a3f00aa43a0d7e216d1b13832eb77e6e2e885dd46f439c9bf2fa",
+      "response_id": "chatcmpl-ETmyHSLIFsgQE0JXmkqnLgbsAah0q",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "87c7e78955f6c197c08269fcd59d090bc2babf9ff170845be5356e864cf8abbd",
+      "response_id": "chatcmpl-ETmyIhhaRzVvy66W9hF8SIb2DuzlF",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "6b00d1b3c5dfefb41a643bae303d91c063446f1c8124c901cb07c58b56d22275",
+      "response_id": "chatcmpl-ETmyJ6jVyhzCQj41Tnkt61IA73N1W",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 974,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025309999999999997
+    },
+    {
+      "request_id": "b894c3921a4ebfd4e3415a92a8db56026de783df02ed84fd692b6c1b2f91e7b7",
+      "response_id": "chatcmpl-ETmyKMVsIpsYb2gL03LUaumGSMe9a",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 974,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002627
+    },
+    {
+      "request_id": "968bff9650151412abb44ec6bc25f7544f6031df6c5c7cb3addda0823af5c2f6",
+      "response_id": "chatcmpl-ETmyLskOoWyFxl3vVZxgutYuO31pg",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 974,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025309999999999997
+    },
+    {
+      "request_id": "0ec9c0f30956454008684c129cbc54925fd7b57627fff6d658dfc7c0d3fa5793",
+      "response_id": "chatcmpl-ETmyMibOjm7VgT4aJOtPaH91Tj6Eo",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "64b68a872e2128dee79b318d2b298eac47045b91123207fb1a84959be577e150",
+      "response_id": "chatcmpl-ETmyNWb5glpsJ2iin25GnCLwdD8xX",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "9a5ba91cf391cdcefc7b7505b7eaee8b90f0b9a4370cdc326902233606a4fb66",
+      "response_id": "chatcmpl-ETmyOLUUxIAsR6JE6k4QojeuL5eg4",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 974,
+        "total_tokens": 1000,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002747
+    },
+    {
+      "request_id": "f97698e3cfb154584082f4054a42e58124b3425ffce0c260b04a9831f5689e64",
+      "response_id": "chatcmpl-ETmyPobQrdsnF3qa92LrwKdBZFZWq",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 974,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00025069999999999997
+    },
+    {
+      "request_id": "4f4576b9301cc695654316a7660745102eb3c083e50d606c9904648db0e5d9ff",
+      "response_id": "chatcmpl-ETmyQsAgOw1ELrwg9xkMjvdJQjQfj",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 974,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002483
+    },
+    {
+      "request_id": "06574311c50d1b3bdb9e1dc77a59fbe7fce5649f19558472880d38e4b4775103",
+      "response_id": "chatcmpl-ETmyRkixiawmvJ2RWLmcPYsQr3tGR",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 974,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0002723
+    }
+  ]
+}

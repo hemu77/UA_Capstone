@@ -1,0 +1,528 @@
+{
+  "cell": {
+    "run_id": "revision896_f2c6b9696988_global_gpt-6-sol_us_english_s0",
+    "model": "gpt-6-sol",
+    "method": "global",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "f2c6b9696988fbc9d6ee438c45a3d9d56b253c9d7af14bbed0a116485b9b0e97",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "4c25c28588c831b7a70125166ce4226cf9c613ab123ec883fd86c1b8ae97eea6",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "ba2146c8b611b0b68ad0a35356f7361acf15e956b68590373f6d9029da599e2b"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "15"
+        ],
+        [
+          "0",
+          "25"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "10",
+          "27"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "11",
+          "38"
+        ],
+        [
+          "11",
+          "43"
+        ],
+        [
+          "12",
+          "14"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "28"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "41"
+        ],
+        [
+          "13",
+          "47"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "14",
+          "42"
+        ],
+        [
+          "15",
+          "25"
+        ],
+        [
+          "15",
+          "43"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "16",
+          "45"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "37"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "22"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "19",
+          "46"
+        ],
+        [
+          "19",
+          "48"
+        ],
+        [
+          "2",
+          "31"
+        ],
+        [
+          "2",
+          "42"
+        ],
+        [
+          "20",
+          "32"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "4"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "7"
+        ],
+        [
+          "20",
+          "8"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "21",
+          "45"
+        ],
+        [
+          "22",
+          "31"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "26"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "24",
+          "29"
+        ],
+        [
+          "24",
+          "30"
+        ],
+        [
+          "25",
+          "3"
+        ],
+        [
+          "25",
+          "32"
+        ],
+        [
+          "26",
+          "38"
+        ],
+        [
+          "27",
+          "39"
+        ],
+        [
+          "27",
+          "43"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "29",
+          "30"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "7"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "36"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "30",
+          "6"
+        ],
+        [
+          "31",
+          "46"
+        ],
+        [
+          "31",
+          "9"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "49"
+        ],
+        [
+          "33",
+          "41"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "34",
+          "36"
+        ],
+        [
+          "34",
+          "48"
+        ],
+        [
+          "35",
+          "37"
+        ],
+        [
+          "35",
+          "46"
+        ],
+        [
+          "36",
+          "48"
+        ],
+        [
+          "36",
+          "6"
+        ],
+        [
+          "38",
+          "42"
+        ],
+        [
+          "39",
+          "40"
+        ],
+        [
+          "4",
+          "5"
+        ],
+        [
+          "4",
+          "8"
+        ],
+        [
+          "40",
+          "43"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "41",
+          "48"
+        ],
+        [
+          "44",
+          "49"
+        ],
+        [
+          "46",
+          "48"
+        ],
+        [
+          "47",
+          "48"
+        ],
+        [
+          "5",
+          "8"
+        ],
+        [
+          "7",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.06938775510204082,
+    "avg_clustering_coef": 0.44866666666666677,
+    "prop_nodes_lcc": 1.0,
+    "global_efficiency": 0.3018545513443482,
+    "num_components": 1,
+    "modularity": 0.6907266435986159,
+    "radius_lcc": 6,
+    "diameter_lcc": 9,
+    "avg_shortest_path_lcc": 4.388571428571429
+  },
+  "homophily": {
+    "gender": [
+      0.11031746031746027,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 64,
+          "within_group_share": 0.5,
+          "coleman": 0.16666666666666663
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 36,
+          "within_group_share": 0.2222222222222222,
+          "coleman": 0.02777777777777775
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 70,
+          "within_group_share": 0.45714285714285713,
+          "coleman": 0.09523809523809518
+        }
+      ]
+    ],
+    "religion": [
+      0.8104901358577828,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 33,
+          "within_group_share": 0.9090909090909091,
+          "coleman": 0.8863636363636362
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 34,
+          "within_group_share": 0.8235294117647058,
+          "coleman": 0.7794117647058824
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 34,
+          "within_group_share": 0.8235294117647058,
+          "coleman": 0.7794117647058824
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 32,
+          "within_group_share": 0.875,
+          "coleman": 0.84375
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 37,
+          "within_group_share": 0.8108108108108109,
+          "coleman": 0.7635135135135135
+        }
+      ]
+    ],
+    "political orientation": [
+      0.36819535941572823,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 52,
+          "within_group_share": 0.46153846153846156,
+          "coleman": 0.20814479638009054
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 67,
+          "within_group_share": 0.7164179104477612,
+          "coleman": 0.5703301673450927
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 51,
+          "within_group_share": 0.5490196078431373,
+          "coleman": 0.316696375519905
+        }
+      ]
+    ],
+    "age_assortativity": 0.8377048056565072
+  },
+  "cumulative_conservative_charge_usd": 4.113894775,
+  "artifact_sha256": {
+    ".adj": "0e3019c3a79dec8c1e90db5e9f99e4aceff2dd9bf842f2adf4fc7293e903906b",
+    ".png": "a053e15585dfe6339d2f1d1aa5a56cc5cb8dc48711be611fe89432beec2b9bc8"
+  },
+  "requests": [
+    {
+      "request_id": "5a8f673378c5f87e768b7c27b5174cc1e78272b29afd69251060c762fe2a3914",
+      "response_id": "chatcmpl-ETnBbl7OP58ugJeeKh9kk9UnI96mV",
+      "resolved_model": "gpt-6-sol",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 427,
+        "prompt_tokens": 876,
+        "total_tokens": 1303,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00646
+    }
+  ]
+}

@@ -13,6 +13,7 @@ import json
 import os
 import subprocess
 import sys
+import math
 from types import SimpleNamespace
 
 import networkx as nx
@@ -216,12 +217,20 @@ def build_pairwise_graph_divergence(condition_records, graphs_by_condition, grou
     divergence_rows = []
     for group_key, records in grouped.items():
         by_value = {record[compare_key]: graphs_by_condition[record['save_prefix']] for record in records}
+        if len(by_value) != len(records):
+            raise ValueError('Ambiguous matched block: duplicate comparison values')
         for value_a, value_b in itertools.combinations(sorted(by_value.keys()), 2):
             graphs_a = by_value[value_a]
             graphs_b = by_value[value_b]
-            for offset, (graph_a, graph_b) in enumerate(zip(graphs_a, graphs_b)):
+            seeds_a = [g.graph.get('seed', offset) for offset, g in enumerate(graphs_a)]
+            seeds_b = [g.graph.get('seed', offset) for offset, g in enumerate(graphs_b)]
+            if len(set(seeds_a)) != len(seeds_a) or set(seeds_a) != set(seeds_b) or len(set(seeds_b)) != len(seeds_b):
+                raise ValueError('Matched comparisons require identical unique seed sets')
+            graphs_b_by_seed = dict(zip(seeds_b, graphs_b))
+            for seed, graph_a in zip(seeds_a, graphs_a):
+                graph_b = graphs_b_by_seed[seed]
                 row = {key: value for key, value in zip(group_keys, group_key)}
-                row['seed'] = offset
+                row['seed'] = seed
                 row[pair_label] = f'{value_a} vs {value_b}'
                 row['edge_distance'] = compute_edge_distance(graph_a, graph_b)
                 divergence_rows.append(row)
@@ -277,15 +286,19 @@ def verify_condition_outputs(save_prefix, start_seed, num_seeds, expected_nodes=
         if fn.startswith('cost_stats_') and fn.endswith('.csv')
     ] if os.path.exists(cost_stats_dir) else []
 
-    homophily_ok = os.path.exists(homophily_path) and not pd.read_csv(homophily_path).empty
-    network_metrics_ok = os.path.exists(network_metrics_path)
-    metrics_have_required_scalars = False
-    if network_metrics_ok:
-        network_df = pd.read_csv(network_metrics_path)
-        scalar_df = network_df[pd.isnull(network_df.get('node'))]
-        required_scalars = {'density', 'avg_clustering_coef', 'prop_nodes_lcc', 'modularity'}
-        present_scalars = set(scalar_df['metric_name'].unique())
-        metrics_have_required_scalars = required_scalars.issubset(present_scalars) and scalar_df['_metric_value'].notna().all()
+    def read_table(path):
+        try:
+            table = pd.read_csv(path)
+            if '_metric_value' in table:
+                table['_metric_value'] = pd.to_numeric(table['_metric_value'], errors='coerce')
+            return table
+        except (OSError, ValueError, pd.errors.ParserError):
+            return pd.DataFrame()
+    homophily_df = read_table(homophily_path)
+    network_df = read_table(network_metrics_path)
+    cost_tables = [read_table(os.path.join(cost_stats_dir, name)) for name in cost_stats_files]
+    cost_seeds = {int(seed) for table in cost_tables if 'seed' in table
+                  for seed in pd.to_numeric(table['seed'], errors='coerce').dropna()}
 
     for seed in range(start_seed, start_seed + num_seeds):
         graph_path = os.path.join(PATH_TO_TEXT_FILES, f'{save_prefix}_{seed}.adj')
@@ -295,10 +308,38 @@ def verify_condition_outputs(save_prefix, start_seed, num_seeds, expected_nodes=
         png_ok = False
         node_count = None
         edge_count = None
+        simple_graph_ok = False
+        metrics_match_graph = False
         if graph_exists:
-            G = nx.read_adjlist(graph_path)
-            node_count = len(G.nodes())
-            edge_count = len(G.edges())
+            try:
+                G = nx.read_adjlist(graph_path)
+                node_count = len(G.nodes())
+                edge_count = len(G.edges())
+                simple_graph_ok = nx.number_of_selfloops(G) == 0
+            except (OSError, ValueError, nx.NetworkXError):
+                G = None
+        else:
+            G = None
+        offset = seed - start_seed
+        required = {'density', 'avg_clustering_coef', 'prop_nodes_lcc', 'modularity'}
+        network_metrics_ok = {'graph_nr', 'metric_name', '_metric_value'}.issubset(network_df.columns)
+        homophily_ok = {'graph_nr', 'metric_name', '_metric_value', 'demo'}.issubset(homophily_df.columns)
+        if homophily_ok:
+            values = homophily_df.loc[homophily_df['graph_nr'] == offset, '_metric_value']
+            homophily_ok = len(values) >= 2 * len(DEFAULT_DEMOS) and values.map(lambda v: pd.notna(v) and math.isfinite(v)).all()
+        metrics_have_required_scalars = False
+        if network_metrics_ok:
+            scalar = network_df[network_df['graph_nr'] == offset]
+            if 'node' in scalar:
+                scalar = scalar[scalar['node'].isna()]
+            scalar = scalar[scalar['metric_name'].isin(required)]
+            metrics_have_required_scalars = (len(scalar) == len(required) and set(scalar['metric_name']) == required
+                and scalar['_metric_value'].map(lambda v: pd.notna(v) and math.isfinite(v)).all())
+            if G is not None and node_count and metrics_have_required_scalars:
+                saved = scalar.set_index('metric_name')['_metric_value']
+                actual = {'density': nx.density(G), 'avg_clustering_coef': nx.average_clustering(G),
+                          'prop_nodes_lcc': len(max(nx.connected_components(G), key=len)) / len(G)}
+                metrics_match_graph = all(math.isclose(saved[key], value, abs_tol=1e-8) for key, value in actual.items())
         if png_exists:
             try:
                 with Image.open(plot_path) as img:
@@ -315,13 +356,22 @@ def verify_condition_outputs(save_prefix, start_seed, num_seeds, expected_nodes=
             'homophily_ok': homophily_ok,
             'network_metrics_ok': network_metrics_ok,
             'metrics_have_required_scalars': metrics_have_required_scalars,
-            'cost_stats_ok': len(cost_stats_files) > 0,
+            'cost_stats_ok': seed in cost_seeds,
+            'simple_graph_ok': simple_graph_ok,
+            'metrics_match_graph': metrics_match_graph,
             'node_count': node_count,
             'edge_count': edge_count,
             'node_count_ok': node_count == expected_nodes,
             'edge_count_ok': (edge_count is not None) and (edge_count > 0),
         })
+    for row in rows:
+        row['passed'] = all(row[key] for key in VERIFICATION_CHECKS)
     return rows
+
+
+VERIFICATION_CHECKS = ['graph_exists', 'png_ok', 'homophily_ok', 'network_metrics_ok',
+                       'metrics_have_required_scalars', 'cost_stats_ok', 'simple_graph_ok',
+                       'metrics_match_graph', 'node_count_ok', 'edge_count_ok']
 
 
 def save_common_outputs(output_dir, condition_summaries, dominance_df, divergence_df, verification_rows):

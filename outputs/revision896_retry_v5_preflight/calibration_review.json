@@ -1,0 +1,54 @@
+{
+  "scope": "calibration",
+  "approved_limit": 68,
+  "starting_ledger_usd": 2.018819775,
+  "additional_allowance_usd": 5,
+  "spend_ceiling_usd": 7.018819775,
+  "generation_authorized": false,
+  "pause_reason": "Calibration completed 68/68 and inspected. Stop after cost/runtime estimates as requested. Main-study approval remains absent; no further paid generation authorized by this receipt.",
+  "recovery_authorization": "calibration-v5-transport-recovery-20260930",
+  "recovery_scope": "Author requested completion of calibration within original $5 additional allowance. Retire only request 659cc446cedb665c4735858c9bd74d243ed79ecf4a076cbb3f5a9574a8c2d9a9 at full $0.000969375 reservation, never a refund or verified invoice. Permit one separately charged replacement, reuse 194 exact cached replies, preserve six completed graphs. Main study remains unauthorized.",
+  "code_review": true,
+  "price_review": true,
+  "translation_review": false,
+  "cost_review": false,
+  "study_design_review": false,
+  "ai_translation_review": true,
+  "human_bilingual_review": false,
+  "authorization_basis": "Author directed completion of bounded calibration inspection and cost/runtime estimates, then stop before 896. The original $5 additional allowance includes every superseded attempt and abandoned reservation; it is not reset. Main study is not authorized.",
+  "review_evidence": "All 896 full-roster fixture cells and 12 controls passed after logging/recovery edits. Offline disposable-ledger replay reused 194 exact requests with zero API calls and unchanged real ledger. Focused recovery, API-body parity, budget, receipt and source-provenance tests passed. Linnaeus read-only reviewer closed both findings (execution provenance and single-use retirement authorization); no remaining blocking code findings. Exact original/executing hashes are in source_compatibility.json. Prompts, engine, parser, metric code and runtime unchanged; main and human bilingual review gates remain closed.",
+  "ledger_before_v5_usd": 4.095271875,
+  "remaining_original_allowance_usd": 2.9235479,
+  "abandoned_request_id": "cb5b221590a54c3bb1938e9c5c9c3f72c9b70d3825bd07d1c11fc8bfd5027e49",
+  "abandoned_reservation_usd": 0.0163315,
+  "price_evidence": {
+    "checked_date": "2026-09-30",
+    "unit": "USD per million input/output tokens; standard short-context rates",
+    "gpt-4.1": [2, 8],
+    "gpt-5.6-luna": [0.2, 1.2],
+    "gpt-6-luna": [0.1, 0.5],
+    "gpt-6-sol": [2, 10],
+    "sources": [
+      "https://developers.openai.com/api/docs/models/gpt-4.1",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "https://developers.openai.com/api/docs/models/gpt-6-sol"
+    ],
+    "accounting": "1.25x input plus output; no cache discounts assumed. Retained abandoned reservation is unknown billing, not provider usage."
+  },
+  "protocol_sha256": "f2c6b9696988fbc9d6ee438c45a3d9d56b253c9d7af14bbed0a116485b9b0e97",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239"
+  },
+  "runtime_versions": {
+    "python": "3.11.9", "networkx": "3.1", "numpy": "1.26.4",
+    "pandas": "1.5.0", "openai": "1.43.1", "matplotlib": "3.6.2"
+  }
+}

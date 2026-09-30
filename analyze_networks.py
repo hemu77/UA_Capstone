@@ -7,6 +7,7 @@ connectedness, centrality, and related metrics.
 """
 
 from collections import Counter 
+from itertools import combinations, permutations
 import networkx as nx
 import os
 import matplotlib.pyplot as plt
@@ -21,45 +22,44 @@ import plotting
 from constants_and_utils import *
 from generate_personas import *
 
-def load_list_of_graphs(prefix, start_seed, end_seed, directed=True, include_ts=False):
+def load_list_of_graphs(prefix, start_seed, end_seed, directed=False, include_ts=False):
     """
-    Load list of graphs from adjlist. By default, assume directed graphs.
+    Load generated undirected graphs; directed corpora must opt in explicitly.
     """
     # Each seed corresponds to one saved graph file on disk.
     list_of_G = []
     min_time, max_time = None, None
     for s in range(start_seed, end_seed):
         fn = os.path.join(PATH_TO_TEXT_FILES, f'{prefix}_{s}.adj')
-        mod = time.ctime(os.path.getmtime(fn))  # last modified time
+        mod = os.path.getmtime(fn)
         if (min_time is None) or (mod < min_time):
             min_time = mod 
-        elif (max_time is None) or (mod > max_time):
+        if (max_time is None) or (mod > max_time):
             max_time = mod 
         if directed:
             G = nx.read_adjlist(fn, create_using=nx.DiGraph)
         else:
             G = nx.read_adjlist(fn)
+        G.graph['seed'] = s
         list_of_G.append(G)
     if include_ts:
-        return list_of_G, min_time, max_time
+        return list_of_G, time.ctime(min_time) if min_time is not None else None, time.ctime(max_time) if max_time is not None else None
     return list_of_G
 
 def get_edge_proportions(list_of_G):
     """
     What proportion of the time does each edge appear?
     """
-    edge_counts = {}
-    # initialize all possible edge counts to 0
-    nodes = list_of_G[0].nodes()
-    for ni in nodes:
-        for nj in nodes:
-#            if ni != nj:
-            edge_counts[(ni, nj)] = 0
-    assert len(edge_counts) == (len(nodes) * (len(nodes))) # CHANGE
-    # add actual edges
+    if not list_of_G:
+        return [], []
+    first = list_of_G[0]
+    nodes = sorted(first.nodes(), key=str)
+    pairs = permutations(nodes, 2) if first.is_directed() else combinations(nodes, 2)
+    edge_counts = dict.fromkeys(pairs, 0)
     for G in list_of_G:
-        for e in G.edges():
-            edge_counts[e] = edge_counts[e] + 1
+        _check_comparable_graphs(first, G)
+        for u, v in edge_counts:
+            edge_counts[(u, v)] += int(G.has_edge(u, v))
     # sort by highest to lowest count
     sorted_edges = sorted(edge_counts.keys(), key=lambda x: -edge_counts[x])
     sorted_props = [edge_counts[e]/len(list_of_G) for e in sorted_edges]
@@ -71,14 +71,86 @@ def compute_edge_distance(G1, G2):
     Disagree means edge is present in one and missing in the other.
     Return the proportion of edges where G1 and G2 disagree.
     """
-    assert set(G1.nodes()) == set(G2.nodes())
-    E1 = set(G1.edges())
-    E2 = set(G2.edges())
-    distance = len(E1 - E2)  # present in G1 but missing in G2
-    distance += len(E2 - E1)  # present in G2 but missing in G1
-    num_nodes = len(G1.nodes())
-    num_edges = num_nodes * (num_nodes-1)  # total num possible edges
-    return distance / num_edges
+    _check_comparable_graphs(G1, G2)
+    # A--B and B--A are one undirected tie, regardless of insertion order.
+    edge_key = tuple if G1.is_directed() else frozenset
+    E1 = {edge_key(e) for e in G1.edges()}
+    E2 = {edge_key(e) for e in G2.edges()}
+    n = len(G1)
+    possible = n * (n - 1) if G1.is_directed() else n * (n - 1) // 2
+    return len(E1 ^ E2) / possible if possible else 0.0
+
+
+def _check_comparable_graphs(left, right):
+    if set(left) != set(right) or left.is_directed() != right.is_directed():
+        raise ValueError('Graph comparison requires identical node IDs and direction.')
+    if any(g.is_multigraph() or nx.number_of_selfloops(g) for g in (left, right)):
+        raise ValueError('Metrics require simple graphs without self-loops.')
+
+
+def compute_network_metrics(G):
+    """One shared scalar definition for scripts, corrected exports and notebooks.
+
+    Path lengths refer to the largest connected component, not the full
+    disconnected graph. Undefined quantities stay NaN in CSV (null in JSON).
+    """
+    _check_comparable_graphs(G, G)
+    if G.is_directed():
+        raise ValueError('Choose an explicit undirected projection before scalar analysis.')
+    # Louvain visits nodes/neighbors in insertion order even with a fixed seed.
+    # Canonicalize both so a saved/reloaded graph has identical measurements.
+    order = sorted(G, key=lambda node: (type(node).__name__, repr(node)))
+    rank = {node: i for i, node in enumerate(order)}
+    canonical = nx.Graph()
+    canonical.add_nodes_from((node, G.nodes[node]) for node in order)
+    canonical.add_edges_from(sorted(G.edges(data=True), key=lambda edge: sorted((rank[edge[0]], rank[edge[1]]))))
+    G = canonical
+    n, m = len(G), G.number_of_edges()
+    lcc = G.subgraph(max(nx.connected_components(G), key=len)) if n else G
+    paths = {'radius_lcc': nx.radius, 'diameter_lcc': nx.diameter,
+             'avg_shortest_path_lcc': nx.average_shortest_path_length}
+    metrics = {'density': nx.density(G),
+               'avg_clustering_coef': nx.average_clustering(G) if n else np.nan,
+               'prop_nodes_lcc': len(lcc) / n if n else np.nan,
+               'global_efficiency': nx.global_efficiency(G),
+               'num_components': nx.number_connected_components(G),
+               'modularity': np.nan}
+    metrics.update({key: func(lcc) if len(lcc) > 1 else np.nan for key, func in paths.items()})
+    if m:
+        communities = nx.community.louvain_communities(G, seed=0)
+        metrics['modularity'] = nx.community.modularity(G, communities)
+    return metrics
+
+
+def compute_coleman_homophily(G, personas, demo):
+    """Return population-weighted Coleman index and the group-specific evidence.
+
+    For group g, s is its fraction of incident tie ends going to its own group;
+    w is its population share. H=(s-w)/(1-w). Groups without ties and a
+    one-group population are undefined, not evidence of zero homophily.
+    """
+    _check_comparable_graphs(G, G)
+    if G.is_directed() or demo == 'age':
+        raise ValueError('Use categorical attributes on an undirected graph; age is numeric.')
+    groups = Counter(personas[node][demo] for node in G)
+    rows = []
+    for group, count in sorted(groups.items()):
+        members = [node for node in G if personas[node][demo] == group]
+        total = sum(G.degree(node) for node in members)
+        same = sum(personas[neighbor][demo] == group for node in members for neighbor in G[node])
+        share = count / len(G)
+        score = (same / total - share) / (1 - share) if total and share < 1 else np.nan
+        rows.append({'group': group, 'population_share': share, 'incident_ties': total,
+                     'within_group_share': same / total if total else np.nan, 'coleman': score})
+    value = sum(row['population_share'] * row['coleman'] for row in rows) if rows else np.nan
+    return value, rows
+
+
+def compute_age_assortativity(G, personas):
+    graph = G.copy()
+    nx.set_node_attributes(graph, {node: float(personas[node]['age']) for node in graph}, 'age')
+    with np.errstate(divide='ignore', invalid='ignore'):
+        return nx.numeric_assortativity_coefficient(graph, 'age') if graph.number_of_edges() else np.nan
 
 def get_edge_summary(list_of_G, save_name):
     """
@@ -102,7 +174,7 @@ def get_edge_summary(list_of_G, save_name):
 
     edges, props = get_edge_proportions(list_of_G)
     print('Most common edges:')
-    for i in range(30):
+    for i in range(min(30, len(edges))):
         print('%d. %s -> %s (p=%.3f)' % (i, edges[i][0], edges[i][1], props[i]))
 
     plotting.plot_props(props, edges, save_name)
@@ -120,7 +192,7 @@ def compute_exp_cross_from_group_counts(group_counts):
             cr_total += group_counts[g1] * group_counts[g2]
     num_nodes = np.sum(list(group_counts.values()))
     total_num_edges = num_nodes * (num_nodes-1) / 2
-    return cr_total / total_num_edges 
+    return cr_total / total_num_edges if total_num_edges else np.nan
 
 def compute_cross_proportions(G, personas, demo_keys, ratio=True):
     """
@@ -132,7 +204,7 @@ def compute_cross_proportions(G, personas, demo_keys, ratio=True):
         return observed 
     complete = nx.complete_graph(G.nodes())
     expected = _compute_cross_proportions(complete, personas, demo_keys)
-    return observed / expected
+    return np.divide(observed, expected, out=np.full_like(observed, np.nan), where=expected != 0)
 
 def _compute_cross_proportions(G, personas, demo_keys):
     """
@@ -151,7 +223,7 @@ def _compute_cross_proportions(G, personas, demo_keys):
                 diff = int(demo1[d] != demo2[d])  # 1 if they are different, 0 otherwise
             crs[ind] += diff
     # get proportion of edges that are cross-relations or average difference in age
-    props = crs / len(G.edges())  
+    props = crs / len(G.edges()) if G.number_of_edges() else np.full(len(demo_keys), np.nan)
     return props
 
 def compute_same_proportions(G, personas, demo_keys, ratio=True):
@@ -164,7 +236,7 @@ def compute_same_proportions(G, personas, demo_keys, ratio=True):
         return observed 
     complete = nx.complete_graph(G.nodes())
     expected = _compute_same_proportions(complete, personas, demo_keys)
-    return observed / expected
+    return np.divide(observed, expected, out=np.full_like(observed, np.nan), where=expected != 0)
 
 def _compute_same_proportions(G, personas, demo_keys):
     """
@@ -183,7 +255,7 @@ def _compute_same_proportions(G, personas, demo_keys):
                 same = int(demo1[d] == demo2[d])
             same_counts[ind] += same
     # get proportion of edges that are same relation
-    props = same_counts / len(G.edges())  
+    props = same_counts / len(G.edges()) if G.number_of_edges() else np.full(len(demo_keys), np.nan)
     return props
 
 def summarize_network_metrics(list_of_G, personas, demo_keys, save_name, demos=True):
@@ -217,16 +289,15 @@ def summarize_network_metrics(list_of_G, personas, demo_keys, save_name, demos=T
     network_func = [nx.density, nx.average_clustering, prop_nodes_in_giant_component, nx.radius, nx.diameter, nx.average_shortest_path_length, nx.community.modularity]
     for graph_nr, G in enumerate(list_of_G):
 
-        for metric_name, f in zip(network_metrics, network_func):
+        scalar = compute_network_metrics(G.to_undirected())
+        for metric_name in network_metrics:
             if metric_name in ['radius', 'diameter', 'avg_shortest_path']:
-                # use LCC for connectivity measures
-                largest_cc = sorted(nx.connected_components(G.to_undirected()), key=len, reverse=True)[0]
-                _metric_value = f(G.subgraph(largest_cc).to_undirected()) / np.log(len(largest_cc))
-            elif metric_name == 'modularity':
-                comms = nx.community.louvain_communities(G.to_undirected())  # get communities with Louvain
-                _metric_value = f(G.to_undirected(), comms)
+                # Preserve the legacy CSV convention; revised exports use explicitly
+                # named raw *_lcc metrics instead of hiding this normalization.
+                lcc_size = scalar['prop_nodes_lcc'] * len(G)
+                _metric_value = scalar[metric_name + '_lcc'] / np.log(lcc_size) if lcc_size > 1 else np.nan
             else:
-                _metric_value = f(G.to_undirected())
+                _metric_value = scalar[metric_name]
 
             network_metrics_df = pd.concat([network_metrics_df, pd.DataFrame({'graph_nr':graph_nr,
                                                                               'metric_name':[metric_name],

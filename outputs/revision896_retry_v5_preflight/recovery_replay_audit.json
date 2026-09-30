@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "paid_calls": 0,
+  "cached_replies_reused": 194,
+  "first_mock_transport_ordinal": 194,
+  "completed_receipt_sha256": {
+    "revision896_f2c6b9696988_global_gpt-4.1_us_english_s0.json": "e479bf602b7b8139a326387f57846b8ffef35afcf7297240b33529c07e862d1c",
+    "revision896_f2c6b9696988_global_gpt-5.6-luna_us_english_s0.json": "fcf7202e7dfa1f4408f0d879594d6c31ae767436a83ee0c56ce36b5ec0abeaa0",
+    "revision896_f2c6b9696988_global_gpt-6-luna_us_english_s0.json": "ff240c8db9b7ab06ba95fd4b9907cbe9bb11f0ce97ace79339b20415f71b7436",
+    "revision896_f2c6b9696988_global_gpt-6-sol_us_english_s0.json": "d52f573036e55822a5fee9c7990f4df50563b0ddb8f444618c1309f17da291db",
+    "revision896_f2c6b9696988_iterative_gpt-4.1_us_english_s0.json": "6214aa73e4d1146963b04463a82250f508479806b4d96360e2484af12d084988",
+    "revision896_f2c6b9696988_iterative_gpt-5.6-luna_us_english_s0.json": "7f19c24670a17a5e25bbdfe034c39bfa05eae0e71217172ed284ece34b0e902f"
+  },
+  "protocol_sha256": "f2c6b9696988fbc9d6ee438c45a3d9d56b253c9d7af14bbed0a116485b9b0e97",
+  "source_sha256": {
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239"
+  },
+  "generation_source_sha256": {
+    "revision224.py": "4c25c28588c831b7a70125166ce4226cf9c613ab123ec883fd86c1b8ae97eea6",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "ba2146c8b611b0b68ad0a35356f7361acf15e956b68590373f6d9029da599e2b"
+  },
+  "ledger_unchanged": true
+}

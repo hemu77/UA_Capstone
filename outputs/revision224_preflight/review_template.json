@@ -1,0 +1,28 @@
+{
+  "protocol_sha256": "2ff33ffb400efe0dfb90bbe82c5eb91898bf39fc2825fe9b738f432a3cb87736",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "95872378217999857585833dff2314a73adbbe12f412363bc5751848a56ff6c9",
+    "revision224_prompts.py": "7411ea94f0c87aeff8c13bf3625a2080df5f7a800e5390fbd99766a9e35d0d36",
+    "generate_networks.py": "b8f953139d929601b846ae81b0751407936a1ccaacb5baa0843513fee34a8a76",
+    "constants_and_utils.py": "170f2b1cb2495ab0baddd68db1b39d88d189882ba195c18799eae679fcd59be0",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "41eda73904827f3fd266772ac874a05ffa3acc60d5b50f5cc29042588eb9d8bf"
+  },
+  "runtime_versions": {
+    "python": "3.11.9",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.0",
+    "openai": "1.43.1",
+    "matplotlib": "3.6.2"
+  },
+  "astra_review": false,
+  "translation_review": false,
+  "cost_review": false,
+  "generation_authorized": false,
+  "approved_limit": 16,
+  "spend_ceiling_usd": 5,
+  "note": "Record actual completed reviews in review.json. Never auto-accept these flags."
+}

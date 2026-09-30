@@ -1,0 +1,88 @@
+{
+  "prompt_file": "C:\\Users\\Hemu\\OneDrive\\Desktop\\D.s\\UA_Captsone_SocN\\outputs\\gemini_network_bonding_prompt.txt",
+  "source_personas": "C:\\Users\\Hemu\\OneDrive\\Desktop\\D.s\\UA_Captsone_SocN\\text-files\\us_50_gpt4o_w_interests.json",
+  "source_network": "C:\\Users\\Hemu\\OneDrive\\Desktop\\D.s\\UA_Captsone_SocN\\text-files\\sequential_gpt-4.1-mini_n5_culture_us_0.adj",
+  "nodes": 50,
+  "edges": 225,
+  "density": 0.184,
+  "same_party": {
+    "count": 121,
+    "share": 0.538
+  },
+  "same_religion": {
+    "count": 80,
+    "share": 0.356
+  },
+  "same_race_ethnicity": {
+    "count": 110,
+    "share": 0.489
+  },
+  "top_hubs": [
+    [
+      13,
+      18
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      11,
+      16
+    ],
+    [
+      3,
+      16
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      26,
+      15
+    ],
+    [
+      8,
+      15
+    ],
+    [
+      0,
+      14
+    ]
+  ],
+  "cross_party_bridges": [
+    [
+      11,
+      15
+    ],
+    [
+      26,
+      12
+    ],
+    [
+      19,
+      10
+    ],
+    [
+      36,
+      9
+    ],
+    [
+      1,
+      9
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      24,
+      8
+    ],
+    [
+      6,
+      8
+    ]
+  ]
+}

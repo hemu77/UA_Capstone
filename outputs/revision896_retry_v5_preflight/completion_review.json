@@ -1,0 +1,19 @@
+{
+  "status": "CALIBRATION_COMPLETE_AWAITING_MAIN_APPROVAL",
+  "verified_networks": 68,
+  "offline_controls": 204,
+  "tests_passed": 88,
+  "offline_fixture_cells": 896,
+  "notebook_code_cells_syntax_checked": 42,
+  "notebook_fresh_data_cell_executed": true,
+  "additional_calibration_usd": 4.45452445,
+  "remaining_original_allowance_usd": 0.5454755499999999,
+  "main_generation_authorized": false,
+  "calibration_generation_authorized": false,
+  "reviewer": "Linnaeus: no material cost/runtime arithmetic findings; read-only report review",
+  "reports_sha256": {
+    "outputs\\revision896_retry_v5_preflight\\calibration_report.json": "b259b1c198567ce6245e1c24d1d083e5d7da14c2b171b4f7c21fe488284733c2",
+    "stats\\revision896_retry_v5\\calibration_inspection.json": "7b14bd8e9d1526f652929f3337efcaaeff252746aad9e7bfd2c7056e598205bf",
+    "stats\\revision896_retry_v5\\analysis_report.json": "3c46f91492790a2f52d5fdca83db3a0fde7d2e39560274e327b479753237d052"
+  }
+}

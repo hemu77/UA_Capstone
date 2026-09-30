@@ -62,7 +62,7 @@ def build_research_summary(condition_summaries, dominance_df, divergence_df):
     if len(q1_ranked) > 0:
         top = q1_ranked.iloc[0]
         lines.append(
-            f'- The largest culture-driven homophily shift appears on `{top["demo"]}` with mean same-ratio range {top["range"]:.3f} across conditions.'
+            f'- The largest pooled descriptive same-ratio range is for `{top["demo"]}`: {top["range"]:.3f}. This mixes conditions, not an isolated culture effect.'
         )
     topology_df = condition_summaries[
         (condition_summaries['table'] == 'network')
@@ -74,7 +74,7 @@ def build_research_summary(condition_summaries, dominance_df, divergence_df):
     if len(topology_ranked) > 0:
         top_metric = topology_ranked.iloc[0]
         lines.append(
-            f'- The topology metric with the widest cross-culture spread is `{top_metric["metric_name"]}` with range {top_metric["range"]:.3f}.'
+            f'- The widest pooled topology spread is `{top_metric["metric_name"]}`: {top_metric["range"]:.3f}. Use matched blocks to isolate context differences.'
         )
     lines.append('')
 

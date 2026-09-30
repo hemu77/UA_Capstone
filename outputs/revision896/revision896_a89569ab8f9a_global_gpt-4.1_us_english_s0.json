@@ -1,0 +1,248 @@
+{
+  "cell": {
+    "run_id": "revision896_a89569ab8f9a_global_gpt-4.1_us_english_s0",
+    "model": "gpt-4.1",
+    "method": "global",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "a89569ab8f9a7862a9c82da2ad81111211bdd61417a477d036bb59e2000fece6",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "e2ac221e86045a3824bc8e160fb32452047428ec864d2e9dd07101e560a54939",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "b8f953139d929601b846ae81b0751407936a1ccaacb5baa0843513fee34a8a76",
+      "constants_and_utils.py": "d4095580b683987f7e2821cf5abf7fe71aeb5f5d3dde26657d60a01bdfed958c",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "8b9595299a94972b232ea650e43f42c52c06c0a4a7ae6817c53dc3586b1440f8"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "12",
+          "22"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "20",
+          "34"
+        ]
+      ],
+      "removed": [],
+      "attempts": 2
+    }
+  ],
+  "metrics": {
+    "density": 0.0032653061224489797,
+    "avg_clustering_coef": 0.0,
+    "prop_nodes_lcc": 0.04,
+    "global_efficiency": 0.0032653061224489797,
+    "num_components": 46,
+    "modularity": 0.75,
+    "radius_lcc": 1,
+    "diameter_lcc": 1,
+    "avg_shortest_path_lcc": 1.0
+  },
+  "homophily": {
+    "gender": [
+      0.5555555555555556,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 3,
+          "within_group_share": 0.6666666666666666,
+          "coleman": 0.44444444444444436
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 2,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 3,
+          "within_group_share": 0.6666666666666666,
+          "coleman": 0.44444444444444436
+        }
+      ]
+    ],
+    "religion": [
+      null,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 4,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 0,
+          "within_group_share": null,
+          "coleman": null
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 4,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 0,
+          "within_group_share": null,
+          "coleman": null
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 0,
+          "within_group_share": null,
+          "coleman": null
+        }
+      ]
+    ],
+    "political orientation": [
+      1.0,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 2,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 4,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 2,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        }
+      ]
+    ],
+    "age_assortativity": 0.3218562874251497
+  },
+  "cumulative_conservative_charge_usd": 2.026528775,
+  "artifact_sha256": {
+    ".adj": "ce1593668dee58577508eef5611a87645414a02a6743066cd30d755cc637b35a",
+    ".png": "275dbabebad147ca27cf0805b276c333bae196c1989b45520dbeeb4e55c36ead"
+  },
+  "requests": [
+    {
+      "request_id": "d4452f5a12489a43c65c19a07093c2d8eff67a2e1e452b17cad0e07f11debfd0",
+      "response_id": "chatcmpl-ETm4Oqs94WafeYAXK7Npb7RFoRBKC",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 283,
+        "prompt_tokens": 877,
+        "total_tokens": 1160,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": false,
+        "error": "Duplicate friendship choices are not allowed",
+        "duplicate_edges": [
+          [
+            "21",
+            "17"
+          ],
+          [
+            "22",
+            "12"
+          ],
+          [
+            "31",
+            "18"
+          ],
+          [
+            "34",
+            "20"
+          ]
+        ]
+      },
+      "conservative_charge_usd": 0.0044565
+    },
+    {
+      "request_id": "a4f074ce0ca1d3224f4d2fb0279b3328cba3c3444e40b09203dc7c647549c6a7",
+      "response_id": "chatcmpl-ETm4Ssrivsd3Tj39hLj3MDSVk0PMw",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 1253,
+        "total_tokens": 1268,
+        "prompt_tokens_details": {
+          "cached_tokens": 1024,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0032525
+    }
+  ]
+}

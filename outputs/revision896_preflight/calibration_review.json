@@ -1,0 +1,52 @@
+{
+  "scope": "calibration",
+  "approved_limit": 68,
+  "starting_ledger_usd": 2.018819775,
+  "additional_allowance_usd": 5,
+  "spend_ceiling_usd": 7.018819775,
+  "generation_authorized": false,
+  "revocation_reason": "Live calibration exposed partial global correction accepted as a full graph. Original evidence preserved; fixed protocol uses retry_v2 namespace. An interrupted paid reservation remains unresolved. No restart authorized by this receipt.",
+  "code_review": true,
+  "price_review": true,
+  "translation_review": false,
+  "cost_review": false,
+  "study_design_review": false,
+  "authorization_basis": "Author explicitly approved up to $5 additional calibration usage only. Main generation is not approved. Configure a fresh local credential before execution.",
+  "review_evidence": "67 offline tests passed; 896 fixture cells and 12 controls checked. Two independent read-only AI reviewers rechecked the final English/Hindi/Japanese/Brazilian Portuguese instructions and retries and closed their bounded findings. TRANSLATION_REVIEW.md records the evidence and exact hashes. This is AI-assisted semantic/code review, not human bilingual or empirical validation.",
+  "ai_translation_review": true,
+  "human_bilingual_review": false,
+  "price_evidence": {
+    "checked_date": "2026-09-30",
+    "unit": "USD per million input/output tokens; standard short-context rates",
+    "gpt-4.1": [2, 8],
+    "gpt-5.6-luna": [0.2, 1.2],
+    "gpt-6-luna": [0.1, 0.5],
+    "gpt-6-sol": [2, 10],
+    "sources": [
+      "https://developers.openai.com/api/docs/models/gpt-4.1",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "https://developers.openai.com/api/docs/models/gpt-6-sol"
+    ],
+    "accounting": "Existing PaidCaller reserves conservatively and charges 1.25x input plus output. No cache discounts assumed. API access and actual prompt behavior remain untested for this fresh protocol."
+  },
+  "protocol_sha256": "a89569ab8f9a7862a9c82da2ad81111211bdd61417a477d036bb59e2000fece6",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "e2ac221e86045a3824bc8e160fb32452047428ec864d2e9dd07101e560a54939",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "b8f953139d929601b846ae81b0751407936a1ccaacb5baa0843513fee34a8a76",
+    "constants_and_utils.py": "d4095580b683987f7e2821cf5abf7fe71aeb5f5d3dde26657d60a01bdfed958c",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "8b9595299a94972b232ea650e43f42c52c06c0a4a7ae6817c53dc3586b1440f8"
+  },
+  "runtime_versions": {
+    "python": "3.11.9",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.0",
+    "openai": "1.43.1",
+    "matplotlib": "3.6.2"
+  }
+}

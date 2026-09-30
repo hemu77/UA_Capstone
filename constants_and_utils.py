@@ -14,7 +14,7 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from openai import OpenAI
+from openai import OpenAI, APIConnectionError, RateLimitError, InternalServerError
 import random
 import json
 from PIL import Image
@@ -28,6 +28,10 @@ PATH_TO_FOLDER = '.'
 PATH_TO_TEXT_FILES = PATH_TO_FOLDER + '/text-files'  # folder holding text files, typically GPT output
 PATH_TO_STATS_FILES = PATH_TO_FOLDER + '/stats'  # folder holding stats files, eg, proportion of nodes in giant component
 DEFAULT_TEMPERATURE = 0.8
+# Revision release gate: a key alone is not authorization to spend. The existing
+# API path lacks per-attempt dollar reservations and durable failure accounting.
+# Keep it locked until that runner is implemented, tested, priced and approved.
+PAID_GENERATION_READY = False
 SHOW_PLOTS = False
 OPENAI_MODEL_PREFIXES = ('gpt-', 'o1', 'o3', 'o4')
 
@@ -126,6 +130,8 @@ def prop_nodes_in_giant_component(G):
     """
     Get proportion of nodes in largest conneced component.
     """
+    if not len(G):
+        return np.nan
     largest_cc = max(nx.connected_components(G.to_undirected()), key=len)
     return len(largest_cc) / len(G.nodes())
 
@@ -191,15 +197,18 @@ def get_llm_response(model, messages, savename=None, temp=DEFAULT_TEMPERATURE, v
     """
     Call OpenAI API, check for finish reason; if all looks good, return response.
     """
+    if not PAID_GENERATION_READY:
+        raise RuntimeError('Paid generation is locked pending a verified cost-capped runner and budget approval. '
+                           'Use plan_revision_study.py for the offline request estimate.')
     # Pick the provider path based on the requested model family.
     if is_openai_model(model):
         if not openai_key or len(openai_key) < 10:
             raise ValueError('Missing OpenAI API key. Set OPENAI_API_KEY or add it as the first line of api-key.txt.')
-        client = OpenAI(api_key=openai_key)
+        client = OpenAI(api_key=openai_key, max_retries=0, timeout=60)
     else:
         if not llama_key or len(llama_key) < 10:
             raise ValueError('Missing Llama API key. Set LLAMA_API_KEY or add it as the second line of api-key.txt.')
-        client = OpenAI(api_key=llama_key, base_url="https://api.llama-api.com")
+        client = OpenAI(api_key=llama_key, base_url="https://api.llama-api.com", max_retries=0, timeout=60)
  
     response = client.chat.completions.create(
                 model=model,
@@ -243,46 +252,108 @@ def get_llm_response(model, messages, savename=None, temp=DEFAULT_TEMPERATURE, v
         
 
 def repeat_prompt_until_parsed(model, system_prompt, user_prompt, parse_method,
-                               parse_args, max_tries=10, temp=DEFAULT_TEMPERATURE, verbose=False):
+                               parse_args, max_tries=3, temp=DEFAULT_TEMPERATURE, verbose=False,
+                               prompt_language='english'):
     """
     Helper function to repeat API call and parsing until it works.
     Works with any generic parse_method, where 'response' must be one of its args,
     and additional parse_args.
     """
+    if not 1 <= max_tries <= 3:
+        raise ValueError('max_tries must be between 1 and 3')
+    parse_args = dict(parse_args)
+    retry_text = {
+        'english': 'Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links.',
+        'spanish': 'Respuesta no valida. Sigue el formato solicitado y usa solo IDs de personas elegibles, sin duplicados ni enlaces contigo mismo.',
+        'hindi': 'अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं।',
+        'japanese': '無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。',
+        'portuguese': 'Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo.',
+    }
+    if prompt_language not in retry_text:
+        raise ValueError('Unsupported retry language')
+    # An undirected tie has no second orientation. Generic "no duplicates"
+    # guidance was insufficient when a model returned both 2,7 and 7,2.
+    if parse_args.get('method') == 'global':
+        edge_correction = {
+            'english': ' List each undirected friendship once, with the smaller numeric ID first. Remove every reversed duplicate.',
+            'spanish': ' Escribe cada amistad no dirigida una sola vez, con el ID numerico menor primero. Elimina todos los duplicados invertidos.',
+            'hindi': ' प्रत्येक मित्रता को केवल एक बार लिखें; उसमें कोई दिशा नहीं होती। छोटी संख्यात्मक ID पहले रखें। उलटे क्रम में लिखे सभी दोहराव हटा दें।',
+            'japanese': ' 無向の友人関係は一度だけ記載し、数値が小さいIDを先にしてください。逆順の重複をすべて削除してください。',
+            'portuguese': ' Liste cada amizade não direcionada uma única vez, com o menor ID numérico primeiro. Remova todas as duplicações invertidas.',
+        }
+        retry_text[prompt_language] += edge_correction[prompt_language]
+        complete_correction = {
+            'english': ' Return the entire corrected network, not just the pairs listed below. Keep every valid friendship from the original network response; remove only invalid or duplicate pairs. Do not add new friendships.',
+            'spanish': ' Devuelve toda la red corregida, no solo los pares enumerados abajo. Conserva todas las amistades validas de la respuesta original de la red; elimina solo los pares invalidos o duplicados. No agregues amistades nuevas.',
+            'hindi': ' पूरा संशोधित नेटवर्क लौटाएँ, केवल नीचे सूचीबद्ध जोड़ियाँ नहीं। मूल नेटवर्क उत्तर की प्रत्येक वैध मित्रता बनाए रखें; केवल अमान्य या दोहराई गई जोड़ियाँ हटाएँ। कोई नई मित्रता न जोड़ें।',
+            'japanese': ' 以下に列挙されたペアだけでなく、修正後のネットワーク全体を返してください。元のネットワーク回答の有効な友人関係はすべて保持し、無効なペアや重複するペアだけを削除してください。新しい友人関係を追加しないでください。',
+            'portuguese': ' Retorne a rede corrigida inteira, não apenas os pares listados abaixo. Mantenha todas as amizades válidas da resposta original da rede; remova somente os pares inválidos ou duplicados. Não adicione novas amizades.',
+        }
+        retry_text[prompt_language] += complete_correction[prompt_language]
     messages = []
     if system_prompt is not None:
         messages.append({"role": "system", "content": system_prompt})
     assert user_prompt is not None
     messages.append({"role": "user", "content": user_prompt})
     
-    num_tries = 1
-    while num_tries <= max_tries:
+    last_error = None
+    for num_tries in range(1, max_tries + 1):
         try:
             response = get_llm_response(model, messages, temp=temp, verbose=verbose)
+        except (APIConnectionError, RateLimitError, InternalServerError) as exc:
+            last_error = exc
+        else:
             try:
-                parse_args['response'] = response
-                parse_out = parse_method(**parse_args)
+                parse_out = parse_method(**dict(parse_args, response=response))
                 return parse_out, response, num_tries
-            except Exception as e:
-                # Bad format is treated as a recoverable error: show the model
-                # what went wrong and ask again.
-                print('Failed to parse response:', e)
-                for m in messages:
-                    print(m['role'].upper())
-                    print(m['content'])
-                    print()
-                print('\nRESPONSE:')
-                print(response)
+            except (ValueError, AssertionError) as exc:
+                last_error = exc
+                empty_global = (parse_args.get('method') == 'global' and isinstance(response, str)
+                                and not response.strip() and 'required_global_edges' not in parse_args)
+                if parse_args.get('method') == 'global' and 'required_global_edges' not in parse_args and not empty_global:
+                    # Match the global parser's line tokenization, never extract
+                    # IDs from prose. Freeze only explicit valid pairs from the
+                    # first rejected answer; later repairs cannot shrink them.
+                    nodes = set(parse_args['G'])
+                    pairs = [line.strip().replace(',', ' ').split() for line in response.splitlines()] if isinstance(response, str) else []
+                    required = [tuple(p) for p in pairs if len(p) == 2 and p[0] != p[1] and set(p) <= nodes]
+                    if not required:
+                        raise RuntimeError('Global correction has no recoverable valid friendships; stopped') from exc
+                    parse_args['required_global_edges'] = required
+                # Keep correction wording in the treatment language. Do not leak
+                # English exception text or raw provider errors into the prompt.
                 messages.append({"role": "assistant", "content": response})
-                messages.append({
-                    "role": "user",
-                    "content": f"Invalid response: {e}! Re-answer using only the provided persona IDs. Do not use ages, counts, or any other numbers as IDs.",
-                })
-        except Exception as e:
-            print('Failed to get response:', e)
-        num_tries += 1
-        time.sleep(1)
-    raise Exception(f'Exceed max tries of {max_tries}')
+                correction = retry_text[prompt_language]
+                if empty_global:
+                    # No graph was supplied to repair. This declared nonresponse
+                    # retry shares the same three-attempt cap; its cost/failure stays recorded.
+                    correction = {
+                        'english': 'Your response was empty. Return a complete network using only the required ID-pair format.',
+                        'spanish': 'Tu respuesta estaba vacia. Devuelve la red completa usando solo el formato solicitado de pares de IDs.',
+                        'hindi': 'आपका उत्तर खाली था। केवल निर्धारित ID-जोड़ी प्रारूप का उपयोग करके पूरा नेटवर्क लौटाएँ।',
+                        'japanese': '回答が空でした。指定されたIDペアの形式だけを使って、ネットワーク全体を返してください。',
+                        'portuguese': 'Sua resposta estava vazia. Retorne a rede completa usando apenas o formato solicitado de pares de IDs.',
+                    }[prompt_language]
+                if parse_args.get('num_choices') is not None:
+                    # State cardinality explicitly rather than hoping that a
+                    # generic format correction fixes too many/few selections.
+                    exact_count = {
+                        'english': ' Return exactly {num} distinct eligible persona IDs, no more and no fewer.',
+                        'spanish': ' Devuelve exactamente {num} IDs distintos de personas elegibles, ni mas ni menos.',
+                        'hindi': ' ठीक {num} अलग-अलग पात्र व्यक्तियों के ID दें, न अधिक और न कम।',
+                        'japanese': ' 選択可能な候補者の異なるIDをちょうど{num}個返してください。それより多くも少なくもしないでください。',
+                        'portuguese': ' Devolva exatamente {num} IDs distintos de pessoas elegíveis, nem mais nem menos.',
+                    }
+                    correction += exact_count[prompt_language].format(num=parse_args['num_choices'])
+                duplicates = getattr(exc, 'duplicate_edges', [])
+                if duplicates and parse_args.get('method') == 'global':
+                    # ID pairs are language-neutral; no English error text is
+                    # inserted into the non-English treatment.
+                    correction += '\n' + '; '.join(', '.join(edge) for edge in duplicates)
+                messages.append({"role": "user", "content": correction})
+        if num_tries < max_tries:
+            time.sleep(min(2 ** (num_tries - 1), 4))
+    raise RuntimeError(f'Exhausted {max_tries} attempts; run is incomplete') from last_error
        
 
 def compute_token_cost(savepath, nr_networks, model='gpt-3.5-turbo'):

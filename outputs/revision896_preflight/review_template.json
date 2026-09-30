@@ -1,0 +1,31 @@
+{
+  "protocol_sha256": "a89569ab8f9a7862a9c82da2ad81111211bdd61417a477d036bb59e2000fece6",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "e2ac221e86045a3824bc8e160fb32452047428ec864d2e9dd07101e560a54939",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "b8f953139d929601b846ae81b0751407936a1ccaacb5baa0843513fee34a8a76",
+    "constants_and_utils.py": "d4095580b683987f7e2821cf5abf7fe71aeb5f5d3dde26657d60a01bdfed958c",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "8b9595299a94972b232ea650e43f42c52c06c0a4a7ae6817c53dc3586b1440f8"
+  },
+  "runtime_versions": {
+    "python": "3.11.9",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.0",
+    "openai": "1.43.1",
+    "matplotlib": "3.6.2"
+  },
+  "code_review": false,
+  "price_review": false,
+  "translation_review": false,
+  "cost_review": false,
+  "study_design_review": false,
+  "generation_authorized": false,
+  "spend_ceiling_usd": null,
+  "note": "Record actual reviews and an explicitly authorized finite ceiling; templates do not authorize execution.",
+  "scope": "main",
+  "approved_limit": 896
+}

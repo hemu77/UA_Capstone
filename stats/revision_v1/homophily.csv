@@ -1,0 +1,881 @@
+run_id,study,method,model,culture,language,seed,demographic,metric,value
+global_gpt-4.1-mini_culture_brazil_0,method,global,gpt-4.1-mini,brazil,english,0,gender,coleman_population_weighted,0.5643795087946826
+global_gpt-4.1-mini_culture_brazil_0,method,global,gpt-4.1-mini,brazil,english,0,race/ethnicity,coleman_population_weighted,0.5495009663944629
+global_gpt-4.1-mini_culture_brazil_0,method,global,gpt-4.1-mini,brazil,english,0,religion,coleman_population_weighted,0.5081111168226167
+global_gpt-4.1-mini_culture_brazil_0,method,global,gpt-4.1-mini,brazil,english,0,political affiliation,coleman_population_weighted,1.0
+global_gpt-4.1-mini_culture_brazil_0,method,global,gpt-4.1-mini,brazil,english,0,age,numeric_assortativity,0.4678728070175427
+global_gpt-4.1-mini_culture_brazil_1,method,global,gpt-4.1-mini,brazil,english,1,gender,coleman_population_weighted,0.45499557913351013
+global_gpt-4.1-mini_culture_brazil_1,method,global,gpt-4.1-mini,brazil,english,1,race/ethnicity,coleman_population_weighted,0.863519197099919
+global_gpt-4.1-mini_culture_brazil_1,method,global,gpt-4.1-mini,brazil,english,1,religion,coleman_population_weighted,0.3873158627367911
+global_gpt-4.1-mini_culture_brazil_1,method,global,gpt-4.1-mini,brazil,english,1,political affiliation,coleman_population_weighted,0.8641173003241969
+global_gpt-4.1-mini_culture_brazil_1,method,global,gpt-4.1-mini,brazil,english,1,age,numeric_assortativity,0.6111885277052865
+global_gpt-4.1-mini_culture_india_0,method,global,gpt-4.1-mini,india,english,0,gender,coleman_population_weighted,0.6387474734932362
+global_gpt-4.1-mini_culture_india_0,method,global,gpt-4.1-mini,india,english,0,race/ethnicity,coleman_population_weighted,0.7068373717212113
+global_gpt-4.1-mini_culture_india_0,method,global,gpt-4.1-mini,india,english,0,religion,coleman_population_weighted,0.44365034351209476
+global_gpt-4.1-mini_culture_india_0,method,global,gpt-4.1-mini,india,english,0,political affiliation,coleman_population_weighted,0.9003789058444929
+global_gpt-4.1-mini_culture_india_0,method,global,gpt-4.1-mini,india,english,0,age,numeric_assortativity,0.5309318348185
+global_gpt-4.1-mini_culture_india_1,method,global,gpt-4.1-mini,india,english,1,gender,coleman_population_weighted,0.6070512820512821
+global_gpt-4.1-mini_culture_india_1,method,global,gpt-4.1-mini,india,english,1,race/ethnicity,coleman_population_weighted,0.9286326601317516
+global_gpt-4.1-mini_culture_india_1,method,global,gpt-4.1-mini,india,english,1,religion,coleman_population_weighted,0.3872334304311864
+global_gpt-4.1-mini_culture_india_1,method,global,gpt-4.1-mini,india,english,1,political affiliation,coleman_population_weighted,0.8033154788473937
+global_gpt-4.1-mini_culture_india_1,method,global,gpt-4.1-mini,india,english,1,age,numeric_assortativity,0.5505174730830983
+global_gpt-4.1-mini_culture_japan_0,method,global,gpt-4.1-mini,japan,english,0,gender,coleman_population_weighted,0.5724043715846995
+global_gpt-4.1-mini_culture_japan_0,method,global,gpt-4.1-mini,japan,english,0,race/ethnicity,coleman_population_weighted,0.6667340849383231
+global_gpt-4.1-mini_culture_japan_0,method,global,gpt-4.1-mini,japan,english,0,religion,coleman_population_weighted,0.47526798550006844
+global_gpt-4.1-mini_culture_japan_0,method,global,gpt-4.1-mini,japan,english,0,political affiliation,coleman_population_weighted,0.9342845326716295
+global_gpt-4.1-mini_culture_japan_0,method,global,gpt-4.1-mini,japan,english,0,age,numeric_assortativity,0.47730828617063203
+global_gpt-4.1-mini_culture_japan_1,method,global,gpt-4.1-mini,japan,english,1,gender,coleman_population_weighted,0.5736366592344853
+global_gpt-4.1-mini_culture_japan_1,method,global,gpt-4.1-mini,japan,english,1,race/ethnicity,coleman_population_weighted,0.6319728671847782
+global_gpt-4.1-mini_culture_japan_1,method,global,gpt-4.1-mini,japan,english,1,religion,coleman_population_weighted,0.24841381152741598
+global_gpt-4.1-mini_culture_japan_1,method,global,gpt-4.1-mini,japan,english,1,political affiliation,coleman_population_weighted,0.8719312602291326
+global_gpt-4.1-mini_culture_japan_1,method,global,gpt-4.1-mini,japan,english,1,age,numeric_assortativity,0.6105626417360591
+global_gpt-4.1-mini_culture_us_0,method,global,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.6767073922246336
+global_gpt-4.1-mini_culture_us_0,method,global,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.756198370882224
+global_gpt-4.1-mini_culture_us_0,method,global,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.4290103138029405
+global_gpt-4.1-mini_culture_us_0,method,global,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,0.9023117039414302
+global_gpt-4.1-mini_culture_us_0,method,global,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.5256665203294276
+global_gpt-4.1-mini_culture_us_1,method,global,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.5231211317418214
+global_gpt-4.1-mini_culture_us_1,method,global,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.8168524533559243
+global_gpt-4.1-mini_culture_us_1,method,global,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.2881881729807997
+global_gpt-4.1-mini_culture_us_1,method,global,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,0.7610322043022646
+global_gpt-4.1-mini_culture_us_1,method,global,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.5410273519468736
+global_gpt-4.1-mini_culture_us_lang_english_0,language,global,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.6299533799533801
+global_gpt-4.1-mini_culture_us_lang_english_0,language,global,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.7059104001420659
+global_gpt-4.1-mini_culture_us_lang_english_0,language,global,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.5354850480545698
+global_gpt-4.1-mini_culture_us_lang_english_0,language,global,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,0.9059120039664322
+global_gpt-4.1-mini_culture_us_lang_english_0,language,global,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.5978264144878906
+global_gpt-4.1-mini_culture_us_lang_english_1,language,global,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.5213772171603498
+global_gpt-4.1-mini_culture_us_lang_english_1,language,global,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.7243656588968648
+global_gpt-4.1-mini_culture_us_lang_english_1,language,global,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.35589448992656286
+global_gpt-4.1-mini_culture_us_lang_english_1,language,global,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,0.8245869747276217
+global_gpt-4.1-mini_culture_us_lang_english_1,language,global,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.5203268432446058
+global_gpt-4.1-mini_culture_us_lang_hindi_0,language,global,gpt-4.1-mini,us,hindi,0,gender,coleman_population_weighted,0.5971188309897987
+global_gpt-4.1-mini_culture_us_lang_hindi_0,language,global,gpt-4.1-mini,us,hindi,0,race/ethnicity,coleman_population_weighted,0.7975690811441634
+global_gpt-4.1-mini_culture_us_lang_hindi_0,language,global,gpt-4.1-mini,us,hindi,0,religion,coleman_population_weighted,0.7558152150509673
+global_gpt-4.1-mini_culture_us_lang_hindi_0,language,global,gpt-4.1-mini,us,hindi,0,political affiliation,coleman_population_weighted,0.942445547284257
+global_gpt-4.1-mini_culture_us_lang_hindi_0,language,global,gpt-4.1-mini,us,hindi,0,age,numeric_assortativity,0.41711401671559234
+global_gpt-4.1-mini_culture_us_lang_hindi_1,language,global,gpt-4.1-mini,us,hindi,1,gender,coleman_population_weighted,0.8014027717417547
+global_gpt-4.1-mini_culture_us_lang_hindi_1,language,global,gpt-4.1-mini,us,hindi,1,race/ethnicity,coleman_population_weighted,0.7705743519499457
+global_gpt-4.1-mini_culture_us_lang_hindi_1,language,global,gpt-4.1-mini,us,hindi,1,religion,coleman_population_weighted,0.5789333756226795
+global_gpt-4.1-mini_culture_us_lang_hindi_1,language,global,gpt-4.1-mini,us,hindi,1,political affiliation,coleman_population_weighted,0.6918138651471984
+global_gpt-4.1-mini_culture_us_lang_hindi_1,language,global,gpt-4.1-mini,us,hindi,1,age,numeric_assortativity,0.5991717945740928
+global_gpt-4.1-mini_culture_us_lang_japanese_0,language,global,gpt-4.1-mini,us,japanese,0,gender,coleman_population_weighted,0.7714669051878353
+global_gpt-4.1-mini_culture_us_lang_japanese_0,language,global,gpt-4.1-mini,us,japanese,0,race/ethnicity,coleman_population_weighted,0.8316112314491014
+global_gpt-4.1-mini_culture_us_lang_japanese_0,language,global,gpt-4.1-mini,us,japanese,0,religion,coleman_population_weighted,0.3971946512269092
+global_gpt-4.1-mini_culture_us_lang_japanese_0,language,global,gpt-4.1-mini,us,japanese,0,political affiliation,coleman_population_weighted,0.8165578382969687
+global_gpt-4.1-mini_culture_us_lang_japanese_0,language,global,gpt-4.1-mini,us,japanese,0,age,numeric_assortativity,0.5713306515537194
+global_gpt-4.1-mini_culture_us_lang_japanese_1,language,global,gpt-4.1-mini,us,japanese,1,gender,coleman_population_weighted,0.5035885918899394
+global_gpt-4.1-mini_culture_us_lang_japanese_1,language,global,gpt-4.1-mini,us,japanese,1,race/ethnicity,coleman_population_weighted,0.8203372060286566
+global_gpt-4.1-mini_culture_us_lang_japanese_1,language,global,gpt-4.1-mini,us,japanese,1,religion,coleman_population_weighted,0.3774089170387875
+global_gpt-4.1-mini_culture_us_lang_japanese_1,language,global,gpt-4.1-mini,us,japanese,1,political affiliation,coleman_population_weighted,0.7670592731568341
+global_gpt-4.1-mini_culture_us_lang_japanese_1,language,global,gpt-4.1-mini,us,japanese,1,age,numeric_assortativity,0.43335920810520023
+global_gpt-4.1-mini_culture_us_lang_spanish_0,language,global,gpt-4.1-mini,us,spanish,0,gender,coleman_population_weighted,0.42465101495365626
+global_gpt-4.1-mini_culture_us_lang_spanish_0,language,global,gpt-4.1-mini,us,spanish,0,race/ethnicity,coleman_population_weighted,0.31525775651818416
+global_gpt-4.1-mini_culture_us_lang_spanish_0,language,global,gpt-4.1-mini,us,spanish,0,religion,coleman_population_weighted,0.14338147143990113
+global_gpt-4.1-mini_culture_us_lang_spanish_0,language,global,gpt-4.1-mini,us,spanish,0,political affiliation,coleman_population_weighted,1.0
+global_gpt-4.1-mini_culture_us_lang_spanish_0,language,global,gpt-4.1-mini,us,spanish,0,age,numeric_assortativity,0.40635060120681343
+global_gpt-4.1-mini_culture_us_lang_spanish_1,language,global,gpt-4.1-mini,us,spanish,1,gender,coleman_population_weighted,0.4099464365421812
+global_gpt-4.1-mini_culture_us_lang_spanish_1,language,global,gpt-4.1-mini,us,spanish,1,race/ethnicity,coleman_population_weighted,0.757184902946686
+global_gpt-4.1-mini_culture_us_lang_spanish_1,language,global,gpt-4.1-mini,us,spanish,1,religion,coleman_population_weighted,0.28903933062418335
+global_gpt-4.1-mini_culture_us_lang_spanish_1,language,global,gpt-4.1-mini,us,spanish,1,political affiliation,coleman_population_weighted,0.8033154788473937
+global_gpt-4.1-mini_culture_us_lang_spanish_1,language,global,gpt-4.1-mini,us,spanish,1,age,numeric_assortativity,0.6014401928423472
+global_gpt-4.1-nano_culture_brazil_0,method,global,gpt-4.1-nano,brazil,english,0,gender,coleman_population_weighted,0.2003230687441214
+global_gpt-4.1-nano_culture_brazil_0,method,global,gpt-4.1-nano,brazil,english,0,race/ethnicity,coleman_population_weighted,0.06708412677834112
+global_gpt-4.1-nano_culture_brazil_0,method,global,gpt-4.1-nano,brazil,english,0,religion,coleman_population_weighted,-0.03480538509170782
+global_gpt-4.1-nano_culture_brazil_0,method,global,gpt-4.1-nano,brazil,english,0,political affiliation,coleman_population_weighted,-0.13247863247863248
+global_gpt-4.1-nano_culture_brazil_0,method,global,gpt-4.1-nano,brazil,english,0,age,numeric_assortativity,-0.07062788128476631
+global_gpt-4.1-nano_culture_brazil_1,method,global,gpt-4.1-nano,brazil,english,1,gender,coleman_population_weighted,-0.14813294120642684
+global_gpt-4.1-nano_culture_brazil_1,method,global,gpt-4.1-nano,brazil,english,1,race/ethnicity,coleman_population_weighted,-0.11611053307043905
+global_gpt-4.1-nano_culture_brazil_1,method,global,gpt-4.1-nano,brazil,english,1,religion,coleman_population_weighted,-0.08544459934302076
+global_gpt-4.1-nano_culture_brazil_1,method,global,gpt-4.1-nano,brazil,english,1,political affiliation,coleman_population_weighted,-0.15374440374440373
+global_gpt-4.1-nano_culture_brazil_1,method,global,gpt-4.1-nano,brazil,english,1,age,numeric_assortativity,0.03773441408309798
+global_gpt-4.1-nano_culture_india_0,method,global,gpt-4.1-nano,india,english,0,gender,coleman_population_weighted,0.18206256109481922
+global_gpt-4.1-nano_culture_india_0,method,global,gpt-4.1-nano,india,english,0,race/ethnicity,coleman_population_weighted,0.23067535569627565
+global_gpt-4.1-nano_culture_india_0,method,global,gpt-4.1-nano,india,english,0,religion,coleman_population_weighted,0.1758010184151018
+global_gpt-4.1-nano_culture_india_0,method,global,gpt-4.1-nano,india,english,0,political affiliation,coleman_population_weighted,-0.19130608974358976
+global_gpt-4.1-nano_culture_india_0,method,global,gpt-4.1-nano,india,english,0,age,numeric_assortativity,0.18648042732845227
+global_gpt-4.1-nano_culture_india_1,method,global,gpt-4.1-nano,india,english,1,gender,coleman_population_weighted,0.41990210718433724
+global_gpt-4.1-nano_culture_india_1,method,global,gpt-4.1-nano,india,english,1,race/ethnicity,coleman_population_weighted,0.18125481685035932
+global_gpt-4.1-nano_culture_india_1,method,global,gpt-4.1-nano,india,english,1,religion,coleman_population_weighted,0.20870934144784523
+global_gpt-4.1-nano_culture_india_1,method,global,gpt-4.1-nano,india,english,1,political affiliation,coleman_population_weighted,-0.11467236467236472
+global_gpt-4.1-nano_culture_india_1,method,global,gpt-4.1-nano,india,english,1,age,numeric_assortativity,0.03145169914474986
+global_gpt-4.1-nano_culture_japan_0,method,global,gpt-4.1-nano,japan,english,0,gender,coleman_population_weighted,0.022674391549164674
+global_gpt-4.1-nano_culture_japan_0,method,global,gpt-4.1-nano,japan,english,0,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1-nano_culture_japan_0,method,global,gpt-4.1-nano,japan,english,0,religion,coleman_population_weighted,-0.14795444423235993
+global_gpt-4.1-nano_culture_japan_0,method,global,gpt-4.1-nano,japan,english,0,political affiliation,coleman_population_weighted,0.2437792642140469
+global_gpt-4.1-nano_culture_japan_0,method,global,gpt-4.1-nano,japan,english,0,age,numeric_assortativity,0.05635332512266354
+global_gpt-4.1-nano_culture_japan_1,method,global,gpt-4.1-nano,japan,english,1,gender,coleman_population_weighted,0.04149369149369143
+global_gpt-4.1-nano_culture_japan_1,method,global,gpt-4.1-nano,japan,english,1,race/ethnicity,coleman_population_weighted,0.17633629538772028
+global_gpt-4.1-nano_culture_japan_1,method,global,gpt-4.1-nano,japan,english,1,religion,coleman_population_weighted,-0.08481625900980741
+global_gpt-4.1-nano_culture_japan_1,method,global,gpt-4.1-nano,japan,english,1,political affiliation,coleman_population_weighted,-0.11540100990228866
+global_gpt-4.1-nano_culture_japan_1,method,global,gpt-4.1-nano,japan,english,1,age,numeric_assortativity,0.12895052065178114
+global_gpt-4.1-nano_culture_us_0,method,global,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.10733678086619255
+global_gpt-4.1-nano_culture_us_0,method,global,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.13079819378344218
+global_gpt-4.1-nano_culture_us_0,method,global,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,-0.06040210404536783
+global_gpt-4.1-nano_culture_us_0,method,global,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,-0.09695885509838999
+global_gpt-4.1-nano_culture_us_0,method,global,gpt-4.1-nano,us,english,0,age,numeric_assortativity,0.014672897388400934
+global_gpt-4.1-nano_culture_us_1,method,global,gpt-4.1-nano,us,english,1,gender,coleman_population_weighted,-0.09985957247620539
+global_gpt-4.1-nano_culture_us_1,method,global,gpt-4.1-nano,us,english,1,race/ethnicity,coleman_population_weighted,0.05062108455422289
+global_gpt-4.1-nano_culture_us_1,method,global,gpt-4.1-nano,us,english,1,religion,coleman_population_weighted,-0.12280441581516853
+global_gpt-4.1-nano_culture_us_1,method,global,gpt-4.1-nano,us,english,1,political affiliation,coleman_population_weighted,0.06503145348195563
+global_gpt-4.1-nano_culture_us_1,method,global,gpt-4.1-nano,us,english,1,age,numeric_assortativity,0.21919517527185367
+global_gpt-4.1-nano_culture_us_lang_english_0,language,global,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,-0.038708086785009845
+global_gpt-4.1-nano_culture_us_lang_english_0,language,global,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.04634679958940095
+global_gpt-4.1-nano_culture_us_lang_english_0,language,global,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,-0.13688999172870148
+global_gpt-4.1-nano_culture_us_lang_english_0,language,global,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,-0.19338994338994347
+global_gpt-4.1-nano_culture_us_lang_english_0,language,global,gpt-4.1-nano,us,english,0,age,numeric_assortativity,0.21415388603872829
+global_gpt-4.1-nano_culture_us_lang_english_1,language,global,gpt-4.1-nano,us,english,1,gender,coleman_population_weighted,-0.39981684981684995
+global_gpt-4.1-nano_culture_us_lang_english_1,language,global,gpt-4.1-nano,us,english,1,race/ethnicity,coleman_population_weighted,0.17239721975746825
+global_gpt-4.1-nano_culture_us_lang_english_1,language,global,gpt-4.1-nano,us,english,1,religion,coleman_population_weighted,-0.1777827906860165
+global_gpt-4.1-nano_culture_us_lang_english_1,language,global,gpt-4.1-nano,us,english,1,political affiliation,coleman_population_weighted,-0.41778149386845054
+global_gpt-4.1-nano_culture_us_lang_english_1,language,global,gpt-4.1-nano,us,english,1,age,numeric_assortativity,-0.477987677324615
+global_gpt-4.1-nano_culture_us_lang_hindi_0,language,global,gpt-4.1-nano,us,hindi,0,gender,coleman_population_weighted,-0.17873390050809412
+global_gpt-4.1-nano_culture_us_lang_hindi_0,language,global,gpt-4.1-nano,us,hindi,0,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1-nano_culture_us_lang_hindi_0,language,global,gpt-4.1-nano,us,hindi,0,religion,coleman_population_weighted,-0.2401365192389036
+global_gpt-4.1-nano_culture_us_lang_hindi_0,language,global,gpt-4.1-nano,us,hindi,0,political affiliation,coleman_population_weighted,-0.09492429266136165
+global_gpt-4.1-nano_culture_us_lang_hindi_0,language,global,gpt-4.1-nano,us,hindi,0,age,numeric_assortativity,0.04186819983978782
+global_gpt-4.1-nano_culture_us_lang_hindi_1,language,global,gpt-4.1-nano,us,hindi,1,gender,coleman_population_weighted,-0.28563218390804596
+global_gpt-4.1-nano_culture_us_lang_hindi_1,language,global,gpt-4.1-nano,us,hindi,1,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1-nano_culture_us_lang_hindi_1,language,global,gpt-4.1-nano,us,hindi,1,religion,coleman_population_weighted,-0.116333381988031
+global_gpt-4.1-nano_culture_us_lang_hindi_1,language,global,gpt-4.1-nano,us,hindi,1,political affiliation,coleman_population_weighted,-0.10777243589743585
+global_gpt-4.1-nano_culture_us_lang_hindi_1,language,global,gpt-4.1-nano,us,hindi,1,age,numeric_assortativity,-0.22880362764547765
+global_gpt-4.1-nano_culture_us_lang_japanese_0,language,global,gpt-4.1-nano,us,japanese,0,gender,coleman_population_weighted,-0.3760162601626017
+global_gpt-4.1-nano_culture_us_lang_japanese_0,language,global,gpt-4.1-nano,us,japanese,0,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1-nano_culture_us_lang_japanese_0,language,global,gpt-4.1-nano,us,japanese,0,religion,coleman_population_weighted,-0.206782464846981
+global_gpt-4.1-nano_culture_us_lang_japanese_0,language,global,gpt-4.1-nano,us,japanese,0,political affiliation,coleman_population_weighted,-0.3760162601626017
+global_gpt-4.1-nano_culture_us_lang_japanese_0,language,global,gpt-4.1-nano,us,japanese,0,age,numeric_assortativity,-0.008415915542056663
+global_gpt-4.1-nano_culture_us_lang_japanese_1,language,global,gpt-4.1-nano,us,japanese,1,gender,coleman_population_weighted,0.4362470862470863
+global_gpt-4.1-nano_culture_us_lang_japanese_1,language,global,gpt-4.1-nano,us,japanese,1,race/ethnicity,coleman_population_weighted,0.07840897228456595
+global_gpt-4.1-nano_culture_us_lang_japanese_1,language,global,gpt-4.1-nano,us,japanese,1,religion,coleman_population_weighted,-0.21444854647057643
+global_gpt-4.1-nano_culture_us_lang_japanese_1,language,global,gpt-4.1-nano,us,japanese,1,political affiliation,coleman_population_weighted,-0.10878787878787878
+global_gpt-4.1-nano_culture_us_lang_japanese_1,language,global,gpt-4.1-nano,us,japanese,1,age,numeric_assortativity,0.14771148860123728
+global_gpt-4.1-nano_culture_us_lang_spanish_1,language,global,gpt-4.1-nano,us,spanish,1,gender,coleman_population_weighted,-0.2460103998565537
+global_gpt-4.1-nano_culture_us_lang_spanish_1,language,global,gpt-4.1-nano,us,spanish,1,race/ethnicity,coleman_population_weighted,0.2525523587361365
+global_gpt-4.1-nano_culture_us_lang_spanish_1,language,global,gpt-4.1-nano,us,spanish,1,religion,coleman_population_weighted,-0.12754392904979753
+global_gpt-4.1-nano_culture_us_lang_spanish_1,language,global,gpt-4.1-nano,us,spanish,1,political affiliation,coleman_population_weighted,-0.11782661782661794
+global_gpt-4.1-nano_culture_us_lang_spanish_1,language,global,gpt-4.1-nano,us,spanish,1,age,numeric_assortativity,0.060814584346998456
+global_gpt-4.1_culture_brazil_0,method,global,gpt-4.1,brazil,english,0,gender,coleman_population_weighted,0.42868640043781286
+global_gpt-4.1_culture_brazil_0,method,global,gpt-4.1,brazil,english,0,race/ethnicity,coleman_population_weighted,0.36383424713759027
+global_gpt-4.1_culture_brazil_0,method,global,gpt-4.1,brazil,english,0,religion,coleman_population_weighted,0.38564795838231236
+global_gpt-4.1_culture_brazil_0,method,global,gpt-4.1,brazil,english,0,political affiliation,coleman_population_weighted,0.9269361590790162
+global_gpt-4.1_culture_brazil_0,method,global,gpt-4.1,brazil,english,0,age,numeric_assortativity,0.46011317388254325
+global_gpt-4.1_culture_brazil_1,method,global,gpt-4.1,brazil,english,1,gender,coleman_population_weighted,0.46860849457027487
+global_gpt-4.1_culture_brazil_1,method,global,gpt-4.1,brazil,english,1,race/ethnicity,coleman_population_weighted,0.5163780483990299
+global_gpt-4.1_culture_brazil_1,method,global,gpt-4.1,brazil,english,1,religion,coleman_population_weighted,0.20789772227878062
+global_gpt-4.1_culture_brazil_1,method,global,gpt-4.1,brazil,english,1,political affiliation,coleman_population_weighted,0.8531844499586434
+global_gpt-4.1_culture_brazil_1,method,global,gpt-4.1,brazil,english,1,age,numeric_assortativity,0.7711451726600641
+global_gpt-4.1_culture_india_0,method,global,gpt-4.1,india,english,0,gender,coleman_population_weighted,0.5433409873708381
+global_gpt-4.1_culture_india_0,method,global,gpt-4.1,india,english,0,race/ethnicity,coleman_population_weighted,0.5108862385533923
+global_gpt-4.1_culture_india_0,method,global,gpt-4.1,india,english,0,religion,coleman_population_weighted,0.5577808874623644
+global_gpt-4.1_culture_india_0,method,global,gpt-4.1,india,english,0,political affiliation,coleman_population_weighted,0.9386801370672339
+global_gpt-4.1_culture_india_0,method,global,gpt-4.1,india,english,0,age,numeric_assortativity,0.7671933192758151
+global_gpt-4.1_culture_india_1,method,global,gpt-4.1,india,english,1,gender,coleman_population_weighted,0.542716686610348
+global_gpt-4.1_culture_india_1,method,global,gpt-4.1,india,english,1,race/ethnicity,coleman_population_weighted,0.5622650245869099
+global_gpt-4.1_culture_india_1,method,global,gpt-4.1,india,english,1,religion,coleman_population_weighted,0.24636792682333478
+global_gpt-4.1_culture_india_1,method,global,gpt-4.1,india,english,1,political affiliation,coleman_population_weighted,0.8785822021116139
+global_gpt-4.1_culture_india_1,method,global,gpt-4.1,india,english,1,age,numeric_assortativity,0.8369842024706677
+global_gpt-4.1_culture_japan_0,method,global,gpt-4.1,japan,english,0,gender,coleman_population_weighted,0.42904845002797515
+global_gpt-4.1_culture_japan_0,method,global,gpt-4.1,japan,english,0,race/ethnicity,coleman_population_weighted,0.47916692656697774
+global_gpt-4.1_culture_japan_0,method,global,gpt-4.1,japan,english,0,religion,coleman_population_weighted,0.290682202323156
+global_gpt-4.1_culture_japan_0,method,global,gpt-4.1,japan,english,0,political affiliation,coleman_population_weighted,0.9206730769230769
+global_gpt-4.1_culture_japan_0,method,global,gpt-4.1,japan,english,0,age,numeric_assortativity,0.7391607473984597
+global_gpt-4.1_culture_japan_1,method,global,gpt-4.1,japan,english,1,gender,coleman_population_weighted,0.4143977912634628
+global_gpt-4.1_culture_japan_1,method,global,gpt-4.1,japan,english,1,race/ethnicity,coleman_population_weighted,0.5826067885348118
+global_gpt-4.1_culture_japan_1,method,global,gpt-4.1,japan,english,1,religion,coleman_population_weighted,0.4456271838760318
+global_gpt-4.1_culture_japan_1,method,global,gpt-4.1,japan,english,1,political affiliation,coleman_population_weighted,0.9075364933573888
+global_gpt-4.1_culture_japan_1,method,global,gpt-4.1,japan,english,1,age,numeric_assortativity,0.7850999506357134
+global_gpt-4.1_culture_us_0,method,global,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.33637500710671436
+global_gpt-4.1_culture_us_0,method,global,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,0.5065149174972361
+global_gpt-4.1_culture_us_0,method,global,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.3239021872298612
+global_gpt-4.1_culture_us_0,method,global,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,0.9290131347671855
+global_gpt-4.1_culture_us_0,method,global,gpt-4.1,us,english,0,age,numeric_assortativity,0.6929838357346486
+global_gpt-4.1_culture_us_1,method,global,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.4033582401650543
+global_gpt-4.1_culture_us_1,method,global,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.4631385182353396
+global_gpt-4.1_culture_us_1,method,global,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.3310663441048476
+global_gpt-4.1_culture_us_1,method,global,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,0.8014224731092201
+global_gpt-4.1_culture_us_1,method,global,gpt-4.1,us,english,1,age,numeric_assortativity,0.8549726109259713
+global_gpt-4.1_culture_us_lang_english_0,language,global,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.3790444217389189
+global_gpt-4.1_culture_us_lang_english_0,language,global,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1_culture_us_lang_english_0,language,global,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.2589170849346458
+global_gpt-4.1_culture_us_lang_english_0,language,global,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,0.9658289458981589
+global_gpt-4.1_culture_us_lang_english_0,language,global,gpt-4.1,us,english,0,age,numeric_assortativity,0.6854901764234156
+global_gpt-4.1_culture_us_lang_english_1,language,global,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.4088180840898232
+global_gpt-4.1_culture_us_lang_english_1,language,global,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.5326822033161092
+global_gpt-4.1_culture_us_lang_english_1,language,global,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.18842018196856902
+global_gpt-4.1_culture_us_lang_english_1,language,global,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,0.8224234920967393
+global_gpt-4.1_culture_us_lang_english_1,language,global,gpt-4.1,us,english,1,age,numeric_assortativity,0.7396997144893861
+global_gpt-4.1_culture_us_lang_hindi_0,language,global,gpt-4.1,us,hindi,0,gender,coleman_population_weighted,0.5748966087675765
+global_gpt-4.1_culture_us_lang_hindi_0,language,global,gpt-4.1,us,hindi,0,race/ethnicity,coleman_population_weighted,
+global_gpt-4.1_culture_us_lang_hindi_0,language,global,gpt-4.1,us,hindi,0,religion,coleman_population_weighted,0.78916613056398
+global_gpt-4.1_culture_us_lang_hindi_0,language,global,gpt-4.1,us,hindi,0,political affiliation,coleman_population_weighted,0.7866011204181624
+global_gpt-4.1_culture_us_lang_hindi_0,language,global,gpt-4.1,us,hindi,0,age,numeric_assortativity,0.5724297751661527
+global_gpt-4.1_culture_us_lang_hindi_1,language,global,gpt-4.1,us,hindi,1,gender,coleman_population_weighted,0.490239949464909
+global_gpt-4.1_culture_us_lang_hindi_1,language,global,gpt-4.1,us,hindi,1,race/ethnicity,coleman_population_weighted,0.7368260347617308
+global_gpt-4.1_culture_us_lang_hindi_1,language,global,gpt-4.1,us,hindi,1,religion,coleman_population_weighted,0.33396219235475655
+global_gpt-4.1_culture_us_lang_hindi_1,language,global,gpt-4.1,us,hindi,1,political affiliation,coleman_population_weighted,0.732139572526947
+global_gpt-4.1_culture_us_lang_hindi_1,language,global,gpt-4.1,us,hindi,1,age,numeric_assortativity,0.7868623746004165
+global_gpt-4.1_culture_us_lang_japanese_0,language,global,gpt-4.1,us,japanese,0,gender,coleman_population_weighted,0.4678734323339168
+global_gpt-4.1_culture_us_lang_japanese_0,language,global,gpt-4.1,us,japanese,0,race/ethnicity,coleman_population_weighted,0.7661253968194179
+global_gpt-4.1_culture_us_lang_japanese_0,language,global,gpt-4.1,us,japanese,0,religion,coleman_population_weighted,0.640454759240338
+global_gpt-4.1_culture_us_lang_japanese_0,language,global,gpt-4.1,us,japanese,0,political affiliation,coleman_population_weighted,0.9686030493722801
+global_gpt-4.1_culture_us_lang_japanese_0,language,global,gpt-4.1,us,japanese,0,age,numeric_assortativity,0.5398025647895952
+global_gpt-4.1_culture_us_lang_japanese_1,language,global,gpt-4.1,us,japanese,1,gender,coleman_population_weighted,0.3962936186620397
+global_gpt-4.1_culture_us_lang_japanese_1,language,global,gpt-4.1,us,japanese,1,race/ethnicity,coleman_population_weighted,0.7058180035299143
+global_gpt-4.1_culture_us_lang_japanese_1,language,global,gpt-4.1,us,japanese,1,religion,coleman_population_weighted,0.4211362721477539
+global_gpt-4.1_culture_us_lang_japanese_1,language,global,gpt-4.1,us,japanese,1,political affiliation,coleman_population_weighted,0.8069703167993766
+global_gpt-4.1_culture_us_lang_japanese_1,language,global,gpt-4.1,us,japanese,1,age,numeric_assortativity,0.6521964180373
+global_gpt-4.1_culture_us_lang_spanish_0,language,global,gpt-4.1,us,spanish,0,gender,coleman_population_weighted,0.35908737077820196
+global_gpt-4.1_culture_us_lang_spanish_0,language,global,gpt-4.1,us,spanish,0,race/ethnicity,coleman_population_weighted,0.40428855280093
+global_gpt-4.1_culture_us_lang_spanish_0,language,global,gpt-4.1,us,spanish,0,religion,coleman_population_weighted,0.2934391498241472
+global_gpt-4.1_culture_us_lang_spanish_0,language,global,gpt-4.1,us,spanish,0,political affiliation,coleman_population_weighted,0.9059480163849096
+global_gpt-4.1_culture_us_lang_spanish_0,language,global,gpt-4.1,us,spanish,0,age,numeric_assortativity,0.36807719180891557
+global_gpt-4.1_culture_us_lang_spanish_1,language,global,gpt-4.1,us,spanish,1,gender,coleman_population_weighted,0.4041313018165876
+global_gpt-4.1_culture_us_lang_spanish_1,language,global,gpt-4.1,us,spanish,1,race/ethnicity,coleman_population_weighted,0.5020652815942269
+global_gpt-4.1_culture_us_lang_spanish_1,language,global,gpt-4.1,us,spanish,1,religion,coleman_population_weighted,0.35285080394596097
+global_gpt-4.1_culture_us_lang_spanish_1,language,global,gpt-4.1,us,spanish,1,political affiliation,coleman_population_weighted,0.8808262603633176
+global_gpt-4.1_culture_us_lang_spanish_1,language,global,gpt-4.1,us,spanish,1,age,numeric_assortativity,0.7280675647237425
+iterative_gpt-4.1-mini_n5_culture_brazil_0,method,iterative,gpt-4.1-mini,brazil,english,0,gender,coleman_population_weighted,0.0005711779921623236
+iterative_gpt-4.1-mini_n5_culture_brazil_0,method,iterative,gpt-4.1-mini,brazil,english,0,race/ethnicity,coleman_population_weighted,0.2688491627503546
+iterative_gpt-4.1-mini_n5_culture_brazil_0,method,iterative,gpt-4.1-mini,brazil,english,0,religion,coleman_population_weighted,0.25233250714681266
+iterative_gpt-4.1-mini_n5_culture_brazil_0,method,iterative,gpt-4.1-mini,brazil,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_brazil_0,method,iterative,gpt-4.1-mini,brazil,english,0,age,numeric_assortativity,0.27124826947482245
+iterative_gpt-4.1-mini_n5_culture_brazil_1,method,iterative,gpt-4.1-mini,brazil,english,1,gender,coleman_population_weighted,0.031038413411268558
+iterative_gpt-4.1-mini_n5_culture_brazil_1,method,iterative,gpt-4.1-mini,brazil,english,1,race/ethnicity,coleman_population_weighted,0.31937587983896315
+iterative_gpt-4.1-mini_n5_culture_brazil_1,method,iterative,gpt-4.1-mini,brazil,english,1,religion,coleman_population_weighted,0.24702032747853475
+iterative_gpt-4.1-mini_n5_culture_brazil_1,method,iterative,gpt-4.1-mini,brazil,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_brazil_1,method,iterative,gpt-4.1-mini,brazil,english,1,age,numeric_assortativity,0.19759846354496163
+iterative_gpt-4.1-mini_n5_culture_india_0,method,iterative,gpt-4.1-mini,india,english,0,gender,coleman_population_weighted,-0.01241358840313283
+iterative_gpt-4.1-mini_n5_culture_india_0,method,iterative,gpt-4.1-mini,india,english,0,race/ethnicity,coleman_population_weighted,0.27918858018220066
+iterative_gpt-4.1-mini_n5_culture_india_0,method,iterative,gpt-4.1-mini,india,english,0,religion,coleman_population_weighted,0.20313695370621362
+iterative_gpt-4.1-mini_n5_culture_india_0,method,iterative,gpt-4.1-mini,india,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_india_0,method,iterative,gpt-4.1-mini,india,english,0,age,numeric_assortativity,0.2283180537842756
+iterative_gpt-4.1-mini_n5_culture_india_1,method,iterative,gpt-4.1-mini,india,english,1,gender,coleman_population_weighted,0.042810497190059194
+iterative_gpt-4.1-mini_n5_culture_india_1,method,iterative,gpt-4.1-mini,india,english,1,race/ethnicity,coleman_population_weighted,0.26363886330090197
+iterative_gpt-4.1-mini_n5_culture_india_1,method,iterative,gpt-4.1-mini,india,english,1,religion,coleman_population_weighted,0.20009887878993554
+iterative_gpt-4.1-mini_n5_culture_india_1,method,iterative,gpt-4.1-mini,india,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_india_1,method,iterative,gpt-4.1-mini,india,english,1,age,numeric_assortativity,0.17743027695107294
+iterative_gpt-4.1-mini_n5_culture_japan_0,method,iterative,gpt-4.1-mini,japan,english,0,gender,coleman_population_weighted,0.0006838055971003509
+iterative_gpt-4.1-mini_n5_culture_japan_0,method,iterative,gpt-4.1-mini,japan,english,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1-mini_n5_culture_japan_0,method,iterative,gpt-4.1-mini,japan,english,0,religion,coleman_population_weighted,0.1769433727266467
+iterative_gpt-4.1-mini_n5_culture_japan_0,method,iterative,gpt-4.1-mini,japan,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_japan_0,method,iterative,gpt-4.1-mini,japan,english,0,age,numeric_assortativity,0.17014516978453392
+iterative_gpt-4.1-mini_n5_culture_japan_1,method,iterative,gpt-4.1-mini,japan,english,1,gender,coleman_population_weighted,0.008755312403381017
+iterative_gpt-4.1-mini_n5_culture_japan_1,method,iterative,gpt-4.1-mini,japan,english,1,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1-mini_n5_culture_japan_1,method,iterative,gpt-4.1-mini,japan,english,1,religion,coleman_population_weighted,0.1937213145840403
+iterative_gpt-4.1-mini_n5_culture_japan_1,method,iterative,gpt-4.1-mini,japan,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_japan_1,method,iterative,gpt-4.1-mini,japan,english,1,age,numeric_assortativity,0.2008501508455338
+iterative_gpt-4.1-mini_n5_culture_us_0,method,iterative,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.024570728896571643
+iterative_gpt-4.1-mini_n5_culture_us_0,method,iterative,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.2354586248543056
+iterative_gpt-4.1-mini_n5_culture_us_0,method,iterative,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.13052689239612933
+iterative_gpt-4.1-mini_n5_culture_us_0,method,iterative,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_0,method,iterative,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.3391296815702928
+iterative_gpt-4.1-mini_n5_culture_us_1,method,iterative,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,-0.005794467999192433
+iterative_gpt-4.1-mini_n5_culture_us_1,method,iterative,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.26845911105756404
+iterative_gpt-4.1-mini_n5_culture_us_1,method,iterative,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.2299371364599582
+iterative_gpt-4.1-mini_n5_culture_us_1,method,iterative,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_1,method,iterative,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.16896528674579664
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.017064481691272344
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.19134637042017374
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.24208079046788722
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.3102904974502928
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,-0.006823426485576191
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.25333432252300103
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.17087452571323541
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.12925527138190201
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-mini,us,hindi,0,gender,coleman_population_weighted,0.045939378963841565
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-mini,us,hindi,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-mini,us,hindi,0,religion,coleman_population_weighted,0.09814484978387601
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-mini,us,hindi,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-mini,us,hindi,0,age,numeric_assortativity,0.1497348062728516
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1-mini,us,hindi,1,gender,coleman_population_weighted,0.04361755758365929
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1-mini,us,hindi,1,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1-mini,us,hindi,1,religion,coleman_population_weighted,0.20512426067441858
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1-mini,us,hindi,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1-mini,us,hindi,1,age,numeric_assortativity,0.020464728024093253
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-mini,us,japanese,0,gender,coleman_population_weighted,0.024613927138846782
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-mini,us,japanese,0,race/ethnicity,coleman_population_weighted,0.19309364482484598
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-mini,us,japanese,0,religion,coleman_population_weighted,0.03612146515372322
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-mini,us,japanese,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-mini,us,japanese,0,age,numeric_assortativity,0.21559221913519558
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-mini,us,japanese,1,gender,coleman_population_weighted,0.019610568972723473
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-mini,us,japanese,1,race/ethnicity,coleman_population_weighted,0.2660620516211516
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-mini,us,japanese,1,religion,coleman_population_weighted,0.07446667084700473
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-mini,us,japanese,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-mini,us,japanese,1,age,numeric_assortativity,0.17760428888675714
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1-mini,us,spanish,0,gender,coleman_population_weighted,0.03919442551542608
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1-mini,us,spanish,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1-mini,us,spanish,0,religion,coleman_population_weighted,0.18778057731754372
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1-mini,us,spanish,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1-mini,us,spanish,0,age,numeric_assortativity,0.1871093685112315
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1-mini,us,spanish,1,gender,coleman_population_weighted,-0.002173448894760413
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1-mini,us,spanish,1,race/ethnicity,coleman_population_weighted,0.3052764767234124
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1-mini,us,spanish,1,religion,coleman_population_weighted,0.08380102775947497
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1-mini,us,spanish,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1-mini,us,spanish,1,age,numeric_assortativity,0.1583645258422126
+iterative_gpt-4.1-nano_n5_culture_brazil_0,method,iterative,gpt-4.1-nano,brazil,english,0,gender,coleman_population_weighted,0.05508706979295207
+iterative_gpt-4.1-nano_n5_culture_brazil_0,method,iterative,gpt-4.1-nano,brazil,english,0,race/ethnicity,coleman_population_weighted,0.09681164833681485
+iterative_gpt-4.1-nano_n5_culture_brazil_0,method,iterative,gpt-4.1-nano,brazil,english,0,religion,coleman_population_weighted,-0.02861486537088541
+iterative_gpt-4.1-nano_n5_culture_brazil_0,method,iterative,gpt-4.1-nano,brazil,english,0,political affiliation,coleman_population_weighted,0.1517457385595607
+iterative_gpt-4.1-nano_n5_culture_brazil_0,method,iterative,gpt-4.1-nano,brazil,english,0,age,numeric_assortativity,-0.010855423749447826
+iterative_gpt-4.1-nano_n5_culture_brazil_1,method,iterative,gpt-4.1-nano,brazil,english,1,gender,coleman_population_weighted,0.04270996706360841
+iterative_gpt-4.1-nano_n5_culture_brazil_1,method,iterative,gpt-4.1-nano,brazil,english,1,race/ethnicity,coleman_population_weighted,0.16023844943930513
+iterative_gpt-4.1-nano_n5_culture_brazil_1,method,iterative,gpt-4.1-nano,brazil,english,1,religion,coleman_population_weighted,-0.020693677173850837
+iterative_gpt-4.1-nano_n5_culture_brazil_1,method,iterative,gpt-4.1-nano,brazil,english,1,political affiliation,coleman_population_weighted,0.09248301555993864
+iterative_gpt-4.1-nano_n5_culture_brazil_1,method,iterative,gpt-4.1-nano,brazil,english,1,age,numeric_assortativity,0.010930455947410397
+iterative_gpt-4.1-nano_n5_culture_india_0,method,iterative,gpt-4.1-nano,india,english,0,gender,coleman_population_weighted,0.10229352820398593
+iterative_gpt-4.1-nano_n5_culture_india_0,method,iterative,gpt-4.1-nano,india,english,0,race/ethnicity,coleman_population_weighted,0.1333228099913666
+iterative_gpt-4.1-nano_n5_culture_india_0,method,iterative,gpt-4.1-nano,india,english,0,religion,coleman_population_weighted,-0.14857342142430444
+iterative_gpt-4.1-nano_n5_culture_india_0,method,iterative,gpt-4.1-nano,india,english,0,political affiliation,coleman_population_weighted,0.12266640508937914
+iterative_gpt-4.1-nano_n5_culture_india_0,method,iterative,gpt-4.1-nano,india,english,0,age,numeric_assortativity,0.016719839013185796
+iterative_gpt-4.1-nano_n5_culture_india_1,method,iterative,gpt-4.1-nano,india,english,1,gender,coleman_population_weighted,0.11258653841374562
+iterative_gpt-4.1-nano_n5_culture_india_1,method,iterative,gpt-4.1-nano,india,english,1,race/ethnicity,coleman_population_weighted,0.14175314325015823
+iterative_gpt-4.1-nano_n5_culture_india_1,method,iterative,gpt-4.1-nano,india,english,1,religion,coleman_population_weighted,0.012727255138120973
+iterative_gpt-4.1-nano_n5_culture_india_1,method,iterative,gpt-4.1-nano,india,english,1,political affiliation,coleman_population_weighted,0.0852791232967044
+iterative_gpt-4.1-nano_n5_culture_india_1,method,iterative,gpt-4.1-nano,india,english,1,age,numeric_assortativity,0.07945163810990423
+iterative_gpt-4.1-nano_n5_culture_us_0,method,iterative,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.0076161018468710595
+iterative_gpt-4.1-nano_n5_culture_us_0,method,iterative,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.11598978871939136
+iterative_gpt-4.1-nano_n5_culture_us_0,method,iterative,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,0.008210181634271549
+iterative_gpt-4.1-nano_n5_culture_us_0,method,iterative,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,0.25885360813956537
+iterative_gpt-4.1-nano_n5_culture_us_0,method,iterative,gpt-4.1-nano,us,english,0,age,numeric_assortativity,-0.018589292836485027
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.026217019695280577
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.09813635686195418
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,-0.08268504991201507
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,0.11277594479773655
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_0,language,iterative,gpt-4.1-nano,us,english,0,age,numeric_assortativity,0.03484856050184468
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-nano,us,english,1,gender,coleman_population_weighted,0.09417212650651138
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-nano,us,english,1,race/ethnicity,coleman_population_weighted,0.1494425584213674
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-nano,us,english,1,religion,coleman_population_weighted,-0.01632213375673815
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-nano,us,english,1,political affiliation,coleman_population_weighted,0.0901182217963864
+iterative_gpt-4.1-nano_n5_culture_us_lang_english_1,language,iterative,gpt-4.1-nano,us,english,1,age,numeric_assortativity,0.08994812080834978
+iterative_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-nano,us,hindi,0,gender,coleman_population_weighted,0.07662630579297237
+iterative_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-nano,us,hindi,0,race/ethnicity,coleman_population_weighted,0.16812551107399476
+iterative_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-nano,us,hindi,0,religion,coleman_population_weighted,-0.12157232355554334
+iterative_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-nano,us,hindi,0,political affiliation,coleman_population_weighted,0.2829946875834206
+iterative_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1-nano,us,hindi,0,age,numeric_assortativity,-0.007176245794093622
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-nano,us,japanese,0,gender,coleman_population_weighted,0.06557485200030125
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-nano,us,japanese,0,race/ethnicity,coleman_population_weighted,0.1342243255413431
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-nano,us,japanese,0,religion,coleman_population_weighted,-0.11463551144196304
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-nano,us,japanese,0,political affiliation,coleman_population_weighted,0.2635470085470085
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1-nano,us,japanese,0,age,numeric_assortativity,0.1522479017722597
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-nano,us,japanese,1,gender,coleman_population_weighted,-0.0318913255594478
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-nano,us,japanese,1,race/ethnicity,coleman_population_weighted,0.15797107990838868
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-nano,us,japanese,1,religion,coleman_population_weighted,-0.09898854531385995
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-nano,us,japanese,1,political affiliation,coleman_population_weighted,0.2335341440559819
+iterative_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1-nano,us,japanese,1,age,numeric_assortativity,0.011994864505253965
+iterative_gpt-4.1_n5_culture_brazil_0,method,iterative,gpt-4.1,brazil,english,0,gender,coleman_population_weighted,0.056224233283056785
+iterative_gpt-4.1_n5_culture_brazil_0,method,iterative,gpt-4.1,brazil,english,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_brazil_0,method,iterative,gpt-4.1,brazil,english,0,religion,coleman_population_weighted,0.15733419667898732
+iterative_gpt-4.1_n5_culture_brazil_0,method,iterative,gpt-4.1,brazil,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_brazil_0,method,iterative,gpt-4.1,brazil,english,0,age,numeric_assortativity,0.2818299325152567
+iterative_gpt-4.1_n5_culture_brazil_1,method,iterative,gpt-4.1,brazil,english,1,gender,coleman_population_weighted,-0.03642486839208141
+iterative_gpt-4.1_n5_culture_brazil_1,method,iterative,gpt-4.1,brazil,english,1,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_brazil_1,method,iterative,gpt-4.1,brazil,english,1,religion,coleman_population_weighted,0.10386218349459156
+iterative_gpt-4.1_n5_culture_brazil_1,method,iterative,gpt-4.1,brazil,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_brazil_1,method,iterative,gpt-4.1,brazil,english,1,age,numeric_assortativity,0.31055291236944776
+iterative_gpt-4.1_n5_culture_india_0,method,iterative,gpt-4.1,india,english,0,gender,coleman_population_weighted,0.05254787406686138
+iterative_gpt-4.1_n5_culture_india_0,method,iterative,gpt-4.1,india,english,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_india_0,method,iterative,gpt-4.1,india,english,0,religion,coleman_population_weighted,0.19146128678087265
+iterative_gpt-4.1_n5_culture_india_0,method,iterative,gpt-4.1,india,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_india_0,method,iterative,gpt-4.1,india,english,0,age,numeric_assortativity,0.37969140082483366
+iterative_gpt-4.1_n5_culture_india_1,method,iterative,gpt-4.1,india,english,1,gender,coleman_population_weighted,0.015257529074937954
+iterative_gpt-4.1_n5_culture_india_1,method,iterative,gpt-4.1,india,english,1,race/ethnicity,coleman_population_weighted,0.329693048098916
+iterative_gpt-4.1_n5_culture_india_1,method,iterative,gpt-4.1,india,english,1,religion,coleman_population_weighted,0.1091272055618405
+iterative_gpt-4.1_n5_culture_india_1,method,iterative,gpt-4.1,india,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_india_1,method,iterative,gpt-4.1,india,english,1,age,numeric_assortativity,0.29563718334614786
+iterative_gpt-4.1_n5_culture_japan_0,method,iterative,gpt-4.1,japan,english,0,gender,coleman_population_weighted,-0.07865608228980325
+iterative_gpt-4.1_n5_culture_japan_0,method,iterative,gpt-4.1,japan,english,0,race/ethnicity,coleman_population_weighted,0.29509388370732914
+iterative_gpt-4.1_n5_culture_japan_0,method,iterative,gpt-4.1,japan,english,0,religion,coleman_population_weighted,0.13564004923474943
+iterative_gpt-4.1_n5_culture_japan_0,method,iterative,gpt-4.1,japan,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_japan_0,method,iterative,gpt-4.1,japan,english,0,age,numeric_assortativity,0.43156201587818116
+iterative_gpt-4.1_n5_culture_japan_1,method,iterative,gpt-4.1,japan,english,1,gender,coleman_population_weighted,-0.04607641613599907
+iterative_gpt-4.1_n5_culture_japan_1,method,iterative,gpt-4.1,japan,english,1,race/ethnicity,coleman_population_weighted,0.2722651267865006
+iterative_gpt-4.1_n5_culture_japan_1,method,iterative,gpt-4.1,japan,english,1,religion,coleman_population_weighted,0.07441853332032769
+iterative_gpt-4.1_n5_culture_japan_1,method,iterative,gpt-4.1,japan,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_japan_1,method,iterative,gpt-4.1,japan,english,1,age,numeric_assortativity,0.3213193418201317
+iterative_gpt-4.1_n5_culture_us_0,method,iterative,gpt-4.1,us,english,0,gender,coleman_population_weighted,-0.02316423122874743
+iterative_gpt-4.1_n5_culture_us_0,method,iterative,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_us_0,method,iterative,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.155922239018621
+iterative_gpt-4.1_n5_culture_us_0,method,iterative,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_0,method,iterative,gpt-4.1,us,english,0,age,numeric_assortativity,0.38822832037379196
+iterative_gpt-4.1_n5_culture_us_1,method,iterative,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.01409978909978906
+iterative_gpt-4.1_n5_culture_us_1,method,iterative,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.31627884109731386
+iterative_gpt-4.1_n5_culture_us_1,method,iterative,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.08032574122267275
+iterative_gpt-4.1_n5_culture_us_1,method,iterative,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_1,method,iterative,gpt-4.1,us,english,1,age,numeric_assortativity,0.3119382688968774
+iterative_gpt-4.1_n5_culture_us_lang_english_0,language,iterative,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.014313312258517757
+iterative_gpt-4.1_n5_culture_us_lang_english_0,language,iterative,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_us_lang_english_0,language,iterative,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.1335693001974592
+iterative_gpt-4.1_n5_culture_us_lang_english_0,language,iterative,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_english_0,language,iterative,gpt-4.1,us,english,0,age,numeric_assortativity,0.453326883187903
+iterative_gpt-4.1_n5_culture_us_lang_english_1,language,iterative,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.0018778763971071429
+iterative_gpt-4.1_n5_culture_us_lang_english_1,language,iterative,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.3126530660167072
+iterative_gpt-4.1_n5_culture_us_lang_english_1,language,iterative,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.1209099945265106
+iterative_gpt-4.1_n5_culture_us_lang_english_1,language,iterative,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_english_1,language,iterative,gpt-4.1,us,english,1,age,numeric_assortativity,0.20067937164554756
+iterative_gpt-4.1_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1,us,hindi,0,gender,coleman_population_weighted,0.05817963712700554
+iterative_gpt-4.1_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1,us,hindi,0,race/ethnicity,coleman_population_weighted,0.37376893549181694
+iterative_gpt-4.1_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1,us,hindi,0,religion,coleman_population_weighted,0.18948181677710213
+iterative_gpt-4.1_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1,us,hindi,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_hindi_0,language,iterative,gpt-4.1,us,hindi,0,age,numeric_assortativity,0.32821435719474235
+iterative_gpt-4.1_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1,us,hindi,1,gender,coleman_population_weighted,0.02687187364606719
+iterative_gpt-4.1_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1,us,hindi,1,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1,us,hindi,1,religion,coleman_population_weighted,0.10792455451558317
+iterative_gpt-4.1_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1,us,hindi,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_hindi_1,language,iterative,gpt-4.1,us,hindi,1,age,numeric_assortativity,0.21855086865003917
+iterative_gpt-4.1_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1,us,japanese,0,gender,coleman_population_weighted,-0.022180948248635646
+iterative_gpt-4.1_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1,us,japanese,0,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1,us,japanese,0,religion,coleman_population_weighted,-0.002374739893374875
+iterative_gpt-4.1_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1,us,japanese,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_japanese_0,language,iterative,gpt-4.1,us,japanese,0,age,numeric_assortativity,0.38341263625656147
+iterative_gpt-4.1_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1,us,japanese,1,gender,coleman_population_weighted,-0.043632695561629506
+iterative_gpt-4.1_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1,us,japanese,1,race/ethnicity,coleman_population_weighted,
+iterative_gpt-4.1_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1,us,japanese,1,religion,coleman_population_weighted,0.011459821965857014
+iterative_gpt-4.1_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1,us,japanese,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_japanese_1,language,iterative,gpt-4.1,us,japanese,1,age,numeric_assortativity,0.30819631921244384
+iterative_gpt-4.1_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1,us,spanish,0,gender,coleman_population_weighted,0.006672352826198991
+iterative_gpt-4.1_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1,us,spanish,0,race/ethnicity,coleman_population_weighted,0.39729905455435555
+iterative_gpt-4.1_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1,us,spanish,0,religion,coleman_population_weighted,0.15921955455918174
+iterative_gpt-4.1_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1,us,spanish,0,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_spanish_0,language,iterative,gpt-4.1,us,spanish,0,age,numeric_assortativity,0.2788465123337089
+iterative_gpt-4.1_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1,us,spanish,1,gender,coleman_population_weighted,-0.032722585556593645
+iterative_gpt-4.1_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1,us,spanish,1,race/ethnicity,coleman_population_weighted,0.3699128861030579
+iterative_gpt-4.1_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1,us,spanish,1,religion,coleman_population_weighted,-0.028508408069705893
+iterative_gpt-4.1_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1,us,spanish,1,political affiliation,coleman_population_weighted,1.0
+iterative_gpt-4.1_n5_culture_us_lang_spanish_1,language,iterative,gpt-4.1,us,spanish,1,age,numeric_assortativity,0.2003103543593834
+local_gpt-4.1-mini_n5_culture_brazil_0,method,local,gpt-4.1-mini,brazil,english,0,gender,coleman_population_weighted,0.11831223414171199
+local_gpt-4.1-mini_n5_culture_brazil_0,method,local,gpt-4.1-mini,brazil,english,0,race/ethnicity,coleman_population_weighted,0.30415016396347216
+local_gpt-4.1-mini_n5_culture_brazil_0,method,local,gpt-4.1-mini,brazil,english,0,religion,coleman_population_weighted,0.2455241544717461
+local_gpt-4.1-mini_n5_culture_brazil_0,method,local,gpt-4.1-mini,brazil,english,0,political affiliation,coleman_population_weighted,0.9685086071096433
+local_gpt-4.1-mini_n5_culture_brazil_0,method,local,gpt-4.1-mini,brazil,english,0,age,numeric_assortativity,0.31323817760254047
+local_gpt-4.1-mini_n5_culture_brazil_1,method,local,gpt-4.1-mini,brazil,english,1,gender,coleman_population_weighted,0.1536490719233088
+local_gpt-4.1-mini_n5_culture_brazil_1,method,local,gpt-4.1-mini,brazil,english,1,race/ethnicity,coleman_population_weighted,0.3291753250327382
+local_gpt-4.1-mini_n5_culture_brazil_1,method,local,gpt-4.1-mini,brazil,english,1,religion,coleman_population_weighted,0.22082771779795485
+local_gpt-4.1-mini_n5_culture_brazil_1,method,local,gpt-4.1-mini,brazil,english,1,political affiliation,coleman_population_weighted,0.9911811832043739
+local_gpt-4.1-mini_n5_culture_brazil_1,method,local,gpt-4.1-mini,brazil,english,1,age,numeric_assortativity,0.2183337714317412
+local_gpt-4.1-mini_n5_culture_india_0,method,local,gpt-4.1-mini,india,english,0,gender,coleman_population_weighted,0.10805490342188469
+local_gpt-4.1-mini_n5_culture_india_0,method,local,gpt-4.1-mini,india,english,0,race/ethnicity,coleman_population_weighted,0.24116018115758234
+local_gpt-4.1-mini_n5_culture_india_0,method,local,gpt-4.1-mini,india,english,0,religion,coleman_population_weighted,0.22336580265702138
+local_gpt-4.1-mini_n5_culture_india_0,method,local,gpt-4.1-mini,india,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_india_0,method,local,gpt-4.1-mini,india,english,0,age,numeric_assortativity,0.3433170782036269
+local_gpt-4.1-mini_n5_culture_india_1,method,local,gpt-4.1-mini,india,english,1,gender,coleman_population_weighted,0.08191954244585821
+local_gpt-4.1-mini_n5_culture_india_1,method,local,gpt-4.1-mini,india,english,1,race/ethnicity,coleman_population_weighted,0.318445204168624
+local_gpt-4.1-mini_n5_culture_india_1,method,local,gpt-4.1-mini,india,english,1,religion,coleman_population_weighted,0.23020212858922534
+local_gpt-4.1-mini_n5_culture_india_1,method,local,gpt-4.1-mini,india,english,1,political affiliation,coleman_population_weighted,0.9913914433854614
+local_gpt-4.1-mini_n5_culture_india_1,method,local,gpt-4.1-mini,india,english,1,age,numeric_assortativity,0.1292847386697017
+local_gpt-4.1-mini_n5_culture_japan_0,method,local,gpt-4.1-mini,japan,english,0,gender,coleman_population_weighted,0.12952922106066123
+local_gpt-4.1-mini_n5_culture_japan_0,method,local,gpt-4.1-mini,japan,english,0,race/ethnicity,coleman_population_weighted,0.20758547566183658
+local_gpt-4.1-mini_n5_culture_japan_0,method,local,gpt-4.1-mini,japan,english,0,religion,coleman_population_weighted,0.22491189268889134
+local_gpt-4.1-mini_n5_culture_japan_0,method,local,gpt-4.1-mini,japan,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_japan_0,method,local,gpt-4.1-mini,japan,english,0,age,numeric_assortativity,0.3169077384429646
+local_gpt-4.1-mini_n5_culture_japan_1,method,local,gpt-4.1-mini,japan,english,1,gender,coleman_population_weighted,0.097913804945055
+local_gpt-4.1-mini_n5_culture_japan_1,method,local,gpt-4.1-mini,japan,english,1,race/ethnicity,coleman_population_weighted,0.2702700641466145
+local_gpt-4.1-mini_n5_culture_japan_1,method,local,gpt-4.1-mini,japan,english,1,religion,coleman_population_weighted,0.1871557859757433
+local_gpt-4.1-mini_n5_culture_japan_1,method,local,gpt-4.1-mini,japan,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_japan_1,method,local,gpt-4.1-mini,japan,english,1,age,numeric_assortativity,0.1305451077151073
+local_gpt-4.1-mini_n5_culture_us_0,method,local,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.07170016915261099
+local_gpt-4.1-mini_n5_culture_us_0,method,local,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.21650042151427518
+local_gpt-4.1-mini_n5_culture_us_0,method,local,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.22636946311085182
+local_gpt-4.1-mini_n5_culture_us_0,method,local,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_0,method,local,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.3098629290122944
+local_gpt-4.1-mini_n5_culture_us_1,method,local,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.16621668341851825
+local_gpt-4.1-mini_n5_culture_us_1,method,local,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.3029675026210161
+local_gpt-4.1-mini_n5_culture_us_1,method,local,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.2159752289363456
+local_gpt-4.1-mini_n5_culture_us_1,method,local,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,0.9913326754025257
+local_gpt-4.1-mini_n5_culture_us_1,method,local,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.09707753698680265
+local_gpt-4.1-mini_n5_culture_us_lang_english_0,language,local,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.10851810544948373
+local_gpt-4.1-mini_n5_culture_us_lang_english_0,language,local,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.2423363427496603
+local_gpt-4.1-mini_n5_culture_us_lang_english_0,language,local,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.22533957026012874
+local_gpt-4.1-mini_n5_culture_us_lang_english_0,language,local,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_lang_english_0,language,local,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.3267364404286434
+local_gpt-4.1-mini_n5_culture_us_lang_english_1,language,local,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.13827303109959882
+local_gpt-4.1-mini_n5_culture_us_lang_english_1,language,local,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.28579682125630823
+local_gpt-4.1-mini_n5_culture_us_lang_english_1,language,local,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.1869716320039851
+local_gpt-4.1-mini_n5_culture_us_lang_english_1,language,local,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_lang_english_1,language,local,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.07786896220896104
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-mini,us,hindi,0,gender,coleman_population_weighted,0.2163536332659398
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-mini,us,hindi,0,race/ethnicity,coleman_population_weighted,0.2557150606164638
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-mini,us,hindi,0,religion,coleman_population_weighted,0.2359077070172257
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-mini,us,hindi,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-mini,us,hindi,0,age,numeric_assortativity,0.2716540383670413
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,local,gpt-4.1-mini,us,hindi,1,gender,coleman_population_weighted,0.13980704950408385
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,local,gpt-4.1-mini,us,hindi,1,race/ethnicity,coleman_population_weighted,0.39576210686154456
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,local,gpt-4.1-mini,us,hindi,1,religion,coleman_population_weighted,0.21993125704160896
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,local,gpt-4.1-mini,us,hindi,1,political affiliation,coleman_population_weighted,0.9913152015228139
+local_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,local,gpt-4.1-mini,us,hindi,1,age,numeric_assortativity,0.07673360643482775
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-mini,us,japanese,0,gender,coleman_population_weighted,0.17132234422165982
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-mini,us,japanese,0,race/ethnicity,coleman_population_weighted,0.32464420550829015
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-mini,us,japanese,0,religion,coleman_population_weighted,0.08160165533464334
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-mini,us,japanese,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-mini,us,japanese,0,age,numeric_assortativity,0.28729129203417536
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-mini,us,japanese,1,gender,coleman_population_weighted,0.0947809903981013
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-mini,us,japanese,1,race/ethnicity,coleman_population_weighted,0.33085995267672275
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-mini,us,japanese,1,religion,coleman_population_weighted,0.0725831316052792
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-mini,us,japanese,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-mini,us,japanese,1,age,numeric_assortativity,0.134124420923397
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-mini,us,spanish,0,gender,coleman_population_weighted,0.10513826874083015
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-mini,us,spanish,0,race/ethnicity,coleman_population_weighted,0.295609538236577
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-mini,us,spanish,0,religion,coleman_population_weighted,0.1716249775344381
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-mini,us,spanish,0,political affiliation,coleman_population_weighted,0.9388025376685171
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-mini,us,spanish,0,age,numeric_assortativity,0.2853354481737011
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,local,gpt-4.1-mini,us,spanish,1,gender,coleman_population_weighted,0.12315233785822023
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,local,gpt-4.1-mini,us,spanish,1,race/ethnicity,coleman_population_weighted,0.19924415310392124
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,local,gpt-4.1-mini,us,spanish,1,religion,coleman_population_weighted,0.13140988555358304
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,local,gpt-4.1-mini,us,spanish,1,political affiliation,coleman_population_weighted,0.9913932001560867
+local_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,local,gpt-4.1-mini,us,spanish,1,age,numeric_assortativity,0.22605439606669941
+local_gpt-4.1-nano_n5_culture_brazil_0,method,local,gpt-4.1-nano,brazil,english,0,gender,coleman_population_weighted,0.16344896933132222
+local_gpt-4.1-nano_n5_culture_brazil_0,method,local,gpt-4.1-nano,brazil,english,0,race/ethnicity,coleman_population_weighted,0.10948866464229705
+local_gpt-4.1-nano_n5_culture_brazil_0,method,local,gpt-4.1-nano,brazil,english,0,religion,coleman_population_weighted,0.05303604087771263
+local_gpt-4.1-nano_n5_culture_brazil_0,method,local,gpt-4.1-nano,brazil,english,0,political affiliation,coleman_population_weighted,-0.003525728861437316
+local_gpt-4.1-nano_n5_culture_brazil_0,method,local,gpt-4.1-nano,brazil,english,0,age,numeric_assortativity,-0.04954669912895349
+local_gpt-4.1-nano_n5_culture_india_0,method,local,gpt-4.1-nano,india,english,0,gender,coleman_population_weighted,0.07418905082456476
+local_gpt-4.1-nano_n5_culture_india_0,method,local,gpt-4.1-nano,india,english,0,race/ethnicity,coleman_population_weighted,0.1448482197928259
+local_gpt-4.1-nano_n5_culture_india_0,method,local,gpt-4.1-nano,india,english,0,religion,coleman_population_weighted,0.010947826553885667
+local_gpt-4.1-nano_n5_culture_india_0,method,local,gpt-4.1-nano,india,english,0,political affiliation,coleman_population_weighted,0.08658336992535222
+local_gpt-4.1-nano_n5_culture_india_0,method,local,gpt-4.1-nano,india,english,0,age,numeric_assortativity,0.052399357754517185
+local_gpt-4.1-nano_n5_culture_india_1,method,local,gpt-4.1-nano,india,english,1,gender,coleman_population_weighted,0.10902830667682159
+local_gpt-4.1-nano_n5_culture_india_1,method,local,gpt-4.1-nano,india,english,1,race/ethnicity,coleman_population_weighted,0.19879292646681654
+local_gpt-4.1-nano_n5_culture_india_1,method,local,gpt-4.1-nano,india,english,1,religion,coleman_population_weighted,0.007463395062574516
+local_gpt-4.1-nano_n5_culture_india_1,method,local,gpt-4.1-nano,india,english,1,political affiliation,coleman_population_weighted,0.2247855892434205
+local_gpt-4.1-nano_n5_culture_india_1,method,local,gpt-4.1-nano,india,english,1,age,numeric_assortativity,0.09087050126024009
+local_gpt-4.1-nano_n5_culture_japan_0,method,local,gpt-4.1-nano,japan,english,0,gender,coleman_population_weighted,0.08424575696807507
+local_gpt-4.1-nano_n5_culture_japan_0,method,local,gpt-4.1-nano,japan,english,0,race/ethnicity,coleman_population_weighted,0.1299244332242428
+local_gpt-4.1-nano_n5_culture_japan_0,method,local,gpt-4.1-nano,japan,english,0,religion,coleman_population_weighted,-0.03578518978061573
+local_gpt-4.1-nano_n5_culture_japan_0,method,local,gpt-4.1-nano,japan,english,0,political affiliation,coleman_population_weighted,0.08723349348997822
+local_gpt-4.1-nano_n5_culture_japan_0,method,local,gpt-4.1-nano,japan,english,0,age,numeric_assortativity,-0.007380134302081865
+local_gpt-4.1-nano_n5_culture_japan_1,method,local,gpt-4.1-nano,japan,english,1,gender,coleman_population_weighted,0.010322480067702977
+local_gpt-4.1-nano_n5_culture_japan_1,method,local,gpt-4.1-nano,japan,english,1,race/ethnicity,coleman_population_weighted,0.1700908707306165
+local_gpt-4.1-nano_n5_culture_japan_1,method,local,gpt-4.1-nano,japan,english,1,religion,coleman_population_weighted,-0.010194858893623085
+local_gpt-4.1-nano_n5_culture_japan_1,method,local,gpt-4.1-nano,japan,english,1,political affiliation,coleman_population_weighted,0.18602183450668297
+local_gpt-4.1-nano_n5_culture_japan_1,method,local,gpt-4.1-nano,japan,english,1,age,numeric_assortativity,0.11764407630883114
+local_gpt-4.1-nano_n5_culture_us_0,method,local,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.10884519750163232
+local_gpt-4.1-nano_n5_culture_us_0,method,local,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.09358458528426407
+local_gpt-4.1-nano_n5_culture_us_0,method,local,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,0.06951635893285642
+local_gpt-4.1-nano_n5_culture_us_0,method,local,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,0.06193811066770502
+local_gpt-4.1-nano_n5_culture_us_0,method,local,gpt-4.1-nano,us,english,0,age,numeric_assortativity,-0.011131931158922886
+local_gpt-4.1-nano_n5_culture_us_1,method,local,gpt-4.1-nano,us,english,1,gender,coleman_population_weighted,0.022134048986378732
+local_gpt-4.1-nano_n5_culture_us_1,method,local,gpt-4.1-nano,us,english,1,race/ethnicity,coleman_population_weighted,0.17848964342372703
+local_gpt-4.1-nano_n5_culture_us_1,method,local,gpt-4.1-nano,us,english,1,religion,coleman_population_weighted,-0.013165150261924491
+local_gpt-4.1-nano_n5_culture_us_1,method,local,gpt-4.1-nano,us,english,1,political affiliation,coleman_population_weighted,0.20896060832856972
+local_gpt-4.1-nano_n5_culture_us_1,method,local,gpt-4.1-nano,us,english,1,age,numeric_assortativity,0.06107488612749333
+local_gpt-4.1-nano_n5_culture_us_lang_english_0,language,local,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.07649636703154596
+local_gpt-4.1-nano_n5_culture_us_lang_english_0,language,local,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.12678317941574338
+local_gpt-4.1-nano_n5_culture_us_lang_english_0,language,local,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,0.029895382272614283
+local_gpt-4.1-nano_n5_culture_us_lang_english_0,language,local,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,0.07982519704511404
+local_gpt-4.1-nano_n5_culture_us_lang_english_0,language,local,gpt-4.1-nano,us,english,0,age,numeric_assortativity,-0.011064504542745142
+local_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-nano,us,hindi,0,gender,coleman_population_weighted,0.1331206269440747
+local_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-nano,us,hindi,0,race/ethnicity,coleman_population_weighted,0.12148037943402817
+local_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-nano,us,hindi,0,religion,coleman_population_weighted,-0.0015030037451778423
+local_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-nano,us,hindi,0,political affiliation,coleman_population_weighted,0.27582374929836506
+local_gpt-4.1-nano_n5_culture_us_lang_hindi_0,language,local,gpt-4.1-nano,us,hindi,0,age,numeric_assortativity,0.0687427827070207
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-nano,us,japanese,0,gender,coleman_population_weighted,0.1773298924268695
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-nano,us,japanese,0,race/ethnicity,coleman_population_weighted,0.15090981747890414
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-nano,us,japanese,0,religion,coleman_population_weighted,0.037804411506982175
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-nano,us,japanese,0,political affiliation,coleman_population_weighted,0.07208757642565405
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,local,gpt-4.1-nano,us,japanese,0,age,numeric_assortativity,-0.09320114133536514
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-nano,us,japanese,1,gender,coleman_population_weighted,0.21718653711780017
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-nano,us,japanese,1,race/ethnicity,coleman_population_weighted,0.12244976705109978
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-nano,us,japanese,1,religion,coleman_population_weighted,-0.06101036737347834
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-nano,us,japanese,1,political affiliation,coleman_population_weighted,0.1023336362319414
+local_gpt-4.1-nano_n5_culture_us_lang_japanese_1,language,local,gpt-4.1-nano,us,japanese,1,age,numeric_assortativity,0.026875364893282332
+local_gpt-4.1-nano_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-nano,us,spanish,0,gender,coleman_population_weighted,0.18234127084163135
+local_gpt-4.1-nano_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-nano,us,spanish,0,race/ethnicity,coleman_population_weighted,0.1465125598525288
+local_gpt-4.1-nano_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-nano,us,spanish,0,religion,coleman_population_weighted,-0.007818553828740582
+local_gpt-4.1-nano_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-nano,us,spanish,0,political affiliation,coleman_population_weighted,-0.017841044821663654
+local_gpt-4.1-nano_n5_culture_us_lang_spanish_0,language,local,gpt-4.1-nano,us,spanish,0,age,numeric_assortativity,-0.009518930305011476
+local_gpt-4.1_n5_culture_brazil_0,method,local,gpt-4.1,brazil,english,0,gender,coleman_population_weighted,0.12315233785822023
+local_gpt-4.1_n5_culture_brazil_0,method,local,gpt-4.1,brazil,english,0,race/ethnicity,coleman_population_weighted,0.25074834869187435
+local_gpt-4.1_n5_culture_brazil_0,method,local,gpt-4.1,brazil,english,0,religion,coleman_population_weighted,0.22601711139466932
+local_gpt-4.1_n5_culture_brazil_0,method,local,gpt-4.1,brazil,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_brazil_0,method,local,gpt-4.1,brazil,english,0,age,numeric_assortativity,0.38717803617744256
+local_gpt-4.1_n5_culture_brazil_1,method,local,gpt-4.1,brazil,english,1,gender,coleman_population_weighted,0.156162040830869
+local_gpt-4.1_n5_culture_brazil_1,method,local,gpt-4.1,brazil,english,1,race/ethnicity,coleman_population_weighted,0.29926394638122805
+local_gpt-4.1_n5_culture_brazil_1,method,local,gpt-4.1,brazil,english,1,religion,coleman_population_weighted,0.13766500568231485
+local_gpt-4.1_n5_culture_brazil_1,method,local,gpt-4.1,brazil,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_brazil_1,method,local,gpt-4.1,brazil,english,1,age,numeric_assortativity,0.21602447364117608
+local_gpt-4.1_n5_culture_india_0,method,local,gpt-4.1,india,english,0,gender,coleman_population_weighted,0.12610911768215138
+local_gpt-4.1_n5_culture_india_0,method,local,gpt-4.1,india,english,0,race/ethnicity,coleman_population_weighted,0.2699211612955835
+local_gpt-4.1_n5_culture_india_0,method,local,gpt-4.1,india,english,0,religion,coleman_population_weighted,0.27456582185601397
+local_gpt-4.1_n5_culture_india_0,method,local,gpt-4.1,india,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_india_0,method,local,gpt-4.1,india,english,0,age,numeric_assortativity,0.380240582238413
+local_gpt-4.1_n5_culture_india_1,method,local,gpt-4.1,india,english,1,gender,coleman_population_weighted,0.13087430537925593
+local_gpt-4.1_n5_culture_india_1,method,local,gpt-4.1,india,english,1,race/ethnicity,coleman_population_weighted,0.3350212065502529
+local_gpt-4.1_n5_culture_india_1,method,local,gpt-4.1,india,english,1,religion,coleman_population_weighted,0.11653685721837097
+local_gpt-4.1_n5_culture_india_1,method,local,gpt-4.1,india,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_india_1,method,local,gpt-4.1,india,english,1,age,numeric_assortativity,0.2563748315724417
+local_gpt-4.1_n5_culture_japan_0,method,local,gpt-4.1,japan,english,0,gender,coleman_population_weighted,0.10744741823992215
+local_gpt-4.1_n5_culture_japan_0,method,local,gpt-4.1,japan,english,0,race/ethnicity,coleman_population_weighted,0.2547474722708157
+local_gpt-4.1_n5_culture_japan_0,method,local,gpt-4.1,japan,english,0,religion,coleman_population_weighted,0.25173504971744376
+local_gpt-4.1_n5_culture_japan_0,method,local,gpt-4.1,japan,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_japan_0,method,local,gpt-4.1,japan,english,0,age,numeric_assortativity,0.39030410180990976
+local_gpt-4.1_n5_culture_japan_1,method,local,gpt-4.1,japan,english,1,gender,coleman_population_weighted,0.1643634122660651
+local_gpt-4.1_n5_culture_japan_1,method,local,gpt-4.1,japan,english,1,race/ethnicity,coleman_population_weighted,0.3207212720170527
+local_gpt-4.1_n5_culture_japan_1,method,local,gpt-4.1,japan,english,1,religion,coleman_population_weighted,0.10020933918999039
+local_gpt-4.1_n5_culture_japan_1,method,local,gpt-4.1,japan,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_japan_1,method,local,gpt-4.1,japan,english,1,age,numeric_assortativity,0.17262476761143364
+local_gpt-4.1_n5_culture_us_0,method,local,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.1305956496686833
+local_gpt-4.1_n5_culture_us_0,method,local,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,0.3123780909186704
+local_gpt-4.1_n5_culture_us_0,method,local,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.2167952491869428
+local_gpt-4.1_n5_culture_us_0,method,local,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_0,method,local,gpt-4.1,us,english,0,age,numeric_assortativity,0.3915852621202258
+local_gpt-4.1_n5_culture_us_1,method,local,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.1435746911758906
+local_gpt-4.1_n5_culture_us_1,method,local,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.3299934521220963
+local_gpt-4.1_n5_culture_us_1,method,local,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.14464428347048058
+local_gpt-4.1_n5_culture_us_1,method,local,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_1,method,local,gpt-4.1,us,english,1,age,numeric_assortativity,0.22095064798359557
+local_gpt-4.1_n5_culture_us_lang_english_0,language,local,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.10894550993560889
+local_gpt-4.1_n5_culture_us_lang_english_0,language,local,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,0.2559576696653975
+local_gpt-4.1_n5_culture_us_lang_english_0,language,local,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.21495061871479507
+local_gpt-4.1_n5_culture_us_lang_english_0,language,local,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_english_0,language,local,gpt-4.1,us,english,0,age,numeric_assortativity,0.39406981619583836
+local_gpt-4.1_n5_culture_us_lang_english_1,language,local,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.13087430537925593
+local_gpt-4.1_n5_culture_us_lang_english_1,language,local,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.3522216008111208
+local_gpt-4.1_n5_culture_us_lang_english_1,language,local,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.08649428093585912
+local_gpt-4.1_n5_culture_us_lang_english_1,language,local,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_english_1,language,local,gpt-4.1,us,english,1,age,numeric_assortativity,0.22565202302481244
+local_gpt-4.1_n5_culture_us_lang_hindi_0,language,local,gpt-4.1,us,hindi,0,gender,coleman_population_weighted,0.20116623753537308
+local_gpt-4.1_n5_culture_us_lang_hindi_0,language,local,gpt-4.1,us,hindi,0,race/ethnicity,coleman_population_weighted,0.3025435574687541
+local_gpt-4.1_n5_culture_us_lang_hindi_0,language,local,gpt-4.1,us,hindi,0,religion,coleman_population_weighted,0.26575288510772377
+local_gpt-4.1_n5_culture_us_lang_hindi_0,language,local,gpt-4.1,us,hindi,0,political affiliation,coleman_population_weighted,0.9792444080741953
+local_gpt-4.1_n5_culture_us_lang_hindi_0,language,local,gpt-4.1,us,hindi,0,age,numeric_assortativity,0.32496112842409014
+local_gpt-4.1_n5_culture_us_lang_hindi_1,language,local,gpt-4.1,us,hindi,1,gender,coleman_population_weighted,0.2456765285996056
+local_gpt-4.1_n5_culture_us_lang_hindi_1,language,local,gpt-4.1,us,hindi,1,race/ethnicity,coleman_population_weighted,0.39813721038493116
+local_gpt-4.1_n5_culture_us_lang_hindi_1,language,local,gpt-4.1,us,hindi,1,religion,coleman_population_weighted,0.18221100227994355
+local_gpt-4.1_n5_culture_us_lang_hindi_1,language,local,gpt-4.1,us,hindi,1,political affiliation,coleman_population_weighted,0.9820060560027115
+local_gpt-4.1_n5_culture_us_lang_hindi_1,language,local,gpt-4.1,us,hindi,1,age,numeric_assortativity,0.19458851297984145
+local_gpt-4.1_n5_culture_us_lang_japanese_0,language,local,gpt-4.1,us,japanese,0,gender,coleman_population_weighted,0.1507812054513314
+local_gpt-4.1_n5_culture_us_lang_japanese_0,language,local,gpt-4.1,us,japanese,0,race/ethnicity,coleman_population_weighted,0.28135926867008637
+local_gpt-4.1_n5_culture_us_lang_japanese_0,language,local,gpt-4.1,us,japanese,0,religion,coleman_population_weighted,0.20365658861032238
+local_gpt-4.1_n5_culture_us_lang_japanese_0,language,local,gpt-4.1,us,japanese,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_japanese_0,language,local,gpt-4.1,us,japanese,0,age,numeric_assortativity,0.3910862456337236
+local_gpt-4.1_n5_culture_us_lang_japanese_1,language,local,gpt-4.1,us,japanese,1,gender,coleman_population_weighted,0.10007986423080766
+local_gpt-4.1_n5_culture_us_lang_japanese_1,language,local,gpt-4.1,us,japanese,1,race/ethnicity,coleman_population_weighted,0.3406347902775454
+local_gpt-4.1_n5_culture_us_lang_japanese_1,language,local,gpt-4.1,us,japanese,1,religion,coleman_population_weighted,0.07508627266188377
+local_gpt-4.1_n5_culture_us_lang_japanese_1,language,local,gpt-4.1,us,japanese,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_japanese_1,language,local,gpt-4.1,us,japanese,1,age,numeric_assortativity,0.24111439529875284
+local_gpt-4.1_n5_culture_us_lang_spanish_0,language,local,gpt-4.1,us,spanish,0,gender,coleman_population_weighted,0.17882281117575238
+local_gpt-4.1_n5_culture_us_lang_spanish_0,language,local,gpt-4.1,us,spanish,0,race/ethnicity,coleman_population_weighted,0.2647696632689094
+local_gpt-4.1_n5_culture_us_lang_spanish_0,language,local,gpt-4.1,us,spanish,0,religion,coleman_population_weighted,0.25963051052256314
+local_gpt-4.1_n5_culture_us_lang_spanish_0,language,local,gpt-4.1,us,spanish,0,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_spanish_0,language,local,gpt-4.1,us,spanish,0,age,numeric_assortativity,0.34895203569685973
+local_gpt-4.1_n5_culture_us_lang_spanish_1,language,local,gpt-4.1,us,spanish,1,gender,coleman_population_weighted,0.14121325299636925
+local_gpt-4.1_n5_culture_us_lang_spanish_1,language,local,gpt-4.1,us,spanish,1,race/ethnicity,coleman_population_weighted,0.4099953827303025
+local_gpt-4.1_n5_culture_us_lang_spanish_1,language,local,gpt-4.1,us,spanish,1,religion,coleman_population_weighted,0.07216173338994156
+local_gpt-4.1_n5_culture_us_lang_spanish_1,language,local,gpt-4.1,us,spanish,1,political affiliation,coleman_population_weighted,1.0
+local_gpt-4.1_n5_culture_us_lang_spanish_1,language,local,gpt-4.1,us,spanish,1,age,numeric_assortativity,0.08950115552557715
+sequential_gpt-4.1-mini_n5_culture_brazil_0,cultural,sequential,gpt-4.1-mini,brazil,english,0,gender,coleman_population_weighted,0.1261858722581424
+sequential_gpt-4.1-mini_n5_culture_brazil_0,cultural,sequential,gpt-4.1-mini,brazil,english,0,race/ethnicity,coleman_population_weighted,0.30771966542198537
+sequential_gpt-4.1-mini_n5_culture_brazil_0,cultural,sequential,gpt-4.1-mini,brazil,english,0,religion,coleman_population_weighted,0.15217433364841382
+sequential_gpt-4.1-mini_n5_culture_brazil_0,cultural,sequential,gpt-4.1-mini,brazil,english,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_brazil_0,cultural,sequential,gpt-4.1-mini,brazil,english,0,age,numeric_assortativity,0.22791162020860192
+sequential_gpt-4.1-mini_n5_culture_brazil_1,cultural,sequential,gpt-4.1-mini,brazil,english,1,gender,coleman_population_weighted,0.1794798534798535
+sequential_gpt-4.1-mini_n5_culture_brazil_1,cultural,sequential,gpt-4.1-mini,brazil,english,1,race/ethnicity,coleman_population_weighted,0.3113509924204512
+sequential_gpt-4.1-mini_n5_culture_brazil_1,cultural,sequential,gpt-4.1-mini,brazil,english,1,religion,coleman_population_weighted,0.11649786828800353
+sequential_gpt-4.1-mini_n5_culture_brazil_1,cultural,sequential,gpt-4.1-mini,brazil,english,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_brazil_1,cultural,sequential,gpt-4.1-mini,brazil,english,1,age,numeric_assortativity,0.09629024814780686
+sequential_gpt-4.1-mini_n5_culture_india_0,cultural,sequential,gpt-4.1-mini,india,english,0,gender,coleman_population_weighted,0.1892757259729737
+sequential_gpt-4.1-mini_n5_culture_india_0,cultural,sequential,gpt-4.1-mini,india,english,0,race/ethnicity,coleman_population_weighted,0.31150883278212477
+sequential_gpt-4.1-mini_n5_culture_india_0,cultural,sequential,gpt-4.1-mini,india,english,0,religion,coleman_population_weighted,0.2090125793511392
+sequential_gpt-4.1-mini_n5_culture_india_0,cultural,sequential,gpt-4.1-mini,india,english,0,political affiliation,coleman_population_weighted,0.936736400245717
+sequential_gpt-4.1-mini_n5_culture_india_0,cultural,sequential,gpt-4.1-mini,india,english,0,age,numeric_assortativity,0.27212796523862404
+sequential_gpt-4.1-mini_n5_culture_india_1,cultural,sequential,gpt-4.1-mini,india,english,1,gender,coleman_population_weighted,0.19328885880041008
+sequential_gpt-4.1-mini_n5_culture_india_1,cultural,sequential,gpt-4.1-mini,india,english,1,race/ethnicity,coleman_population_weighted,0.3429742940905219
+sequential_gpt-4.1-mini_n5_culture_india_1,cultural,sequential,gpt-4.1-mini,india,english,1,religion,coleman_population_weighted,0.08405191957329988
+sequential_gpt-4.1-mini_n5_culture_india_1,cultural,sequential,gpt-4.1-mini,india,english,1,political affiliation,coleman_population_weighted,0.9818837960285329
+sequential_gpt-4.1-mini_n5_culture_india_1,cultural,sequential,gpt-4.1-mini,india,english,1,age,numeric_assortativity,0.05549595077904187
+sequential_gpt-4.1-mini_n5_culture_japan_0,cultural,sequential,gpt-4.1-mini,japan,english,0,gender,coleman_population_weighted,0.22939560439560439
+sequential_gpt-4.1-mini_n5_culture_japan_0,cultural,sequential,gpt-4.1-mini,japan,english,0,race/ethnicity,coleman_population_weighted,0.2900380623616095
+sequential_gpt-4.1-mini_n5_culture_japan_0,cultural,sequential,gpt-4.1-mini,japan,english,0,religion,coleman_population_weighted,0.15815017248746974
+sequential_gpt-4.1-mini_n5_culture_japan_0,cultural,sequential,gpt-4.1-mini,japan,english,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_japan_0,cultural,sequential,gpt-4.1-mini,japan,english,0,age,numeric_assortativity,0.2999768656417936
+sequential_gpt-4.1-mini_n5_culture_japan_1,cultural,sequential,gpt-4.1-mini,japan,english,1,gender,coleman_population_weighted,0.12817397975087919
+sequential_gpt-4.1-mini_n5_culture_japan_1,cultural,sequential,gpt-4.1-mini,japan,english,1,race/ethnicity,coleman_population_weighted,0.3303665152231745
+sequential_gpt-4.1-mini_n5_culture_japan_1,cultural,sequential,gpt-4.1-mini,japan,english,1,religion,coleman_population_weighted,0.1754507510153967
+sequential_gpt-4.1-mini_n5_culture_japan_1,cultural,sequential,gpt-4.1-mini,japan,english,1,political affiliation,coleman_population_weighted,0.9731089536819406
+sequential_gpt-4.1-mini_n5_culture_japan_1,cultural,sequential,gpt-4.1-mini,japan,english,1,age,numeric_assortativity,0.11979689967317676
+sequential_gpt-4.1-mini_n5_culture_us_0,cultural,sequential,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.130425392217845
+sequential_gpt-4.1-mini_n5_culture_us_0,cultural,sequential,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.2937594274021875
+sequential_gpt-4.1-mini_n5_culture_us_0,cultural,sequential,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.2171462905073666
+sequential_gpt-4.1-mini_n5_culture_us_0,cultural,sequential,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_0,cultural,sequential,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.28777130068606993
+sequential_gpt-4.1-mini_n5_culture_us_1,cultural,sequential,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.13827303109959882
+sequential_gpt-4.1-mini_n5_culture_us_1,cultural,sequential,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.3058402518636588
+sequential_gpt-4.1-mini_n5_culture_us_1,cultural,sequential,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.10720764136554549
+sequential_gpt-4.1-mini_n5_culture_us_1,cultural,sequential,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_1,cultural,sequential,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.08241605949897737
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-mini,us,english,0,gender,coleman_population_weighted,0.11336212806801044
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-mini,us,english,0,race/ethnicity,coleman_population_weighted,0.3087651204562049
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-mini,us,english,0,religion,coleman_population_weighted,0.1751943583209092
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-mini,us,english,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-mini,us,english,0,age,numeric_assortativity,0.2938563103092296
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_1,language,sequential,gpt-4.1-mini,us,english,1,gender,coleman_population_weighted,0.08813477093639996
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_1,language,sequential,gpt-4.1-mini,us,english,1,race/ethnicity,coleman_population_weighted,0.31009396325322863
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_1,language,sequential,gpt-4.1-mini,us,english,1,religion,coleman_population_weighted,0.2048677259595374
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_1,language,sequential,gpt-4.1-mini,us,english,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_lang_english_1,language,sequential,gpt-4.1-mini,us,english,1,age,numeric_assortativity,0.041053519851839235
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1-mini,us,hindi,0,gender,coleman_population_weighted,0.11652028541643025
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1-mini,us,hindi,0,race/ethnicity,coleman_population_weighted,0.2808210450372892
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1-mini,us,hindi,0,religion,coleman_population_weighted,0.21651327203975682
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1-mini,us,hindi,0,political affiliation,coleman_population_weighted,0.9897262770397098
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1-mini,us,hindi,0,age,numeric_assortativity,0.234202807976867
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1-mini,us,hindi,1,gender,coleman_population_weighted,0.08461633994420875
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1-mini,us,hindi,1,race/ethnicity,coleman_population_weighted,0.40128839176333864
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1-mini,us,hindi,1,religion,coleman_population_weighted,0.15144450586502056
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1-mini,us,hindi,1,political affiliation,coleman_population_weighted,0.9732162835505085
+sequential_gpt-4.1-mini_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1-mini,us,hindi,1,age,numeric_assortativity,0.04732067012081583
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-mini,us,japanese,0,gender,coleman_population_weighted,0.12610911768215138
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-mini,us,japanese,0,race/ethnicity,coleman_population_weighted,0.28877595644908416
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-mini,us,japanese,0,religion,coleman_population_weighted,0.06552197378962767
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-mini,us,japanese,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-mini,us,japanese,0,age,numeric_assortativity,0.3435646973460095
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1-mini,us,japanese,1,gender,coleman_population_weighted,0.08143028846153846
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1-mini,us,japanese,1,race/ethnicity,coleman_population_weighted,0.35911632716147524
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1-mini,us,japanese,1,religion,coleman_population_weighted,0.08082696424940493
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1-mini,us,japanese,1,political affiliation,coleman_population_weighted,0.9825509247520037
+sequential_gpt-4.1-mini_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1-mini,us,japanese,1,age,numeric_assortativity,0.10619225397700237
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1-mini,us,spanish,0,gender,coleman_population_weighted,0.14471921402255217
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1-mini,us,spanish,0,race/ethnicity,coleman_population_weighted,0.24062334687106327
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1-mini,us,spanish,0,religion,coleman_population_weighted,0.16981928312625597
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1-mini,us,spanish,0,political affiliation,coleman_population_weighted,0.9898151763633997
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1-mini,us,spanish,0,age,numeric_assortativity,0.31226523297490993
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-mini,us,spanish,1,gender,coleman_population_weighted,0.12160511770809364
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-mini,us,spanish,1,race/ethnicity,coleman_population_weighted,0.2725157894943727
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-mini,us,spanish,1,religion,coleman_population_weighted,0.09130807574148592
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-mini,us,spanish,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1-mini_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-mini,us,spanish,1,age,numeric_assortativity,0.1567702546761866
+sequential_gpt-4.1-nano_n5_culture_brazil_0,cultural,sequential,gpt-4.1-nano,brazil,english,0,gender,coleman_population_weighted,0.07656976761780263
+sequential_gpt-4.1-nano_n5_culture_brazil_0,cultural,sequential,gpt-4.1-nano,brazil,english,0,race/ethnicity,coleman_population_weighted,0.1483612230522601
+sequential_gpt-4.1-nano_n5_culture_brazil_0,cultural,sequential,gpt-4.1-nano,brazil,english,0,religion,coleman_population_weighted,-0.040808799325755055
+sequential_gpt-4.1-nano_n5_culture_brazil_0,cultural,sequential,gpt-4.1-nano,brazil,english,0,political affiliation,coleman_population_weighted,0.11980030278999351
+sequential_gpt-4.1-nano_n5_culture_brazil_0,cultural,sequential,gpt-4.1-nano,brazil,english,0,age,numeric_assortativity,0.03233657456795641
+sequential_gpt-4.1-nano_n5_culture_brazil_1,cultural,sequential,gpt-4.1-nano,brazil,english,1,gender,coleman_population_weighted,0.12950407107335976
+sequential_gpt-4.1-nano_n5_culture_brazil_1,cultural,sequential,gpt-4.1-nano,brazil,english,1,race/ethnicity,coleman_population_weighted,0.2010389249140923
+sequential_gpt-4.1-nano_n5_culture_brazil_1,cultural,sequential,gpt-4.1-nano,brazil,english,1,religion,coleman_population_weighted,0.048977586994065334
+sequential_gpt-4.1-nano_n5_culture_brazil_1,cultural,sequential,gpt-4.1-nano,brazil,english,1,political affiliation,coleman_population_weighted,0.15091872013799856
+sequential_gpt-4.1-nano_n5_culture_brazil_1,cultural,sequential,gpt-4.1-nano,brazil,english,1,age,numeric_assortativity,0.08231830027141157
+sequential_gpt-4.1-nano_n5_culture_india_0,cultural,sequential,gpt-4.1-nano,india,english,0,gender,coleman_population_weighted,0.03042625065863022
+sequential_gpt-4.1-nano_n5_culture_india_0,cultural,sequential,gpt-4.1-nano,india,english,0,race/ethnicity,coleman_population_weighted,0.07790918971217198
+sequential_gpt-4.1-nano_n5_culture_india_0,cultural,sequential,gpt-4.1-nano,india,english,0,religion,coleman_population_weighted,-0.002481290018662174
+sequential_gpt-4.1-nano_n5_culture_india_0,cultural,sequential,gpt-4.1-nano,india,english,0,political affiliation,coleman_population_weighted,0.033281533281533264
+sequential_gpt-4.1-nano_n5_culture_india_0,cultural,sequential,gpt-4.1-nano,india,english,0,age,numeric_assortativity,0.1211517752581467
+sequential_gpt-4.1-nano_n5_culture_india_1,cultural,sequential,gpt-4.1-nano,india,english,1,gender,coleman_population_weighted,0.10216877527866722
+sequential_gpt-4.1-nano_n5_culture_india_1,cultural,sequential,gpt-4.1-nano,india,english,1,race/ethnicity,coleman_population_weighted,0.15996018424231068
+sequential_gpt-4.1-nano_n5_culture_india_1,cultural,sequential,gpt-4.1-nano,india,english,1,religion,coleman_population_weighted,0.03934670461769861
+sequential_gpt-4.1-nano_n5_culture_india_1,cultural,sequential,gpt-4.1-nano,india,english,1,political affiliation,coleman_population_weighted,0.25446925302277285
+sequential_gpt-4.1-nano_n5_culture_india_1,cultural,sequential,gpt-4.1-nano,india,english,1,age,numeric_assortativity,0.039038567539621455
+sequential_gpt-4.1-nano_n5_culture_japan_0,cultural,sequential,gpt-4.1-nano,japan,english,0,gender,coleman_population_weighted,0.11660904638432731
+sequential_gpt-4.1-nano_n5_culture_japan_0,cultural,sequential,gpt-4.1-nano,japan,english,0,race/ethnicity,coleman_population_weighted,0.08298436673466786
+sequential_gpt-4.1-nano_n5_culture_japan_0,cultural,sequential,gpt-4.1-nano,japan,english,0,religion,coleman_population_weighted,0.0510693607467801
+sequential_gpt-4.1-nano_n5_culture_japan_0,cultural,sequential,gpt-4.1-nano,japan,english,0,political affiliation,coleman_population_weighted,0.08024855093820606
+sequential_gpt-4.1-nano_n5_culture_japan_0,cultural,sequential,gpt-4.1-nano,japan,english,0,age,numeric_assortativity,0.05300089198176665
+sequential_gpt-4.1-nano_n5_culture_japan_1,cultural,sequential,gpt-4.1-nano,japan,english,1,gender,coleman_population_weighted,0.06953373001345588
+sequential_gpt-4.1-nano_n5_culture_japan_1,cultural,sequential,gpt-4.1-nano,japan,english,1,race/ethnicity,coleman_population_weighted,0.22263255968270587
+sequential_gpt-4.1-nano_n5_culture_japan_1,cultural,sequential,gpt-4.1-nano,japan,english,1,religion,coleman_population_weighted,-0.002961073241348245
+sequential_gpt-4.1-nano_n5_culture_japan_1,cultural,sequential,gpt-4.1-nano,japan,english,1,political affiliation,coleman_population_weighted,0.2717634527257959
+sequential_gpt-4.1-nano_n5_culture_japan_1,cultural,sequential,gpt-4.1-nano,japan,english,1,age,numeric_assortativity,-0.015100984203199603
+sequential_gpt-4.1-nano_n5_culture_us_0,cultural,sequential,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.09668241115609544
+sequential_gpt-4.1-nano_n5_culture_us_0,cultural,sequential,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.10624174373306633
+sequential_gpt-4.1-nano_n5_culture_us_0,cultural,sequential,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,-0.015677460018998175
+sequential_gpt-4.1-nano_n5_culture_us_0,cultural,sequential,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,0.0419726511539648
+sequential_gpt-4.1-nano_n5_culture_us_0,cultural,sequential,gpt-4.1-nano,us,english,0,age,numeric_assortativity,-0.02070299417988055
+sequential_gpt-4.1-nano_n5_culture_us_1,cultural,sequential,gpt-4.1-nano,us,english,1,gender,coleman_population_weighted,0.0005016722408027474
+sequential_gpt-4.1-nano_n5_culture_us_1,cultural,sequential,gpt-4.1-nano,us,english,1,race/ethnicity,coleman_population_weighted,0.09822639200607772
+sequential_gpt-4.1-nano_n5_culture_us_1,cultural,sequential,gpt-4.1-nano,us,english,1,religion,coleman_population_weighted,-0.005448040331761279
+sequential_gpt-4.1-nano_n5_culture_us_1,cultural,sequential,gpt-4.1-nano,us,english,1,political affiliation,coleman_population_weighted,0.3059689122086743
+sequential_gpt-4.1-nano_n5_culture_us_1,cultural,sequential,gpt-4.1-nano,us,english,1,age,numeric_assortativity,0.057981184124197026
+sequential_gpt-4.1-nano_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-nano,us,english,0,gender,coleman_population_weighted,0.011194945405471678
+sequential_gpt-4.1-nano_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-nano,us,english,0,race/ethnicity,coleman_population_weighted,0.08371845486932505
+sequential_gpt-4.1-nano_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-nano,us,english,0,religion,coleman_population_weighted,-0.07446130699876145
+sequential_gpt-4.1-nano_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-nano,us,english,0,political affiliation,coleman_population_weighted,-0.024924366878794124
+sequential_gpt-4.1-nano_n5_culture_us_lang_english_0,language,sequential,gpt-4.1-nano,us,english,0,age,numeric_assortativity,-0.01452585105242028
+sequential_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-nano,us,japanese,0,gender,coleman_population_weighted,-0.047583826429980276
+sequential_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-nano,us,japanese,0,race/ethnicity,coleman_population_weighted,0.043788489549431146
+sequential_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-nano,us,japanese,0,religion,coleman_population_weighted,-0.05161242943474357
+sequential_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-nano,us,japanese,0,political affiliation,coleman_population_weighted,0.13229145068767711
+sequential_gpt-4.1-nano_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1-nano,us,japanese,0,age,numeric_assortativity,0.04205845553304754
+sequential_gpt-4.1-nano_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-nano,us,spanish,1,gender,coleman_population_weighted,-0.09962887989203784
+sequential_gpt-4.1-nano_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-nano,us,spanish,1,race/ethnicity,coleman_population_weighted,0.07988154932555543
+sequential_gpt-4.1-nano_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-nano,us,spanish,1,religion,coleman_population_weighted,-0.058045957543951976
+sequential_gpt-4.1-nano_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-nano,us,spanish,1,political affiliation,coleman_population_weighted,0.11903445337092201
+sequential_gpt-4.1-nano_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1-nano,us,spanish,1,age,numeric_assortativity,-0.03397512117891101
+sequential_gpt-4.1_n5_culture_brazil_0,cultural,sequential,gpt-4.1,brazil,english,0,gender,coleman_population_weighted,0.13488131586723126
+sequential_gpt-4.1_n5_culture_brazil_0,cultural,sequential,gpt-4.1,brazil,english,0,race/ethnicity,coleman_population_weighted,0.27612838253417205
+sequential_gpt-4.1_n5_culture_brazil_0,cultural,sequential,gpt-4.1,brazil,english,0,religion,coleman_population_weighted,0.20791483589739126
+sequential_gpt-4.1_n5_culture_brazil_0,cultural,sequential,gpt-4.1,brazil,english,0,political affiliation,coleman_population_weighted,0.9893918575008812
+sequential_gpt-4.1_n5_culture_brazil_0,cultural,sequential,gpt-4.1,brazil,english,0,age,numeric_assortativity,0.43648603899730437
+sequential_gpt-4.1_n5_culture_brazil_1,cultural,sequential,gpt-4.1,brazil,english,1,gender,coleman_population_weighted,0.15903540903540905
+sequential_gpt-4.1_n5_culture_brazil_1,cultural,sequential,gpt-4.1,brazil,english,1,race/ethnicity,coleman_population_weighted,0.273733334964517
+sequential_gpt-4.1_n5_culture_brazil_1,cultural,sequential,gpt-4.1,brazil,english,1,religion,coleman_population_weighted,0.14130839583239266
+sequential_gpt-4.1_n5_culture_brazil_1,cultural,sequential,gpt-4.1,brazil,english,1,political affiliation,coleman_population_weighted,0.9731345461915054
+sequential_gpt-4.1_n5_culture_brazil_1,cultural,sequential,gpt-4.1,brazil,english,1,age,numeric_assortativity,0.26513445225015775
+sequential_gpt-4.1_n5_culture_india_0,cultural,sequential,gpt-4.1,india,english,0,gender,coleman_population_weighted,0.14292497625830963
+sequential_gpt-4.1_n5_culture_india_0,cultural,sequential,gpt-4.1,india,english,0,race/ethnicity,coleman_population_weighted,0.30332069881813845
+sequential_gpt-4.1_n5_culture_india_0,cultural,sequential,gpt-4.1,india,english,0,religion,coleman_population_weighted,0.1870717316307614
+sequential_gpt-4.1_n5_culture_india_0,cultural,sequential,gpt-4.1,india,english,0,political affiliation,coleman_population_weighted,0.9893840727174059
+sequential_gpt-4.1_n5_culture_india_0,cultural,sequential,gpt-4.1,india,english,0,age,numeric_assortativity,0.4116804649818112
+sequential_gpt-4.1_n5_culture_india_1,cultural,sequential,gpt-4.1,india,english,1,gender,coleman_population_weighted,0.09862843198567733
+sequential_gpt-4.1_n5_culture_india_1,cultural,sequential,gpt-4.1,india,english,1,race/ethnicity,coleman_population_weighted,0.2432492194490825
+sequential_gpt-4.1_n5_culture_india_1,cultural,sequential,gpt-4.1,india,english,1,religion,coleman_population_weighted,0.1621039398695429
+sequential_gpt-4.1_n5_culture_india_1,cultural,sequential,gpt-4.1,india,english,1,political affiliation,coleman_population_weighted,0.9821163136380527
+sequential_gpt-4.1_n5_culture_india_1,cultural,sequential,gpt-4.1,india,english,1,age,numeric_assortativity,0.2583759116405828
+sequential_gpt-4.1_n5_culture_japan_0,cultural,sequential,gpt-4.1,japan,english,0,gender,coleman_population_weighted,0.13488131586723126
+sequential_gpt-4.1_n5_culture_japan_0,cultural,sequential,gpt-4.1,japan,english,0,race/ethnicity,coleman_population_weighted,0.2515661912948227
+sequential_gpt-4.1_n5_culture_japan_0,cultural,sequential,gpt-4.1,japan,english,0,religion,coleman_population_weighted,0.15839423527153776
+sequential_gpt-4.1_n5_culture_japan_0,cultural,sequential,gpt-4.1,japan,english,0,political affiliation,coleman_population_weighted,0.9893840727174059
+sequential_gpt-4.1_n5_culture_japan_0,cultural,sequential,gpt-4.1,japan,english,0,age,numeric_assortativity,0.4805852073484397
+sequential_gpt-4.1_n5_culture_japan_1,cultural,sequential,gpt-4.1,japan,english,1,gender,coleman_population_weighted,0.151290880453025
+sequential_gpt-4.1_n5_culture_japan_1,cultural,sequential,gpt-4.1,japan,english,1,race/ethnicity,coleman_population_weighted,0.3301670087345266
+sequential_gpt-4.1_n5_culture_japan_1,cultural,sequential,gpt-4.1,japan,english,1,religion,coleman_population_weighted,0.09752774319068451
+sequential_gpt-4.1_n5_culture_japan_1,cultural,sequential,gpt-4.1,japan,english,1,political affiliation,coleman_population_weighted,0.9549458841747969
+sequential_gpt-4.1_n5_culture_japan_1,cultural,sequential,gpt-4.1,japan,english,1,age,numeric_assortativity,0.3175639598886851
+sequential_gpt-4.1_n5_culture_us_0,cultural,sequential,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.11160453780935711
+sequential_gpt-4.1_n5_culture_us_0,cultural,sequential,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,0.29925041731757673
+sequential_gpt-4.1_n5_culture_us_0,cultural,sequential,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.16011800395088016
+sequential_gpt-4.1_n5_culture_us_0,cultural,sequential,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,0.9894730458078874
+sequential_gpt-4.1_n5_culture_us_0,cultural,sequential,gpt-4.1,us,english,0,age,numeric_assortativity,0.3742000501009411
+sequential_gpt-4.1_n5_culture_us_1,cultural,sequential,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.14747425802543915
+sequential_gpt-4.1_n5_culture_us_1,cultural,sequential,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.3503485335496851
+sequential_gpt-4.1_n5_culture_us_1,cultural,sequential,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.12055671258163123
+sequential_gpt-4.1_n5_culture_us_1,cultural,sequential,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,0.944533490535976
+sequential_gpt-4.1_n5_culture_us_1,cultural,sequential,gpt-4.1,us,english,1,age,numeric_assortativity,0.3249221770213302
+sequential_gpt-4.1_n5_culture_us_lang_english_0,language,sequential,gpt-4.1,us,english,0,gender,coleman_population_weighted,0.1141489766622063
+sequential_gpt-4.1_n5_culture_us_lang_english_0,language,sequential,gpt-4.1,us,english,0,race/ethnicity,coleman_population_weighted,0.3073490924042504
+sequential_gpt-4.1_n5_culture_us_lang_english_0,language,sequential,gpt-4.1,us,english,0,religion,coleman_population_weighted,0.2582348075706709
+sequential_gpt-4.1_n5_culture_us_lang_english_0,language,sequential,gpt-4.1,us,english,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1_n5_culture_us_lang_english_0,language,sequential,gpt-4.1,us,english,0,age,numeric_assortativity,0.32112954403315386
+sequential_gpt-4.1_n5_culture_us_lang_english_1,language,sequential,gpt-4.1,us,english,1,gender,coleman_population_weighted,0.11098915090511732
+sequential_gpt-4.1_n5_culture_us_lang_english_1,language,sequential,gpt-4.1,us,english,1,race/ethnicity,coleman_population_weighted,0.3674539768351387
+sequential_gpt-4.1_n5_culture_us_lang_english_1,language,sequential,gpt-4.1,us,english,1,religion,coleman_population_weighted,0.14099249622569046
+sequential_gpt-4.1_n5_culture_us_lang_english_1,language,sequential,gpt-4.1,us,english,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1_n5_culture_us_lang_english_1,language,sequential,gpt-4.1,us,english,1,age,numeric_assortativity,0.25267133809835385
+sequential_gpt-4.1_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1,us,hindi,0,gender,coleman_population_weighted,0.2563893243715335
+sequential_gpt-4.1_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1,us,hindi,0,race/ethnicity,coleman_population_weighted,0.320446446817489
+sequential_gpt-4.1_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1,us,hindi,0,religion,coleman_population_weighted,0.27120221804537287
+sequential_gpt-4.1_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1,us,hindi,0,political affiliation,coleman_population_weighted,0.9894239916336838
+sequential_gpt-4.1_n5_culture_us_lang_hindi_0,language,sequential,gpt-4.1,us,hindi,0,age,numeric_assortativity,0.3222084810057404
+sequential_gpt-4.1_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1,us,hindi,1,gender,coleman_population_weighted,0.25031720856463124
+sequential_gpt-4.1_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1,us,hindi,1,race/ethnicity,coleman_population_weighted,0.4742014299025742
+sequential_gpt-4.1_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1,us,hindi,1,religion,coleman_population_weighted,0.12841979582017535
+sequential_gpt-4.1_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1,us,hindi,1,political affiliation,coleman_population_weighted,0.9636720943290286
+sequential_gpt-4.1_n5_culture_us_lang_hindi_1,language,sequential,gpt-4.1,us,hindi,1,age,numeric_assortativity,0.13705271275258876
+sequential_gpt-4.1_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1,us,japanese,0,gender,coleman_population_weighted,0.18313095797815437
+sequential_gpt-4.1_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1,us,japanese,0,race/ethnicity,coleman_population_weighted,0.30792644464932595
+sequential_gpt-4.1_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1,us,japanese,0,religion,coleman_population_weighted,0.17372764890660866
+sequential_gpt-4.1_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1,us,japanese,0,political affiliation,coleman_population_weighted,0.989196140835485
+sequential_gpt-4.1_n5_culture_us_lang_japanese_0,language,sequential,gpt-4.1,us,japanese,0,age,numeric_assortativity,0.45650171565467723
+sequential_gpt-4.1_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1,us,japanese,1,gender,coleman_population_weighted,0.1670036006376212
+sequential_gpt-4.1_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1,us,japanese,1,race/ethnicity,coleman_population_weighted,0.3753731717935995
+sequential_gpt-4.1_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1,us,japanese,1,religion,coleman_population_weighted,0.12512065970280564
+sequential_gpt-4.1_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1,us,japanese,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1_n5_culture_us_lang_japanese_1,language,sequential,gpt-4.1,us,japanese,1,age,numeric_assortativity,0.16744678165355137
+sequential_gpt-4.1_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1,us,spanish,0,gender,coleman_population_weighted,0.14469847225944785
+sequential_gpt-4.1_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1,us,spanish,0,race/ethnicity,coleman_population_weighted,0.3194228016882115
+sequential_gpt-4.1_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1,us,spanish,0,religion,coleman_population_weighted,0.2708338611564418
+sequential_gpt-4.1_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1,us,spanish,0,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1_n5_culture_us_lang_spanish_0,language,sequential,gpt-4.1,us,spanish,0,age,numeric_assortativity,0.31429864839757116
+sequential_gpt-4.1_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1,us,spanish,1,gender,coleman_population_weighted,0.1482277526395174
+sequential_gpt-4.1_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1,us,spanish,1,race/ethnicity,coleman_population_weighted,0.41520156698809213
+sequential_gpt-4.1_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1,us,spanish,1,religion,coleman_population_weighted,0.1330273815545005
+sequential_gpt-4.1_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1,us,spanish,1,political affiliation,coleman_population_weighted,1.0
+sequential_gpt-4.1_n5_culture_us_lang_spanish_1,language,sequential,gpt-4.1,us,spanish,1,age,numeric_assortativity,0.10957069911905365

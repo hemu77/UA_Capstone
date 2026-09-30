@@ -1,0 +1,8 @@
+{
+  "name": "social-network-evidence-explorer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {"build": "node build.mjs", "test": "node --test graph-data.test.js"},
+  "dependencies": {"three": "0.186.1"}
+}

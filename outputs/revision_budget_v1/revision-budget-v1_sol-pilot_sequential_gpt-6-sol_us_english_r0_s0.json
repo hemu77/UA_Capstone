@@ -1,0 +1,1299 @@
+{
+  "cell": {
+    "run_id": "revision-budget-v1_sol-pilot_sequential_gpt-6-sol_us_english_r0_s0",
+    "phase": "pilot",
+    "model": "gpt-6-sol",
+    "method": "sequential",
+    "culture": "us",
+    "language": "english",
+    "roster": 0,
+    "repetition": 0,
+    "personas": 50,
+    "seed": 1000
+  },
+  "status": "ENGINEERING_PILOT_NOT_CONFIRMATORY",
+  "events": [
+    {
+      "step": 0,
+      "method": "sequential",
+      "persona": "9",
+      "added": [
+        [
+          "24",
+          "9"
+        ],
+        [
+          "25",
+          "9"
+        ],
+        [
+          "37",
+          "9"
+        ],
+        [
+          "41",
+          "9"
+        ],
+        [
+          "48",
+          "9"
+        ],
+        [
+          "6",
+          "9"
+        ],
+        [
+          "7",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 1,
+      "method": "sequential",
+      "persona": "34",
+      "added": [
+        [
+          "34",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 2,
+      "method": "sequential",
+      "persona": "8",
+      "added": [
+        [
+          "15",
+          "8"
+        ],
+        [
+          "4",
+          "8"
+        ],
+        [
+          "42",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 3,
+      "method": "sequential",
+      "persona": "42",
+      "added": [
+        [
+          "13",
+          "42"
+        ],
+        [
+          "15",
+          "42"
+        ],
+        [
+          "29",
+          "42"
+        ],
+        [
+          "31",
+          "42"
+        ],
+        [
+          "37",
+          "42"
+        ],
+        [
+          "38",
+          "42"
+        ],
+        [
+          "4",
+          "42"
+        ],
+        [
+          "42",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 4,
+      "method": "sequential",
+      "persona": "29",
+      "added": [
+        [
+          "29",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 5,
+      "method": "sequential",
+      "persona": "6",
+      "added": [
+        [
+          "15",
+          "6"
+        ],
+        [
+          "21",
+          "6"
+        ],
+        [
+          "24",
+          "6"
+        ],
+        [
+          "25",
+          "6"
+        ],
+        [
+          "31",
+          "6"
+        ],
+        [
+          "36",
+          "6"
+        ],
+        [
+          "37",
+          "6"
+        ],
+        [
+          "38",
+          "6"
+        ],
+        [
+          "4",
+          "6"
+        ],
+        [
+          "41",
+          "6"
+        ],
+        [
+          "42",
+          "6"
+        ],
+        [
+          "43",
+          "6"
+        ],
+        [
+          "44",
+          "6"
+        ],
+        [
+          "47",
+          "6"
+        ],
+        [
+          "48",
+          "6"
+        ],
+        [
+          "6",
+          "7"
+        ],
+        [
+          "6",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 6,
+      "method": "sequential",
+      "persona": "3",
+      "added": [
+        [
+          "0",
+          "3"
+        ],
+        [
+          "14",
+          "3"
+        ],
+        [
+          "18",
+          "3"
+        ],
+        [
+          "2",
+          "3"
+        ],
+        [
+          "20",
+          "3"
+        ],
+        [
+          "23",
+          "3"
+        ],
+        [
+          "27",
+          "3"
+        ],
+        [
+          "3",
+          "33"
+        ],
+        [
+          "3",
+          "35"
+        ],
+        [
+          "3",
+          "39"
+        ],
+        [
+          "3",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 7,
+      "method": "sequential",
+      "persona": "26",
+      "added": [
+        [
+          "22",
+          "26"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 8,
+      "method": "sequential",
+      "persona": "2",
+      "added": [
+        [
+          "16",
+          "2"
+        ],
+        [
+          "2",
+          "30"
+        ],
+        [
+          "2",
+          "40"
+        ],
+        [
+          "2",
+          "41"
+        ],
+        [
+          "2",
+          "46"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 9,
+      "method": "sequential",
+      "persona": "15",
+      "added": [
+        [
+          "15",
+          "34"
+        ],
+        [
+          "15",
+          "37"
+        ],
+        [
+          "15",
+          "44"
+        ],
+        [
+          "15",
+          "46"
+        ],
+        [
+          "15",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 10,
+      "method": "sequential",
+      "persona": "44",
+      "added": [
+        [
+          "10",
+          "44"
+        ],
+        [
+          "32",
+          "44"
+        ],
+        [
+          "37",
+          "44"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 11,
+      "method": "sequential",
+      "persona": "39",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 12,
+      "method": "sequential",
+      "persona": "49",
+      "added": [
+        [
+          "11",
+          "49"
+        ],
+        [
+          "22",
+          "49"
+        ],
+        [
+          "26",
+          "49"
+        ],
+        [
+          "40",
+          "49"
+        ],
+        [
+          "46",
+          "49"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 13,
+      "method": "sequential",
+      "persona": "16",
+      "added": [
+        [
+          "12",
+          "16"
+        ],
+        [
+          "16",
+          "22"
+        ],
+        [
+          "16",
+          "30"
+        ],
+        [
+          "16",
+          "33"
+        ],
+        [
+          "16",
+          "37"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "16",
+          "41"
+        ],
+        [
+          "16",
+          "43"
+        ],
+        [
+          "16",
+          "44"
+        ],
+        [
+          "16",
+          "47"
+        ],
+        [
+          "16",
+          "48"
+        ],
+        [
+          "16",
+          "5"
+        ],
+        [
+          "16",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 14,
+      "method": "sequential",
+      "persona": "17",
+      "added": [
+        [
+          "12",
+          "17"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 15,
+      "method": "sequential",
+      "persona": "19",
+      "added": [
+        [
+          "1",
+          "19"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 16,
+      "method": "sequential",
+      "persona": "48",
+      "added": [
+        [
+          "24",
+          "48"
+        ],
+        [
+          "25",
+          "48"
+        ],
+        [
+          "29",
+          "48"
+        ],
+        [
+          "33",
+          "48"
+        ],
+        [
+          "34",
+          "48"
+        ],
+        [
+          "41",
+          "48"
+        ],
+        [
+          "42",
+          "48"
+        ],
+        [
+          "43",
+          "48"
+        ],
+        [
+          "47",
+          "48"
+        ],
+        [
+          "48",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 17,
+      "method": "sequential",
+      "persona": "4",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 18,
+      "method": "sequential",
+      "persona": "32",
+      "added": [
+        [
+          "10",
+          "32"
+        ],
+        [
+          "15",
+          "32"
+        ],
+        [
+          "25",
+          "32"
+        ],
+        [
+          "28",
+          "32"
+        ],
+        [
+          "32",
+          "34"
+        ],
+        [
+          "32",
+          "37"
+        ],
+        [
+          "32",
+          "4"
+        ],
+        [
+          "32",
+          "7"
+        ],
+        [
+          "32",
+          "8"
+        ],
+        [
+          "32",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 19,
+      "method": "sequential",
+      "persona": "43",
+      "added": [
+        [
+          "1",
+          "43"
+        ],
+        [
+          "15",
+          "43"
+        ],
+        [
+          "19",
+          "43"
+        ],
+        [
+          "21",
+          "43"
+        ],
+        [
+          "33",
+          "43"
+        ],
+        [
+          "34",
+          "43"
+        ],
+        [
+          "41",
+          "43"
+        ],
+        [
+          "43",
+          "47"
+        ],
+        [
+          "43",
+          "5"
+        ],
+        [
+          "43",
+          "7"
+        ],
+        [
+          "43",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 20,
+      "method": "sequential",
+      "persona": "22",
+      "added": [
+        [
+          "11",
+          "22"
+        ],
+        [
+          "22",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 21,
+      "method": "sequential",
+      "persona": "31",
+      "added": [
+        [
+          "13",
+          "31"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 22,
+      "method": "sequential",
+      "persona": "11",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 23,
+      "method": "sequential",
+      "persona": "12",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 24,
+      "method": "sequential",
+      "persona": "5",
+      "added": [
+        [
+          "11",
+          "5"
+        ],
+        [
+          "15",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 25,
+      "method": "sequential",
+      "persona": "14",
+      "added": [
+        [
+          "14",
+          "23"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 26,
+      "method": "sequential",
+      "persona": "10",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 27,
+      "method": "sequential",
+      "persona": "21",
+      "added": [
+        [
+          "21",
+          "47"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 28,
+      "method": "sequential",
+      "persona": "18",
+      "added": [
+        [
+          "14",
+          "18"
+        ],
+        [
+          "18",
+          "20"
+        ],
+        [
+          "18",
+          "23"
+        ],
+        [
+          "18",
+          "25"
+        ],
+        [
+          "18",
+          "27"
+        ],
+        [
+          "18",
+          "35"
+        ],
+        [
+          "18",
+          "36"
+        ],
+        [
+          "18",
+          "39"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 29,
+      "method": "sequential",
+      "persona": "13",
+      "added": [
+        [
+          "13",
+          "29"
+        ],
+        [
+          "13",
+          "38"
+        ],
+        [
+          "13",
+          "4"
+        ],
+        [
+          "13",
+          "7"
+        ],
+        [
+          "13",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 30,
+      "method": "sequential",
+      "persona": "37",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 31,
+      "method": "sequential",
+      "persona": "33",
+      "added": [
+        [
+          "33",
+          "41"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 32,
+      "method": "sequential",
+      "persona": "41",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 33,
+      "method": "sequential",
+      "persona": "35",
+      "added": [
+        [
+          "20",
+          "35"
+        ],
+        [
+          "27",
+          "35"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 34,
+      "method": "sequential",
+      "persona": "24",
+      "added": [
+        [
+          "21",
+          "24"
+        ],
+        [
+          "24",
+          "37"
+        ],
+        [
+          "24",
+          "42"
+        ],
+        [
+          "24",
+          "47"
+        ],
+        [
+          "24",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 35,
+      "method": "sequential",
+      "persona": "46",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 36,
+      "method": "sequential",
+      "persona": "20",
+      "added": [
+        [
+          "20",
+          "27"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 37,
+      "method": "sequential",
+      "persona": "38",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 38,
+      "method": "sequential",
+      "persona": "36",
+      "added": [
+        [
+          "1",
+          "36"
+        ],
+        [
+          "19",
+          "36"
+        ],
+        [
+          "21",
+          "36"
+        ],
+        [
+          "25",
+          "36"
+        ],
+        [
+          "26",
+          "36"
+        ],
+        [
+          "28",
+          "36"
+        ],
+        [
+          "30",
+          "36"
+        ],
+        [
+          "36",
+          "4"
+        ],
+        [
+          "36",
+          "47"
+        ],
+        [
+          "36",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 39,
+      "method": "sequential",
+      "persona": "27",
+      "added": [
+        [
+          "14",
+          "27"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 40,
+      "method": "sequential",
+      "persona": "45",
+      "added": [
+        [
+          "1",
+          "45"
+        ],
+        [
+          "11",
+          "45"
+        ],
+        [
+          "12",
+          "45"
+        ],
+        [
+          "16",
+          "45"
+        ],
+        [
+          "17",
+          "45"
+        ],
+        [
+          "19",
+          "45"
+        ],
+        [
+          "2",
+          "45"
+        ],
+        [
+          "22",
+          "45"
+        ],
+        [
+          "25",
+          "45"
+        ],
+        [
+          "28",
+          "45"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "33",
+          "45"
+        ],
+        [
+          "36",
+          "45"
+        ],
+        [
+          "40",
+          "45"
+        ],
+        [
+          "41",
+          "45"
+        ],
+        [
+          "43",
+          "45"
+        ],
+        [
+          "45",
+          "46"
+        ],
+        [
+          "45",
+          "48"
+        ],
+        [
+          "45",
+          "49"
+        ],
+        [
+          "45",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 41,
+      "method": "sequential",
+      "persona": "40",
+      "added": [
+        [
+          "11",
+          "40"
+        ],
+        [
+          "12",
+          "40"
+        ],
+        [
+          "17",
+          "40"
+        ],
+        [
+          "22",
+          "40"
+        ],
+        [
+          "26",
+          "40"
+        ],
+        [
+          "30",
+          "40"
+        ],
+        [
+          "33",
+          "40"
+        ],
+        [
+          "40",
+          "41"
+        ],
+        [
+          "40",
+          "46"
+        ],
+        [
+          "40",
+          "5"
+        ],
+        [
+          "40",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 42,
+      "method": "sequential",
+      "persona": "25",
+      "added": [
+        [
+          "10",
+          "25"
+        ],
+        [
+          "25",
+          "30"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 43,
+      "method": "sequential",
+      "persona": "47",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 44,
+      "method": "sequential",
+      "persona": "1",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 45,
+      "method": "sequential",
+      "persona": "28",
+      "added": [
+        [
+          "10",
+          "28"
+        ],
+        [
+          "22",
+          "28"
+        ],
+        [
+          "26",
+          "28"
+        ],
+        [
+          "28",
+          "34"
+        ],
+        [
+          "28",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 46,
+      "method": "sequential",
+      "persona": "30",
+      "added": [
+        [
+          "12",
+          "30"
+        ],
+        [
+          "17",
+          "30"
+        ],
+        [
+          "30",
+          "41"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 47,
+      "method": "sequential",
+      "persona": "0",
+      "added": [
+        [
+          "0",
+          "14"
+        ],
+        [
+          "0",
+          "20"
+        ],
+        [
+          "0",
+          "23"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "0",
+          "39"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 48,
+      "method": "sequential",
+      "persona": "7",
+      "added": [
+        [
+          "38",
+          "7"
+        ],
+        [
+          "44",
+          "7"
+        ],
+        [
+          "5",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 49,
+      "method": "sequential",
+      "persona": "23",
+      "added": [
+        [
+          "23",
+          "35"
+        ],
+        [
+          "23",
+          "39"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "generation_source_sha256": "55dc108699eb80f4c55097b4016b9b0103b1b3fe02f0f0f499f519312754241f",
+  "retry_source_sha256": "170f2b1cb2495ab0baddd68db1b39d88d189882ba195c18799eae679fcd59be0",
+  "analysis_source_sha256": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+  "roster_sha256": "d718448b35bb418dca127b61be074c35e4fb4b1d1d608cfd506ac71ac312fc59",
+  "metrics": {
+    "density": 0.16653061224489796,
+    "avg_clustering_coef": 0.5517829071513283,
+    "prop_nodes_lcc": 1.0,
+    "global_efficiency": 0.5102312925170069,
+    "num_components": 1,
+    "modularity": 0.4228541906958862,
+    "radius_lcc": 3,
+    "diameter_lcc": 5,
+    "avg_shortest_path_lcc": 2.3134693877551022
+  },
+  "homophily": {
+    "gender": 0.30844296087047096,
+    "race/ethnicity": 0.1158673559476127,
+    "religion": 0.2603018608330806,
+    "political affiliation": 0.4195131257631257,
+    "age": 0.8016374632932086
+  },
+  "cumulative_conservative_charge_usd": 0.887113375,
+  "artifact_sha256": {
+    ".adj": "88c2a4eedc570f928069fec4f5da5d903129b5a212871908b2dcf5f8171068d3",
+    ".png": "a10b08ceca153b7586a4bc71eaf04d9d946820394386ade9595704d2c47a8a98"
+  }
+}

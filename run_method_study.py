@@ -51,7 +51,7 @@ def parse_args():
 def build_research_summary(condition_summaries, dominance_df, model_divergence_df, method_divergence_df, verification_df):
     lines = ['# Step 3 Method Study Summary', '']
     lines.append('## Verification')
-    passed = int(verification_df[['graph_exists', 'png_ok', 'homophily_ok', 'network_metrics_ok', 'node_count_ok', 'edge_count_ok']].all(axis=1).sum())
+    passed = int(verification_df['passed'].sum())
     total = len(verification_df)
     lines.append(f'- {passed} of {total} generated method-study graphs passed the artifact and sanity checks.')
     lines.append('')

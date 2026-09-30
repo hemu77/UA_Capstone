@@ -21,12 +21,14 @@ import time
 # - culture_context changes the simulated social setting
 # - prompt_language changes the language the instructions are written in
 # Keeping those separate is what lets the capstone ask RQ1-RQ3 and RQ4 cleanly.
-SUPPORTED_PROMPT_LANGUAGES = {'english', 'spanish', 'hindi', 'japanese'}
+SUPPORTED_PROMPT_LANGUAGES = {'english', 'spanish', 'hindi', 'japanese', 'portuguese'}
+PROMPT_VERSION = 'revision-v1'
 LANGUAGE_NAME_BY_CODE = {
     'english': 'English',
     'spanish': 'Spanish',
     'hindi': 'Hindi',
     'japanese': 'Japanese',
+    'portuguese': 'Brazilian Portuguese',
 }
 DEMO_LABEL_TRANSLATIONS = {
     'english': {
@@ -306,6 +308,69 @@ PROMPT_TEXT = {
 }
 
 
+# Draft translations are usable for technical tests, not certified bilingual stimuli.
+DEMO_LABEL_TRANSLATIONS['portuguese'] = dict(zip(
+    ['name', 'gender', 'age', 'race/ethnicity', 'religion', 'political affiliation', 'interests'],
+    ['Nome', 'Gênero', 'Idade', 'Raça/etnia', 'Religião', 'Filiação política', 'Interesses']))
+VALUE_TRANSLATIONS['portuguese'] = dict(zip(
+    list(VALUE_TRANSLATIONS['spanish']),
+    ['Homem', 'Mulher', 'Não binário', 'Branco', 'Negro', 'Indígena americano/Nativo do Alasca',
+     'Asiático', 'Nativo havaiano/Ilhéu do Pacífico', 'Hispânico', 'Protestante', 'Católico',
+     'Judeu', 'Budista', 'Sem religião', 'Muçulmano', 'Hindu', 'Cristão',
+     'Republicano', 'Democrata', 'Independente']))
+PROMPT_TEXT['portuguese'] = {
+    'persona_format_wrapper': 'cada pessoa é descrita como "{persona_format}"',
+    'prompt_extra': 'Não inclua nenhum outro texto nem pessoas que não estejam na lista.',
+    'valid_ids_note': 'Os únicos IDs válidos são: {valid_ids}. Use apenas esses IDs, nunca idades ou quantidades. ',
+    'prompt_all_prefix': 'Considere todos os atributos demográficos. ',
+    'you_are': 'Você é esta pessoa: {persona}.',
+    'joining_network': 'Você está entrando em uma rede social.',
+    'list_people_intro': 'Você receberá uma lista de pessoas da rede, {persona_format}',
+    'followed_by': 'seguida de ',
+    'current_friend_count': 'seu número atual de amigos',
+    'current_friend_ids': 'os IDs de seus amigos atuais',
+    'which_friends': 'Com quais dessas pessoas você fará amizade? ',
+    'choose_people': 'Escolha {num} {people_word}. ',
+    'people_word_singular': 'pessoa', 'people_word_plural': 'pessoas',
+    'provide_friend_list': 'Forneça a lista dos SEUS amigos no formato ID, ID, ID. ',
+    'provide_friend_list_with_reason': 'Liste os SEUS amigos e uma breve razão para cada amizade:\nID, razão\nID, razão\n',
+    'global_task': 'Sua tarefa é criar uma rede social realista. Você receberá uma lista de pessoas, {persona_format}. Forneça pares de amizade no formato ID, ID, um par por linha. {prompt_extra}',
+    'iterative_add_intro': 'Você faz parte de uma rede social e deseja fazer um novo amigo.',
+    'iterative_add_people': 'Você receberá candidatos a novos amigos, {persona_format}, seguidos dos números de amigos totais e amigos em comum com você. ',
+    'iterative_existing_friends': 'Você já é amigo dos IDs {friend_ids}.',
+    'iterative_add_question': 'Com qual pessoa desta lista você provavelmente faria amizade? ',
+    'iterative_add_json': 'Responda em JSON: {{"new friend": ID, "reason": razão da amizade}}. ',
+    'iterative_only_id': 'Responda apenas com o ID dessa pessoa. ',
+    'iterative_drop_intro': 'Você está ocupado com o trabalho e não consegue manter todas as amizades.',
+    'iterative_drop_people': 'Você receberá seus amigos atuais, {persona_format}, seguidos dos números de amigos totais e amigos em comum com você.',
+    'iterative_drop_question': 'Qual amizade desta lista você provavelmente encerraria? ',
+    'iterative_drop_json': 'Responda em JSON: {{"dropped friend": ID, "reason": razão do afastamento}}. ',
+    'candidate_has_friends': 'tem {num} amigos', 'candidate_no_friends': 'ainda não tem amigos',
+    'candidate_friend_ids': 'é amigo dos IDs {friend_ids}',
+    'candidate_stats': 'amigos: {num_friends}, amigos em comum: {num_mutual}',
+    'iterative_choice_line': 'Qual ID entre {id_list} você provavelmente escolheria para {action}?',
+    'iterative_action_befriend': 'fazer amizade', 'iterative_action_drop': 'encerrar a amizade',
+    'age_label': 'idade', 'interests_label': 'interesses:',
+}
+COUNTRY_NAMES = {
+    'english': {'us': 'United States', 'india': 'India', 'japan': 'Japan', 'brazil': 'Brazil'},
+    'spanish': {'us': 'Estados Unidos', 'india': 'India', 'japan': 'Japón', 'brazil': 'Brasil'},
+    'hindi': {'us': 'संयुक्त राज्य अमेरिका', 'india': 'भारत', 'japan': 'जापान', 'brazil': 'ब्राज़ील'},
+    'japanese': {'us': '米国', 'india': 'インド', 'japan': '日本', 'brazil': 'ブラジル'},
+    'portuguese': {'us': 'Estados Unidos', 'india': 'Índia', 'japan': 'Japão', 'brazil': 'Brasil'},
+}
+CONTEXT_FRAMES = {
+    'english': 'The social network is set in {culture}. Keep the listed people and their attributes unchanged. ',
+    'spanish': 'La red social se desarrolla en {culture}. Mantén sin cambios las personas y sus atributos. ',
+    'hindi': 'यह सामाजिक नेटवर्क {culture} में स्थित है। सूचीबद्ध लोगों और उनके गुणों को अपरिवर्तित रखें। ',
+    'japanese': 'この社会的ネットワークの舞台は{culture}です。記載された人物とその属性を変えないでください。',
+    'portuguese': 'A rede social se passa em {culture}. Mantenha as pessoas listadas e seus atributos inalterados. ',
+}
+for _language, _frame in CONTEXT_FRAMES.items():
+    PROMPT_TEXT[_language]['culture_statement'] = _frame
+PROMPT_TEXT['japanese']['prompt_extra'] = '回答にはそれ以外の文章を含めないでください。以下に記載されていない人物を含めないでください。'
+
+
 def normalize_condition_token(value):
     return value.lower().replace(' ', '-').replace('/', '-')
 
@@ -369,10 +434,15 @@ def assign_persona_to_prompt(persona, demos_to_include, prompt_language='english
 
 
 def get_culture_statement(culture_context, prompt_language='english'):
-    if not culture_context:
+    language = get_prompt_language(prompt_language)
+    # Neutral is a control without an explicit country label, not a country.
+    if not culture_context or culture_context == 'neutral':
         return ''
-    language_name = LANGUAGE_NAME_BY_CODE[get_prompt_language(prompt_language)]
-    return translate_prompt_text(prompt_language, 'culture_statement', culture=culture_context, language=language_name)
+    if culture_context not in COUNTRY_NAMES[language]:
+        raise ValueError(f'Unsupported country framing: {culture_context}')
+    # Changing instruction language must not change the participants' language.
+    culture = COUNTRY_NAMES[language][culture_context]
+    return translate_prompt_text(language, 'culture_statement', culture=culture)
 
 
 def get_persona_format(demos_to_include, prompt_language='english'):
@@ -424,6 +494,14 @@ def get_system_prompt(method, personas, demos_to_include, curr_pid=None, G=None,
             persona_format=persona_format,
             prompt_extra=prompt_extra,
         ) + ' ' + valid_ids_note
+        edge_contract = {
+            'english': ' Friendships are undirected. Write each distinct pair once as ID1, ID2 with ID1 < ID2 (numeric order). Never output the reverse pair or a self-link.',
+            'spanish': ' Las amistades no son dirigidas. Escribe cada par distinto una sola vez como ID1, ID2 con ID1 < ID2 (orden numerico). Nunca escribas el par invertido ni un enlace contigo mismo.',
+            'hindi': ' मित्रता अविदिश है। हर अलग जोड़ी केवल एक बार ID1, ID2 के रूप में लिखें, जहां ID1 < ID2 (संख्यात्मक क्रम) हो। उलटी जोड़ी या स्वयं से संबंध कभी न लिखें।',
+            'japanese': ' 友人関係は無向です。各ペアを一度だけ ID1, ID2 として記載し、ID1 < ID2（数値順）を守ってください。逆順のペアや自分自身への関係は記載しないでください。',
+            'portuguese': ' As amizades não são direcionadas. Escreva cada par distinto uma única vez como ID1, ID2 com ID1 < ID2 (ordem numérica). Nunca escreva o par invertido nem uma ligação consigo mesmo.',
+        }
+        prompt += edge_contract[prompt_language]
     
     elif method in {'local', 'sequential'}:
         # In these methods one persona is making friendship decisions.
@@ -539,7 +617,7 @@ def get_user_prompt(method, personas, order, demos_to_include, curr_pid=None,
         assert G is not None
         friends = list(G.neighbors(curr_pid))
         if method == 'iterative-add':
-            id_list = list(set(G.nodes()) - set(friends) - {curr_pid})  # non-friends
+            id_list = sorted(set(G.nodes()) - set(friends) - {curr_pid}, key=str)
             action = 'befriend'
         else:
             id_list = friends  # current friends
@@ -573,7 +651,8 @@ def get_user_prompt(method, personas, order, demos_to_include, curr_pid=None,
     return prompt 
     
 
-def update_graph_from_response(method, response, G, curr_pid=None, include_reason=False, num_choices=None):
+def update_graph_from_response(method, response, G, curr_pid=None, include_reason=False, num_choices=None,
+                               required_global_edges=None):
     """
     Parse response from LLM and update graph based on edges found.
     Expectation:
@@ -582,76 +661,105 @@ def update_graph_from_response(method, response, G, curr_pid=None, include_reaso
     - 'iterative-add' should list one new edge to add for curr_pid
     - 'iterative-drop' should list one existing edge to drop for curr_pid
     """
-    assert method in {'global', 'local', 'sequential', 'iterative-add', 'iterative-drop'}
+    if method not in {'global', 'local', 'sequential', 'iterative-add', 'iterative-drop'}:
+        raise ValueError('Unknown generation method')
+    if required_global_edges is not None and method != 'global':
+        raise ValueError('Whole-network correction constraints apply only to global responses')
     if num_choices is not None:
-        assert method in {'local', 'sequential'}
+        if method not in {'local', 'sequential'} or not 0 <= num_choices <= len(G) - 1:
+            raise ValueError('Invalid requested number of choices')
     if include_reason:
-        assert method != 'global' and curr_pid is not None
+        if method == 'global' or curr_pid is None:
+            raise ValueError('Reasons require a focal persona')
         reasons = {}
+    if method != 'global' and curr_pid not in G:
+        raise ValueError('A valid focal persona is required')
+    if not isinstance(response, str):
+        raise ValueError('Response must be text')
+    if not response.strip() and (method == 'global' or num_choices != 0):
+        raise ValueError('Blank response does not specify a network or a choice')
     edges_found = []
     
     # The parser is intentionally strict so malformed model output does not
     # silently create bad graph structure.
-    lines = response.split('\n')
+    lines = response.strip().split('\n')
     if method == 'global':
         for line in lines:
             cleaned = line.strip().replace(',', ' ')
             if not cleaned:
                 continue
             parts = cleaned.split()
-            assert len(parts) == 2, 'Each friendship pair must contain exactly two IDs'
+            if len(parts) != 2:
+                raise ValueError('Each friendship pair must contain exactly two IDs')
             id1, id2 = parts
             edges_found.append((id1.strip(), id2.strip()))
     
     elif method == 'local' or method == 'sequential':
-        assert curr_pid is not None, f'{method} method needs curr_pid to parse response'
         new_edges = []
         if include_reason:
             for line in lines:
-                pid, reason = line.strip('.').split(',', 1)
+                pid, reason = line.split(',', 1)
                 new_edges.append((curr_pid, pid.strip()))
-                reasons[pid] = reason.strip()
+                reasons[pid.strip()] = reason.strip()
         else:
-            assert len(lines) == 1, f'Response should not be more than one line'
-            line = lines[0].replace(',', ' ').replace('.', ' ')
+            if len(lines) != 1:
+                raise ValueError('Response must be one line')
+            # Do not repair decimals into multiple IDs: that invents ties.
+            line = lines[0].replace(',', ' ')
             ids = line.split()
             for pid in ids:
-                assert pid.isnumeric(), f'Response should contain ONLY the ID(s)'
+                if not pid.isnumeric():
+                    raise ValueError('Response must contain only IDs')
                 new_edges.append((curr_pid, pid.strip()))
         if num_choices is not None:
             pp = 'people' if num_choices > 1 else 'person'
-            assert len(new_edges) == num_choices, f'Choose {num_choices} {pp}'
+            if len(new_edges) != num_choices:
+                raise ValueError(f'Choose {num_choices} {pp}')
         edges_found.extend(new_edges)
     
     else:  # iterative-add or iterative-drop
-        assert curr_pid is not None, f'{method} method needs curr_pid to parse response'
         if include_reason:
             resp = json.loads(response.strip())
             key = 'new friend' if method == 'iterative-add' else 'dropped friend'
-            assert key in resp, f'Missing "{key}" in response'
+            if not isinstance(resp, dict) or key not in resp or not isinstance(resp.get('reason'), str):
+                raise ValueError('JSON requires the requested friend ID and a text reason')
             pid = str(resp[key])
             action = method.split('-')[1]
-            reasons[(pid, action)] = reason
+            reasons[(pid, action)] = resp['reason']
         else:
-            assert len(lines) == 1, f'Response should not be more than one line'
-            pid = lines[0].strip('.')
-            assert len(pid.split()) == 1 and pid.isnumeric(), f'Response should contain only the ID of the person you\'re choosing'
-        assert pid.lower() != 'none', 'You must choose one of the IDs in the list'
+            if len(lines) != 1:
+                raise ValueError('Response must be one line')
+            pid = lines[0].strip()
+            if len(pid.split()) != 1 or not pid.isnumeric():
+                raise ValueError('Response must contain one ID')
         edges_found.append((curr_pid, pid))
     
-    orig_len = len(edges_found)
-    edges_found = set(edges_found)
-    if len(edges_found) < orig_len:
-        print(f'Warning: {orig_len} edges were returned, {len(edges_found)} are unique')
+    edge_key = tuple if G.is_directed() else frozenset
+    seen, duplicates = set(), []
+    for edge in edges_found:
+        key = edge_key(edge)
+        if key in seen:
+            duplicates.append(edge)
+        seen.add(key)
+    if duplicates:
+        error = ValueError('Duplicate friendship choices are not allowed')
+        error.duplicate_edges = duplicates
+        raise error
     
     # check all valid
     valid_nodes = set(G.nodes())
-    curr_edges = set(G.edges())
     for id1, id2 in edges_found:
-        assert id1 in valid_nodes, f'{id1} is not a node in the network'
-        assert id2 in valid_nodes, f'{id2} is not a node in the network'
-        if method == 'iterative-drop':
-            assert ((id1, id2) in curr_edges) or ((id2, id1) in curr_edges), f'{id2} is not an existing friend'
+        if id1 not in valid_nodes or id2 not in valid_nodes:
+            raise ValueError('Response contains an ID outside the roster')
+        if id1 == id2:
+            raise ValueError('A persona cannot be their own friend')
+        if method == 'iterative-drop' and not G.has_edge(id1, id2):
+            raise ValueError('Cannot drop someone who is not a friend')
+        if method == 'iterative-add' and G.has_edge(id1, id2):
+            raise ValueError('Cannot add an existing friend')
+
+    if required_global_edges is not None and seen != {edge_key(edge) for edge in required_global_edges}:
+        raise ValueError('Correction must return the complete original valid friendship set without new ties')
 
     # only modify graph at the end
     if method == 'iterative-drop':
@@ -665,13 +773,41 @@ def update_graph_from_response(method, response, G, curr_pid=None, include_reaso
     
 def generate_network(method, demos_to_include, personas, order, model, mean_choices=None, include_reason=False, 
                      all_demos=False, only_degree=True, num_iter=3, temp=None, verbose=False,
-                     culture_context=None, prompt_language='english'):
+                     culture_context=None, prompt_language='english', events=None):
     """
     Generate entire network.
     """
     assert method in {'global', 'local', 'sequential', 'iterative'}
     G = nx.Graph()
     G.add_nodes_from(order)
+    if set(order) != set(personas) or len(order) != len(personas) or len(order) < 2:
+        raise ValueError('Order must contain every persona exactly once, with at least two personas')
+    if num_iter < 0 or (mean_choices is not None and (not np.isfinite(mean_choices) or mean_choices <= 0)):
+        raise ValueError('Iterations must be nonnegative and mean_choices must be positive')
+    prompt_language = get_prompt_language(prompt_language)
+    # One wrapper ensures every method uses the correct retry language and records
+    # real state transitions. No synthetic chronology is created for old graphs.
+    def ask(*args, **kwargs):
+        prompt_method = kwargs.pop('prompt_method', args[4]['method'])
+        before = {tuple(sorted(edge)) for edge in G.edges()}
+        result = repeat_prompt_until_parsed(*args, **kwargs, prompt_language=prompt_language)
+        if events is not None:
+            after = {tuple(sorted(edge)) for edge in G.edges()}
+            parse_info = args[4]
+            event = {'step': len(events), 'method': parse_info['method'],
+                           'run_method': method, 'prompt_method': prompt_method,
+                           'persona': parse_info.get('curr_pid'),
+                           'added': sorted(after - before), 'removed': sorted(before - after),
+                           'attempts': result[2]}
+            if parse_info.get('include_reason'):
+                # JSON has no tuple keys. Keep each explanation with its actual
+                # decision instead of losing earlier iterative explanations.
+                event['reasons'] = [
+                    {'target': key[0] if isinstance(key, tuple) else key,
+                     'action': key[1] if isinstance(key, tuple) else 'select', 'reason': value}
+                    for key, value in result[0][1].items()]
+            events.append(event)
+        return result
     reasons = {}
     total_num_tries = 0
     total_input_toks = 0
@@ -682,7 +818,7 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
                                           culture_context=culture_context, prompt_language=prompt_language)
         user_prompt = get_user_prompt(method, personas, order, demos_to_include, prompt_language=prompt_language)
         parse_args = {'method': method, 'G': G}
-        G, response, num_tries = repeat_prompt_until_parsed(model, system_prompt, user_prompt, update_graph_from_response,
+        G, response, num_tries = ask(model, system_prompt, user_prompt, update_graph_from_response,
                                                             parse_args, temp=temp, verbose=verbose)
         total_num_tries += num_tries
         total_input_toks += len(system_prompt.split()) + len(user_prompt.split())
@@ -695,7 +831,7 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
             if mean_choices is None:
                 num_choices = None 
             else:
-                num_choices = int(min(max(np.random.exponential(mean_choices), 1), 20))
+                num_choices = int(min(max(np.random.exponential(mean_choices), 1), 20, len(G) - 1))
             # Early in the process the graph is almost empty, so the first few
             # people use local mode before switching into full sequential mode.
             if node_num < 3:  # for first three nodes, use local
@@ -711,8 +847,9 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
                 user_prompt = get_user_prompt(method, personas, order, demos_to_include, curr_pid=pid,
                                                G=G, only_degree=only_degree, prompt_language=prompt_language)
             parse_args = {'method': method, 'G': G, 'curr_pid': pid, 'num_choices': num_choices, 'include_reason': include_reason}
-            G, response, num_tries = repeat_prompt_until_parsed(model, system_prompt, user_prompt, 
-                    update_graph_from_response, parse_args, temp=temp, verbose=verbose)
+            G, response, num_tries = ask(model, system_prompt, user_prompt,
+                    update_graph_from_response, parse_args, temp=temp, verbose=verbose,
+                    prompt_method='local' if node_num < 3 else method)
             if include_reason:
                 G, pid_reasons = G 
                 print(pid, pid_reasons)
@@ -728,14 +865,14 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
             if mean_choices is None:
                 num_choices = None 
             else:
-                num_choices = int(max(np.random.exponential(mean_choices), 1))
+                num_choices = int(min(max(np.random.exponential(mean_choices), 1), 20, len(G) - 1))
             system_prompt = get_system_prompt('local', personas, demos_to_include, curr_pid=pid,
                                 num_choices=num_choices, include_reason=include_reason, all_demos=all_demos,
                                 culture_context=culture_context, prompt_language=prompt_language)
             user_prompt = get_user_prompt('local', personas, order, demos_to_include, curr_pid=pid,
                                           prompt_language=prompt_language)
             parse_args = {'method': 'local', 'G': G, 'curr_pid': pid, 'num_choices': num_choices, 'include_reason': include_reason}
-            G, response, num_tries = repeat_prompt_until_parsed(model, system_prompt, user_prompt, 
+            G, response, num_tries = ask(model, system_prompt, user_prompt,
                     update_graph_from_response, parse_args, temp=temp, verbose=verbose)
             if include_reason:
                 G, pid_reasons = G 
@@ -749,13 +886,16 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
             print(f'========= ITERATION {it} =========')
             order3 = np.random.choice(order2, size=len(order2), replace=False)  # order of rewiring nodes
             for pid in order3:  # iterate through nodes and rewire
+                # No eligible new friend means there is no valid add request.
+                if G.degree(pid) == len(G) - 1:
+                    continue
                 system_prompt = get_system_prompt('iterative-add', personas, demos_to_include, 
                         curr_pid=pid, G=G, include_reason=include_reason, all_demos=all_demos,
                         culture_context=culture_context, prompt_language=prompt_language)
                 user_prompt = get_user_prompt('iterative-add', personas, None, demos_to_include, 
                                               curr_pid=pid, G=G, prompt_language=prompt_language)
                 parse_args = {'method': 'iterative-add', 'G': G, 'curr_pid': pid, 'include_reason': include_reason}
-                G, response_add, num_tries = repeat_prompt_until_parsed(model, system_prompt, user_prompt, 
+                G, response_add, num_tries = ask(model, system_prompt, user_prompt,
                         update_graph_from_response, parse_args, temp=temp, verbose=verbose)
                 if include_reason:
                     G, pid_reasons = G 
@@ -772,7 +912,7 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
                     user_prompt = get_user_prompt('iterative-drop', personas, None, demos_to_include, 
                                                   curr_pid=pid, G=G, prompt_language=prompt_language)
                     parse_args = {'method': 'iterative-drop', 'G': G, 'curr_pid': pid, 'include_reason': include_reason}
-                    G, response_drop, num_tries = repeat_prompt_until_parsed(model, system_prompt, user_prompt, 
+                    G, response_drop, num_tries = ask(model, system_prompt, user_prompt,
                             update_graph_from_response, parse_args, temp=temp, verbose=verbose)
                     if include_reason:
                         G, pid_reasons = G 
@@ -782,8 +922,11 @@ def generate_network(method, demos_to_include, personas, order, model, mean_choi
                     total_output_toks += len(response_drop.split())
                 else:  
                     assert len(friends) == 1  # must be at least 1 because we just added
-                    G.remove_edge(pid, friends[0])
-                print(pid, response_add, response_drop)
+                    # With only one friend there is no meaningful choice to make.
+                    # Keep that edge; do not invent an unrecorded deletion.
+                    response_drop = '(skipped: only one friend)'
+                if verbose:
+                    print(pid, response_add, response_drop)
                 
     return G, reasons, total_num_tries, total_input_toks, total_output_toks
    
@@ -857,6 +1000,8 @@ def get_save_prefix_and_demos(args):
     if args.temp != DEFAULT_TEMPERATURE:
         temp_str = str(args.temp).replace('.', '')
         save_prefix += f'_temp{temp_str}'
+    # Revised prompts/parsing must never overwrite the historical experiments.
+    save_prefix += '_' + PROMPT_VERSION
     return save_prefix, demos_to_include
 
 
@@ -873,30 +1018,38 @@ if __name__ == '__main__':
     stats = []    
     end_seed = args.start_seed+args.num_networks
     for seed in range(args.start_seed, end_seed):
+        if any(os.path.exists(os.path.join(PATH_TO_TEXT_FILES, f'{save_prefix}_{seed}{suffix}'))
+               for suffix in ('.adj', '_events.json', '_reasons.json')):
+            raise FileExistsError('Refusing to overwrite an existing run; choose a fresh seed or condition')
         ts = time.time()
         np.random.seed(seed)
+        random.seed(seed)
         order = np.random.choice(pids, size=len(pids), replace=False)  # order of printing personas
         print('Order of printing:', order[:10])
+        events = []
         G, reasons, num_tries, input_toks, output_toks = generate_network(
             args.method, demos_to_include, personas, order, args.model, 
             mean_choices=args.mean_choices if args.mean_choices > 0 else None,
             include_reason=args.include_reason, all_demos=args.prompt_all, 
             only_degree=not args.include_friend_list, temp=args.temp, num_iter=args.num_iter,
             verbose=args.verbose, culture_context=args.culture_context,
-            prompt_language=get_prompt_language(args.prompt_language))
+            prompt_language=get_prompt_language(args.prompt_language), events=events)
         
         save_network(G, f'{save_prefix}_{seed}')
         draw_and_save_network_plot(G, f'{save_prefix}_{seed}')
+        with open(os.path.join(PATH_TO_TEXT_FILES, f'{save_prefix}_{seed}_events.json'), 'x', encoding='utf-8') as f:
+            json.dump({'prompt_version': PROMPT_VERSION, 'events': events}, f, ensure_ascii=False, indent=2)
         duration = time.time()-ts
         print(f'Seed {seed}: {len(G.edges())} edges, num tries={num_tries}, input toks={input_toks}, output toks={output_toks} [time={duration:.2f}s]')
         stats.append({'seed': seed, 'duration': duration, 'num_tries': num_tries, 
-                      'num_input_toks': input_toks, 'num_output_toks': output_toks})
+                      'num_input_toks': input_toks, 'num_output_toks': output_toks,
+                      'token_count_source': 'legacy_whitespace_estimate_not_billable'})
         if args.include_reason:
             fn = os.path.join(PATH_TO_TEXT_FILES, f'{save_prefix}_{seed}_reasons.json')
-            with open(fn, 'w') as f:
-                json.dump(reasons, f)
+            with open(fn, 'x', encoding='utf-8') as f:
+                json.dump([event for event in events if 'reasons' in event], f, ensure_ascii=False, indent=2)
     
-    stats_df = pd.DataFrame(stats, columns=['seed', 'duration', 'num_tries', 'num_input_toks', 'num_output_toks'])
+    stats_df = pd.DataFrame(stats)
     save_dir = os.path.join(PATH_TO_STATS_FILES, save_prefix)
     if not os.path.exists(save_dir):
         print('Making directory:', save_dir)

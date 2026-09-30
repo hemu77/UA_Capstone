@@ -1,0 +1,41 @@
+{
+  "status": "ENGINEERING_PILOT_NOT_CONFIRMATORY",
+  "target": 28,
+  "by_model": {
+    "gpt-4.1-mini": {
+      "verified_graphs": 4,
+      "attempts": 450,
+      "conservative_charge_or_reservation_usd": 0.26327749999999994
+    },
+    "gpt-5.6-luna": {
+      "verified_graphs": 4,
+      "attempts": 448,
+      "conservative_charge_or_reservation_usd": 0.1326313999999998
+    },
+    "gpt-6-luna": {
+      "verified_graphs": 16,
+      "attempts": 1801,
+      "conservative_charge_or_reservation_usd": 0.30693087500000127
+    },
+    "gpt-6-sol": {
+      "verified_graphs": 4,
+      "attempts": 451,
+      "conservative_charge_or_reservation_usd": 1.3159800000000004
+    }
+  },
+  "original_target": 20,
+  "sol_extension_target": 4,
+  "luna56_extension_target": 4,
+  "verified": 28,
+  "attempts": 3150,
+  "conservative_charge_or_reservation_usd": 2.0188197749999963,
+  "unresolved_attempts": 0,
+  "observed_parse_failures": 16,
+  "missing_parse_annotations": 454,
+  "limitations": [
+    "Earlier engineering responses lack parse annotations and source-version hashes.",
+    "Initial/retry prompts changed after observed failures; pilot variants are not confirmatory replicates.",
+    "Historical roster includes nine minors; translations await bilingual review.",
+    "These checks do not establish real-world validity, statistical power or exact invoiced cost."
+  ]
+}

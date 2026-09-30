@@ -50,7 +50,7 @@ def parse_args():
 def build_research_summary(condition_summaries, dominance_df, model_divergence_df, language_divergence_df, verification_df):
     lines = ['# Step 4 Language Study Summary', '']
     lines.append('## Verification')
-    passed = int(verification_df[['graph_exists', 'png_ok', 'homophily_ok', 'network_metrics_ok', 'node_count_ok', 'edge_count_ok']].all(axis=1).sum())
+    passed = int(verification_df['passed'].sum())
     total = len(verification_df)
     lines.append(f'- {passed} of {total} generated language-study graphs passed the artifact and sanity checks.')
     lines.append('')
@@ -65,7 +65,7 @@ def build_research_summary(condition_summaries, dominance_df, model_divergence_d
         q1_ranked['range'] = q1_ranked['max'] - q1_ranked['min']
         q1_ranked = q1_ranked.sort_values('range', ascending=False)
         top = q1_ranked.iloc[0]
-        lines.append(f'- The largest language-driven homophily shift appears on `{top["demo"]}` with range {top["range"]:.3f}.')
+        lines.append(f'- The largest pooled descriptive same-ratio range is for `{top["demo"]}`: {top["range"]:.3f}. This mixes conditions, not an isolated language effect.')
     topology_df = condition_summaries[
         (condition_summaries['table'] == 'network')
         & (condition_summaries['metric_name'].isin(['density', 'avg_clustering_coef', 'modularity', 'prop_nodes_lcc']))

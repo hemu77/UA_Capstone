@@ -1,0 +1,34 @@
+{
+  "status": "READY_FOR_ASTRA_CODE_REVIEW",
+  "planned_networks": 896,
+  "offline_fixture_cells_checked": 896,
+  "offline_baseline_fixtures": 12,
+  "paid_calls": 0,
+  "dollars_spent": 0,
+  "generation_authorized": false,
+  "protocol_sha256": "f2c6b9696988fbc9d6ee438c45a3d9d56b253c9d7af14bbed0a116485b9b0e97",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239"
+  },
+  "runtime_versions": {
+    "python": "3.11.9",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.0",
+    "openai": "1.43.1",
+    "matplotlib": "3.6.2"
+  },
+  "remaining": [
+    "Astra review",
+    "Bilingual translation review",
+    "Fresh token/cost calibration and model access"
+  ],
+  "limitation": "Fixture replies validate code flow only. No new LLM networks have been collected."
+}

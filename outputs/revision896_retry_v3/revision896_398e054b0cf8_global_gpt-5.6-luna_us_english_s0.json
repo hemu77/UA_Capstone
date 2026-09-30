@@ -1,0 +1,428 @@
+{
+  "cell": {
+    "run_id": "revision896_398e054b0cf8_global_gpt-5.6-luna_us_english_s0",
+    "model": "gpt-5.6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "398e054b0cf82fe901a68422211adb218b95cfbd42527c6b2d97323e6633d0f1",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "b33b7904e66de7a7a6eebbf85264d44567a450db54edc96569684ea2edd4914d",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "23d0260a3ed23e708add6c4ad825ac3d924b4c4b28e92e1ec57333a16cf27c84",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "b5ab6eb696481ce9e73047ca86574e1788e1f29d2c8c4b78836b7e8140df4e35"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "15"
+        ],
+        [
+          "0",
+          "20"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "1",
+          "44"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "10",
+          "27"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "11",
+          "43"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "32"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "41"
+        ],
+        [
+          "13",
+          "46"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "14",
+          "44"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "17",
+          "2"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "18",
+          "42"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "19",
+          "49"
+        ],
+        [
+          "2",
+          "31"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "7"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "22",
+          "29"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "3"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "24",
+          "43"
+        ],
+        [
+          "25",
+          "44"
+        ],
+        [
+          "26",
+          "38"
+        ],
+        [
+          "26",
+          "46"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "41"
+        ],
+        [
+          "30",
+          "47"
+        ],
+        [
+          "30",
+          "6"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "47"
+        ],
+        [
+          "33",
+          "48"
+        ],
+        [
+          "34",
+          "36"
+        ],
+        [
+          "34",
+          "5"
+        ],
+        [
+          "34",
+          "7"
+        ],
+        [
+          "35",
+          "37"
+        ],
+        [
+          "36",
+          "48"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "39",
+          "40"
+        ],
+        [
+          "4",
+          "8"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "42",
+          "8"
+        ],
+        [
+          "46",
+          "48"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.04897959183673469,
+    "avg_clustering_coef": 0.3233333333333334,
+    "prop_nodes_lcc": 0.92,
+    "global_efficiency": 0.1854678101957423,
+    "num_components": 3,
+    "modularity": 0.726388888888889,
+    "radius_lcc": 10,
+    "diameter_lcc": 19,
+    "avg_shortest_path_lcc": 7.856038647342995
+  },
+  "homophily": {
+    "gender": [
+      0.46081785597914626,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 44,
+          "within_group_share": 0.6818181818181818,
+          "coleman": 0.4696969696969696
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 31,
+          "within_group_share": 0.5806451612903226,
+          "coleman": 0.47580645161290325
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 45,
+          "within_group_share": 0.6666666666666666,
+          "coleman": 0.44444444444444436
+        }
+      ]
+    ],
+    "religion": [
+      0.6801728866946257,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 23,
+          "within_group_share": 0.782608695652174,
+          "coleman": 0.7282608695652173
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 21,
+          "within_group_share": 0.5714285714285714,
+          "coleman": 0.4642857142857142
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 26,
+          "within_group_share": 0.7692307692307693,
+          "coleman": 0.7115384615384615
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 23,
+          "within_group_share": 0.782608695652174,
+          "coleman": 0.7282608695652173
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 27,
+          "within_group_share": 0.8148148148148148,
+          "coleman": 0.7685185185185184
+        }
+      ]
+    ],
+    "political orientation": [
+      0.6336813513284103,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 35,
+          "within_group_share": 0.7428571428571429,
+          "coleman": 0.6218487394957984
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 49,
+          "within_group_share": 0.8571428571428571,
+          "coleman": 0.7835497835497837
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 36,
+          "within_group_share": 0.6666666666666666,
+          "coleman": 0.4949494949494949
+        }
+      ]
+    ],
+    "age_assortativity": 0.5915018055913499
+  },
+  "cumulative_conservative_charge_usd": 2.256811575,
+  "artifact_sha256": {
+    ".adj": "96644b401e69cc1af1fc3afaeb26ef2ea7f3bdd1fc9f0eb20d95c518aa514af7",
+    ".png": "f56ffbc9d26764f1467df60b8bf2e83447136fb2f350692935310b57705fe691"
+  },
+  "requests": [
+    {
+      "request_id": "ad58c4d4ef9ea1988fd2e0b027afeb0e2b1e8787bb6339948b021132e4f3675f",
+      "response_id": "chatcmpl-ETmUamgy2HRJZNw7LlgwYpeGaODxx",
+      "resolved_model": "gpt-5.6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 302,
+        "prompt_tokens": 876,
+        "total_tokens": 1178,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0005813999999999999
+    }
+  ]
+}

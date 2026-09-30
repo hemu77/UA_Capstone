@@ -1,5 +1,197 @@
 # Repository Architecture
 
+## Fresh 896-Run Pipeline
+
+**Latest inspection:** all 68 v5 calibration graphs verified, 204 offline controls
+generated and 88 tests passing. Additional calibration accounting is $4.454524450,
+within the original $5 allowance. The reviewed replacement preserved the failed
+request's reservation, all 194 cached replies and the six original receipts.
+Generation is stopped; the 896-run main batch is not authorized.
+See [CALIBRATION_RESULTS.md](CALIBRATION_RESULTS.md) for actual spend, updated
+cost/runtime estimates and the distinction between software checks and research acceptance.
+
+The replacement pipeline is documented in [RESEARCH_896_HANDOFF.md](RESEARCH_896_HANDOFF.md).
+`revision224_prompts.py` constructs the declared fictional adult roster and
+independent country/instruction-language treatments. `revision224.py` prepares
+the 896-cell manifest and 80 prompt examples, runs labelled offline fixtures,
+and checks exact source/protocol/roster review hashes before paid execution.
+Shared parsing, metrics and matched baselines remain the analysis authority.
+The original durable ledger retains prior costs; transport uncertainty stops
+without automatic resending. Missing ledgers fail closed. Earlier experiments
+and the private team viewer remain historical evidence. The first paid calibration
+was stopped for an incomplete global correction, documented in
+[CALIBRATION_FINDINGS.md](CALIBRATION_FINDINGS.md). Four original graphs remain
+preserved and excluded from the current `revision896_retry_v5` namespace.
+Later versions exposed example contamination, empty responses and an undersized
+per-person output cap; each repair is versioned and tested. Global corrections preserve the original
+unambiguous valid tie set before graph mutation. Unresolved ledger attempts
+block new execution across protocol versions, and reports expose both current-
+protocol and shared-ledger unresolved counts. Explicit abandonment retains its
+full reserved charge and prohibits replay; it is not proof of provider billing.
+
+An explicitly authorized replacement has its own deterministic request ID and
+charge; it never changes the abandoned original. Authorization is single-use.
+Logging/recovery compatibility binds archived generation hashes to exact current
+execution hashes. Request-body parity is tested, both provenances are checked,
+and no changed prompt or engine module can use that wrapper-only exception.
+
+An OS-backed workflow lock prevents concurrent fresh writers. Completed receipts
+must match artifact hashes, graph metrics, request identities and original ledger
+charges before any further API client is created. Preflight also rejects source
+changes during checking. `revision224.py --analyze` produces fresh-only per-run
+metrics, group homophily, matched controls and paired contrasts under
+`stats/revision896_retry_v5/`; its report distinguishes absent, partial and complete data.
+`inspect_calibration.py` holds the workflow lock while auditing receipts, graph
+metrics, controls and charges. It sums request intervals for an API-only runtime
+forecast, excludes pauses between requests, and checks PNG file integrity.
+Visual review and scientific validity remain separate from those automated checks.
+The PDF concerns and remaining evidence gates are mapped in
+[REVIEW_RESPONSE_MATRIX.md](REVIEW_RESPONSE_MATRIX.md).
+
+The seven-setting design estimates country-framing and instruction-language
+contrasts on one fictional roster. Eight repetitions are not a power guarantee.
+The 68-cell calibration has a separately authorized $5 additional ceiling;
+the main batch requires its own finite ceiling and review. Translation and cost
+review remain necessary before main collection. This design
+does not complete the rejection plan's broader ablation or model-family scope.
+
+## Revision Architecture Report
+
+**Current status: offline repairs and exploration implemented; scientific
+revision and main study incomplete; 28 engineering pilots completed.** Older report sections below are archival
+context and are superseded where they conflict with this section or
+[REVISION_STATUS.md](REVISION_STATUS.md).
+
+```mermaid
+flowchart LR
+  Historical[Original personas and 192 graphs] --> Audit[Offline export and quarantine]
+  Metrics[Shared Python metric functions] --> Audit
+  Audit --> Tables[Corrected CSVs and source hashes]
+  Audit --> Static[Viewer JSON and regenerated PNGs]
+  Tables --> Notebook[Maintained notebook section]
+  Static --> Viewer[Static Three.js explorer]
+  Protocol[Draft study protocol] --> Estimate[Offline request-count estimate]
+  Prompts[Versioned multilingual prompt builder] --> Parser[Strict parser and real edge events]
+  Budget[SQLite request reservations: $5 pilot / $50 total] --> API[Budgeted pilot dispatch]
+  API --> Parser
+  Parser --> Pilot[24 engineering pilot networks and real events]
+  Pilot --> Review[Astra review before main collection]
+```
+
+### Problem and Method
+
+The budgeted execution path is `paid_study.py`. Its ledger reserves a conservative
+upper charge before sending each request, settles recorded provider usage, and
+retains unresolved charges. Resumed requests use saved responses, and finished
+graphs/PNGs are checked against saved hashes. The legacy API path stays locked.
+GPT-6 Luna and the four-run GPT-6 Sol extension use reasoning disabled;
+GPT-4.1 Mini uses temperature 0.8. Their
+different capabilities/settings are part of the treatment and must be reported.
+The pilot retains the historical roster for engineering verification only.
+The proposed 640-network main study remains gated on an Astra design review,
+five validated adult rosters, prompt review and pilot-informed sample size.
+
+The project audits how pretrained LLMs produce synthetic friendship networks.
+It does not train a model and it does not establish a true network for the
+fictional people. A connection is one undirected union edge, regardless of which
+persona selected it. All primary historical comparisons use one 50-person US
+roster, three GPT-4.1 variants, four generation methods and two intended seeds.
+Country settings are US, India, Japan and Brazil. Historical languages are
+English, Spanish, Hindi and Japanese. Portuguese has four completed Luna
+engineering checks; bilingual validation and confirmatory collection are pending.
+
+The static viewer separates the analysis selection from the two network panes.
+`research-plots.js` filters saved runs, keeps study/roster/prompt variants separate,
+and prepares topology SVGs and demographic-mixing SVGs from exported Python
+values. No JavaScript metric engine or browser API credential is added. Checkbox
+intersections support multiple values on five dimensions; dataset selection
+keeps historical evidence separate from pilots. The URL stores that selection
+and metric. CSV/JSON exports retain run identity and source hashes; SVG figures
+include condition labels, counts and descriptive-evidence notes. Network A/B
+remain independently selectable, including through the selected-run inventory.
+
+### Modules and Contracts
+
+- `generate_networks.py` builds prompts, checks replies before graph mutation,
+  and records successful edge changes. New filenames contain `revision-v1`.
+  Local uses all other personas; iterative initializes with local selections.
+  Those details differ from parts of the supplied review document and must be
+  reconciled with the submitted implementation before claiming a replication.
+- `constants_and_utils.py` contains provider calls and a three-attempt retry
+  policy. SDK retries are disabled. The current shared paid-dispatch release
+  gate stops before constructing a client for archived workflows. `paid_study.py`
+  owns the separate authorized $5/$50 reservation ledger, usage accounting,
+  failed-response audit and artifact-checked resume. `--verify` never opens an
+  API client and writes run/usage verification tables.
+- `analyze_networks.py` owns corrected edge disagreement, scalar topology,
+  group-level and population-weighted Coleman scores, and numeric age
+  assortativity. Raw LCC path statistics have explicit `_lcc` names. Legacy
+  log-normalized fields remain legacy fields, not silently redefined exports.
+- `export_research_viewer.py` enumerates the exact historical matrix, checks IDs,
+  self-links and nonempty graphs, recomputes measurements, records source hashes,
+  and writes only the revision output directories. Invalid graphs are excluded,
+  not sanitized. PNG readability is independent of graph validity.
+- `viewer/` is a static client with one pinned rendering dependency. It loads
+  local JSON, never an API key. Both views reuse one union-force layout. It handles
+  display operations and manual simulation, not research statistical formulas.
+  The accessible table remains usable when WebGL is unavailable.
+- `analyze_networks.ipynb` retains old analysis behind `RUN_LEGACY_ANALYSIS=False`.
+  Its maintained section verifies graph hashes before loading corrected results
+  and separately reads real pilot artifacts/usage without dispatching model calls.
+- `study_protocol.json` and `plan_revision_study.py` describe proposed scope and
+  request ceilings. They do not authorize generation, verify model availability,
+  supply a dollar quote or justify statistical power.
+
+### Results and Their Meaning
+
+The authorized engineering pilot completed **24/24 full-50 networks** with
+**$1.886188** conservative recorded cost and zero unresolved requests. It tests
+all four methods, Luna/Mini/Sol in English, and Luna in Hindi, Japanese and
+Portuguese under US framing. Sixteen parser failures are annotated; 454 early
+replies lack those annotations. Global-edge and response-count corrections made
+during the pilot remain labeled source variants. These graphs support workflow
+verification; confirmatory RQ conclusions still need the Astra/protocol gate.
+
+The inventory is **24 cultural + 72 method + 96 language = 192 graphs**. Strict
+checks retain **176** and quarantine **16** containing **23 self-links**. All
+original graph and roster hashes are preserved. The old "192 verified" claim
+therefore cannot be interpreted as simple-graph correctness. Available sample
+sizes become unbalanced, and old failure/refusal rates remain unknowable without
+attempt logs.
+
+RQ1 has historical framing differences, not demonstrated country-population
+effects: sequential mini mean LCC shares are US .50, India .98, Japan .76 and
+Brazil .52. RQ2 shows substantial political grouping in those model outputs, but
+does not establish a causal demographic ranking. RQ3 shows different edges across
+the three OpenAI variants under matched conditions, not cross-family validity.
+RQ4 remains confounded historically because participants' spoken language changed
+with instructions. Exact examples and files are in the README and revision report.
+
+The roster also includes nine minors, four younger than five, despite assigned
+political labels. An adult/source-grounded redesign is needed before political
+or cross-cultural findings can be treated as defensible evidence. Changing a
+country label alone is not population grounding.
+
+### Validation and Release Boundary
+
+Hand-checkable regression fixtures cover metrics, parsing, bounded failures and
+the shared dispatch lock. Mocked integration uses all 50 personas for every
+method/language combination without model spend. Export parity checks compare
+saved and displayed edges and Python metrics. Notebook execution, desktop/mobile
+browser checks and independent read-only review are recorded in
+`stats/revision_v1/validation_report.md`.
+
+The reviewer found both safety and provenance gaps. Those budget controls now
+exist in the new pilot runner; the old dispatch stays locked. Failed Mini global
+replies revealed reversed duplicate edges, leading to an explicit canonical-pair
+prompt and localized correction. All costs remain recorded. Pilot prompt variants
+are not treated as frozen-protocol replications. The viewer cannot repair missing historical chronology
+or scientific controls. Publication remains separate from a passing software
+test suite; benchmark reconstruction, bilingual review, robust baselines,
+independent rosters and approved confirmatory experiments remain pending.
+
+## Archived Architecture Narrative
+
 This document explains the project as a beginner-friendly pipeline.
 
 ## Core Idea
@@ -15,40 +207,40 @@ It does that in four stages:
 
 ## Main Files And Responsibilities
 
-[generate_personas.py](generate_personas.py)
+[generate_personas.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_personas.py)
 Creates or enriches personas. This is the "who exists?" layer.
 
-[generate_networks.py](generate_networks.py)
+[generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
 Main generation engine. This is the "who becomes friends?" layer.
 
-[constants_and_utils.py](constants_and_utils.py)
+[constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
 Shared infrastructure. It handles paths, API calls, retries, saving graphs, and drawing PNGs.
 
-[analyze_networks.py](analyze_networks.py)
+[analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
 Main metrics layer. This is the "what kind of network came out?" layer.
 
-[plotting.py](plotting.py)
+[plotting.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\plotting.py)
 Visualization helpers for graphs and analysis tables.
 
-[run_cultural_study.py](run_cultural_study.py)
+[run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
 Step 2 experiment orchestrator. It runs the full culture/model/seed matrix and writes aggregate outputs.
 
-[study_runner_utils.py](study_runner_utils.py)
+[study_runner_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\study_runner_utils.py)
 Shared experiment helper layer. This keeps the Step 2, Step 3, and Step 4 runners on the same generation, aggregation, and verification path.
 
-[run_method_study.py](run_method_study.py)
+[run_method_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_method_study.py)
 Step 3 experiment orchestrator. It compares `global`, `local`, and `iterative` under the same culture/model/seed setup used for Step 2.
 
-[run_language_study.py](run_language_study.py)
+[run_language_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_language_study.py)
 Step 4 experiment orchestrator. It keeps culture fixed and varies the prompt language across English, Spanish, Hindi, and Japanese.
 
-[analyze_networks.ipynb](analyze_networks.ipynb)
+[analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
 Exploratory notebook. This is where results are compared, plotted, and interpreted interactively.
 
-[network_datasets.py](network_datasets.py)
+[network_datasets.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\network_datasets.py)
 Loads or converts real/reference datasets for comparison.
 
-[bias.py](bias.py)
+[bias.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\bias.py)
 Bias-oriented text analysis helpers.
 
 ## Data Flow
@@ -215,12 +407,12 @@ When culture was fixed to `us` and prompt language varied across English, Spanis
 
 If you are new, read files in this order:
 
-1. [ARCHITECTURE.md](ARCHITECTURE.md)
-2. [generate_networks.py](generate_networks.py)
-3. [constants_and_utils.py](constants_and_utils.py)
-4. [analyze_networks.py](analyze_networks.py)
-5. [run_cultural_study.py](run_cultural_study.py)
-6. [analyze_networks.ipynb](analyze_networks.ipynb)
+1. [ARCHITECTURE.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\ARCHITECTURE.md)
+2. [generate_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\generate_networks.py)
+3. [constants_and_utils.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\constants_and_utils.py)
+4. [analyze_networks.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.py)
+5. [run_cultural_study.py](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\run_cultural_study.py)
+6. [analyze_networks.ipynb](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\analyze_networks.ipynb)
 
 ## Outputs To Care About
 
@@ -232,150 +424,20 @@ For one generation run:
 - `stats/<condition>/network_metrics.csv`
 
 For the Step 2 study:
-- [condition_summary.csv](stats/cultural_study/condition_summary.csv)
-- [demographic_dominance.csv](stats/cultural_study/demographic_dominance.csv)
-- [model_divergence.csv](stats/cultural_study/model_divergence.csv)
-- [research_answers.md](stats/cultural_study/research_answers.md)
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\condition_summary.csv)
+- [demographic_dominance.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\demographic_dominance.csv)
+- [model_divergence.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\model_divergence.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\cultural_study\research_answers.md)
 
 For the Step 3 study:
-- [condition_summary.csv](stats/method_study/condition_summary.csv)
-- [method_summary.csv](stats/method_study/method_summary.csv)
-- [research_answers.md](stats/method_study/research_answers.md)
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\condition_summary.csv)
+- [method_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\method_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\method_study\research_answers.md)
 
 For the Step 4 study:
-- [condition_summary.csv](stats/language_study/condition_summary.csv)
-- [language_summary.csv](stats/language_study/language_summary.csv)
-- [research_answers.md](stats/language_study/research_answers.md)
-
-## Results & Plots
-
-### Plot Naming Convention
-
-Every file in `plots/` follows this pattern:
-
-```
-{method}_{model}[_n{n}]_culture_{culture}[_lang_{language}]_{seed}.png
-```
-
-| Segment | Values | Meaning |
-|---|---|---|
-| `method` | `global`, `sequential`, `local`, `iterative` | How friendships were generated |
-| `model` | `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano` | OpenAI model used |
-| `_n{n}` | `_n5` | Neighbourhood size (absent for global) |
-| `culture` | `us`, `india`, `japan`, `brazil` | Cultural context injected into prompt |
-| `lang` | `english`, `spanish`, `hindi`, `japanese` | Prompt language (Step 4 only; absent = English) |
-| `seed` | `0`, `1` | Random seed index |
-
-**Examples**
-- `global_gpt-4.1-mini_culture_us_0.png` — global method, mini model, US culture, seed 0
-- `sequential_gpt-4.1_n5_culture_india_1.png` — sequential, full model, India, seed 1
-- `local_gpt-4.1-nano_n5_culture_us_lang_hindi_0.png` — local, nano model, US culture, Hindi prompt, seed 0
-
-### What Each Plot Shows
-
-Each PNG is a force-directed graph of the generated social network.
-
-- **Nodes** — individual personas (50 per graph), labelled by index
-- **Edges** — friendship ties proposed by the model
-- Spring layout: tightly connected subgroups pull together into visible clumps
-
-### Visual Patterns by Method
-
-#### global
-
-The model receives all 50 personas at once and proposes friendship pairs for the whole network in a single call.
-
-| Model | Visual result |
-|---|---|
-| `gpt-4.1` | One or two medium-sized connected components in a loose elongated chain; 1–3 isolated nodes; low density (~0.056) |
-| `gpt-4.1-mini` | Highly fragmented forest — 4 to 6 separate small trees of 3–8 nodes each with many isolated nodes scattered across the canvas |
-| `gpt-4.1-nano` | Hub-and-spoke star: one dense central core with long radial arms extending outward; ~15–20 isolated nodes around the periphery |
-
-The global method consistently produces the sparsest graphs (mean density 0.056 vs 0.18 for local/iterative). The nano model collapses into a centralized star rather than a distributed network, suggesting it defaults to assigning one or two highly popular nodes.
-
-#### sequential
-
-Each persona is added one at a time to a growing network. The model chooses friends from the existing pool as each new node arrives.
-
-Visual result across all cultures and models: **two dense horizontal clumps bridged by a thin chain**. The first clump forms from early arrivals; the second clump forms from later arrivals; a few bridge edges connect them. Almost no isolated nodes. The bipartite-clump structure is consistent across all four cultures and all three models, making sequential the most structurally predictable method.
-
-#### local
-
-A focal persona is asked to choose friends from a neighbourhood of `n=5` candidates, without access to the full growing network.
-
-Visual result: **two tight, well-separated dense cliques**. Each clique occupies a distinct canvas quadrant with minimal cross-cluster edges. The separation is the cleanest of all four methods. The nano model is the exception — it occasionally collapses all 50 nodes into a single massive highly connected ball (single giant component, very high within-cluster density), suggesting the smaller model over-connects when working locally.
-
-#### iterative
-
-The network is built through add/drop revision passes — existing friendship decisions can be reconsidered and updated.
-
-Visual result: **two tight clumps in opposite corners of the canvas plus a notable fringe of ~10–15 scattered isolated nodes**. The two clusters themselves are as dense as local, but iterative uniquely leaves more nodes completely unconnected compared to sequential or local. Despite this, measured density (mean 0.182) is comparable to local because the two active clusters are very dense internally.
-
-### Visual Patterns by Culture (global and sequential, gpt-4.1)
-
-| Culture | global gpt-4.1 | sequential gpt-4.1 |
-|---|---|---|
-| **US** | Elongated chain + satellite cluster bottom-right + 1–2 isolates | Two dense clumps (top-left and bottom-right) joined by a diagonal bridge chain |
-| **India** | Most fragmented: 3 separate components of different sizes + isolated nodes; no dominant cluster | Two near-identical dense bundles; cleanest separation of all four cultures |
-| **Japan** | One dominant dense cluster upper-center + small satellite bottom-left + scattered isolates | Dense tight cluster upper-left + loose chain lower-right + isolated pair |
-| **Brazil** | Compact single component with most nodes; 1 isolated node far left | Two parallel horizontal bundles connected by bridge edges |
-
-**Key cultural observation**: India consistently produces the most fragmented global-method graphs — three separate components with no single dominant cluster. Japan tends to produce one highly dense core with isolated outliers. Brazil and US produce more connected single-component graphs under the global method.
-
-### Visual Patterns by Prompt Language (global gpt-4.1-mini, culture = US)
-
-| Language | Visual structure |
-|---|---|
-| **English** | Large tree-like spanning component covering most of the canvas; a few satellite clusters; fewest isolates — most connected output |
-| **Spanish** | Three components: one large dense cluster (upper center), one medium chain (lower left), one small group; moderately fragmented |
-| **Japanese** | Multiple small trees (4–6 nodes each) spread evenly across canvas; many isolated nodes; very fragmented, no dominant component |
-| **Hindi** | Highest fragmentation: 5+ separate small trees (3–8 nodes each) spread across four quadrants; most isolated nodes of any language condition |
-
-**Key language observation**: English prompts produce the most connected global-method networks. Hindi and Japanese prompts produce the most fragmented outputs, with the network fragmenting into many small disconnected trees. Spanish sits between the two extremes. This pattern is consistent with the measured density ranking: Spanish (0.164) > English (0.147) ≈ Japanese (0.146) > Hindi (0.145), though Hindi and Japanese are visually far more fragmented than density alone suggests because the few edges that exist cluster within small trees rather than bridging across the network.
-
-### Plot Coverage Summary
-
-| Study | Method(s) | Cultures | Languages | Models | Seeds | Total PNGs |
-|---|---|---|---|---|---|---|
-| Step 2 (cultural) | sequential | us, india, japan, brazil | english only | 3 | 2 | 24 |
-| Step 3 (method) | global, local, iterative | us, india, japan, brazil | english only | 3 | 2 | 72 |
-| Step 4 (language) | global, sequential, local, iterative | us only | english, spanish, hindi, japanese | 3 | 2 | 96 |
-| **Total** | | | | | | **192** |
-
-### Numeric Summary of Key Metrics
-
-These values come from the validated study CSV files (`stats/*/method_summary.csv`, `stats/*/language_summary.csv`).
-
-**Density by method (Step 3):**
-
-| Method | Mean density | Std |
-|---|---|---|
-| iterative | 0.182 | 0.010 |
-| local | 0.179 | 0.010 |
-| sequential | — (Step 2 baseline) | — |
-| global | 0.056 | 0.017 |
-
-**Homophily (same_ratio) by method — top demographic per method:**
-
-| Method | Top demographic | Mean same_ratio |
-|---|---|---|
-| global | age | 1.83 |
-| iterative | political affiliation | 1.75 |
-| local | political affiliation | 1.74 |
-| sequential | political affiliation | ~2.0 (Step 2 baseline) |
-
-A same_ratio above 1.0 means the model forms more same-group ties than chance. All methods show homophily (>1.0) on most demographics. Below-1.0 cases are concentrated in the `gpt-4.1-nano` + `global` combination, where the star topology reduces meaningful demographic clustering.
-
-**Density by prompt language (Step 4):**
-
-| Language | Mean density | Std |
-|---|---|---|
-| Spanish | 0.164 | 0.036 |
-| English | 0.147 | 0.058 |
-| Japanese | 0.146 | 0.061 |
-| Hindi | 0.145 | 0.064 |
-
-Spanish-prompt networks are measurably denser and visually more connected. Hindi and Japanese show the highest variance — the nano model in those languages sometimes produces near-empty graphs (heterophily on religion down to 0.79).
+- [condition_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\condition_summary.csv)
+- [language_summary.csv](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\language_summary.csv)
+- [research_answers.md](C:\Users\Hemu\OneDrive\Desktop\D.s\UA_Captsone_SocN\stats\language_study\research_answers.md)
 
 ## Practical Reading Advice
 

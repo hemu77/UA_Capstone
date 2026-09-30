@@ -1,0 +1,186 @@
+[
+  {
+    "language": "english",
+    "method": "global",
+    "invalid_response": "0, 1\n1, 0",
+    "correction": "Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links. List each undirected friendship once, with the smaller numeric ID first. Remove every reversed duplicate. Return the entire corrected network, not just the pairs listed below. Keep every valid friendship from the original network response; remove only invalid or duplicate pairs. Do not add new friendships.\n1, 0",
+    "valid_response": "0, 1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture",
+    "nonresponse_correction": "Your response was empty. Return a complete network using only the required ID-pair format."
+  },
+  {
+    "language": "english",
+    "method": "local",
+    "invalid_response": "0",
+    "correction": "Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links. Return exactly 5 distinct eligible persona IDs, no more and no fewer.",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "english",
+    "method": "sequential",
+    "invalid_response": "0",
+    "correction": "Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links. Return exactly 5 distinct eligible persona IDs, no more and no fewer.",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "english",
+    "method": "iterative-add",
+    "invalid_response": "0",
+    "correction": "Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links.",
+    "valid_response": "2",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "english",
+    "method": "iterative-drop",
+    "invalid_response": "0",
+    "correction": "Invalid response. Follow the required format and use only eligible persona IDs, without duplicates or self-links.",
+    "valid_response": "1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "hindi",
+    "method": "global",
+    "invalid_response": "0, 1\n1, 0",
+    "correction": "अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं। प्रत्येक मित्रता को केवल एक बार लिखें; उसमें कोई दिशा नहीं होती। छोटी संख्यात्मक ID पहले रखें। उलटे क्रम में लिखे सभी दोहराव हटा दें। पूरा संशोधित नेटवर्क लौटाएँ, केवल नीचे सूचीबद्ध जोड़ियाँ नहीं। मूल नेटवर्क उत्तर की प्रत्येक वैध मित्रता बनाए रखें; केवल अमान्य या दोहराई गई जोड़ियाँ हटाएँ। कोई नई मित्रता न जोड़ें।\n1, 0",
+    "valid_response": "0, 1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture",
+    "nonresponse_correction": "आपका उत्तर खाली था। केवल निर्धारित ID-जोड़ी प्रारूप का उपयोग करके पूरा नेटवर्क लौटाएँ।"
+  },
+  {
+    "language": "hindi",
+    "method": "local",
+    "invalid_response": "0",
+    "correction": "अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं। ठीक 5 अलग-अलग पात्र व्यक्तियों के ID दें, न अधिक और न कम।",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "hindi",
+    "method": "sequential",
+    "invalid_response": "0",
+    "correction": "अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं। ठीक 5 अलग-अलग पात्र व्यक्तियों के ID दें, न अधिक और न कम।",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "hindi",
+    "method": "iterative-add",
+    "invalid_response": "0",
+    "correction": "अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं।",
+    "valid_response": "2",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "hindi",
+    "method": "iterative-drop",
+    "invalid_response": "0",
+    "correction": "अमान्य उत्तर। निर्धारित प्रारूप का पालन करें और केवल पात्र व्यक्तियों के ID चुनें। दोहराव या स्वयं से संबंध न बनाएं।",
+    "valid_response": "1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "japanese",
+    "method": "global",
+    "invalid_response": "0, 1\n1, 0",
+    "correction": "無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。 無向の友人関係は一度だけ記載し、数値が小さいIDを先にしてください。逆順の重複をすべて削除してください。 以下に列挙されたペアだけでなく、修正後のネットワーク全体を返してください。元のネットワーク回答の有効な友人関係はすべて保持し、無効なペアや重複するペアだけを削除してください。新しい友人関係を追加しないでください。\n1, 0",
+    "valid_response": "0, 1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture",
+    "nonresponse_correction": "回答が空でした。指定されたIDペアの形式だけを使って、ネットワーク全体を返してください。"
+  },
+  {
+    "language": "japanese",
+    "method": "local",
+    "invalid_response": "0",
+    "correction": "無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。 選択可能な候補者の異なるIDをちょうど5個返してください。それより多くも少なくもしないでください。",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "japanese",
+    "method": "sequential",
+    "invalid_response": "0",
+    "correction": "無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。 選択可能な候補者の異なるIDをちょうど5個返してください。それより多くも少なくもしないでください。",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "japanese",
+    "method": "iterative-add",
+    "invalid_response": "0",
+    "correction": "無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。",
+    "valid_response": "2",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "japanese",
+    "method": "iterative-drop",
+    "invalid_response": "0",
+    "correction": "無効な回答です。指定された形式に従い、選択可能な候補者のIDだけを使ってください。重複や自分自身への関係は含めないでください。",
+    "valid_response": "1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "portuguese",
+    "method": "global",
+    "invalid_response": "0, 1\n1, 0",
+    "correction": "Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo. Liste cada amizade não direcionada uma única vez, com o menor ID numérico primeiro. Remova todas as duplicações invertidas. Retorne a rede corrigida inteira, não apenas os pares listados abaixo. Mantenha todas as amizades válidas da resposta original da rede; remova somente os pares inválidos ou duplicados. Não adicione novas amizades.\n1, 0",
+    "valid_response": "0, 1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture",
+    "nonresponse_correction": "Sua resposta estava vazia. Retorne a rede completa usando apenas o formato solicitado de pares de IDs."
+  },
+  {
+    "language": "portuguese",
+    "method": "local",
+    "invalid_response": "0",
+    "correction": "Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo. Devolva exatamente 5 IDs distintos de pessoas elegíveis, nem mais nem menos.",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "portuguese",
+    "method": "sequential",
+    "invalid_response": "0",
+    "correction": "Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo. Devolva exatamente 5 IDs distintos de pessoas elegíveis, nem mais nem menos.",
+    "valid_response": "1, 2, 3, 4, 5",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "portuguese",
+    "method": "iterative-add",
+    "invalid_response": "0",
+    "correction": "Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo.",
+    "valid_response": "2",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  },
+  {
+    "language": "portuguese",
+    "method": "iterative-drop",
+    "invalid_response": "0",
+    "correction": "Resposta inválida. Siga o formato solicitado e use apenas IDs elegíveis, sem duplicações nem ligações consigo mesmo.",
+    "valid_response": "1",
+    "attempts": 2,
+    "evidence_type": "translation_review_fixture"
+  }
+]

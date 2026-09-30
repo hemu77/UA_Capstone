@@ -1,0 +1,318 @@
+{
+  "cell": {
+    "run_id": "revision896_f2c6b9696988_global_gpt-6-luna_us_japanese_s0",
+    "model": "gpt-6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "japanese",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "f2c6b9696988fbc9d6ee438c45a3d9d56b253c9d7af14bbed0a116485b9b0e97",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "4c25c28588c831b7a70125166ce4226cf9c613ab123ec883fd86c1b8ae97eea6",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "ba2146c8b611b0b68ad0a35356f7361acf15e956b68590373f6d9029da599e2b"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "13"
+        ],
+        [
+          "0",
+          "20"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "14",
+          "44"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "17",
+          "2"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "2",
+          "28"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "7"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "42"
+        ],
+        [
+          "26",
+          "38"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "32",
+          "41"
+        ],
+        [
+          "33",
+          "36"
+        ],
+        [
+          "34",
+          "5"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "39",
+          "40"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "42",
+          "8"
+        ],
+        [
+          "46",
+          "48"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.024489795918367346,
+    "avg_clustering_coef": 0.0,
+    "prop_nodes_lcc": 0.16,
+    "global_efficiency": 0.03314285714285714,
+    "num_components": 20,
+    "modularity": 0.9044444444444445,
+    "radius_lcc": 3,
+    "diameter_lcc": 6,
+    "avg_shortest_path_lcc": 2.7142857142857144
+  },
+  "homophily": {
+    "gender": [
+      0.8152777777777778,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 20,
+          "within_group_share": 0.9,
+          "coleman": 0.8333333333333334
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 16,
+          "within_group_share": 0.75,
+          "coleman": 0.6875
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 24,
+          "within_group_share": 0.9166666666666666,
+          "coleman": 0.861111111111111
+        }
+      ]
+    ],
+    "religion": [
+      0.7506410256410257,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 13,
+          "within_group_share": 0.7692307692307693,
+          "coleman": 0.7115384615384615
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 10,
+          "within_group_share": 0.8,
+          "coleman": 0.7500000000000001
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 15,
+          "within_group_share": 0.8,
+          "coleman": 0.7500000000000001
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 10,
+          "within_group_share": 0.8,
+          "coleman": 0.7500000000000001
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 12,
+          "within_group_share": 0.8333333333333334,
+          "coleman": 0.7916666666666666
+        }
+      ]
+    ],
+    "political orientation": [
+      0.5430111532369774,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 17,
+          "within_group_share": 0.7058823529411765,
+          "coleman": 0.5674740484429067
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 24,
+          "within_group_share": 0.75,
+          "coleman": 0.6212121212121212
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 19,
+          "within_group_share": 0.631578947368421,
+          "coleman": 0.441786283891547
+        }
+      ]
+    ],
+    "age_assortativity": 0.6482004467429803
+  },
+  "execution_source_sha256": {
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239"
+  },
+  "retained_abandoned_request_ids": [],
+  "cumulative_conservative_charge_usd": 5.8985816,
+  "artifact_sha256": {
+    ".adj": "f03a27c1e96e0ccf8ad30201385a9a87d912255dc23be0fb9ee1aeb9ebf06a15",
+    ".png": "a6df6993d710f94fc6d698cd40fd7bafe63c68d2b7aa86613f6ecd49a4dcad79"
+  },
+  "requests": [
+    {
+      "request_id": "f0c38780894d0dd21ec7326b473e7a4ce975d1c4b3d5fa59d6b4ed9c5e9707be",
+      "response_id": "chatcmpl-ETuXLlZP3pxGTzmhQuVNWqnk6QR1z",
+      "resolved_model": "gpt-6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 122,
+        "prompt_tokens": 938,
+        "total_tokens": 1060,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00017825
+    }
+  ]
+}

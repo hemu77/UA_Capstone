@@ -1,0 +1,30 @@
+{
+  "status": "NOT_COLLECTED",
+  "planned_calibration_networks": 68,
+  "completed_calibration_networks": 0,
+  "protocol_sha256": "a89569ab8f9a7862a9c82da2ad81111211bdd61417a477d036bb59e2000fece6",
+  "source_sha256": {
+    "revision224.py": "e2ac221e86045a3824bc8e160fb32452047428ec864d2e9dd07101e560a54939",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "b8f953139d929601b846ae81b0751407936a1ccaacb5baa0843513fee34a8a76",
+    "constants_and_utils.py": "d4095580b683987f7e2821cf5abf7fe71aeb5f5d3dde26657d60a01bdfed958c",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "8b9595299a94972b232ea650e43f42c52c06c0a4a7ae6817c53dc3586b1440f8"
+  },
+  "cumulative_ledger_usd": 2.018819775,
+  "calibration_charged_or_reserved_usd": 0,
+  "unresolved_attempts": 0,
+  "networks": [],
+  "full_study_forecast_usd": null,
+  "generation_authorized": false,
+  "api_calls_by_this_report": 0,
+  "limitations": [
+    "Two treatment repetitions on one model cannot justify power across four models.",
+    "Other-model multilingual/country execution is not calibrated by their US-English examples.",
+    "Reuse toward 896 is provisional until bilingual review; changed prompts or protocol require fresh generation, not relabeling.",
+    "Forecast transfers Luna treatment cost ratios to other models; this is an assumption, not measured cross-model treatment usage.",
+    "No cache discounts assumed; ledger amounts include conservative input allowance.",
+    "Calibration cannot authorize the main study or certify translation/population validity."
+  ]
+}

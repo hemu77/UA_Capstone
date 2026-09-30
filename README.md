@@ -1,232 +1,213 @@
-# Cross-Cultural and Linguistic Agentic Graph Simulation Framework
+# Cross-Cultural and Linguistic LLM Network Study
 
-## Project framing
-This repository has been adapted into a four-question capstone project.
+A research revision of [Stanford SNAP's LLM social-network code](https://github.com/snap-stanford/llm-social-network).
+We study how language models generate friendships between fictional personas
+under different country framings, instruction languages and generation methods.
 
-The final project is organized like this:
-- `Step 1`: make the repo run with only `OPENAI_API_KEY`
-- `RQ1-RQ3`: use all four generation methods, `sequential`, `global`, `local`, and `iterative`, to study culture, dominant demographics, and model consistency
-- `RQ4`: keep culture fixed and vary prompt language
+**Status: 68/68 calibration networks verified. Main collection is stopped pending
+team research-design and budget approval. This is not a completed 896-run study
+or a guarantee of research validity.**
 
-The important framing change is this:
-- Step 2 gave the first `sequential` evidence for RQ1-RQ3
-- Step 3 added the other three methods so RQ1-RQ3 are supported by all four methods together
-- Step 4 introduced prompt-language variation and became `RQ4`
+## Start Here
 
-## Experimental setup
-The final project uses one fixed 50-person persona roster:
-- persona file: `text-files/us_50_gpt4o_w_interests.json`
-- the same personas are reused across studies so the changed variable is the prompt condition, not the underlying people
+- [Team knowledge brief](docs/TEAM_KNOWLEDGE_BRIEF.md): plain-language history,
+  reviewer concerns, improvements, current evidence and unfinished work.
+- [Team approval checklist](docs/TEAM_APPROVAL.md): the decision required before
+  spending approximately **$101 more**.
+- [Calibration results](CALIBRATION_RESULTS.md): actual accounting, verification,
+  estimated runtime and assumptions.
+- [Documentation map](docs/README.md): architecture, review response, translation,
+  logging, viewer and historical records.
+- [Professor/team review note](docs/PROFESSOR_TEAM_REVIEW.md): requested scientific
+  decisions through calibration; the brief includes model rationale and full scope.
+- [Reviewer agent package](agents/README.md): reusable read-only task prompt and
+  canonical project skill; team members can use it for bounded engineering review.
 
-LLM models used in the final capstone studies:
-- `gpt-4.1-nano`
-- `gpt-4.1-mini`
-- `gpt-4.1`
+## Research Questions
 
-Generation methods used across the project:
-- `sequential`
-- `global`
-- `local`
-- `iterative`
+| RQ | Controlled question |
+| --- | --- |
+| RQ1 | With instruction language fixed to English, does country framing change homophily and topology? |
+| RQ2 | Which demographic attributes show stronger mixing patterns under the conditions? |
+| RQ3 | Do the four model configurations converge or diverge under matched settings? |
+| RQ4 | With country framing fixed to US, does instruction language change the networks? |
 
-Cultures used in the cultural-context experiments:
-- `us`
-- `india`
-- `japan`
-- `brazil`
+All four generation methods contribute to these questions. A larger categorical
+homophily score is not proof of causal demographic importance; numeric age
+assortativity is not directly ranked against categorical Coleman scores.
+Country framing is a prompt intervention, not a representative national sample.
 
-Prompt languages used in the fixed-culture language experiment:
-- `english`
-- `spanish`
-- `hindi`
-- `japanese`
+## Current Design
 
-Study structure:
-- Step 2: `sequential` only, 4 cultures, 3 models, 2 seeds
-- Step 3: `global`, `local`, `iterative`, 4 cultures, 3 models, 2 seeds
-- Step 4: all 4 methods, culture fixed to `us`, 4 prompt languages, 3 models, 2 seeds
+| Dimension | Current scope |
+| --- | --- |
+| Models | `gpt-4.1`, `gpt-5.6-luna`, `gpt-6-luna`, `gpt-6-sol` |
+| Methods | Global, local, sequential, iterative |
+| Country framing | US, India, Japan, Brazil |
+| Instruction languages | English, Hindi, Japanese, Brazilian Portuguese |
+| Personas | Same 50 designed fictional adults; no US party names or race labels |
+| Settings | Four countries in English, plus US in the other three languages |
+| Repetitions | Eight planned per model/method/setting |
+| Total | **4 x 4 x 7 x 8 = 896**, including reusable calibration runs |
 
-Why this matters:
-- RQ1, RQ2, and RQ3 are not based on one single prompting strategy
-- Step 2 and Step 3 together give coverage across all four methods
-- RQ4 isolates prompt language by holding culture constant
+This is a seven-setting design, **not** the full country-by-language factorial.
+Candidate attributes stay in English JSON. It tests instruction-language
+sensitivity, not participants' spoken language or fully translated personas.
+Seeds control local randomization; they are not population sizes or guarantees
+of provider determinism. `revision224.py` retains its filename for compatibility
+but reads `study_protocol_896.json`.
 
-## Final verification status
-- Step 2 cultural study artifacts were generated and analyzed
-- Step 3 method-study verification passed `72/72`
-- Step 4 language-study verification passed `96/96`
-- the notebook and documentation now reflect the final four-RQ structure
+## Verified Progress
 
-## Final research questions and answers
+- [x] **68 calibration graphs**, each with 50 nodes, an adjacency file, PNG and receipt.
+- [x] GPT-6-Luna: 7 settings x 4 methods x 2 repetitions = 56 graphs.
+- [x] Other three models: US-English x 4 methods x 1 repetition = 12 graphs.
+- [x] Receipt/hash checks, exact event replay and recomputed topology/homophily.
+- [x] **204 offline matched controls**, separate from model-generated graphs.
+- [x] **88 Python tests**, **896 offline fixture checks** and 12 control fixtures.
+- [x] Notebook JSON/syntax checks and fresh-study data-loading execution.
+- [x] Reviewed cost logging, budget reservations, cached recovery and source provenance.
+- [ ] Team agreement on claim scope, translation evidence and analysis/precision plan.
+- [ ] Separate main-study approval and collection of the remaining **828**.
+- [ ] Final RQ analysis and a paper with claims supported by the completed evidence.
 
-### RQ1
-When language is held constant, does varying cultural context alter homophily patterns and network topology?
+The 7,749 received calibration replies included **140 rejected parse attempts
+(1.81%)**. Their costs remain recorded; bounded corrections produced the verified
+graphs. Tests passing does not mean every first model response was valid.
+Human bilingual signoff is not complete. Eight repetitions are not proven power.
 
-How this was tested:
-- prompt language was held fixed to `english`
-- cultures were varied across `us`, `india`, `japan`, and `brazil`
-- the same 50 personas were reused
-- models were varied across `gpt-4.1-nano`, `gpt-4.1-mini`, and `gpt-4.1`
-- evidence comes from Step 2 plus the method expansion added in Step 3
+## Cost and Next Decision
 
-Answer:
-- Yes. Holding prompt language fixed to English while varying culture still changed both homophily and graph structure.
-- In the sequential cultural study, the largest culture-driven homophily shift appeared in `political affiliation`.
-- The topology metric with the widest spread across cultures was `prop_nodes_lcc`.
-- After adding `global`, `local`, and `iterative`, the broader project still showed meaningful method-sensitive structural differences, which means the culture question cannot be reduced to just one prompting method.
-- In plain terms: changing only the cultural frame changed who clustered with whom and how connected the network became, even when the language stayed the same.
+| Item | Conservative accounting/estimate |
+| --- | ---: |
+| Additional calibration usage/reservations, including superseded attempts | $4.45452 of $5 |
+| Current cumulative historical + calibration ledger | $6.47334 |
+| Remaining 828, unchanged reviewed protocol | **About $101.00 additional** |
+| Remaining with 20% planning allowance | **$121.20 additional** |
+| Proposed cumulative ledger ceiling if approved | **$128 total** |
+| Remaining serial API time | **28.44 hours**, or **42.66 hours** with allowance |
 
-### RQ2
-Which demographic dimensions dominate tie formation under varying linguistic and cultural conditions?
+This is not a provider invoice or a fixed-price guarantee. Forecasts transfer
+Luna treatment ratios to other models' US-English baselines; most other-model
+multilingual conditions have not been calibrated. Runtime excludes local
+analysis, rendering and pauses.
 
-How this was tested:
-- for the culture studies, language was held at `english` while culture varied
-- for the language study, culture was held at `us` while prompt language varied
-- dominance was measured by looking at which demographic had the highest `same_ratio` within each condition
-- all four methods were considered by combining the Step 2 sequential baseline with the Step 3 method expansion
+**Team question:** does the intended paper accept this controlled, limited
+model-behavior study, or require stronger population, translation, replication
+or empirical-validity evidence before another ~$101 is spent?
+Record that decision in [TEAM_APPROVAL.md](docs/TEAM_APPROVAL.md).
+Only after approval and matching execution review can collection proceed.
+Publishing this repository does not authorize paid generation.
 
-Answer:
-- Across the English-language cultural study, `political affiliation` most often dominated tie formation.
-- After extending the project to all four methods, the answer became more nuanced:
-- `global` most often elevated `age`
-- `local`, `sequential`, and `iterative` most often elevated `political affiliation`
-- In the fixed-culture language study, `political affiliation` still appeared most often as the strongest homophily dimension, which suggests it remains the most stable dominant factor across many conditions.
-- In plain terms: the strongest tie-formation signal was usually political similarity, but the `global` method behaved differently often enough that age became the leading factor there.
+## Earlier Work and Reviewer Response
 
-### RQ3
-Do different LLM models produce consistent or divergent patterns under identical conditions?
+The original capstone implemented OpenAI-only bring-up, then culture/model
+comparisons across all four methods (Steps 2-3 / RQ1-RQ3), then fixed-US language
+comparisons (Step 4 / RQ4). It used GPT-4.1 Nano/Mini/4.1, a US-labelled roster,
+two repetitions and Spanish rather than Portuguese.
 
-How this was tested:
-- the same personas, methods, seeds, and study conditions were matched across models
-- graph disagreement was measured with pairwise edge distance
-- lower edge distance means two models produced more similar networks under the same setup
+The revision corrected homophily and undirected comparisons, hardened parsing
+and retries, clarified actual method behavior, separated country from instruction
+language, added matched controls and replaced the roster for fresh work.
+It does **not** claim that reviewers approved these changes or that all scientific
+concerns are resolved. Read [the feedback explanation](docs/TEAM_KNOWLEDGE_BRIEF.md#4-why-the-reviewers-were-not-satisfied).
 
-Answer:
-- They diverge in a repeatable way rather than behaving as interchangeable substitutes.
-- In the cultural study, `gpt-4.1` and `gpt-4.1-mini` were the most similar pair, while `gpt-4.1` and `gpt-4.1-nano` were the most different.
-- In the method study, the same pattern held again: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.074` average edge distance), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.119`).
-- In the language study, the same ranking held for a third time: `gpt-4.1 vs gpt-4.1-mini` was the closest pair (`0.081`), while `gpt-4.1 vs gpt-4.1-nano` was the farthest (`0.126`).
-- In plain terms: the models are not interchangeable. The nano model behaved like a meaningfully different network generator, while `gpt-4.1` and `gpt-4.1-mini` stayed the closest pair throughout the project.
+| Evidence collection | How to use it |
+| --- | --- |
+| Original 192 inventoried study graphs | Historical; 176 retained, 16 quarantined for self-links during revision. |
+| 28 engineering-pilot graphs | Model/method/UI debugging on historical personas and labelled variants. |
+| Superseded fresh calibration versions | Failure/debugging evidence, excluded from the current study. |
+| Current V5 calibration: 68 graphs | Verified current-contract evidence; potential reuse within 896 if protocol remains unchanged. |
+| Offline fixtures and synthetic controls | Software checks/reference rules, never additional LLM observations. |
 
-### RQ4
-When culture is held constant, does changing the prompt language alter homophily patterns and network topology?
+Previous README and architecture content is preserved in
+[project history](PROJECT_HISTORY.md),
+[the original capstone README](CAPSTONE_README_ARCHIVE.md) and
+[archived architecture](ARCHITECTURE_BEFORE_REVISION.md).
+Historical PDFs and plots are not current validity claims.
 
-How this was tested:
-- culture was fixed to `us`
-- prompt language was varied across `english`, `spanish`, `hindi`, and `japanese`
-- the same personas were reused
-- all four methods and all three GPT models were included
+## Repository Map
 
-Answer:
-- Yes. Keeping culture fixed to `us` while changing prompt language still shifted both homophily and topology.
-- The largest language-driven homophily shift appeared in `religion`.
-- The topology metric with the widest cross-language spread was `prop_nodes_lcc`.
-- The closest language pair was `hindi vs japanese`, while the farthest was `japanese vs spanish`.
-- In plain terms: even when the people and the culture stayed fixed, changing the language of the instructions still changed the network that came out.
+| Location | Purpose |
+| --- | --- |
+| `revision224.py`, `revision224_prompts.py`, `study_protocol_896.json` | Current experiment, fresh personas/prompts and execution gates. |
+| `generate_networks.py`, `constants_and_utils.py` | Shared generation, strict parsing and bounded corrections. |
+| `paid_study.py` | Durable reservations, usage, diagnostics and cached requests. |
+| `analyze_networks.py`, `make_matched_baselines.py`, `inspect_calibration.py` | Metrics, controls and ledger-backed calibration inspection. |
+| `analyze_networks.ipynb` | Maintained analysis; separates fresh and historical evidence. |
+| `outputs/revision896_retry_v5/` | 68 current adjacency/PNG/receipt artifact sets. |
+| `outputs/revision896_retry_v5_preflight/` | Manifest, exact prompts, checks, calibration reports and closed authorization. |
+| `stats/revision896_retry_v5/` | Current metrics, homophily, controls, paired contrasts and timing. |
+| `text-files/`, `plots/`, earlier `stats/` and `outputs/` | Preserved historical data and figures; follow each collection's provenance. |
+| `viewer/` | Private Three.js analysis interface; currently exports earlier historical/pilot data. |
+| `tests/`, `docs/` | Offline regression checks and team documentation. |
 
-## Method-level takeaways
-- `iterative` produced the highest average density (`0.182`)
-- `global` produced the lowest average density (`0.056`)
-- the most similar method pair was `global vs local`
-- the most different method pair was `iterative vs local`, although the gap was small
+The viewer reads saved graph data, not PNG pixels. Recorded formation replay is
+available only where decisions were saved. It does not invent reasoning,
+simultaneous agent actions or an "average" observed network. Current fresh
+calibration data should be inspected through their reports/notebook until
+explicitly exported to the viewer.
 
-## Where the final answers live
-For the exact generated summaries and tables, see:
-- `stats/cultural_study/research_answers.md`
-- `stats/cultural_study/condition_summary.csv`
-- `stats/method_study/research_answers.md`
-- `stats/method_study/method_summary.csv`
-- `stats/method_study/verification_summary.csv`
-- `stats/language_study/research_answers.md`
-- `stats/language_study/language_summary.csv`
-- `stats/language_study/verification_summary.csv`
+## What Is Not Published
 
-## Prerequisites 
-To run OpenAI models, set `OPENAI_API_KEY` in your environment. As a backward-compatible fallback, you can still put an OpenAI key on the first line of `api-key.txt`.
+Credentials, the original private `budget.sqlite`, build caches, diagnostic
+logs, raw manuscript/review files and promotional/demo media are excluded.
+Existing already-published historical reports are retained.
 
-To run Llama, Gemma, or other open-source models, set `LLAMA_API_KEY` or add it as the optional second line of `api-key.txt`.
+**A public clone can inspect artifacts and run tests, but cannot independently
+reconcile provider requests or resume paid generation without the original
+private ledger.** That fail-closed behavior is intentional. Do not create a new
+empty ledger to bypass budget/provenance checks. API credentials should be
+rotated after exposure and supplied locally, never committed or pasted into notebooks.
 
-We used Python 3.10 in our experiments, see package requirements in `requirements.txt`.
+## How to Run
 
-## Generate personas
-To sample 50 personas and save it to a file called us_50.json, run the following command.
-This does *not* include names nor interests.
+Use Python **3.11**; calibration used 3.11.9 and the versions pinned in
+`requirements.txt`. A different runtime can invalidate frozen execution checks.
+Run these PowerShell commands from the repository root:
 
-```python generate_personas.py 50 --save_name us_50```
-
-If you would like to generate names and/or interests (based on demographics):
-
-```python generate_personas.py 50  --save_name us_50 --include_names --include_interests```
-
-With names and interests, the resulting filename will be `us_50_w_names_w_interests.json`. You can also specify which LLM to use with `--model`. In our experiments, we use the 50 personas saved under `text-files/us_50_gpt4o_w_interests.json`.
-
-`generate_personas.py` also has functions for analyzing the personas and interests, such as `get_interest_embeddings()` and `parse_reason()`.
-
-
-## Generate networks
-To generate networks, run something like the following command.
-
-```python generate_networks.py global --model gpt-4.1-mini --num_networks 30```
-
-This will generate 30 networks using the Global method, using GPT-4.1 Mini. The networks will be saved as adjacency lists as `global_gpt-4.1-mini_SEED.adj`, for SEED from 0 to 29, under `PATH_TO_TEXT_FILES` (defined in `constants_and_utils.py`). The visualized network is also saved under `PATH_TO_SAVED_PLOTS` (defined in `plotting.py`) and the summary of the costs (number of tokens, number of tries, time duration) is saved as `cost_stats_s0-29.csv` under `PATH_TO_STATS_FILES/global_gpt-4.1-mini` (defined in `constants_and_utils.py`).
-
-You can vary which LLM to use with `--model` and how many networks are generated with `--num_networks`. Other important arguments include `--persona_fn` (which file to get personas from) and `--include_interests` (whether to include interests, which need to be included in the persona file if so). See `parse_args()` in `generate_networks.py` for a full list of arguments.
-
-To try other prompting methods, replace `global` with `local`, `sequential`, or `iterative`. These methods also come with the added option of `--include_reason`, where the model is prompted to generate a short reason for each friend it selects. If `--include_reason` is included, the networks will be saved as `METHOD_MODEL_w_reason_SEED.adj` and the reasons will be saved as `METHOD_MODEL_w_reason_SEED_reasons.json` (e.g., see `sequential_gpt-3.5-turbo_w_reason_0_reasons.json`) under `PATH_TO_TEXT_FILES`.
-
-To run the Step 2 cultural study matrix described in this project extension, use:
-
-```python run_cultural_study.py```
-
-This runs the `sequential` cultural-context matrix and writes aggregate outputs under `stats/cultural_study`. In the final capstone framing, these outputs are the first piece of evidence for `RQ1-RQ3`.
-
-To run the Step 3 method-expansion study, use:
-
-```python run_method_study.py```
-
-This runs the missing three methods, `global`, `local`, and `iterative`, across the same culture/model/seed matrix and writes aggregate outputs under `stats/method_study`. Together with Step 2, this is what makes `RQ1-RQ3` a four-method result rather than a sequential-only result.
-
-To run the Step 4 fixed-culture language study, use:
-
-```python run_language_study.py```
-
-This keeps culture fixed to `us`, varies prompt language across English, Spanish, Hindi, and Japanese, and writes aggregate outputs under `stats/language_study`.
-
-To analyze the generated networks, see `analyze_networks.py` and `plotting.py`.
-
-## Our results
-See `analyze_networks.ipynb` for our figures and tables. You can also find our generated networks and generated personas (with interests) in `text-files` and the summary statistics in `stats`.
-
-## How to run the full project
-If you want to reproduce the project from the command line, run the sections below in order.
-
-Step 1: verify the repo works with OpenAI only
 ```powershell
-$env:OPENAI_API_KEY="YOUR_KEY"
-python generate_networks.py sequential --persona_fn us_50_gpt4o_w_interests.json --model gpt-4.1-mini --num_networks 1 --start_seed 0 --mean_choices 5
-python analyze_networks.py --persona_fn us_50_gpt4o_w_interests.json --network_fn sequential_gpt-4.1-mini_n5 --num_networks 1
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+# Offline tests: no key and no model calls.
+.\.venv\Scripts\python.exe -B -m unittest discover -s tests
 ```
 
-RQ1-RQ3 part A: sequential cultural study
+Inspect existing reports without a key or ledger:
+
 ```powershell
-python run_cultural_study.py
+.\.venv\Scripts\python.exe -m json.tool outputs/revision896_retry_v5_preflight/calibration_report.json
+.\.venv\Scripts\python.exe -m json.tool stats/revision896_retry_v5/calibration_inspection.json
 ```
 
-RQ1-RQ3 part B: add the other three methods
+Open `analyze_networks.ipynb` in your notebook editor and select the fresh-study
+section. Its data-loading cells are read-only; legacy sections are separately
+labelled. To recompute the **full ledger-backed inspection**, the authorized
+execution owner needs the original local ledger:
+
 ```powershell
-python run_method_study.py
+.\.venv\Scripts\python.exe -B inspect_calibration.py
 ```
 
-RQ4: fixed-culture language study
+For the optional private viewer, install Node.js, then:
+
 ```powershell
-python run_language_study.py
+npm --prefix viewer ci
+npm --prefix viewer test
+npm --prefix viewer run build
+.\.venv\Scripts\python.exe -m http.server 8765 --bind 127.0.0.1 --directory viewer/dist
 ```
 
-Notebook review
-```powershell
-jupyter notebook analyze_networks.ipynb
-```
+Open `http://127.0.0.1:8765/layers.html`. This serves the included historical/pilot
+export; it does not create model results or represent the 68 fresh runs automatically.
 
-The notebook now has dedicated UA Capstone sections for:
-- `RQ1-RQ3`, which combine the sequential cultural study with the added method study
-- `RQ4`, which covers prompt-language variation with culture held constant
+**Paid execution is intentionally blocked.** After team approval, the execution
+owner must retain the original ledger, configure a fresh `OPENAI_API_KEY` locally,
+validate current prices/model access, and supply a truthful hash-matching main
+review with a finite cumulative ceiling. Do not edit flags just to force it to run.
+Only then is the intended command:
+
+```powershell
+# NOT authorized now. This targets 896 total and reuses verified eligible receipts.
+.\.venv\Scripts\python.exe -B revision224.py --execute --limit 896
+```

@@ -1,0 +1,276 @@
+{
+  "cell": {
+    "run_id": "revision896_9e3ff80c3c9a_global_gpt-6-luna_us_japanese_s0",
+    "model": "gpt-6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "japanese",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "9e3ff80c3c9ad8ddbb62f99cf8dde7205d0b0c9ee7becd15071caaf80fb05de7",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "d09bab833d2776d79cc5aa37e8adf6362c8488e5c4f37173c5021b7f401a7cdc",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "b5ab6eb696481ce9e73047ca86574e1788e1f29d2c8c4b78836b7e8140df4e35"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "13"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "12",
+          "14"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "26",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "31",
+          "42"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "34",
+          "7"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "48",
+          "49"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.017959183673469388,
+    "avg_clustering_coef": 0.0,
+    "prop_nodes_lcc": 0.04,
+    "global_efficiency": 0.017959183673469388,
+    "num_components": 28,
+    "modularity": 0.9545454545454549,
+    "radius_lcc": 1,
+    "diameter_lcc": 1,
+    "avg_shortest_path_lcc": 1.0
+  },
+  "homophily": {
+    "gender": [
+      0.7280701754385964,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 16,
+          "within_group_share": 0.875,
+          "coleman": 0.7916666666666666
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 9,
+          "within_group_share": 0.6666666666666666,
+          "coleman": 0.5833333333333333
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 19,
+          "within_group_share": 0.8421052631578947,
+          "coleman": 0.7368421052631579
+        }
+      ]
+    ],
+    "religion": [
+      0.9365079365079365,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 8,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 10,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 10,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 7,
+          "within_group_share": 0.8571428571428571,
+          "coleman": 0.8214285714285713
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 9,
+          "within_group_share": 0.8888888888888888,
+          "coleman": 0.861111111111111
+        }
+      ]
+    ],
+    "political orientation": [
+      0.31251101839337136,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 13,
+          "within_group_share": 0.6153846153846154,
+          "coleman": 0.4343891402714933
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 17,
+          "within_group_share": 0.5882352941176471,
+          "coleman": 0.376114081996435
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 14,
+          "within_group_share": 0.42857142857142855,
+          "coleman": 0.13419913419913415
+        }
+      ]
+    ],
+    "age_assortativity": 0.593614595210949
+  },
+  "cumulative_conservative_charge_usd": 4.063291375,
+  "artifact_sha256": {
+    ".adj": "976c65491a78299b93df321066b8b4d762c812dc32d007cb6d0b4a27cd24ac77",
+    ".png": "17b21e34b82c9cd3139f0ed6164c648026a22e1a878a295e9c0c321cd34a02c5"
+  },
+  "requests": [
+    {
+      "request_id": "84673dc10578becf03b7bbe08107652ba964d33b39353ede2a18fcf25e615b40",
+      "response_id": "chatcmpl-ETn0mOsKF24uRQNbFIP928mjvRmcW",
+      "resolved_model": "gpt-6-luna",
+      "fingerprint": null,
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 938,
+        "total_tokens": 1028,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.00016225
+    }
+  ]
+}

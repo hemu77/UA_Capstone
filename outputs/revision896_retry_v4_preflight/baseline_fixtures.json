@@ -1,0 +1,206 @@
+[
+  {
+    "method": "global",
+    "baseline": "uniform_edge_count",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.04,
+      "avg_clustering_coef": 0.010666666666666666,
+      "prop_nodes_lcc": 0.82,
+      "global_efficiency": 0.20894298671849612,
+      "num_components": 10,
+      "modularity": 0.5966264056643065,
+      "radius_lcc": 5,
+      "diameter_lcc": 9,
+      "avg_shortest_path_lcc": 4.075609756097561
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "global",
+    "baseline": "equal_weight_demographic_similarity",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.04,
+      "avg_clustering_coef": 0.36999999999999994,
+      "prop_nodes_lcc": 0.22,
+      "global_efficiency": 0.07113313896987364,
+      "num_components": 12,
+      "modularity": 0.8304872969596002,
+      "radius_lcc": 3,
+      "diameter_lcc": 5,
+      "avg_shortest_path_lcc": 2.5090909090909093
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "global",
+    "baseline": "degree_preserving_rewire",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.04,
+      "avg_clustering_coef": 0.0,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.14282470768691455,
+      "num_components": 1,
+      "modularity": 0.7265722615576843,
+      "radius_lcc": 25,
+      "diameter_lcc": 49,
+      "avg_shortest_path_lcc": 17.0
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "local",
+    "baseline": "uniform_edge_count",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.22863108236792454,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5865306122448964,
+      "num_components": 1,
+      "modularity": 0.23035583846394658,
+      "radius_lcc": 2,
+      "diameter_lcc": 3,
+      "avg_shortest_path_lcc": 1.903673469387755
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "local",
+    "baseline": "equal_weight_demographic_similarity",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.5542177822177821,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5429251700680249,
+      "num_components": 1,
+      "modularity": 0.4955650631326307,
+      "radius_lcc": 3,
+      "diameter_lcc": 4,
+      "avg_shortest_path_lcc": 2.1689795918367345
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "local",
+    "baseline": "degree_preserving_rewire",
+    "rewiring_target_reached": false,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.6930468978609743,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.6057142857142858,
+      "num_components": 1,
+      "modularity": 0.14034525424486818,
+      "radius_lcc": 1,
+      "diameter_lcc": 2,
+      "avg_shortest_path_lcc": 1.7885714285714285
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "sequential",
+    "baseline": "uniform_edge_count",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.22863108236792454,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5865306122448964,
+      "num_components": 1,
+      "modularity": 0.23035583846394658,
+      "radius_lcc": 2,
+      "diameter_lcc": 3,
+      "avg_shortest_path_lcc": 1.903673469387755
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "sequential",
+    "baseline": "equal_weight_demographic_similarity",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.5542177822177821,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5429251700680249,
+      "num_components": 1,
+      "modularity": 0.4955650631326307,
+      "radius_lcc": 3,
+      "diameter_lcc": 4,
+      "avg_shortest_path_lcc": 2.1689795918367345
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "sequential",
+    "baseline": "degree_preserving_rewire",
+    "rewiring_target_reached": false,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.6930468978609743,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.6057142857142858,
+      "num_components": 1,
+      "modularity": 0.14034525424486818,
+      "radius_lcc": 1,
+      "diameter_lcc": 2,
+      "avg_shortest_path_lcc": 1.7885714285714285
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "iterative",
+    "baseline": "uniform_edge_count",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.22863108236792454,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5865306122448964,
+      "num_components": 1,
+      "modularity": 0.23035583846394658,
+      "radius_lcc": 2,
+      "diameter_lcc": 3,
+      "avg_shortest_path_lcc": 1.903673469387755
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "iterative",
+    "baseline": "equal_weight_demographic_similarity",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.5542177822177821,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5429251700680249,
+      "num_components": 1,
+      "modularity": 0.4955650631326307,
+      "radius_lcc": 3,
+      "diameter_lcc": 4,
+      "avg_shortest_path_lcc": 2.1689795918367345
+    },
+    "evidence_type": "offline_baseline_fixture"
+  },
+  {
+    "method": "iterative",
+    "baseline": "degree_preserving_rewire",
+    "rewiring_target_reached": true,
+    "metrics": {
+      "density": 0.21142857142857144,
+      "avg_clustering_coef": 0.40402489210364684,
+      "prop_nodes_lcc": 1.0,
+      "global_efficiency": 0.5876190476190473,
+      "num_components": 1,
+      "modularity": 0.18350948852879356,
+      "radius_lcc": 2,
+      "diameter_lcc": 3,
+      "avg_shortest_path_lcc": 1.8971428571428572
+    },
+    "evidence_type": "offline_baseline_fixture"
+  }
+]

@@ -1,0 +1,2935 @@
+{
+  "cell": {
+    "run_id": "revision896_9e3ff80c3c9a_sequential_gpt-4.1_us_english_s0",
+    "model": "gpt-4.1",
+    "method": "sequential",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "9e3ff80c3c9ad8ddbb62f99cf8dde7205d0b0c9ee7becd15071caaf80fb05de7",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "d09bab833d2776d79cc5aa37e8adf6362c8488e5c4f37173c5021b7f401a7cdc",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "b5ab6eb696481ce9e73047ca86574e1788e1f29d2c8c4b78836b7e8140df4e35"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "4",
+      "added": [
+        [
+          "4",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 1,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "1",
+      "added": [
+        [
+          "1",
+          "25"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 2,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "local",
+      "persona": "3",
+      "added": [
+        [
+          "17",
+          "3"
+        ],
+        [
+          "21",
+          "3"
+        ],
+        [
+          "3",
+          "7"
+        ],
+        [
+          "3",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 3,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "47",
+      "added": [
+        [
+          "13",
+          "47"
+        ],
+        [
+          "29",
+          "47"
+        ],
+        [
+          "30",
+          "47"
+        ],
+        [
+          "32",
+          "47"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "34",
+          "47"
+        ],
+        [
+          "36",
+          "47"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "47",
+          "48"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 4,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "41",
+      "added": [
+        [
+          "32",
+          "41"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 5,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "2",
+      "added": [
+        [
+          "14",
+          "2"
+        ],
+        [
+          "2",
+          "28"
+        ],
+        [
+          "2",
+          "3"
+        ],
+        [
+          "2",
+          "42"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 6,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "15",
+      "added": [
+        [
+          "0",
+          "15"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 7,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "17",
+      "added": [
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "42"
+        ],
+        [
+          "17",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 8,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "44",
+      "added": [
+        [
+          "14",
+          "44"
+        ],
+        [
+          "17",
+          "44"
+        ],
+        [
+          "2",
+          "44"
+        ],
+        [
+          "21",
+          "44"
+        ],
+        [
+          "25",
+          "44"
+        ],
+        [
+          "28",
+          "44"
+        ],
+        [
+          "29",
+          "44"
+        ],
+        [
+          "3",
+          "44"
+        ],
+        [
+          "32",
+          "44"
+        ],
+        [
+          "33",
+          "44"
+        ],
+        [
+          "42",
+          "44"
+        ],
+        [
+          "44",
+          "47"
+        ],
+        [
+          "44",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 9,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "26",
+      "added": [
+        [
+          "23",
+          "26"
+        ],
+        [
+          "26",
+          "38"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 10,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "40",
+      "added": [
+        [
+          "10",
+          "40"
+        ],
+        [
+          "27",
+          "40"
+        ],
+        [
+          "40",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 11,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "16",
+      "added": [
+        [
+          "1",
+          "16"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "15",
+          "16"
+        ],
+        [
+          "16",
+          "17"
+        ],
+        [
+          "16",
+          "25"
+        ],
+        [
+          "16",
+          "27"
+        ],
+        [
+          "16",
+          "38"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "16",
+          "42"
+        ],
+        [
+          "16",
+          "43"
+        ],
+        [
+          "16",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 12,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "21",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 13,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "0",
+      "added": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "10"
+        ],
+        [
+          "0",
+          "25"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "0",
+          "39"
+        ],
+        [
+          "0",
+          "40"
+        ],
+        [
+          "0",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 14,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "19",
+      "added": [
+        [
+          "19",
+          "4"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 15,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "12",
+      "added": [
+        [
+          "12",
+          "13"
+        ],
+        [
+          "12",
+          "20"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "32"
+        ],
+        [
+          "12",
+          "33"
+        ],
+        [
+          "12",
+          "36"
+        ],
+        [
+          "12",
+          "41"
+        ],
+        [
+          "12",
+          "47"
+        ],
+        [
+          "12",
+          "48"
+        ],
+        [
+          "12",
+          "5"
+        ],
+        [
+          "12",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 16,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "39",
+      "added": [
+        [
+          "39",
+          "40"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 17,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "20",
+      "added": [
+        [
+          "13",
+          "20"
+        ],
+        [
+          "20",
+          "22"
+        ],
+        [
+          "20",
+          "29"
+        ],
+        [
+          "20",
+          "30"
+        ],
+        [
+          "20",
+          "32"
+        ],
+        [
+          "20",
+          "33"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "36"
+        ],
+        [
+          "20",
+          "47"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 18,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "28",
+      "added": [
+        [
+          "1",
+          "28"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "16",
+          "28"
+        ],
+        [
+          "17",
+          "28"
+        ],
+        [
+          "21",
+          "28"
+        ],
+        [
+          "23",
+          "28"
+        ],
+        [
+          "25",
+          "28"
+        ],
+        [
+          "26",
+          "28"
+        ],
+        [
+          "28",
+          "3"
+        ],
+        [
+          "28",
+          "38"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "28",
+          "43"
+        ],
+        [
+          "28",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 19,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "14",
+      "added": [
+        [
+          "14",
+          "16"
+        ],
+        [
+          "14",
+          "17"
+        ],
+        [
+          "14",
+          "21"
+        ],
+        [
+          "14",
+          "23"
+        ],
+        [
+          "14",
+          "25"
+        ],
+        [
+          "14",
+          "3"
+        ],
+        [
+          "14",
+          "38"
+        ],
+        [
+          "14",
+          "42"
+        ],
+        [
+          "14",
+          "7"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 20,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "18",
+      "added": [
+        [
+          "12",
+          "18"
+        ],
+        [
+          "14",
+          "18"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "22"
+        ],
+        [
+          "18",
+          "28"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "18",
+          "42"
+        ],
+        [
+          "18",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 21,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "27",
+      "added": [
+        [
+          "10",
+          "27"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "25",
+          "27"
+        ],
+        [
+          "27",
+          "31"
+        ],
+        [
+          "27",
+          "39"
+        ],
+        [
+          "27",
+          "43"
+        ],
+        [
+          "27",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 22,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "8",
+      "added": [
+        [
+          "5",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 23,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "32",
+      "added": [
+        [
+          "13",
+          "32"
+        ],
+        [
+          "29",
+          "32"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "34"
+        ],
+        [
+          "32",
+          "36"
+        ],
+        [
+          "32",
+          "5"
+        ],
+        [
+          "32",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 24,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "48",
+      "added": [
+        [
+          "13",
+          "48"
+        ],
+        [
+          "20",
+          "48"
+        ],
+        [
+          "29",
+          "48"
+        ],
+        [
+          "32",
+          "48"
+        ],
+        [
+          "33",
+          "48"
+        ],
+        [
+          "34",
+          "48"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 25,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "31",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 26,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "13",
+      "added": [
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "34"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 27,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "24",
+      "added": [
+        [
+          "11",
+          "24"
+        ],
+        [
+          "24",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 28,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "43",
+      "added": [
+        [
+          "15",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 29,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "37",
+      "added": [
+        [
+          "24",
+          "37"
+        ],
+        [
+          "35",
+          "37"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "37",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 30,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "49",
+      "added": [
+        [
+          "19",
+          "49"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 31,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "29",
+      "added": [
+        [
+          "12",
+          "29"
+        ],
+        [
+          "13",
+          "29"
+        ],
+        [
+          "29",
+          "33"
+        ],
+        [
+          "29",
+          "34"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "29",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 32,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "33",
+      "added": [
+        [
+          "33",
+          "34"
+        ],
+        [
+          "33",
+          "6"
+        ],
+        [
+          "33",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 33,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "6",
+      "added": [
+        [
+          "12",
+          "6"
+        ],
+        [
+          "13",
+          "6"
+        ],
+        [
+          "20",
+          "6"
+        ],
+        [
+          "32",
+          "6"
+        ],
+        [
+          "6",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 34,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "9",
+      "added": [
+        [
+          "22",
+          "9"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 35,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "23",
+      "added": [
+        [
+          "1",
+          "23"
+        ],
+        [
+          "16",
+          "23"
+        ],
+        [
+          "23",
+          "25"
+        ],
+        [
+          "23",
+          "3"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "23",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 36,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "10",
+      "added": [
+        [
+          "1",
+          "10"
+        ],
+        [
+          "10",
+          "15"
+        ],
+        [
+          "10",
+          "25"
+        ],
+        [
+          "10",
+          "39"
+        ],
+        [
+          "10",
+          "43"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 37,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "35",
+      "added": [
+        [
+          "15",
+          "35"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "24",
+          "35"
+        ],
+        [
+          "27",
+          "35"
+        ],
+        [
+          "35",
+          "39"
+        ],
+        [
+          "35",
+          "4"
+        ],
+        [
+          "35",
+          "40"
+        ],
+        [
+          "35",
+          "43"
+        ],
+        [
+          "35",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 38,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "30",
+      "added": [
+        [
+          "29",
+          "30"
+        ],
+        [
+          "30",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 39,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "25",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 40,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "7",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 41,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "34",
+      "added": [
+        [
+          "34",
+          "5"
+        ],
+        [
+          "34",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 42,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "45",
+      "added": [
+        [
+          "1",
+          "45"
+        ],
+        [
+          "2",
+          "45"
+        ],
+        [
+          "26",
+          "45"
+        ],
+        [
+          "38",
+          "45"
+        ],
+        [
+          "42",
+          "45"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 43,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "11",
+      "added": [
+        [
+          "11",
+          "35"
+        ],
+        [
+          "11",
+          "4"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 44,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "36",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 45,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "42",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 46,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "5",
+      "added": [
+        [
+          "17",
+          "5"
+        ],
+        [
+          "27",
+          "5"
+        ],
+        [
+          "29",
+          "5"
+        ],
+        [
+          "33",
+          "5"
+        ],
+        [
+          "4",
+          "5"
+        ],
+        [
+          "41",
+          "5"
+        ],
+        [
+          "47",
+          "5"
+        ],
+        [
+          "48",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 47,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "46",
+      "added": [
+        [
+          "14",
+          "46"
+        ],
+        [
+          "2",
+          "46"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 48,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "38",
+      "added": [],
+      "removed": [],
+      "attempts": 1
+    },
+    {
+      "step": 49,
+      "method": "sequential",
+      "run_method": "sequential",
+      "prompt_method": "sequential",
+      "persona": "22",
+      "added": [
+        [
+          "13",
+          "22"
+        ],
+        [
+          "22",
+          "27"
+        ],
+        [
+          "22",
+          "29"
+        ],
+        [
+          "22",
+          "32"
+        ],
+        [
+          "22",
+          "33"
+        ],
+        [
+          "22",
+          "34"
+        ],
+        [
+          "22",
+          "35"
+        ],
+        [
+          "22",
+          "47"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "metrics": {
+    "density": 0.17224489795918368,
+    "avg_clustering_coef": 0.5869787434787435,
+    "prop_nodes_lcc": 1.0,
+    "global_efficiency": 0.4970068027210894,
+    "num_components": 1,
+    "modularity": 0.5191594977650996,
+    "radius_lcc": 3,
+    "diameter_lcc": 6,
+    "avg_shortest_path_lcc": 2.430204081632653
+  },
+  "homophily": {
+    "gender": [
+      0.1078798723733898,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 159,
+          "within_group_share": 0.44025157232704404,
+          "coleman": 0.0670859538784067
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 84,
+          "within_group_share": 0.19047619047619047,
+          "coleman": -0.011904761904761932
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 179,
+          "within_group_share": 0.5251396648044693,
+          "coleman": 0.20856610800744876
+        }
+      ]
+    ],
+    "religion": [
+      0.3064149496933233,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 103,
+          "within_group_share": 0.4077669902912621,
+          "coleman": 0.2597087378640776
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 67,
+          "within_group_share": 0.3582089552238806,
+          "coleman": 0.1977611940298507
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 81,
+          "within_group_share": 0.3950617283950617,
+          "coleman": 0.2438271604938271
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 88,
+          "within_group_share": 0.7272727272727273,
+          "coleman": 0.6590909090909092
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 83,
+          "within_group_share": 0.3373493975903614,
+          "coleman": 0.17168674698795175
+        }
+      ]
+    ],
+    "political orientation": [
+      0.6995452527089485,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 97,
+          "within_group_share": 0.6804123711340206,
+          "coleman": 0.5300181928441481
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 178,
+          "within_group_share": 0.8651685393258427,
+          "coleman": 0.7957099080694587
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 147,
+          "within_group_share": 0.8435374149659864,
+          "coleman": 0.7629354772211916
+        }
+      ]
+    ],
+    "age_assortativity": 0.06246488992074525
+  },
+  "cumulative_conservative_charge_usd": 3.914182725,
+  "artifact_sha256": {
+    ".adj": "29bf8a68d49a4106398f8b253f4c0dae8c9b675217711f28ce317a538c593a46",
+    ".png": "69ab34349d786b7bcd4222d4dd95bcd89807ea9c341781fa672e404d8e6b9406"
+  },
+  "requests": [
+    {
+      "request_id": "8f6419578bf3773c730b0f292d38378aedc3eff74e608257a96a7c1b1e29ca54",
+      "response_id": "chatcmpl-ETmx1rrXJMs5gBbb5foTEtbmq4XBx",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_b6b8b754bb",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 862,
+        "total_tokens": 863,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.002163
+    },
+    {
+      "request_id": "9ed4609dcebebed782405814475baa852de5216c29f051297579480a8fd56ea4",
+      "response_id": "chatcmpl-ETmx1dnCQi4dZGI89xR41jGEzJwM7",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_83092f6678",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 862,
+        "total_tokens": 863,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.002163
+    },
+    {
+      "request_id": "6a0d6659de89c822b9b00e94a54ed30edbf9a7c5fc74756fe7460f62bd917f00",
+      "response_id": "chatcmpl-ETmx2ggOAeytG0fp896hDD5WpQxe1",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_b3771b183f",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 862,
+        "total_tokens": 869,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.002211
+    },
+    {
+      "request_id": "c2ac2e1975a108cda74b0011dcf95e5ec1af33407b80faa99ddb54b73326ad20",
+      "response_id": "chatcmpl-ETmx3zvc4v8FWq4NSZBm6t2EPSXnM",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_bb1ec0e5b6",
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 975,
+        "total_tokens": 992,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025735
+    },
+    {
+      "request_id": "4233d5cc7038d41186a79e143007ecd167e9802ab1c846d91d40a4f4d7d3330b",
+      "response_id": "chatcmpl-ETmx3LeE67b2YKAwvUwdScGV8Yr2i",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_66596fad3e",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "849431f3f2ff1c024d21a48ce021e52e28421cb2bd1d77f048883594a66b4764",
+      "response_id": "chatcmpl-ETmx4FFDdZVeBso07m2KPDjHNQMf7",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_5cf5547ba8",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 975,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024935
+    },
+    {
+      "request_id": "84d9d588077b6ae4b78164f1264661417a7c9276c60ade76c1005fd11aff8262",
+      "response_id": "chatcmpl-ETmx4BGgo5UfX2UFH3BDJn8khZoHT",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_a12398efcc",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "3f1f368ad1746d2e07de5e47c29b3fbe2047a19271afb01cb18e1bb4004de987",
+      "response_id": "chatcmpl-ETmx5pgbFA8GEsmGyPRcSxL5M8KJM",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_0843d2ec50",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 975,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024935
+    },
+    {
+      "request_id": "5fed57bf0282c3e5b13005a6afb47fc273c3cd3161b6696ac830e96722c3d2bd",
+      "response_id": "chatcmpl-ETmx5n6y3gWcvILF7hrDHZSRn3LP5",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_dcdeee621b",
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 975,
+        "total_tokens": 1000,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026375
+    },
+    {
+      "request_id": "086ce5bee9c0af158011b015bdf7ff7691898b817a5338a4fda6dd04d94b7db3",
+      "response_id": "chatcmpl-ETmx62lfW95tjtzXEC6AEUPAtDnGP",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_de7cb6aabe",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "8c68eeea0cb680bc435067ad9d764950f1b8cf8da8e2b9027611bb4572bca93d",
+      "response_id": "chatcmpl-ETmx7VBjdxnwTD45SA0mecH0TkRw8",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_8808cca3cb",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 975,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024775
+    },
+    {
+      "request_id": "f0a92ce9e51793347fcb856c06ce32b16a538311f916c45678b6f2dc4e357c83",
+      "response_id": "chatcmpl-ETmx7fWvJRB3RSAMC2C1Is44DXH4p",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_66596fad3e",
+      "usage": {
+        "completion_tokens": 23,
+        "prompt_tokens": 975,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026215
+    },
+    {
+      "request_id": "114b9daf6ab873b3845cc7ed9480061b11e0e18247bddd31fb666311f0321537",
+      "response_id": "chatcmpl-ETmx8qltytNFYef1GVRP7HP4CAwTB",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_6da011244f",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "70ad5d4fba8a6d8c09383989bc8708a7b5ec5ee5a37d21dd1c60e50d6bb27620",
+      "response_id": "chatcmpl-ETmx81mDADho2qJkxt1AoUF1ZBQIs",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_89223ce098",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 975,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025575
+    },
+    {
+      "request_id": "39b903be74312bc4d4e7eac1aede252de71168ca580964ee5545e543e095cde3",
+      "response_id": "chatcmpl-ETmx9BIGTOtaVmMHzUwZ4ANCMv1mh",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_96ad72caca",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "f7c6a8382b845a4c5e0810e009b1bb80eb72e7a914d9b21a4e781fa34a695c84",
+      "response_id": "chatcmpl-ETmxAC2k8A1Kx5NDadFlLHUuO7YC4",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_d050158039",
+      "usage": {
+        "completion_tokens": 21,
+        "prompt_tokens": 975,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026055
+    },
+    {
+      "request_id": "619c5baca4d5cd31c3d93ed2f1bf4c402d143bd78841fb02f9c0b7657a5eb214",
+      "response_id": "chatcmpl-ETmxBV0S286lJfInaCulFbqDEvxW7",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_3c12a837a4",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "f1f4f04dfab479c97f3b5ee03f9042d26eaf28d84a69c9a59b646e94344cb86f",
+      "response_id": "chatcmpl-ETmxCJ7gumB8q21S9SCpXM26FpYoW",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_9bcf8591c3",
+      "usage": {
+        "completion_tokens": 23,
+        "prompt_tokens": 975,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026215
+    },
+    {
+      "request_id": "f8f93487b22092a3e0c8f1eb0065b4d8e3b726dd780d1ecd93c1ba7a8006b1ea",
+      "response_id": "chatcmpl-ETmxDy3WECMVDvdcFXmiSvn9BSfOe",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_af356e7548",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 975,
+        "total_tokens": 1004,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026695
+    },
+    {
+      "request_id": "b1fd24cd3c7965f0e9e0b016aa701444c0d282d568f6f2cca8c12a3e213f5bfa",
+      "response_id": "chatcmpl-ETmxEyBcY2oPP5z6pJlKDwGtLRkRB",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_9bcf8591c3",
+      "usage": {
+        "completion_tokens": 23,
+        "prompt_tokens": 975,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026215
+    },
+    {
+      "request_id": "7a95b61e0a4454f07d1caa44899e663b0c0cb04cca2b4994e5a9c54e64a1e2bd",
+      "response_id": "chatcmpl-ETmxFRMhYiOiFqtIpqqNGG9KHrCon",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_6b4f7ceee1",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 975,
+        "total_tokens": 990,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025575
+    },
+    {
+      "request_id": "0bc95a97c1781902602e0082ee876b977346d1b4b61b519a70f18f93eb3d0d5e",
+      "response_id": "chatcmpl-ETmxFrDZSMA5ei2rE78eByKa6CXrS",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_9bcf8591c3",
+      "usage": {
+        "completion_tokens": 19,
+        "prompt_tokens": 975,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025895
+    },
+    {
+      "request_id": "c577406db3b9560b937dc349aa39c9f96ed80361ac7e699c4e7327708542a6a0",
+      "response_id": "chatcmpl-ETmxGSsx9ngS6c5EJiTCONi6UVXYa",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_2f40589536",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "c92d7b53105bb89013ed779abe4d17f9a3e83489e209e968db62604927f3246d",
+      "response_id": "chatcmpl-ETmxHnGycsKCwQwSIdZswIrHRsb73",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_039d170ceb",
+      "usage": {
+        "completion_tokens": 21,
+        "prompt_tokens": 975,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026055
+    },
+    {
+      "request_id": "afc12dc1bef07034eac4b9efc664a664910254d0fb8bc7d0d2525317942df61a",
+      "response_id": "chatcmpl-ETmxHWjBMEetiaofdNNzlg2XDAdWV",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_53841b3b18",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 975,
+        "total_tokens": 988,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025415
+    },
+    {
+      "request_id": "d85e53894d3391f01aafc518b1f6ca90d7713da7bc44624c36e88f31d2e198f3",
+      "response_id": "chatcmpl-ETmxIzc2Ka0ZkZgokbzDFfOiboNxP",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_85887b527c",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "9e7b3c447eacc558842a96f07c68ca714d59364cabe7738c4585c76f7d21ab55",
+      "response_id": "chatcmpl-ETmxJOiIlK8hVcG2m6IBLfwcWS72k",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_5f047a74ce",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 975,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024935
+    },
+    {
+      "request_id": "e87450ce14978a91895ad35c14f5fb4b97462d1accfa595a3351690ab7734d04",
+      "response_id": "chatcmpl-ETmxK4yDX9qu2Bo6RsKz5S1Wkr8me",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_66596fad3e",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "1e8c1ac7b11af2680d713288097ef0a5ddb7c58f70b195c6281981a71f9848cd",
+      "response_id": "chatcmpl-ETmxKMgIYTiyeUFNNpDz3LKMFgjvX",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 975,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024775
+    },
+    {
+      "request_id": "f702a7f017e4892b3808e261af97b68306946eecf8c24fc035f9c79744285244",
+      "response_id": "chatcmpl-ETmxLGWFZe7Ib2rjEJv12KFGotdvz",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_2b7e988649",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 975,
+        "total_tokens": 982,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024935
+    },
+    {
+      "request_id": "c5b7ba413d394dbe33ad8658d7715b8a93fc926db293e32e44a1027421b4a176",
+      "response_id": "chatcmpl-ETmxMFGCCrY5BOsyB7Bb2keEwWGiV",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_7a5bd90f01",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "22401af2258605ca5b37da99a8413b1033144deddf56c003cce9a4a2651842e6",
+      "response_id": "chatcmpl-ETmxMeBYAsaMRRcCauo6TERDxnw4P",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_2f40589536",
+      "usage": {
+        "completion_tokens": 19,
+        "prompt_tokens": 975,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025895
+    },
+    {
+      "request_id": "63136df3ad11bbde59f66879e587e67f1a5a788c1992104f24a584685d8aafa0",
+      "response_id": "chatcmpl-ETmxNPm7ma1yaacJBQuSO3K7tiSGj",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_9a028ccc18",
+      "usage": {
+        "completion_tokens": 19,
+        "prompt_tokens": 975,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025895
+    },
+    {
+      "request_id": "e633ddd9a14bc36d1232844ce9b86edd76afd30e113712ba7ffebe1a324f52f3",
+      "response_id": "chatcmpl-ETmxNDIADJ11tPhSJ5Nuug16usbGs",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_66596fad3e",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 975,
+        "total_tokens": 988,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025415
+    },
+    {
+      "request_id": "9c09ce9120bd141c2a2a9c217c2b5fac6abd3969ed2a34e63f2923235ed1d0bb",
+      "response_id": "chatcmpl-ETmxOCT9dkbHRSPzR54btGn6HxHkS",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_f96d9de159",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "f8ebc77c82e0688e29dea629c638dfbea90328def19c8620a4f6047c5599ba66",
+      "response_id": "chatcmpl-ETmxP5IDuRE32nEuR2jlkufu0LYwS",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_96ad72caca",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 975,
+        "total_tokens": 988,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025415
+    },
+    {
+      "request_id": "ed4408a566b1f327023730a4b3344d3c85b386934628041b166078ed0f50d120",
+      "response_id": "chatcmpl-ETmxQU5POlNMEHgkdIZR9aUTFWfr0",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_0222344469",
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 975,
+        "total_tokens": 992,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025735
+    },
+    {
+      "request_id": "9258fff1b50e89c6655f421a20b97f7ecd207c35554d0e8097107fef217fe910",
+      "response_id": "chatcmpl-ETmxQcgkUfwX68vxlNbqbzPF54ftt",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_cf94e8683e",
+      "usage": {
+        "completion_tokens": 19,
+        "prompt_tokens": 975,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025895
+    },
+    {
+      "request_id": "fdf6f361f0fa11dfd3c90f79bc096cf5558be916fafbdd91bb5bc783e303ca13",
+      "response_id": "chatcmpl-ETmxRDKLt0NlgafOXxB5vrEOGy1e3",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_dcdeee621b",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "a998977cde4a5bf09dc8a287c0b3073621065fdd4dd5c306ddf5588c0796dbf8",
+      "response_id": "chatcmpl-ETmxSxE8jIn2iGVQMfK8MQyaN3Ny0",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_de7cb6aabe",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "d7c1a2c41a2a9cc52062c389d4b56a843f84f579c6671104df9c6a429dd21e1a",
+      "response_id": "chatcmpl-ETmxSJZCLE1zK1y2EKzY1FhmL8pvp",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_2b7e988649",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "84d23c3a902c7f53714c02eb2e2ea642334bb54ff2d0118a48187769ab6b904c",
+      "response_id": "chatcmpl-ETmxTXek9TjYVbxSphqeyF1BnRu2f",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_85887b527c",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 975,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024775
+    },
+    {
+      "request_id": "ed078fff0d473ef70ff214996014a57010c2a4b2f290dc06f21a9add26f31f29",
+      "response_id": "chatcmpl-ETmxTKYZk6hH2zkxw4FvcUXjKzH3A",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_47dbfde5a8",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 975,
+        "total_tokens": 988,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0025415
+    },
+    {
+      "request_id": "8c76cb6ac124dacea75c43fec06c0f4250f3b61e97eb4bb709088e63fcb7abc4",
+      "response_id": "chatcmpl-ETmxUTNh5vXLZthlwy4YYI2mPdqMi",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_9bcf8591c3",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 975,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024775
+    },
+    {
+      "request_id": "b0834f58151e4f1c3d003f2dbfc25adc98610304d2fd9773b6650ff89ce188b7",
+      "response_id": "chatcmpl-ETmxU9fz38YoX657UuHLexNpuDhQW",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_cf94e8683e",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "efae9422a5abb80bde70a3d771469d4cc48c812989c72d0620bfa494276e6a54",
+      "response_id": "chatcmpl-ETmxVOsmy1xhQni9omAV7KZ5EXyJ2",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_89223ce098",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "7081e5910bab2c77880f8c79bfa8ebcd4e8e6aab365ea91fec91a328f4b33b1b",
+      "response_id": "chatcmpl-ETmxW2eVrtGBWPRQ24fP6D4ANmbGk",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_e7906fb30f",
+      "usage": {
+        "completion_tokens": 23,
+        "prompt_tokens": 975,
+        "total_tokens": 998,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026215
+    },
+    {
+      "request_id": "eb1616344ecb8e676396047ccc7201b2c9f3e9bdf4709dbb219d638e056371b5",
+      "response_id": "chatcmpl-ETmxW0Wm1V8pfIA249gIJiyhTyj8I",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_85887b527c",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 975,
+        "total_tokens": 978,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024615
+    },
+    {
+      "request_id": "510a88abfeffc78ce848a71c5c7dbafab214b2546408181c4166fbfe5e0e3f23",
+      "response_id": "chatcmpl-ETmxX8uzDoP9WF8U8zgSknqZNuoxR",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_cf94e8683e",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 975,
+        "total_tokens": 976,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0024455
+    },
+    {
+      "request_id": "2087efd8149240ae8b34af1f63a6210bb39f035aa8c4aa41366d9b6bcdf02d08",
+      "response_id": "chatcmpl-ETmxYEm76aZ3N6bh0C7QH40DCzGCu",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 21,
+        "prompt_tokens": 975,
+        "total_tokens": 996,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0026055
+    }
+  ]
+}

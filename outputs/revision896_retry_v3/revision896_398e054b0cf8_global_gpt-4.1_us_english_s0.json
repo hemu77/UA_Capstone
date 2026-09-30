@@ -1,0 +1,548 @@
+{
+  "cell": {
+    "run_id": "revision896_398e054b0cf8_global_gpt-4.1_us_english_s0",
+    "model": "gpt-4.1",
+    "method": "global",
+    "culture": "us",
+    "language": "english",
+    "repetition": 0,
+    "seed": 11000,
+    "personas": 50,
+    "protocol_sha256": "398e054b0cf82fe901a68422211adb218b95cfbd42527c6b2d97323e6633d0f1",
+    "evidence_type": "fresh_exploratory_llm_run",
+    "phase": "main",
+    "frozen_source_sha256": {
+      "revision224.py": "b33b7904e66de7a7a6eebbf85264d44567a450db54edc96569684ea2edd4914d",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "23d0260a3ed23e708add6c4ad825ac3d924b4c4b28e92e1ec57333a16cf27c84",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "b5ab6eb696481ce9e73047ca86574e1788e1f29d2c8c4b78836b7e8140df4e35"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "15"
+        ],
+        [
+          "1",
+          "16"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "10",
+          "27"
+        ],
+        [
+          "10",
+          "39"
+        ],
+        [
+          "10",
+          "40"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "11",
+          "35"
+        ],
+        [
+          "11",
+          "38"
+        ],
+        [
+          "11",
+          "6"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "31"
+        ],
+        [
+          "12",
+          "48"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "41"
+        ],
+        [
+          "13",
+          "47"
+        ],
+        [
+          "13",
+          "48"
+        ],
+        [
+          "14",
+          "18"
+        ],
+        [
+          "14",
+          "2"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "14",
+          "42"
+        ],
+        [
+          "15",
+          "27"
+        ],
+        [
+          "15",
+          "39"
+        ],
+        [
+          "15",
+          "40"
+        ],
+        [
+          "16",
+          "25"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "3"
+        ],
+        [
+          "17",
+          "7"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "2",
+          "22"
+        ],
+        [
+          "2",
+          "28"
+        ],
+        [
+          "2",
+          "31"
+        ],
+        [
+          "2",
+          "42"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "8"
+        ],
+        [
+          "21",
+          "3"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "21",
+          "7"
+        ],
+        [
+          "22",
+          "48"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "26"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "23",
+          "45"
+        ],
+        [
+          "24",
+          "35"
+        ],
+        [
+          "24",
+          "6"
+        ],
+        [
+          "25",
+          "27"
+        ],
+        [
+          "27",
+          "39"
+        ],
+        [
+          "27",
+          "40"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "29",
+          "30"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "4"
+        ],
+        [
+          "3",
+          "5"
+        ],
+        [
+          "3",
+          "7"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "36"
+        ],
+        [
+          "30",
+          "6"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "41"
+        ],
+        [
+          "32",
+          "47"
+        ],
+        [
+          "33",
+          "41"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "34",
+          "5"
+        ],
+        [
+          "35",
+          "49"
+        ],
+        [
+          "36",
+          "6"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "37",
+          "5"
+        ],
+        [
+          "4",
+          "8"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "46",
+          "49"
+        ],
+        [
+          "5",
+          "8"
+        ],
+        [
+          "7",
+          "8"
+        ]
+      ],
+      "removed": [],
+      "attempts": 2
+    }
+  ],
+  "metrics": {
+    "density": 0.06612244897959184,
+    "avg_clustering_coef": 0.4639999999999999,
+    "prop_nodes_lcc": 0.3,
+    "global_efficiency": 0.12419047619047598,
+    "num_components": 6,
+    "modularity": 0.7818930041152263,
+    "radius_lcc": 3,
+    "diameter_lcc": 6,
+    "avg_shortest_path_lcc": 2.8095238095238093
+  },
+  "homophily": {
+    "gender": [
+      0.17458597659276007,
+      [
+        {
+          "group": "Man",
+          "population_share": 0.4,
+          "incident_ties": 61,
+          "within_group_share": 0.5573770491803278,
+          "coleman": 0.262295081967213
+        },
+        {
+          "group": "Nonbinary",
+          "population_share": 0.2,
+          "incident_ties": 29,
+          "within_group_share": 0.13793103448275862,
+          "coleman": -0.07758620689655174
+        },
+        {
+          "group": "Woman",
+          "population_share": 0.4,
+          "incident_ties": 72,
+          "within_group_share": 0.5277777777777778,
+          "coleman": 0.21296296296296297
+        }
+      ]
+    ],
+    "religion": [
+      0.933184523809524,
+      [
+        {
+          "group": "Buddhist",
+          "population_share": 0.2,
+          "incident_ties": 32,
+          "within_group_share": 0.9375,
+          "coleman": 0.921875
+        },
+        {
+          "group": "Christian",
+          "population_share": 0.2,
+          "incident_ties": 28,
+          "within_group_share": 0.9285714285714286,
+          "coleman": 0.9107142857142858
+        },
+        {
+          "group": "Hindu",
+          "population_share": 0.2,
+          "incident_ties": 38,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Muslim",
+          "population_share": 0.2,
+          "incident_ties": 34,
+          "within_group_share": 1.0,
+          "coleman": 1.0
+        },
+        {
+          "group": "Nonreligious",
+          "population_share": 0.2,
+          "incident_ties": 30,
+          "within_group_share": 0.8666666666666667,
+          "coleman": 0.8333333333333334
+        }
+      ]
+    ],
+    "political orientation": [
+      0.5314027149321268,
+      [
+        {
+          "group": "Centrist",
+          "population_share": 0.32,
+          "incident_ties": 50,
+          "within_group_share": 0.56,
+          "coleman": 0.3529411764705883
+        },
+        {
+          "group": "Left-leaning",
+          "population_share": 0.34,
+          "incident_ties": 60,
+          "within_group_share": 0.8,
+          "coleman": 0.6969696969696971
+        },
+        {
+          "group": "Right-leaning",
+          "population_share": 0.34,
+          "incident_ties": 52,
+          "within_group_share": 0.6923076923076923,
+          "coleman": 0.5337995337995338
+        }
+      ]
+    ],
+    "age_assortativity": 0.20668393351943148
+  },
+  "cumulative_conservative_charge_usd": 2.2562301750000002,
+  "artifact_sha256": {
+    ".adj": "79ffd1ad479cdd5ceb1e8d1c13b6ff71c1ca5450ac9e3934ff8c2593dd3289bc",
+    ".png": "15dbc09e38f28d2945f3e0b55d6559f5a400cef867965f8a2b4bccf9afa40933"
+  },
+  "requests": [
+    {
+      "request_id": "c961f6a76b508efbebb1ad87b3e75d1e13a6f2fd18a3bfdd57df115f9a71fe09",
+      "response_id": "chatcmpl-ETmUUMCkvo6SIx3pLpSUV1eNWs0kv",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 331,
+        "prompt_tokens": 877,
+        "total_tokens": 1208,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": false,
+        "error": "Duplicate friendship choices are not allowed",
+        "duplicate_edges": [
+          [
+            "31",
+            "18"
+          ],
+          [
+            "34",
+            "20"
+          ]
+        ]
+      },
+      "conservative_charge_usd": 0.0048405
+    },
+    {
+      "request_id": "67079ce0d88ef4e7befb4b46d95cd0d18b63aec4477d772500d888134776fa3a",
+      "response_id": "chatcmpl-ETmUYl0caQ8YMXgWbpL9RbdRUWZEp",
+      "resolved_model": "gpt-4.1-2025-04-14",
+      "fingerprint": "fp_afe4792155",
+      "usage": {
+        "completion_tokens": 323,
+        "prompt_tokens": 1301,
+        "total_tokens": 1624,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "parse": {
+        "valid": true,
+        "error": null,
+        "duplicate_edges": []
+      },
+      "conservative_charge_usd": 0.0058365
+    }
+  ]
+}
