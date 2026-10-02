@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k8_p28_v6_candidate",
+  "language": "portuguese",
+  "count": 8,
+  "actor": "28",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "143a1903602c8e50183a72b00f0d87873b6ece38731ec1a8a1e4a6125e782409",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "42,2,14,18,31,38,16,17",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 887,
+      "total_tokens": 905,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTXOSoDFili8f0gNIPyOIs4cGBYt",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T09:08:11.406911+00:00",
+    "conservative_charge_usd": 0.000119875,
+    "diagnostics": {
+      "client_request_id": "143a1903602c8e50183a72b00f0d87873b6ece38731ec1a8a1e4a6125e782409",
+      "server_request_id": "req_62bc7f4fad184e86a098fe04698f0ac9",
+      "http_status": 200,
+      "elapsed_ms": 969.0,
+      "date_utc": "2026-10-02T09:08:11.406911+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "834",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4998",
+        "x-ratelimit-remaining-tokens": "1998418",
+        "x-ratelimit-reset-requests": "24ms",
+        "x-ratelimit-reset-tokens": "47ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

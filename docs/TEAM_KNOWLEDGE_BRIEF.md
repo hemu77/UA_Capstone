@@ -1,6 +1,13 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
-Updated September 30, 2026. Read this before approving another API batch.
+**October 2 update: revised calibration complete; main study still on hold.**
+All 104 approved graphs passed replay/accounting checks at **$7.8549 of $10**.
+Read [the new results](CALIBRATION_V6_RESULTS.md) and [plan](../plan.md).
+The important finding is **22/26 global graphs are empty**. This is genuine
+output under the frozen instructions, not a software failure to conceal.
+We recommend resolving the intended global task before spending on main collection.
+Human bilingual review remains absent, explicitly accepted by the owner.
+Do not pool V5 or tuned calibration with fresh confirmation samples automatically.
 
 ## 1. The Project in Plain Language
 
@@ -77,7 +84,7 @@ the reviewers have approved our fixes or that every concern has disappeared.
 | Homophily definition/aggregation | The calculation must match the mathematical claim and account for roster composition. | Corrected categorical Coleman calculation, per-group evidence, separate numeric age assortativity and recomputation from saved graphs. |
 | Country and language mixed together | Changing two things at once prevents attributing a difference to either one. | Separate country framing from instruction language; preserve identical candidate JSON. |
 | US personas treated as general populations | Saying "Japan" does not transform US-labelled fictional people into a representative Japanese population. | Fresh designed adult roster without US party/race labels; restrict claims to model sensitivity to country framing. |
-| Too few repetitions | Two results can differ because of generation variability; a mean alone hides that. | Eight repetitions planned, but not yet justified by a power or precision analysis. Calibration is not eight complete repeats. |
+| Too few repetitions | Two results can differ because of generation variability; a mean alone hides that. | Final allocation remains pending meaningful-effect/precision approval. Neither eight nor 32 repetitions is a universal validity threshold. |
 | Weak reference comparisons | A generated pattern needs a meaningful reference, not just a visually different graph. | Added matched random, attribute-similarity and degree-preserving controls. They are synthetic references, not real-world validation. |
 | Methods described inaccurately | Readers must know what the model actually saw and how decisions were made. | Documented local candidates, sequential initialization, iterative starting graph and add/drop rounds; recorded actual prompt actions. |
 | Realism/benchmark inconsistencies | Dataset counts, provenance and network types must support claims of matching real society. | No new claim of empirical realism. Dataset reconciliation and appropriate real-network validation remain undone. |
@@ -140,11 +147,11 @@ four countries in English, plus US in the other three languages. US-English is
 shared. Consequently, country-by-language interactions are not identified by
 this design.
 
-**4 models x 4 methods x 7 settings x 8 repetitions = 896 total networks.**
-This is 224 per method, not 896 per method. Every network has 50 people.
-Seeds such as 11000 control local randomization, not population size or guaranteed
-provider reproducibility. Some filenames still say `224` for compatibility;
-the current manifest, not the filename, determines graph count.
+The former **4 x 4 x 7 x 8 = 896** proposal is now an illustrative allocation,
+not the approved next stage. Giving global 32 and other methods eight would mean
+1,568 graphs, also unapproved. Every graph has 50 people. Current calibration
+seeds 21000/21001 control recorded randomization, not population size or guaranteed
+provider reproducibility. Older filenames and seeds belong to preserved versions.
 
 ## 7. What Is Actually Complete Now
 
@@ -169,11 +176,12 @@ older, or that the newer configurations must be more robust.
 
 This choice has limitations the team must accept: all four come from one
 provider; model selection is not random; some decoding controls differ; aliases
-may change; and country/language behavior of the three non-Luna models has not
-been fully calibrated. Saved requested/resolved model IDs and settings provide
+may change; and non-US country behavior of the three non-Luna models has not
+been directly calibrated. Their US multilingual coverage is now complete at one
+repetition per method/language. Saved requested/resolved model IDs and settings provide
 provenance, not immutable-weight guarantees. Hugging Face/open-weight models,
 other vendors and GPT-6.1-Sol were discussed but **are not part of the frozen
-896-run scope**. Adding them requires a revised design, access checks and budget.
+four-model scope**. Adding them requires a revised design, access checks and budget.
 
 ### Entire Plan, From Handoff to Findings
 
@@ -181,17 +189,22 @@ other vendors and GPT-6.1-Sol were discussed but **are not part of the frozen
 | --- | --- | --- |
 | Historical preservation | Keep original capstone, 28 engineering pilots and superseded calibration versions separate; retain reviewer-response history. | Complete for this handoff. |
 | Corrected implementation | Shared parser/metrics, fixed roster, four instruction languages, seven settings, four methods, durable usage and replay evidence. | Implemented and tested. |
-| Calibration | 68 full-roster graphs; artifact/metric inspection, 204 controls, actual cost and runtime estimates. | Complete. |
+| Historical V5 calibration | 68 full-roster graphs, 204 original controls; later 2,788 separate reference draws for public reanalysis. | Preserved, not revised confirmation data. |
+| Revised wording screen | 72 first replies, English/Portuguese, original/revised wording. | Complete; revised 0/36 failures, not proof of equivalence. |
+| Revised calibration | 104 full-roster graphs across all model/method/language combinations; exact replay, compliance, accounting and forecasts. | Complete; $7.8549, 22/26 global graphs empty. |
 | Professor/team review | Decide claim scope, model-panel rationale, translation standard, replication/precision, analysis plan and finite budget. | Awaiting approval; this is the current stop point. |
-| Main collection | Reuse eligible 68 and generate remaining 828 to reach 896; same original ledger, protocol/hash gates, per-request reservations and bounded corrections. | Not started. |
+| Main collection | Freeze task/estimands, allocation, scientific decision and finite cap; collect fresh confirmation evidence under the original ledger. No automatic calibration reuse. | Not authorized or started. |
 | Complete analysis | Verify all collected artifacts; per-network topology and group mixing; matched within-repetition country/language/model contrasts; honest missingness and correction reports. | Implemented analysis path, but complete-data results do not exist yet. |
-| Controls | Three declared matched controls per final graph, up to 2,688 controls for 896 verified graphs. Controls are not additional LLM observations or null-distribution inference. | 204 complete; remainder conditional on collection. |
+| Controls | Edge-count-matched random graphs, degree-preserving rewires and demographic similarity references, kept separate from observations. Check stability/mixing before reference-tail claims. | V5 controls exist; revised/main controls remain to be specified and run. |
 | RQ interpretation | Answer RQ1-RQ4 using observed effect patterns, uncertainty/precision decisions and limitations; assess whether results support the proposed contribution. | Pending final data and agreed analysis. |
 | Reporting/team tooling | Update notebook, tables, publication figures, reproducibility package and optional private viewer exports. Do not invent conclusions or replay histories. | Existing tools available; final-study refresh pending. |
 | Submission decision | Professor/team evaluate novelty, claim strength, ethics, benchmark needs and venue fit. | No acceptance guarantee; not implied by collection completion. |
 
-Included primary topology outcomes are density, average clustering and fraction
-of nodes in the largest connected component. Demographic analysis retains
+Proposed method-specific primary outcomes are global density/degree-one share
+and clustering/modularity for quota-based methods, subject to scientific approval.
+The global empty-output mass now requires reconsideration before freezing them.
+Density is constrained by quotas and local LCC is saturated in most runs, so
+neither is a sensitive main endpoint for those methods. Demographic analysis retains
 categorical group-level Coleman evidence and numeric age assortativity.
 The implemented summaries preserve paired counts, means, sample standard
 deviations and ranges; they do not currently produce confirmatory p-values or
@@ -204,25 +217,29 @@ ablations, temperature/wording sweeps and cross-provider generalization are
 **outside the current scope and cost estimate**. They are not silently treated
 as resolved reviewer concerns.
 
-### Completed Calibration Evidence
+### Historical V5 Calibration Evidence
 
-- [x] 68/68 current calibration graphs, with adjacency, PNG and JSON receipts.
+- [x] 68/68 V5 calibration graphs, with adjacency, PNG and JSON receipts.
 - [x] GPT-6-Luna covers all 7 settings x 4 methods x 2 repetitions: 56 graphs.
 - [x] Other 3 models cover US-English x 4 methods x 1 repetition: 12 graphs.
 - [x] All 68 full-roster graphs passed receipt, replay and metric verification.
 - [x] 204 matched offline controls generated and stored separately.
 - [x] All 88 Python tests; 896 offline fixture cells plus 12 control fixtures.
 - [x] Notebook JSON/syntax checks and the fresh-study loading cell passed.
-- [x] Additional calibration accounting stayed below $5; no further paid batch is running.
+- [x] The V5 authorization window stayed below $5; the later revised calibration
+  used a separate $10 approval, not this old allowance.
 
 There were 7,749 received replies and 140 rejected parse attempts, or 1.81%.
 Rejected replies were retained, charged and corrected under the bounded policy.
 Two lost-response reservations remain conservatively counted with actual billing
 unknown. A passing final graph is not a claim of perfect first-prompt compliance.
 
-The current analysis says `PARTIAL` because only 68 of 896 planned graphs exist.
-The calibration report says `COMPLETE` because all 68 planned calibration graphs
-exist. Both are correct.
+The old analysis says `PARTIAL` because only 68 of its former 896 target exist.
+That does not describe revised calibration completeness. The new inspector says
+`COMPLETE_CALIBRATION`: 104/104, 11,548 received requests, 12 first failures in
+11,536 decisions, no unresolved new charges. Exactly-one US nomination prompts
+had zero failures in 243 decisions per language; that is not translation accuracy.
+The [new report](CALIBRATION_V6_RESULTS.md) includes method ranges and missingness.
 
 ## 8. What the Interactive Viewer Does
 
@@ -231,19 +248,29 @@ It supports filters, layered comparisons, persona inspection and recorded replay
 where event evidence exists. An animation cannot show unrecorded reasoning or
 pretend all personas acted simultaneously when generation was sequential.
 
-The viewer currently exposes earlier historical/pilot evidence. It is not proof
-that all 68 fresh calibration runs are wired into the interface. Fresh results
-are in the current outputs/stats folders and notebook. Improving UI or figures
-does not resolve the research decisions below. Source PNGs are inspection
-artifacts, not finished paper figures.
+The unchanged default viewer exposes the 68 verified V5 calibration runs. Earlier
+historical/pilot evidence is retained as a separate dataset because its persona
+IDs refer to a different roster. Model/country/language/method comparisons use
+actual matched records; the coverage grid distinguishes available results from
+the eight repetitions planned per condition. Selection exports include the
+underlying graph data and provenance, not just screenshots.
+
+See the [interaction checks](VIEWER_INTERACTION_REVIEW.md) for observed flows,
+tests and remaining device checks. Improving UI or figures does not resolve the
+research decisions below. Source PNGs are unchanged inspection artifacts, not
+finished paper figures. It does not yet display the new 104 graphs; simulation
+work was explicitly deferred while the core calibration was completed.
 
 ## 9. What Remains Before Spending Again
 
 - [ ] Approve the narrow claim: this is a controlled study of LLM-generated
   networks on one fictional roster, not national population behavior.
-- [ ] Decide the translation acceptance standard. AI-assisted review is complete;
-  independent human bilingual validation is not. If the paper needs that claim,
-  obtain actual review of all base and retry prompts.
+- [x] Owner accepted proceeding without human bilingual review. Disclose it as
+  absent; the wording screen and calibration do not replace human validation.
+- [ ] Resolve global empty-output behavior before proposing a main budget. If
+  the task changes, use a new contract and bounded comparison, not cherry-picked reruns.
+- [ ] Decide the required independent wording variants/English paraphrase
+  robustness evidence. These experiments are not yet complete.
 - [ ] Agree on primary outcomes, paired comparisons, missing-data/failed-run
   handling and multiple-comparison treatment before reading the full results.
 - [ ] Justify precision/power, or explicitly designate the study exploratory.
@@ -252,33 +279,34 @@ artifacts, not finished paper figures.
   experiments are necessary for the intended claims. They are not in the quoted scope.
 - [ ] Approve the protocol and a finite budget. Changed prompts or settings can
   invalidate calibration reuse and require a revised forecast.
-- [ ] Generate the remaining 828, verify them, perform the agreed analysis, and
-  write findings only after observing the results.
+- [ ] Collect the newly approved scope, verify it, perform the agreed analysis,
+  and write findings only after observing the results. There is no current
+  "remaining 828" commitment and no automatic calibration reuse.
 
 ## 10. Cost and Time
 
 | Item | Conservative estimate/accounting |
 | --- | ---: |
-| Calibration, including superseded/debugging attempts | $4.45452 of $5 |
-| These 68 current V5 graphs, including retained failed-request reserve | $2.37807 |
-| Entire historical + calibration ledger so far | $6.47334 |
-| Remaining 828 graphs, same protocol | **About $101.00 additional** |
-| Remaining with 20% cost allowance | **$121.20 additional** |
-| Suggested cumulative ledger ceiling if approved | **$128 total** |
-| Remaining serial API time | **28.44 hours**, or **42.66 hours** with timing allowance |
+| Completed revised 104-graph calibration | **$7.854865725 of $10** |
+| Entire historical + wording probe + calibration ledger | **$14.3367342** |
+| Hypothetical 896 entirely fresh graphs, unchanged prompts | **$102.16**, or **$127.70** with 25% allowance |
+| Hypothetical global 32 / other methods 8: 1,568 fresh graphs | **$103.61**, or **$129.51** with 25% allowance |
+| 896 serial API time | **23.54 hours**, or **35.31 hours** with 50% allowance |
+| 1,568 serial API time | **23.90 hours**, or **35.86 hours** with 50% allowance |
 
-The $101 is not the amount already spent and does not include new validation
-studies or human translation review. Costs are not a provider invoice. The
-forecast transfers measured Luna country/language ratios to the other models'
-US-English baselines. Other-model multilingual costs and outcomes remain less
-tested. API runtime excludes local analysis, figure production and pauses.
-See [the calibration report](../CALIBRATION_RESULTS.md) for exact arithmetic.
+These are hypothetical additional costs, not quotes, approval, power evidence
+or the old "$101 remaining" estimate. All US language cells are now measured;
+non-US country costs for the other models still transfer Luna country/US ratios.
+Runtime excludes future local processing, reviews and downtime. Global is cheap
+because most replies are `NONE`; a revised task could cost more. Calibration
+used 2.81 API hours over a 3.59-hour dispatch span, including pauses/recovery.
+See [the calibration report](CALIBRATION_V6_RESULTS.md) for exact assumptions.
 
 ## 11. The Decision We Need From the Team
 
-**Does the team accept this limited research design and its remaining validity
-limitations, or does the intended paper require stronger evidence before we
-spend approximately $101 generating the remaining networks?**
+**Does the intended global task permit these mostly empty outcomes, or should
+we revise and probe it first? Then, what claims, primary outcomes, precision
+targets and fresh-sample allocation can the team defend before more spending?**
 
 Do not approve merely because the software tests pass. Review
 [TEAM_APPROVAL.md](TEAM_APPROVAL.md), record any required design changes, and then
@@ -292,7 +320,7 @@ does not authorize paid generation.
 Start at [the README](../README.md). Read [the current architecture](../ARCHITECTURE.md)
 for file responsibilities, [the review matrix](../REVIEW_RESPONSE_MATRIX.md) for
 feedback, [translation review](../TRANSLATION_REVIEW.md) for its actual scope,
-and [the cost report](../CALIBRATION_RESULTS.md) for measured evidence.
+and [the revised cost/results report](CALIBRATION_V6_RESULTS.md) for measured evidence.
 Historical PDFs and earlier plans are not the current protocol.
 
 Share [the professor/team review note](PROFESSOR_TEAM_REVIEW.md) with the brief.

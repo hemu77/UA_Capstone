@@ -1,0 +1,672 @@
+{
+  "cell": {
+    "model": "gpt-6-sol",
+    "method": "global",
+    "culture": "us",
+    "language": "japanese",
+    "repetition": 0,
+    "seed": 21000,
+    "personas": 50,
+    "stage": "multilingual36",
+    "run_id": "calibration_v6_5fb3715550db_global_gpt-6-sol_us_japanese_r0",
+    "phase": "main",
+    "evidence_type": "revised_exploratory_calibration",
+    "calibration_contract_sha256": "5fb3715550db87bb86061bf9f3c1484ddc3203b6a1b989758e96fa8ff1772b3d",
+    "frozen_source_sha256": {
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88"
+    },
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "evidence_type": "OFFLINE_FIXTURE_NOT_MODEL_OUTPUT",
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "14"
+        ],
+        [
+          "0",
+          "6"
+        ],
+        [
+          "1",
+          "24"
+        ],
+        [
+          "1",
+          "43"
+        ],
+        [
+          "10",
+          "15"
+        ],
+        [
+          "10",
+          "18"
+        ],
+        [
+          "11",
+          "25"
+        ],
+        [
+          "11",
+          "35"
+        ],
+        [
+          "12",
+          "13"
+        ],
+        [
+          "12",
+          "19"
+        ],
+        [
+          "13",
+          "34"
+        ],
+        [
+          "14",
+          "16"
+        ],
+        [
+          "15",
+          "2"
+        ],
+        [
+          "16",
+          "33"
+        ],
+        [
+          "17",
+          "39"
+        ],
+        [
+          "17",
+          "42"
+        ],
+        [
+          "18",
+          "8"
+        ],
+        [
+          "19",
+          "23"
+        ],
+        [
+          "2",
+          "24"
+        ],
+        [
+          "20",
+          "21"
+        ],
+        [
+          "20",
+          "3"
+        ],
+        [
+          "21",
+          "23"
+        ],
+        [
+          "22",
+          "5"
+        ],
+        [
+          "22",
+          "8"
+        ],
+        [
+          "25",
+          "49"
+        ],
+        [
+          "26",
+          "47"
+        ],
+        [
+          "26",
+          "49"
+        ],
+        [
+          "27",
+          "38"
+        ],
+        [
+          "27",
+          "45"
+        ],
+        [
+          "28",
+          "32"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "37"
+        ],
+        [
+          "3",
+          "48"
+        ],
+        [
+          "30",
+          "31"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "31",
+          "4"
+        ],
+        [
+          "33",
+          "41"
+        ],
+        [
+          "34",
+          "9"
+        ],
+        [
+          "35",
+          "4"
+        ],
+        [
+          "36",
+          "47"
+        ],
+        [
+          "37",
+          "9"
+        ],
+        [
+          "38",
+          "40"
+        ],
+        [
+          "39",
+          "43"
+        ],
+        [
+          "40",
+          "7"
+        ],
+        [
+          "41",
+          "44"
+        ],
+        [
+          "46",
+          "6"
+        ],
+        [
+          "46",
+          "7"
+        ],
+        [
+          "48",
+          "5"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "decisions": [
+    {
+      "step": 0,
+      "attempt": 1,
+      "method": "global",
+      "prompt_method": "global",
+      "actor": null,
+      "requested_count": null,
+      "candidate_order": [
+        "32",
+        "28",
+        "42",
+        "17",
+        "39",
+        "43",
+        "1",
+        "24",
+        "2",
+        "15",
+        "10",
+        "18",
+        "8",
+        "22",
+        "5",
+        "48",
+        "3",
+        "20",
+        "21",
+        "23",
+        "19",
+        "12",
+        "13",
+        "34",
+        "9",
+        "37",
+        "29",
+        "36",
+        "47",
+        "26",
+        "49",
+        "25",
+        "11",
+        "35",
+        "4",
+        "31",
+        "30",
+        "45",
+        "27",
+        "38",
+        "40",
+        "7",
+        "46",
+        "6",
+        "0",
+        "14",
+        "16",
+        "33",
+        "41",
+        "44"
+      ],
+      "request_id": "fixture-0",
+      "valid": true
+    }
+  ],
+  "schedule": {
+    "seed": 21000,
+    "display_order": [
+      "32",
+      "28",
+      "42",
+      "17",
+      "39",
+      "43",
+      "1",
+      "24",
+      "2",
+      "15",
+      "10",
+      "18",
+      "8",
+      "22",
+      "5",
+      "48",
+      "3",
+      "20",
+      "21",
+      "23",
+      "19",
+      "12",
+      "13",
+      "34",
+      "9",
+      "37",
+      "29",
+      "36",
+      "47",
+      "26",
+      "49",
+      "25",
+      "11",
+      "35",
+      "4",
+      "31",
+      "30",
+      "45",
+      "27",
+      "38",
+      "40",
+      "7",
+      "46",
+      "6",
+      "0",
+      "14",
+      "16",
+      "33",
+      "41",
+      "44"
+    ],
+    "actor_order": [
+      "2",
+      "4",
+      "1",
+      "45",
+      "29",
+      "18",
+      "30",
+      "34",
+      "49",
+      "13",
+      "24",
+      "33",
+      "25",
+      "47",
+      "37",
+      "12",
+      "10",
+      "22",
+      "43",
+      "9",
+      "36",
+      "46",
+      "0",
+      "14",
+      "28",
+      "21",
+      "19",
+      "27",
+      "32",
+      "11",
+      "44",
+      "26",
+      "42",
+      "16",
+      "6",
+      "40",
+      "41",
+      "17",
+      "31",
+      "7",
+      "3",
+      "48",
+      "38",
+      "8",
+      "20",
+      "35",
+      "23",
+      "5",
+      "15",
+      "39"
+    ],
+    "nomination_quotas": {
+      "2": 1,
+      "4": 9,
+      "1": 1,
+      "45": 10,
+      "29": 9,
+      "18": 2,
+      "30": 2,
+      "34": 4,
+      "49": 1,
+      "13": 1,
+      "24": 1,
+      "33": 1,
+      "25": 1,
+      "47": 5,
+      "37": 5,
+      "12": 3,
+      "10": 8,
+      "22": 7,
+      "43": 11,
+      "9": 12,
+      "36": 5,
+      "46": 1,
+      "0": 3,
+      "14": 1,
+      "28": 1,
+      "21": 9,
+      "19": 2,
+      "27": 1,
+      "32": 7,
+      "11": 3,
+      "44": 1,
+      "26": 4,
+      "42": 6,
+      "16": 3,
+      "6": 1,
+      "40": 11,
+      "41": 6,
+      "17": 1,
+      "31": 2,
+      "7": 8,
+      "3": 6,
+      "48": 14,
+      "38": 11,
+      "8": 16,
+      "20": 4,
+      "35": 4,
+      "23": 1,
+      "5": 7,
+      "15": 4,
+      "39": 4
+    },
+    "iterative_actor_orders": [
+      [
+        "24",
+        "17",
+        "49",
+        "2",
+        "44",
+        "8",
+        "35",
+        "38",
+        "18",
+        "23",
+        "3",
+        "4",
+        "46",
+        "1",
+        "31",
+        "21",
+        "29",
+        "37",
+        "36",
+        "48",
+        "39",
+        "34",
+        "42",
+        "43",
+        "33",
+        "22",
+        "47",
+        "27",
+        "25",
+        "13",
+        "15",
+        "11",
+        "26",
+        "5",
+        "45",
+        "0",
+        "41",
+        "16",
+        "19",
+        "28",
+        "14",
+        "30",
+        "40",
+        "32",
+        "10",
+        "9",
+        "7",
+        "6",
+        "12",
+        "20"
+      ],
+      [
+        "15",
+        "39",
+        "47",
+        "8",
+        "38",
+        "17",
+        "6",
+        "14",
+        "22",
+        "44",
+        "13",
+        "0",
+        "42",
+        "5",
+        "45",
+        "35",
+        "4",
+        "30",
+        "23",
+        "2",
+        "32",
+        "25",
+        "28",
+        "18",
+        "21",
+        "7",
+        "37",
+        "41",
+        "20",
+        "49",
+        "29",
+        "36",
+        "31",
+        "40",
+        "27",
+        "33",
+        "19",
+        "10",
+        "43",
+        "24",
+        "34",
+        "9",
+        "48",
+        "1",
+        "12",
+        "46",
+        "26",
+        "3",
+        "11",
+        "16"
+      ],
+      [
+        "27",
+        "19",
+        "25",
+        "20",
+        "33",
+        "43",
+        "41",
+        "26",
+        "8",
+        "22",
+        "4",
+        "40",
+        "39",
+        "13",
+        "3",
+        "37",
+        "2",
+        "31",
+        "38",
+        "30",
+        "6",
+        "28",
+        "45",
+        "34",
+        "47",
+        "1",
+        "14",
+        "21",
+        "17",
+        "5",
+        "0",
+        "9",
+        "15",
+        "18",
+        "35",
+        "36",
+        "24",
+        "48",
+        "10",
+        "32",
+        "46",
+        "44",
+        "42",
+        "23",
+        "7",
+        "49",
+        "11",
+        "12",
+        "29",
+        "16"
+      ]
+    ]
+  },
+  "metrics": {
+    "density": 0.04,
+    "avg_clustering_coef": 0.0,
+    "prop_nodes_lcc": 1.0,
+    "global_efficiency": 0.14282470768691452,
+    "num_components": 1,
+    "modularity": 0.7303206997084548,
+    "radius_lcc": 25,
+    "diameter_lcc": 49,
+    "avg_shortest_path_lcc": 17.0,
+    "degree_one_share": 0.04,
+    "isolate_share": 0.0,
+    "degree_gini": 0.019591836734693877,
+    "coleman_gender": -0.0888888888888889,
+    "coleman_religion": -0.022368421052631593,
+    "coleman_political orientation": 0.052044509263760586,
+    "age_assortativity": -0.052655367231639244
+  },
+  "requests": [
+    {
+      "request_id": "fixture-0",
+      "model": "gpt-6-sol",
+      "messages": [
+        {
+          "role": "system",
+          "content": "社会的な舞台は米国です。登場人物は架空の成人です。属性を変更しないでください。登場人物が話す言語は指定されていません。候補者データの英語の項目名と値は、すべての条件で同じです。一覧の人物間のネットワーク全体を定義するすべての友人ペアを選んでください。1対1の組み合わせだけを作る課題ではありません。各人物の友人数は0人、1人、複数人のいずれでも構いません。友人関係の総数は指定しません。互いにつながっていないグループも許されます。友人関係に方向はありません。各ペアは1回だけ記載してください。各行に整数IDのペアをID1, ID2として記載し、ID1 < ID2を守ってください。ネットワーク全体に友人関係がない場合はNONEだけを返してください。自分自身への関係、重複するペア、説明、その他の文章は含めないでください。"
+        },
+        {
+          "role": "user",
+          "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":null,\"candidates\":[[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"]]}"
+        }
+      ],
+      "text": "28, 32\n28, 42\n17, 42\n17, 39\n39, 43\n1, 43\n1, 24\n2, 24\n2, 15\n10, 15\n10, 18\n8, 18\n8, 22\n5, 22\n5, 48\n3, 48\n3, 20\n20, 21\n21, 23\n19, 23\n12, 19\n12, 13\n13, 34\n9, 34\n9, 37\n29, 37\n29, 36\n36, 47\n26, 47\n26, 49\n25, 49\n11, 25\n11, 35\n4, 35\n4, 31\n30, 31\n30, 45\n27, 45\n27, 38\n38, 40\n7, 40\n7, 46\n6, 46\n0, 6\n0, 14\n14, 16\n16, 33\n33, 41\n41, 44",
+      "parse": {
+        "valid": true,
+        "error": null
+      }
+    }
+  ],
+  "artifacts": {
+    ".adj": "2a85cf5454c84a8d85633535debe0b134e949b143d752e2f024985e9f659f399",
+    ".png": "96197f27abb29109c802082537ba6dc8d62b08e3df3c602b7b79ff5341137bd3"
+  }
+}

@@ -32,7 +32,7 @@ export function edgeFrequencies(runs) {
 }
 export const comparisonModels = ['gpt-5.6-luna', 'gpt-6-luna', 'gpt-6-sol'];
 export function layerCandidates(runs, filters) {
-  return runs.filter(run => (filters.collection === 'historical' ? run.study !== 'engineering_pilot' : run.study === 'engineering_pilot') &&
+  return runs.filter(run => (filters.collection === 'calibration' ? run.study === 'calibration' : filters.collection === 'historical' ? ['cultural','method','language'].includes(run.study) : run.study === 'engineering_pilot') &&
     (filters.collection !== 'revised' || comparisonModels.includes(run.model)) &&
     ['method', 'culture', 'language', 'model', 'seed'].every(key => !filters[key] || String(run[key]) === String(filters[key])));
 }
@@ -85,6 +85,7 @@ export function validateData(data) {
   const runIds = new Set();
   for (const run of data.runs) {
     if (runIds.has(run.run_id) || !run.roster_id) throw new Error('Duplicate run or missing roster identity.');
+    if (run.roster_id !== (data.roster_id || data.runs[0].roster_id)) throw new Error('Graph roster identity differs from displayed personas.');
     runIds.add(run.run_id);
     const edges = new Set();
     for (const edge of run.edges) {
@@ -93,6 +94,17 @@ export function validateData(data) {
     }
   }
   return data;
+}
+
+// Hold every other recorded field fixed; never fill missing conditions with a pilot.
+export function matchedRuns(all, reference, dimension) {
+  if (!['model','culture','language','method'].includes(dimension)) throw new Error('Unknown comparison dimension.');
+  const keys=['study','roster_id','prompt_variant','model','method','culture','language','seed'];
+  return all.filter(run=>keys.every(key=>key===dimension||run[key]===reference[key]));
+}
+
+export function filterOptions(all, filters, key) {
+  return new Set(layerCandidates(all,{...filters,[key]:''}).map(run=>String(run[key])));
 }
 export function differences(left, right) {
   if (left.roster_id !== right.roster_id) return null;

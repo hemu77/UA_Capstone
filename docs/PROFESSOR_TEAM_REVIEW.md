@@ -1,65 +1,86 @@
-# Review Request for Professor and Project Team
+# Professor and Team Review: Revised Calibration Complete
 
-## Requested Decision
+October 2, 2026. **Requested decision: review the findings before authorizing
+main collection.** No main batch is running. The simulator was left unchanged.
 
-Please review the project **through the completed calibration stage**, not as a
-finished paper. We request a decision on research scope and validity assumptions
-before committing approximately **$101 additional API usage** to the remaining
-828 networks. No main batch is running.
+Please read [the plain-language team brief](TEAM_KNOWLEDGE_BRIEF.md),
+[the measured calibration results](CALIBRATION_V6_RESULTS.md), and
+[the implementation/decision plan](../plan.md). The brief includes the earlier
+capstone work, reviewer concerns, model rationale and remaining full scope.
 
-The [team knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) explains the original work,
-reviewer concerns, model-panel rationale, complete planned scope, completed
-implementation and remaining limitations. [Calibration results](../CALIBRATION_RESULTS.md)
-contains the measured accounting and verification record.
+## What We Completed
 
-## Evidence Available for Review
+- [x] Revised singular/plural and global instructions, separate candidate-order
+  randomization and exact prompt/schedule/response provenance.
+- [x] A separately authorized 72-call English/Portuguese wording screen:
+  revised 0/36 failures versus original 4/36. Cost $0.00852425.
+- [x] The approved **104 full-50-person calibration graphs**, all four methods
+  and models, English/Hindi/Japanese/Portuguese. GPT-6-Luna also covers India,
+  Japan and Brazil in English. Other models have US-only calibration coverage.
+- [x] All receipts, graph replay, metrics, PNG integrity and private accounting
+  checked. **$7.854865725 of $10**, zero unresolved new requests. A local-file
+  checkpoint issue was repaired without repurchasing an API response.
+- [x] Public, ledger-free inspection and maintained notebook section, preserving
+  old V5 evidence separately. Raw responses and corrections remain auditable.
+- [x] Human bilingual review recorded as absent and waived by owner, not validated.
 
-- 68 verified, 50-person current-protocol calibration graphs and 204 offline controls.
-- Four model configurations; all four methods; seven country/language settings.
-  Full calibration across settings is on GPT-6-Luna, not all four models.
-- Corrected parsing/metrics, recorded decision replay, source/roster provenance,
-  token usage, budget controls and explicit handling of failed requests.
-- 88 passing Python tests; 896 offline fixture checks; maintained notebook loading.
-- AI-assisted translation review, clearly distinguished from human validation.
-- Preserved earlier results and reviewer-response history, not relabelled new data.
+## Findings That Need Judgment
 
-## Questions for Scientific Review
+**Global: 22/26 graphs are empty.** The model returned the valid `NONE` response
+permitted by the frozen prompt. We must decide whether unrestricted generation
+with a large empty-output mass answers the intended question. We have not shown
+that the `NONE` clause alone caused this. Buying more repetitions without deciding
+the task is not an adequate response. Do not discard these valid outcomes.
 
-1. Is the intended contribution appropriately limited to model-generated network
-   sensitivity on a designed fictional roster, rather than national human behavior?
-2. Is the purposeful four-configuration, single-provider panel defensible for
-   RQ3, with no architecture-only or cross-vendor generalization claim?
-3. Does the instruction-only language manipulation, with fixed English persona
-   fields, answer the intended RQ4? What bilingual review is required?
-4. Are eight repetitions on one roster adequate for the chosen precision goals,
-   or should the allocation change before money is spent?
-5. Are the primary outcomes, paired comparisons, uncertainty approach,
-   multiplicity treatment and failed-run/correction reporting sufficiently specified?
-6. Does the intended venue/contribution require empirical network validation,
-   additional rosters, prompt/temperature robustness or method ablations now?
-7. Do the documented fixes address the engineering concerns without overstating
-   resolution of the reviewers' remaining scientific concerns?
+**Quota methods:** density is constrained; local LCC is 1.0 in 24/26 graphs.
+Clustering/modularity vary, but calibration ranges are not controlled treatment
+effects. Iterative used about 71% of calibration cost.
 
-Please record **approve unchanged**, **revise first**, or **defer**, with reasons
-and required evidence in [TEAM_APPROVAL.md](TEAM_APPROVAL.md). Approval is a
-research decision, not a promise of zero bugs or guaranteed conference acceptance.
+**Compliance:** 12 initial failures in 11,536 decisions (0.104%), each corrected
+once. There were zero failures among 243 US one-nomination decisions per language.
+This supports operational compliance, not translation equivalence or population
+validity. Graphs, not the thousands of decisions, are the replication units.
 
-## Cost and Timing for the Proposed Next Stage
+## Questions for Approval
 
-Remaining 828: approximately **$101.00**, or **$121.20** with 20% cost allowance.
-The suggested cumulative ledger ceiling is **$128**, including $6.47334 already
-counted. Remaining serial API time is approximately **28.44-42.66 hours**, plus
-local processing, analysis and pauses. These estimates assume the present
-protocol and transfer Luna treatment ratios to other models; they are not quotes.
+1. Should global remain unrestricted, including empty graphs, or should a new,
+   separately versioned wording comparison clarify the intended synthetic task?
+2. Are country-framing and instruction-wording sensitivity on one fictional
+   roster the accepted claim scope? No national friendship or empirical-realism
+   claims follow from this design.
+3. Is the purposeful single-provider model-configuration panel defensible, with
+   recorded decoding differences and no architecture-only/general-LLM claim?
+4. With human review unavailable, what independent wording/paraphrase robustness
+   evidence is necessary? Candidate attributes remain English across conditions.
+5. What raw-unit meaningful effects, precision targets, primary outcomes,
+   missingness/correction policy and multiplicity families should be frozen?
+6. What repetition allocation follows from those decisions? Eight or 32 is not
+   a conference threshold; adaptive stages/reuse require a predeclared valid rule.
+7. Are additional rosters, empirical benchmarks or other robustness studies
+   necessary for the intended contribution before confirmation spending?
 
-If design changes are required, calibration reuse and cost must be reassessed.
-Once scientific decisions and a finite budget are explicitly approved, the
-execution owner can validate the matching review gates and proceed. Until then,
-review/documentation work is offline and paid collection remains stopped.
+## Updated Cost and Time
 
-## Optional Engineering Review Helper
+For entirely fresh graphs using **unchanged prompts**, measured usage projects:
 
-The repository includes a reusable [read-only reviewer](../agents/README.md).
-Team members may use its checklist or task prompt to inspect a bounded code/data
-change. It cannot authorize spending, supply human bilingual validation or certify
-scientific validity. Review findings must cite evidence rather than invent issues.
+| Scenario | Additional usage | With 25% allowance | Serial API hours | With 50% time allowance |
+| --- | ---: | ---: | ---: | ---: |
+| 896 graphs: eight per cell | $102.16 | $127.70 | 23.54 | 35.31 |
+| 1,568: global 32, other methods eight | $103.61 | $129.51 | 23.90 | 35.86 |
+
+Neither scenario is approved. The low extra global cost reflects mostly empty
+responses, not established research value. Prompt changes require reforecasting.
+Non-US costs for three models are transferred from Luna country/US ratios;
+all US language cells are directly measured but sparsely repeated. These are
+conservative token estimates, not invoices or confidence bounds. Local analysis,
+reviews, wording arms and downtime are not included. Current cumulative ledger
+is $14.3367342; prior uncertain historical reservations remain counted.
+
+Please record **revise first**, **approve a specified bounded next step**, or
+**defer**, with reasons in [TEAM_APPROVAL.md](TEAM_APPROVAL.md). Main collection
+requires an exact reviewed design and a separate finite budget authorization.
+Passing software tests does not guarantee scientific validity or acceptance.
+
+The [read-only reviewer package](../agents/README.md) is available to the team
+for bounded evidence-backed engineering review. It cannot authorize spending,
+provide human bilingual validation or replace the professor's scientific decision.

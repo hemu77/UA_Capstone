@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k8_p35_v6_candidate",
+  "language": "portuguese",
+  "count": 8,
+  "actor": "35",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "4d54d9c16aa3038bcbd2667d3d7443036a530ec271947a76805cfbc74c297acb",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "39,43,24,19,37,40,31,18",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 887,
+      "total_tokens": 905,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTHMUSaA20KcBBLDmRZoO62rqiWC",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T08:51:38.093061+00:00",
+    "conservative_charge_usd": 0.000119875,
+    "diagnostics": {
+      "client_request_id": "4d54d9c16aa3038bcbd2667d3d7443036a530ec271947a76805cfbc74c297acb",
+      "server_request_id": "req_211544a3994f4c8bb0d7fc3df69a7cdd",
+      "http_status": 200,
+      "elapsed_ms": 2344.0,
+      "date_utc": "2026-10-02T08:51:38.093061+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "946",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4999",
+        "x-ratelimit-remaining-tokens": "1999303",
+        "x-ratelimit-reset-requests": "12ms",
+        "x-ratelimit-reset-tokens": "20ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

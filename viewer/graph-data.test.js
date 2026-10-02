@@ -3,12 +3,18 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {validateData, differences, replayEdges, neighbors, comparisonLayout, layerComparison, layerCandidates, applyLayerSelection, replayFrames, personaSteps} from './graph-data.js';
 import {filterRuns, conditionRows, coverage, measurement, topologySvg, homophilySvg, selectionCsv} from './research-plots.js';
-import {trajectorySvg, metricBars, researchEvidence, homophilyMatrix, runLabel} from './formation-charts.js';
+import {trajectorySvg, metricBars, researchEvidence, homophilyMatrix, runLabel, layerLabel} from './formation-charts.js';
 const data = JSON.parse(readFileSync(new URL('./public/data/networks.json', import.meta.url)));
+test('layer labels identify the comparison rather than hiding country or repetition',()=>{
+  const run={model:'gpt-6-luna',method:'sequential',culture:'us',language:'english',seed:11000,repetition:0};
+  assert.equal(layerLabel([run,{...run,culture:'japan'}],1),'2. Japan');
+  assert.equal(layerLabel([run,{...run,language:'portuguese'}],1),'2. portuguese');
+  assert.equal(layerLabel([run,{...run,seed:11001,repetition:1}],1),'2. rep 2 / seed 11001');
+});
 import {personaView, personaTag, edgeFrequencies, personaComparison} from './graph-data.js';
 import {loadPresentation,frequencySvg} from './formation-charts.js';
 import {comparisonModels} from './graph-data.js';
-import {togglePersona,tapTracker} from './graph-data.js';
+import {togglePersona,tapTracker,matchedRuns,filterOptions} from './graph-data.js';
 test('persona clicks toggle while drags, pinches and cancelled gestures never select',()=>{
   assert.equal(togglePersona('13','13'),'');assert.equal(togglePersona('13','9'),'9');
   const tap=tapTracker(),e={pointerId:1,button:0,isPrimary:true,clientX:10,clientY:10};
@@ -217,6 +223,55 @@ test('invalid edges are rejected instead of silently rendered', () => {
   const invalid = structuredClone(data);
   invalid.runs[0].edges.push([data.personas[0].id, data.personas[0].id]);
   assert.throws(() => validateData(invalid), /Invalid edge/);
+});
+
+test('dataset roster identity must match every graph, even when persona IDs overlap', () => {
+  const invalid = structuredClone(data);
+  invalid.roster_id = invalid.runs[0].roster_id;
+  invalid.runs[0].roster_id = 'different-people-same-ids';
+  assert.throws(() => validateData(invalid), /roster identity/);
+});
+
+test('fresh calibration never leaks into historical or engineering collections', () => {
+  const fresh = {...data.runs[0], study:'calibration', model:'gpt-4.1'};
+  assert.deepEqual(layerCandidates([fresh], {collection:'calibration'}), [fresh]);
+  for (const collection of ['historical','engineering_pilot','revised']) {
+    assert.equal(layerCandidates([fresh], {collection}).length, 0);
+  }
+});
+
+test('fresh homophily labels use recorded attributes, not legacy party or ethnicity fields', () => {
+  const html = homophilyMatrix([{model:'m', method:'local', homophily:{gender:0, religion:.5, 'political orientation':.25}, age_assortativity:.1}]);
+  assert.match(html, /political orientation/);
+  assert.match(html, /0.250/);
+  assert.ok(!html.includes('political affiliation'));
+  assert.ok(!html.includes('race/ethnicity'));
+});
+
+test('all 68 fresh exports reconstruct their exact final graph and preserve study coverage', () => {
+  const fresh=validateData(JSON.parse(readFileSync(new URL('./public/data/calibration.json',import.meta.url))));
+  assert.equal(fresh.runs.length,68);assert.equal(fresh.personas.length,50);
+  assert.ok(fresh.personas.every(p=>p.attributes.age>=18));
+  assert.deepEqual(fresh.models,['gpt-4.1','gpt-5.6-luna','gpt-6-luna','gpt-6-sol']);
+  assert.equal(fresh.planned_networks,896);assert.equal(fresh.planned_repetitions,8);
+  assert.deepEqual(new Set(fresh.runs.map(r=>r.language)),new Set(['english','hindi','japanese','portuguese']));
+  for(const run of fresh.runs){
+    const frames=replayFrames(run,fresh.personas.map(p=>p.id));
+    assert.deepEqual(new Set(frames.at(-1).edges.map(JSON.stringify)),new Set(run.edges.map(JSON.stringify)));
+    assert.equal(run.metrics.density,run.edges.length/1225);
+    assert.ok(!('requests' in run));
+  }
+  const reference=fresh.runs.find(r=>r.model==='gpt-6-luna'&&r.method==='sequential'&&r.culture==='us'&&r.language==='english'&&r.repetition===0);
+  for(const dimension of ['model','culture','language','method']){
+    const matched=matchedRuns(fresh.runs,reference,dimension);
+    assert.equal(matched.length,4);
+    assert.ok(matched.every(r=>r.seed===reference.seed&&r.roster_id===reference.roster_id));
+  }
+  const changed={...reference,run_id:'changed',prompt_variant:'different'};
+  assert.ok(!matchedRuns([...fresh.runs,changed],reference,'model').includes(changed));
+  assert.deepEqual([...filterOptions(fresh.runs,{collection:'calibration',model:'gpt-4.1'},'language')],['english']);
+  assert.equal(layerCandidates(fresh.runs,{collection:'calibration',model:'gpt-4.1',language:'portuguese'}).length,0);
+  assert.throws(()=>applyLayerSelection([reference,data.runs[0]]),/same roster/);
 });
 test('replay follows recorded additions/removals and rejects invented history', () => {
   const events = [{added: [['a', 'b']], removed: []}, {added: [['b', 'c']], removed: [['b', 'a']]}];

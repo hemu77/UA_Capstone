@@ -1,5 +1,11 @@
 # Completed Calibration: Cost and Runtime Estimates
 
+**October 2 update:** these are preserved V5 historical results/forecasts. The
+new 104-graph calibration is complete; read [its separate report](docs/CALIBRATION_V6_RESULTS.md)
+and [plan.md](plan.md). Main collection still requires scientific and budget approval.
+The 896 target, calibration-reuse assumption and remaining-cost/runtime forecasts
+below must not be applied unchanged to revised prompts or allocation.
+
 Inspection date: 2026-09-30. **68/68 calibration networks verified. Paid generation
 stopped. The 896-network main batch is not authorized.**
 

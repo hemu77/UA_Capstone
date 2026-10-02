@@ -1,0 +1,174 @@
+{
+  "status": "OFFLINE_METHOD_SENSITIVITY_NOT_SCIENTIFIC_APPROVAL",
+  "simulation_seed": 20261002,
+  "paid_calls": 0,
+  "rows": [
+    {
+      "scenario": "symmetric_bounded",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.125,
+      "monte_carlo_p025": 0.1051297615545925,
+      "monte_carlo_p975": 0.14710698277877135
+    },
+    {
+      "scenario": "symmetric_bounded",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "skewed_zero_mean",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "skewed_zero_mean",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "bimodal_zero_mean",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "bimodal_zero_mean",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "correlated_hypotheses",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.01,
+      "monte_carlo_p025": 0.004805510691058102,
+      "monte_carlo_p975": 0.01831324305511234
+    },
+    {
+      "scenario": "correlated_hypotheses",
+      "repetitions": 8,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "symmetric_bounded",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.057,
+      "monte_carlo_p025": 0.0434535819369586,
+      "monte_carlo_p975": 0.07322272946066254
+    },
+    {
+      "scenario": "symmetric_bounded",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "skewed_zero_mean",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "skewed_zero_mean",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    },
+    {
+      "scenario": "bimodal_zero_mean",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.063,
+      "monte_carlo_p025": 0.04874692755658057,
+      "monte_carlo_p975": 0.07988804187335559
+    },
+    {
+      "scenario": "bimodal_zero_mean",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.006,
+      "monte_carlo_p025": 0.0022049824851513773,
+      "monte_carlo_p975": 0.013013423270974548
+    },
+    {
+      "scenario": "correlated_hypotheses",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "paired_t",
+      "family_false_positive_fraction": 0.003,
+      "monte_carlo_p025": 0.0006190999316499173,
+      "monte_carlo_p975": 0.008742023238657722
+    },
+    {
+      "scenario": "correlated_hypotheses",
+      "repetitions": 32,
+      "hypotheses": 24,
+      "simulated_worlds": 1000,
+      "procedure": "bounded_mean",
+      "family_false_positive_fraction": 0.0,
+      "monte_carlo_p025": 0.0,
+      "monte_carlo_p975": 0.0036820838966395257
+    }
+  ],
+  "main_authorized": false,
+  "caveats": [
+    "Synthetic bounded differences, not generated networks or power estimates.",
+    "All-null FWER stress check is not a proof of validity for arbitrary data distributions.",
+    "Hoeffding bounds assume independent bounded repetitions, and can be very wide/low-powered.",
+    "No selected meaningful-effect threshold, equivalence margin, final sample allocation, or independent scientific approval."
+  ]
+}

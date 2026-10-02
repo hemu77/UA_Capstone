@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k1_p21_v5_original",
+  "language": "portuguese",
+  "count": 1,
+  "actor": "21",
+  "wording": "v5_original",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "f795783efe438b7ed852f4ea807f255849693df98d7017e0c04fbaac413c65ea",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "17,37,45,16,40,28,42,2,18,31,4,14,24,39,43,10,38,35,11,27,26,7,46,23,1,25,3,8,5,20,34,12,9,22,19,49,48,29,36,47,13,33,41,6,30,32,15,44,0,45",
+    "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 886,
+      "total_tokens": 988,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTHlMyhxAPH8bbKVigLHAm3dtZcB",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T08:52:03.977691+00:00",
+    "conservative_charge_usd": 0.00016175,
+    "diagnostics": {
+      "client_request_id": "f795783efe438b7ed852f4ea807f255849693df98d7017e0c04fbaac413c65ea",
+      "server_request_id": "req_aaadad7b31974daf8fcd79c78febfb9c",
+      "http_status": 200,
+      "elapsed_ms": 1860.0,
+      "date_utc": "2026-10-02T08:52:03.977691+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "1739",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4998",
+        "x-ratelimit-remaining-tokens": "1998250",
+        "x-ratelimit-reset-requests": "24ms",
+        "x-ratelimit-reset-tokens": "52ms"
+      }
+    },
+    "parse": {
+      "valid": false,
+      "error": "Choose 1 person",
+      "duplicate_edges": []
+    }
+  },
+  "valid": false,
+  "error": "Choose 1 person"
+}

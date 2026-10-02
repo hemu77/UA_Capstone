@@ -1,5 +1,34 @@
 # Formation studio: recorded history, not invented animation
 
+## Current Calibration Workspace
+
+`layers.html` defaults to the 68 verified fresh calibration runs, not the old
+engineering pilots. Use **Evidence dataset** to open the historical archive;
+these rosters stay separate even though both use IDs 0 through 49.
+
+- **Study coverage** shows available repetitions out of eight planned per
+  condition. Click a nonempty cell to inspect its recorded repetitions. Empty
+  cells do not synthesize or substitute a graph.
+- **Match active run by** selects model (RQ3), country (RQ1), instruction
+  language (RQ4), or method contrasts while retaining the other matching fields.
+  RQ2 tables use the actual saved demographic measurements.
+- **Export selection** downloads the selected final graphs, personas, event
+  deltas, measurements and provenance. It is not an averaged synthetic graph
+  and does not export raw prompts, replies or provider accounting.
+- **Expand** enlarges the stage without removing playback or inspection tools.
+  Neighbor buttons inspect the same person across the selected runs.
+
+The offline refresh command is `python -B export_calibration_viewer.py`, followed
+by `npm run build` in `viewer`. Re-exporting requires the frozen environment and
+unchanged reviewed artifacts; serving the checked-in export needs neither an API
+key nor a paid model call. Original PNGs remain byte-for-byte unchanged; browser
+positions are a separate display layout over the same verified adjacency data.
+
+Coverage is **68 / 896**, not a completed main study. GPT-6-Luna supplies two
+repetitions across all seven settings; the other three models supply one
+US-English repetition per method. The older pilot counts below describe only
+the separately selectable historical dataset.
+
 ## Use the workspace
 
 Current interaction checks and remaining team gates are recorded in
