@@ -14,7 +14,40 @@ test('layer labels identify the comparison rather than hiding country or repetit
 import {personaView, personaTag, edgeFrequencies, personaComparison} from './graph-data.js';
 import {loadPresentation,frequencySvg} from './formation-charts.js';
 import {comparisonModels} from './graph-data.js';
-import {togglePersona,tapTracker,matchedRuns,filterOptions} from './graph-data.js';
+import {togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
+
+test('dataset routes preserve old links and reject unknown datasets',()=>{
+  assert.equal(evidenceDataset(null),'revised_calibration');
+  assert.equal(evidenceDataset(null,['calibration_v6_example']),'revised_calibration');
+  assert.equal(evidenceDataset(null,['revision896_example']),'calibration');
+  assert.equal(evidenceDataset(null,['old_pilot']),'legacy');
+  assert.equal(evidenceDataset('calibration'),'calibration');
+  assert.throws(()=>evidenceDataset('typo'),/Unknown evidence/);
+});
+
+test('all 104 revised graphs replay exactly; coverage and empty outcomes stay distinct',()=>{
+  const revised=validateData(JSON.parse(readFileSync(new URL('./public/data/revised-calibration.json',import.meta.url))));
+  assert.equal(revised.runs.length,104);assert.equal(revised.personas.length,50);
+  assert.equal(revised.runs.filter(r=>r.method==='global'&&!r.edges.length).length,22);
+  for(const run of revised.runs){
+    const frames=replayFrames(run,revised.personas.map(person=>person.id));
+    const keys=edges=>edges.map(e=>[...e].sort().join('|')).sort();
+    assert.deepEqual(keys(frames.at(-1).edges),keys(run.edges));
+    assert.equal(run.study,'revised_calibration');
+    assert.ok(!('requests' in run));assert.ok(!('decisions' in run));
+    if(!run.edges.length)assert.equal(run.age_assortativity,null);
+  }
+  assert.equal(conditionCoverage(revised,'gpt-6-luna','global','brazil','english').planned,2);
+  assert.equal(conditionCoverage(revised,'gpt-4.1','global','us','portuguese').saved.length,1);
+  assert.equal(conditionCoverage(revised,'gpt-4.1','global','brazil','english').planned,0);
+  assert.throws(()=>conditionCoverage(revised,'unknown','global','us','english'),/declared/);
+});
+
+test('revised calibration filters do not substitute V5 or pilot graphs',()=>{
+  const rows=['revised_calibration','calibration','engineering_pilot'].map(study=>({study,model:'gpt-4.1',language:'portuguese'}));
+  assert.deepEqual(layerCandidates(rows,{collection:'revised_calibration'}),[rows[0]]);
+  assert.equal(layerCandidates(rows,{collection:'revised_calibration',language:'japanese'}).length,0);
+});
 test('persona clicks toggle while drags, pinches and cancelled gestures never select',()=>{
   assert.equal(togglePersona('13','13'),'');assert.equal(togglePersona('13','9'),'9');
   const tap=tapTracker(),e={pointerId:1,button:0,isPrimary:true,clientX:10,clientY:10};

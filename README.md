@@ -30,6 +30,10 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
+  104 revised V6 graphs, recorded replay, matched filters and original artifacts.
+  [Deployment and verification notes](docs/SIMULATOR_DEPLOYMENT.md). No API calls;
+  this is an exploratory review tool, not approval for main collection.
 - [Team knowledge brief](docs/TEAM_KNOWLEDGE_BRIEF.md): plain-language history,
   reviewer concerns, improvements, current evidence and unfinished work.
 - [Team approval checklist](docs/TEAM_APPROVAL.md): decisions before main collection.
@@ -238,19 +242,21 @@ execution owner needs the original local ledger:
 .\.venv\Scripts\python.exe -B inspect_calibration.py
 ```
 
-For the optional private viewer, install Node.js, then:
+For the public simulator's local build, install Node.js, then:
 
 ```powershell
 npm --prefix viewer ci
-# Optional: recheck receipts, hashes, replay and metrics, then rebuild the fresh export.
-.\.venv\Scripts\python.exe -B export_calibration_viewer.py
+# Optional: recheck the frozen V6 receipts and rebuild the public derivative.
+.\.venv\Scripts\python.exe -B export_revised_viewer.py
 npm --prefix viewer test
 npm --prefix viewer run build
+npm --prefix viewer run verify:public
 .\.venv\Scripts\python.exe -m http.server 8765 --bind 127.0.0.1 --directory viewer/dist
 ```
 
-Open `http://127.0.0.1:8765/layers.html`. The default shows the 68 historical V5 calibration
-graphs. Use the dataset selector for historical/pilot results. Matched comparison
+Open `http://127.0.0.1:8765/layers.html` (the root URL opens the same workspace).
+The default shows 104 revised V6 calibration graphs. The 68 V5 graphs and earlier
+historical/pilot results remain separate datasets. Matched comparison
 buttons vary one recorded factor; coverage cells load existing repetitions.
 No viewer action calls a model. See [viewer checks and limitations](docs/VIEWER_INTERACTION_REVIEW.md).
 

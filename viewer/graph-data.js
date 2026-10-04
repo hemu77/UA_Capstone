@@ -32,7 +32,7 @@ export function edgeFrequencies(runs) {
 }
 export const comparisonModels = ['gpt-5.6-luna', 'gpt-6-luna', 'gpt-6-sol'];
 export function layerCandidates(runs, filters) {
-  return runs.filter(run => (filters.collection === 'calibration' ? run.study === 'calibration' : filters.collection === 'historical' ? ['cultural','method','language'].includes(run.study) : run.study === 'engineering_pilot') &&
+  return runs.filter(run => (['calibration','revised_calibration'].includes(filters.collection) ? run.study === filters.collection : filters.collection === 'historical' ? ['cultural','method','language'].includes(run.study) : run.study === 'engineering_pilot') &&
     (filters.collection !== 'revised' || comparisonModels.includes(run.model)) &&
     ['method', 'culture', 'language', 'model', 'seed'].every(key => !filters[key] || String(run[key]) === String(filters[key])));
 }
@@ -105,6 +105,24 @@ export function matchedRuns(all, reference, dimension) {
 
 export function filterOptions(all, filters, key) {
   return new Set(layerCandidates(all,{...filters,[key]:''}).map(run=>String(run[key])));
+}
+export function evidenceDataset(explicit, savedRuns=[]) {
+  if(explicit){
+    if(!['legacy','calibration','revised_calibration'].includes(explicit))throw new Error('Unknown evidence dataset. Choose a dataset explicitly.');
+    return explicit;
+  }
+  if(savedRuns.length){
+    if(savedRuns.every(id=>String(id).startsWith('calibration_v6_')))return 'revised_calibration';
+    if(savedRuns.every(id=>String(id).startsWith('revision896_')))return 'calibration';
+    return 'legacy';
+  }
+  return 'revised_calibration';
+}
+export function conditionCoverage(data,model,method,culture,language) {
+  const saved=data.runs.filter(run=>run.model===model&&run.method===method&&run.culture===culture&&run.language===language);
+  const planned=data.coverage_plan?data.coverage_plan.find(row=>row.model===model&&row.method===method&&row.culture===culture&&row.language===language)?.repetitions:data.planned_repetitions;
+  if(!Number.isInteger(planned)||planned<0||saved.length>planned)throw new Error('Saved coverage differs from the declared calibration scope.');
+  return {saved,planned};
 }
 export function differences(left, right) {
   if (left.roster_id !== right.roster_id) return null;

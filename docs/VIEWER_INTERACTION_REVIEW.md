@@ -1,5 +1,13 @@
 # Viewer Interaction Review
 
+## Revised Calibration Update: 2026-10-04
+
+The current workspace now defaults to 104 revised V6 graphs. The checks and
+68/896 coverage below describe the October 1 historical V5 interface, not the
+current calibration allocation. Read [the current deployment and verification
+handoff](SIMULATOR_DEPLOYMENT.md) for the public link, regression evidence and
+remaining scientific gates. Historical datasets and source artifacts are retained.
+
 ## Current Check: 2026-10-01
 
 This pass upgrades the offline viewer, not the frozen study protocol. No model

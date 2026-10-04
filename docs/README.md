@@ -17,7 +17,8 @@
 | [Translation review](../TRANSLATION_REVIEW.md) | AI-assisted review and outstanding human-validation boundary. |
 | [Failure history](../CALIBRATION_FINDINGS.md) | Why earlier calibration versions were superseded. |
 | [API logging](../API_LOGGING.md) | Safe diagnostics, retained reservations and reviewed recovery. |
-| [Viewer guide](../FORMATION_STUDIO.md) | Private analysis UI, recorded replay and evidence limitations. |
+| [Viewer guide](../FORMATION_STUDIO.md) | Public team-review UI, recorded replay and evidence limitations. |
+| [Simulator deployment](SIMULATOR_DEPLOYMENT.md) | Public URL, V6 isolation, reproducible checks and deployment scope. |
 | [Project history](../PROJECT_HISTORY.md) | Previous long README; superseded statuses and plans. |
 | [Original capstone README](../CAPSTONE_README_ARCHIVE.md) | GitHub state before publishing this revision. |
 | [Original architecture](../ARCHITECTURE_BEFORE_REVISION.md) | Preserved previous team report. |

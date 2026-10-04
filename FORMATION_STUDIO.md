@@ -2,13 +2,15 @@
 
 ## Current Calibration Workspace
 
-`layers.html` defaults to the 68 verified fresh calibration runs, not the old
-engineering pilots. Use **Evidence dataset** to open the historical archive;
+`layers.html` defaults to the 104 verified revised V6 calibration runs, not the old
+engineering pilots. [Open the public team-review workspace](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html).
+Use **Evidence dataset** to open V5 or the historical archive;
 these rosters stay separate even though both use IDs 0 through 49.
 
-- **Study coverage** shows available repetitions out of eight planned per
-  condition. Click a nonempty cell to inspect its recorded repetitions. Empty
-  cells do not synthesize or substitute a graph.
+- **Study coverage** shows saved repetitions against the actual calibration
+  allocation: two for Luna, one for other models' US-language conditions, zero
+  allocated elsewhere. Click a populated cell to inspect its repetitions.
+  **Not in scope** is different from a saved graph with zero connections.
 - **Match active run by** selects model (RQ3), country (RQ1), instruction
   language (RQ4), or method contrasts while retaining the other matching fields.
   RQ2 tables use the actual saved demographic measurements.
@@ -18,16 +20,18 @@ these rosters stay separate even though both use IDs 0 through 49.
 - **Expand** enlarges the stage without removing playback or inspection tools.
   Neighbor buttons inspect the same person across the selected runs.
 
-The offline refresh command is `python -B export_calibration_viewer.py`, followed
+The offline refresh command is `python -B export_revised_viewer.py`, followed
 by `npm run build` in `viewer`. Re-exporting requires the frozen environment and
 unchanged reviewed artifacts; serving the checked-in export needs neither an API
 key nor a paid model call. Original PNGs remain byte-for-byte unchanged; browser
 positions are a separate display layout over the same verified adjacency data.
 
-Coverage is **68 / 896**, not a completed main study. GPT-6-Luna supplies two
-repetitions across all seven settings; the other three models supply one
-US-English repetition per method. The older pilot counts below describe only
-the separately selectable historical dataset.
+Coverage is **104 / 104 calibration graphs**, not a completed main study.
+GPT-6-Luna supplies two repetitions across all seven settings; the other three
+models supply one repetition for each of four US instruction languages per
+method. **22/26 global graphs recorded `NONE`**, retaining all 50 nodes with no
+ties. Undefined homophily remains NA; playback does not invent a formation
+sequence. V5 and the pilot counts below describe separate historical datasets.
 
 ## Use the workspace
 

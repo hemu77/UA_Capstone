@@ -5,7 +5,7 @@ import {LineSegmentsGeometry} from 'three/addons/lines/LineSegmentsGeometry.js';
 import {LineMaterial} from 'three/addons/lines/LineMaterial.js';
 import {validateData, comparisonLayout, layerComparison, layerCandidates, applyLayerSelection, edgeKey, neighbors, replayFrames, personaSteps, personaView, personaTag, personaComparison} from './graph-data.js';
 import {topology as topologyMetrics} from './research-plots.js';
-import {comparisonModels,togglePersona,tapTracker,matchedRuns,filterOptions} from './graph-data.js';
+import {comparisonModels,togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
 import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchEvidence, homophilyMatrix, frequencySvg, loadPresentation} from './formation-charts.js';
 
 const $ = id => document.getElementById(id);
@@ -20,7 +20,7 @@ let fitOnResize=false;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const filterKeys=['collection','method','culture','language','model','seed'];
 const url = new URL(location.href);
-let dataset='calibration';
+let dataset='revised_calibration';
 const label = runLabel;
 const fmt = v => typeof v === 'number' && Number.isFinite(v) ? v.toFixed(3) : 'NA';
 function option(select, value, text) { select.add(new Option(text, value)); }
@@ -75,6 +75,7 @@ function renderPlayback() {
   document.querySelector('.canvas-legend').innerHTML=mode==='compare'?'<span>Each plane: one final run</span><span>Cross-plane line: same persona, not a tie</span>':'<span class="new-key">New ties</span><span class="removed-key">Removed: dashed</span><span>Outline: actor / larger: selected</span>';
   $('replay-note').textContent=mode==='compare'?'Each plane is a separate saved experiment, not a time slice or country map. Whole network replays one run.':!trace?'Playback unavailable: only the final graph exists. Its history cannot be reconstructed honestly.':run.method==='global'?'Global generation recorded the entire network in one batch. No per-person order was recorded.':`${run.method==='sequential'?'Sequential generation asks one persona at a time.':run.method==='local'?'Local generation records one persona\'s choices per update.':'Iterative generation records successive additions and removals.'} Whole-network replay shows every recorded update, not simultaneous agents. Several ties can belong to one update: they animate together because their internal order was not recorded.`;
   if(journey&&available)$('replay-note').textContent+=' Persona playback includes their own decisions and other actors changing their ties; unrelated events are skipped on screen but retained in the graph. Manual scrubbing returns to all-event mode.';
+  if(run.study==='revised_calibration'&&run.method==='global'&&!run.edges.length)$('replay-note').textContent+=' This run recorded NONE: all 50 personas remain, with zero ties. No connection history exists to animate.';
   $('event-heading').textContent=mode==='compare'?'Final comparison':!trace?'No event log':!event?'Before the first decision':event.persona==null?'Global batch':`Event actor: persona ${event.persona}`;
   const incidentChange=event&&selected&&[...event.added,...event.removed].some(edge=>edge.includes(selected));
   const relevance=!event||!selected?'':event.persona===selected?' The selected persona made this recorded decision.':incidentChange?` ${event.persona==null?'The batch':'Another persona'} changed a tie involving persona ${selected}.`:' This event does not change the selected persona\'s ties.';
@@ -283,7 +284,7 @@ function renderEvidence() {
       const link=document.createElement('a');link.href=record.png_url;link.target='_blank';link.rel='noopener';link.textContent='PNG panel (400 dpi)';caption.append(document.createElement('br'),link);
       if(record.svg_url===`./data/presentation/${item.run_id}.svg`){const vector=document.createElement('a');vector.href=record.svg_url;vector.target='_blank';vector.rel='noopener';vector.textContent='Vector SVG';caption.append(vector);}
       if(record.caption){const details=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');summary.textContent='Suggested manuscript caption';text.textContent=record.caption;details.append(summary,text);caption.append(details);}
-    }else if(item.study==='calibration'&&item.png_url===`./data/calibration/${item.run_id}.png`){
+    }else if(['calibration','revised_calibration'].includes(item.study)&&item.png_url===`./data/${item.study==='calibration'?'calibration':'revised-calibration'}/${item.run_id}.png`){
       const link=document.createElement('a');link.href=item.png_url;link.textContent='Original calibration PNG';link.target='_blank';link.rel='noopener';caption.append(document.createElement('br'),link);
       const adjacency=document.createElement('a');adjacency.href=item.adjacency_url;adjacency.textContent='Saved adjacency list';adjacency.download='';caption.append(adjacency);
       const note=document.createElement('p');note.textContent='Original artifacts, not a publication panel. Their hashes were checked during export.';caption.append(note);
@@ -297,37 +298,37 @@ function renderEvidence() {
   $('rq-issues').replaceChildren();
   for(const issue of result.issues){const li=document.createElement('li');li.textContent=issue;$('rq-issues').append(li);}
   if(question==='rq1'&&runs.every(r=>r.study==='engineering_pilot')){const li=document.createElement('li');li.textContent='Pilot country coverage: United States only. No new pilot evidence for a country-framing effect.';$('rq-issues').append(li);}
-  if(dataset==='calibration'){
-    const note=document.createElement('li');note.textContent='Calibration only: two repetitions for GPT-6-Luna and one US-English repetition for each other model. Eight repetitions per condition remain planned, not observed.';$('rq-issues').append(note);
+  if(dataset!=='legacy'){
+    const note=document.createElement('li');note.textContent=data.calibration_note||'Historical V5 calibration: two repetitions for GPT-6-Luna and one US-English repetition for each other model. The earlier eight-repetition plan is not an approved main study.';$('rq-issues').append(note);
     if(question==='rq3'){const config=document.createElement('li');config.textContent='Model configurations differ in supported decoding settings. Treat this as configuration comparison, not a causal model-architecture test.';$('rq-issues').append(config);}
   }
   $('rq-homophily').hidden=question!=='rq2';$('rq-homophily').innerHTML=question==='rq2'?homophilyMatrix(runs):'';
   $('rq-pairs').replaceChildren();
   if(question==='rq3')for(const pair of result.pairs){const p=document.createElement('p');p.textContent=`Runs ${pair.a} and ${pair.b}: ${pair.shared} shared / ${pair.union} distinct ties. Edge Jaccard ${pair.jaccard===null?'NA':(100*pair.jaccard).toFixed(1)+'%'} (100% means identical edges; not accuracy).`;$('rq-pairs').append(p);}
-  $('provenance-summary').textContent=run.study==='calibration'?data.verification:run.study==='engineering_pilot'?'Saved engineering output from synthetic personas. Receipt hashes, adjacency, final replay and recomputed metrics are checked offline. This does not establish human validity or independently reconcile every API response.':'Historical model output. Conditions inferred from filenames; original API logs, snapshot and event history unavailable.';
+  $('provenance-summary').textContent=dataset!=='legacy'?data.verification:run.study==='engineering_pilot'?'Saved engineering output from synthetic personas. Receipt hashes, adjacency, final replay and recomputed metrics are checked offline. This does not establish human validity or independently reconcile every API response.':'Historical model output. Conditions inferred from filenames; original API logs, snapshot and event history unavailable.';
   $('provenance-fields').replaceChildren();
-  const fields=[['Experiment',label(run)],['Collection',run.study==='calibration'?'Fresh calibration (not completed main study)':run.study==='engineering_pilot'?'Engineering pilot (not confirmatory)':'Historical archive'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
+  const fields=[['Experiment',label(run)],['Collection',dataset!=='legacy'?`${dataset==='revised_calibration'?'Revised V6':'Historical V5'} calibration (not main study)`:run.study==='engineering_pilot'?'Engineering pilot (not confirmatory)':'Historical archive'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
   for(const [key,value] of fields){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;$('provenance-fields').append(dt,dd);}
   const png=$('source-png');png.hidden=!run.png_url;
-  if(run.png_url&&/^\.\/data\/(artifacts|calibration)\/[a-zA-Z0-9_.-]+\.png$/.test(run.png_url))png.href=run.png_url;else{png.hidden=true;png.removeAttribute('href');}
+  if(run.png_url&&/^\.\/data\/(artifacts|calibration|revised-calibration)\/[a-zA-Z0-9_.-]+\.png$/.test(run.png_url))png.href=run.png_url;else{png.hidden=true;png.removeAttribute('href');}
   $('provenance-hashes').textContent=JSON.stringify({run_id:run.run_id,roster_sha256:run.roster_id,adjacency_sha256:run.source_sha256,png_sha256:run.png_sha256||null,receipt_sha256:run.receipt_sha256||null,protocol_sha256:run.protocol_sha256||null,generation_source_variant:run.prompt_variant||'unrecorded'},null,2);
 }
 function refresh() {stop();$('match-note').textContent='';layerComparison(runs);if(!runs.some(run=>run.run_id===activeId)){activeId=runs[0].run_id;frame=Number.MAX_SAFE_INTEGER;journey=false;}loadTrace();layout=comparisonLayout(data.personas,runs.flatMap(r=>r.edges),[]);draw();}
 function renderCoverage() {
-  $('coverage-panel').hidden=dataset!=='calibration';
-  if(dataset!=='calibration')return;
+  $('coverage-panel').hidden=dataset==='legacy';
+  if(dataset==='legacy')return;
   $('coverage-summary').textContent=`${data.runs.length} / ${data.planned_networks} saved`;
   const table=document.createElement('table'),caption=document.createElement('caption'),head=document.createElement('thead'),body=document.createElement('tbody'),header=document.createElement('tr');
-  caption.textContent='Calibration coverage. Select a nonzero cell to inspect its recorded repetitions. Planned denominator: eight per condition.';
+  caption.textContent=dataset==='revised_calibration'?'Revised calibration: saved / allocated repetitions. Not in scope means no calibration was allocated; it is not an empty graph.':'Historical V5 coverage against the former eight-repetition plan, not a current collection authorization.';
   for(const text of ['Model / method',...data.settings.map(([country,language])=>`${countryNames[country]} / ${language}`)]){const th=document.createElement('th');th.scope='col';th.textContent=text;header.append(th);}head.append(header);
   for(const model of data.models)for(const method of data.methods){
     const row=document.createElement('tr'),name=document.createElement('th');name.scope='row';name.textContent=`${model} / ${method}`;row.append(name);
     for(const [culture,language] of data.settings){
-      const selected=layerCandidates(data.runs,{collection:'calibration',model,method,culture,language}),td=document.createElement('td'),button=document.createElement('button');
-      button.textContent=`${selected.length} / ${data.planned_repetitions}`;button.disabled=!selected.length;
-      button.setAttribute('aria-label',`${model}, ${method}, ${countryNames[culture]}, ${language}: ${selected.length} saved of ${data.planned_repetitions} planned`);
+      const {saved:selected,planned}=conditionCoverage(data,model,method,culture,language),td=document.createElement('td'),button=document.createElement('button');
+      button.textContent=planned?`${selected.length} / ${planned}`:'Not in scope';button.disabled=!selected.length;
+      button.setAttribute('aria-label',`${model}, ${method}, ${countryNames[culture]}, ${language}: ${selected.length} saved of ${planned} allocated`);
       button.title=selected.length?'Inspect every saved repetition in this condition':'Not collected; no generated graph exists';
-      button.onclick=()=>{try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({collection:'calibration',model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
+      button.onclick=()=>{try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
       td.append(button);row.append(td);
     }body.append(row);
   }table.append(caption,head,body);$('coverage-table').replaceChildren(table);
@@ -335,13 +336,15 @@ function renderCoverage() {
 async function start() {
   let saved;try{saved=JSON.parse(url.searchParams.get('view')||'null');}catch{saved=null;}
   if(!saved||typeof saved!=='object'||Array.isArray(saved)||!Array.isArray(saved.runs))saved=null;
-  dataset=url.searchParams.get('dataset')==='legacy'||!url.searchParams.has('dataset')&&saved?.runs?.some(id=>!String(id).startsWith('revision896_'))?'legacy':'calibration';
-  const response=await fetch(dataset==='calibration'?'./data/calibration.json':'./data/networks.json',{cache:'no-store'});if(!response.ok)throw new Error(`Data request failed: ${response.status}. Run the offline viewer export; no substitute data is loaded.`);data=validateData(await response.json());
+  dataset=evidenceDataset(url.searchParams.get('dataset'),saved?.runs);
+  const paths={revised_calibration:'revised-calibration',calibration:'calibration',legacy:'networks'};
+  const response=await fetch(`./data/${paths[dataset]}.json`,{cache:'no-store'});if(!response.ok)throw new Error(`Data request failed: ${response.status}. Run the offline viewer export; no substitute data is loaded.`);data=validateData(await response.json());
   $('dataset').value=dataset;
   $('dataset').onchange=()=>{stop();const next=new URL(location.href);next.search='';next.searchParams.set('dataset',$('dataset').value);location.assign(next);};
-  $('dataset-summary').textContent=dataset==='calibration'?`${data.runs.length} calibration graphs / ${data.planned_networks} planned | ${data.personas.length} fictional adults | ${data.models.length} models | ${data.settings.length} settings`:`${data.runs.length} saved historical/pilot graphs | ${data.personas.length} original personas | separate from fresh calibration`;
+  $('dataset-summary').textContent=dataset!=='legacy'?`${data.runs.length} saved calibration graphs | ${data.personas.length} fictional adults | ${data.models.length} models | ${data.settings.length} settings`:`${data.runs.length} saved historical/pilot graphs | ${data.personas.length} original personas | separate from fresh calibration`;
+  $('evidence-notice').textContent=data.evidence_notice||(dataset==='calibration'?'Historical V5 evidence, retained separately. Superseded by revised V6 calibration; do not pool these runs.':'Historical and engineering evidence only. Not the revised calibration.');
   $('roster-limitations').textContent=data.limitations||'These are descriptive model outputs, not observed human ties. This US-structured historical roster includes nine minors. Single-pilot differences are not general population or causal evidence.';
-  if(dataset==='calibration'){$('collection').replaceChildren();option($('collection'),'calibration','Fresh calibration');}
+  if(dataset!=='legacy'){$('collection').replaceChildren();option($('collection'),dataset,dataset==='revised_calibration'?'Revised V6 calibration':'Historical V5 calibration');}
   else{const figures=await loadPresentation(fetch);presentation=figures.runs;if(figures.error)announce(figures.error);}
   for(const key of ['method','culture','language','model','seed'])for(const value of [...new Set(data.runs.map(r=>String(r[key])))].sort()){
     const run=data.runs.find(r=>String(r[key])===value);
@@ -353,11 +356,11 @@ async function start() {
   $('color').value='age';
   for(const [key,value] of Object.entries(topologyMetrics))option($('metric'),key,value);
   if(saved&&Array.isArray(saved.runs)){runs=saved.runs.map(id=>data.runs.find(r=>r.run_id===id)).filter(Boolean);try{layerComparison(runs);}catch{runs=[];}}
-  if(!runs.length)runs=(data.models||comparisonModels).map(model=>data.runs.find(r=>r.study===(dataset==='calibration'?'calibration':'engineering_pilot')&&r.model===model&&r.method==='sequential'&&r.culture==='us'&&r.language==='english')).filter(Boolean);
+  if(!runs.length)runs=(data.models||comparisonModels).map(model=>data.runs.find(r=>r.study===(dataset!=='legacy'?dataset:'engineering_pilot')&&r.model===model&&r.method==='sequential'&&r.culture==='us'&&r.language==='english')).filter(Boolean);
   if(!runs.length)runs=[data.runs[0]];
   startingRuns=[...runs];
   activeId=runs.some(run=>run.run_id===saved?.active)?saved.active:(runs.find(run=>run.model==='gpt-6-luna')||runs[0]).run_id;mode=saved?.mode==='formation'?'formation':'compare';frame=Number.isSafeInteger(saved?.frame)&&saved.frame>=0?saved.frame:Number.MAX_SAFE_INTEGER;
-  for(const key of filterKeys){const inferred=key==='collection'?(dataset==='calibration'?'calibration':runs.every(r=>r.study!=='engineering_pilot')?'historical':'engineering_pilot'):(new Set(runs.map(r=>String(r[key]))).size===1?String(runs[0][key]):'');const value=saved?.filters?.[key]??inferred;if([...$(key).options].some(o=>o.value===value))$(key).value=value;}
+  for(const key of filterKeys){const inferred=key==='collection'?(dataset!=='legacy'?dataset:runs.every(r=>r.study!=='engineering_pilot')?'historical':'engineering_pilot'):(new Set(runs.map(r=>String(r[key]))).size===1?String(runs[0][key]):'');const value=saved?.filters?.[key]??inferred;if([...$(key).options].some(o=>o.value===value))$(key).value=value;}
   for(const id of ['person','color','ties','metric','research-question','node-labels'])if(saved&&[...$(id).options].some(o=>o.value===saved[id]))$(id).value=saved[id];
   for(const id of ['separation','opacity'])if(saved&&Number.isFinite(Number(saved[id])))$(id).value=saved[id];
   $('incident').checked=saved?.incident===true;
@@ -365,7 +368,7 @@ async function start() {
   for(const id of filterKeys)$(id).onchange=()=>{candidates();saveView();};
   $('candidate').onchange=updateAdd;
   $('filter-form').onsubmit=event=>{event.preventDefault();try{runs=applyLayerSelection(layerCandidates(data.runs,readFilters()));removed=[];refresh();candidates();pose('orbit');announce(`Applied filters: ${runs.length} saved networks now displayed.`);}catch(error){announce(`${error.message} Current layers were kept.`);}};
-  $('reset-filters').onclick=()=>{for(const key of filterKeys)$(key).value=key==='collection'?(dataset==='calibration'?'calibration':'engineering_pilot'):'';candidates();saveView();announce('Filters reset. Displayed layers were kept.');};
+  $('reset-filters').onclick=()=>{for(const key of filterKeys)$(key).value=key==='collection'?(dataset!=='legacy'?dataset:'engineering_pilot'):'';candidates();saveView();announce('Filters reset. Displayed layers were kept.');};
   $('add').onclick=()=>{const run=data.runs.find(r=>r.run_id===$('candidate').value);if(!run)return;try{runs=applyLayerSelection([...runs,run]);removed=removed.filter(entry=>entry.run.run_id!==run.run_id);refresh();candidates();pose('orbit');announce(`Added ${run.model} / ${run.method}. ${runs.length} layers displayed.`);}catch(error){announce(error.message);}};
   $('undo').onclick=()=>{const last=removed.at(-1);if(!last)return;try{const next=[...runs];next.splice(Math.min(last.index,next.length),0,last.run);runs=applyLayerSelection(next);removed.pop();refresh();candidates();pose('orbit');announce(`Restored ${last.run.model} / ${last.run.method}.`);}catch(error){announce(error.message);}};
   $('restore').onclick=()=>{runs=[...startingRuns];removed=[];refresh();candidates();pose('orbit');announce('Restored the comparison present when you opened this page.');};
@@ -396,7 +399,7 @@ async function start() {
   for(const button of document.querySelectorAll('[data-match]'))button.onclick=()=>{
     const reference=activeRun(),dimension=button.dataset.match;
     try{runs=applyLayerSelection(matchedRuns(data.runs,reference,dimension));removed=[];mode='compare';
-      for(const key of filterKeys)$(key).value=key==='collection'?(dataset==='calibration'?'calibration':reference.study==='engineering_pilot'?'engineering_pilot':'historical'):key===dimension?'':String(reference[key]);
+      for(const key of filterKeys)$(key).value=key==='collection'?(dataset!=='legacy'?dataset:reference.study==='engineering_pilot'?'engineering_pilot':'historical'):key===dimension?'':String(reference[key]);
       if(dimension!=='method')$('research-question').value={model:'rq3',culture:'rq1',language:'rq4'}[dimension];
       refresh();candidates();pose('orbit');announce('Matched comparison applied. No missing conditions were filled.');
       $('match-note').textContent=`${runs.length} saved runs matched to ${reference.model} / ${reference.method} / ${reference.culture} / ${reference.language} / seed ${reference.seed}. Only ${dimension} varies among the matched fields.`;
