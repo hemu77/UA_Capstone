@@ -3,6 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {"build": "node build.mjs", "test": "node --test graph-data.test.js", "verify:public": "node verify-public.mjs", "test:browser": "node browser-check.mjs"},
+  "scripts": {"build": "node build.mjs", "test": "node --test graph-data.test.js navigation.test.js", "verify:public": "node verify-public.mjs", "test:browser": "node browser-check.mjs", "test:navigation": "node navigation-check.mjs"},
   "dependencies": {"three": "0.186.1"}
 }

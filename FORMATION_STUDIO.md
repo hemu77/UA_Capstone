@@ -46,11 +46,12 @@ the matrix available only as an optional view.
 1. Open `http://127.0.0.1:8765/layers.html` after `npm run build` in `viewer`.
 2. Select a saved run in the left rail. **Whole network** shows that one run
    and clears persona-only filtering; **Compare runs in 3D** shows final networks.
-3. Press **Play formation**. Use Pause, Back, Next, Start, Final, speed, or the
+3. Press **Play / resume** (or **Play active run** from comparison). Use Pause,
+   Back, Next, Start, Final, speed, or the
    scrubber. Event zero is the predefined roster with no ties. Displayed event
    one corresponds to the first logged decision (raw logs use zero-based steps).
 4. Select a persona by node or selector, then **Follow persona**. Press **Play
-   journey** in the same timeline. This includes the persona's own recorded
+   persona journey** in the same timeline. This includes the persona's own recorded
    decisions, even no-ops, and other actors' changes to that person's ties.
 5. The event actor is explicitly distinguished from the selected persona. The
    graph is undirected; the recorded actor is not an edge direction.
@@ -58,7 +59,14 @@ the matrix available only as an optional view.
    Back/Next in persona mode visits only relevant events, while reconstruction
    still incorporates every preceding recorded event. The journey can finish
    before the run's final step when no later event involves that persona.
-7. **Choose experiments** retains explicit Apply, Add, Undo remove and Restore.
+7. **Filters & saved runs** opens the filter drawer with Apply, Add, Undo remove
+   and Restore. Play/pause and the timeline are immediately above the graph.
+8. Choose Rotate or Pan above the graph. Shift-drag swaps tools; scroll/pinch
+   zooms toward the pointer. Shift-scroll and arrow keys pan. Two-finger touch
+   gestures pan and pinch in comparison and replay. **3D** resets the camera.
+9. Gold dashed cross-layer lines track the selected persona's identity, not
+   friendship edges. **Center selected persona** focuses the camera, while
+   each layer retains that person's actual neighborhood and count.
 
 Playback never requests a new model response. Pause is automatic when the page
 is hidden. Share URLs retain run, selected persona, mode, frame and filters;

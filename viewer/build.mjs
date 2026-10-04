@@ -10,7 +10,7 @@ const destination=resolve(root,'dist');
 if(destination!==resolve(process.cwd(),'dist'))throw new Error('Unsafe build destination.');
 await rm(destination,{recursive:true,force:true});
 await mkdir('dist/vendor/addons/controls', {recursive: true});
-const files=['index.html', 'style.css', 'main.js', 'graph-data.js', 'research-plots.js', 'layers.html', 'layers.css', 'layers.js', 'formation-charts.js'];
+const files=['index.html', 'style.css', 'main.js', 'graph-data.js', 'research-plots.js', 'layers.html', 'layers.css', 'layers.js', 'formation-charts.js', 'navigation.js'];
 const sources=[];
 for(const file of files)sources.push([file,await readFile(file,'utf8')]);
 // An updated HTML document must not load an older cached controller or stylesheet.

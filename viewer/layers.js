@@ -7,6 +7,7 @@ import {validateData, comparisonLayout, layerComparison, layerCandidates, applyL
 import {topology as topologyMetrics} from './research-plots.js';
 import {comparisonModels,togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
 import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchEvidence, homophilyMatrix, frequencySvg, loadPresentation} from './formation-charts.js';
+import {configureNavigation,panCamera} from './navigation.js';
 
 const $ = id => document.getElementById(id);
 const colors = ['#b7c9c3','#d0baa0','#aebacd','#c7b9c7','#bac4aa','#c8c6be'];
@@ -61,7 +62,7 @@ function renderPlayback() {
   $('compare-mode').setAttribute('aria-pressed',String(mode==='compare'));
   $('stage-title').textContent=mode==='formation'?label(run):`${runs.length} final networks / shared coordinates`;
   $('stage-state').textContent=mode==='compare'?'Final snapshots':trace?`Event ${frame} / ${trace.length-1}`:'History unavailable';
-  $('play').textContent=playing?'Pause':mode==='compare'?'Replay active run':journey?'Play journey':'Play formation';
+  $('play').textContent=playing?'Pause':mode==='compare'?'Play active run':journey?'Play persona journey':'Play / resume';
   $('play').disabled=!trace;
   for(const id of ['rewind','previous','next','timeline','show-final','speed'])$(id).disabled=!available;
   $('previous').disabled=!available||frame===0;$('next').disabled=!available||!steps().some(step=>step>frame);
@@ -73,6 +74,7 @@ function renderPlayback() {
   const relevantSteps=personaSteps(run.events,selected);
   $('playback-scope').textContent=mode==='compare'?'Saved outputs / no shared timeline':journey?`Persona ${selected}: ${relevantSteps.filter(step=>step<=frame).length} / ${relevantSteps.length} relevant events`:$('incident').checked&&selected?`All events / only persona ${selected}'s ties visible`:'All events / whole network';
   document.querySelector('.canvas-legend').innerHTML=mode==='compare'?'<span>Each plane: one final run</span><span>Cross-plane line: same persona, not a tie</span>':'<span class="new-key">New ties</span><span class="removed-key">Removed: dashed</span><span>Outline: actor / larger: selected</span>';
+  if(mode==='compare'&&selected){const note=document.createElement('span');note.className='identity-key';note.textContent=`Gold dashed line: persona ${selected} across ${runs.length} runs. Not a friendship.`;document.querySelector('.canvas-legend').replaceChildren(note);}
   $('replay-note').textContent=mode==='compare'?'Each plane is a separate saved experiment, not a time slice or country map. Whole network replays one run.':!trace?'Playback unavailable: only the final graph exists. Its history cannot be reconstructed honestly.':run.method==='global'?'Global generation recorded the entire network in one batch. No per-person order was recorded.':`${run.method==='sequential'?'Sequential generation asks one persona at a time.':run.method==='local'?'Local generation records one persona\'s choices per update.':'Iterative generation records successive additions and removals.'} Whole-network replay shows every recorded update, not simultaneous agents. Several ties can belong to one update: they animate together because their internal order was not recorded.`;
   if(journey&&available)$('replay-note').textContent+=' Persona playback includes their own decisions and other actors changing their ties; unrelated events are skipped on screen but retained in the graph. Manual scrubbing returns to all-event mode.';
   if(run.study==='revised_calibration'&&run.method==='global'&&!run.edges.length)$('replay-note').textContent+=' This run recorded NONE: all 50 personas remain, with zero ties. No connection history exists to animate.';
@@ -164,14 +166,21 @@ function setupScene() {
   try {renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}
   catch { $('status').textContent='WebGL unavailable. Measurements and condition plots remain usable.';return; }
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));$('viewport').append(renderer.domElement);
-  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.1,3000);
-  controls=new OrbitControls(camera,renderer.domElement);controls.minDistance=100;controls.maxDistance=1600;controls.autoRotateSpeed=.35;
-  controls.enableZoom=true;controls.zoomSpeed=.65;
-  controls.enablePan=true;controls.minPolarAngle=.08;controls.maxPolarAngle=Math.PI-.08;
+  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.1,10000);
+  controls=new OrbitControls(camera,renderer.domElement);controls.autoRotateSpeed=.35;
+  renderer.domElement.tabIndex=0;
+  renderer.domElement.setAttribute('aria-label','Network camera. Drag to rotate, Shift-drag to pan, scroll or pinch to zoom toward pointer. Arrow keys pan; Shift-arrow rotates.');
+  controls.listenToKeyEvents(renderer.domElement);
   const interaction=$('graph-interaction');
-  const configureInteraction=()=>{controls.enabled=true;controls.enableZoom=interaction.checked;renderer.domElement.style.setProperty('touch-action',interaction.checked?'none':'pan-y','important');};
-  interaction.onchange=configureInteraction;configureInteraction();
-  renderer.domElement.addEventListener('pointerdown',e=>{controls.enabled=e.pointerType!=='touch'||interaction.checked;},true);
+  const configureInteraction=()=>{configureNavigation(controls,interaction.checked,$('drag-mode').value);renderer.domElement.style.setProperty('touch-action',interaction.checked?'none':'pan-y','important');};
+  interaction.onchange=configureInteraction;$('drag-mode').onchange=configureInteraction;configureInteraction();
+  renderer.domElement.addEventListener('pointerdown',()=>{renderer.domElement.focus({preventScroll:true});controls.autoRotate=false;$('rotate').setAttribute('aria-pressed','false');},true);
+  renderer.domElement.addEventListener('wheel',event=>{
+    if(!controls.enabled||!event.shiftKey)return;
+    event.preventDefault();event.stopImmediatePropagation();tap.cancel();
+    const unit=event.deltaMode===1?16:event.deltaMode===2?renderer.domElement.clientHeight:1;
+    panCamera(camera,controls,event.deltaX*unit,event.deltaY*unit,renderer.domElement.clientHeight);requestFrame();
+  },{capture:true,passive:false});
   controls.addEventListener('change',requestFrame);
   new ResizeObserver(()=>{const {width,height}=$('viewport').getBoundingClientRect();renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();if(fitOnResize){fitOnResize=false;pose('orbit');}requestFrame();}).observe($('viewport'));
   const ray=new THREE.Raycaster(),pointer=new THREE.Vector2(),tap=tapTracker();
@@ -195,7 +204,6 @@ function draw() {
   const focusedPersona=document.activeElement?.dataset.person,focusedPersonaRun=document.activeElement?.dataset.run;
   animation=null;animatedMaterials=[];
   const comparison=layerComparison(runs), selected=$('person').value, spacing=Number($('separation').value);
-  if(controls)controls.minDistance=mode==='compare'?(runs.length-1)*spacing+140:100;
   const categories=[...new Set(data.personas.map(category))].sort();
   const categoryColor = i => $('color').value==='age'?`hsl(${175+i*5}, ${32+i*2}%, ${78-i*4}%)`:`hsl(${Math.round(25+i*360/Math.max(1,categories.length))}, 44%, 68%)`;
   $('legend').replaceChildren();
@@ -226,17 +234,20 @@ function draw() {
     }
     const vertices=[],newVertices=[],newKeys=new Set((currentEvent?.added||[]).map(edgeKey));
     for(const edge of ego.edges){const count=comparison.counts.get(edgeKey(edge));if(mode==='compare'&&($('ties').value==='shared'&&count!==runs.length||$('ties').value==='different'&&count===runs.length))continue;for(const id of edge)(newKeys.has(edgeKey(edge))?newVertices:vertices).push(point(id,index));}
-    tieLines(vertices,'#88948f',Number($('opacity').value)/100);
+    tieLines(vertices,selected?'#aad8c5':'#88948f',selected?0.9:Number($('opacity').value)/100,selected?2.3:1.4);
     const additions=tieLines(newVertices,'#80e2c4',1,2.5);
     if(additions)animatedMaterials.push({material:additions,from:.05,to:1});
     for(const edge of currentEvent?.removed||[]){if($('incident').checked&&selected&&!edge.includes(selected))continue;const material=tieLines(edge.map(id=>point(id,index)),'#ff9a79',.65,2,true);if(material)animatedMaterials.push({material,from:1,to:.25});}
     const activeNodes=new Set(renderedEdges.flat());
     for(const person of data.personas){if(ego.visibleIds&&!ego.visibleIds.has(person.id))continue;const actor=currentEvent?.persona===person.id,focus=person.id===selected||actor;const color=$('color').value==='layer'?colors[index]:categoryColor(categories.indexOf(category(person)));const node=new THREE.Mesh(new THREE.SphereGeometry(focus?3.3:2.2,12,10),new THREE.MeshBasicMaterial({color,transparent:true,opacity:focus?1:mode==='formation'&&!activeNodes.has(person.id)?.65:1}));node.position.copy(point(person.id,index));node.userData.person=person.id;node.userData.run=run.run_id;group.add(node);meshes.push(node);
       if(focus){const outline=new THREE.Mesh(new THREE.SphereGeometry(3.9,12,10),new THREE.MeshBasicMaterial({color:actor?'#efbc7e':'#f0f1eb',side:THREE.BackSide}));node.add(outline);}
-      if($('node-labels').value==='all'||$('node-labels').value==='auto'&&(!selected||focus||adjacent.includes(person.id)||removedNeighbors.has(person.id))){const badge=document.createElement('button');badge.type='button';badge.className='plane-label persona-label';badge.dataset.person=person.id;badge.dataset.run=run.run_id;const description=personaTag(person.id,selected,actor?person.id:null,frame);badge.textContent=focus?description:person.id;badge.setAttribute('aria-label',description);badge.title=`Inspect persona ${person.id} in every selected run`;badge.onclick=()=>selectPersona(person.id);badge.style.borderColor=actor?'#ffbd82':'#80e2c4';$('plane-labels').append(badge);planeLabels.push({element:badge,position:point(person.id,index),priority:focus?3:0});}
+      if(person.id===selected||$('node-labels').value==='all'||$('node-labels').value==='auto'&&(!selected||focus||adjacent.includes(person.id)||removedNeighbors.has(person.id))){const badge=document.createElement('span');badge.className='plane-label persona-label';badge.dataset.person=person.id;badge.dataset.run=run.run_id;const description=personaTag(person.id,selected,actor?person.id:null,frame);badge.textContent=person.id===selected?`Persona ${person.id} / ${adjacent.length} neighbors`:focus?description:person.id;badge.setAttribute('aria-label',description);badge.style.borderColor=actor?'#ffbd82':'#80e2c4';$('plane-labels').append(badge);planeLabels.push({element:badge,position:point(person.id,index),priority:focus?3:0});}
     }
   });
-  if(group&&selected&&runs.length>1&&mode==='compare'){const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(runs.map((_,i)=>point(selected,i))),new THREE.LineDashedMaterial({color:'#ffffff',dashSize:3,gapSize:3,transparent:true,opacity:.8}));line.computeLineDistances();group.add(line);}
+  if(group&&selected&&runs.length>1&&mode==='compare'){
+    const points=[];for(let i=1;i<runs.length;i++)points.push(point(selected,i-1),point(selected,i));
+    tieLines(points,'#f0d59b',1,3,true);
+  }
   const person=data.personas.find(p=>p.id===selected);
   $('person-detail').textContent=person?`Persona ${selected}: ${Object.entries(person.attributes).map(([k,v])=>`${k}: ${v}`).join('; ')}`:'Choose a node or persona to compare their neighbors.';
   if(renderer)$('status').textContent=`${runs.length} layers · ${data.personas.length} people per layer · ${comparison.shared} ties shared across all layers`;
@@ -262,6 +273,7 @@ function draw() {
   $('metric-definition').textContent=definitions[$('metric').value];
   $('ties').disabled=mode==='formation';$('separation').disabled=mode==='formation'||runs.length<2;$('spacing-value').textContent=$('separation').disabled?'(comparison only)':spacing;
   $('clear-person').disabled=!selected;$('incident').disabled=!selected;
+  $('focus-person').disabled=!selected||!camera;
   for(const button of document.querySelectorAll('[data-match]')){
     const matches=matchedRuns(data.runs,activeRun(),button.dataset.match);
     button.disabled=matches.length<2||matches.length>6||(button.dataset.match==='culture'&&activeRun().language!=='english');
@@ -373,6 +385,13 @@ async function start() {
   $('undo').onclick=()=>{const last=removed.at(-1);if(!last)return;try{const next=[...runs];next.splice(Math.min(last.index,next.length),0,last.run);runs=applyLayerSelection(next);removed.pop();refresh();candidates();pose('orbit');announce(`Restored ${last.run.model} / ${last.run.method}.`);}catch(error){announce(error.message);}};
   $('restore').onclick=()=>{runs=[...startingRuns];removed=[];refresh();candidates();pose('orbit');announce('Restored the comparison present when you opened this page.');};
   $('person').onchange=()=>selectPersona($('person').value,false);
+  $('open-filters').onclick=()=>{const drawer=document.querySelector('.run-drawer');drawer.open=true;drawer.scrollIntoView({block:'start'});$('model').focus({preventScroll:true});};
+  $('focus-person').onclick=()=>{
+    if(!camera||!$('person').value)return;
+    const p=layout.get($('person').value),scale=mode==='formation'?1.8:1.25;
+    const target=new THREE.Vector3(p[0]*scale,0,p[1]*scale),offset=camera.position.clone().sub(controls.target);
+    controls.target.copy(target);camera.position.copy(target).add(offset);controls.update();requestFrame();
+  };
   $('clear-person').onclick=()=>selectPersona('',false);
   for(const id of ['color','ties','opacity','incident','metric','research-question','node-labels'])$(id).oninput=draw;
   $('formation-mode').onclick=()=>{stop();mode='formation';journey=false;frame=0;$('incident').checked=false;$('person').value='';draw();pose('orbit');};
@@ -386,7 +405,7 @@ async function start() {
   document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();if(data)draw();}});
   $('separation').oninput=draw;
   for(const id of ['orbit','top','front'])$(id).onclick=()=>pose(id);
-  for(const [id,factor] of [['zoom-in',.8],['zoom-out',1.25]])$(id).onclick=()=>{if(!camera)return;const offset=camera.position.clone().sub(controls.target),distance=Math.min(1600,Math.max(controls.minDistance,offset.length()*factor));camera.position.copy(controls.target).add(offset.setLength(distance));controls.update();requestFrame();};
+  for(const [id,factor] of [['zoom-in',.8],['zoom-out',1.25]])$(id).onclick=()=>{if(!camera)return;const offset=camera.position.clone().sub(controls.target),distance=Math.min(controls.maxDistance,Math.max(controls.minDistance,offset.length()*factor));camera.position.copy(controls.target).add(offset.setLength(distance));controls.update();requestFrame();};
   $('rotate').onclick=()=>{if(!controls)return;controls.autoRotate=!controls.autoRotate;$('rotate').setAttribute('aria-pressed',String(controls.autoRotate));requestFrame();};
   $('share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('share').textContent='Link copied';}catch{$('share').textContent='Copy the URL from your address bar';}};
   $('download-selection').onclick=()=>{

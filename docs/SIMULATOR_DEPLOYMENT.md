@@ -27,7 +27,7 @@ or authorize model generation.
 
 ## Review Workflows
 
-1. Open **Choose experiments**, choose a model/method/country/language/repetition,
+1. Open **Filters & saved runs**, choose a model/method/country/language/repetition,
    then **Apply filters**. This replaces the displayed layers, up to six; larger
    selections are rejected rather than silently truncated. **Add selected layer**,
    **Undo remove** and **Restore** preserve explicit user control.
@@ -41,11 +41,27 @@ or authorize model generation.
    or its original PNG/adjacency artifacts. NA overlap means no union of ties
    exists to divide by, not a fabricated zero-similarity score.
 
+### Camera and Persona Controls
+
+Play/pause, timeline and Filters are above the graph in both modes, not buried
+below it. **Rotate 360 degrees** is the default drag tool; choose **Pan** to move
+freely across the view. Shift-drag swaps the tool. Scroll or trackpad pinch zooms
+toward the pointer without the previous far-away zoom limit. Shift-scroll pans;
+arrow keys pan a focused canvas and Shift-arrows rotate it. Touchscreens support
+one-finger rotation/panning and two-finger pan/pinch. **3D** resets the view.
+
+Clicking a rendered node shows its direct neighbors in each displayed run. Gold
+dashed lines join the same selected persona across layers; these are identity
+guides, never added friendships. The selected identity stays labelled even with
+other labels off. **Center selected persona** recenters the camera without
+changing data. Clicking the same node again or **Clear persona selection**
+returns to the whole graph. Replay uses the selected event's actual neighbors.
+
 ## Verification
 
 - [x] Offline export rechecks contract, complete inspection, receipt/artifact
   hashes, prompt/parser/event replay and recomputed metrics before publication.
-- [x] 27 JavaScript tests pass, including exact final replay of all 104 V6 and
+- [x] 29 JavaScript tests pass, including exact final replay of all 104 V6 and
   all 68 V5 graphs, empty/null handling, collection isolation and old URL routing.
 - [x] Eight focused Python tests pass: three V6 export tests and five V5 regressions.
 - [x] Built-output verification checks 208 V6 artifact hashes, recorded replay,
@@ -56,6 +72,9 @@ or authorize model generation.
 - [x] The same flow passes against the deployed public URL in a fresh anonymous
   browser context, with no HTTP/page errors. Hosted clean-URL redirects are supported.
 - [x] Mobile playback controls no longer stick over and obscure the graph.
+- [x] Actual pointer-event tests verify Rotate/Pan, wheel zoom, Shift-wheel,
+  keyboard panning, click/toggle and exact per-layer saved neighbor lists.
+  Browser-native two-finger touch gestures work in comparison and replay.
 - [x] One bounded read-only reviewer found no material/blocking findings. The
   suggested root/archive navigation regression was added and passed.
 
@@ -80,13 +99,14 @@ npm --prefix viewer run verify:public
 .\.venv\Scripts\python.exe -m http.server 8766 --bind 127.0.0.1 --directory viewer/dist
 ```
 
-In a second terminal, run `npm --prefix viewer run test:browser` with Playwright
+In a second terminal, run `npm --prefix viewer run test:browser` and
+`npm --prefix viewer run test:navigation` with Playwright
 installed. `PLAYWRIGHT_MODULE` optionally gives its installed module path;
 `BROWSER_CHANNEL` defaults to `msedge`. `VIEWER_URL` defaults to
 `http://127.0.0.1:8766`. No packages are installed automatically by the test.
 
 Static hosting project: `appgprj_6ac225ce79208191ae15aaca77d8a299`.
-Deployment version: 1; source bundle commit `864f198056bf02441dede3321f4b8bad2984efce`.
+Deployment version: 2; source bundle commit `ea4848b58b6c258134e2befb92476183819aa7ff`.
 The hosting service confirmed publication succeeded on October 4, 2026.
 The deployment contains only the verified `viewer/dist` derivative, with Three.js
 vendored locally. It has no model endpoint, connector, database or runtime secret.
