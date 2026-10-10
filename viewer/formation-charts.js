@@ -1,7 +1,12 @@
 // Small, labeled SVGs keep the recorded values inspectable without a chart library.
 import {neighbors,edgeFrequencies} from './graph-data.js';
 export const countryNames={us:'United States',india:'India',japan:'Japan',brazil:'Brazil'};
-export const runLabel=run=>`${run.model} | ${run.method} | ${countryNames[run.culture]||run.culture} | ${run.language} | seed ${run.seed}`;
+export const runLabel=run=>`${run.model} | ${run.method} | ${countryNames[run.culture]||run.culture} | ${run.language} | ${Number.isInteger(run.repetition)?`rep ${run.repetition+1} / `:''}seed ${run.seed}`;
+export function layerLabel(runs,index) {
+  const run=runs[index],varied=['model','method','culture','language','seed'].filter(key=>new Set(runs.map(r=>r[key])).size>1);
+  const fields=varied.length?varied:['model','method'];
+  return `${index+1}. ${fields.map(key=>key==='culture'?countryNames[run[key]]||run[key]:key==='seed'?`${Number.isInteger(run.repetition)?`rep ${run.repetition+1} / `:''}seed ${run.seed}`:run[key]).join(' / ')}`;
+}
 export async function loadPresentation(fetcher) {
   try {
     const response=await fetcher('./data/presentation.json',{cache:'no-store'});
@@ -37,9 +42,9 @@ export function researchEvidence(runs, question) {
 }
 
 export function homophilyMatrix(runs) {
-  const demos=['gender','race/ethnicity','religion','political affiliation'];
+  const demos=[...new Set(runs.flatMap(run=>Object.keys(run.homophily||{})))];
   // Separate age: a numeric assortativity coefficient is not categorical Coleman homophily.
-  return `<table><caption>RQ2 / Saved final networks. Coleman: 0 = random-mixing reference, positive = more within-group ties. Undefined values stay NA.</caption><thead><tr><th>Run</th>${demos.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Age assortativity (different measure)</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><th>${i+1}. ${esc(r.model)}<br>${esc(r.method)}</th>${[...demos.map(d=>r.homophily?.[d]),r.age_assortativity].map(v=>`<td>${Number.isFinite(v)?`<span class="coefficient ${v>0?'positive':v<0?'negative':''}">${v.toFixed(3)}</span>`:'NA'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  return `<table><caption>RQ2 / Saved final networks. Coleman: 0 = random-mixing reference, positive = more within-group ties. Undefined values stay NA.</caption><thead><tr><th>Run</th>${demos.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Age assortativity (different measure)</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><th>${i+1}. ${esc(runLabel(r))}</th>${[...demos.map(d=>r.homophily?.[d]),r.age_assortativity].map(v=>`<td>${Number.isFinite(v)?`<span class="coefficient ${v>0?'positive':v<0?'negative':''}">${v.toFixed(3)}</span>`:'NA'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 export function frequencySvg(personas,runs,layout,selected='') {

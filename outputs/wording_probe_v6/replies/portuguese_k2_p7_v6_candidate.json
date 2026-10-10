@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k2_p7_v6_candidate",
+  "language": "portuguese",
+  "count": 2,
+  "actor": "7",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "1257cda481eab1ebc23ebd6ea31de5346928c0ccfa1f8b5d4593e0433e5e5f32",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "20,3",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 887,
+      "total_tokens": 893,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTXMzdrjHy5ZerXc6eoM3ioxFNMv",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T09:08:09.515950+00:00",
+    "conservative_charge_usd": 0.000113875,
+    "diagnostics": {
+      "client_request_id": "1257cda481eab1ebc23ebd6ea31de5346928c0ccfa1f8b5d4593e0433e5e5f32",
+      "server_request_id": "req_2752a07c09ec4b459482fc009039c310",
+      "http_status": 200,
+      "elapsed_ms": 985.0,
+      "date_utc": "2026-10-02T09:08:09.515950+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "663",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4997",
+        "x-ratelimit-remaining-tokens": "1997558",
+        "x-ratelimit-reset-requests": "36ms",
+        "x-ratelimit-reset-tokens": "73ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}
