@@ -59,6 +59,31 @@ returns to the whole graph. Replay uses the selected event's actual neighbors.
 
 ## Verification
 
+### October 12 Follow-Up
+
+- [x] Inspected the user's already-open public page before reloading: Play,
+  filters and camera controls were present. Its saved URL selected persona 4
+  and incident ties, restricting the display to that neighborhood.
+- [x] Moved the unique **Clear persona selection** button beside the camera
+  controls above the graph. Existing reset behavior and saved data are unchanged.
+- [x] Corrected signed-difference wording, actual selected-run denominators in
+  tie explanations, and the instruction pointing to Play above the graph.
+- [x] Two new targeted regressions failed before the fixes; all 31 JavaScript
+  tests now pass. Built-output verification passes for 104 graphs and 208 artifacts.
+- [x] Live CUA browser checks: rotation by drag, filter drawer access, Play/Pause,
+  persona 4's per-layer neighbor counts (0/11/10/7 for the selected Luna methods),
+  and whole-network reset. After publication, new controls/text and playback were
+  rechecked on the public page. No captured browser console errors.
+- [x] GPT-6.1-Sol independently checked the review response and scoped patch;
+  no blockers. No model API generation, frozen-source or metric changes.
+
+This follow-up did not rerun the full Python/notebook or automated browser suite.
+The broader checks below describe the prior October 4 deployment verification;
+they are not presented as freshly rerun results. See
+[the research review response](PR_REVIEW_OCT12.md) for unresolved design findings.
+
+### October 4 Baseline
+
 - [x] Offline export rechecks contract, complete inspection, receipt/artifact
   hashes, prompt/parser/event replay and recomputed metrics before publication.
 - [x] 29 JavaScript tests pass, including exact final replay of all 104 V6 and
@@ -106,8 +131,9 @@ installed. `PLAYWRIGHT_MODULE` optionally gives its installed module path;
 `http://127.0.0.1:8766`. No packages are installed automatically by the test.
 
 Static hosting project: `appgprj_6ac225ce79208191ae15aaca77d8a299`.
-Deployment version: 2; source bundle commit `ea4848b58b6c258134e2befb92476183819aa7ff`.
-The hosting service confirmed publication succeeded on October 4, 2026.
+Deployment version: 3; source bundle commit `de5355727f614ea60f43b48ecb43992fd239d0c2`.
+The hosting service confirmed publication succeeded on October 12, 2026.
+Previous version 2: `ea4848b58b6c258134e2befb92476183819aa7ff` (October 4).
 The deployment contains only the verified `viewer/dist` derivative, with Three.js
 vendored locally. It has no model endpoint, connector, database or runtime secret.
 API replies, request journals, billing ledgers and authorization files are not

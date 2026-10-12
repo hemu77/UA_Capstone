@@ -30,6 +30,8 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
+  findings, unresolved scientific decisions and versioned next steps. No new spending approved.
 - [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
   104 revised V6 graphs, recorded replay, matched filters and original artifacts.
   [Deployment and verification notes](docs/SIMULATOR_DEPLOYMENT.md). No API calls;
@@ -70,7 +72,7 @@ Country framing is a prompt intervention, not a representative national sample.
 | Instruction languages | English, Hindi, Japanese, Brazilian Portuguese |
 | Personas | Same 50 designed fictional adults; no US party names or race labels |
 | Settings | Four countries in English, plus US in the other three languages |
-| Repetitions | Proposed staged allocation: global 32, local 8; remaining targets and precision approval pending |
+| Repetitions | Not approved. Global 32/local 8 was a planning scenario, not a recommendation to repeat the empty V6 task. |
 | Total | Not frozen. Global 32 plus eight for each other method would be 1,568; no automatic calibration reuse |
 
 This is a seven-setting design, **not** the full country-by-language factorial.
@@ -175,16 +177,15 @@ Historical PDFs and plots are not current validity claims.
 | `outputs/revision896_retry_v5_preflight/` | Manifest, exact prompts, checks, calibration reports and closed authorization. |
 | `stats/revision896_retry_v5/` | Historical V5 metrics, homophily, controls, contrasts and timing. |
 | `text-files/`, `plots/`, earlier `stats/` and `outputs/` | Preserved historical data and figures; follow each collection's provenance. |
-| `viewer/`, `export_calibration_viewer.py` | Three.js interface with a separate, verified 68-graph calibration dataset and preserved historical/pilot views. |
+| `viewer/`, `export_revised_viewer.py`, `export_calibration_viewer.py` | Three.js interface: default 104-graph V6 calibration, separate 68-graph V5 and historical/pilot views. |
 | `tests/`, `docs/` | Offline regression checks and team documentation. |
 
 The viewer reads saved graph data, not PNG pixels. Recorded formation replay is
 available only where decisions were saved. It does not invent reasoning,
-simultaneous agent actions or an "average" observed network. V5 calibration
-remains the default dataset; the new 104 graphs have not been exported because
-simulation work was deferred. Old links still open the historical roster. These
-rosters cannot be mixed by matching persona IDs. Coverage shows the historical V5
-plan, not the revised allocation or a claim that 896 runs are complete.
+simultaneous agent actions or an "average" observed network. The deployed default
+is the 104-graph V6 calibration. V5 and older links remain separate; their
+rosters cannot be mixed by matching persona IDs. Coverage describes the selected
+collection's allocation, not an approved main study or 896 completed runs.
 
 ## What Is Not Published
 

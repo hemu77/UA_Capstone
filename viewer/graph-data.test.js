@@ -5,6 +5,20 @@ import {validateData, differences, replayEdges, neighbors, comparisonLayout, lay
 import {filterRuns, conditionRows, coverage, measurement, topologySvg, homophilySvg, selectionCsv} from './research-plots.js';
 import {trajectorySvg, metricBars, researchEvidence, homophilyMatrix, runLabel, layerLabel} from './formation-charts.js';
 const data = JSON.parse(readFileSync(new URL('./public/data/networks.json', import.meta.url)));
+test('tie explanation uses the actual selected-run denominator',()=>{
+  const personas=[{id:'0'},{id:'1'}];
+  const runs=Array.from({length:4},(_,i)=>({...data.runs[0],run_id:String(i),edges:[['0','1']]}));
+  const html=frequencySvg(personas,runs,null);
+  assert.match(html,/out of 4 selected runs/);
+  assert.doesNotMatch(html,/two of the three/);
+});
+
+test('persona reset remains beside camera controls above the graph',()=>{
+  const html=readFileSync(new URL('./layers.html',import.meta.url),'utf8');
+  const navigation=html.slice(html.indexOf('<div class="navigation-bar"'),html.indexOf('<section class="laboratory"'));
+  assert.match(navigation,/id="clear-person"/);
+  assert.equal(html.match(/id="clear-person"/g).length,1);
+});
 test('layer labels identify the comparison rather than hiding country or repetition',()=>{
   const run={model:'gpt-6-luna',method:'sequential',culture:'us',language:'english',seed:11000,repetition:0};
   assert.equal(layerLabel([run,{...run,culture:'japan'}],1),'2. Japan');

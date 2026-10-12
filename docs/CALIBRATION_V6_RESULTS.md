@@ -189,8 +189,10 @@ main-study allocation or finite budget has been approved.
 - [ ] Authorize an exact new scope and finite cap only after those decisions.
 
 Read [the team brief](TEAM_KNOWLEDGE_BRIEF.md) and
-[professor/team review request](PROFESSOR_TEAM_REVIEW.md). The simulator was
-deliberately left unchanged and still shows the older V5 dataset.
+[professor/team review request](PROFESSOR_TEAM_REVIEW.md). At this report's October 2
+cutoff, simulator work was deferred. **Subsequent update:** the deployed simulator
+now defaults to all 104 V6 graphs, with V5 separate; see
+[deployment notes](SIMULATOR_DEPLOYMENT.md) and [October 12 review](PR_REVIEW_OCT12.md).
 
 Reproduce offline from the pinned Python 3.11.9 environment:
 

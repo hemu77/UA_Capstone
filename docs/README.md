@@ -2,6 +2,7 @@
 
 | Read in order | Purpose |
 | --- | --- |
+| [October 12 PR response](PR_REVIEW_OCT12.md) | Confirmed review findings, statistical caveats, unresolved gates; no new paid authorization. |
 | [Revised calibration results](CALIBRATION_V6_RESULTS.md) | Start here: 104 verified graphs, $7.8549, empty-global finding, compliance and revised forecasts. |
 | [Revised plan](../plan.md) | October 2 completed fixes/calibration and scientific decisions before main spending. |
 | [Statistical/probe decision](STATISTICAL_ANALYSIS_DECISION.md) | Human-review waiver, $1 probe scope, inference safeguards and limits of approval. |

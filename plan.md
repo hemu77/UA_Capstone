@@ -14,7 +14,10 @@ Portuguese one-choice cases. No replacements, uncertain charges or new networks.
 The revised wording passed its engineering screen, then all 104 calibration
 graphs passed replay/accounting. **22/26 global graphs are empty**; the task must
 be reviewed before main collection. Statistical/sample-allocation decisions
-remain open. The simulation was deliberately left unchanged.
+remain open. **October 12 update:** the public simulator now defaults to the
+104 V6 graphs; historical collections remain separate. See the
+[new PR review response](docs/PR_REVIEW_OCT12.md) for confirmed defects and
+prospective design decisions. No further paid work is authorized.
 
 ## 1. Decision in Plain Language
 
@@ -63,8 +66,11 @@ Checked boxes mean implemented and checked offline, not human/model validation.
   `revision_next.py` and `study_protocol_next.json`.
 - [x] Add singular instructions for exactly one friend, without comma-separated
   plural wording, in English, Portuguese, Hindi and Japanese.
-- [x] Revise Portuguese country articles, Hindi's unchanged-English-data wording,
-  Japanese non-duplicate wording and plain-language global directionality.
+- [x] Revise Hindi's unchanged-English-data wording, Japanese non-duplicate
+  wording and plain-language global directionality.
+- [ ] Correct the remaining Portuguese US context grammar in a new version:
+  V6 still says `O cenário social é os Estados Unidos.` Do not edit its receipts
+  or frozen generation source. Earlier article changes did not fully fix it.
 - [x] Clarify global means the entire network, not one-to-one matching. Zero,
   one or multiple friends and disconnected groups are permitted. Explicit `NONE`
   represents no friendships; an empty response is not silently accepted.

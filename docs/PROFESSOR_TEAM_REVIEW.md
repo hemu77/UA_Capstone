@@ -1,7 +1,13 @@
 # Professor and Team Review: Revised Calibration Complete
 
 October 2, 2026. **Requested decision: review the findings before authorizing
-main collection.** No main batch is running. The simulator was left unchanged.
+main collection.** No main batch is running.
+
+**October 12 update:** [the PR review response](PR_REVIEW_OCT12.md) documents
+confirmed global/Portuguese issues and remaining statistical decisions. The
+[public simulator](SIMULATOR_DEPLOYMENT.md) now shows the 104 V6 graphs by default;
+the earlier statement that it was unchanged is superseded. Scientific approval
+and a new finite spending authorization are still required.
 
 Please read [the plain-language team brief](TEAM_KNOWLEDGE_BRIEF.md),
 [the measured calibration results](CALIBRATION_V6_RESULTS.md), and
