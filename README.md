@@ -30,6 +30,8 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Active V7 repair and budget plan](docs/REPAIR_V7_PLAN.md): what changes,
+  which outputs need regeneration, staged cost assumptions and remaining gates.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
   findings, unresolved scientific decisions and versioned next steps. No new spending approved.
 - [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):

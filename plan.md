@@ -1,5 +1,9 @@
 # Revised Research Plan: Fix Design Before Spending
 
+**Active next steps, October 12:** [V7 repair, regeneration and budget plan](docs/REPAIR_V7_PLAN.md).
+The Portuguese offline candidate is isolated; paid probes and new calibration
+are not authorized. The completed V6 history below remains intact.
+
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**
 The earlier 72-call wording probe had its own $1 permission. Read the
