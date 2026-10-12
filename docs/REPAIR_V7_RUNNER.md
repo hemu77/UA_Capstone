@@ -20,8 +20,9 @@ is approved. Read [scope, regeneration map and costs](REPAIR_V7_PLAN.md) first.
   empty graphs, overwrite receipts, or relabel old runs as repaired evidence.
 
 All prompts are machine-authored. The implementation agent's composition check
-is not independent bilingual validation. The owner waived unavailable human
-review, not transparent disclosure of that limitation.
+is not independent bilingual validation. A separate GPT-6.1-Sol reviewer has now
+checked the exact catalog and final runner; see [review evidence](V7_REVIEW_OCT12.md).
+The owner waived unavailable human review, not disclosure of that limitation.
 
 ## Stages and Boundaries
 
@@ -48,6 +49,10 @@ Choose a task on semantic grounds, not because an arm produces more edges.
 
 - A single cumulative SQLite ledger is reused. Reservations occur before the
   request. No hidden SDK retries; no transport-failure replacement.
+- V7 explicitly sends `service_tier="default"` (Standard) in the actual SDK
+  request. The returned tier and parsed response are saved privately before
+  accounting settlement. Missing or non-Standard tier stops the stage and keeps
+  its reservation; a response already dispatched may still be billed.
 - Each stage gets one authorization outside its version directory. Changing
   source hashes or losing that file cannot silently grant another allowance.
 - Received replies are cached by complete contract, cell, settings and messages.
@@ -60,6 +65,9 @@ Choose a task on semantic grounds, not because an arm produces more edges.
   from a failed run. Offline fixtures never become paid observed-network receipts.
 - A completed run is reconstructed from its saved replies, then checked against
   adjacency, events, nomination decisions, schedule, metrics and artifact hashes.
+- Paid resume also requires a matching private transport audit, including tier,
+  response identity, text and usage. Public graph replay deliberately does not
+  need that private file; it checks graph evidence, not provider billing.
 - `summary.json` becomes `VALIDATION_PENDING` before a recheck, and `STOPPED` if
   execution fails. Only successful full verification restores completion status.
   Reports include tokens, conservative charges, API time and correction counts.
@@ -68,8 +76,8 @@ Choose a task on semantic grounds, not because an arm produces more edges.
 
 The legacy ledger field `phase="main"` is an accounting bucket only. All V7
 contracts and reports explicitly set `main_authorized=false`; this runner has
-no main-study command. Keys, authorizations, private reviews and request journals
-are excluded from publication. Private billing reconciliation is still needed
+no main-study command. Keys, authorizations, private reviews, request journals
+and transport audits are excluded from publication. Billing reconciliation is still needed
 before claiming invoice-level costs.
 
 ## Checks Completed Offline
@@ -78,14 +86,19 @@ Prepared artifacts for this source version:
 
 | Stage | Contract | Fixture count |
 | --- | --- | --- |
-| Global probe | [`683f09663490`](../outputs/repair_v7/global_probe/683f09663490/preflight.json) | 64 |
-| Wording probe | [`eb523e1644bb`](../outputs/repair_v7/wording_probe/eb523e1644bb/preflight.json) | 96 |
-| Illustrative calibration | [`2b16f9469ae0`](../outputs/repair_v7/calibration/2b16f9469ae0/preflight.json) | 104 |
+| Global probe | [`bbd4c3c82c66`](../outputs/repair_v7/global_probe/bbd4c3c82c66/preflight.json) | 64 |
+| Wording probe | [`5ce210921f76`](../outputs/repair_v7/wording_probe/5ce210921f76/preflight.json) | 96 |
+| Illustrative calibration | [`1bec1e6b1a52`](../outputs/repair_v7/calibration/1bec1e6b1a52/preflight.json) | 104 |
 
-Nine runner tests passed in the final scoped execution. They use temporary
+These version-2 contracts bind the requested processing tier. The earlier
+`683f09663490`, `eb523e1644bb` and `2b16f9469ae0` directories are retained as
+superseded offline preparations, not observed results or active contracts.
+
+All **161 tests passed in 213.026 seconds** with outbound socket connections
+blocked. The 11 V7 runner tests passed separately as well. They use temporary
 ledgers and intercepted SDK transport, never the owner's key or billing ledger.
-The added exact-message pricing and post-import source-drift tests were each
-observed failing before their respective fixes, then passing.
+Exact-message pricing, post-import source drift and actual SDK tier selection
+were each observed failing before their respective fixes, then passing.
 
 - [x] All 64 global, 96 wording and 104 illustrative calibration fixture cells
   complete without a network connection or a paid request.
@@ -94,9 +107,12 @@ observed failing before their respective fixes, then passing.
 - [x] Mock SDK tests retain empty graphs, resume without new calls, block missing
   charges, preserve caps across versions, and stop before unaffordable requests.
 - [x] Timeout, invalid global reply and output truncation are not bought again.
+- [x] Standard is present in intercepted request JSON; missing/unexpected returned
+  tiers retain one reservation, and missing audit files block paid resume.
 - [x] Frozen V6 source hashes still match its saved contract.
-- [ ] Independent GPT-6.1-Sol review of the final new code and prompt catalog.
-- [ ] Current provider access/prices and a fresh locally configured API key.
+- [x] Independent GPT-6.1-Sol review of the final new code and prompt catalog.
+- [x] Standard-tier rate values checked against official sources on October 12.
+- [ ] Actual provider account access and a fresh locally configured API key.
 - [ ] Paid diagnostic results, accepted final wording and new calibration results.
 - [ ] Team/professor approval of estimands, effect sizes, multiplicity, missingness
   policy and repetition allocation before main collection.
@@ -120,13 +136,14 @@ prompt catalog and planned cells. `preflight` also creates a fixture report and
 a cost-reservation calculation. Neither grants permission or uses a real key.
 The contract changes if source, runtime, roster, recipe or rates change.
 
-An independent reviewer must produce a private `review.json` inside the exact
+Record the independent review in a private `review.json` inside the exact
 contract directory. It must bind `contract_sha256`, set the three reviewed
 checks (`prompt_semantics_reviewed`, `diagnostic_design_reviewed`,
 `spending_safeguards_reviewed`), disclose `human_bilingual_validation=false`, and
-provide a traceable `review_reference`. The owner must verify the matching
-`rates`, today's `prices_verified_on` and supporting `price_evidence`. Do not
-set these flags merely to bypass a gate.
+provide a traceable `review_reference`. Match `rates`, today's `prices_verified_on`
+and supporting `price_evidence`. The global-probe record now binds the completed
+review and October 12 rate check; this private file is intentionally not in Git.
+Recheck prices on a later execution date. Do not set flags merely to bypass a gate.
 
 Only after those checks and a fresh local `OPENAI_API_KEY`:
 

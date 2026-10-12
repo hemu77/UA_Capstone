@@ -38,12 +38,12 @@ class RepairTests(unittest.TestCase):
             api_key='offline-test-key', max_retries=0, http_client=httpx.Client(transport=httpx.MockTransport(handler)))))
 
     @staticmethod
-    def response(request, text='NONE', finish='stop'):
+    def response(request, text='NONE', finish='stop', tier='default'):
         if request.method == 'GET':
             return httpx.Response(200, json={'id': request.url.path.rsplit('/', 1)[-1], 'object': 'model', 'created': 0, 'owned_by': 'fixture'})
         body = json.loads(request.content)
         return httpx.Response(200, json={'id': 'offline-response', 'object': 'chat.completion', 'created': 0,
-            'model': body['model'], 'choices': [{'index': 0, 'finish_reason': finish,
+            'model': body['model'], 'service_tier': tier, 'choices': [{'index': 0, 'finish_reason': finish,
                 'message': {'role': 'assistant', 'content': text}}],
             'usage': {'prompt_tokens': 100, 'completion_tokens': 1, 'total_tokens': 101}})
 
@@ -123,6 +123,17 @@ class RepairTests(unittest.TestCase):
         self.assertEqual(result['empty_graphs'], 64)
         self.assertEqual(len(calls), 64)
         self.assertLess(result['stage_charge_usd'], approved['additional_usd'])
+        # Public graph replay needs no private transport log; paid resume does.
+        receipt = next((target / 'runs').glob('*.json'))
+        saved = json.loads(receipt.read_text())
+        audit_path = target / 'transport' / (saved['requests'][0]['request_id'] + '.json')
+        audit = json.loads(audit_path.read_text())
+        audit_path.unlink()
+        r.verify_run(receipt, saved['cell'], spec)
+        with self.assertRaises(FileNotFoundError):
+            r.execute('global_probe')
+        self.assertEqual(len(calls), 64)
+        r.write_json(audit_path, audit)
         # A missing charge cannot silently purchase a previously completed request.
         with contextlib.closing(r.paid.Budget(r.LEDGER, require_existing=True).db) as db:
             db.execute('DELETE FROM attempts WHERE id=(SELECT id FROM attempts LIMIT 1)')
@@ -207,6 +218,51 @@ class RepairTests(unittest.TestCase):
                 '0' * 64 if Path(path).name == 'repair_v7.py' else original(path)):
             with self.assertRaisesRegex(ValueError, 'Source changed after import'):
                 r.contract('global_probe')
+
+    def test_standard_tier_is_sent_logged_and_missing_audit_blocks_cached_run(self):
+        spec, target = self.setup_workspace()
+        cell = r.cells(spec)[0]
+        calls = []
+        def handler(request):
+            calls.append(json.loads(request.content))
+            return self.response(request)
+        self.client(handler)
+        budget = r.paid.Budget(r.LEDGER, require_existing=True)
+        with contextlib.closing(budget.db):
+            with r.paid.OpenAI() as client, r.adapter(cell, spec):
+                caller = r.Caller(client, budget, cell, spec, target)
+                r.base.run_cell(cell, caller)
+                self.assertEqual(calls[0].get('service_tier'), 'default')
+                audit_path = target / 'transport' / (caller.last_request_id + '.json')
+                self.assertEqual(json.loads(audit_path.read_text())['response']['service_tier'], 'default')
+                r.base.run_cell(cell, r.Caller(client, budget, cell, spec, target))
+                self.assertEqual(len(calls), 1)
+                audit_path.unlink()
+                with self.assertRaises(FileNotFoundError):
+                    r.base.run_cell(cell, r.Caller(client, budget, cell, spec, target))
+                self.assertEqual(len(calls), 1)
+
+    def test_unknown_or_expensive_tier_is_retained_once_and_not_rebought(self):
+        for tier in [None, 'priority']:
+            with self.subTest(tier=tier):
+                spec, target = self.setup_workspace()
+                cell = r.cells(spec)[0]
+                calls = []
+                def handler(request):
+                    calls.append(request)
+                    return self.response(request, tier=tier)
+                self.client(handler)
+                budget = r.paid.Budget(r.LEDGER, require_existing=True)
+                self.addCleanup(budget.db.close)
+                with r.paid.OpenAI() as client, r.adapter(cell, spec):
+                    for _ in range(2):
+                        with self.assertRaises(RuntimeError):
+                            r.base.run_cell(cell, r.Caller(client, budget, cell, spec, target))
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(budget.unresolved_count(), 1)
+                self.assertGreater(budget.spent(), 0)
+                audit = next((target / 'transport').glob('*.json'))
+                self.assertEqual(json.loads(audit.read_text())['response']['service_tier'], tier)
 
 
 if __name__ == '__main__':

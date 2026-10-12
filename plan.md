@@ -2,9 +2,11 @@
 
 **Active next steps, October 12:** [V7 repair, regeneration and budget plan](docs/REPAIR_V7_PLAN.md).
 The owner approved conditional repair stages ($5/$10/$15). The isolated
-[runner and offline checks](docs/REPAIR_V7_RUNNER.md) are implemented; independent
-exact-version review, current prices and a local key are pending. No V7 paid work
-has run; main collection remains unauthorized. The V6 history below stays intact.
+[runner and offline checks](docs/REPAIR_V7_RUNNER.md) are implemented. Independent
+GPT-6.1-Sol review and October 12 Standard-price checks are recorded in the
+[V7 review evidence](docs/V7_REVIEW_OCT12.md); a fresh local key and actual account
+access remain pending. No V7 paid work has run; main collection remains
+unauthorized. The V6 history below stays intact.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**

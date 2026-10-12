@@ -90,7 +90,8 @@ def contract(stage, recipe=None):
     current_sources = {name: base.sha(ROOT / name) for name in SOURCES}
     if current_sources != IMPORTED_SOURCES:
         raise ValueError('Source changed after import; restart before preparing a contract.')
-    return dict(version='repair-v7-diagnostics-1', stage=stage, main_authorized=False,
+    return dict(version='repair-v7-diagnostics-2', stage=stage, main_authorized=False,
+        requested_service_tier='default',
         sources={**history['sources'], **current_sources},
         history_contract_sha256=digest(history), roster_sha256=history['roster_sha256'],
         runtime=base.frozen.runtime_versions(), rates={model: list(paid.RATES[model]) for model in MODELS},
@@ -108,6 +109,7 @@ def cells(spec):
     # 'main' is the legacy ledger bucket, not permission for a confirmatory study.
     return [dict(**row, run_id=f"repair_v7_{spec['stage']}_{fingerprint[:12]}_{i:03d}",
         phase='main', repair_contract_sha256=fingerprint, frozen_source_sha256=spec['sources'],
+        requested_service_tier=spec['requested_service_tier'],
         roster_sha256=spec['roster_sha256'], evidence_type='repair_diagnostic_not_confirmation')
         for i, row in enumerate(spec['design'])]
 
@@ -129,6 +131,30 @@ def adapter(cell, spec):
 
 
 class Caller(base.CalibrationCaller):
+    def __call__(self, model, messages, **kwargs):
+        if self.cell.get('requested_service_tier') != 'default':
+            raise ValueError('Only Standard processing is budgeted.')
+        rid = base.request_id(self.cell, self.ordinal, messages)
+        row = base.ledger_row(self.budget, rid)
+        if row is not None and row[3] == 'received':
+            verify_transport(self.destination, rid, json.loads(row[5]))
+        transport = self.client.chat.completions.with_raw_response
+        original = transport.create
+
+        def standard_create(**request):
+            # Pin actual JSON, not the project's changeable default processing tier.
+            request['extra_body'] = {**request.get('extra_body', {}), 'service_tier': 'default'}
+            raw = original(**request)
+            response = raw.parse()
+            write_json(self.destination / 'transport' / (rid + '.json'),
+                dict(request_id=rid, requested_service_tier='default', response=response.model_dump()))
+            if getattr(response, 'service_tier', None) != 'default':
+                raise RuntimeError('Standard tier not confirmed; retain reservation and reconcile the saved reply.')
+            return raw
+
+        with patch.object(transport, 'create', standard_create):
+            return super().__call__(model, messages, **kwargs)
+
     def parse_response(self, **kwargs):
         try:
             return super().parse_response(**kwargs)
@@ -136,6 +162,18 @@ class Caller(base.CalibrationCaller):
             if self.cell['method'] == 'global':
                 raise DiagnosticInvalid('Received global answer failed parsing; no replacement.') from error
             raise
+
+
+def verify_transport(target, rid, recorded):
+    audit = json.loads((target / 'transport' / (rid + '.json')).read_text(encoding='utf8'))
+    response = audit['response']
+    if (audit.get('request_id') != rid or audit.get('requested_service_tier') != 'default'
+            or response.get('service_tier') != 'default' or not response.get('choices')
+            or response.get('id') != recorded['response_id'] or response.get('model') != recorded['resolved_model']
+            or response.get('usage') != recorded['usage']
+            or (response['choices'][0]['message'].get('content') or '') != recorded['text']
+            or response['choices'][0]['finish_reason'] != recorded['finish_reason']):
+        raise ValueError('Transport tier or reply differs from the charged receipt.')
 
 
 def verify_run(path, cell, spec, budget=None):
@@ -169,6 +207,7 @@ def verify_run(path, cell, spec, budget=None):
         if not math.isclose(response['conservative_charge_usd'], charge, rel_tol=0, abs_tol=1e-12):
             raise ValueError('Recorded charge differs from frozen rates and usage.')
         if budget is not None:
+            verify_transport(path.parent.parent, rid, response)
             row = base.ledger_row(budget, rid)
             if row is None or row[3] != 'received' or row[2] != charge or json.loads(row[4]) != request or json.loads(row[5]) != response:
                 raise ValueError('Receipt/ledger mismatch.')
@@ -261,6 +300,7 @@ def approve(stage, recipe=None):
             if budget.unresolved_count():
                 raise ValueError('Unresolved historical request blocks spending.')
             if (any(target.parent.glob('*/requests/*.json')) or any(target.parent.glob('*/runs/*.json'))
+                    or any(target.parent.glob('*/transport/*.json'))
                     or any(json.loads(row[0]).get('cell', {}).get('run_id', '').startswith('repair_v7_' + stage + '_')
                            for row in budget.db.execute('SELECT request FROM attempts'))):
                 raise ValueError('Prior stage attempts exist without authorization; reconcile, never re-anchor.')

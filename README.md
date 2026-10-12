@@ -7,8 +7,10 @@ under different country framings, instruction languages and generation methods.
 **Latest, October 12:** the [V7 repair runner](docs/REPAIR_V7_RUNNER.md) is implemented
 and offline-checked. The owner approved conditional $5/$10/$15 diagnostic and
 recalibration stages, not main collection. No V7 API calls have been made.
-Exact-version review, current pricing and a fresh local key remain execution
-gates. V5/V6 data are preserved; the simulator still shows observed V6 results.
+GPT-6.1-Sol reviewed the exact candidate and spending safeguards; Standard-tier
+rates were checked October 12. See the [review evidence and remaining gates](docs/V7_REVIEW_OCT12.md).
+A fresh local key and provider-access checks are still needed. V5/V6 data are
+preserved; the simulator still shows observed V6 results.
 
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
@@ -40,6 +42,8 @@ neither calibration is automatically reused for confirmation.
   which outputs need regeneration, staged cost assumptions and remaining gates.
 - [V7 implementation and commands](docs/REPAIR_V7_RUNNER.md): safeguards,
   offline checks, historical-data preservation and the pending paid boundary.
+- [V7 independent review evidence](docs/V7_REVIEW_OCT12.md): exact reviewed
+  version, regressions, current pricing, billing-tier fix and limitations.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
   findings, unresolved scientific decisions and versioned next steps; dated review history.
 - [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):

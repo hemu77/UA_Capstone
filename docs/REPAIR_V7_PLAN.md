@@ -2,8 +2,9 @@
 
 October 12, 2026. **Owner approved the staged repair plan. Offline runner implemented;
 no V7 API calls made.** Stage ceilings are $5 / $10 / $15, conditional on the gates
-below. This is not main-study approval. A fresh local key, current price evidence
-and exact-version review are still required. See [execution and checks](REPAIR_V7_RUNNER.md).
+below. This is not main-study approval. GPT-6.1-Sol exact-version review and
+October 12 Standard-price checks are [recorded](V7_REVIEW_OCT12.md); a fresh local
+key and actual provider-access checks remain pending. See [execution and checks](REPAIR_V7_RUNNER.md).
 This is the active next-step plan following [the PR response](PR_REVIEW_OCT12.md).
 V5/V6 remain historical exploratory evidence, not failed files to delete.
 
@@ -11,7 +12,7 @@ V5/V6 remain historical exploratory evidence, not failed files to delete.
 
 | Problem | Repair | Done means |
 | --- | --- | --- |
-| Portuguese context grammar | Isolated candidate with full country-specific context sentences, used for normal and retry instructions. | Exact composed strings checked across four countries, all five prompt operations and singular/plural cases; later exact-version semantic review still required. |
+| Portuguese context grammar | Isolated candidate with full country-specific context sentences, used for normal and retry instructions. | Exact composed strings checked across four countries, all five prompt operations and singular/plural cases; automated exact-version review completed, human validation remains absent. |
 | Mostly-empty global outputs | Compare two suspect clauses in a controlled 2-by-2 experiment, with identical roster/order/settings across arms. | Inspect compliance, edges, isolates and all empty outcomes. Decide what task is intended; do not select wording solely because it creates denser or significant results. |
 | Language versus one particular wording | Three variants total per instruction language, including English paraphrases; keep persona data and output semantics fixed. | Independently authored/reviewed variants, provenance, robustness comparisons, and explicit disclosure that no human bilingual review occurred. |
 | Homophily promised but not primary | Recommend RQ1/RQ4 as confirmatory candidates; RQ2/RQ3 remain reported descriptively. Include a justified homophily endpoint if the primary question promises it. | Team approves exact outcomes, meaningful raw-unit effects and hypothesis families before new confirmation data. No selecting the best-looking calibration outcome and reporting it as prespecified. |
@@ -25,8 +26,9 @@ the frozen V6 source intact. `repair_v7.py` provides prepare, offline preflight,
 review-gated authorization and budgeted execution. A 288-entry catalog covers
 all countries, languages, operations, cardinalities and supported retry wording.
 Alternative local phrasings are AI-authored by the implementation agent, not
-independently authored human translations. Independent exact-version semantic
-review remains a paid-execution gate; mechanical checks cannot replace it.
+independently authored human translations. GPT-6.1-Sol independently reviewed
+the exact catalog. That machine review does not establish human-equivalent
+translation quality or behavioral equivalence across languages.
 
 All global arms explicitly permit `NONE` with the same response grammar. Factor
 A varies the no-required-count clause; factor B varies an additional reminder
@@ -78,7 +80,9 @@ assistant model used to review code.
 
 Source: [`cost_stats.csv`](../outputs/calibration_v6/5fb3715550db/cost_stats.csv)
 and recorded rates in `paid_study.py`. Values below use historical conservative
-accounting, not a fresh provider invoice or verified current pricing.
+accounting, not a fresh provider invoice. The rate values were checked against
+official Standard-tier pricing on October 12; [sources and limitations](V7_REVIEW_OCT12.md).
+V7 now explicitly requests Standard and records the returned processing tier.
 
 | Stage | Cost evidence / assumption | Proposed separate stop limit |
 | --- | --- | --- |
@@ -102,7 +106,8 @@ correction requests. These are **not predicted bills**: actual replies release
 unused reservation amounts after each request. They do show why a $10/$15 stop
 cannot guarantee completion. Calibration's illustration uses arm `a0_b0`, not
 an accepted recipe; different real graph histories can change prompt sizes.
-Current model prices and access must be checked before paid execution.
+Recheck prices if execution occurs on a later date; actual account access still
+needs checking before generation. A Standard-tier reservation is not an invoice.
 
 **Wording arithmetic:** each model contributes 24 local graphs. Sum of the four
 historical per-model local means is $0.2496316; multiply by 24 = $5.9912.
@@ -155,9 +160,10 @@ The simulator must not silently mix V5, V6, probes and accepted V7 results.
   silent string-repair success. Tests check grammar targets, not semantic validity.
 - [x] Produce the 288-entry prompt/retry catalog before any paid call. Automated
   bilingual review must still cover that catalog hash, not an earlier version.
-- [ ] Have one bounded read-only reviewer independently inspect the new candidate,
-  global ablation and statistical design. Request permission before dispatch;
-  use GPT-6.1-Sol as requested, but do not treat model review as human validation.
+- [x] One authorized GPT-6.1-Sol read-only reviewer inspected the exact candidate,
+  global diagnostic design, historical isolation and spending safeguards. The
+  [bounded review](V7_REVIEW_OCT12.md) is not human validation or approval of
+  main-study statistical design.
 - [x] Compose all five prompt operations across all 16 country-language combinations
   offline, and exercise all 264 planned diagnostic/calibration fixture cells;
   paid calibration coverage remains the seven declared settings.
@@ -172,8 +178,9 @@ The simulator must not silently mix V5, V6, probes and accepted V7 results.
   valid coverage alone is insufficient if intervals are uninformative.
 - [ ] Confirm four-language semantics and practical output interpretation across
   all four models before broad collection. Claims remain fixed-roster sensitivity.
-- [ ] Run relevant regressions and notebook/provenance checks, then obtain finite
-  stage-specific spending approval. No checkbox substitutes for that approval.
+- [x] Run the full offline Python regression suite and all three V7 fixture
+  preflights. Finite conditional stage permissions are recorded above; no
+  checkbox grants main collection or replaces a live provider check.
 
 What these gates offer is smaller, detectable failures and traceable decisions,
 not a guarantee of zero defects, zero failed paid requests, research validity or
