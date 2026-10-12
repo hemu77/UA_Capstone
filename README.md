@@ -4,6 +4,12 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
+**Latest, October 12:** the [V7 repair runner](docs/REPAIR_V7_RUNNER.md) is implemented
+and offline-checked. The owner approved conditional $5/$10/$15 diagnostic and
+recalibration stages, not main collection. No V7 API calls have been made.
+Exact-version review, current pricing and a fresh local key remain execution
+gates. V5/V6 data are preserved; the simulator still shows observed V6 results.
+
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
 metrics and accounting passed verification. **22/26 global graphs are empty**,
@@ -32,8 +38,10 @@ neither calibration is automatically reused for confirmation.
 
 - [Active V7 repair and budget plan](docs/REPAIR_V7_PLAN.md): what changes,
   which outputs need regeneration, staged cost assumptions and remaining gates.
+- [V7 implementation and commands](docs/REPAIR_V7_RUNNER.md): safeguards,
+  offline checks, historical-data preservation and the pending paid boundary.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
-  findings, unresolved scientific decisions and versioned next steps. No new spending approved.
+  findings, unresolved scientific decisions and versioned next steps; dated review history.
 - [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
   104 revised V6 graphs, recorded replay, matched filters and original artifacts.
   [Deployment and verification notes](docs/SIMULATOR_DEPLOYMENT.md). No API calls;

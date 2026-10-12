@@ -1,8 +1,10 @@
 # Revised Research Plan: Fix Design Before Spending
 
 **Active next steps, October 12:** [V7 repair, regeneration and budget plan](docs/REPAIR_V7_PLAN.md).
-The Portuguese offline candidate is isolated; paid probes and new calibration
-are not authorized. The completed V6 history below remains intact.
+The owner approved conditional repair stages ($5/$10/$15). The isolated
+[runner and offline checks](docs/REPAIR_V7_RUNNER.md) are implemented; independent
+exact-version review, current prices and a local key are pending. No V7 paid work
+has run; main collection remains unauthorized. The V6 history below stays intact.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**
@@ -21,7 +23,8 @@ be reviewed before main collection. Statistical/sample-allocation decisions
 remain open. **October 12 update:** the public simulator now defaults to the
 104 V6 graphs; historical collections remain separate. See the
 [new PR review response](docs/PR_REVIEW_OCT12.md) for confirmed defects and
-prospective design decisions. No further paid work is authorized.
+prospective design decisions. The active V7 authorization boundary is above;
+this historical V6 section does not authorize further collection.
 
 ## 1. Decision in Plain Language
 

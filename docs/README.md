@@ -2,7 +2,8 @@
 
 | Read in order | Purpose |
 | --- | --- |
-| [V7 repair and budget](REPAIR_V7_PLAN.md) | Active offline candidate, 41 affected V6 graphs, conditional probe/recalibration scope and cost assumptions. |
+| [V7 repair and budget](REPAIR_V7_PLAN.md) | 41 directly affected V6 graphs; approved conditional probe/recalibration scope and cost assumptions. |
+| [V7 runner and checks](REPAIR_V7_RUNNER.md) | Implemented offline pipeline, commands, spending safeguards, no V7 paid results yet. |
 | [October 12 PR response](PR_REVIEW_OCT12.md) | Confirmed review findings, statistical caveats, unresolved gates; no new paid authorization. |
 | [Revised calibration results](CALIBRATION_V6_RESULTS.md) | Start here: 104 verified graphs, $7.8549, empty-global finding, compliance and revised forecasts. |
 | [Revised plan](../plan.md) | October 2 completed fixes/calibration and scientific decisions before main spending. |

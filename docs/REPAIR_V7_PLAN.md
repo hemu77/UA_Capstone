@@ -1,6 +1,9 @@
 # V7 Repair Plan, Regeneration Map and Budget
 
-October 12, 2026. **Offline repairs only. No new API spending authorized.**
+October 12, 2026. **Owner approved the staged repair plan. Offline runner implemented;
+no V7 API calls made.** Stage ceilings are $5 / $10 / $15, conditional on the gates
+below. This is not main-study approval. A fresh local key, current price evidence
+and exact-version review are still required. See [execution and checks](REPAIR_V7_RUNNER.md).
 This is the active next-step plan following [the PR response](PR_REVIEW_OCT12.md).
 V5/V6 remain historical exploratory evidence, not failed files to delete.
 
@@ -16,11 +19,19 @@ V5/V6 remain historical exploratory evidence, not failed files to delete.
 | Empty graphs and failed requests confused | Keep valid empty graphs, distinguish missing metrics from missing runs, retain all attempts. | No replacing an empty graph with a nicer result; no assertion that transport/truncation failures are outcome-independent. |
 | Documentation drift | Current status has one repair-plan entry point; retain dated reports as history. | README, team checklist and release notes point here; claims and checkboxes follow evidence rather than anticipated work. |
 
-**Implemented now:** `revision_v7_prompts.py` corrects only Portuguese context
-wording, including retries. It delegates argument validation to V6, rejects
-unexpected template drift, and changes no V6 source. It has no paid execution
-entry point. The global wording is intentionally still V6: this module is not a
-completed V7 study, independent translation, or authorization to generate.
+**Implemented now:** `revision_v7_prompts.py` repairs Portuguese context,
+defines four global-clause arms and three local wordings per language, and keeps
+the frozen V6 source intact. `repair_v7.py` provides prepare, offline preflight,
+review-gated authorization and budgeted execution. A 288-entry catalog covers
+all countries, languages, operations, cardinalities and supported retry wording.
+Alternative local phrasings are AI-authored by the implementation agent, not
+independently authored human translations. Independent exact-version semantic
+review remains a paid-execution gate; mechanical checks cannot replace it.
+
+All global arms explicitly permit `NONE` with the same response grammar. Factor
+A varies the no-required-count clause; factor B varies an additional reminder
+about empty networks. This tests clause salience while keeping parsing constant,
+not a literal V5/V6 reproduction or a causal diagnosis of all previous changes.
 
 ## 2. What Must Be Regenerated
 
@@ -72,20 +83,26 @@ accounting, not a fresh provider invoice or verified current pricing.
 | Stage | Cost evidence / assumption | Proposed separate stop limit |
 | --- | --- | --- |
 | Offline fixes, tests, saved-data analysis | $0 model-generation API cost | No API calls |
-| 64 global clause probes | $4.8312 scenario envelope for one attempt per graph at the token assumptions below; not a bound on retries | $5; can stop before all 64 finish |
+| 64 global clause probes | $3.2392 sum of per-request reservations from exact prepared prompts, historical rates and the configured 8,192-output-token cap | $5; invalid/truncated/uncertain replies still stop the stage |
 | 96 local wording graphs | $5.9912 at historical per-model means; 50% allowance gives $8.9867 | $10 |
 | 104 accepted-version calibration graphs | Previous comparable set cost $7.8549; revised global replies may be longer. 50% on the historical total alone gives $11.7823, not a worst-case bound | $15 |
-| Combined staged permissions | Historical/envelope planning sum about $18.68, with uncertain changed-prompt costs | Up to $30 only if each stage is separately approved |
+| Combined staged permissions | Mixed historical/envelope planning sum about $17.09, with uncertain changed-prompt costs | $30 total across conditional stages; no automatic advancement |
 
-**Global arithmetic:** 16 graphs/model; assume 1,200 input and 12,000 output tokens
-per first attempt. Historical input rates sum to $4.30/million tokens across the
-four models; output rates sum to $19.70/million. Then
-`16 * (1200 * 4.30 + 12000 * 19.70) / 1e6 * 1.25 = $4.8312`.
-These are planning token assumptions, not configured or verified final caps.
-Three such attempts per graph would cost $14.4936; therefore the $5 cap must
-reserve before every request and stop, not promise completion. First-response
-diagnostics should not be erased by retries. Actual prompt lengths, provider
-rates, maximum outputs and repair policy must be priced before authorization.
+**Global arithmetic now comes from code:** each input reservation uses the UTF-8
+byte count plus the same framing allowance as the frozen paid caller. Charge
+reservation is `(input_bound * input_rate * 1.25 + 8192 * output_rate) / 1e6`.
+The 64 exact prepared requests sum to $3.2392444 at historical rates. This replaces
+the previous hypothetical 12,000-output-token scenario. No SDK or parsing retry
+is permitted for global diagnostics; a malformed answer is retained and stops
+the stage. An empty `NONE` answer is valid and does not trigger a replacement.
+
+For local wording and calibration, the sums of per-call maximum reservations are
+$60.6778 and $91.7382, respectively, under offline fixture histories and with no
+correction requests. These are **not predicted bills**: actual replies release
+unused reservation amounts after each request. They do show why a $10/$15 stop
+cannot guarantee completion. Calibration's illustration uses arm `a0_b0`, not
+an accepted recipe; different real graph histories can change prompt sizes.
+Current model prices and access must be checked before paid execution.
 
 **Wording arithmetic:** each model contributes 24 local graphs. Sum of the four
 historical per-model local means is $0.2496316; multiply by 24 = $5.9912.
@@ -111,14 +128,15 @@ Keep existing files in place to preserve their paths and hashes. New files follo
 the existing repository pattern instead of moving old artifacts:
 
 ```text
-revision_v7_prompts.py                  # offline Portuguese candidate, exists
-tests/test_revision_v7_prompts.py        # scoped regression checks, exists
-docs/REPAIR_V7_PLAN.md                   # this active plan, exists
+revision_v7_prompts.py                  # separately versioned prompt treatments
+repair_v7.py                           # gated diagnostics and calibration runner
+tests/test_revision_v7_prompts.py        # grammar and historical-source checks
+tests/test_repair_v7.py                 # offline spending/replay/stage checks
+docs/REPAIR_V7_RUNNER.md                # commands, verification, pending gates
 outputs/calibration_v6/5fb3715550db/     # preserved historical receipts/results
-outputs/global_probe_v7/<contract>/    # proposed; not generated
-outputs/wording_variants_v7/<contract>/ # proposed; not generated
-outputs/calibration_v7/<contract>/     # proposed; not generated
-stats/revision_v7/<contract>/          # proposed; derived analysis only
+outputs/repair_v7/global_probe/<hash>/  # prepared contract/catalog/fixture report
+outputs/repair_v7/wording_probe/<hash>/ # prepared; no observed graphs yet
+outputs/repair_v7/calibration/<hash>/   # illustrative recipe; not accepted
 ```
 
 Every future experiment needs exact prompt/variant IDs, source/roster/contract
@@ -135,18 +153,20 @@ The simulator must not silently mix V5, V6, probes and accepted V7 results.
   counts 1/2/8 and retry text; verify other-language output is unchanged.
 - [x] Fail if the inherited context sentence disappears or appears twice; no
   silent string-repair success. Tests check grammar targets, not semantic validity.
-- [ ] Produce the exact full prompt/retry catalog before any paid call. Automated
-  bilingual review must cover that catalog hash, not an earlier version.
+- [x] Produce the 288-entry prompt/retry catalog before any paid call. Automated
+  bilingual review must still cover that catalog hash, not an earlier version.
 - [ ] Have one bounded read-only reviewer independently inspect the new candidate,
   global ablation and statistical design. Request permission before dispatch;
   use GPT-6.1-Sol as requested, but do not treat model review as human validation.
-- [ ] Test all five prompt operations across all 16 country-language combinations
-  offline; paid study coverage remains the seven declared settings.
+- [x] Compose all five prompt operations across all 16 country-language combinations
+  offline, and exercise all 264 planned diagnostic/calibration fixture cells;
+  paid calibration coverage remains the seven declared settings.
 - [ ] Review empty-outcome rates, degree-one concentration, isolates, invalid
   responses and retry rates by language/model, not merely successful file counts.
   A warning triggers review, never deletion/replacement of valid observations.
-- [ ] Test interruption/resume, source drift, duplicate requests, uncertain charges
-  and bounded corrections before each new paid-runner integration.
+- [x] Test interruption/resume, source drift, duplicate requests, uncertain charges
+  and bounded corrections in the new offline runner integration. A changed
+  version cannot reset the per-stage allowance; lost evidence blocks repayment.
 - [ ] Prespecify estimands, effects, multiplicity, allocation and missingness rules.
   Exercise inference on synthetic null and alternative data before freeze;
   valid coverage alone is insufficient if intervals are uninformative.
