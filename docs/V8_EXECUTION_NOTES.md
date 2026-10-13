@@ -125,8 +125,9 @@ authorization follows automatically from a passing calibration.
 
 ## Execution Status
 
-The paid wording screen is complete. The 104-cell recalibration started but
-is currently stopped after a provider HTTP 500 (details below),
+The paid wording screen is complete. The 104-cell recalibration is currently
+stopped at **101 observations (97 valid graphs, four global failures)** after
+a second provider interruption, HTTP 520 (details below),
 under the original $15 allowance, anchored at cumulative ledger usage $20.425088
 and a ceiling of $35.425088. Main collection remains unauthorized. The
 runner was reviewed and passed 176 offline regressions in 294.999 seconds before
@@ -227,8 +228,52 @@ accounting/reservations at the stop totaled $5.3276665, within the original $15.
 
 The uncertain request retains its full $0.001172 reservation, not a zero-cost
 assumption. Its HTTP status, server/client request identifiers and elapsed time
-are recorded privately. A single exact replacement has been requested from
-the owner but is not yet authorized or sent. Any recovery must preserve the
-original attempt, charge its full reservation, keep the same stage ceiling,
-and never repurchase the 236 saved replies. The separate Hindi probe stays gated
-on completed and verified calibration. Main collection remains unauthorized.
+are recorded privately. The owner authorized one exact replacement; it succeeded.
+`repair_v8_transport.py` preserves the original attempt and full reservation,
+uses a fresh deterministic replacement identity, and replays the 236 saved replies.
+Frozen prompt and generation sources were not edited. The separate Hindi probe
+stays gated on completed and verified calibration. Main remains unauthorized.
+
+### Subsequent HTTP-520 Checkpoint
+
+Continuation reached 101/104 observations: **97 valid graphs and four terminal
+global failures**. The global failures are duplicate friendships in cells 023,
+072 and 089, and an out-of-roster ID in cell 088. They are not empty graphs or
+deduplicated successes. Another provider HTTP 520 interrupted cell 101
+(GPT-6-Luna iterative, Japan/English, repetition 1) at ordinal 139. All 139
+received replies are retained; cells 102 and 103 remain unattempted.
+
+The unresolved request retains **$0.000971625**. Total calibration accounting is
+**$7.8050634**: $7.802919775 received-response usage, $0.001172 for the earlier
+retired request, and $0.000971625 for the new unresolved request. The original
+budget anchor and ceiling are unchanged. A separate exact replacement decision
+has been requested; the earlier one-request permission is not reused.
+
+The latest full offline suite passed **189 tests in 442.480 seconds**. Four
+focused recovery tests additionally cover cached resume, another lost response,
+insufficient budget, orphan evidence, post-commit interruption, preserved earlier
+rows and atomic publication of verification plus retained-cost evidence.
+Five focused tests also passed in the clean publishing checkout in 7.752 seconds.
+Its public terminal receipts replayed 101 observations without a key or private
+ledger. The private checkpoint audit verified those observations plus the 139
+received prefix replies, with unchanged ledger rows and no API calls.
+
+The read-only `inspect_repair_v8_checkpoint.py` checks the stopped observations
+and incomplete prefix without opening an API client or modifying the ledger.
+Its separate `checkpoint_inspection.json` never grants whole-stage clearance.
+Final main cost/runtime forecasts and the Hindi probe remain pending completion.
+See [the plain-language handoff](V8_TEAM_HANDOFF.md) for review priorities.
+
+```powershell
+# Offline partial-state audit; private ledger required, no spending.
+python -B inspect_repair_v8_checkpoint.py
+# Full verification/inspection remain blocked while HTTP-520 is unresolved.
+python -B repair_v8_transport.py verify
+python -B repair_v8_transport.py inspect
+```
+
+The paid command is not a generic retry button. A second recovery must be
+separately authorized and reviewed. OpenAI's [error guidance](https://developers.openai.com/api/docs/guides/error-codes)
+describes transient server errors; it does not reconcile whether a particular
+lost response was billed. Retaining the reservation is conservative local
+accounting, not a claim of a verified provider charge.

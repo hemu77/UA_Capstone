@@ -4,8 +4,12 @@
 The new wording screen attempted all 96 planned graph cells: 94 valid graphs,
 two terminal Hindi-alternative failures, $5.9461527 conservatively. The reference
 wording, fixed before seeing results, passed 32/32 graphs. The approved 104-cell
-recalibration stopped after 63 completed observations on a provider HTTP 500;
-it did not retry automatically. See the execution notes for recovery status.
+recalibration reached **101 observations: 97 valid graphs and four global failures**.
+The authorized first recovery worked. A later HTTP 520 stopped another cell after
+139 received replies, requiring a separate replacement decision. Current charged
+or reserved calibration usage is **$7.8050634 of $15**. Read the
+[current plain-language checkpoint handoff](V8_TEAM_HANDOFF.md) before the
+historical sections below; it explains the debugging, evidence and remaining work.
 Global instructions now explicitly ask for
 a hypothetical network; this is a new hypothesis, not a relabeling of old graphs.
 The [Hindi candidate](HINDI_WORDING_CANDIDATE.md) has a separate $1/four-graph

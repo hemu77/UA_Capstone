@@ -9,13 +9,19 @@ completed all **96 planned cells: 94 valid graphs and two retained failures**,
 at **$5.9461527** conservative usage. The prospectively fixed reference wording
 completed 32/32 graphs; both terminal failures were a Hindi alternative and
 motivated a [separate offline candidate](docs/HINDI_WORDING_CANDIDATE.md),
-not silently replaced or relabeled. **104-cell V8 recalibration stopped after
-63 completed observations on a provider HTTP 500**, with no automatic retry;
-its original $15 ceiling remains unchanged. See the execution notes for recovery
-status. Main collection remains unauthorized.
+not silently replaced or relabeled. **V8 recalibration is now at 101/104 completed
+observations: 97 valid graphs and four retained global failures.** The first
+authorized HTTP-500 recovery succeeded without repurchasing cached replies.
+A new HTTP 520 stopped the next graph after 139 received replies; a second
+replacement decision is pending. Accounting/reservations total **$7.8050634 of
+$15**. Read the [plain-language current handoff](docs/V8_TEAM_HANDOFF.md).
+The Hindi probe has not run; main collection remains unauthorized.
 Private cached verification and public key-free replay passed for the wording
 screen. Costs are conservative local accounting, not reconciled invoice totals.
 V5/V6/V7 history stays intact; the simulator still shows observed V6 results.
+The latest checks passed **189 offline tests**, five focused publishing tests,
+and replay of all 101 public terminal observations. These are checkpoint checks,
+not full calibration or research-validity clearance.
 
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
@@ -43,6 +49,8 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Current professor/team handoff](docs/V8_TEAM_HANDOFF.md): earlier versus now,
+  debugging evidence, partial results, costs, and the exact remaining decisions.
 - [Current V8 execution and evidence](docs/V8_EXECUTION_NOTES.md): paid wording
   outcomes, prospective recalibration, failure accounting and replay commands.
 - [Hindi wording candidate](docs/HINDI_WORDING_CANDIDATE.md): the observed failure,

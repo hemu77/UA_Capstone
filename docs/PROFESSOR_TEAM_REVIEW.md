@@ -1,15 +1,40 @@
-# Professor and Team Review: Revised Calibration Complete
+# Professor and Team Review: V8 Checkpoint, Completion Pending
 
 **Current V8 update, October 13:** [execution notes](V8_EXECUTION_NOTES.md)
 supersede the status below. The 96-cell wording screen is complete (94 valid
 graphs/two preserved failures); all 32 reference graphs completed. The approved
 104-cell recalibration uses that prospectively fixed reference and
 explicit multilingual hypothetical-network instructions for global generation.
-It stopped at 63 completed observations on a provider HTTP 500, without an
-automatic retry; current recovery status is in the execution notes.
+The authorized HTTP-500 recovery preserved cached replies and succeeded.
+Calibration reached **101/104 observations: 97 valid graphs, four terminal global
+failures**. Another provider HTTP 520 then interrupted a cell after 139 replies.
+Current calibration charges/reservations are **$7.8050634 of $15**; another exact
+replacement decision is pending, not an unlimited retry permission.
 The separate Hindi alternative candidate is offline-only, not proof of corrected
 live compliance. Please review missingness and inference limits, not just test
 counts. Main collection remains unauthorized; V6 findings below are history.
+
+## Current Note To The Professor
+
+Professor, I have updated the core pipeline and preserved the previous results
+instead of overwriting them. The new work clarifies the hypothetical-network
+task, records strict parsing failures, and protects against paying again for
+responses already received. The recovery and regression checks passed, including
+189 offline tests. The latest collection is not yet complete because a second
+provider interruption stopped it at 101 of 104 observations. Four global outputs
+also failed the strict parser; these are reported as missing graphs, not successes.
+
+Please read the [current handoff](V8_TEAM_HANDOFF.md),
+[full knowledge brief](TEAM_KNOWLEDGE_BRIEF.md), and
+[technical execution record](V8_EXECUTION_NOTES.md) before reviewing the code.
+The handoff explains what changed, why, the actual costs, and the work still
+blocked. I am requesting review of the implementation and research scope, **not
+approval to launch main collection yet**. Final cost/runtime forecasts and the
+separate Hindi comparison will follow completed, verified calibration. Human
+bilingual certification is absent, and software checks cannot guarantee research
+validity or conference acceptance.
+
+## Historical V6 Review Below
 
 October 2, 2026. **Requested decision: review the findings before authorizing
 main collection.** No main batch is running.

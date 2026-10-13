@@ -1,0 +1,166 @@
+{
+  "cell": {
+    "model": "gpt-6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "japanese",
+    "repetition": 0,
+    "seed": 33000,
+    "wording": "reference",
+    "global_arm": "a0_b0",
+    "run_id": "repair_v7_calibration_176533db7041_088",
+    "phase": "main",
+    "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+    "frozen_source_sha256": {
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+      "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+      "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+      "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+      "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+    },
+    "requested_service_tier": "default",
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "evidence_type": "repair_diagnostic_not_confirmation"
+  },
+  "evidence_type": "received_invalid_v8_observation",
+  "requests": [
+    {
+      "request_id": "54b2e5d702deb0d9db8860e127b779818c82b96edf698fcd7def8215b2c48afd",
+      "request": {
+        "cell": {
+          "model": "gpt-6-luna",
+          "method": "global",
+          "culture": "us",
+          "language": "japanese",
+          "repetition": 0,
+          "seed": 33000,
+          "wording": "reference",
+          "global_arm": "a0_b0",
+          "run_id": "repair_v7_calibration_176533db7041_088",
+          "phase": "main",
+          "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 0,
+        "model": "gpt-6-luna",
+        "messages": [
+          {
+            "role": "system",
+            "content": "以下の架空の人物を使い、シミュレーション用の仮想的な友人関係ネットワークを構築してください。候補者のデータにすでに記録された関係を復元するのではなく、あり得そうな友人関係の一例を生成してください。\n\n社会的な舞台は米国です。登場人物は架空の成人です。属性を変更しないでください。登場人物が話す言語は指定されていません。候補者データの英語の項目名と値は、すべての条件で同じです。一覧の人物間のネットワーク全体を定義するすべての友人ペアを選んでください。1対1の組み合わせだけを作る課題ではありません。各人物の友人数は0人、1人、複数人のいずれでも構いません。互いにつながっていないグループも許されます。友人関係に方向はありません。各ペアは1回だけ記載してください。各行に整数IDのペアをID1, ID2として記載し、ID1 < ID2を守ってください。自分自身への関係、重複するペア、説明、その他の文章は含めないでください。 回答形式：NONE、または各行にID1, ID2のペアを1組。"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":null,\"candidates\":[[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 8192,
+          "reasoning_effort": "none"
+        },
+        "date_utc": "2026-10-13T10:50:26.274682+00:00",
+        "rates_per_million": [
+          0.1,
+          0.5
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "54b2e5d702deb0d9db8860e127b779818c82b96edf698fcd7def8215b2c48afd"
+      },
+      "response": {
+        "text": "0, 15\n0, 25\n0, 49\n1, 25\n1, 40\n1, 43\n2, 14\n2, 17\n2, 18\n2, 31\n2, 45\n3, 7\n3, 8\n3, 23\n3, 25\n3, 50\n4, 7\n4, 12\n4, 37\n4, 43\n5, 8\n5, 20\n5, 32\n5, 34\n5, 41\n6, 11\n6, 24\n6, 29\n6, 30\n6, 48\n7, 17\n7, 37\n8, 20\n8, 23\n9, 12\n9, 14\n9, 22\n9, 24\n9, 29\n10, 16\n10, 27\n10, 40\n10, 43\n11, 19\n11, 24\n11, 29\n11, 38\n12, 14\n12, 22\n12, 33\n12, 48\n13, 20\n13, 33\n13, 36\n13, 41\n13, 47\n14, 18\n14, 22\n14, 28\n15, 43\n16, 27\n16, 40\n16, 43\n17, 21\n17, 37\n18, 28\n18, 31\n18, 42\n19, 24\n19, 35\n19, 39\n19, 46\n20, 32\n20, 33\n20, 34\n20, 41\n21, 37\n21, 45\n22, 28\n22, 31\n22, 42\n23, 25\n23, 38\n23, 42\n24, 29\n24, 39\n24, 43\n25, 40\n25, 43\n26, 36\n26, 44\n26, 45\n27, 40\n27, 43\n28, 31\n28, 42\n29, 30\n29, 36\n29, 48\n30, 36\n30, 45\n31, 42\n32, 34\n32, 41\n33, 36\n33, 47\n34, 36\n34, 41\n35, 39\n35, 46\n36, 48\n37, 39\n38, 42\n40, 43\n41, 47\n44, 49\n45, 47\n46, 49",
+        "usage": {
+          "completion_tokens": 592,
+          "prompt_tokens": 1113,
+          "total_tokens": 1705,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 1110,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYUNOlOnyCJw1SXVJjV8NckMXrhK5",
+        "resolved_model": "gpt-6-luna",
+        "fingerprint": null,
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T10:50:32.375544+00:00",
+        "conservative_charge_usd": 0.000435125,
+        "diagnostics": {
+          "client_request_id": "54b2e5d702deb0d9db8860e127b779818c82b96edf698fcd7def8215b2c48afd",
+          "server_request_id": "req_502140dce3c541968a2c7500ac6e7b2d",
+          "http_status": 200,
+          "elapsed_ms": 5953.0,
+          "date_utc": "2026-10-13T10:50:32.375544+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "5645",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "2000000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "1999107",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "26ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Response contains an ID outside the roster",
+          "duplicate_edges": []
+        }
+      }
+    }
+  ],
+  "failure": "invalid_global_response"
+}

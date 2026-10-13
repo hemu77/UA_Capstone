@@ -13,15 +13,19 @@ source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.
 - [x] Implement the separately authorized $1/four-graph Hindi probe with an
   enforced completed-calibration prerequisite; all 184 offline tests pass.
 - [ ] Run and inspect that probe after calibration completion and verification.
-- [ ] Finish the authorized 104-cell V8 recalibration: currently stopped after
-  a provider HTTP 500 at 63 completed observations. Preserve the uncertain
-  reservation and obtain explicit bounded-replacement permission before retrying.
-  The original $15 ceiling is unchanged.
+- [x] Recover the first HTTP-500 request with explicit permission, retain its
+  reservation, and reuse the 236 received replies. Recovery and 189 regressions pass.
+- [ ] Finish the authorized 104-cell V8 recalibration: now **101 completed
+  observations, 97 valid graphs/four global failures**. A later HTTP 520 stopped
+  another cell after 139 replies. A separate exact replacement decision is pending;
+  charged/reserved usage is $7.8050634 and the original $15 ceiling is unchanged.
 - [ ] Verify and report current calibration costs, duration and missingness.
 - [ ] Obtain scientific decisions and finite authorization before main collection.
 
 The V6 history below stays intact. Neither a passing test suite nor calibration
 completion guarantees research validity or conference acceptance.
+Read the [current handoff](docs/V8_TEAM_HANDOFF.md) for the exact remaining cells
+and professor/team review questions. This checkpoint is not main-study clearance.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**

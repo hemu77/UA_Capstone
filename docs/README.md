@@ -2,6 +2,7 @@
 
 | Read in order | Purpose |
 | --- | --- |
+| [Current V8 team handoff](V8_TEAM_HANDOFF.md) | Earlier versus now, 101/104 checkpoint, recovery/debugging, costs and remaining decisions; read first. |
 | [Current V8 execution](V8_EXECUTION_NOTES.md) | Completed 96-cell wording screen, 94 graphs/two failures, prospective recalibration and exact evidence paths. |
 | [Hindi wording candidate](HINDI_WORDING_CANDIDATE.md) | Offline-only follow-up; no change to frozen observations or calibration reference. |
 | [Latest V7 execution and findings](V7_EXECUTION_NOTES.md) | Paid diagnostic outcomes, verification-only recovery, costs and current advancement decision. |
