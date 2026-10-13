@@ -1,0 +1,35 @@
+{
+  "status": "COMPLETED",
+  "operation": "execute_wording_probe",
+  "started_at_utc": "2026-10-13T04:38:27.398429+00:00",
+  "source_sha256": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+  "checkpoint_helper_sha256": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+  "recovery_helper_sha256": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+  "frozen_runner_sha256": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+  "policy": "At most five retries of the identical local request-journal write on PermissionError only. No API retries.",
+  "main_authorized": false,
+  "write_retries": [
+    {
+      "request_id": "96278d0a6ec2a5b94115377c72c56f1f860913bc790a9afb29b8c05885a68569",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "e667b0bd024c4fd505df2e069828d3c4980ac7196bfe07db58469b2f456c4d16",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "00cf38633d1681ed8f5f8244fee4164ec1b60b454f605c8f56cc4ddd1a8004df",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    }
+  ],
+  "ended_at_utc": "2026-10-13T06:03:52.072797+00:00"
+}

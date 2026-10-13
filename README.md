@@ -4,15 +4,18 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-**Latest, October 12:** V7 diagnostics completed **72 first responses for
-$0.1422011**. The 64-graph clause screen had **51 empty networks**. A separate
-eight-call explicit-task probe produced **seven valid nonempty graphs and one
-duplicate-edge failure**, retained without replacement. Both share the original
-$5 allowance; this is diagnostic evidence, not completed recalibration.
-Read the [live findings and recovery record](docs/V7_EXECUTION_NOTES.md) first.
-The conditional wording/calibration stages have not run; main collection remains
-unauthorized. V5/V6 data stay intact and the simulator still shows observed V6
-results. Costs are conservative local accounting, not reconciled invoice totals.
+**Latest, October 13:** the [V8 wording screen](docs/V8_EXECUTION_NOTES.md)
+completed all **96 planned cells: 94 valid graphs and two retained failures**,
+at **$5.9461527** conservative usage. The prospectively fixed reference wording
+completed 32/32 graphs; both terminal failures were a Hindi alternative and
+motivated a [separate offline candidate](docs/HINDI_WORDING_CANDIDATE.md),
+not silently replaced or relabeled. **104-cell V8 recalibration stopped after
+63 completed observations on a provider HTTP 500**, with no automatic retry;
+its original $15 ceiling remains unchanged. See the execution notes for recovery
+status. Main collection remains unauthorized.
+Private cached verification and public key-free replay passed for the wording
+screen. Costs are conservative local accounting, not reconciled invoice totals.
+V5/V6/V7 history stays intact; the simulator still shows observed V6 results.
 
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
@@ -40,6 +43,10 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Current V8 execution and evidence](docs/V8_EXECUTION_NOTES.md): paid wording
+  outcomes, prospective recalibration, failure accounting and replay commands.
+- [Hindi wording candidate](docs/HINDI_WORDING_CANDIDATE.md): the observed failure,
+  isolated clarification, offline checks and outstanding live-validation limit.
 - [Latest V7 execution and findings](docs/V7_EXECUTION_NOTES.md): completed paid
   diagnostics, verification-only recovery, preserved evidence and stop decisions.
 - [Active V7 repair and budget plan](docs/REPAIR_V7_PLAN.md): what changes,
@@ -103,7 +110,9 @@ but reads the preserved V5 `study_protocol_896.json`. The new offline candidate 
 Country labels are prompt framings, not validated cultural constructs. RQ4
 concerns these instruction wordings until wording robustness is tested.
 
-## Verified Progress
+## Historical V6 Progress (October 2)
+
+This section records V6, not the current V8 completion or test status.
 
 - [x] **104 revised calibration graphs**, each with 50 nodes, adjacency, PNG and receipt.
 - [x] GPT-6-Luna: 7 settings x 4 methods x 2 repetitions = 56 graphs.
@@ -118,13 +127,15 @@ concerns these instruction wordings until wording robustness is tested.
   The old **828 remaining** count is not a current target; no automatic calibration reuse.
 - [ ] Final RQ analysis and a paper with claims supported by the completed evidence.
 
-The revised calibration contains **11,548 received requests**, including **12
+The historical V6 calibration contains **11,548 received requests**, including **12
 first-response failures among 11,536 decisions (0.104%)**, each corrected once.
 Costs include rejected responses. Undefined metrics in 22 empty graphs remain
 undefined, not invented zeros. These clustered decision counts do not establish
 translation equivalence. Eight repetitions are not proven adequate power.
 
-## Measured Cost and Next Decision
+## Historical V6 Costs (October 2)
+
+These V6 measurements and forecasts are preserved history, not current V8 totals.
 
 | Item | Conservative accounting/estimate |
 | --- | ---: |
@@ -141,7 +152,8 @@ Global is unusually cheap because most replies are `NONE`; changed prompts need
 new forecasts. Runtime excludes future local work and pauses. See [the complete
 assumptions](docs/CALIBRATION_V6_RESULTS.md). The old ~$101 remaining forecast is
 historical, not the current quote. Two historical uncertain billing reservations
-remain counted; revised calibration has zero unresolved requests.
+remain counted; V6 had zero unresolved requests at its October 2 completion.
+The current V8 HTTP-500 reservation is additional and remains unresolved.
 
 **Team question:** does the intended paper accept this controlled, limited
 model-behavior study, or require stronger population, translation, replication
@@ -283,6 +295,8 @@ No viewer action calls a model. See [viewer checks and limitations](docs/VIEWER_
 owner must retain the original ledger, configure a fresh `OPENAI_API_KEY` locally,
 validate current prices/model access, and supply a truthful hash-matching main
 review with a finite cumulative ceiling. Do not edit flags just to force it to run.
-Do not launch the old 896-target command. Revised calibration is complete;
-global-task, wording-robustness, estimand/allocation and main-budget decisions
-remain pending as listed in [plan.md](plan.md). No further API spending is started.
+Do not launch the old 896-target command. V6 calibration completed October 2;
+V8 wording diagnostics are complete, but V8 recalibration stopped on HTTP 500.
+Its recovery, the separately approved Hindi probe, scientific decisions and
+main-budget authorization remain tracked in [plan.md](plan.md). No automatic
+replacement or main-study generation is running.

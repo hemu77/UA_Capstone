@@ -1,0 +1,24 @@
+{
+  "status": "RECONCILED_NO_PAID_CALLS",
+  "request_id": "269b666d116214835f3fcc00e9dc573c4fc9fb4f20702ca452fcb85c396fb585",
+  "contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+  "source_sha256": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+  "original_checkpoint": {
+    "request_id": "269b666d116214835f3fcc00e9dc573c4fc9fb4f20702ca452fcb85c396fb585",
+    "row_sha256": "6e53352e2a873e1041c85a366a17104aa1011169e7a411fee490f81f38f3f62e"
+  },
+  "replacement_checkpoint": {
+    "request_id": "269b666d116214835f3fcc00e9dc573c4fc9fb4f20702ca452fcb85c396fb585",
+    "row_sha256": "160e316a25bfab01d55d2b98a6d5fd1d82b8443d69ae87a2fee4955cb4343703"
+  },
+  "ledger_rows_sha256": "ddb832a56325d6d0416932da2eee71930363f74fa40cead2133b166113cb76b3",
+  "ledger_usd": 15.71585895,
+  "replayed_responses": 23,
+  "paid_requests": 0,
+  "main_authorized": false,
+  "cause": "Observed Windows PermissionError during local replace; file holder unknown.",
+  "ledger_rows_unchanged": true,
+  "changed_journals": [
+    "269b666d116214835f3fcc00e9dc573c4fc9fb4f20702ca452fcb85c396fb585.json"
+  ]
+}

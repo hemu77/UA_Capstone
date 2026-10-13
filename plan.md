@@ -1,13 +1,27 @@
 # Revised Research Plan: Fix Design Before Spending
 
-**Active next steps, October 12:** [V7 repair, regeneration and budget plan](docs/REPAIR_V7_PLAN.md).
-The owner approved conditional repair stages ($5/$10/$15). The 64-graph global
-diagnostic completed for $0.1178608, with 51 empty graphs. The global task is not
-cleared for scaling. The separate eight-call task probe finished with seven valid
-nonempty graphs and one retained duplicate-edge failure. Both probes together
-cost $0.1422011 within the original $5 ceiling. Read [current outcomes and recovery evidence](docs/V7_EXECUTION_NOTES.md).
-Wording/calibration remain gated; main collection remains unauthorized. The
-V6 history below stays intact.
+**Active V8 update, October 13:** [current execution and evidence](docs/V8_EXECUTION_NOTES.md).
+The owner-approved stage allowances remain $5/$10/$15, not new allowances per
+source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.
+
+- [x] Complete the 96-cell local wording screen: 94 valid graphs/two failures,
+  $5.9461527 including failures; private cached and public replay verified.
+- [x] Preserve the prospectively fixed reference, which completed 32/32 graphs;
+  do not choose a wording because it produces preferred topology.
+- [x] Keep the Hindi alternative clarification in a separate offline candidate;
+  preserve both failed observations and the original denominator.
+- [x] Implement the separately authorized $1/four-graph Hindi probe with an
+  enforced completed-calibration prerequisite; all 184 offline tests pass.
+- [ ] Run and inspect that probe after calibration completion and verification.
+- [ ] Finish the authorized 104-cell V8 recalibration: currently stopped after
+  a provider HTTP 500 at 63 completed observations. Preserve the uncertain
+  reservation and obtain explicit bounded-replacement permission before retrying.
+  The original $15 ceiling is unchanged.
+- [ ] Verify and report current calibration costs, duration and missingness.
+- [ ] Obtain scientific decisions and finite authorization before main collection.
+
+The V6 history below stays intact. Neither a passing test suite nor calibration
+completion guarantees research validity or conference acceptance.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**

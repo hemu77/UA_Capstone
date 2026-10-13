@@ -1,0 +1,2307 @@
+{
+  "cell": {
+    "model": "gpt-4.1",
+    "method": "local",
+    "culture": "us",
+    "language": "hindi",
+    "repetition": 0,
+    "seed": 32000,
+    "wording": "alternative_2",
+    "global_arm": null,
+    "run_id": "repair_v7_wording_probe_026a883076d5_058",
+    "phase": "main",
+    "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+    "frozen_source_sha256": {
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+      "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+      "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+      "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+      "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+    },
+    "requested_service_tier": "default",
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "evidence_type": "repair_diagnostic_not_confirmation"
+  },
+  "evidence_type": "received_invalid_v8_observation",
+  "requests": [
+    {
+      "request_id": "a76f89b12457e1115cbf1adee29ede52e7a1f284c4d632e0a7663a88d50df266",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 0,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 7 के लिए मित्र बनने हेतु 11 उम्मीदवार चुनें। ठीक 11 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:25.617629+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "a76f89b12457e1115cbf1adee29ede52e7a1f284c4d632e0a7663a88d50df266"
+      },
+      "response": {
+        "text": "46,4,34,42,25,26,38,17,3,23,21",
+        "usage": {
+          "completion_tokens": 21,
+          "prompt_tokens": 916,
+          "total_tokens": 937,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD3Shv0xji5Hr2aGPHhr2u6nOWs",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_7b2086d4c2",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:26.363265+00:00",
+        "conservative_charge_usd": 0.002458,
+        "diagnostics": {
+          "client_request_id": "a76f89b12457e1115cbf1adee29ede52e7a1f284c4d632e0a7663a88d50df266",
+          "server_request_id": "req_074b328edf2d47baa8373ce89c0b8105",
+          "http_status": 200,
+          "elapsed_ms": 625.0,
+          "date_utc": "2026-10-13T05:19:26.363265+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "454",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "449139",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "114ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "40a175d3159095dcb8b79300edd3f6eb571418108d80537eb9f0407c07e6377c",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 1,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 27 के लिए मित्र बनने हेतु 4 उम्मीदवार चुनें। ठीक 4 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:26.494385+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "40a175d3159095dcb8b79300edd3f6eb571418108d80537eb9f0407c07e6377c"
+      },
+      "response": {
+        "text": "43,40,15,0",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 916,
+          "total_tokens": 923,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD43JhnZ0FtKbgB2vI2tI5unVtR",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_3c3d8fed9a",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:27.202104+00:00",
+        "conservative_charge_usd": 0.002346,
+        "diagnostics": {
+          "client_request_id": "40a175d3159095dcb8b79300edd3f6eb571418108d80537eb9f0407c07e6377c",
+          "server_request_id": "req_1cfc97e9c9d14277bcd147c437f1ba45",
+          "http_status": 200,
+          "elapsed_ms": 593.0,
+          "date_utc": "2026-10-13T05:19:27.202482+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "414",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448202",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "239ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "14167e102c6fd9fa0aca6c02383508a6a7ebb8ebd9ffdc8e8b214ac66be902d9",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 2,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 4 के लिए मित्र बनने हेतु 3 उम्मीदवार चुनें। ठीक 3 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:27.342176+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "14167e102c6fd9fa0aca6c02383508a6a7ebb8ebd9ffdc8e8b214ac66be902d9"
+      },
+      "response": {
+        "text": "8,19,34\n49,37,43\n35,11,24",
+        "usage": {
+          "completion_tokens": 17,
+          "prompt_tokens": 916,
+          "total_tokens": 933,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD5BvAiQljMnJVvhJw8kNmnCEZG",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_8a456ba4f1",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:28.017743+00:00",
+        "conservative_charge_usd": 0.002426,
+        "diagnostics": {
+          "client_request_id": "14167e102c6fd9fa0aca6c02383508a6a7ebb8ebd9ffdc8e8b214ac66be902d9",
+          "server_request_id": "req_9ba2ed15a8bd4fcf98bac27640240985",
+          "http_status": 200,
+          "elapsed_ms": 563.0,
+          "date_utc": "2026-10-13T05:19:28.017743+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "402",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "449139",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "114ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Response must be one line",
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "96278d0a6ec2a5b94115377c72c56f1f860913bc790a9afb29b8c05885a68569",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 3,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "अमान्य उत्तर। सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 4 के लिए मित्र बनने हेतु 3 उम्मीदवार चुनें। ठीक 3 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:28.150278+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "96278d0a6ec2a5b94115377c72c56f1f860913bc790a9afb29b8c05885a68569"
+      },
+      "response": {
+        "text": "34,8,37",
+        "usage": {
+          "completion_tokens": 5,
+          "prompt_tokens": 919,
+          "total_tokens": 924,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD6Se5i50HgiIx8PySMe5kOeB8r",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_848a8cd823",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:28.918334+00:00",
+        "conservative_charge_usd": 0.0023375,
+        "diagnostics": {
+          "client_request_id": "96278d0a6ec2a5b94115377c72c56f1f860913bc790a9afb29b8c05885a68569",
+          "server_request_id": "req_d28d75c8564545b6b349c3a7964ac8a3",
+          "http_status": 200,
+          "elapsed_ms": 656.0,
+          "date_utc": "2026-10-13T05:19:28.918334+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "490",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448197",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "240ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "f2f0a9bf9014ba651949d111ad31534fbd1bb3587f2e4bcd23f2cc6409d6b346",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 4,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 9 के लिए मित्र बनने हेतु एक उम्मीदवार चुनें। ठीक एक चयन आवश्यक है। केवल चुने गए उम्मीदवार की पूर्णांक ID लौटाएँ; स्वयं को न चुनें और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:29.111411+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "f2f0a9bf9014ba651949d111ad31534fbd1bb3587f2e4bcd23f2cc6409d6b346"
+      },
+      "response": {
+        "text": "12",
+        "usage": {
+          "completion_tokens": 1,
+          "prompt_tokens": 901,
+          "total_tokens": 902,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD75Zw16S2Wginz7KTqZ49hzEXs",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_04d28f6feb",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:29.790940+00:00",
+        "conservative_charge_usd": 0.0022605,
+        "diagnostics": {
+          "client_request_id": "f2f0a9bf9014ba651949d111ad31534fbd1bb3587f2e4bcd23f2cc6409d6b346",
+          "server_request_id": "req_bfb1140ff6fe4e5ba32b979b2297e53a",
+          "http_status": 200,
+          "elapsed_ms": 579.0,
+          "date_utc": "2026-10-13T05:19:29.790940+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "422",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4997",
+            "x-ratelimit-remaining-tokens": "447299",
+            "x-ratelimit-reset-requests": "36ms",
+            "x-ratelimit-reset-tokens": "360ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "834913ea37225234f8e1581f057e82077bc0e935166b5a88e8165adb833b46cd",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 5,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 12 के लिए मित्र बनने हेतु 9 उम्मीदवार चुनें। ठीक 9 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:29.931525+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "834913ea37225234f8e1581f057e82077bc0e935166b5a88e8165adb833b46cd"
+      },
+      "response": {
+        "text": "9,22,32,33,34,41,47,48,13",
+        "usage": {
+          "completion_tokens": 17,
+          "prompt_tokens": 916,
+          "total_tokens": 933,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD8ejJwlRNCASbHICyEdaPoM0KH",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_2a0801036e",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:30.737512+00:00",
+        "conservative_charge_usd": 0.002426,
+        "diagnostics": {
+          "client_request_id": "834913ea37225234f8e1581f057e82077bc0e935166b5a88e8165adb833b46cd",
+          "server_request_id": "req_24d860bffef74c00943b3283e150e511",
+          "http_status": 200,
+          "elapsed_ms": 688.0,
+          "date_utc": "2026-10-13T05:19:30.737512+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "552",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4996",
+            "x-ratelimit-remaining-tokens": "446380",
+            "x-ratelimit-reset-requests": "48ms",
+            "x-ratelimit-reset-tokens": "482ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "71c23047f0dc3f33aedd8ca080a1124a687500e5f1e33f21b831c180fc7f1b79",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 6,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 30 के लिए मित्र बनने हेतु एक उम्मीदवार चुनें। ठीक एक चयन आवश्यक है। केवल चुने गए उम्मीदवार की पूर्णांक ID लौटाएँ; स्वयं को न चुनें और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:30.884156+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "71c23047f0dc3f33aedd8ca080a1124a687500e5f1e33f21b831c180fc7f1b79"
+      },
+      "response": {
+        "text": "6",
+        "usage": {
+          "completion_tokens": 1,
+          "prompt_tokens": 901,
+          "total_tokens": 902,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD97izg0BYlR5YSBwTHlygNx5cR",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_8d3244826b",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:31.552190+00:00",
+        "conservative_charge_usd": 0.0022605,
+        "diagnostics": {
+          "client_request_id": "71c23047f0dc3f33aedd8ca080a1124a687500e5f1e33f21b831c180fc7f1b79",
+          "server_request_id": "req_403b1d485d6c4030a9b3f4e9c5aef52c",
+          "http_status": 200,
+          "elapsed_ms": 547.0,
+          "date_utc": "2026-10-13T05:19:31.552190+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "392",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "449084",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "122ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "b4aa1c2e3bbca2b85cb22db2f40cdd75c7785ae8176e9390902a1e5a3506b840",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 7,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 10 के लिए मित्र बनने हेतु 11 उम्मीदवार चुनें। ठीक 11 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:31.685132+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "b4aa1c2e3bbca2b85cb22db2f40cdd75c7785ae8176e9390902a1e5a3506b840"
+      },
+      "response": {
+        "text": "30,32,36,20,34,33,47,48,13,5,41",
+        "usage": {
+          "completion_tokens": 21,
+          "prompt_tokens": 916,
+          "total_tokens": 937,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPD9nVUvsSJbERZoXkpxWoPqPRCB",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_87b97c2d72",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:32.390748+00:00",
+        "conservative_charge_usd": 0.002458,
+        "diagnostics": {
+          "client_request_id": "b4aa1c2e3bbca2b85cb22db2f40cdd75c7785ae8176e9390902a1e5a3506b840",
+          "server_request_id": "req_7ca1ddf93946449e89b187bbc0784b19",
+          "http_status": 200,
+          "elapsed_ms": 594.0,
+          "date_utc": "2026-10-13T05:19:32.390748+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "429",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448164",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "244ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "de18d1505c6160c29746d585ff8c8a87f902f662caf60395480ae51931778f0c",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 8,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 39 के लिए मित्र बनने हेतु 11 उम्मीदवार चुनें। ठीक 11 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:32.537208+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "de18d1505c6160c29746d585ff8c8a87f902f662caf60395480ae51931778f0c"
+      },
+      "response": {
+        "text": "40,43,27,16,10,31,18,24,37,35,19",
+        "usage": {
+          "completion_tokens": 21,
+          "prompt_tokens": 916,
+          "total_tokens": 937,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDATC40Nqyz8NLC2vRptrzWfkPV",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_ea96bef74f",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:33.352124+00:00",
+        "conservative_charge_usd": 0.002458,
+        "diagnostics": {
+          "client_request_id": "de18d1505c6160c29746d585ff8c8a87f902f662caf60395480ae51931778f0c",
+          "server_request_id": "req_cd20dde84eb6453d84b1c26e4f6b22ae",
+          "http_status": 200,
+          "elapsed_ms": 687.0,
+          "date_utc": "2026-10-13T05:19:33.352124+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "559",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4997",
+            "x-ratelimit-remaining-tokens": "447227",
+            "x-ratelimit-reset-requests": "36ms",
+            "x-ratelimit-reset-tokens": "369ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "1810228b96a191e9d69e3d6b8d44e460b8cad60e0856888e2c7aba24284d9f68",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 9,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 23 के लिए मित्र बनने हेतु एक उम्मीदवार चुनें। ठीक एक चयन आवश्यक है। केवल चुने गए उम्मीदवार की पूर्णांक ID लौटाएँ; स्वयं को न चुनें और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:33.489996+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "1810228b96a191e9d69e3d6b8d44e460b8cad60e0856888e2c7aba24284d9f68"
+      },
+      "response": {
+        "text": "38",
+        "usage": {
+          "completion_tokens": 1,
+          "prompt_tokens": 901,
+          "total_tokens": 902,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDBlqkGG99RpodjmNC65H9QOdg7",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_36620df7ef",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:34.098190+00:00",
+        "conservative_charge_usd": 0.0022605,
+        "diagnostics": {
+          "client_request_id": "1810228b96a191e9d69e3d6b8d44e460b8cad60e0856888e2c7aba24284d9f68",
+          "server_request_id": "req_a5c96e59c82646898dc705dde1897c43",
+          "http_status": 200,
+          "elapsed_ms": 500.0,
+          "date_utc": "2026-10-13T05:19:34.098190+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "351",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "449081",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "122ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "9cb771d0f0d34fcfbf43ea40cd81a8eded608914a923ed7e4e70f30df186984b",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 10,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 6 के लिए मित्र बनने हेतु 7 उम्मीदवार चुनें। ठीक 7 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:34.247327+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "9cb771d0f0d34fcfbf43ea40cd81a8eded608914a923ed7e4e70f30df186984b"
+      },
+      "response": {
+        "text": "30,36,29,48,13,41,47",
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 916,
+          "total_tokens": 929,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDChnbdx8OfOyUB7PyQPktDQc8P",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_87b97c2d72",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:35.032117+00:00",
+        "conservative_charge_usd": 0.002394,
+        "diagnostics": {
+          "client_request_id": "9cb771d0f0d34fcfbf43ea40cd81a8eded608914a923ed7e4e70f30df186984b",
+          "server_request_id": "req_e31816232c45437bae898922f0f89f17",
+          "http_status": 200,
+          "elapsed_ms": 672.0,
+          "date_utc": "2026-10-13T05:19:35.032117+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "514",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448162",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "245ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "7bfb31e69cccda994b36e914c8304216059e7bb01ce852a74d9fa70fd2867242",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 11,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 22 के लिए मित्र बनने हेतु 4 उम्मीदवार चुनें। ठीक 4 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:35.157840+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "7bfb31e69cccda994b36e914c8304216059e7bb01ce852a74d9fa70fd2867242"
+      },
+      "response": {
+        "text": "12,9,48,29",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 916,
+          "total_tokens": 923,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDDw5M7WLoFRX08QSs6yTzCgyRk",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_d924c79089",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:35.749630+00:00",
+        "conservative_charge_usd": 0.002346,
+        "diagnostics": {
+          "client_request_id": "7bfb31e69cccda994b36e914c8304216059e7bb01ce852a74d9fa70fd2867242",
+          "server_request_id": "req_b0690d2ccc274e5e99fa6dbc11cd71dd",
+          "http_status": 200,
+          "elapsed_ms": 468.0,
+          "date_utc": "2026-10-13T05:19:35.749630+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "333",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4997",
+            "x-ratelimit-remaining-tokens": "447233",
+            "x-ratelimit-reset-requests": "36ms",
+            "x-ratelimit-reset-tokens": "368ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "dc9fed13221020d91c71f5debc8a2f5a06c628f5c1b68275bde29d8f4bee000b",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 12,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 29 के लिए मित्र बनने हेतु 7 उम्मीदवार चुनें। ठीक 7 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:35.891175+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "dc9fed13221020d91c71f5debc8a2f5a06c628f5c1b68275bde29d8f4bee000b"
+      },
+      "response": {
+        "text": "30,36,6,48,13,47,41",
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 916,
+          "total_tokens": 929,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDDUMJ0sA9655NOrfpFzSCWICw3",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_87b97c2d72",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:36.549101+00:00",
+        "conservative_charge_usd": 0.002394,
+        "diagnostics": {
+          "client_request_id": "dc9fed13221020d91c71f5debc8a2f5a06c628f5c1b68275bde29d8f4bee000b",
+          "server_request_id": "req_b50de26582c8466fa8f110d01ab65ced",
+          "http_status": 200,
+          "elapsed_ms": 562.0,
+          "date_utc": "2026-10-13T05:19:36.549101+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "384",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4996",
+            "x-ratelimit-remaining-tokens": "446310",
+            "x-ratelimit-reset-requests": "48ms",
+            "x-ratelimit-reset-tokens": "491ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "ef3e66f6499aae4a53a5bc37bee3df42fc17dcc4084dcc41aeb2562b4aaee230",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 13,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 34 के लिए मित्र बनने हेतु 12 उम्मीदवार चुनें। ठीक 12 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:36.684017+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "ef3e66f6499aae4a53a5bc37bee3df42fc17dcc4084dcc41aeb2562b4aaee230"
+      },
+      "response": {
+        "text": "33,13,48,9,22,6,29,32,47,41,5,20",
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 916,
+          "total_tokens": 939,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDEQVn28hGx41NsawL4r0iTwFrs",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_5249c31eff",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:37.379130+00:00",
+        "conservative_charge_usd": 0.002474,
+        "diagnostics": {
+          "client_request_id": "ef3e66f6499aae4a53a5bc37bee3df42fc17dcc4084dcc41aeb2562b4aaee230",
+          "server_request_id": "req_238248e850a247f5bfcc1765ae954c3f",
+          "http_status": 200,
+          "elapsed_ms": 578.0,
+          "date_utc": "2026-10-13T05:19:37.379130+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "428",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "449070",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "123ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "03aa674f3582765b19c7977a77d6696d1d6db7e732b558a9cc671648b65ef339",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 14,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 32 के लिए मित्र बनने हेतु 3 उम्मीदवार चुनें। ठीक 3 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:37.514630+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "03aa674f3582765b19c7977a77d6696d1d6db7e732b558a9cc671648b65ef339"
+      },
+      "response": {
+        "text": "13,33,5",
+        "usage": {
+          "completion_tokens": 5,
+          "prompt_tokens": 916,
+          "total_tokens": 921,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDFdbKuH6uo6L9uQW0j3xenJz5h",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_3c3d8fed9a",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:38.291630+00:00",
+        "conservative_charge_usd": 0.00233,
+        "diagnostics": {
+          "client_request_id": "03aa674f3582765b19c7977a77d6696d1d6db7e732b558a9cc671648b65ef339",
+          "server_request_id": "req_7885029967f443ec8cc7939c7dd7cc00",
+          "http_status": 200,
+          "elapsed_ms": 657.0,
+          "date_utc": "2026-10-13T05:19:38.291630+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "504",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448132",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "249ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "e893ab0adcf4c90ba2a93bda9b0d9a6d9c1eddd5acb55aa72d665783d0230df8",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 15,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 38 के लिए मित्र बनने हेतु 2 उम्मीदवार चुनें। ठीक 2 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:38.422264+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "e893ab0adcf4c90ba2a93bda9b0d9a6d9c1eddd5acb55aa72d665783d0230df8"
+      },
+      "response": {
+        "text": "26,45\n42,23",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 916,
+          "total_tokens": 923,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDGSJTklOt4auKxKRaAU2aI6x7U",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_bee1fbc891",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:39.131877+00:00",
+        "conservative_charge_usd": 0.002346,
+        "diagnostics": {
+          "client_request_id": "e893ab0adcf4c90ba2a93bda9b0d9a6d9c1eddd5acb55aa72d665783d0230df8",
+          "server_request_id": "req_f13043c15e354631b62dd953f2a96a18",
+          "http_status": 200,
+          "elapsed_ms": 593.0,
+          "date_utc": "2026-10-13T05:19:39.132877+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "447",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4997",
+            "x-ratelimit-remaining-tokens": "447211",
+            "x-ratelimit-reset-requests": "36ms",
+            "x-ratelimit-reset-tokens": "371ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Response must be one line",
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "47f9d9d2b77eff30985a0944c92ea5025bab35d39056065faf8f247aa011c1b0",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 16,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "अमान्य उत्तर। सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 38 के लिए मित्र बनने हेतु 2 उम्मीदवार चुनें। ठीक 2 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:39.269541+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "47f9d9d2b77eff30985a0944c92ea5025bab35d39056065faf8f247aa011c1b0"
+      },
+      "response": {
+        "text": "26,28\n26,45",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 919,
+          "total_tokens": 926,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDHyIFHU59tW6XDxQsVrvZBkA2h",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_136a75fece",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:39.932276+00:00",
+        "conservative_charge_usd": 0.0023535,
+        "diagnostics": {
+          "client_request_id": "47f9d9d2b77eff30985a0944c92ea5025bab35d39056065faf8f247aa011c1b0",
+          "server_request_id": "req_d5c9811d57a549bea19dcce6511fc62a",
+          "http_status": 200,
+          "elapsed_ms": 547.0,
+          "date_utc": "2026-10-13T05:19:39.932276+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "392",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "448055",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "259ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Response must be one line",
+          "duplicate_edges": []
+        }
+      }
+    },
+    {
+      "request_id": "b4ed0dbdb0722d74ac7d6b5e7499f6f144cbd55281f2bf0b400085bb2a0a5aa9",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "local",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 32000,
+          "wording": "alternative_2",
+          "global_arm": null,
+          "run_id": "repair_v7_wording_probe_026a883076d5_058",
+          "phase": "main",
+          "repair_contract_sha256": "026a883076d535553285b80395c83f55755f8a651da0a854a31631dfe8759f13",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 17,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "अमान्य उत्तर। सामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। व्यक्ति 38 के लिए मित्र बनने हेतु 2 उम्मीदवार चुनें। ठीक 2 अलग-अलग चयन आवश्यक हैं। केवल उनकी पूर्णांक ID अल्पविराम से अलग करके लौटाएँ; स्वयं को न चुनें, कोई ID न दोहराएँ और कोई स्पष्टीकरण न दें।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],\"candidates\":[[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 512,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T05:19:40.062793+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "b4ed0dbdb0722d74ac7d6b5e7499f6f144cbd55281f2bf0b400085bb2a0a5aa9"
+      },
+      "response": {
+        "text": "26,28\n26,42",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 919,
+          "total_tokens": 926,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYPDIZ0MyH9ol1tMnFEhZJackChBw",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_136a75fece",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T05:19:40.714515+00:00",
+        "conservative_charge_usd": 0.0023535,
+        "diagnostics": {
+          "client_request_id": "b4ed0dbdb0722d74ac7d6b5e7499f6f144cbd55281f2bf0b400085bb2a0a5aa9",
+          "server_request_id": "req_14595a23b1254941a5a4d3158d0c1d1f",
+          "http_status": 200,
+          "elapsed_ms": 515.0,
+          "date_utc": "2026-10-13T05:19:40.714515+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "383",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4998",
+            "x-ratelimit-remaining-tokens": "448203",
+            "x-ratelimit-reset-requests": "24ms",
+            "x-ratelimit-reset-tokens": "239ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Response must be one line",
+          "duplicate_edges": []
+        }
+      }
+    }
+  ],
+  "failure": "local_corrections_exhausted"
+}

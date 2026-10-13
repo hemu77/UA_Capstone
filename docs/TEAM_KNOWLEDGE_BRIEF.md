@@ -1,5 +1,20 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
+**Current, October 13:** read [V8 execution](V8_EXECUTION_NOTES.md) first.
+The new wording screen attempted all 96 planned graph cells: 94 valid graphs,
+two terminal Hindi-alternative failures, $5.9461527 conservatively. The reference
+wording, fixed before seeing results, passed 32/32 graphs. The approved 104-cell
+recalibration stopped after 63 completed observations on a provider HTTP 500;
+it did not retry automatically. See the execution notes for recovery status.
+Global instructions now explicitly ask for
+a hypothetical network; this is a new hypothesis, not a relabeling of old graphs.
+The [Hindi candidate](HINDI_WORDING_CANDIDATE.md) has a separate $1/four-graph
+probe authorization, but that probe is not yet run.
+No main study is authorized. Old calibration forecasts are historical, not a
+current quote. Successful parsing does not certify realistic human behavior.
+
+## Historical V6 Status
+
 **October 2 update: revised calibration complete; main study still on hold.**
 All 104 approved graphs passed replay/accounting checks at **$7.8549 of $10**.
 Read [the new results](CALIBRATION_V6_RESULTS.md) and [plan](../plan.md).
@@ -243,14 +258,14 @@ The [new report](CALIBRATION_V6_RESULTS.md) includes method ranges and missingne
 
 ## 8. What the Interactive Viewer Does
 
-The private team viewer uses saved graph data, not edges reconstructed from a PNG.
+The public team-review viewer uses saved graph data, not edges reconstructed from a PNG.
 It supports filters, layered comparisons, persona inspection and recorded replay
 where event evidence exists. An animation cannot show unrecorded reasoning or
 pretend all personas acted simultaneously when generation was sequential.
 
-The unchanged default viewer exposes the 68 verified V5 calibration runs. Earlier
-historical/pilot evidence is retained as a separate dataset because its persona
-IDs refer to a different roster. Model/country/language/method comparisons use
+The deployed default viewer exposes 104 V6 calibration graphs. The 68 V5 runs
+and earlier historical/pilot evidence remain separate datasets; earlier persona
+IDs can refer to a different roster. Model/country/language/method comparisons use
 actual matched records; the coverage grid distinguishes available results from
 the eight repetitions planned per condition. Selection exports include the
 underlying graph data and provenance, not just screenshots.
@@ -258,8 +273,8 @@ underlying graph data and provenance, not just screenshots.
 See the [interaction checks](VIEWER_INTERACTION_REVIEW.md) for observed flows,
 tests and remaining device checks. Improving UI or figures does not resolve the
 research decisions below. Source PNGs are unchanged inspection artifacts, not
-finished paper figures. It does not yet display the new 104 graphs; simulation
-work was explicitly deferred while the core calibration was completed.
+finished paper figures. It does not display the V8 repair batches documented in
+this update; current work concerns the core pipeline, not a simulator deployment.
 
 ## 9. What Remains Before Spending Again
 
@@ -269,8 +284,10 @@ work was explicitly deferred while the core calibration was completed.
   absent; the wording screen and calibration do not replace human validation.
 - [ ] Resolve global empty-output behavior before proposing a main budget. If
   the task changes, use a new contract and bounded comparison, not cherry-picked reruns.
-- [ ] Decide the required independent wording variants/English paraphrase
-  robustness evidence. These experiments are not yet complete.
+- [x] Complete the initial 96-cell multilingual wording diagnostic, retaining
+  its two failures. This is a small engineering/sensitivity screen.
+- [ ] Decide whether that evidence is adequate or additional independent wording
+  variants and same-prompt resampling controls are needed for scientific claims.
 - [ ] Agree on primary outcomes, paired comparisons, missing-data/failed-run
   handling and multiple-comparison treatment before reading the full results.
 - [ ] Justify precision/power, or explicitly designate the study exploratory.

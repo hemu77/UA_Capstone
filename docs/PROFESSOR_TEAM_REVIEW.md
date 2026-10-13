@@ -1,5 +1,16 @@
 # Professor and Team Review: Revised Calibration Complete
 
+**Current V8 update, October 13:** [execution notes](V8_EXECUTION_NOTES.md)
+supersede the status below. The 96-cell wording screen is complete (94 valid
+graphs/two preserved failures); all 32 reference graphs completed. The approved
+104-cell recalibration uses that prospectively fixed reference and
+explicit multilingual hypothetical-network instructions for global generation.
+It stopped at 63 completed observations on a provider HTTP 500, without an
+automatic retry; current recovery status is in the execution notes.
+The separate Hindi alternative candidate is offline-only, not proof of corrected
+live compliance. Please review missingness and inference limits, not just test
+counts. Main collection remains unauthorized; V6 findings below are history.
+
 October 2, 2026. **Requested decision: review the findings before authorizing
 main collection.** No main batch is running.
 
