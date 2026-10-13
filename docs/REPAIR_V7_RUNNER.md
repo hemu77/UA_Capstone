@@ -1,8 +1,14 @@
 # V7 Repair Implementation and Execution Gates
 
-October 12, 2026. **Software implemented; paid V7 generation not started.**
+October 12, 2026. **72 paid V7 diagnostic responses completed; main collection remains blocked.**
 The owner approved staged repairs following the PR review. No main-study batch
 is approved. Read [scope, regeneration map and costs](REPAIR_V7_PLAN.md) first.
+
+**Live execution update:** the 64-clause screen and eight-call explicit-task
+extension are complete, with one invalid reply retained. A nonempty-event JSON
+round-trip defect was reproduced after three received replies and repaired in a
+separate verification adapter without changing the frozen experiment. See the
+[execution/recovery record](V7_EXECUTION_NOTES.md) for current status and evidence.
 
 ## What Changed, in Plain Language
 
@@ -28,7 +34,8 @@ The owner waived unavailable human review, not disclosure of that limitation.
 
 | Stage | Planned coverage | Additional limit | Advancement |
 | --- | --- | --- | --- |
-| `global_probe` | 64 graphs: four models x four clause arms x four repetitions, US-English | $5 | Exact-version independent review and current prices first |
+| `global_probe` | 64 graphs: four models x four clause arms x four repetitions, US-English | $5 shared with extension | Complete: 51 empty; not cleared |
+| `global_task_probe.py` | Eight US-English first responses with explicit hypothetical-construction wording | Remaining original $5, no new allowance | Complete: seven graphs, one terminal invalid reply; see continuation entry point below |
 | `wording_probe` | 96 local graphs: four models x four US instruction languages x three wordings x two repetitions | $10 | Reviewed global results and a new exact contract |
 | `calibration` | 104 graphs, same coverage as V6, all freshly generated | $15 | Both diagnostic stages accepted; reviewed recipe required |
 
@@ -94,7 +101,7 @@ These version-2 contracts bind the requested processing tier. The earlier
 `683f09663490`, `eb523e1644bb` and `2b16f9469ae0` directories are retained as
 superseded offline preparations, not observed results or active contracts.
 
-All **161 tests passed in 213.026 seconds** with outbound socket connections
+Before paid execution, **161 tests passed in 213.026 seconds** with outbound socket connections
 blocked. The 11 V7 runner tests passed separately as well. They use temporary
 ledgers and intercepted SDK transport, never the owner's key or billing ledger.
 Exact-message pricing, post-import source drift and actual SDK tier selection
@@ -112,8 +119,11 @@ were each observed failing before their respective fixes, then passing.
 - [x] Frozen V6 source hashes still match its saved contract.
 - [x] Independent GPT-6.1-Sol review of the final new code and prompt catalog.
 - [x] Standard-tier rate values checked against official sources on October 12.
-- [ ] Actual provider account access and a fresh locally configured API key.
-- [ ] Paid diagnostic results, accepted final wording and new calibration results.
+- [x] Provider access confirmed for all four models during paid diagnostics.
+- [x] Completed 64-graph global diagnostic retained, including empty outcomes.
+- [ ] Accepted final wording and new calibration results; diagnostic completion
+  alone is not acceptance.
+- [ ] Rotate the key exposed in chat; it was used transiently, not stored in Git.
 - [ ] Team/professor approval of estimands, effect sizes, multiplicity, missingness
   policy and repetition allocation before main collection.
 
@@ -145,14 +155,16 @@ and supporting `price_evidence`. The global-probe record now binds the completed
 review and October 12 rate check; this private file is intentionally not in Git.
 Recheck prices on a later execution date. Do not set flags merely to bypass a gate.
 
-Only after those checks and a fresh local `OPENAI_API_KEY`:
+The original global authorization already exists locally. Do not run `approve`
+again or delete it. With matching review, prices and `OPENAI_API_KEY`, its resume
+command is:
 
 ```powershell
-python -B repair_v7.py approve global_probe
-python -B repair_v7.py execute global_probe
+python -B repair_v7_checked.py global_probe
 ```
 
-Resume with `execute`, never a new authorization. For a stopped request, inspect
+Resume with `repair_v7_checked.py`, never a new authorization. The adapter retains
+all original spending gates and writes its own source fingerprint. For a stopped request, inspect
 the local summary and ledger; do not delete evidence to force a retry. Later
 stages additionally need `upstream_review.json` containing the next contract
 hash, an acceptance rationale, and each required prior stage's 12-character
@@ -161,5 +173,11 @@ contract ID and accepted summary hash. Calibration also takes
 Passing these gates does not start a stage automatically.
 
 The public simulator stays on V6 until reviewed real V7 data are explicitly
-exported. No fabricated simulation, new network PNG or paid result was published
-as part of this offline repair.
+exported. New V7 diagnostic PNGs and receipts belong in their versioned artifact
+folders, not mixed into V6 calibration or presented as confirmation.
+
+For the completed eight-call extension, `finish_global_task_probe.py --verify-only`
+is the key-free local ledger replay. It preserves the original parser stop and
+reports completion separately, including the invalid reply. See the
+[execution record](V7_EXECUTION_NOTES.md) for exact source hashes, costs, recovery
+regressions and the distinction between public graph evidence and private billing checks.

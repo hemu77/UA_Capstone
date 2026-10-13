@@ -2,8 +2,9 @@
 
 | Read in order | Purpose |
 | --- | --- |
+| [Latest V7 execution and findings](V7_EXECUTION_NOTES.md) | Paid diagnostic outcomes, verification-only recovery, costs and current advancement decision. |
 | [V7 repair and budget](REPAIR_V7_PLAN.md) | 41 directly affected V6 graphs; approved conditional probe/recalibration scope and cost assumptions. |
-| [V7 runner and checks](REPAIR_V7_RUNNER.md) | Implemented offline pipeline, commands, spending safeguards, no V7 paid results yet. |
+| [V7 runner and checks](REPAIR_V7_RUNNER.md) | Commands, spending safeguards, exact-version gates and historical offline checks. |
 | [V7 independent review evidence](V7_REVIEW_OCT12.md) | GPT-6.1-Sol review, exact source/catalog hashes, regressions, Standard-tier pricing and pending live checks. |
 | [October 12 PR response](PR_REVIEW_OCT12.md) | Confirmed review findings, statistical caveats, unresolved gates; no new paid authorization. |
 | [Revised calibration results](CALIBRATION_V6_RESULTS.md) | Start here: 104 verified graphs, $7.8549, empty-global finding, compliance and revised forecasts. |

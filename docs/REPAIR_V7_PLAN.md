@@ -1,10 +1,14 @@
 # V7 Repair Plan, Regeneration Map and Budget
 
-October 12, 2026. **Owner approved the staged repair plan. Offline runner implemented;
-no V7 API calls made.** Stage ceilings are $5 / $10 / $15, conditional on the gates
-below. This is not main-study approval. GPT-6.1-Sol exact-version review and
-October 12 Standard-price checks are [recorded](V7_REVIEW_OCT12.md); a fresh local
-key and actual provider-access checks remain pending. See [execution and checks](REPAIR_V7_RUNNER.md).
+October 12, 2026. **The 64-graph V7 global diagnostic is complete; its 51 empty
+graphs do not clear the task for recalibration.** Stage ceilings remain $5 / $10 /
+$15, conditional on the gates below, not main-study approval. The owner approved
+eight additional explicit-task responses within the remaining original $5 allowance.
+They are complete: seven valid nonempty graphs, one retained invalid reply; total
+V7 diagnostic charge $0.1422011. The remaining gates are not cleared by this small screen.
+See [paid findings, recovery and current status](V7_EXECUTION_NOTES.md) and the
+[runner guide](REPAIR_V7_RUNNER.md). The prospective plan below does not override
+that live decision or authorize automatic advancement.
 This is the active next-step plan following [the PR response](PR_REVIEW_OCT12.md).
 V5/V6 remain historical exploratory evidence, not failed files to delete.
 

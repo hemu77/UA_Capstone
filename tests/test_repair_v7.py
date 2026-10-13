@@ -11,6 +11,7 @@ import httpx
 from openai import OpenAI
 
 import repair_v7 as r
+import repair_v7_checked as checked
 
 
 class RepairTests(unittest.TestCase):
@@ -241,6 +242,69 @@ class RepairTests(unittest.TestCase):
                 with self.assertRaises(FileNotFoundError):
                     r.base.run_cell(cell, r.Caller(client, budget, cell, spec, target))
                 self.assertEqual(len(calls), 1)
+
+    def test_nonempty_saved_events_round_trip_and_resume_without_repurchasing(self):
+        spec, target = self.setup_workspace()
+        r.approve('global_probe')
+        calls = []
+        def handler(request):
+            if request.method == 'POST':
+                calls.append(request)
+            return self.response(request, text='0, 1')
+        self.client(handler)
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = checked.execute('global_probe')
+            resumed = checked.execute('global_probe')
+        self.assertEqual(result, resumed)
+        self.assertEqual(result['completed_graphs'], 64)
+        self.assertEqual(result['empty_graphs'], 0)
+        self.assertEqual(len(calls), 64)
+        # Normalization must not conceal a real event edit or missing tier audit.
+        receipt = next((target / 'runs').glob('*.json'))
+        saved = json.loads(receipt.read_text())
+        checked.verify_run(receipt, saved['cell'], spec)
+        saved['events'][0]['added'] = [['0', '2']]
+        r.write_json(receipt, saved)
+        with self.assertRaisesRegex(ValueError, 'Receipt replay differs'):
+            checked.verify_run(receipt, saved['cell'], spec)
+        self.assertEqual(len(calls), 64)
+
+    def test_checked_adapter_rejects_source_or_provenance_changes(self):
+        spec, target = self.setup_workspace()
+        original = r.base.sha
+        with patch.object(r.base, 'sha', side_effect=lambda path:
+                '0' * 64 if Path(path).name == 'repair_v7_checked.py' else original(path)):
+            with self.assertRaisesRegex(ValueError, 'adapter source changed'):
+                checked.execute('global_probe')
+        r.write_json(target / 'verification_adapter.json', {'wrong': True})
+        with self.assertRaisesRegex(ValueError, 'adapter evidence differs'):
+            checked.execute('global_probe')
+
+    def test_json_event_verification_round_trips_all_four_methods(self):
+        spec = r.contract('calibration', {'global_arm': 'a0_b0', 'wording': 'reference'})
+        for method in ['global', 'local', 'sequential', 'iterative']:
+            with self.subTest(method=method), tempfile.TemporaryDirectory() as temporary:
+                cell = next(c for c in r.cells(spec) if c['method'] == method)
+                class Fixture(r.base.FixtureCaller):
+                    def __call__(self, model, messages):
+                        text = super().__call__(model, messages)
+                        self.last_request_id = r.base.request_id(cell, len(self.requests) - 1, messages)
+                        return text
+                caller = Fixture(cell)
+                with r.adapter(cell, spec):
+                    result = r.base.run_cell(cell, caller)
+                requests = []
+                input_rate, output_rate = spec['rates'][cell['model']]
+                for ordinal, item in enumerate(caller.requests):
+                    requests.append(dict(request_id=r.base.request_id(cell, ordinal, item['messages']),
+                        request=dict(cell=cell, ordinal=ordinal, model=cell['model'],
+                            settings=r.base.settings(cell['model'], method), messages=item['messages']),
+                        response=dict(text=item['text'], finish_reason='stop', parse=item['parse'],
+                            usage={'prompt_tokens': 100, 'completion_tokens': 1},
+                            conservative_charge_usd=(100 * input_rate * 1.25 + output_rate) / 1e6)))
+                path = Path(temporary) / 'fixture.json'
+                r.base.save_run(path, cell, result, requests, 'received_repair_v7')
+                checked.verify_run(path, cell, spec)
 
     def test_unknown_or_expensive_tier_is_retained_once_and_not_rebought(self):
         for tier in [None, 'priority']:

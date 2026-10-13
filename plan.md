@@ -1,12 +1,13 @@
 # Revised Research Plan: Fix Design Before Spending
 
 **Active next steps, October 12:** [V7 repair, regeneration and budget plan](docs/REPAIR_V7_PLAN.md).
-The owner approved conditional repair stages ($5/$10/$15). The isolated
-[runner and offline checks](docs/REPAIR_V7_RUNNER.md) are implemented. Independent
-GPT-6.1-Sol review and October 12 Standard-price checks are recorded in the
-[V7 review evidence](docs/V7_REVIEW_OCT12.md); a fresh local key and actual account
-access remain pending. No V7 paid work has run; main collection remains
-unauthorized. The V6 history below stays intact.
+The owner approved conditional repair stages ($5/$10/$15). The 64-graph global
+diagnostic completed for $0.1178608, with 51 empty graphs. The global task is not
+cleared for scaling. The separate eight-call task probe finished with seven valid
+nonempty graphs and one retained duplicate-edge failure. Both probes together
+cost $0.1422011 within the original $5 ceiling. Read [current outcomes and recovery evidence](docs/V7_EXECUTION_NOTES.md).
+Wording/calibration remain gated; main collection remains unauthorized. The
+V6 history below stays intact.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**

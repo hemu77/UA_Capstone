@@ -4,13 +4,15 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-**Latest, October 12:** the [V7 repair runner](docs/REPAIR_V7_RUNNER.md) is implemented
-and offline-checked. The owner approved conditional $5/$10/$15 diagnostic and
-recalibration stages, not main collection. No V7 API calls have been made.
-GPT-6.1-Sol reviewed the exact candidate and spending safeguards; Standard-tier
-rates were checked October 12. See the [review evidence and remaining gates](docs/V7_REVIEW_OCT12.md).
-A fresh local key and provider-access checks are still needed. V5/V6 data are
-preserved; the simulator still shows observed V6 results.
+**Latest, October 12:** V7 diagnostics completed **72 first responses for
+$0.1422011**. The 64-graph clause screen had **51 empty networks**. A separate
+eight-call explicit-task probe produced **seven valid nonempty graphs and one
+duplicate-edge failure**, retained without replacement. Both share the original
+$5 allowance; this is diagnostic evidence, not completed recalibration.
+Read the [live findings and recovery record](docs/V7_EXECUTION_NOTES.md) first.
+The conditional wording/calibration stages have not run; main collection remains
+unauthorized. V5/V6 data stay intact and the simulator still shows observed V6
+results. Costs are conservative local accounting, not reconciled invoice totals.
 
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
@@ -38,10 +40,12 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Latest V7 execution and findings](docs/V7_EXECUTION_NOTES.md): completed paid
+  diagnostics, verification-only recovery, preserved evidence and stop decisions.
 - [Active V7 repair and budget plan](docs/REPAIR_V7_PLAN.md): what changes,
   which outputs need regeneration, staged cost assumptions and remaining gates.
 - [V7 implementation and commands](docs/REPAIR_V7_RUNNER.md): safeguards,
-  offline checks, historical-data preservation and the pending paid boundary.
+  diagnostic workflows, historical-data preservation and remaining calibration gates.
 - [V7 independent review evidence](docs/V7_REVIEW_OCT12.md): exact reviewed
   version, regressions, current pricing, billing-tier fix and limitations.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked

@@ -1,6 +1,10 @@
 # V7 Independent Review and Regression Evidence
 
-October 12, 2026. **Offline repair reviewed; no V7 paid generations.**
+October 12, 2026. **Historical pre-execution review record.** Paid V7 diagnostics
+subsequently ran and exposed a nonempty-event verification defect and persistent
+empty-global behavior. See the [execution/recovery record](V7_EXECUTION_NOTES.md)
+for the repair, later tests and current findings; the earlier clearance below
+does not certify the subsequent experiment's scientific validity.
 Read the [repair plan](REPAIR_V7_PLAN.md) for scientific scope and
 [runner guide](REPAIR_V7_RUNNER.md) for commands and stage gates.
 
