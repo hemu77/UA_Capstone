@@ -1,0 +1,46 @@
+{
+  "status": "OFFLINE_PREFLIGHT_PASSED",
+  "contract_sha256": "9a643535816c13df8ae3d201a65764b4d7c31b1eb5379e963fc3d9e438856745",
+  "fixture_cells": [
+    {
+      "run_id": "repair_v7_hindi_candidate_probe_9a643535816c_000",
+      "nodes": 50,
+      "edges": 243,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2070925000000001
+    },
+    {
+      "run_id": "repair_v7_hindi_candidate_probe_9a643535816c_001",
+      "nodes": 50,
+      "edges": 243,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2845924999999996
+    },
+    {
+      "run_id": "repair_v7_hindi_candidate_probe_9a643535816c_002",
+      "nodes": 50,
+      "edges": 199,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2852674999999998
+    },
+    {
+      "run_id": "repair_v7_hindi_candidate_probe_9a643535816c_003",
+      "nodes": 50,
+      "edges": 199,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2077674999999997
+    }
+  ],
+  "paid_requests": 0,
+  "main_authorized": false,
+  "first_attempt_reservation_sum_usd": 4.984719999999999,
+  "cost_basis": "Historical rates; byte/framing input bounds plus configured output caps; no corrections. Not an invoice or completion guarantee. Stateful prompts follow fixture, not real, edges."
+}

@@ -1,0 +1,21 @@
+{
+  "status": "OFFLINE_CANDIDATE",
+  "paid_calls": 0,
+  "prompt_cases": 144,
+  "probe_first_attempts": 72,
+  "protocol_sha256": "8eb410e6eeda12317433fabcf1c2c47b893bee2da0ac565f705ac87af2d77514",
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "source_sha256": {
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+    "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348"
+  },
+  "human_bilingual_validation": false,
+  "behavioral_probe_completed": false,
+  "main_authorized": false
+}

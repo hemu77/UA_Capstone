@@ -1,0 +1,57 @@
+{
+  "status": "STOPPED",
+  "operation": "execute_calibration",
+  "started_at_utc": "2026-10-13T09:54:04.115498+00:00",
+  "source_sha256": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+  "checkpoint_helper_sha256": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+  "recovery_helper_sha256": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+  "frozen_runner_sha256": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+  "policy": "At most five retries of the identical local request-journal write on PermissionError only. No API retries.",
+  "main_authorized": false,
+  "write_retries": [
+    {
+      "request_id": "4dd9cf6faabef30cb38e7e5cfe8d009548748ac44c66536d15343a9fcff2978f",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "3ea59c634949d64182dee4021e897e8b9369187b3b8eeda27e4630630e3c5f25",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "c4045d4c87fab53c462a7731a3b8c0b0096fae3e213fd7130504cb08f065af2f",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "56c1bd6e007cba7afc22e4dfe288aed6ff4af13ed072e309180ff38306fe5f55",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "b5338866a85e19e10caed4d16959eb1835d33143926288bd032d0a7820acf0d3",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "9f8bfd6110481ca98b7f928a818e7dd2011697dc4c65c025c85646185f1e54ea",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    }
+  ],
+  "error_type": "RuntimeError",
+  "ended_at_utc": "2026-10-13T11:10:35.826640+00:00"
+}

@@ -1,0 +1,62 @@
+{
+  "probe_id": "english_k8_p28_v6_candidate",
+  "language": "english",
+  "count": 8,
+  "actor": "28",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "e259be695cccffe153e7521214c0ed25f8b29b7a7a7fabbd007b1ae9960c2658",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "42,2,18,31,14,44,38,23",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 861,
+      "total_tokens": 879,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTHtLwnb0g75zlPHSNTSgqPlMDQ1",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T08:52:11.119018+00:00",
+    "conservative_charge_usd": 0.00011662500000000002,
+    "diagnostics": {
+      "client_request_id": "e259be695cccffe153e7521214c0ed25f8b29b7a7a7fabbd007b1ae9960c2658",
+      "server_request_id": "req_5854ae2833a54baf954d5eab6ed2751e",
+      "http_status": 200,
+      "elapsed_ms": 1234.0,
+      "date_utc": "2026-10-02T08:52:11.119018+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "1114",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4999",
+        "x-ratelimit-remaining-tokens": "1999133",
+        "x-ratelimit-reset-requests": "12ms",
+        "x-ratelimit-reset-tokens": "26ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

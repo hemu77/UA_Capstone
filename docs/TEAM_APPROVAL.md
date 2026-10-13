@@ -2,7 +2,9 @@
 
 Status: **NOT APPROVED. No main-generation permission is recorded here.**
 Read [the knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) and
-[calibration results](../CALIBRATION_RESULTS.md) first.
+[the revised plan](../plan.md) first. The October 2 review supersedes the old
+eight-repeat/896-target allocation. Preserved V5 calibration is exploratory,
+not automatically reusable in the revised confirmation sample.
 
 ## Research-Validity Question
 
@@ -16,27 +18,43 @@ guarantees scientific validity or acceptance.
 
 ## Required Decisions
 
+- [x] **Revised calibration completed under separate permission.** Owner approved
+  104 graphs and $10. All 104 passed replay/accounting at $7.854865725, with zero
+  unresolved new requests. This is not permission for the main study; see
+  [actual findings](CALIBRATION_V6_RESULTS.md). V5 graphs remain separate.
+- [ ] **Global-method outcome reviewed.** The revised calibration includes many
+  valid empty networks. Decide whether this is the intended estimand or requires
+  a separately versioned prompt comparison before scaling collection. Do not
+  reject or replace valid empty observations to obtain preferred results.
 - [ ] **Claim scope accepted.** No inference about national friendship behavior
   or validated real-world realism from the current design alone.
 - [ ] **Model-panel rationale accepted.** Legacy reference, two lower-cost
   configurations and the higher-priced Luna/Sol comparison are purposeful
   within-provider choices, not evidence of general LLM or architecture-only effects.
-- [ ] **Translation evidence accepted honestly.** Record actual human bilingual
-  review, or explicitly accept AI-assisted-only review as a disclosed limitation.
-  Do not label AI review as human validation.
+- [x] **Human-review limitation accepted by owner, October 2.** Unavailable human
+  bilingual review is waived, not completed. Record that limitation in any paper.
+- [x] **Initial English/Portuguese wording screen completed.** Revised 0/36
+  failures versus original 4/36, all original Portuguese one-choice cases.
+  The 72 unique replies cost $0.00852425 conservatively, with no replacements.
+  This is a small engineering check, not multilingual scientific validation.
+- [ ] **Wording robustness reviewed.** Second wording variants, English paraphrase
+  and bounded compliance evidence. The $1 probe is not proof of equivalence.
 - [ ] **Analysis plan accepted.** Freeze primary outcomes, paired contrasts,
   repetition unit, uncertainty/precision approach, multiplicity treatment and
   failed-run/correction reporting before main results are examined.
-- [ ] **Roster and replication accepted.** Justify eight repeats on one roster
-  for the intended claims, or specify redesign/additional rosters and re-cost.
+  [Technical statistical checks](STATISTICAL_ANALYSIS_DECISION.md) are available;
+  small-sample t-test assumptions did not pass every synthetic stress scenario.
+- [ ] **Roster and replication accepted.** Approve raw-unit meaningful effects,
+  precision targets, staged allocation and whether another roster is required.
+  Define valid adaptive sampling/reuse before collecting confirmation data.
 - [ ] **External validity accepted.** Decide whether empirical benchmarks,
   prompt/temperature sweeps, open-weight models or method ablations are required.
   Unrun experiments must not appear as completed reviewer responses.
 - [ ] **Protocol frozen.** Approve the exact source, prompt, roster, settings and
   runtime hashes. Any substantive change requires a reuse/forecast review.
-- [ ] **Budget authorized.** Remaining 828 estimated at ~$101; ~$121.20 with 20%
-  allowance. Proposed hard cumulative ledger ceiling: $128, including $6.47334
-  already counted. This is a cap, not a guaranteed completion price.
+- [ ] **Budget authorized.** Reforecast revised prompts/scope from bounded live
+  probes and calibration, then authorize a finite cumulative cap. The old ~$101
+  remaining/$128 suggestion is historical, not a current quote or approval.
 - [ ] **Execution owner named.** Keep the original private ledger, provide a
   fresh environment-based API credential, and stop on unresolved paid attempts.
 

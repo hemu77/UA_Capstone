@@ -1,0 +1,738 @@
+{
+  "status": "OFFLINE_PREFLIGHT_PASSED",
+  "contract_sha256": "5fb3715550db87bb86061bf9f3c1484ddc3203b6a1b989758e96fa8ff1772b3d",
+  "fixture_networks": 104,
+  "paid_requests": 0,
+  "main_authorized": false,
+  "calibration_authorized": false,
+  "results": [
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-4.1_us_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "96b4e103b8d3a3673f4bd70e274a4f2bd92682fde46b67d4d2253ae5a5336338"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-5.6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "29debf822333e2c490dfa5bbd115da5198648654f8a05bc23a06093e41b3e144"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "da9f900c72225c8ad68731e540ff4b26d5785063931cdfe5119db69688f05a01"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-sol_us_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "6317a502d8ddb0e0ac9a3cb4ec9e8f865344d699a01d31a1d94e18efa2116b20"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-4.1_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "8cc613fe2147302b14d2e058ad238ab034cfa70dc9c804facc9399812a4fe2fc"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-5.6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "2f0371fbcf8b71b2e201ea1a181a5bf0da00aa03da3810b4b32e6a246b9a189c"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "61e31bf493c116e7b697bad86f0cf3583c06e4c131d6c837fe54d6c563afec73"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-sol_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "d11896be441b92a32348d26ef70f2641b77d88a3af3d58d989b9920254871ed5"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-4.1_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "6cf9f12de31aa22c91afa23792f8f937b5c3a4f8966174d0f8d56efb9a5131ab"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-5.6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "97067da39d7b6907a0656f138dc4c8742476e3274f72980f12cd12ecea186169"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "d94d4f90a35847993afe4a59075408002075468474cb437ee07e62c9d8d55c1f"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-sol_us_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "32ab305aa6634fa137b44663102e5a8d63a113896b593ec9e3134022f1fd8661"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-4.1_us_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "50d7fd32e73586c5da4825fec7550b71a45142a8a47377f90b5905bbae90683b"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-5.6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "c0a4d7f1e6ed26892833a3c5c49b331376103baff414f13366b29e976646ee81"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "45ca7c9f3cd562e37e107a4f953691531e7326097a995441a9bbfed6255d11c3"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-sol_us_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "facf07fe4e99dbe0af63341e76bc0c7a5bd95cfc58d995ff8f0b2eebd6043fcc"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_brazil_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "65d8b1093ad319d3063655e517c0840424a6713eaa7016a71776e03d41509068"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_brazil_english_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "ab894977bca4e00c0b81df0e4bdcaf36b40b304a04f5b500252a8f1bc8285352"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_india_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "d98ad172d3eec53d5fdef2aa8d0ff31ec1520f03e7768e6e1d455dc96bee01fb"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_india_english_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "472ac4e86c274b9f58dcad4c6ea55937aa91901735c00d143177cddd2aba82d2"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_japan_english_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "f3175a15cd8157fb8a861c03c3398e20cffa28c4894cd946864bc2cfffb0f3ac"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_japan_english_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "4baf4b7840ed31e2dc59bad6547af4088890e73063c865749ef520cb2a92df60"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_english_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "4923552379452427c9b19bc96bf5e426aef684ee8e106f4f14f02c18f13d34cb"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "1e9b56952ffabb88de332331b2cd046879d31be0a5399e977eb3b10bc77aa734"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_hindi_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "ba7a5feae1d58551cb57c2733201fde1d7ffca5e9770a9b8122477a2ac7991b6"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "553d55688a2cba763cc302ec970ef47bbc849ec9e9cb8224c50b9de79ebf8908"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_japanese_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "6e8aaedf7be3cb075e7a7e1a9aad0840809cb5bf90883dc027faef420df22c51"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "28a78c8a11c62b7a51fdfaecc3f9b291761065938ab73da77f4063b84d2ab3cc"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-luna_us_portuguese_r1",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "62513ffd06f53de4a30b75c6280aedffef4db041b0790e858f4d3cdae4a70621"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_brazil_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "79853bd3cdcd5ab4a3d72f326067319cd522c7e970293e234d99cd4a2170a341"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_brazil_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "d01b779b5c5e74eca00c6a71a6baa3192c9e362fc649700495318cfe571b8291"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_india_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "6e1e78e9e1bb9afc4dc491b0ccf936b8831b0a06d7146b280586ceaa1e19508b"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_india_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "41b1d02e6458c99ca986175c7c1e54221f5fe698cc557c745a1cca41fb59eed8"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_japan_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "253a3a10e680a15a5c0e88b17371c47a5edaf58d4fbef22b617f45802210421e"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_japan_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "575fe627a6d3c8a0723e51a50124c3471825af763f1f9c28ab8dc32b3c217407"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "4cd964f4be317f46270d43ce3dcfd69f9680a91366e18416152d2a15ae8fa56a"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "de025e16ea107c69d60362dd9c5ce4fefeab3350eb46378ced4e0da56bfa92a9"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_hindi_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "f43467e428704af046a197c7d07edc341f9de64772615659d0367a4cc09102ad"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "9728dd9cf7f2efca47da2d096900d5228cdf7e57d651e1f1902815316dbcc06b"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_japanese_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "e3443330979abad8121d2077142b25ebfd9451b97d332107ac4f0aebb8d16568"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "43b556f0758eff23f0accbb776887420d892b9a0a5b1afe67eb99effda8cd634"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-luna_us_portuguese_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "aa02f1dea838be85f4961400ddb6b29b21000b611fe3faf7f4b7bf0f6ba216b3"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_brazil_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "500b1f07891894a55a47e8a2e7b006e6c3174b990f25fe634e1857bd4313d864"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_brazil_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "1a5bfd1efe2e77234d04fc25e8159efba1a0f40a169eed48b5e4f74b73b84422"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_india_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "0d85cb3813d1cfa2f3190fb04aed1a08f6a8d34ea82c1357fc7519bc7fdca893"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_india_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "615dc14f5878977152bc6e16776a624d4bf518b91ced239f5118e07b37951eca"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_japan_english_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "696cc3634c4c14b28798b2777d4ae36a97b8a07b136aa07bd9bb4deb272e1291"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_japan_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "23f486e7dc0ffa3d44784ff7d0ac6e77be5d6efa1fb959f2a4f777bd87b902d0"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_english_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "9ee493da0eb1ace172e45f3527ef31242fe2dee9de73187fdc3102f72ab88f4d"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "80dd6bf539480ade70540bd9938ab18fcef59bd5706f9b1d681d8b9138be013e"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_hindi_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "e03e608c892abb0610a6e38d3e3677046572bbb92e2e19a0e1ed986219d35983"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "809851daf0eeec77c42f7042d4cc40dfc5f31c16fc72f18c6bee666bd156c398"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_japanese_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "96168bcb11fa79047ed9eeae694e56c0574671af6507b96e505e8e2e9f72fd04"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "062a83b7f94e86baf2f433bf704a3e60e9e3c0f9d5bec5026f2690627e952285"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-luna_us_portuguese_r1",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "e8aa939a951cc4bdcc19076f185e49a8c7fe6142a828bcff4f935dcd5a8ca7c7"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_brazil_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "41861bac875e864ce3383742efb6facda6e1513fcaa5bbf0929c81fbefa11362"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_brazil_english_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "fe9382040f13cc8f9252ad1c76ef4e88f567f82b70ddc1a2680a44db288a7e1e"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_india_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "5fd7b59c22e0bd0f3f8f7ca3d5ffc275699b57369e1b90aa80bffa63f85a4f53"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_india_english_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "5c0ccb180e935c5a2cd1f7f13b2133e2f9d50529a875d92890584730dc3a90f3"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_japan_english_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "5fcf0e28d63416316a6dae49cc7128eb37646aa8e7ef3d34d203bd824ec6f486"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_japan_english_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "944d3a6700fc24076b51a86a472efcaf3724cc28e841ae94fb8752f541b29d44"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_english_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "298e33222dd827fb86d2167778bc94a38912b37195cabf699a210171c361cfde"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "875c7ed2329f62aafe20860148d5ed577563b35e1d6e1b0dd8de91929a1ccf67"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_hindi_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "acef9657891615e5943c3328616e25107b8139fc748e50339f2d01bf207c4f8e"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "9a4998a97322be8df307aa0322d92b10ed5e60ea85ae6ad2bade4c82ea0d4256"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_japanese_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "cbc7d57b74b41db8dac8ee4ded0782ba70e6c498cd5d6b198b367ff8fdd44544"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "6eda42ca79790370c83308e22300780e45722a5010f7c1eb3ba86c50f6199095"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-luna_us_portuguese_r1",
+      "nodes": 50,
+      "events": 347,
+      "decisions": 347,
+      "record_sha256": "f3186939280c808499ff7ee5de891c5517b2de21ec60b4ad8453dfed1ab8d0d0"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-4.1_us_hindi_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "20650967ba2da3dec4c1e1fc12d9e300719cf34e20e12090c0fe7fda757634dd"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-4.1_us_japanese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "d45f17f7543a02e125f29d0a4333c8ba91c36ab218ba91151cf81d6ac3e7a065"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-4.1_us_portuguese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "7692a5453a5a860d4af7016da12a98a067647ff85506f2c175c3d1a7e6fed50c"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-5.6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "db20aecc32c9a447ff7144442b690807c7ad6ed0db0b744c5520303013c59d1c"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-5.6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "4d139cf36d5ad6cba16abea5b51d07a33b3976ba6ba6cdb4d7f861fbbcda4c69"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-5.6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "a1485e12d9d051f4b6451fe2d50cfe438464bfed1ca59a5224c312e0ec76a8c2"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-sol_us_hindi_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "1ad83ea9f6984d6e71ea42146fd1eed34175fe4c5352631accdc92001620e22c"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-sol_us_japanese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "82fe48270b6dc1e57f24cf22d1b306b07d0d6e030c60c9e70853b91cbc958788"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_global_gpt-6-sol_us_portuguese_r0",
+      "nodes": 50,
+      "events": 1,
+      "decisions": 1,
+      "record_sha256": "985be1fea21f84f1685ca0e79c7a0d184c2492d2e350b28fddaa34a434ebacfb"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-4.1_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "0576f2bd02f1710db2a174a25cca130a561d119468cc1f4fdce4bfac9cecbe51"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-4.1_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "5487bedd582eea0aa60d346d65141a26b248910a6b65e190e4a43049b84e9056"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-4.1_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "dfe15e9c837b7c0120ef7b8ad376ed2772bea756da5af22e24154f623c8aff26"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-5.6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "fc02e1b586135fd8d87b6169bc7378ca9f4170f6eac9ea6cb3811613107d6d63"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-5.6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "86647ed23e71d6f073405a547fdbacf238f9f12b26d9d94f542efb9873e9c796"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-5.6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "ec8cd0711d3bfb0ad802dd4d9de570f60b85d3550cc53b472816d3061cd00409"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-sol_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "17016304c79007fca8c9b27005029f00cbf3441cb007edfd067df833dcc951d3"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-sol_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "e04336b6e32e460132dff81b6b0e0ffaf8f450efdc17ca37aa4ae7c51f49baef"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_local_gpt-6-sol_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "fe4310873f54247bf53c8b75f7365cfce9708335b0fe1ca8b6504a410daccda7"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-4.1_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "54243da9492af11f8e16180111b1c8b830df1ee3f4c34e405be198b324b28711"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-4.1_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "aa4c2aa7aebf476cc28ddae0dda8ede74f63409cfe24c5cb7f74cf1c5ce712bf"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-4.1_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "dd0d2ef07c73912f2f9c5676b0074e928fd11f33dcf3e8acaedc26fdd5720a7a"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-5.6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "943dffd4c28e4c76cf0fa9fc02421479653628087e5c02df12038110b5e9dcb3"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-5.6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "81bba6e12ec4d7161ec21b4585d98d47862879649b03908052f3766dc7f78eab"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-5.6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "643e8cae96d18e16104871749a794de7f048b8333caedc661d127f3d94a29d56"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-sol_us_hindi_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "0609efb1441de32cae0d14f4fdd62256ac3cd34152506a3b16dfd8c2916382ec"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-sol_us_japanese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "44936da9f9d2eced46f63be58dfec2475c7b13139911cc722edcd18c817236c2"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_sequential_gpt-6-sol_us_portuguese_r0",
+      "nodes": 50,
+      "events": 50,
+      "decisions": 50,
+      "record_sha256": "2c309f946033c32bd71e3cff22eec47e297b4b6ebc0cec0470e9f9ac4684a767"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-4.1_us_hindi_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "7030502372c98642b87e8a1f5cf8d91ead0b43f4d7c11718d46cfb428b0b8f2e"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-4.1_us_japanese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "4f06b2fd6f3f96f1b5002c081300db7f45059624344866f3a63c69b081215a2d"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-4.1_us_portuguese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "f99009783276ecfa2396c5867bfdc834b9c428cc638e6bdf3d783eb9aee182ad"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-5.6-luna_us_hindi_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "d5b6fa6183a6254821ddeb199f9de70681e896c6ce5ca7f7cb8d354387055f9c"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-5.6-luna_us_japanese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "3cf032c8361eb6f84dfec0ea0dfc08594599c2aaf8a85862c848fb9b8ecdaf29"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-5.6-luna_us_portuguese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "178f047930346406cef83503776b2c032f29742445c39a4a11178194f484354b"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-sol_us_hindi_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "c3d93d29c75a21fa85e8f995449c391a5df21f02e0578a6fc1532dc4eb907d95"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-sol_us_japanese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "2e56cacdb7f649c4f94771a5c1443c3f4285ce04e9bac87e6ecde1665bca84ac"
+    },
+    {
+      "run_id": "calibration_v6_5fb3715550db_iterative_gpt-6-sol_us_portuguese_r0",
+      "nodes": 50,
+      "events": 345,
+      "decisions": 345,
+      "record_sha256": "a18cba720637ecb78850b382ea1e7117112fba2f1a3b2d6f94475715fd3d7b62"
+    }
+  ]
+}
