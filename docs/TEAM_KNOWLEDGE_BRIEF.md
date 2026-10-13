@@ -4,18 +4,23 @@
 The new wording screen attempted all 96 planned graph cells: 94 valid graphs,
 two terminal Hindi-alternative failures, $5.9461527 conservatively. The reference
 wording, fixed before seeing results, passed 32/32 graphs. The approved 104-cell
-recalibration reached **101 observations: 97 valid graphs and four global failures**.
-The authorized first recovery worked. A later HTTP 520 stopped another cell after
-139 received replies, requiring a separate replacement decision. Current charged
-or reserved calibration usage is **$7.8050634 of $15**. Read the
-[current plain-language checkpoint handoff](V8_TEAM_HANDOFF.md) before the
+recalibration **completed and verified all 104 observations: 100 valid graphs
+and four global failures**. Four valid global graphs are empty, not missing.
+Both separately authorized server-error replacements succeeded without
+repurchasing cached replies. Calibration usage plus retained reservations is
+**$7.8912884 of $15**. Read the
+[current plain-language completion handoff](V8_TEAM_HANDOFF.md) before the
 historical sections below; it explains the debugging, evidence and remaining work.
 Global instructions now explicitly ask for
 a hypothetical network; this is a new hypothesis, not a relabeling of old graphs.
-The [Hindi candidate](HINDI_WORDING_CANDIDATE.md) has a separate $1/four-graph
-probe authorization, but that probe is not yet run.
-No main study is authorized. Old calibration forecasts are historical, not a
-current quote. Successful parsing does not certify realistic human behavior.
+The [Hindi candidate](HINDI_WORDING_CANDIDATE.md) was tested separately under $1:
+four observations cost $0.30618, but only one graph completed. The clarified
+instruction still failed in one of two repetitions; it is **not adopted**.
+The selected reference wording remains unchanged. No main study is authorized.
+The [new report](V8_COMPLETION_RESULTS.md) estimates $102.44 for 896 fresh
+attempts or $104.49 for 1,568, before contingency, with 26.30/27.03 serial API
+hours respectively. These are projections, not guarantees of valid graphs.
+Successful parsing does not certify realistic human behavior.
 
 ## Historical V6 Status
 

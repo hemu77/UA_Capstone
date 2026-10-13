@@ -4,24 +4,33 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-**Latest, October 13:** the [V8 wording screen](docs/V8_EXECUTION_NOTES.md)
-completed all **96 planned cells: 94 valid graphs and two retained failures**,
-at **$5.9461527** conservative usage. The prospectively fixed reference wording
-completed 32/32 graphs; both terminal failures were a Hindi alternative and
-motivated a [separate offline candidate](docs/HINDI_WORDING_CANDIDATE.md),
-not silently replaced or relabeled. **V8 recalibration is now at 101/104 completed
-observations: 97 valid graphs and four retained global failures.** The first
-authorized HTTP-500 recovery succeeded without repurchasing cached replies.
-A new HTTP 520 stopped the next graph after 139 received replies; a second
-replacement decision is pending. Accounting/reservations total **$7.8050634 of
-$15**. Read the [plain-language current handoff](docs/V8_TEAM_HANDOFF.md).
-The Hindi probe has not run; main collection remains unauthorized.
-Private cached verification and public key-free replay passed for the wording
-screen. Costs are conservative local accounting, not reconciled invoice totals.
-V5/V6/V7 history stays intact; the simulator still shows observed V6 results.
-The latest checks passed **189 offline tests**, five focused publishing tests,
-and replay of all 101 public terminal observations. These are checkpoint checks,
-not full calibration or research-validity clearance.
+**Latest, October 13: V8 calibration completed and verified.** All **104 planned
+observations** finished: **100 valid graphs and four retained global failures**.
+Four valid global graphs are empty; empty graphs and invalid responses are not
+interchangeable. Calibration usage plus both retained server-error reservations
+is **$7.8912884 of $15**. Exact, separately approved replacements reused the
+236- and 139-response prefixes without repurchasing them.
+
+The [96-cell wording screen](docs/V8_EXECUTION_NOTES.md) produced 94 valid graphs
+and two preserved failures at $5.9461527. The prospectively selected reference
+completed 32/32 graphs. A separate four-cell Hindi-alternative probe cost
+**$0.30618** and produced **one valid graph, three failures**. The clarification
+did not reliably fix the format error and **is not adopted**. Neither frozen
+stage is relabeled or replaced by that diagnostic.
+
+Read the [plain-language handoff](docs/V8_TEAM_HANDOFF.md),
+[final calibration/probe evidence](docs/V8_COMPLETION_RESULTS.md), and
+[professor/team review note](docs/PROFESSOR_TEAM_REVIEW.md).
+Fresh main-study planning estimates are **$102.44 for 896 attempts** or
+**$104.49 for 1,568 attempts**, before contingencies. They are not guaranteed
+valid-graph counts or authorized spending. Main collection remains blocked.
+
+Checks passed: **191 offline regressions**, final recovery tests, and seven
+focused publishing-checkout tests. Calibration private accounting and public
+replay verified all observations with unchanged ledger rows and no API calls.
+Costs are conservative local accounting, not reconciled invoices. V5/V6/V7
+history stays intact; the simulator still shows observed V6 results. Human
+bilingual validation is absent, and tests cannot certify research validity.
 
 **Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
 approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
@@ -303,8 +312,22 @@ No viewer action calls a model. See [viewer checks and limitations](docs/VIEWER_
 owner must retain the original ledger, configure a fresh `OPENAI_API_KEY` locally,
 validate current prices/model access, and supply a truthful hash-matching main
 review with a finite cumulative ceiling. Do not edit flags just to force it to run.
-Do not launch the old 896-target command. V6 calibration completed October 2;
-V8 wording diagnostics are complete, but V8 recalibration stopped on HTTP 500.
-Its recovery, the separately approved Hindi probe, scientific decisions and
-main-budget authorization remain tracked in [plan.md](plan.md). No automatic
-replacement or main-study generation is running.
+Do not launch the old 896-target command. V8 calibration is complete; the
+separate Hindi candidate failed its reliability screen and is not adopted.
+Scientific decisions and main-budget authorization remain in [plan.md](plan.md).
+No automatic replacement or main-study generation is running.
+
+### Current V8 Review Commands: No API Spending
+
+```powershell
+.\.venv\Scripts\python.exe -B repair_v8_transport_second.py inspect
+.\.venv\Scripts\python.exe -B probe_hindi_candidate.py inspect
+.\.venv\Scripts\python.exe -B -m unittest tests.test_repair_v8_transport_second tests.test_hindi_probe
+```
+
+These public replays need the checked-in artifacts and matching repository
+environment, not an API key or the private billing ledger. Use the **second**
+recovery adapter: it validates both exact replacements and retained reservations.
+Public results live under `outputs/repair_v7/calibration/176533db7041/` and
+`outputs/repair_v7/hindi_candidate_probe/9a643535816c/`. The historical directory
+prefix remains unchanged; the saved contracts identify the actual version.

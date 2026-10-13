@@ -1,5 +1,51 @@
 # V8 Wording Screen and Recalibration
 
+## Final Status, October 13
+
+The checkpoints below are preserved history. Current status is **104/104
+calibration observations completed and verified: 100 valid graphs, four global
+failures**, with four valid empty global graphs. Received usage is $7.889144775;
+both retained transport reservations total $0.002143625, giving **$7.8912884 of
+the original $15 cap**. No main-study call was made.
+
+The owner separately approved the exact HTTP-520 replacement. The new
+`repair_v8_transport_second.py` adapter validates both recovery records, excludes
+only their original attempts from logical replay, and includes both reservations
+in spending. The 139 saved responses were reused. Existing ledger rows and all
+frozen generation sources remained unchanged. Source SHA:
+`518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4`.
+
+The separately approved Hindi diagnostic also completed and verified: **four
+observations, one valid graph, three failures, $0.30618**. Original alternative 2
+failed both repetitions; its clarified version failed one. It is **not adopted**.
+This does not replace or modify the calibration's prospectively fixed reference.
+
+The final [results and forecasts](V8_COMPLETION_RESULTS.md) and
+[plain-language handoff](V8_TEAM_HANDOFF.md) supersede older incomplete status.
+191 offline tests passed in 455.082 seconds; final recovery tests passed 2/2,
+and seven focused publishing checks passed in 20.057 seconds. A failing test
+exposed stale success after invalid recovery evidence; the new adapter now clears
+the exact report under lock before dependency validation and publishes final
+clearance/cost metadata together. Both full stages passed private and public
+offline replay with unchanged ledger rows.
+
+Fresh main projections are $102.44/26.30 serial API hours for 896 attempts, or
+$104.49/27.03 hours for 1,568. Cost contingencies are $128.05/$130.61. These are
+not authorized budgets, guaranteed valid-graph counts, invoice totals, or
+scientific approval. The simulator remains V6; no deployment is part of this work.
+
+```powershell
+# Public, key-free replay of current evidence (no private ledger required).
+python -B repair_v8_transport_second.py inspect
+python -B probe_hindi_candidate.py inspect
+# Additional private-ledger checks for the execution owner.
+python -B repair_v8_transport_second.py verify
+python -B probe_hindi_candidate.py verify
+```
+
+Use the second recovery adapter for current calibration. Earlier checkpoint
+commands below document their historical state and are not the current workflow.
+
 ## Decision Before Spending
 
 The owner authorized the revised 96-graph wording screen within its original

@@ -2,9 +2,10 @@
 
 | Read in order | Purpose |
 | --- | --- |
-| [Current V8 team handoff](V8_TEAM_HANDOFF.md) | Earlier versus now, 101/104 checkpoint, recovery/debugging, costs and remaining decisions; read first. |
+| [Current V8 team handoff](V8_TEAM_HANDOFF.md) | Earlier versus now, completed calibration, recovery/debugging, costs and remaining decisions; read first. |
+| [V8 completion results](V8_COMPLETION_RESULTS.md) | 104 observations, 100 valid graphs/four failures, separate Hindi diagnostic, final costs and fresh-study projections. |
 | [Current V8 execution](V8_EXECUTION_NOTES.md) | Completed 96-cell wording screen, 94 graphs/two failures, prospective recalibration and exact evidence paths. |
-| [Hindi wording candidate](HINDI_WORDING_CANDIDATE.md) | Offline-only follow-up; no change to frozen observations or calibration reference. |
+| [Hindi wording candidate](HINDI_WORDING_CANDIDATE.md) | Four-cell live diagnostic: one valid/three failed; clarification not adopted, frozen reference unchanged. |
 | [Latest V7 execution and findings](V7_EXECUTION_NOTES.md) | Paid diagnostic outcomes, verification-only recovery, costs and current advancement decision. |
 | [V7 repair and budget](REPAIR_V7_PLAN.md) | 41 directly affected V6 graphs; approved conditional probe/recalibration scope and cost assumptions. |
 | [V7 runner and checks](REPAIR_V7_RUNNER.md) | Commands, spending safeguards, exact-version gates and historical offline checks. |

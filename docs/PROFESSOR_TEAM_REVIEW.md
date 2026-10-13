@@ -1,18 +1,18 @@
-# Professor and Team Review: V8 Checkpoint, Completion Pending
+# Professor and Team Review: V8 Calibration Complete
 
 **Current V8 update, October 13:** [execution notes](V8_EXECUTION_NOTES.md)
 supersede the status below. The 96-cell wording screen is complete (94 valid
 graphs/two preserved failures); all 32 reference graphs completed. The approved
 104-cell recalibration uses that prospectively fixed reference and
 explicit multilingual hypothetical-network instructions for global generation.
-The authorized HTTP-500 recovery preserved cached replies and succeeded.
-Calibration reached **101/104 observations: 97 valid graphs, four terminal global
-failures**. Another provider HTTP 520 then interrupted a cell after 139 replies.
-Current calibration charges/reservations are **$7.8050634 of $15**; another exact
-replacement decision is pending, not an unlimited retry permission.
-The separate Hindi alternative candidate is offline-only, not proof of corrected
-live compliance. Please review missingness and inference limits, not just test
-counts. Main collection remains unauthorized; V6 findings below are history.
+Both separately authorized server-error recoveries preserved cached replies.
+Calibration **completed and verified all 104 observations: 100 valid graphs,
+four terminal global failures**. Four valid global graphs are empty. Calibration
+usage plus retained reservations is **$7.8912884 of $15**. The separate Hindi
+alternative probe completed four observations at **$0.30618**, but only one graph
+completed. The clarification still failed and is **not adopted**; calibration's
+selected reference wording is unchanged. Please review missingness and inference
+limits, not just test counts. Main collection remains unauthorized; V6 below is history.
 
 ## Current Note To The Professor
 
@@ -20,19 +20,37 @@ Professor, I have updated the core pipeline and preserved the previous results
 instead of overwriting them. The new work clarifies the hypothetical-network
 task, records strict parsing failures, and protects against paying again for
 responses already received. The recovery and regression checks passed, including
-189 offline tests. The latest collection is not yet complete because a second
-provider interruption stopped it at 101 of 104 observations. Four global outputs
-also failed the strict parser; these are reported as missing graphs, not successes.
+191 offline tests, followed by focused publishing checks. All 104 planned
+calibration observations now have verified outcomes: 100 valid graphs and four
+global parser failures, reported as missing rather than repaired successes.
+Four valid global graphs contain no ties, which remains an allowed outcome.
+
+I also tested the proposed Hindi-format clarification separately. It did not
+reliably work: the original alternative failed both repetitions, and the clarified
+alternative failed one of two. I preserved these results and did not change the
+reference instructions used by the completed calibration. That negative result
+is important evidence, not something to hide by regenerating until it passes.
 
 Please read the [current handoff](V8_TEAM_HANDOFF.md),
-[full knowledge brief](TEAM_KNOWLEDGE_BRIEF.md), and
+[full knowledge brief](TEAM_KNOWLEDGE_BRIEF.md),
+[final results and forecasts](V8_COMPLETION_RESULTS.md), and
 [technical execution record](V8_EXECUTION_NOTES.md) before reviewing the code.
 The handoff explains what changed, why, the actual costs, and the work still
-blocked. I am requesting review of the implementation and research scope, **not
-approval to launch main collection yet**. Final cost/runtime forecasts and the
-separate Hindi comparison will follow completed, verified calibration. Human
-bilingual certification is absent, and software checks cannot guarantee research
-validity or conference acceptance.
+remaining. A fresh 896-attempt study projects **$102.44 and 26.30 serial API hours**,
+or **$128.05 with 25% cost contingency**. Allocating 32 repetitions to global and
+eight to the other methods gives 1,568 attempts at about **$104.49**, before
+contingency. Some country costs are extrapolated, and neither estimate guarantees
+that every attempted graph will be valid or that wall-clock delivery will match
+API time.
+
+Please review whether the claim scope, primary outcomes, handling of 4/26 global
+failures, repetition allocation and multiple-comparison plan are scientifically
+defensible before authorizing main collection. Eight repetitions alone are not
+proof of adequate power. Human bilingual certification remains absent; persona
+fields remain English even in non-English instruction conditions. I am requesting
+review of the completed engineering/evidence package, not claiming guaranteed
+research validity, realistic human behavior or conference acceptance. No main
+batch is running, and no professor email has been sent by this workflow.
 
 ## Historical V6 Review Below
 

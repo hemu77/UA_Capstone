@@ -1,8 +1,27 @@
 # Hindi Alternative-2 Candidate
 
-Status: offline-tested, AI-authored candidate; its separately approved live probe
-has not run yet. No human bilingual review is claimed. The frozen V8 experiment
-is unchanged.
+Status, October 13: **live probe complete; candidate not adopted**. Four planned
+observations cost $0.30618 of $1, with one valid graph and three terminal failures.
+The extra clarification did not reliably resolve multiline answers. No human
+bilingual review is claimed. The frozen V8 reference remains unchanged.
+
+## Live Outcome
+
+The original alternative completed 0/2 graphs; the clarified alternative completed
+1/2. All three failures exhausted corrections with `Response must be one line`.
+Even the valid clarified graph needed four corrections (54 requests for 50
+decisions). Keep the candidate as a failed diagnostic hypothesis, not a shipped
+fix. No failed graph was repaired, replaced or relabeled.
+
+Private accounting and public replay passed without new calls or ledger changes.
+There were 123 received requests, 111 observed first decisions and 12 corrections.
+Early termination makes the arm denominators unequal: 26 original decisions and
+85 clarified decisions, not 100 per arm. Two graph repetitions cannot establish
+reliability improvement or language equivalence. See [full evidence](V8_COMPLETION_RESULTS.md).
+
+The existing calibration uses `reference`, not this `alternative_2`. No automatic
+wording switch or additional paid probe is authorized. The sections below
+preserve the candidate's rationale and prospective test design.
 
 ## Observed Failure
 
@@ -39,8 +58,8 @@ requests, receipts, failure records and V7/V8 source files remain untouched.
 - [x] A valid two-person answer still creates exactly the requested ties.
 - [x] The owner authorized up to $1 on October 13 for four separate GPT-4.1
   Hindi local graphs: original versus clarified wording, two matched repetitions.
-- [ ] Complete and inspect that versioned probe before any claim of improved
-  model compliance; no historical failed observation is replaced.
+- [x] Complete and inspect the versioned probe; observed failures do not support
+  adoption or a reliable-improvement claim. Historical failures remain intact.
 - [ ] A future protocol must explicitly decide whether to adopt the candidate;
   it is not automatically imported by either frozen V8 stage.
 

@@ -1,0 +1,49 @@
+{
+  "status": "PUBLIC_REPLAY_VERIFIED",
+  "contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+  "observations": 104,
+  "valid_graphs": 100,
+  "invalid_cells": 4,
+  "requests": 11634,
+  "empty_graphs": 4,
+  "conservative_usd": 7.889144774999999,
+  "api_seconds": 12096.271999999997,
+  "observed_elapsed_hours": 11.313895476944444,
+  "summary_sha256": "ac632885755a801cd6891c1e318d5df67db01a41260a81690cf3fc0d4dd78f55",
+  "main_authorized": false,
+  "human_bilingual_validation": false,
+  "forecasts": [
+    {
+      "scenario": "global_8_others_8",
+      "networks": 896,
+      "conservative_usd": 102.44275142124337,
+      "cost_with_25_percent_allowance": 128.05343927655423,
+      "serial_api_hours": 26.30387493650879,
+      "api_hours_with_50_percent_allowance": 39.455812404763186,
+      "unmeasured_country_transfer_networks": 288,
+      "calibration_reuse": false,
+      "main_authorized": false,
+      "interpretation": "Cost of attempted cells, including observed failures; not a guarantee of this many valid graphs."
+    },
+    {
+      "scenario": "global_32_others_8",
+      "networks": 1568,
+      "conservative_usd": 104.48650543320096,
+      "cost_with_25_percent_allowance": 130.6081317915012,
+      "serial_api_hours": 27.029089575739732,
+      "api_hours_with_50_percent_allowance": 40.5436343636096,
+      "unmeasured_country_transfer_networks": 504,
+      "calibration_reuse": false,
+      "main_authorized": false,
+      "interpretation": "Cost of attempted cells, including observed failures; not a guarantee of this many valid graphs."
+    }
+  ],
+  "billing_verified": false,
+  "limitations": "Public replay is not provider invoice reconciliation. Calibration is exploratory; missing graphs are not imputed.",
+  "retained_uncertain_reservation_usd": 0.002143625,
+  "total_charge_or_reservation_usd": 7.8912884,
+  "transport_recovery_sha256": [
+    "454fe1a4d415aede59da18ca95cf8bff6e0d3fb0b779495ebba00b1c3059afc0",
+    "4c98623645abaa3ecd8b4acc311a09d95efb44a264df74cffd031128afeddbd9"
+  ]
+}
