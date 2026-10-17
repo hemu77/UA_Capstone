@@ -249,16 +249,23 @@ rotated after exposure and supplied locally, never committed or pasted into note
 
 ## How to Run
 
-Use Python **3.11**; calibration used 3.11.9 and the versions pinned in
-`requirements.txt`. A different runtime can invalidate frozen execution checks.
-Run these PowerShell commands from the repository root:
+Use Python **3.11.9** exactly (pinned in `.python-version`); calibration used it
+and the versions in `requirements.txt`. A different runtime, including another
+3.11 patch release, can invalidate frozen execution checks. Install it from
+[python.org](https://www.python.org/downloads/release/python-3119/), then run
+from the repository root:
 
 ```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-# Offline tests: no key and no model calls.
-.\.venv\Scripts\python.exe -B -m unittest discover -s tests
+# Creates .venv, installs the full transitive lock, checks versions.
+powershell -ExecutionPolicy Bypass -File scripts/setup_env.ps1
+# Same, then runs the offline suite: no key and no model calls.
+powershell -ExecutionPolicy Bypass -File scripts/setup_env.ps1 -RunTests
 ```
+
+`requirements.lock.txt` pins every transitive dependency of `requirements.txt`
+for Windows x64. The manual equivalent is `py -3.11 -m venv .venv`, then
+`.\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt` and
+`.\.venv\Scripts\python.exe -B -m unittest discover -s tests`.
 
 Prepare revised prompts and recompute public analysis without a key or ledger:
 
