@@ -2,6 +2,7 @@
 
 | Read in order | Purpose |
 | --- | --- |
+| [October 17 pre-collection repair](PRECOLLECTION_REVIEW.md) | Current entry point: Raghav's findings, copy-only audit, analysis/candidate fixes, costs and remaining gates. |
 | [Current V8 team handoff](V8_TEAM_HANDOFF.md) | Earlier versus now, completed calibration, recovery/debugging, costs and remaining decisions; read first. |
 | [V8 completion results](V8_COMPLETION_RESULTS.md) | 104 observations, 100 valid graphs/four failures, separate Hindi diagnostic, final costs and fresh-study projections. |
 | [Current V8 execution](V8_EXECUTION_NOTES.md) | Completed 96-cell wording screen, 94 graphs/two failures, prospective recalibration and exact evidence paths. |

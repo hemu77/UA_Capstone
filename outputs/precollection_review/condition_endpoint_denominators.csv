@@ -1,0 +1,533 @@
+model,method,culture,language,endpoint,attempted,valid,nonempty,endpoint_defined
+gpt-4.1,global,us,english,density,1,1,1,1
+gpt-4.1,global,us,english,avg_clustering_coef,1,1,1,1
+gpt-4.1,global,us,english,modularity,1,1,1,1
+gpt-4.1,global,us,english,coleman_gender,1,1,1,1
+gpt-4.1,global,us,english,coleman_religion,1,1,1,1
+gpt-4.1,global,us,english,coleman_political orientation,1,1,1,1
+gpt-4.1,global,us,english,age_assortativity,1,1,1,1
+gpt-4.1,global,us,hindi,density,1,0,0,0
+gpt-4.1,global,us,hindi,avg_clustering_coef,1,0,0,0
+gpt-4.1,global,us,hindi,modularity,1,0,0,0
+gpt-4.1,global,us,hindi,coleman_gender,1,0,0,0
+gpt-4.1,global,us,hindi,coleman_religion,1,0,0,0
+gpt-4.1,global,us,hindi,coleman_political orientation,1,0,0,0
+gpt-4.1,global,us,hindi,age_assortativity,1,0,0,0
+gpt-4.1,global,us,japanese,density,1,1,1,1
+gpt-4.1,global,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-4.1,global,us,japanese,modularity,1,1,1,1
+gpt-4.1,global,us,japanese,coleman_gender,1,1,1,1
+gpt-4.1,global,us,japanese,coleman_religion,1,1,1,1
+gpt-4.1,global,us,japanese,coleman_political orientation,1,1,1,1
+gpt-4.1,global,us,japanese,age_assortativity,1,1,1,1
+gpt-4.1,global,us,portuguese,density,1,1,1,1
+gpt-4.1,global,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-4.1,global,us,portuguese,modularity,1,1,1,1
+gpt-4.1,global,us,portuguese,coleman_gender,1,1,1,1
+gpt-4.1,global,us,portuguese,coleman_religion,1,1,1,1
+gpt-4.1,global,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-4.1,global,us,portuguese,age_assortativity,1,1,1,1
+gpt-4.1,iterative,us,english,density,1,1,1,1
+gpt-4.1,iterative,us,english,avg_clustering_coef,1,1,1,1
+gpt-4.1,iterative,us,english,modularity,1,1,1,1
+gpt-4.1,iterative,us,english,coleman_gender,1,1,1,1
+gpt-4.1,iterative,us,english,coleman_religion,1,1,1,1
+gpt-4.1,iterative,us,english,coleman_political orientation,1,1,1,1
+gpt-4.1,iterative,us,english,age_assortativity,1,1,1,1
+gpt-4.1,iterative,us,hindi,density,1,1,1,1
+gpt-4.1,iterative,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-4.1,iterative,us,hindi,modularity,1,1,1,1
+gpt-4.1,iterative,us,hindi,coleman_gender,1,1,1,1
+gpt-4.1,iterative,us,hindi,coleman_religion,1,1,1,1
+gpt-4.1,iterative,us,hindi,coleman_political orientation,1,1,1,1
+gpt-4.1,iterative,us,hindi,age_assortativity,1,1,1,1
+gpt-4.1,iterative,us,japanese,density,1,1,1,1
+gpt-4.1,iterative,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-4.1,iterative,us,japanese,modularity,1,1,1,1
+gpt-4.1,iterative,us,japanese,coleman_gender,1,1,1,1
+gpt-4.1,iterative,us,japanese,coleman_religion,1,1,1,1
+gpt-4.1,iterative,us,japanese,coleman_political orientation,1,1,1,1
+gpt-4.1,iterative,us,japanese,age_assortativity,1,1,1,1
+gpt-4.1,iterative,us,portuguese,density,1,1,1,1
+gpt-4.1,iterative,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-4.1,iterative,us,portuguese,modularity,1,1,1,1
+gpt-4.1,iterative,us,portuguese,coleman_gender,1,1,1,1
+gpt-4.1,iterative,us,portuguese,coleman_religion,1,1,1,1
+gpt-4.1,iterative,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-4.1,iterative,us,portuguese,age_assortativity,1,1,1,1
+gpt-4.1,local,us,english,density,1,1,1,1
+gpt-4.1,local,us,english,avg_clustering_coef,1,1,1,1
+gpt-4.1,local,us,english,modularity,1,1,1,1
+gpt-4.1,local,us,english,coleman_gender,1,1,1,1
+gpt-4.1,local,us,english,coleman_religion,1,1,1,1
+gpt-4.1,local,us,english,coleman_political orientation,1,1,1,1
+gpt-4.1,local,us,english,age_assortativity,1,1,1,1
+gpt-4.1,local,us,hindi,density,1,1,1,1
+gpt-4.1,local,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-4.1,local,us,hindi,modularity,1,1,1,1
+gpt-4.1,local,us,hindi,coleman_gender,1,1,1,1
+gpt-4.1,local,us,hindi,coleman_religion,1,1,1,1
+gpt-4.1,local,us,hindi,coleman_political orientation,1,1,1,1
+gpt-4.1,local,us,hindi,age_assortativity,1,1,1,1
+gpt-4.1,local,us,japanese,density,1,1,1,1
+gpt-4.1,local,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-4.1,local,us,japanese,modularity,1,1,1,1
+gpt-4.1,local,us,japanese,coleman_gender,1,1,1,1
+gpt-4.1,local,us,japanese,coleman_religion,1,1,1,1
+gpt-4.1,local,us,japanese,coleman_political orientation,1,1,1,1
+gpt-4.1,local,us,japanese,age_assortativity,1,1,1,1
+gpt-4.1,local,us,portuguese,density,1,1,1,1
+gpt-4.1,local,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-4.1,local,us,portuguese,modularity,1,1,1,1
+gpt-4.1,local,us,portuguese,coleman_gender,1,1,1,1
+gpt-4.1,local,us,portuguese,coleman_religion,1,1,1,1
+gpt-4.1,local,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-4.1,local,us,portuguese,age_assortativity,1,1,1,1
+gpt-4.1,sequential,us,english,density,1,1,1,1
+gpt-4.1,sequential,us,english,avg_clustering_coef,1,1,1,1
+gpt-4.1,sequential,us,english,modularity,1,1,1,1
+gpt-4.1,sequential,us,english,coleman_gender,1,1,1,1
+gpt-4.1,sequential,us,english,coleman_religion,1,1,1,1
+gpt-4.1,sequential,us,english,coleman_political orientation,1,1,1,1
+gpt-4.1,sequential,us,english,age_assortativity,1,1,1,1
+gpt-4.1,sequential,us,hindi,density,1,1,1,1
+gpt-4.1,sequential,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-4.1,sequential,us,hindi,modularity,1,1,1,1
+gpt-4.1,sequential,us,hindi,coleman_gender,1,1,1,1
+gpt-4.1,sequential,us,hindi,coleman_religion,1,1,1,1
+gpt-4.1,sequential,us,hindi,coleman_political orientation,1,1,1,1
+gpt-4.1,sequential,us,hindi,age_assortativity,1,1,1,1
+gpt-4.1,sequential,us,japanese,density,1,1,1,1
+gpt-4.1,sequential,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-4.1,sequential,us,japanese,modularity,1,1,1,1
+gpt-4.1,sequential,us,japanese,coleman_gender,1,1,1,1
+gpt-4.1,sequential,us,japanese,coleman_religion,1,1,1,1
+gpt-4.1,sequential,us,japanese,coleman_political orientation,1,1,1,1
+gpt-4.1,sequential,us,japanese,age_assortativity,1,1,1,1
+gpt-4.1,sequential,us,portuguese,density,1,1,1,1
+gpt-4.1,sequential,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-4.1,sequential,us,portuguese,modularity,1,1,1,1
+gpt-4.1,sequential,us,portuguese,coleman_gender,1,1,1,1
+gpt-4.1,sequential,us,portuguese,coleman_religion,1,1,1,1
+gpt-4.1,sequential,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-4.1,sequential,us,portuguese,age_assortativity,1,1,1,1
+gpt-5.6-luna,global,us,english,density,1,1,1,1
+gpt-5.6-luna,global,us,english,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,global,us,english,modularity,1,1,1,1
+gpt-5.6-luna,global,us,english,coleman_gender,1,1,1,1
+gpt-5.6-luna,global,us,english,coleman_religion,1,1,1,1
+gpt-5.6-luna,global,us,english,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,global,us,english,age_assortativity,1,1,1,1
+gpt-5.6-luna,global,us,hindi,density,1,1,1,1
+gpt-5.6-luna,global,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,global,us,hindi,modularity,1,1,1,1
+gpt-5.6-luna,global,us,hindi,coleman_gender,1,1,1,1
+gpt-5.6-luna,global,us,hindi,coleman_religion,1,1,1,1
+gpt-5.6-luna,global,us,hindi,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,global,us,hindi,age_assortativity,1,1,1,1
+gpt-5.6-luna,global,us,japanese,density,1,1,1,1
+gpt-5.6-luna,global,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,global,us,japanese,modularity,1,1,1,1
+gpt-5.6-luna,global,us,japanese,coleman_gender,1,1,1,1
+gpt-5.6-luna,global,us,japanese,coleman_religion,1,1,1,1
+gpt-5.6-luna,global,us,japanese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,global,us,japanese,age_assortativity,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,density,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,modularity,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,coleman_gender,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,coleman_religion,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,global,us,portuguese,age_assortativity,1,1,1,1
+gpt-5.6-luna,iterative,us,english,density,1,1,1,1
+gpt-5.6-luna,iterative,us,english,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,iterative,us,english,modularity,1,1,1,1
+gpt-5.6-luna,iterative,us,english,coleman_gender,1,1,1,1
+gpt-5.6-luna,iterative,us,english,coleman_religion,1,1,1,1
+gpt-5.6-luna,iterative,us,english,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,iterative,us,english,age_assortativity,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,density,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,modularity,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,coleman_gender,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,coleman_religion,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,iterative,us,hindi,age_assortativity,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,density,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,modularity,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,coleman_gender,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,coleman_religion,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,iterative,us,japanese,age_assortativity,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,density,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,modularity,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,coleman_gender,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,coleman_religion,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,iterative,us,portuguese,age_assortativity,1,1,1,1
+gpt-5.6-luna,local,us,english,density,1,1,1,1
+gpt-5.6-luna,local,us,english,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,local,us,english,modularity,1,1,1,1
+gpt-5.6-luna,local,us,english,coleman_gender,1,1,1,1
+gpt-5.6-luna,local,us,english,coleman_religion,1,1,1,1
+gpt-5.6-luna,local,us,english,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,local,us,english,age_assortativity,1,1,1,1
+gpt-5.6-luna,local,us,hindi,density,1,1,1,1
+gpt-5.6-luna,local,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,local,us,hindi,modularity,1,1,1,1
+gpt-5.6-luna,local,us,hindi,coleman_gender,1,1,1,1
+gpt-5.6-luna,local,us,hindi,coleman_religion,1,1,1,1
+gpt-5.6-luna,local,us,hindi,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,local,us,hindi,age_assortativity,1,1,1,1
+gpt-5.6-luna,local,us,japanese,density,1,1,1,1
+gpt-5.6-luna,local,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,local,us,japanese,modularity,1,1,1,1
+gpt-5.6-luna,local,us,japanese,coleman_gender,1,1,1,1
+gpt-5.6-luna,local,us,japanese,coleman_religion,1,1,1,1
+gpt-5.6-luna,local,us,japanese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,local,us,japanese,age_assortativity,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,density,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,modularity,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,coleman_gender,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,coleman_religion,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,local,us,portuguese,age_assortativity,1,1,1,1
+gpt-5.6-luna,sequential,us,english,density,1,1,1,1
+gpt-5.6-luna,sequential,us,english,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,sequential,us,english,modularity,1,1,1,1
+gpt-5.6-luna,sequential,us,english,coleman_gender,1,1,1,1
+gpt-5.6-luna,sequential,us,english,coleman_religion,1,1,1,1
+gpt-5.6-luna,sequential,us,english,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,sequential,us,english,age_assortativity,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,density,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,modularity,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,coleman_gender,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,coleman_religion,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,sequential,us,hindi,age_assortativity,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,density,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,modularity,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,coleman_gender,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,coleman_religion,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,sequential,us,japanese,age_assortativity,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,density,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,modularity,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,coleman_gender,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,coleman_religion,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-5.6-luna,sequential,us,portuguese,age_assortativity,1,1,1,1
+gpt-6-luna,global,brazil,english,density,2,2,1,2
+gpt-6-luna,global,brazil,english,avg_clustering_coef,2,2,1,2
+gpt-6-luna,global,brazil,english,modularity,2,2,1,1
+gpt-6-luna,global,brazil,english,coleman_gender,2,2,1,1
+gpt-6-luna,global,brazil,english,coleman_religion,2,2,1,1
+gpt-6-luna,global,brazil,english,coleman_political orientation,2,2,1,1
+gpt-6-luna,global,brazil,english,age_assortativity,2,2,1,1
+gpt-6-luna,global,india,english,density,2,1,1,1
+gpt-6-luna,global,india,english,avg_clustering_coef,2,1,1,1
+gpt-6-luna,global,india,english,modularity,2,1,1,1
+gpt-6-luna,global,india,english,coleman_gender,2,1,1,1
+gpt-6-luna,global,india,english,coleman_religion,2,1,1,1
+gpt-6-luna,global,india,english,coleman_political orientation,2,1,1,1
+gpt-6-luna,global,india,english,age_assortativity,2,1,1,1
+gpt-6-luna,global,japan,english,density,2,2,1,2
+gpt-6-luna,global,japan,english,avg_clustering_coef,2,2,1,2
+gpt-6-luna,global,japan,english,modularity,2,2,1,1
+gpt-6-luna,global,japan,english,coleman_gender,2,2,1,1
+gpt-6-luna,global,japan,english,coleman_religion,2,2,1,1
+gpt-6-luna,global,japan,english,coleman_political orientation,2,2,1,1
+gpt-6-luna,global,japan,english,age_assortativity,2,2,1,1
+gpt-6-luna,global,us,english,density,2,2,1,2
+gpt-6-luna,global,us,english,avg_clustering_coef,2,2,1,2
+gpt-6-luna,global,us,english,modularity,2,2,1,1
+gpt-6-luna,global,us,english,coleman_gender,2,2,1,1
+gpt-6-luna,global,us,english,coleman_religion,2,2,1,1
+gpt-6-luna,global,us,english,coleman_political orientation,2,2,1,1
+gpt-6-luna,global,us,english,age_assortativity,2,2,1,1
+gpt-6-luna,global,us,hindi,density,2,2,2,2
+gpt-6-luna,global,us,hindi,avg_clustering_coef,2,2,2,2
+gpt-6-luna,global,us,hindi,modularity,2,2,2,2
+gpt-6-luna,global,us,hindi,coleman_gender,2,2,2,2
+gpt-6-luna,global,us,hindi,coleman_religion,2,2,2,2
+gpt-6-luna,global,us,hindi,coleman_political orientation,2,2,2,2
+gpt-6-luna,global,us,hindi,age_assortativity,2,2,2,2
+gpt-6-luna,global,us,japanese,density,2,1,1,1
+gpt-6-luna,global,us,japanese,avg_clustering_coef,2,1,1,1
+gpt-6-luna,global,us,japanese,modularity,2,1,1,1
+gpt-6-luna,global,us,japanese,coleman_gender,2,1,1,1
+gpt-6-luna,global,us,japanese,coleman_religion,2,1,1,1
+gpt-6-luna,global,us,japanese,coleman_political orientation,2,1,1,1
+gpt-6-luna,global,us,japanese,age_assortativity,2,1,1,1
+gpt-6-luna,global,us,portuguese,density,2,2,1,2
+gpt-6-luna,global,us,portuguese,avg_clustering_coef,2,2,1,2
+gpt-6-luna,global,us,portuguese,modularity,2,2,1,1
+gpt-6-luna,global,us,portuguese,coleman_gender,2,2,1,1
+gpt-6-luna,global,us,portuguese,coleman_religion,2,2,1,1
+gpt-6-luna,global,us,portuguese,coleman_political orientation,2,2,1,1
+gpt-6-luna,global,us,portuguese,age_assortativity,2,2,1,1
+gpt-6-luna,iterative,brazil,english,density,2,2,2,2
+gpt-6-luna,iterative,brazil,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,brazil,english,modularity,2,2,2,2
+gpt-6-luna,iterative,brazil,english,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,brazil,english,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,brazil,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,brazil,english,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,india,english,density,2,2,2,2
+gpt-6-luna,iterative,india,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,india,english,modularity,2,2,2,2
+gpt-6-luna,iterative,india,english,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,india,english,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,india,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,india,english,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,japan,english,density,2,2,2,2
+gpt-6-luna,iterative,japan,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,japan,english,modularity,2,2,2,2
+gpt-6-luna,iterative,japan,english,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,japan,english,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,japan,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,japan,english,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,us,english,density,2,2,2,2
+gpt-6-luna,iterative,us,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,us,english,modularity,2,2,2,2
+gpt-6-luna,iterative,us,english,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,us,english,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,us,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,us,english,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,us,hindi,density,2,2,2,2
+gpt-6-luna,iterative,us,hindi,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,us,hindi,modularity,2,2,2,2
+gpt-6-luna,iterative,us,hindi,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,us,hindi,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,us,hindi,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,us,hindi,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,us,japanese,density,2,2,2,2
+gpt-6-luna,iterative,us,japanese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,us,japanese,modularity,2,2,2,2
+gpt-6-luna,iterative,us,japanese,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,us,japanese,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,us,japanese,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,us,japanese,age_assortativity,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,density,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,modularity,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,coleman_gender,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,coleman_religion,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,coleman_political orientation,2,2,2,2
+gpt-6-luna,iterative,us,portuguese,age_assortativity,2,2,2,2
+gpt-6-luna,local,brazil,english,density,2,2,2,2
+gpt-6-luna,local,brazil,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,brazil,english,modularity,2,2,2,2
+gpt-6-luna,local,brazil,english,coleman_gender,2,2,2,2
+gpt-6-luna,local,brazil,english,coleman_religion,2,2,2,2
+gpt-6-luna,local,brazil,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,brazil,english,age_assortativity,2,2,2,2
+gpt-6-luna,local,india,english,density,2,2,2,2
+gpt-6-luna,local,india,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,india,english,modularity,2,2,2,2
+gpt-6-luna,local,india,english,coleman_gender,2,2,2,2
+gpt-6-luna,local,india,english,coleman_religion,2,2,2,2
+gpt-6-luna,local,india,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,india,english,age_assortativity,2,2,2,2
+gpt-6-luna,local,japan,english,density,2,2,2,2
+gpt-6-luna,local,japan,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,japan,english,modularity,2,2,2,2
+gpt-6-luna,local,japan,english,coleman_gender,2,2,2,2
+gpt-6-luna,local,japan,english,coleman_religion,2,2,2,2
+gpt-6-luna,local,japan,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,japan,english,age_assortativity,2,2,2,2
+gpt-6-luna,local,us,english,density,2,2,2,2
+gpt-6-luna,local,us,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,us,english,modularity,2,2,2,2
+gpt-6-luna,local,us,english,coleman_gender,2,2,2,2
+gpt-6-luna,local,us,english,coleman_religion,2,2,2,2
+gpt-6-luna,local,us,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,us,english,age_assortativity,2,2,2,2
+gpt-6-luna,local,us,hindi,density,2,2,2,2
+gpt-6-luna,local,us,hindi,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,us,hindi,modularity,2,2,2,2
+gpt-6-luna,local,us,hindi,coleman_gender,2,2,2,2
+gpt-6-luna,local,us,hindi,coleman_religion,2,2,2,2
+gpt-6-luna,local,us,hindi,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,us,hindi,age_assortativity,2,2,2,2
+gpt-6-luna,local,us,japanese,density,2,2,2,2
+gpt-6-luna,local,us,japanese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,us,japanese,modularity,2,2,2,2
+gpt-6-luna,local,us,japanese,coleman_gender,2,2,2,2
+gpt-6-luna,local,us,japanese,coleman_religion,2,2,2,2
+gpt-6-luna,local,us,japanese,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,us,japanese,age_assortativity,2,2,2,2
+gpt-6-luna,local,us,portuguese,density,2,2,2,2
+gpt-6-luna,local,us,portuguese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,local,us,portuguese,modularity,2,2,2,2
+gpt-6-luna,local,us,portuguese,coleman_gender,2,2,2,2
+gpt-6-luna,local,us,portuguese,coleman_religion,2,2,2,2
+gpt-6-luna,local,us,portuguese,coleman_political orientation,2,2,2,2
+gpt-6-luna,local,us,portuguese,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,brazil,english,density,2,2,2,2
+gpt-6-luna,sequential,brazil,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,brazil,english,modularity,2,2,2,2
+gpt-6-luna,sequential,brazil,english,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,brazil,english,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,brazil,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,brazil,english,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,india,english,density,2,2,2,2
+gpt-6-luna,sequential,india,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,india,english,modularity,2,2,2,2
+gpt-6-luna,sequential,india,english,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,india,english,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,india,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,india,english,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,japan,english,density,2,2,2,2
+gpt-6-luna,sequential,japan,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,japan,english,modularity,2,2,2,2
+gpt-6-luna,sequential,japan,english,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,japan,english,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,japan,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,japan,english,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,us,english,density,2,2,2,2
+gpt-6-luna,sequential,us,english,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,us,english,modularity,2,2,2,2
+gpt-6-luna,sequential,us,english,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,us,english,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,us,english,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,us,english,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,us,hindi,density,2,2,2,2
+gpt-6-luna,sequential,us,hindi,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,us,hindi,modularity,2,2,2,2
+gpt-6-luna,sequential,us,hindi,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,us,hindi,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,us,hindi,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,us,hindi,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,us,japanese,density,2,2,2,2
+gpt-6-luna,sequential,us,japanese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,us,japanese,modularity,2,2,2,2
+gpt-6-luna,sequential,us,japanese,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,us,japanese,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,us,japanese,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,us,japanese,age_assortativity,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,density,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,avg_clustering_coef,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,modularity,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,coleman_gender,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,coleman_religion,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,coleman_political orientation,2,2,2,2
+gpt-6-luna,sequential,us,portuguese,age_assortativity,2,2,2,2
+gpt-6-sol,global,us,english,density,1,1,1,1
+gpt-6-sol,global,us,english,avg_clustering_coef,1,1,1,1
+gpt-6-sol,global,us,english,modularity,1,1,1,1
+gpt-6-sol,global,us,english,coleman_gender,1,1,1,1
+gpt-6-sol,global,us,english,coleman_religion,1,1,1,1
+gpt-6-sol,global,us,english,coleman_political orientation,1,1,1,1
+gpt-6-sol,global,us,english,age_assortativity,1,1,1,1
+gpt-6-sol,global,us,hindi,density,1,1,1,1
+gpt-6-sol,global,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-6-sol,global,us,hindi,modularity,1,1,1,1
+gpt-6-sol,global,us,hindi,coleman_gender,1,1,1,1
+gpt-6-sol,global,us,hindi,coleman_religion,1,1,1,1
+gpt-6-sol,global,us,hindi,coleman_political orientation,1,1,1,1
+gpt-6-sol,global,us,hindi,age_assortativity,1,1,1,1
+gpt-6-sol,global,us,japanese,density,1,0,0,0
+gpt-6-sol,global,us,japanese,avg_clustering_coef,1,0,0,0
+gpt-6-sol,global,us,japanese,modularity,1,0,0,0
+gpt-6-sol,global,us,japanese,coleman_gender,1,0,0,0
+gpt-6-sol,global,us,japanese,coleman_religion,1,0,0,0
+gpt-6-sol,global,us,japanese,coleman_political orientation,1,0,0,0
+gpt-6-sol,global,us,japanese,age_assortativity,1,0,0,0
+gpt-6-sol,global,us,portuguese,density,1,1,1,1
+gpt-6-sol,global,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,global,us,portuguese,modularity,1,1,1,1
+gpt-6-sol,global,us,portuguese,coleman_gender,1,1,1,1
+gpt-6-sol,global,us,portuguese,coleman_religion,1,1,1,1
+gpt-6-sol,global,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-6-sol,global,us,portuguese,age_assortativity,1,1,1,1
+gpt-6-sol,iterative,us,english,density,1,1,1,1
+gpt-6-sol,iterative,us,english,avg_clustering_coef,1,1,1,1
+gpt-6-sol,iterative,us,english,modularity,1,1,1,1
+gpt-6-sol,iterative,us,english,coleman_gender,1,1,1,1
+gpt-6-sol,iterative,us,english,coleman_religion,1,1,1,1
+gpt-6-sol,iterative,us,english,coleman_political orientation,1,1,1,1
+gpt-6-sol,iterative,us,english,age_assortativity,1,1,1,1
+gpt-6-sol,iterative,us,hindi,density,1,1,1,1
+gpt-6-sol,iterative,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-6-sol,iterative,us,hindi,modularity,1,1,1,1
+gpt-6-sol,iterative,us,hindi,coleman_gender,1,1,1,1
+gpt-6-sol,iterative,us,hindi,coleman_religion,1,1,1,1
+gpt-6-sol,iterative,us,hindi,coleman_political orientation,1,1,1,1
+gpt-6-sol,iterative,us,hindi,age_assortativity,1,1,1,1
+gpt-6-sol,iterative,us,japanese,density,1,1,1,1
+gpt-6-sol,iterative,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,iterative,us,japanese,modularity,1,1,1,1
+gpt-6-sol,iterative,us,japanese,coleman_gender,1,1,1,1
+gpt-6-sol,iterative,us,japanese,coleman_religion,1,1,1,1
+gpt-6-sol,iterative,us,japanese,coleman_political orientation,1,1,1,1
+gpt-6-sol,iterative,us,japanese,age_assortativity,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,density,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,modularity,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,coleman_gender,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,coleman_religion,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-6-sol,iterative,us,portuguese,age_assortativity,1,1,1,1
+gpt-6-sol,local,us,english,density,1,1,1,1
+gpt-6-sol,local,us,english,avg_clustering_coef,1,1,1,1
+gpt-6-sol,local,us,english,modularity,1,1,1,1
+gpt-6-sol,local,us,english,coleman_gender,1,1,1,1
+gpt-6-sol,local,us,english,coleman_religion,1,1,1,1
+gpt-6-sol,local,us,english,coleman_political orientation,1,1,1,1
+gpt-6-sol,local,us,english,age_assortativity,1,1,1,1
+gpt-6-sol,local,us,hindi,density,1,1,1,1
+gpt-6-sol,local,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-6-sol,local,us,hindi,modularity,1,1,1,1
+gpt-6-sol,local,us,hindi,coleman_gender,1,1,1,1
+gpt-6-sol,local,us,hindi,coleman_religion,1,1,1,1
+gpt-6-sol,local,us,hindi,coleman_political orientation,1,1,1,1
+gpt-6-sol,local,us,hindi,age_assortativity,1,1,1,1
+gpt-6-sol,local,us,japanese,density,1,1,1,1
+gpt-6-sol,local,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,local,us,japanese,modularity,1,1,1,1
+gpt-6-sol,local,us,japanese,coleman_gender,1,1,1,1
+gpt-6-sol,local,us,japanese,coleman_religion,1,1,1,1
+gpt-6-sol,local,us,japanese,coleman_political orientation,1,1,1,1
+gpt-6-sol,local,us,japanese,age_assortativity,1,1,1,1
+gpt-6-sol,local,us,portuguese,density,1,1,1,1
+gpt-6-sol,local,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,local,us,portuguese,modularity,1,1,1,1
+gpt-6-sol,local,us,portuguese,coleman_gender,1,1,1,1
+gpt-6-sol,local,us,portuguese,coleman_religion,1,1,1,1
+gpt-6-sol,local,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-6-sol,local,us,portuguese,age_assortativity,1,1,1,1
+gpt-6-sol,sequential,us,english,density,1,1,1,1
+gpt-6-sol,sequential,us,english,avg_clustering_coef,1,1,1,1
+gpt-6-sol,sequential,us,english,modularity,1,1,1,1
+gpt-6-sol,sequential,us,english,coleman_gender,1,1,1,1
+gpt-6-sol,sequential,us,english,coleman_religion,1,1,1,1
+gpt-6-sol,sequential,us,english,coleman_political orientation,1,1,1,1
+gpt-6-sol,sequential,us,english,age_assortativity,1,1,1,1
+gpt-6-sol,sequential,us,hindi,density,1,1,1,1
+gpt-6-sol,sequential,us,hindi,avg_clustering_coef,1,1,1,1
+gpt-6-sol,sequential,us,hindi,modularity,1,1,1,1
+gpt-6-sol,sequential,us,hindi,coleman_gender,1,1,1,1
+gpt-6-sol,sequential,us,hindi,coleman_religion,1,1,1,1
+gpt-6-sol,sequential,us,hindi,coleman_political orientation,1,1,1,1
+gpt-6-sol,sequential,us,hindi,age_assortativity,1,1,1,1
+gpt-6-sol,sequential,us,japanese,density,1,1,1,1
+gpt-6-sol,sequential,us,japanese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,sequential,us,japanese,modularity,1,1,1,1
+gpt-6-sol,sequential,us,japanese,coleman_gender,1,1,1,1
+gpt-6-sol,sequential,us,japanese,coleman_religion,1,1,1,1
+gpt-6-sol,sequential,us,japanese,coleman_political orientation,1,1,1,1
+gpt-6-sol,sequential,us,japanese,age_assortativity,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,density,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,avg_clustering_coef,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,modularity,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,coleman_gender,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,coleman_religion,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,coleman_political orientation,1,1,1,1
+gpt-6-sol,sequential,us,portuguese,age_assortativity,1,1,1,1

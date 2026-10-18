@@ -4,7 +4,34 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-**Latest, October 13: V8 calibration completed and verified.** All **104 planned
+## Current Review Gate (October 17)
+
+Read the [pre-collection repair and team handoff](docs/PRECOLLECTION_REVIEW.md)
+first. The new offline audit preserves all 327 public V8 files, replays all 104
+observations, and reports failed, empty and endpoint-defined graphs separately.
+No API calls or historical replacements were made in this repair.
+The [final verification record](docs/PRECOLLECTION_VERIFICATION.md) records
+**210 passing offline tests**, notebook checks and the exact remaining limits.
+
+The [analysis candidate](precollection_spec.json) uses paired schedule blocks,
+four fixed models and 24 primary comparisons. RQ4 is explicitly about **named
+instruction contracts**, not a general language effect. A separate Hindi/global
+parser candidate is offline-only, not silently adopted into V8.
+
+The 32-schedule planning scenario is **3,584 fresh attempts**, approximately
+**$409.77 / 105.22 serial API hours** at historical V8 usage/rates, before
+allowances. It is not the old ~$101 study and **is not authorized**. Final
+contract review, changed-prompt live checks, execution safeguards and current
+prices remain launch gates. Tests cannot guarantee scientific validity.
+
+```powershell
+python -X utf8 -B precollection_audit.py
+python -X utf8 -B -m unittest tests.test_precollection -q
+```
+
+## Preserved V8 Completion (October 13)
+
+V8 calibration completed and verified. All **104 planned
 observations** finished: **100 valid graphs and four retained global failures**.
 Four valid global graphs are empty; empty graphs and invalid responses are not
 interchangeable. Calibration usage plus both retained server-error reservations
@@ -32,8 +59,10 @@ Costs are conservative local accounting, not reconciled invoices. V5/V6/V7
 history stays intact; the simulator still shows observed V6 results. Human
 bilingual validation is absent, and tests cannot certify research validity.
 
-**Status, October 2: 104 revised calibration graphs complete at $7.8549 of the
-approved $10. Main collection is NOT authorized.** All saved graphs, receipts,
+## Preserved V6 Completion (October 2)
+
+**Historical status:** 104 revised calibration graphs complete at $7.8549 of the
+approved $10. Main collection was NOT authorized. All saved graphs, receipts,
 metrics and accounting passed verification. **22/26 global graphs are empty**,
 so the global task needs scientific review before scaling. Completion is not
 research-validity or conference-acceptance certification.
@@ -58,6 +87,8 @@ neither calibration is automatically reused for confirmation.
 
 ## Start Here
 
+- [Latest repair and pre-collection review](docs/PRECOLLECTION_REVIEW.md):
+  Raghav's findings, implemented safeguards, exact remaining gates and revised scenarios.
 - [Current professor/team handoff](docs/V8_TEAM_HANDOFF.md): earlier versus now,
   debugging evidence, partial results, costs, and the exact remaining decisions.
 - [Current V8 execution and evidence](docs/V8_EXECUTION_NOTES.md): paid wording
@@ -97,7 +128,7 @@ neither calibration is automatically reused for confirmation.
 | RQ1 | With instruction language fixed to English, does country framing change homophily and topology? |
 | RQ2 | Which demographic attributes show stronger mixing patterns under the conditions? |
 | RQ3 | Do the four model configurations converge or diverge under matched settings? |
-| RQ4 | With country framing fixed to US, does instruction language change the networks? |
+| RQ4 | With country framing fixed to US, how do the named English, Hindi, Japanese and Portuguese instruction contracts change the networks? |
 
 All four generation methods contribute to these questions. A larger categorical
 homophily score is not proof of causal demographic importance; numeric age
@@ -114,16 +145,17 @@ Country framing is a prompt intervention, not a representative national sample.
 | Instruction languages | English, Hindi, Japanese, Brazilian Portuguese |
 | Personas | Same 50 designed fictional adults; no US party names or race labels |
 | Settings | Four countries in English, plus US in the other three languages |
-| Repetitions | Not approved. Global 32/local 8 was a planning scenario, not a recommendation to repeat the empty V6 task. |
-| Total | Not frozen. Global 32 plus eight for each other method would be 1,568; no automatic calibration reuse |
+| Repetitions | Candidate: 32 fresh shared schedule blocks. Allocation and final collection contract not approved. |
+| Total | Candidate: 3,584 attempts; no automatic calibration reuse. Historical 896/1,568 scenarios remain separately labelled. |
 
 This is a seven-setting design, **not** the full country-by-language factorial.
 Candidate attributes stay in English JSON. It tests instruction-language
 sensitivity, not participants' spoken language or fully translated personas.
 Seeds control local randomization; they are not population sizes or guarantees
 of provider determinism. `revision224.py` retains its filename for compatibility
-but reads the preserved V5 `study_protocol_896.json`. The new offline candidate is
-`study_protocol_next.json`; `revision_next.py` cannot execute paid collection.
+but reads the preserved V5 `study_protocol_896.json`. The current analysis candidate is
+`precollection_spec.json`; `study_protocol_next.json` is preserved V6 preparation.
+Neither `precollection_audit.py` nor `revision_next.py` can execute paid collection.
 Country labels are prompt framings, not validated cultural constructs. RQ4
 concerns these instruction wordings until wording robustness is tested.
 
@@ -324,17 +356,17 @@ separate Hindi candidate failed its reliability screen and is not adopted.
 Scientific decisions and main-budget authorization remain in [plan.md](plan.md).
 No automatic replacement or main-study generation is running.
 
-### Current V8 Review Commands: No API Spending
+### Current Offline Review Commands: No API Spending
 
 ```powershell
-.\.venv\Scripts\python.exe -B repair_v8_transport_second.py inspect
-.\.venv\Scripts\python.exe -B probe_hindi_candidate.py inspect
-.\.venv\Scripts\python.exe -B -m unittest tests.test_repair_v8_transport_second tests.test_hindi_probe
+.\.venv\Scripts\python.exe -X utf8 -B precollection_audit.py
+.\.venv\Scripts\python.exe -X utf8 -B -m unittest tests.test_precollection tests.test_inspect_calibration_v6 -q
 ```
 
-These public replays need the checked-in artifacts and matching repository
-environment, not an API key or the private billing ledger. Use the **second**
-recovery adapter: it validates both exact replacements and retained reservations.
-Public results live under `outputs/repair_v7/calibration/176533db7041/` and
-`outputs/repair_v7/hindi_candidate_probe/9a643535816c/`. The historical directory
-prefix remains unchanged; the saved contracts identify the actual version.
+This canonical audit needs the checked-in artifacts and matching repository
+environment, not an API key or private billing ledger. It runs the second V8
+recovery adapter inside a temporary public-data copy. New tables and the figure
+go to `outputs/precollection_review/`; historical calibration stays unchanged.
+The notebook's October 17 section checks attempt state and all output bindings
+through `precollection_audit.verified_report()` before displaying the results.
+Do not run older in-place inspectors to refresh these new reports.

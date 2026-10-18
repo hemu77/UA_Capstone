@@ -1,5 +1,25 @@
 # Revised Research Plan: Fix Design Before Spending
 
+## Current Gate: October 17
+
+The [post-review repair package](docs/PRECOLLECTION_REVIEW.md) and
+[`precollection_spec.json`](precollection_spec.json) supersede earlier candidate
+analysis/allocation descriptions below. Historical outcomes and costs stay intact.
+
+- [x] Add independently pinned, copy-only public replay with fail-closed audit status.
+- [x] Make attempted/valid/nonempty/endpoint-defined denominators explicit.
+- [x] Implement fixed-panel, schedule-block analysis with one 24-test family.
+- [x] Narrow RQ4 to named instruction contracts; do not claim translation-general effects.
+- [x] Isolate duplicate-only parsing and Hindi global wording candidates; preserve V8.
+- [ ] Adopt and freeze a final prompt/parser/execution contract, with targeted live checks.
+- [ ] Approve the candidate analysis and allocation before final generation.
+
+The candidate 32-block scope is 3,584 attempts, historically projected at $409.77
+before allowance, not the old ~$101/896 scope. No new paid authorization.
+Do not use earlier 24/84-family or 1/3/12-forecast tables as the current analysis.
+
+## Historical V8 Plan And Completion
+
 **Active V8 update, October 13:** [current execution and evidence](docs/V8_EXECUTION_NOTES.md).
 The owner-approved stage allowances remain $5/$10/$15, not new allowances per
 source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.

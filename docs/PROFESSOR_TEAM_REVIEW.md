@@ -1,5 +1,16 @@
 # Professor and Team Review: V8 Calibration Complete
 
+**Latest, October 17:** start with [the post-review handoff](PRECOLLECTION_REVIEW.md)
+and [current decision checklist](TEAM_APPROVAL.md). We added a copy-only pinned
+audit, endpoint-specific denominators, a schedule-block analysis candidate, and
+separate Hindi/global-parser candidates. The 32-schedule candidate means 3,584
+attempts, not a continuation of the old ~$101 allocation. No main study is
+authorized or running. The October 13 note below records the earlier handoff;
+its unresolved statistical choices are now addressed by the explicit candidate,
+which still needs acceptance and a final executable collection contract.
+
+## Historical October 13 Note
+
 **Current V8 update, October 13:** [execution notes](V8_EXECUTION_NOTES.md)
 supersede the status below. The 96-cell wording screen is complete (94 valid
 graphs/two preserved failures); all 32 reference graphs completed. The approved

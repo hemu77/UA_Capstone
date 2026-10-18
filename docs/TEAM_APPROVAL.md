@@ -1,5 +1,38 @@
 # Team Decision Before Main Collection
 
+## Current Checklist: October 17
+
+**Main collection is not approved by this document.** Read
+[the post-review repair brief](PRECOLLECTION_REVIEW.md) and
+[the analysis candidate](../precollection_spec.json). The October 2 checklist
+below is preserved history, not the current decision record.
+
+- [x] Preserve all 104 V8 outcomes: 100 valid graphs and four invalid, including
+  four valid empty graphs. Add independently pinned, copy-only public replay.
+- [x] Implement explicit denominators and a four-model, schedule-block analysis
+  candidate with 24 primary comparisons; preserve missing members of the family.
+- [x] Isolate Hindi global wording and duplicate-only parser candidates.
+- [x] Preserve the human-review waiver as a limitation, not certification.
+- [ ] Accept the narrow claim: seven named prompt contracts, one fictional
+  roster and four fixed model configurations. Broader claims need another design.
+- [ ] Accept primary endpoints and missingness rules. RQ2/RQ3 remain descriptive;
+  homophily does not establish causal demographic dominance.
+- [ ] Adopt a final prompt/parser contract and live-check any changed Hindi text.
+  Do not regenerate all calibration or overwrite original failures.
+- [ ] Approve allocation: the 32-schedule candidate means 3,584 attempts,
+  historically ~$409.77 before allowance. It is not guaranteed power; 0.03 is a
+  planning interval tolerance, not a scientifically justified equivalence margin.
+- [ ] Review the final execution manifest and transport behavior. The existing
+  policy stops on unresolved billing, retains its reservation and reuses received
+  replies. A general automatic retry runner is not implemented by this package.
+- [ ] Verify current prices and a fresh environment-based credential; record
+  the execution owner and exact authorized main-collection scope.
+
+A checked Markdown box is not an executable authorization. Tests cannot certify
+research validity or conference acceptance. No main batch is running.
+
+## Historical October 2 Decision Record
+
 Status: **NOT APPROVED. No main-generation permission is recorded here.**
 Read [the knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) and
 [the revised plan](../plan.md) first. The October 2 review supersedes the old

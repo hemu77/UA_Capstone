@@ -67,7 +67,14 @@ class InspectionTests(unittest.TestCase):
 
     def test_rejected_notebook_report_cannot_feed_the_next_cell(self):
         cells = json.loads(Path('analyze_networks.ipynb').read_text(encoding='utf-8'))['cells']
-        load, display = (''.join(c['source']) for c in cells[-2:])
+        # New report sections may follow V6. Bind this regression to its own
+        # tagged code cells, not whichever cells happen to be last today.
+        selected = []
+        for tag in ['v6-public-load', 'v6-public-display']:
+            matching = [c for c in cells if c['cell_type'] == 'code' and tag in c['metadata'].get('tags', [])]
+            self.assertEqual(len(matching), 1, f'Expected exactly one notebook cell tagged {tag}')
+            selected.append(''.join(matching[0]['source']))
+        load, display = selected
         namespace = {'display': Mock(), 'v6_report': {'old': 'previous execution'}}
         original = Path.cwd()
         with tempfile.TemporaryDirectory() as folder:

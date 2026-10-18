@@ -1,5 +1,17 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
+**Latest, October 17:** [read the post-review repair brief first](PRECOLLECTION_REVIEW.md).
+Raghav's follow-up showed why shared schedules and translation wording matter
+even when graph files are correct. The new package separates unusable responses
+from valid empty networks, uses schedule blocks for comparisons, and narrows
+claims to the exact prompts tested. It preserves all calibration evidence.
+The Hindi/global-parser fixes are separate offline candidates, not new results.
+The proposed 32-block scope would be 3,584 attempts at roughly $409.77 before
+allowance under historical rates; this larger scope is not authorized. Earlier
+costs and test counts below are dated history, not the current launch decision.
+
+## Historical October 13 Handoff
+
 **Current, October 13:** read [V8 execution](V8_EXECUTION_NOTES.md) first.
 The new wording screen attempted all 96 planned graph cells: 94 valid graphs,
 two terminal Hindi-alternative failures, $5.9461527 conservatively. The reference
