@@ -1,5 +1,9 @@
 # Before The Final Collection
 
+**Superseded decisions, October 18:** [final collection contract](FINAL_COLLECTION.md).
+The candidate analysis, allocation and parser now have an isolated executable
+runner. This page preserves the earlier review, not the current launch checklist.
+
 October 17, 2026. **Offline repair and review package; no paid main study.**
 This is the current response to [Raghav's submitted review](PR_REVIEW_OCT17.md).
 The older V6/V8 reports remain historical records, not competing active plans.

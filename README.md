@@ -4,7 +4,25 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Current Review Gate (October 17)
+## Final Collection (October 18)
+
+The [final collection contract and commands](docs/FINAL_COLLECTION.md) replace
+the earlier candidate-only handoff. `final_study` now connects the adopted
+prompts/parser, four generation methods, durable paid receipts, replay and
+schedule-block analysis. Historical calibration stays unchanged.
+
+The adopted configuration is **32 schedules / 3,584 attempted networks**, not
+896 total: four models, four methods and seven country/language conditions.
+Expected cost remains **$409.77**, or **$512.21 with 25% allowance**, using V8
+usage and officially checked current rates. This is not spending authorization.
+**Launch checks passed:** 226 offline tests, 112 engine combinations, and eight
+received Hindi graphs independently replayed. Live-check conservative usage was
+**$0.02740295**; one valid empty graph is retained. The full study has not run.
+The next action is explicit authorization of main generation. In the canonical
+paid workspace, run `python -X utf8 -B -m final_study status` with a local key;
+team clones can run the public `verify --stage hindi_check` command without one.
+
+## Historical Review Gate (October 17)
 
 Read the [pre-collection repair and team handoff](docs/PRECOLLECTION_REVIEW.md)
 first. The new offline audit preserves all 327 public V8 files, replays all 104

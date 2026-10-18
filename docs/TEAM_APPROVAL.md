@@ -1,6 +1,16 @@
 # Team Decision Before Main Collection
 
-## Current Checklist: October 17
+## Current Execution Handoff: October 18
+
+The [final contract](FINAL_COLLECTION.md) now adopts the claim, endpoints,
+missingness rules, 32-block allocation and prompt/parser/execution policy.
+Those are no longer open candidate-design tasks. Main spending is still not
+authorized. The eight-graph Hindi live check passed: eight valid graphs,
+including one empty, at $0.02740295. The next action is the explicitly authorized
+main launch with a process-local key. This does not claim professor approval.
+The checklist below is history.
+
+## Historical Checklist: October 17
 
 **Main collection is not approved by this document.** Read
 [the post-review repair brief](PRECOLLECTION_REVIEW.md) and

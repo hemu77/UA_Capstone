@@ -1,5 +1,15 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
+**Current, October 18:** [final execution handoff](FINAL_COLLECTION.md). The
+previous candidate has an actual runner now, with adopted analysis and 32-block
+allocation (3,584 attempts). Old evidence is preserved. All eight live Hindi
+checks passed at $0.02740295; one empty graph is retained. Main generation has
+not started, and it is the next authorized study action. The earlier
+~$101 cost does not apply to the larger allocation. See the current handoff
+for the $409.77 estimate, allowance, exact commands and limitations.
+
+## Historical October 17 Handoff
+
 **Latest, October 17:** [read the post-review repair brief first](PRECOLLECTION_REVIEW.md).
 Raghav's follow-up showed why shared schedules and translation wording matter
 even when graph files are correct. The new package separates unusable responses

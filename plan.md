@@ -1,6 +1,20 @@
 # Revised Research Plan: Fix Design Before Spending
 
-## Current Gate: October 17
+## Current Gate: October 18
+
+Use [the executable final contract](docs/FINAL_COLLECTION.md), not the candidate
+checklist below. The analysis, 32-block allocation, Hindi global wording,
+duplicate-only parser and stop-on-uncertain-transport policy are adopted in the
+new isolated `final_study` package. Main spending is not authorized.
+
+- [x] Implement final generation, saved artifacts, public replay and analysis.
+- [x] Preserve historical calibration and old contract bytes.
+- [x] Verify current official prices and record GPT-4.1's deprecation date.
+- [x] Complete and replay eight targeted Hindi global checks: eight valid,
+  including one empty graph; conservative usage $0.02740295.
+- [ ] On a passing live check, authorize and execute 3,584 fresh attempts.
+
+## Historical Gate: October 17
 
 The [post-review repair package](docs/PRECOLLECTION_REVIEW.md) and
 [`precollection_spec.json`](precollection_spec.json) supersede earlier candidate

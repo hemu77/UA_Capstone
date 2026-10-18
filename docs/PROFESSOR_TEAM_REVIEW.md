@@ -1,5 +1,14 @@
 # Professor and Team Review: V8 Calibration Complete
 
+**Current, October 18:** [final execution handoff](FINAL_COLLECTION.md). The
+candidate-only gap is addressed: generation and analysis now share an adopted,
+versioned contract. The planned allocation is 3,584 attempts; no full-batch
+spending is authorized. All eight targeted Hindi live checks passed at a
+conservative $0.02740295, including one valid empty graph. No professor approval or scientific-validity guarantee is
+implied. The sections below preserve earlier review history.
+
+## Historical October 17 Review
+
 **Latest, October 17:** start with [the post-review handoff](PRECOLLECTION_REVIEW.md)
 and [current decision checklist](TEAM_APPROVAL.md). We added a copy-only pinned
 audit, endpoint-specific denominators, a schedule-block analysis candidate, and
