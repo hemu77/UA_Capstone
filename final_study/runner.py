@@ -1,20 +1,66 @@
 """Serial collection, durable receipts, read-only replay, and explicit spending.
 
-Network failure is not a free retry. The selected policy stops, keeps the full
-reservation, and requires reconciliation. Resume reuses received replies. It
-never regenerates a completed graph just because its result is inconvenient.
+Network failure is not a free retry. An uncertain transport attempt stops the
+run and keeps its full reservation. `recover` may retire exactly one such
+attempt that never received a reply and authorize one separately reserved
+replacement for that same request. A replacement that also fails, a received
+reply, a client error or more than MAX_RECOVERIES retirements stops for human
+review. Resume reuses received replies and never regenerates a completed graph.
 """
 import contextlib
+from datetime import datetime, timezone
+import hashlib
 import json
 import math
 from pathlib import Path
 import socket
+import time
 from unittest.mock import patch
 
 import networkx as nx
 
 from . import protocol as p
 from precollection_audit import workflow_lock, write_json
+
+# Unpatched request identity. Replacement ids are derived from it, never stored.
+BASE_REQUEST_ID = p.engine.request_id
+MAX_RECOVERIES = 30
+TRANSPORT_ERRORS = {'APIConnectionError', 'APITimeoutError', 'InternalServerError',
+                    'RateLimitError', 'APIStatusError', 'ConflictError'}
+RETRYABLE_HTTP = {408, 409, 429}
+
+
+class RecoveryRefused(RuntimeError):
+    """The stop is not a plain lost-transport attempt; a person must review it."""
+
+
+def replacement_nonce(original_id):
+    return 'final-r1-' + original_id
+
+
+def replacement_of(original_id):
+    # Identical to paid_study.Budget.replacement_id for this authorization.
+    return hashlib.sha256(json.dumps([original_id, 'replacement', replacement_nonce(original_id)]).encode()).hexdigest()
+
+
+def retired(row):
+    """True only for a retirement made by `recover`; any other abandonment is invalid."""
+    if row is None or row[3] != 'abandoned':
+        return False
+    record = json.loads(row[5])
+    if (record.get('replacement_authorization') != replacement_nonce(row[0])
+            or record.get('accounting') != 'full_reservation_retained_no_replay'
+            or record.get('retained_reservation_usd') != row[2]
+            or record.get('previous_status') not in {'reserved', 'uncertain'}):
+        raise ValueError('Retired attempt lacks final-study recovery provenance.')
+    return True
+
+
+def mapped_request_id(budget):
+    def request_id(cell, ordinal, messages):
+        rid = BASE_REQUEST_ID(cell, ordinal, messages)
+        return replacement_of(rid) if retired(p.engine.ledger_row(budget, rid)) else rid
+    return request_id
 
 
 class IncompleteResponse(RuntimeError):
@@ -35,6 +81,8 @@ def output_lock():
 def requests_from_ledger(budget, cell):
     rows = budget.db.execute("SELECT id,phase,cost,status,request,response FROM attempts "
         "WHERE json_extract(request,'$.cell.run_id')=?", (cell['run_id'],)).fetchall()
+    # A retired attempt keeps its reservation in the ledger but is not a reply.
+    rows = [row for row in rows if not retired(row)]
     rows.sort(key=lambda row: json.loads(row[4])['ordinal'])
     result = []
     for ordinal, row in enumerate(rows):
@@ -134,14 +182,27 @@ def accounting(budget, target, spec, stage):
     ids_by_run = {}
     if rows.keys() != journals.keys():
         raise ValueError('Ledger/intent inventory differs; reconcile before sending anything.')
+    retirements = 0
     for rid, row in rows.items():
         request = json.loads(row[4])
         cell = request.get('cell', {})
-        ids_by_run.setdefault(cell.get('run_id'), set()).add(rid)
         if allowed.get(cell.get('run_id')) != cell or row[1] != 'main':
             raise ValueError('Unapproved request in this stage ledger.')
         if journals[rid] != dict(request_id=rid, row_sha256=p.legacy.digest(row)):
             raise ValueError('Journal/ledger mismatch; no automatic replacement.')
+        if retired(row):
+            # Charged in full against the cap; excluded only from replayed replies.
+            if (request.get('replaces_request_id') is not None
+                    or rid != BASE_REQUEST_ID(cell, request['ordinal'], request['messages'])):
+                raise ValueError('Only an original request may be retired, exactly once.')
+            if (target/'transport'/(rid+'.json')).exists():
+                raise ValueError('A retired attempt has received transport evidence.')
+            retirements += 1
+            continue
+        ids_by_run.setdefault(cell.get('run_id'), set()).add(rid)
+        original = request.get('replaces_request_id')
+        if original is not None and not retired(rows.get(original)):
+            raise ValueError('Replacement without a retired original.')
         if row[3] != 'received':
             raise RuntimeError('Unresolved paid attempt; retain reservation and stop.')
         response = json.loads(row[5])
@@ -162,14 +223,23 @@ def accounting(budget, target, spec, stage):
             row = rows.get(item['request_id'])
             if row is None or json.loads(row[4]) != item['request'] or json.loads(row[5]) != item['response']:
                 raise ValueError('Orphan/changed terminal receipt; never regenerate.')
+    if retirements > MAX_RECOVERIES:
+        raise ValueError('Transport recovery limit exceeded.')
+    return retirements
 
 
 def validate_request(item, cell, spec, ordinal):
     request, response, rid = item['request'], item['response'], item['request_id']
+    expected = BASE_REQUEST_ID(cell, ordinal, request['messages'])
+    if 'replaces_request_id' in request:
+        # Self-verifying provenance: public replay needs no private ledger.
+        if request['replaces_request_id'] != expected:
+            raise ValueError('Replacement provenance differs from its original request.')
+        expected = replacement_of(expected)
     if (request['cell'] != cell or request['ordinal'] != ordinal or request['model'] != cell['model']
             or request['settings'] != spec['settings'][cell['model']][cell['method']]
             or request.get('execution_source_sha256') != spec['sources']
-            or rid != p.engine.request_id(cell, ordinal, request['messages'])):
+            or rid != expected):
         raise ValueError('Request identity/settings differ from frozen contract.')
     usage = response['usage']
     if any(type(usage.get(k)) is not int or usage[k] < 0 for k in ['prompt_tokens', 'completion_tokens']):
@@ -440,6 +510,8 @@ def launch(stage, cap, reference):
             accounting(budget, target, spec, stage)
             planned = p.cells(spec, stage)
             with contextlib.ExitStack() as stack:
+                # A retired original resolves to its one authorized replacement id.
+                stack.enter_context(patch.object(p.engine, 'request_id', mapped_request_id(budget)))
                 client = None
                 for cell in planned:
                     path = target/'runs'/(cell['run_id']+'.json')
@@ -474,8 +546,12 @@ def launch(stage, cap, reference):
                         record = verify_record(path, cell, spec)
                     records.append(record)
                     print(f'{stage}: {len(records)}/{len(planned)} recorded', flush=True)
-            accounting(budget, target, spec, stage)
+            recovered = accounting(budget, target, spec, stage)
             summary = summarize(records, spec, stage)
+            retained = budget.db.execute(
+                "SELECT COALESCE(SUM(cost),0) FROM attempts WHERE status='abandoned'").fetchone()[0]
+            summary.update(transport_recoveries=recovered, retained_retired_reservations_usd=retained,
+                ledger_charge_or_reservation_usd=budget.spent())
             write_json(target/'summary.json', summary)
             if stage == 'main':
                 analyze(records, spec, target)
@@ -489,3 +565,115 @@ def launch(stage, cap, reference):
             raise
         finally:
             budget.db.close()
+
+
+def _unresolved(budget):
+    return budget.db.execute("SELECT id,phase,cost,status,request,response FROM attempts "
+                             "WHERE status IN ('reserved','uncertain')").fetchall()
+
+
+def check_recoverable(budget, target, spec, row):
+    """Accept only a lost first attempt; everything else needs a person."""
+    rid, request = row[0], json.loads(row[4])
+    response = json.loads(row[5]) if row[5] else {}
+    cell = request.get('cell', {})
+    if {c['run_id']: c for c in p.cells(spec, 'main')}.get(cell.get('run_id')) != cell or row[1] != 'main':
+        raise RecoveryRefused('Unresolved attempt is not a planned main-study request.')
+    if request.get('replaces_request_id') is not None:
+        raise RecoveryRefused('The single authorized replacement also failed; human review required.')
+    if rid != BASE_REQUEST_ID(cell, request['ordinal'], request['messages']):
+        raise RecoveryRefused('Unresolved attempt identity differs.')
+    if (target/'transport'/(rid+'.json')).exists():
+        raise RecoveryRefused('A provider reply was saved; reconcile it, never resend.')
+    if row[3] == 'uncertain':
+        diagnostics = response.get('diagnostics') or {}
+        status = diagnostics.get('http_status')
+        if (response.get('error_type') not in TRANSPORT_ERRORS or diagnostics.get('stage') != 'transport'
+                or (status is not None and status < 500 and status not in RETRYABLE_HTTP)):
+            raise RecoveryRefused('Not a lost-transport failure (for example 4xx, parse or settlement).')
+    journal = p.read(target/'requests'/(rid+'.json'))
+    if journal not in (dict(request_id=rid, row_sha256=p.legacy.digest(row)),
+                       dict(request_id=rid, status='INTENT_BEFORE_TRANSPORT')):
+        raise RecoveryRefused('Request journal differs from the ledger.')
+    done = budget.db.execute("SELECT COUNT(*) FROM attempts WHERE status='abandoned'").fetchone()[0]
+    if done >= MAX_RECOVERIES:
+        raise RecoveryRefused(f'Transport recovery limit ({MAX_RECOVERIES}) reached.')
+    return response
+
+
+def recover(stage, reference, automatic=False):
+    """Offline and idempotent: retire one lost attempt; no provider call is made here."""
+    if stage != 'main':
+        raise RecoveryRefused('Only main-study transport loss is recoverable.')
+    with output_lock():
+        spec = p.load_contract()
+        target = p.folder(spec, stage)
+        approval = p.read(target/'authorization.json')
+        if approval.get('reference') != reference:
+            raise RecoveryRefused('Use the original approval reference; the allowance is unchanged.')
+        budget = open_budget(spec, stage, approval)
+        try:
+            rows = _unresolved(budget)
+            if len(rows) != 1:
+                raise RecoveryRefused(f'{len(rows)} unresolved attempts; exactly one can be recovered.')
+            row = rows[0]
+            response = check_recoverable(budget, target, spec, row)
+            rid = row[0]
+            reason = (f'{"Automatic" if automatic else "Explicit"} final-study transport recovery under '
+                      f'{reference}; full reservation retained; one replacement for the same request.')
+            budget.abandon(rid, reason, replacement_authorization=replacement_nonce(rid))
+            new_row = p.engine.ledger_row(budget, rid)
+            retired(new_row)
+            write_json(target/'requests'/(rid+'.json'), dict(request_id=rid, row_sha256=p.legacy.digest(new_row)))
+            log = target/'transport_recoveries.json'
+            entries = p.read(log) if log.exists() else []
+            entries.append(dict(original_request_id=rid, replacement_request_id=replacement_of(rid),
+                run_id=json.loads(row[4])['cell']['run_id'], ordinal=json.loads(row[4])['ordinal'],
+                previous_status=row[3], error_type=response.get('error_type'),
+                http_status=(response.get('diagnostics') or {}).get('http_status'),
+                retained_reservation_usd=row[2], automatic=automatic,
+                date_utc=datetime.now(timezone.utc).isoformat()))
+            write_json(log, entries)
+            accounting(budget, target, spec, stage)
+            return dict(status='ONE_REPLACEMENT_AUTHORIZED', original_request_id=rid,
+                replacement_request_id=replacement_of(rid), retained_reservation_usd=row[2],
+                recoveries_used=len(entries), recovery_limit=MAX_RECOVERIES, paid_calls=0,
+                retry_after=((response.get('diagnostics') or {}).get('headers') or {}).get('retry-after'))
+        finally:
+            budget.db.close()
+
+
+FREE_PROBE_ERRORS = ('APIConnectionError', 'APITimeoutError', 'InternalServerError', 'RateLimitError')
+
+
+def run(stage, cap, reference, auto_recover=False, sleep=time.sleep, max_probe_wait_s=3600):
+    """launch(); with auto_recover, retire lost attempts and resume under the same cap."""
+    probe_wait = 0
+    while True:
+        try:
+            return launch(stage, cap, reference)
+        except Exception as error:
+            if not auto_recover or stage != 'main':
+                raise
+            target = p.folder(p.load_contract(), stage)
+            if not (target/'authorization.json').exists():
+                raise
+            try:
+                info = recover(stage, reference, automatic=True)
+            except RecoveryRefused as refused:
+                # No unresolved paid attempt: a free model-availability check failed.
+                if (str(refused).startswith('0 unresolved') and type(error).__name__ in FREE_PROBE_ERRORS
+                        and probe_wait < max_probe_wait_s):
+                    print(f'{stage}: provider unavailable before any paid request; waiting 60s', flush=True)
+                    sleep(60)
+                    probe_wait += 60
+                    continue
+                raise refused from error
+            delay = 30
+            try:
+                delay = min(120, max(30, float(info['retry_after'] or 0)))
+            except ValueError:
+                pass
+            print(f"{stage}: recovered lost attempt {info['recoveries_used']}/{MAX_RECOVERIES}; "
+                  f'retained ${info["retained_reservation_usd"]:.6f}; resuming in {delay:.0f}s', flush=True)
+            sleep(delay)

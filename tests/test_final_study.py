@@ -416,5 +416,180 @@ class LaunchTests(unittest.TestCase):
             self.assertFalse((protocol.folder(spec, 'main')/'authorization.json').exists())
 
 
+    # --- Lost-transport recovery: one replacement per request, never a rebuy ---
+    def failing_client(self, failures, status=520, text='0, 1'):
+        """First `failures` POSTs fail with `status`; later POSTs succeed."""
+        posts = []
+        def handler(request):
+            if request.method == 'GET':
+                return self.response(request)
+            posts.append(request)
+            if len(posts) <= failures:
+                return httpx.Response(status, json={'error': {'message': 'fixture'}}, request=request)
+            return self.response(request, text)
+        self.client(handler)
+        return posts
+
+    def ledger(self, spec):
+        approval = protocol.read(protocol.folder(spec, 'main')/'authorization.json')
+        return runner.open_budget(spec, 'main', approval)
+
+    def test_lost_transport_recovers_once_and_keeps_reservation(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(1)
+        self.enterContext(patch.object(runner, 'analyze'))
+        with self.assertRaises(RuntimeError):
+            self.launch()
+        budget = self.ledger(spec)
+        try:
+            reserved = budget.spent()
+        finally:
+            budget.db.close()
+        with self.assertRaises(runner.RecoveryRefused):
+            runner.recover('main', 'a-different-reference')
+        info = runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(info['status'], 'ONE_REPLACEMENT_AUTHORIZED')
+        self.assertEqual(info['paid_calls'], 0)
+        self.assertEqual(len(posts), 1)
+        with self.assertRaisesRegex(runner.RecoveryRefused, '0 unresolved'):
+            runner.recover('main', 'offline-fixture-only')
+        result = self.launch()
+        self.assertEqual(result['valid_graphs'], 1)
+        self.assertEqual(len(posts), 2)
+        summary = protocol.read(protocol.folder(spec, 'main')/'summary.json')
+        self.assertEqual(summary['transport_recoveries'], 1)
+        self.assertAlmostEqual(summary['retained_retired_reservations_usd'], reserved)
+        self.assertGreater(summary['ledger_charge_or_reservation_usd'], summary['conservative_usd'])
+        record = protocol.read(next((protocol.folder(spec, 'main')/'runs').glob('*.json')))
+        self.assertEqual(len(record['requests']), 1)
+        self.assertEqual(record['requests'][0]['request_id'], info['replacement_request_id'])
+        self.assertEqual(record['requests'][0]['request']['replaces_request_id'], info['original_request_id'])
+        # Public replay verifies replacement provenance without the private ledger.
+        self.assertEqual(runner.verify_stage(spec, 'main')['valid_graphs'], 1)
+        # Resume is read-only and never re-buys either attempt.
+        self.assertEqual(self.launch()['valid_graphs'], 1)
+        self.assertEqual(len(posts), 2)
+
+    def test_failed_replacement_stops_for_human_review(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(2)
+        with self.assertRaises(RuntimeError):
+            self.launch()
+        runner.recover('main', 'offline-fixture-only')
+        with self.assertRaises(RuntimeError):
+            self.launch()
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'replacement also failed'):
+            runner.recover('main', 'offline-fixture-only')
+        with self.assertRaisesRegex(RuntimeError, 'Unresolved|Abandoned|non-received'):
+            self.launch()
+        self.assertEqual(len(posts), 2)
+
+    def test_client_errors_and_saved_replies_are_not_recoverable(self):
+        for status in [400, 401, 404]:
+            with self.subTest(status=status), contextlib.ExitStack() as stack:
+                case = LaunchTests()
+                stack.callback(case.doCleanups)
+                root, spec, cells, fixtures = case.workspace()
+                posts = case.failing_client(1, status)
+                with self.assertRaises(RuntimeError):
+                    case.launch()
+                with self.assertRaisesRegex(runner.RecoveryRefused, 'lost-transport'):
+                    runner.recover('main', 'offline-fixture-only')
+                self.assertEqual(len(posts), 1)
+        with contextlib.ExitStack() as stack:
+            case = LaunchTests()
+            stack.callback(case.doCleanups)
+            root, spec, cells, fixtures = case.workspace()
+            def handler(request):
+                response = self.response(request)
+                if request.method == 'POST':
+                    body = json.loads(response.content)
+                    body['service_tier'] = 'flex'  # Received, but not the budgeted tier.
+                    return httpx.Response(200, json=body, request=request)
+                return response
+            case.client(handler)
+            with self.assertRaises(RuntimeError):
+                case.launch()
+            with self.assertRaisesRegex(runner.RecoveryRefused, 'reply was saved'):
+                runner.recover('main', 'offline-fixture-only')
+
+    def test_recovery_limit_is_enforced(self):
+        root, spec, cells, fixtures = self.workspace()
+        self.failing_client(1)
+        with self.assertRaises(RuntimeError):
+            self.launch()
+        with patch.object(runner, 'MAX_RECOVERIES', 0), \
+                self.assertRaisesRegex(runner.RecoveryRefused, 'limit'):
+            runner.recover('main', 'offline-fixture-only')
+
+    def test_auto_recover_resumes_under_the_same_cap(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(1)
+        self.enterContext(patch.object(runner, 'analyze'))
+        waits = []
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', auto_recover=True, sleep=waits.append)
+        self.assertEqual(result['valid_graphs'], 1)
+        self.assertEqual(len(posts), 2)
+        self.assertEqual(waits, [30])
+        log = protocol.read(protocol.folder(spec, 'main')/'transport_recoveries.json')
+        self.assertEqual([entry['automatic'] for entry in log], [True])
+        # Without the flag, the original stop-and-review behavior is unchanged.
+        case = LaunchTests()
+        self.addCleanup(case.doCleanups)
+        case.workspace()
+        case.failing_client(1)
+        with self.assertRaises(RuntimeError), contextlib.redirect_stdout(io.StringIO()):
+            runner.run('main', 1, 'offline-fixture-only')
+
+    def test_auto_recover_waits_on_free_probe_outage_without_paying(self):
+        root, spec, cells, fixtures = self.workspace()
+        gets, posts = [], []
+        def handler(request):
+            if request.method == 'GET':
+                gets.append(request)
+                if len(gets) == 1:
+                    raise httpx.ConnectError('fixture outage', request=request)
+                return self.response(request)
+            posts.append(request)
+            return self.response(request)
+        self.client(handler)
+        self.enterContext(patch.object(runner, 'analyze'))
+        waits = []
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', auto_recover=True, sleep=waits.append)
+        self.assertEqual(result['valid_graphs'], 1)
+        self.assertEqual(waits, [60])
+        self.assertEqual(len(posts), 1)
+        budget = self.ledger(spec)
+        try:
+            self.assertEqual(budget.db.execute("SELECT COUNT(*) FROM attempts WHERE status='abandoned'").fetchone()[0], 0)
+        finally:
+            budget.db.close()
+
+
+    def test_mid_cell_recovery_reuses_received_prefix(self):
+        root, spec, cells, fixtures = self.workspace(('local',))
+        posts = []
+        def handler(request):
+            if request.method == 'GET':
+                return self.response(request)
+            posts.append(request)
+            if len(posts) == 3:
+                return httpx.Response(503, json={'error': {'message': 'fixture'}}, request=request)
+            body = json.loads(request.content)
+            return self.response(request, fixtures[json.dumps(body['messages'], sort_keys=True)])
+        self.client(handler)
+        self.enterContext(patch.object(runner, 'analyze'))
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', auto_recover=True, sleep=lambda s: None)
+        self.assertEqual(result['valid_graphs'], 1)
+        record = protocol.read(next((protocol.folder(spec, 'main')/'runs').glob('*.json')))
+        # Every received reply bought exactly once; only the lost one was replaced.
+        self.assertEqual(len(posts), len(record['requests'])+1)
+        self.assertEqual(sum('replaces_request_id' in q['request'] for q in record['requests']), 1)
+        self.assertEqual(runner.verify_stage(spec, 'main')['valid_graphs'], 1)
+
+
 if __name__ == '__main__':
     unittest.main()

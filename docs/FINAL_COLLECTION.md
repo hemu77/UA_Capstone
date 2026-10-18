@@ -35,7 +35,19 @@ The code rejects allowances above $120, including the old $520 command, before
 credential lookup or provider access. The ledger reserves a conservative maximum
 before each request. Charges plus unresolved reservations share one cap across
 every model, method and condition. Resume cannot reset the allowance or rebuy a
-received reply. SDK and automatic replacement retries remain zero.
+received reply. SDK retries remain zero.
+
+**Transport recovery (contract v3, October 18).** About 100,000 requests at the
+V8 rate of two provider 5xx errors per ~11,600 means several interruptions are
+expected. `recover` handles exactly one kind: an attempt that got **no saved
+reply** after a connection error, timeout, 408/409/429 or 5xx. It keeps the
+original full reservation against the same $120 cap, records the retirement in
+`transport_recoveries.json`, and permits **one** separately reserved replacement
+of that identical request. A failed replacement, any 4xx, a saved reply, a
+parse/settlement error or more than 30 retirements still stops for review.
+Received replies are never bought again. `--auto-recover` applies the same rule
+automatically, waits 30–120 s first, and waits (free, up to an hour) when the
+provider's model check fails before any paid request.
 
 **No partial run is presented as a complete study.** All 896 attempts stay in the
 manifest. A cap or uncertain-transport stop is `STOPPED`/`PARTIAL`, not success.
@@ -110,7 +122,11 @@ python -X utf8 -B -m final_study verify --stage hindi_check
 python -X utf8 -B -m final_study status
 
 # Only after the owner's main launch instruction. Never above $120.
-python -X utf8 -B -m final_study launch --stage main --approve-usd 120 --approval-reference owner-eight-repetitions-120
+# --auto-recover retires lost-transport attempts and resumes (see above).
+python -X utf8 -B -m final_study launch --stage main --approve-usd 120 --approval-reference owner-eight-repetitions-120 --auto-recover
+
+# Manual alternative after a lost-transport stop, then rerun the same launch.
+python -X utf8 -B -m final_study recover --stage main --approval-reference owner-eight-repetitions-120
 
 # After collection: independently replay the complete attempt inventory.
 python -X utf8 -B -m final_study verify --stage main
@@ -118,7 +134,9 @@ python -X utf8 -B -m final_study verify --stage main
 
 The exact main command resumes saved evidence. Changing its cap/reference,
 missing ledgers, stale prices, altered receipts or uncertain responses stops
-execution. Reconcile uncertainty; never delete evidence to bypass a stop.
+execution. `recover` exits with `RecoveryRefused` and leaves everything
+unchanged when a stop is not a plain lost request; reconcile those by hand and
+never delete evidence to bypass a stop.
 
 Main outputs live in `outputs/final_study/<current-contract-id>/main/`. Successful
 observations have a receipt, `.adj` and `.png`; failures have no fabricated graph.

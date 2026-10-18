@@ -23,7 +23,9 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v2-budget120'
+VERSION = 'final-instruction-study-v3-budget120-recovery'
+# Superseded before any main attempt; may be replaced by `freeze`.
+UNEXECUTED_V2_SHA = '9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc'
 HISTORY = ROOT / 'final_study/history/v1'
 HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
@@ -85,7 +87,11 @@ def build_contract():
         hindi_evidence_contract_sha256=HISTORY_SHA, hindi_check_attempts=8,
         hindi_check_seeds=[45000, 45001], execution_order_seed=44032,
         global_parser='Validate every line; collapse exact undirected duplicates; retain raw response and flags; NONE valid.',
-        transport_policy='SDK retries zero. Stop on uncertain transport; retain full reservation. Explicit one-request recovery only.',
+        transport_policy='SDK retries zero. Stop on uncertain transport; retain full reservation. '
+            '`recover` (or launch --auto-recover) retires one lost-transport attempt with no saved reply '
+            'and permits one replacement of that same request; 4xx, received replies, a failed replacement '
+            'or more than 30 retirements stop for human review.',
+        max_transport_recoveries=30, replacements_per_request=1,
         retries_per_received_local_decision=3, calibration_reuse=False,
         claim=analysis.load_spec()['claim'], human_bilingual_validation=False,
         live_gate='Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid.')
@@ -104,9 +110,11 @@ def load_contract():
 def freeze():
     spec = build_contract()
     if CONTRACT.exists() and read(CONTRACT) != spec:
-        old = hindi_evidence_contract()
-        if read(CONTRACT) != old or (OUTPUT/HISTORY_SHA[:12]/'main').exists():
+        existing = legacy.digest(read(CONTRACT))
+        if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA} or (OUTPUT/existing[:12]/'main').exists():
             raise ValueError('An existing freeze differs; do not overwrite it silently.')
+        if existing == HISTORY_SHA:
+            hindi_evidence_contract()
         # Explicit one-time allocation migration. Paid evidence remains at its
         # original hash; an attempted main study may never be re-anchored here.
     write_json(CONTRACT, spec)
