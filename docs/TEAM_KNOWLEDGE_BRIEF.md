@@ -1,12 +1,14 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
-**Current, October 18:** [final execution handoff](FINAL_COLLECTION.md). The
-previous candidate has an actual runner now, with adopted analysis and 32-block
-allocation (3,584 attempts). Old evidence is preserved. All eight live Hindi
-checks passed at $0.02740295; one empty graph is retained. Main generation has
-not started, and it is the next authorized study action. The earlier
-~$101 cost does not apply to the larger allocation. See the current handoff
-for the $409.77 estimate, allowance, exact commands and limitations.
+**Current, October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
+The code now uses eight repetitions equally across four models, four methods
+and seven settings: **896 attempts**, about **$102.44**, with a **$120 ceiling**.
+The assistant mistakenly expanded every method to 32 repetitions; that plan is
+withdrawn. The statistical analysis also uses eight independent schedules, not
+32 by counting models. This reduces precision, not the need for honest reporting.
+Calibration and all eight paid Hindi checks are preserved and replayed, not
+regenerated. Main has not started. Incomplete runs stay incomplete; failures
+and valid empty graphs remain visible. No API generation was needed for this fix.
 
 ## Historical October 17 Handoff
 

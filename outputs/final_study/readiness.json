@@ -1,7 +1,9 @@
 {
-  "status": "READY_FOR_MAIN_EXECUTION",
-  "contract_sha256": "5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607",
-  "main_attempts": 3584,
+  "status": "LOCAL_CREDENTIAL_REQUIRED",
+  "contract_sha256": "9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc",
+  "main_attempts": 896,
+  "main_budget_ceiling_usd": 120,
+  "repetitions_per_condition": 8,
   "main_authorized": false,
   "hindi_check": {
     "status": "COMPLETE",
@@ -272,5 +274,6 @@
       }
     ]
   },
-  "transport_policy": "SDK retries zero. Stop on uncertain transport; retain full reservation. Explicit one-request recovery only."
+  "transport_policy": "SDK retries zero. Stop on uncertain transport; retain full reservation. Explicit one-request recovery only.",
+  "local_credential_present": false
 }

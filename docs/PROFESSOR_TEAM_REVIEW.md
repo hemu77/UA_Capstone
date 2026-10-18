@@ -1,11 +1,13 @@
 # Professor and Team Review: V8 Calibration Complete
 
-**Current, October 18:** [final execution handoff](FINAL_COLLECTION.md). The
-candidate-only gap is addressed: generation and analysis now share an adopted,
-versioned contract. The planned allocation is 3,584 attempts; no full-batch
-spending is authorized. All eight targeted Hindi live checks passed at a
-conservative $0.02740295, including one valid empty graph. No professor approval or scientific-validity guarantee is
-implied. The sections below preserve earlier review history.
+**Current, October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
+Code and analysis specify eight repetitions for every method/model/condition:
+896 attempts total, approximately $102.44, with a $120 maximum new main allowance.
+The assistant's 32-repetition expansion is withdrawn, not attributed to Raghav.
+All eight paid Hindi checks remain intact and replayable; no replacement calls
+are needed. Main has not run. Please review the corrected allocation, eight-block
+uncertainty calculations, retained missingness and narrow claims. Passing tests
+does not guarantee power or conference acceptance. Below is dated history.
 
 ## Historical October 17 Review
 

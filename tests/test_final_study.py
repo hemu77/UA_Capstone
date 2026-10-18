@@ -1,5 +1,6 @@
 """Launch-path checks; fixtures never count as model observations."""
 import copy
+from collections import Counter
 import contextlib
 import io
 import json
@@ -19,7 +20,13 @@ class FinalContractTests(unittest.TestCase):
         spec = protocol.build_contract()
         main = protocol.cells(spec, 'main')
         check = protocol.cells(spec, 'hindi_check')
-        self.assertEqual(len(main), 3584)
+        self.assertEqual(len(main), 896)
+        self.assertEqual(spec['schedule_blocks'], 8)
+        self.assertEqual(spec['main_budget_ceiling_usd'], 120)
+        self.assertEqual(spec['analysis']['schedule_seeds'], list(range(44000, 44008)))
+        counts = Counter((c['method'], c['model'], c['culture'], c['language']) for c in main)
+        self.assertEqual(len(counts), 112)
+        self.assertEqual(set(counts.values()), {8})
         self.assertEqual(len(check), 8)
         self.assertFalse({c['seed'] for c in main} & {c['seed'] for c in check})
         self.assertEqual(len({c['run_id'] for c in main}), len(main))
@@ -46,8 +53,90 @@ class FinalContractTests(unittest.TestCase):
         self.assertEqual(actual, next(r['system'] for r in protocol.catalog()
             if r['method'] == 'global' and r['country'] == 'us' and r['language'] == 'hindi'))
 
+    def test_historical_evidence_keeps_original_identity_and_is_not_paid_again(self):
+        current = protocol.build_contract()
+        old = protocol.hindi_evidence_contract()
+        self.assertEqual(protocol.legacy.digest(old), protocol.HISTORY_SHA)
+        self.assertEqual(protocol.cells(current, 'hindi_check'), protocol.cells(old, 'hindi_check'))
+        self.assertEqual(protocol.folder(current, 'hindi_check'), protocol.folder(old, 'hindi_check'))
+        with self.assertRaises(ValueError):
+            protocol.verify_contract(old)
+        with self.assertRaisesRegex(ValueError, 'read-only'):
+            runner.check_allowance(current, 'hindi_check', 1, 'must-not-rebuy')
+        with self.assertRaisesRegex(ValueError, 'eight-repetition'):
+            runner.check_allowance(old, 'main', 120, 'must-not-use-old-plan')
+
+    def test_historical_bridge_rejects_contract_source_or_prompt_tampering(self):
+        old = protocol.hindi_evidence_contract()
+        changed = copy.deepcopy(old)
+        changed['schedule_blocks'] = 8
+        with patch.object(protocol, 'read', return_value=changed):
+            with self.assertRaisesRegex(ValueError, 'contract changed'):
+                protocol.hindi_evidence_contract()
+        with patch.object(protocol.engine, 'sha', return_value='0'*64):
+            with self.assertRaisesRegex(ValueError, 'source evidence'):
+                protocol.hindi_evidence_contract()
+        with patch.object(protocol, 'catalog', return_value=[]):
+            with self.assertRaisesRegex(ValueError, 'incompatible'):
+                protocol.hindi_evidence_contract()
+
+    def test_partial_or_failed_inventory_never_reports_successful_completion(self):
+        spec = protocol.build_contract()
+        self.assertEqual(runner.summarize([], spec, 'main')['status'], 'PARTIAL')
+        cell = protocol.cells(spec, 'main')[0]
+        record = dict(cell=cell, requests=[], failure='invalid_global_response', metrics=None)
+        with patch.object(protocol, 'cells', return_value=[cell]):
+            self.assertEqual(runner.summarize([record], spec, 'main')['status'], 'COMPLETE_WITH_FAILURES')
+
+    def test_analysis_uses_eight_blocks_not_models_as_repetitions(self):
+        spec = protocol.analysis.load_spec()
+        rows = [dict(c, valid_graph=True, edges=100, density=.1+c['seed']%8*.01,
+                     avg_clustering_coef=.2+c['seed']%8*.01) for c in protocol.analysis.design(spec)]
+        results = protocol.analysis.primary_contrasts(rows, spec)
+        self.assertEqual(len(results), 24)
+        self.assertEqual({r['planned_schedule_blocks'] for r in results}, {8})
+        self.assertEqual({r['complete_schedule_blocks'] for r in results}, {8})
+        with self.assertRaisesRegex(ValueError, 'Every planned cell'):
+            protocol.analysis.primary_contrasts(rows[:-1], spec)
+        # One failed model is not replaced by a three-model average or zero.
+        failed = dict(rows[0], valid_graph=False, density=None, avg_clustering_coef=None)
+        missing = protocol.analysis.primary_contrasts([failed]+rows[1:], spec)
+        self.assertTrue(any(r['status'] == 'MISSING_NO_INFERENCE' for r in missing))
+        changed = copy.deepcopy(spec)
+        changed['schedule_seeds'] = list(range(44000, 44032))
+        with self.assertRaises(ValueError):
+            protocol.analysis.design(changed)
+        # The old analysis remains separately pinned to 32, not monkey-patched.
+        import precollection_analysis as historical
+        self.assertEqual(len(historical.design(historical.load_spec())), 3584)
+
 
 class LaunchTests(unittest.TestCase):
+    def test_ceiling_rejects_oversized_allowance_before_credentials_or_network(self):
+        root, spec, cells, fixtures = self.workspace()
+        with patch.object(protocol.legacy.paid, 'credential', side_effect=AssertionError('Too early')):
+            for cap in [120.01, 520, float('inf'), float('nan')]:
+                with self.subTest(cap=cap), self.assertRaises(ValueError):
+                    self.launch(cap=cap)
+        self.assertFalse(protocol.folder(spec, 'main').exists())
+
+    def test_ceiling_covers_direct_authorization_and_reopening(self):
+        root, spec, cells, fixtures = self.workspace()
+        with self.assertRaisesRegex(ValueError, 'ceiling'):
+            runner.authorize(spec, 'main', 120.01, 'oversized')
+        approval = runner.authorize(spec, 'main', 120, 'offline-fixture-only')
+        budget = runner.open_budget(spec, 'main', approval)
+        try:
+            self.assertEqual(budget.total_cap, 120)
+            budget.reserve('one', 'main', 119.99, '{}')
+            with self.assertRaises(protocol.legacy.paid.BudgetExceeded):
+                budget.reserve('two', 'main', .02, '{}')
+            self.assertLessEqual(budget.spent(), 120)
+        finally:
+            budget.db.close()
+        with self.assertRaisesRegex(ValueError, 'ceiling'):
+            runner.open_budget(spec, 'main', {**approval, 'additional_usd': 520})
+
     def workspace(self, methods=('global',)):
         root = Path(self.enterContext(tempfile.TemporaryDirectory()))
         spec = protocol.build_contract()
@@ -103,7 +192,7 @@ class LaunchTests(unittest.TestCase):
             self.assertEqual(body['service_tier'], 'default')
             return self.response(request, fixtures[json.dumps(body['messages'], sort_keys=True)])
         self.client(handler)
-        self.enterContext(patch.object(runner, 'analyze'))  # Reduced integration fixture, not 3,584 observations.
+        self.enterContext(patch.object(runner, 'analyze'))  # Reduced integration fixture, not 896 observations.
         result = self.launch()
         self.assertEqual(result['valid_graphs'], 4)
         before = len(calls)
@@ -298,23 +387,31 @@ class LaunchTests(unittest.TestCase):
 
     def test_readiness_requires_private_accounting_and_local_credential(self):
         real_readiness = runner.readiness
-        spec = protocol.build_contract()
-        check_cells = protocol.cells(spec, 'hindi_check')
         root, spec, cells, fixtures = self.workspace()
-        self.client(lambda request: self.response(request, '0, 1'))
-        with patch.object(protocol, 'cells', return_value=check_cells), \
-                patch.object(runner, 'readiness', real_readiness), contextlib.redirect_stdout(io.StringIO()):
-            result = runner.launch('hindi_check', 1, 'offline-hindi-fixture')
-            self.assertEqual(result['valid_graphs'], 8)
+        old = protocol.hindi_evidence_contract()
+        target = protocol.folder(old, 'hindi_check')
+        # Readiness is a consumer of preserved receipts, never a new paid stage.
+        # Public replay is exercised separately against all eight real artifacts.
+        for index in range(8):
+            protocol.write_json(target/'runs'/f'fixture-{index}.json', {})
+        protocol.write_json(target/'authorization.json', {'fixture_only': True})
+        from unittest.mock import Mock
+        budget = Mock()
+        with patch.object(runner, 'verify_stage', return_value={'valid_graphs': 8}), \
+                patch.object(runner, 'open_budget', return_value=budget) as opened, \
+                patch.object(runner, 'accounting') as checked, \
+                patch.object(runner, 'readiness', real_readiness):
             self.assertEqual(runner.status()['status'], 'READY_FOR_MAIN_EXECUTION')
+            self.assertEqual(opened.call_args.args[0], old)
+            self.assertEqual(checked.call_args.args[2], old)
+            budget.db.close.assert_called()
             with patch.object(protocol.legacy.paid, 'credential', side_effect=RuntimeError('Key absent')):
                 self.assertEqual(runner.status()['status'], 'LOCAL_CREDENTIAL_REQUIRED')
                 with self.assertRaisesRegex(RuntimeError, 'Key absent'):
-                    runner.authorize(spec, 'main', 520, 'must-not-authorize')
-            target = protocol.folder(spec, 'hindi_check')
-            (target/'budget.sqlite').unlink()
-            with self.assertRaises(Exception):
-                runner.status()
+                    runner.authorize(spec, 'main', 120, 'must-not-authorize')
+            with patch.object(runner, 'open_budget', side_effect=ValueError('Missing private ledger')):
+                with self.assertRaisesRegex(ValueError, 'Missing private ledger'):
+                    runner.status()
             self.assertEqual(protocol.read(root/'readiness.json')['status'], 'VALIDATION_PENDING')
             self.assertFalse((protocol.folder(spec, 'main')/'authorization.json').exists())
 

@@ -6,21 +6,23 @@ under different country framings, instruction languages and generation methods.
 
 ## Final Collection (October 18)
 
-The [final collection contract and commands](docs/FINAL_COLLECTION.md) replace
-the earlier candidate-only handoff. `final_study` now connects the adopted
-prompts/parser, four generation methods, durable paid receipts, replay and
-schedule-block analysis. Historical calibration stays unchanged.
+**Corrected in code:** eight repetitions for every model/method/condition,
+**896 planned attempts total**, estimated **$102.44**, with an enforced **$120
+maximum main-study allowance**. Four models x four methods x seven conditions
+x eight repetitions means **224 attempts per method**. The assistant's earlier
+32-repetition / ~$410 expansion is withdrawn; it was not a requirement from
+Raghav. No main collection has started.
 
-The adopted configuration is **32 schedules / 3,584 attempted networks**, not
-896 total: four models, four methods and seven country/language conditions.
-Expected cost remains **$409.77**, or **$512.21 with 25% allowance**, using V8
-usage and officially checked current rates. This is not spending authorization.
-**Launch checks passed:** 226 offline tests, 112 engine combinations, and eight
-received Hindi graphs independently replayed. Live-check conservative usage was
-**$0.02740295**; one valid empty graph is retained. The full study has not run.
-The next action is explicit authorization of main generation. In the canonical
-paid workspace, run `python -X utf8 -B -m final_study status` with a local key;
-team clones can run the public `verify --stage hindi_check` command without one.
+The [current contract and commands](docs/FINAL_COLLECTION.md) cover generation,
+saved graph/PNG artifacts, budgeted resume, public replay and eight-schedule
+analysis. No partial study is reported as complete. Future usage can exceed the
+forecast; the runner must stop rather than exceed its cap or fabricate results.
+
+Existing calibration and the eight paid Hindi checks remain unchanged. The
+Hindi checks cost $0.02740295; all eight parsed, including one valid empty graph.
+They are replayed under their original contract, not bought again or counted in
+the fresh study. See [current verification](docs/FINAL_COLLECTION_VERIFICATION.md).
+Tests and AI review do not guarantee statistical power or conference acceptance.
 
 ## Historical Review Gate (October 17)
 

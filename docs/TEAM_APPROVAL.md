@@ -2,13 +2,13 @@
 
 ## Current Execution Handoff: October 18
 
-The [final contract](FINAL_COLLECTION.md) now adopts the claim, endpoints,
-missingness rules, 32-block allocation and prompt/parser/execution policy.
-Those are no longer open candidate-design tasks. Main spending is still not
-authorized. The eight-graph Hindi live check passed: eight valid graphs,
-including one empty, at $0.02740295. The next action is the explicitly authorized
-main launch with a process-local key. This does not claim professor approval.
-The checklist below is history.
+The [corrected contract](FINAL_COLLECTION.md) uses eight equal repetitions for
+every method: 896 attempts total, forecast $102.44, maximum new main allowance
+$120. The assistant's 32-block expansion is withdrawn. Generation and analysis
+both use eight; model rows are not counted as independent repetitions.
+The eight paid Hindi checks are preserved and replayed, not regenerated.
+Main has not started. Next is the owner's launch instruction with a local key;
+no professor approval or guaranteed statistical power is claimed. Below is history.
 
 ## Historical Checklist: October 17
 

@@ -1,8 +1,7 @@
 """The adopted protocol and executable contract, separate from frozen history.
 
-The statistical specification is reused verbatim. Its old 'candidate' label is
-provenance, not permission: this enclosing contract adopts the specification.
-Spending still requires an explicit stage authorization and the live gate.
+The reviewed analysis math is reused with eight schedules, not 32. Previously
+paid Hindi checks stay under their original contract and are replayed read-only.
 """
 import contextlib
 from datetime import date
@@ -14,7 +13,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import calibration_v6 as engine
-import precollection_analysis as analysis
+from . import analysis
 import precollection_candidate as candidate
 from precollection_audit import write_json
 import repair_v7 as legacy
@@ -24,7 +23,9 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v1'
+VERSION = 'final-instruction-study-v2-budget120'
+HISTORY = ROOT / 'final_study/history/v1'
+HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
 HINDI_NEW = 'मित्रताओं का ऐसा विन्यास उत्पन्न करें जो यथार्थसंगत और विश्वसनीय हो।'
 
@@ -65,11 +66,12 @@ def sources():
     paths = list(ROOT.glob('*.py')) + list(ROOT.glob('study_protocol*.json'))
     paths += list((ROOT/'final_study').glob('*.py'))
     paths += [ROOT/n for n in ['precollection_spec.json', 'requirements.lock.txt', '.python-version']]
+    paths += [HISTORY/'contract.json'] + list((HISTORY/'final_study').glob('*.py'))
     return {p.relative_to(ROOT).as_posix(): engine.sha(p) for p in sorted(paths)}
 
 
 def build_contract():
-    return dict(version=VERSION, status='ADOPTED_PENDING_LIVE_CHECK', main_authorized=False,
+    return dict(version=VERSION, status='ADOPTED_EIGHT_EQUAL_SCHEDULES', main_authorized=False,
         analysis=analysis.load_spec(), analysis_adopted=True, sources=sources(),
         roster_sha256=analysis.ROSTER, runtime=engine.frozen.runtime_versions(),
         catalog_sha256=legacy.digest(catalog()),
@@ -79,13 +81,14 @@ def build_contract():
         gpt41_shutdown='2027-01-14', requested_service_tier='default',
         settings={m: {method: engine.settings(m, method) for method in analysis.METHODS}
                   for m in analysis.MODELS},
-        main_attempts=3584, schedule_blocks=32, hindi_check_attempts=8,
+        main_attempts=896, schedule_blocks=8, main_budget_ceiling_usd=120,
+        hindi_evidence_contract_sha256=HISTORY_SHA, hindi_check_attempts=8,
         hindi_check_seeds=[45000, 45001], execution_order_seed=44032,
         global_parser='Validate every line; collapse exact undirected duplicates; retain raw response and flags; NONE valid.',
         transport_policy='SDK retries zero. Stop on uncertain transport; retain full reservation. Explicit one-request recovery only.',
         retries_per_received_local_decision=3, calibration_reuse=False,
         claim=analysis.load_spec()['claim'], human_bilingual_validation=False,
-        live_gate='Eight Hindi global attempts, two schedules per model; all must parse and finish. Empty graphs remain valid, not replaced.')
+        live_gate='Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid.')
 
 
 def verify_contract(spec):
@@ -101,7 +104,11 @@ def load_contract():
 def freeze():
     spec = build_contract()
     if CONTRACT.exists() and read(CONTRACT) != spec:
-        raise ValueError('An existing freeze differs; do not overwrite it silently.')
+        old = hindi_evidence_contract()
+        if read(CONTRACT) != old or (OUTPUT/HISTORY_SHA[:12]/'main').exists():
+            raise ValueError('An existing freeze differs; do not overwrite it silently.')
+        # Explicit one-time allocation migration. Paid evidence remains at its
+        # original hash; an attempted main study may never be re-anchored here.
     write_json(CONTRACT, spec)
     return dict(contract_sha256=legacy.digest(spec), main_attempts=spec['main_attempts'], main_authorized=False)
 
@@ -110,6 +117,7 @@ def cells(spec, stage):
     if stage == 'main':
         rows = analysis.design(spec['analysis'])
     elif stage == 'hindi_check':
+        spec = evidence_spec(spec, stage)
         rows = [dict(model=m, method='global', culture='us', language='hindi', seed=s,
                      wording='reference', roster_sha256=analysis.ROSTER)
                 for s, m in itertools.product(spec['hindi_check_seeds'], analysis.MODELS)]
@@ -132,7 +140,34 @@ def cells(spec, stage):
 def folder(spec, stage):
     if stage not in {'main', 'hindi_check'}:
         raise ValueError('Unknown stage.')
-    return OUTPUT/legacy.digest(spec)[:12]/stage
+    return OUTPUT/legacy.digest(evidence_spec(spec, stage))[:12]/stage
+
+
+def hindi_evidence_contract():
+    """Validate the original source archive and unchanged live-check semantics."""
+    old = read(HISTORY/'contract.json')
+    if legacy.digest(old) != HISTORY_SHA:
+        raise ValueError('Historical Hindi contract changed.')
+    for name, expected in old['sources'].items():
+        path = HISTORY/name if name.startswith('final_study/') else ROOT/name
+        if engine.sha(path) != expected:
+            raise ValueError('Historical Hindi source evidence changed: '+name)
+    if (old['catalog_sha256'] != legacy.digest(catalog())
+            or old['runtime'] != engine.frozen.runtime_versions()
+            or old['rates'] != {m: list(legacy.paid.RATES[m]) for m in analysis.MODELS}
+            or old['settings'] != {m: {method: engine.settings(m, method) for method in analysis.METHODS}
+                                  for m in analysis.MODELS}):
+        raise ValueError('Hindi evidence is incompatible with current execution semantics.')
+    return old
+
+
+def evidence_spec(spec, stage):
+    if stage != 'hindi_check':
+        return spec
+    old = hindi_evidence_contract()
+    if legacy.digest(spec) != HISTORY_SHA and spec.get('hindi_evidence_contract_sha256') != HISTORY_SHA:
+        raise ValueError('Unrecognized Hindi evidence bridge.')
+    return old
 
 
 def check_prices(spec, today=None):

@@ -2,17 +2,20 @@
 
 ## Current Gate: October 18
 
-Use [the executable final contract](docs/FINAL_COLLECTION.md), not the candidate
-checklist below. The analysis, 32-block allocation, Hindi global wording,
-duplicate-only parser and stop-on-uncertain-transport policy are adopted in the
-new isolated `final_study` package. Main spending is not authorized.
+Use [the budget-corrected executable contract](docs/FINAL_COLLECTION.md), not the
+historical candidate checklist below. Code and analysis now use eight equal
+repetitions: 896 planned attempts, 224 per method. Expected new usage is $102.44;
+the main allowance cannot exceed $120. The rejected 32-block expansion was an
+assistant planning error, not a reviewer mandate. Main generation has not run.
 
 - [x] Implement final generation, saved artifacts, public replay and analysis.
 - [x] Preserve historical calibration and old contract bytes.
 - [x] Verify current official prices and record GPT-4.1's deprecation date.
 - [x] Complete and replay eight targeted Hindi global checks: eight valid,
   including one empty graph; conservative usage $0.02740295.
-- [ ] On a passing live check, authorize and execute 3,584 fresh attempts.
+- [x] Replace 32 with eight in generation and analysis; enforce the $120 ceiling.
+- [x] Preserve and replay paid Hindi evidence without regenerating it.
+- [ ] Execute and verify all 896 planned attempts after the owner's launch instruction.
 
 ## Historical Gate: October 17
 

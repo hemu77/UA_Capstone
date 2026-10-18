@@ -236,7 +236,9 @@ def summarize(records, spec, stage):
             requests=len(items), parse_failures=sum(q['response'].get('parse', {}).get('valid') is False for q in items),
             conservative_usd=sum(q['response']['conservative_charge_usd'] for q in items),
             api_seconds=sum(q['response']['diagnostics']['elapsed_ms']/1000 for q in items)))
-    return dict(status='COMPLETE' if len(rows) == len(p.cells(spec, stage)) else 'PARTIAL',
+    complete = len(rows) == len(p.cells(spec, stage))
+    status = ('COMPLETE' if all(r['valid_graph'] for r in rows) else 'COMPLETE_WITH_FAILURES') if complete else 'PARTIAL'
+    return dict(status=status,
         contract_sha256=p.legacy.digest(spec), stage=stage, attempted=len(rows),
         planned=len(p.cells(spec, stage)), valid_graphs=sum(r['valid_graph'] for r in rows),
         empty_graphs=sum(r['valid_graph'] and r['metrics']['density'] == 0 for r in rows),
@@ -245,6 +247,7 @@ def summarize(records, spec, stage):
 
 
 def verify_stage(spec, stage):
+    spec = p.evidence_spec(spec, stage)
     target = p.folder(spec, stage)
     planned = p.cells(spec, stage)
     expected = {c['run_id'] for c in planned}
@@ -260,7 +263,7 @@ def preflight():
         write_json(p.OUTPUT/'readiness.json', dict(status='VALIDATION_PENDING', main_authorized=False))
         spec = p.load_contract()
         results = []
-        # All model/condition/method combinations, not 3,584 redundant fixture plots.
+        # All model/condition/method combinations, not 896 redundant fixture plots.
         selected = [c for c in p.cells(spec, 'main') if c['seed'] == 44000]
         with patch.object(socket.socket, 'connect', side_effect=AssertionError('Offline preflight')), \
                 patch.object(p.legacy.paid, 'OpenAI', side_effect=AssertionError('Offline preflight')):
@@ -275,6 +278,11 @@ def preflight():
         report = dict(status='OFFLINE_PREFLIGHT_PASSED', contract_sha256=p.legacy.digest(spec),
             cases=len(results), results=results, paid_requests=0)
         write_json(p.OUTPUT/'preflight.json', report)
+        fields = ['run_id', 'model', 'method', 'culture', 'language', 'seed', 'wording',
+                  'roster_sha256', 'final_contract_sha256']
+        p.engine.write_csv(p.OUTPUT/'main_manifest.csv', [
+            {k: cell[k] for k in fields} for cell in p.cells(spec, 'main')])
+        write_json(p.OUTPUT/'prompt_catalog.json', p.catalog())
         return {k: v for k, v in report.items() if k != 'results'}
 
 
@@ -290,18 +298,21 @@ def readiness(spec, require_credential=True):
     report = verify_stage(spec, 'hindi_check')
     if report['valid_graphs'] != 8:
         raise ValueError('Targeted Hindi live check has invalid observations; main stays blocked.')
-    target = p.folder(spec, 'hindi_check')
+    historical = p.evidence_spec(spec, 'hindi_check')
+    target = p.folder(historical, 'hindi_check')
     approval = p.read(target/'authorization.json')
-    budget = open_budget(spec, 'hindi_check', approval)
+    budget = open_budget(historical, 'hindi_check', approval)
     try:
-        accounting(budget, target, spec, 'hindi_check')
+        accounting(budget, target, historical, 'hindi_check')
     finally:
         budget.db.close()
     if require_credential:
         p.legacy.paid.credential()
     # Empty graphs are recorded outcomes, never an excuse to resample a model.
     return dict(status='READY_FOR_MAIN_EXECUTION', contract_sha256=p.legacy.digest(spec),
-        main_attempts=3584, main_authorized=False, hindi_check=report,
+        main_attempts=spec['main_attempts'], main_budget_ceiling_usd=spec['main_budget_ceiling_usd'],
+        repetitions_per_condition=spec['schedule_blocks'],
+        main_authorized=False, hindi_check=report,
         transport_policy=spec['transport_policy'])
 
 
@@ -321,7 +332,7 @@ def status():
             except RuntimeError:
                 credential_present = False
             result = dict(status='TARGETED_LIVE_CHECK_REQUIRED', main_authorized=False,
-                contract_sha256=p.legacy.digest(spec), main_attempts=3584,
+                contract_sha256=p.legacy.digest(spec), main_attempts=spec['main_attempts'],
                 offline_preflight_passed=True, hindi_check_completed=completed,
                 hindi_check_planned=8, local_credential_present=credential_present)
         else:
@@ -335,9 +346,21 @@ def status():
         return result
 
 
-def authorize(spec, stage, cap, reference):
-    if type(cap) not in {int, float} or not math.isfinite(cap) or cap <= 0 or not reference.strip():
+def check_allowance(spec, stage, cap, reference):
+    if stage != 'main':
+        raise ValueError('Historical Hindi checks are read-only; use verify, not paid regeneration.')
+    if type(cap) not in {int, float} or not math.isfinite(cap) or cap <= 0 or not isinstance(reference, str) or not reference.strip():
         raise ValueError('Explicit positive spending allowance and approval reference required.')
+    if (spec.get('version') != p.VERSION or spec.get('main_attempts') != 896
+            or spec.get('schedule_blocks') != 8 or spec.get('main_budget_ceiling_usd') != 120
+            or spec['analysis']['schedule_seeds'] != list(range(44000, 44008))):
+        raise ValueError('Only the eight-repetition, 896-attempt allocation is approved.')
+    if cap > 120:
+        raise ValueError('Main-study allowance cannot exceed the owner ceiling of $120.')
+
+
+def authorize(spec, stage, cap, reference):
+    check_allowance(spec, stage, cap, reference)
     require_preflight(spec)
     p.check_prices(spec)
     if stage == 'main':
@@ -363,6 +386,10 @@ def authorize(spec, stage, cap, reference):
 def open_budget(spec, stage, approval):
     target = p.folder(spec, stage)
     cap = approval.get('additional_usd')
+    if stage == 'main':
+        check_allowance(spec, stage, cap, approval.get('reference'))
+    elif stage != 'hindi_check' or p.legacy.digest(spec) != p.HISTORY_SHA:
+        raise ValueError('Only pinned historical Hindi accounting may be opened read-only.')
     if (approval.get('contract_sha256') != p.legacy.digest(spec) or approval.get('stage') != stage
             or type(cap) not in {int, float} or not math.isfinite(cap) or cap <= 0
             or not isinstance(approval.get('reference'), str) or not approval['reference'].strip()):
@@ -402,6 +429,7 @@ def launch(stage, cap, reference):
     with output_lock():
         write_json(p.OUTPUT/'readiness.json', dict(status='VALIDATION_PENDING', main_authorized=False))
         spec = p.load_contract()
+        check_allowance(spec, stage, cap, reference)
         # Credentials must exist before opening a new spending window.
         key = p.legacy.paid.credential()
         approval = authorize(spec, stage, cap, reference)

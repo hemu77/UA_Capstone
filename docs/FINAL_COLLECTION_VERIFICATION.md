@@ -1,5 +1,47 @@
 # Final Collection Verification
 
+## Current Budget Correction
+
+October 18, 2026. Current contract:
+`9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc`.
+
+- Generation and analysis specify eight equal schedules, 896 attempts, 112
+  combinations with eight repetitions each, and 224 attempts per method/model.
+- The new failing tests reproduced `3584 != 896` and showed an oversized
+  allowance reached credential lookup. After correction, allocation and cap
+  tests pass; allowances above $120 fail before credentials or transport.
+- Original Hindi evidence is archived/pinned and publicly replayed: eight valid
+  graphs, one empty. Existing private accounting also verifies without a key.
+  Paid Hindi regeneration and old-allocation main authorization are rejected.
+- Checks cover eight-block inference, 24 comparisons, complete-denominator
+  requirements, missing-model suppression, immutable historical analysis,
+  archive/prompt tampering, direct/reopened budgets and partial/failure statuses.
+- The bounded GPT-6.1-Sol reviewer independently checked all eight receipts,
+  unchanged ledger rows and AST-identical prompt/parser adapter. A stale test
+  that tried to purchase Hindi fixtures was updated to test read-only readiness.
+- Current engine preflight passes all 112 combinations. Main has not started;
+  this correction uses no model-generation API calls. A local credential is
+  required at eventual launch, not another calibration purchase.
+
+**Final regression: 232/232 tests passed in 446.722 seconds**, with outbound
+socket connections blocked. This includes 22 current final-runner tests. No
+paid API requests were made. The clean publishing checkout independently
+verified the current contract and publicly replayed all eight Hindi graphs.
+The generated manifest has 896 unique cells and exactly eight per combination.
+The notebook remains valid JSON with 65 cells; only its obsolete allocation
+explanation changed. Preserved CRLF is checked without rewriting evidence bytes.
+
+The bounded security diff review `adc192c5-9244-4fb5-9c42-98f1c9bbaeb8`
+completed with no findings in its 11 source/config/report files. This is not a
+whole-repository guarantee or live billing verification. The current readiness
+result is `LOCAL_CREDENTIAL_REQUIRED`, with all preserved live evidence and
+private accounting verified; 896 attempts, $120 ceiling, main not launched.
+
+The following section is the prior version's evidence, not the current
+allocation. See [the corrected handoff](FINAL_COLLECTION.md).
+
+## Historical Launch Package
+
 October 18, 2026. Contract:
 `5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607`.
 

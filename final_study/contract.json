@@ -1,10 +1,10 @@
 {
-  "version": "final-instruction-study-v1",
-  "status": "ADOPTED_PENDING_LIVE_CHECK",
+  "version": "final-instruction-study-v2-budget120",
+  "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
   "main_authorized": false,
   "analysis": {
-    "version": "post-review-analysis-candidate-1",
-    "status": "OFFLINE_CANDIDATE_NOT_COLLECTION_APPROVAL",
+    "version": "final-eight-schedule-analysis-v1",
+    "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
     "main_authorized": false,
     "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
     "models": [
@@ -57,31 +57,7 @@
       44004,
       44005,
       44006,
-      44007,
-      44008,
-      44009,
-      44010,
-      44011,
-      44012,
-      44013,
-      44014,
-      44015,
-      44016,
-      44017,
-      44018,
-      44019,
-      44020,
-      44021,
-      44022,
-      44023,
-      44024,
-      44025,
-      44026,
-      44027,
-      44028,
-      44029,
-      44030,
-      44031
+      44007
     ],
     "wording": "reference",
     "primary_endpoints": {
@@ -93,7 +69,7 @@
     "primary_family_size": 24,
     "alpha": 0.05,
     "meaningful_effect": null,
-    "precision_scenario_half_width": 0.03,
+    "precision_scenario_half_width": null,
     "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",
     "missingness": "Never zero-fill failures or undefined endpoints. Require all four models in both arms per schedule. Report complete-block summaries and bounded missing-data extremes. Suppress primary inference if any planned block is incomplete.",
     "inference": "Paired schedule-block t diagnostics, Holm across exactly 24 hypotheses, Bonferroni simultaneous intervals. Assumes independent blocks and an adequate approximation for their mean. No equivalence or guaranteed power claim.",
@@ -116,8 +92,14 @@
     "export_revised_viewer.py": "02db54cb90456685850fe9137ff6e4f9669fd3320aa88926e2d16cb9d54929fa",
     "final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
     "final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
-    "final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
-    "final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+    "final_study/analysis.py": "335486899d3a20433a6f7ef95125fdea6602f538d1d827025ba0c0672d0cb5ca",
+    "final_study/history/v1/contract.json": "67d219d06dc6170f518c9200c764830ec68390b39f1be24e2b76a78cbb41898f",
+    "final_study/history/v1/final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+    "final_study/history/v1/final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
+    "final_study/history/v1/final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
+    "final_study/history/v1/final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+    "final_study/protocol.py": "ca13e43749ecf516074be976e6d48cbee899c46b7c7d92396c882341f30abf2f",
+    "final_study/runner.py": "31ed8303c6b07b669cc71b73c5b38b2090706de16c9597a74ff4b847cf37eaf2",
     "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
     "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
     "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
@@ -279,8 +261,10 @@
       }
     }
   },
-  "main_attempts": 3584,
-  "schedule_blocks": 32,
+  "main_attempts": 896,
+  "schedule_blocks": 8,
+  "main_budget_ceiling_usd": 120,
+  "hindi_evidence_contract_sha256": "5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607",
   "hindi_check_attempts": 8,
   "hindi_check_seeds": [
     45000,
@@ -293,5 +277,5 @@
   "calibration_reuse": false,
   "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",
   "human_bilingual_validation": false,
-  "live_gate": "Eight Hindi global attempts, two schedules per model; all must parse and finish. Empty graphs remain valid, not replaced."
+  "live_gate": "Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid."
 }
