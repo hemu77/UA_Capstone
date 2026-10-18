@@ -8,7 +8,6 @@ reply, a client error or more than MAX_RECOVERIES retirements stops for human
 review. Resume reuses received replies and never regenerates a completed graph.
 """
 import contextlib
-from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -176,6 +175,8 @@ def observe(cell, caller):
 
 
 def accounting(budget, target, spec, stage):
+    if stage == 'main':
+        reconcile_recoveries(budget, target, spec, repair=False)
     allowed = {c['run_id']: c for c in p.cells(spec, stage)}
     rows = {row[0]: row for row in budget.db.execute('SELECT id,phase,cost,status,request,response FROM attempts')}
     journals = {path.stem: p.read(path) for path in (target/'requests').glob('*.json')}
@@ -507,6 +508,7 @@ def launch(stage, cap, reference):
         budget = open_budget(spec, stage, approval)
         try:
             write_json(target/'summary.json', dict(status='VALIDATION_PENDING', contract_sha256=p.legacy.digest(spec)))
+            reconcile_recoveries(budget, target, spec, repair=True)
             accounting(budget, target, spec, stage)
             planned = p.cells(spec, stage)
             with contextlib.ExitStack() as stack:
@@ -572,7 +574,7 @@ def _unresolved(budget):
                              "WHERE status IN ('reserved','uncertain')").fetchall()
 
 
-def check_recoverable(budget, target, spec, row):
+def check_recoverable(budget, target, spec, row, retirement=None):
     """Accept only a lost first attempt; everything else needs a person."""
     rid, request = row[0], json.loads(row[4])
     response = json.loads(row[5]) if row[5] else {}
@@ -592,17 +594,75 @@ def check_recoverable(budget, target, spec, row):
                 or (status is not None and status < 500 and status not in RETRYABLE_HTTP)):
             raise RecoveryRefused('Not a lost-transport failure (for example 4xx, parse or settlement).')
     journal = p.read(target/'requests'/(rid+'.json'))
-    if journal not in (dict(request_id=rid, row_sha256=p.legacy.digest(row)),
-                       dict(request_id=rid, status='INTENT_BEFORE_TRANSPORT')):
+    accepted = [dict(request_id=rid, row_sha256=p.legacy.digest(row)),
+                dict(request_id=rid, status='INTENT_BEFORE_TRANSPORT')]
+    if retirement is not None:
+        accepted.append(dict(request_id=rid, row_sha256=p.legacy.digest(retirement)))
+    if journal not in accepted:
         raise RecoveryRefused('Request journal differs from the ledger.')
     done = budget.db.execute("SELECT COUNT(*) FROM attempts WHERE status='abandoned'").fetchone()[0]
-    if done >= MAX_RECOVERIES:
+    if retirement is None and done >= MAX_RECOVERIES:
         raise RecoveryRefused(f'Transport recovery limit ({MAX_RECOVERIES}) reached.')
     return response
 
 
+def recovery_reason(reference, automatic):
+    return (f'{"Automatic" if automatic else "Explicit"} final-study transport recovery under '
+            f'{reference}; full reservation retained; one replacement for the same request.')
+
+
+def reconcile_recoveries(budget, target, spec, repair=False):
+    """Rebuild only known interrupted writes, never alter paid ledger rows.
+
+    SQLite retirement is the durable authorization. Its previous response and
+    timestamp let us finish the journal/log after a crash without inventing a
+    new retirement, refund, replacement or recovery date.
+    """
+    rows = budget.db.execute("SELECT id,phase,cost,status,request,response FROM attempts "
+                            "WHERE status='abandoned' ORDER BY rowid").fetchall()
+    if len(rows) > MAX_RECOVERIES:
+        raise RecoveryRefused('Transport recovery limit exceeded.')
+    reference = p.read(target/'authorization.json')['reference']
+    entries, pending = [], []
+    for row in rows:
+        retired(row)
+        record, request = json.loads(row[5]), json.loads(row[4])
+        reasons = {recovery_reason(reference, flag): flag for flag in (False, True)}
+        if record.get('authorization') not in reasons or not isinstance(record.get('date_utc'), str):
+            raise RecoveryRefused('Retirement authorization or timestamp differs.')
+        previous = list(row)
+        previous[3] = record['previous_status']
+        previous[5] = (json.dumps(record['previous_response'])
+                       if record['previous_response'] is not None else None)
+        response = check_recoverable(budget, target, spec, previous, retirement=row)
+        journal_path = target/'requests'/(row[0]+'.json')
+        journal = dict(request_id=row[0], row_sha256=p.legacy.digest(row))
+        if p.read(journal_path) != journal:
+            pending.append((journal_path, journal))
+        entries.append(dict(original_request_id=row[0], replacement_request_id=replacement_of(row[0]),
+            run_id=request['cell']['run_id'], ordinal=request['ordinal'],
+            previous_status=record['previous_status'], error_type=response.get('error_type'),
+            http_status=(response.get('diagnostics') or {}).get('http_status'),
+            retained_reservation_usd=row[2], automatic=reasons[record['authorization']],
+            date_utc=record['date_utc']))
+    log = target/'transport_recoveries.json'
+    saved = p.read(log) if log.exists() else []
+    # Only an exact prefix can be an interrupted append. Never erase tampering.
+    if not isinstance(saved, list) or saved != entries[:len(saved)]:
+        raise RecoveryRefused('Recovery log conflicts with durable ledger evidence.')
+    if saved != entries:
+        pending.append((log, entries))
+    if pending and not repair:
+        raise RecoveryRefused('Recovery evidence is incomplete; reconcile before sending.')
+    # Validate all provenance before touching even one file. Repeating these
+    # atomic writes is safe if this reconciliation itself is interrupted.
+    for path, value in pending:
+        write_json(path, value)
+    return entries, bool(pending)
+
+
 def recover(stage, reference, automatic=False):
-    """Offline and idempotent: retire one lost attempt; no provider call is made here."""
+    """Finish interrupted evidence or retire one lost attempt; never call the API."""
     if stage != 'main':
         raise RecoveryRefused('Only main-study transport loss is recoverable.')
     with output_lock():
@@ -613,27 +673,21 @@ def recover(stage, reference, automatic=False):
             raise RecoveryRefused('Use the original approval reference; the allowance is unchanged.')
         budget = open_budget(spec, stage, approval)
         try:
+            entries, repaired = reconcile_recoveries(budget, target, spec, repair=True)
             rows = _unresolved(budget)
+            if not rows and repaired:
+                accounting(budget, target, spec, stage)
+                return dict(status='RECOVERY_RECONCILED', **entries[-1],
+                    recoveries_used=len(entries), recovery_limit=MAX_RECOVERIES,
+                    paid_calls=0, retry_after=None)
             if len(rows) != 1:
                 raise RecoveryRefused(f'{len(rows)} unresolved attempts; exactly one can be recovered.')
             row = rows[0]
             response = check_recoverable(budget, target, spec, row)
             rid = row[0]
-            reason = (f'{"Automatic" if automatic else "Explicit"} final-study transport recovery under '
-                      f'{reference}; full reservation retained; one replacement for the same request.')
-            budget.abandon(rid, reason, replacement_authorization=replacement_nonce(rid))
-            new_row = p.engine.ledger_row(budget, rid)
-            retired(new_row)
-            write_json(target/'requests'/(rid+'.json'), dict(request_id=rid, row_sha256=p.legacy.digest(new_row)))
-            log = target/'transport_recoveries.json'
-            entries = p.read(log) if log.exists() else []
-            entries.append(dict(original_request_id=rid, replacement_request_id=replacement_of(rid),
-                run_id=json.loads(row[4])['cell']['run_id'], ordinal=json.loads(row[4])['ordinal'],
-                previous_status=row[3], error_type=response.get('error_type'),
-                http_status=(response.get('diagnostics') or {}).get('http_status'),
-                retained_reservation_usd=row[2], automatic=automatic,
-                date_utc=datetime.now(timezone.utc).isoformat()))
-            write_json(log, entries)
+            budget.abandon(rid, recovery_reason(reference, automatic),
+                           replacement_authorization=replacement_nonce(rid))
+            entries, _ = reconcile_recoveries(budget, target, spec, repair=True)
             accounting(budget, target, spec, stage)
             return dict(status='ONE_REPLACEMENT_AUTHORIZED', original_request_id=rid,
                 replacement_request_id=replacement_of(rid), retained_reservation_usd=row[2],

@@ -16,6 +16,28 @@ from final_study import protocol, runner
 
 
 class FinalContractTests(unittest.TestCase):
+    def test_published_contract_matches_actual_checkout_without_hash_overrides(self):
+        # Unlike generated fixture contracts, this catches missing/normalized
+        # Git blobs and stale committed source pins in an ordinary clone.
+        spec = protocol.load_contract()
+        self.assertEqual(protocol.legacy.digest(protocol.hindi_evidence_contract()), protocol.HISTORY_SHA)
+        self.assertEqual(spec['catalog_sha256'], protocol.legacy.digest(protocol.catalog()))
+
+    def test_freeze_never_migrates_an_attempted_contract(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root/'contract.json'
+            previous = {'fixture_only': 'previous contract'}
+            protocol.write_json(path, previous)
+            fingerprint = protocol.legacy.digest(previous)
+            (root/fingerprint[:12]/'main').mkdir(parents=True)
+            before = path.read_bytes()
+            with patch.object(protocol, 'CONTRACT', path), patch.object(protocol, 'OUTPUT', root), \
+                    patch.object(protocol, 'UNEXECUTED_V3_SHA', fingerprint):
+                with self.assertRaisesRegex(ValueError, 'existing freeze'):
+                    protocol.freeze()
+            self.assertEqual(path.read_bytes(), before)
+
     def test_full_collection_and_live_check_are_disjoint(self):
         spec = protocol.build_contract()
         main = protocol.cells(spec, 'main')
@@ -589,6 +611,105 @@ class LaunchTests(unittest.TestCase):
         self.assertEqual(len(posts), len(record['requests'])+1)
         self.assertEqual(sum('replaces_request_id' in q['request'] for q in record['requests']), 1)
         self.assertEqual(runner.verify_stage(spec, 'main')['valid_graphs'], 1)
+
+    def test_recovery_restarts_after_each_durable_write(self):
+        # A process can die after the ledger commit, or after either file write.
+        # Neither a second recovery nor direct launch may lose that provenance.
+        for point in ['journal_before', 'journal_after', 'log_before', 'log_after']:
+            for resume in ['recover', 'launch']:
+                with self.subTest(point=point, resume=resume), contextlib.ExitStack() as stack:
+                    case = LaunchTests()
+                    stack.callback(case.doCleanups)
+                    root, spec, cells, fixtures = case.workspace()
+                    posts = case.failing_client(1)
+                    stack.enter_context(patch.object(runner, 'analyze'))
+                    with self.assertRaises(RuntimeError):
+                        case.launch()
+                    real_write = runner.write_json
+
+                    def crash(path, value):
+                        matches = (point.startswith('journal') and path.parent.name == 'requests'
+                                   or point.startswith('log') and path.name == 'transport_recoveries.json')
+                        if matches and point.endswith('before'):
+                            raise RuntimeError('injected recovery crash')
+                        real_write(path, value)
+                        if matches and point.endswith('after'):
+                            raise RuntimeError('injected recovery crash')
+
+                    with patch.object(runner, 'write_json', side_effect=crash), \
+                            self.assertRaisesRegex(RuntimeError, 'injected recovery crash'):
+                        runner.recover('main', 'offline-fixture-only')
+                    budget = case.ledger(spec)
+                    before = budget.db.execute('SELECT * FROM attempts').fetchall()
+                    budget.db.close()
+                    self.assertEqual(before[0][3], 'abandoned')
+                    if resume == 'recover':
+                        try:
+                            runner.recover('main', 'offline-fixture-only')
+                        except runner.RecoveryRefused:
+                            # A crash after the final write already completed recovery.
+                            self.assertEqual(point, 'log_after')
+                    self.assertEqual(len(posts), 1)
+                    self.assertEqual(case.launch()['valid_graphs'], 1)
+                    self.assertEqual(len(posts), 2)
+                    target = protocol.folder(spec, 'main')
+                    entries = protocol.read(target/'transport_recoveries.json')
+                    self.assertEqual(len(entries), 1)
+                    self.assertEqual(entries[0]['original_request_id'], before[0][0])
+                    budget = case.ledger(spec)
+                    self.assertEqual(budget.db.execute('SELECT * FROM attempts WHERE id=?',
+                                     (before[0][0],)).fetchall(), before)
+                    budget.db.close()
+                    self.assertEqual(case.launch()['valid_graphs'], 1)
+                    self.assertEqual(protocol.read(target/'transport_recoveries.json'), entries)
+                    self.assertEqual(len(posts), 2)
+
+    def test_recovery_rejects_conflicting_journal_or_log(self):
+        for damaged in ['journal', 'log']:
+            with self.subTest(damaged=damaged), contextlib.ExitStack() as stack:
+                case = LaunchTests()
+                stack.callback(case.doCleanups)
+                root, spec, cells, fixtures = case.workspace()
+                posts = case.failing_client(1)
+                with self.assertRaises(RuntimeError):
+                    case.launch()
+                info = runner.recover('main', 'offline-fixture-only')
+                target = protocol.folder(spec, 'main')
+                path = (target/'requests'/(info['original_request_id']+'.json')
+                        if damaged == 'journal' else target/'transport_recoveries.json')
+                value = protocol.read(path)
+                if damaged == 'journal':
+                    value['row_sha256'] = '0'*64
+                else:
+                    value[0]['retained_reservation_usd'] = 0
+                protocol.write_json(path, value)
+                original_bytes = path.read_bytes()
+                with self.assertRaises((ValueError, runner.RecoveryRefused)):
+                    case.launch()
+                self.assertEqual(path.read_bytes(), original_bytes)
+                self.assertEqual(len(posts), 1)
+
+    def test_reconciliation_can_crash_repeatedly_at_recovery_limit(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(1)
+        self.enterContext(patch.object(runner, 'analyze'))
+        with self.assertRaises(RuntimeError):
+            self.launch()
+        real_write = runner.write_json
+
+        def crash(path, value):
+            if path.name == 'transport_recoveries.json':
+                raise RuntimeError('interrupted reconciliation')
+            return real_write(path, value)
+
+        with patch.object(runner, 'MAX_RECOVERIES', 1):
+            for _ in range(2):
+                with patch.object(runner, 'write_json', side_effect=crash), \
+                        self.assertRaisesRegex(RuntimeError, 'interrupted reconciliation'):
+                    runner.recover('main', 'offline-fixture-only')
+            self.assertEqual(self.launch()['valid_graphs'], 1)
+            self.assertEqual(len(protocol.read(protocol.folder(spec, 'main')/'transport_recoveries.json')), 1)
+        self.assertEqual(len(posts), 2)
 
 
 if __name__ == '__main__':

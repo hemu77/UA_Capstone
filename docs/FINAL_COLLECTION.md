@@ -37,17 +37,26 @@ before each request. Charges plus unresolved reservations share one cap across
 every model, method and condition. Resume cannot reset the allowance or rebuy a
 received reply. SDK retries remain zero.
 
-**Transport recovery (contract v3, October 18).** About 100,000 requests at the
+**Transport recovery (contract v4, October 18).** About 100,000 requests at the
 V8 rate of two provider 5xx errors per ~11,600 means several interruptions are
 expected. `recover` handles exactly one kind: an attempt that got **no saved
 reply** after a connection error, timeout, 408/409/429 or 5xx. It keeps the
 original full reservation against the same $120 cap, records the retirement in
 `transport_recoveries.json`, and permits **one** separately reserved replacement
-of that identical request. A failed replacement, any 4xx, a saved reply, a
+of that identical request. A failed replacement, non-retryable 4xx, a saved reply, a
 parse/settlement error or more than 30 retirements still stops for review.
 Received replies are never bought again. `--auto-recover` applies the same rule
 automatically, waits 30–120 s first, and waits (free, up to an hour) when the
 provider's model check fails before any paid request.
+
+Retirement is durable in SQLite before its journal and recovery log are written.
+If the process stops between those writes, `recover` or the same launch command
+finishes only the missing writes from that existing ledger record. It preserves
+the original timestamp, authorization and full reservation. A conflicting journal
+or log stops execution; reconciliation never silently overwrites conflicting data.
+Reconciliation itself can be interrupted and restarted without authorizing a
+second replacement. The current contract supersedes v3 only before any main
+stage exists; old paid observations keep their original contracts.
 
 **No partial run is presented as a complete study.** All 896 attempts stay in the
 manifest. A cap or uncertain-transport stop is `STOPPED`/`PARTIAL`, not success.
@@ -134,9 +143,9 @@ python -X utf8 -B -m final_study verify --stage main
 
 The exact main command resumes saved evidence. Changing its cap/reference,
 missing ledgers, stale prices, altered receipts or uncertain responses stops
-execution. `recover` exits with `RecoveryRefused` and leaves everything
-unchanged when a stop is not a plain lost request; reconcile those by hand and
-never delete evidence to bypass a stop.
+execution. `recover` may first finish evidence for an already authorized
+retirement. It exits with `RecoveryRefused` rather than authorizing a replacement
+for other failures. Never delete evidence to bypass a stop.
 
 Main outputs live in `outputs/final_study/<current-contract-id>/main/`. Successful
 observations have a receipt, `.adj` and `.png`; failures have no fabricated graph.

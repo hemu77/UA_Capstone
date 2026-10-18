@@ -7,6 +7,12 @@ and evidence review only; not professor approval and not authorization to spend.
 
 ## Verdict
 
+**Follow-up:** the restart-safety repair and its current validation are recorded
+in [Final Collection Verification](FINAL_COLLECTION_VERIFICATION.md). This is
+the original v3 review, not clearance for later source changes. All five missing
+byte matches below were line-ending differences, not missing algorithm changes;
+the owner copies preserve the bytes used by the historical evidence.
+
 **Go for the main launch after three owner actions, not before.**
 
 1. **Commit five local files** (blocker, owner machine only). The contract pins

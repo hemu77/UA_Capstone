@@ -1,6 +1,40 @@
 # Final Collection Verification
 
-## Current Budget Correction
+## Restart-Safety Repair (October 18)
+
+Current candidate contract:
+`be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e`.
+
+- Fixed publication of five exact pinned source files. Their code text was
+  unchanged; normalization of mixed CRLF/LF bytes had broken fresh-clone checks.
+  No historical source pins, paid receipts or graphs were changed.
+- Added ledger-based reconciliation for crashes before/after the recovery
+  journal and log writes. Recovery timestamps, reservations and original rows
+  stay unchanged. Conflicting journals/logs are rejected rather than overwritten.
+- Added actual-checkout contract validation without mocked hashes, migration
+  refusal after any prior main stage, all four file-write crash boundaries,
+  both manual recovery/direct launch, repeated reconciliation interruptions,
+  the recovery-limit boundary and conflicting-evidence checks.
+- Red evidence: the new crash-boundary test failed in six subcases against v3.
+  After repair, all 34 focused tests pass with outbound sockets blocked.
+- Current offline preflight passes 112 combinations. Public replay verifies
+  all eight original Hindi observations, including the one valid empty graph.
+- The plan is still 896 attempts, eight per combination and 224 per method;
+  the ceiling is still $120. Main collection has not started; new API spend $0.
+- Canonical private accounting passes and the prompt catalog still matches the
+  paid Hindi gate. Status is `LOCAL_CREDENTIAL_REQUIRED`: no key is configured,
+  and no main-stage directory or spending authorization exists.
+- Official model pages were rechecked October 18: per-million input/output
+  rates remain [GPT-4.1: $2/$8](https://developers.openai.com/api/docs/models/gpt-4.1),
+  [GPT-5.6-Luna: $0.20/$1.20](https://developers.openai.com/api/docs/models/gpt-5.6-luna),
+  [GPT-6-Luna: $0.10/$0.50](https://developers.openai.com/api/docs/models/gpt-6-luna),
+  and [GPT-6-Sol: $2/$10](https://developers.openai.com/api/docs/models/gpt-6-sol).
+  The existing conservative 1.25 input multiplier and $120 ceiling are unchanged.
+
+Full-suite, independent review and committed-checkout results will be recorded
+here before release. This candidate section is not yet a final clearance.
+
+## Historical Budget Correction
 
 October 18, 2026. Current contract:
 `9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc`.
@@ -23,10 +57,12 @@ October 18, 2026. Current contract:
   this correction uses no model-generation API calls. A local credential is
   required at eventual launch, not another calibration purchase.
 
-**Final regression: 232/232 tests passed in 446.722 seconds**, with outbound
+**Historical local regression: 232/232 tests passed in 446.722 seconds**, with outbound
 socket connections blocked. This includes 22 current final-runner tests. No
-paid API requests were made. The clean publishing checkout independently
-verified the current contract and publicly replayed all eight Hindi graphs.
+paid API requests were made. The original publishing-checkout claim was not
+sufficient: the subsequently inspected Git tree contained five normalized files
+that failed the frozen hashes. The restart-safety section above supersedes that
+publication claim; a clean committed checkout must pass without hash overrides.
 The generated manifest has 896 unique cells and exactly eight per combination.
 The notebook remains valid JSON with 65 cells; only its obsolete allocation
 explanation changed. Preserved CRLF is checked without rewriting evidence bytes.

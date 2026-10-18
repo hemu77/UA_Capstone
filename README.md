@@ -24,6 +24,12 @@ They are replayed under their original contract, not bought again or counted in
 the fresh study. See [current verification](docs/FINAL_COLLECTION_VERIFICATION.md).
 Tests and AI review do not guarantee statistical power or conference acceptance.
 
+The October 18 restart-safety repair preserves the exact historical source bytes
+in Git and reconciles interrupted recovery journals/logs from the paid ledger.
+It changes neither the prompts nor the eight-repetition allocation. The current
+verification report distinguishes fresh-checkout checks from earlier local-only
+results; no calibration regeneration is required for this repair.
+
 ## Historical Review Gate (October 17)
 
 Read the [pre-collection repair and team handoff](docs/PRECOLLECTION_REVIEW.md)
