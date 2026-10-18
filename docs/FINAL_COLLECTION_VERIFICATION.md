@@ -17,6 +17,12 @@ Current candidate contract:
   the recovery-limit boundary and conflicting-evidence checks.
 - Red evidence: the new crash-boundary test failed in six subcases against v3.
   After repair, all 34 focused tests pass with outbound sockets blocked.
+- Exact committed checkout `e1d9106` independently passed all 34 focused tests
+  in 34.376 seconds, 112 preflight cases and eight Hindi public replays. No
+  source-hash override was used. All 68 frozen source blobs were also checked
+  directly from the Git index before commit, including the five preserved files.
+- The independent historical pin check confirms all 58 original source files
+  and all 327 historical public artifacts remain byte-identical.
 - Current offline preflight passes 112 combinations. Public replay verifies
   all eight original Hindi observations, including the one valid empty graph.
 - The plan is still 896 attempts, eight per combination and 224 per method;
