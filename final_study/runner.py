@@ -10,6 +10,7 @@ review. Resume reuses received replies and never regenerates a completed graph.
 import contextlib
 import hashlib
 import json
+import logging
 import math
 from pathlib import Path
 import socket
@@ -19,7 +20,7 @@ from unittest.mock import patch
 import networkx as nx
 
 from . import protocol as p
-from precollection_audit import workflow_lock, write_json
+from precollection_audit import workflow_lock, write_json as atomic_write_json
 
 # Unpatched request identity. Replacement ids are derived from it, never stored.
 BASE_REQUEST_ID = p.engine.request_id
@@ -27,6 +28,26 @@ MAX_RECOVERIES = 30
 TRANSPORT_ERRORS = {'APIConnectionError', 'APITimeoutError', 'InternalServerError',
                     'RateLimitError', 'APIStatusError', 'ConflictError'}
 RETRYABLE_HTTP = {408, 409, 429}
+LOCAL_WRITE_DELAYS = (.05, .1, .25, .5, 1.)
+
+
+def write_json(path, value):
+    """Retry only the identical local write, never a paid request or parsing.
+
+    Windows scanners/sync clients can briefly block atomic replacement. Keep
+    the old complete file until replacement succeeds, with V8's five retries.
+    Permanent locks and other I/O errors still stop for inspection.
+    """
+    for attempt in range(len(LOCAL_WRITE_DELAYS) + 1):
+        try:
+            return atomic_write_json(path, value)
+        except PermissionError:
+            if attempt == len(LOCAL_WRITE_DELAYS):
+                raise
+            logging.getLogger(__name__).warning(
+                'Local JSON write locked: %s; retry %d/%d (no API resend).',
+                Path(path).name, attempt + 1, len(LOCAL_WRITE_DELAYS))
+            time.sleep(LOCAL_WRITE_DELAYS[attempt])
 
 
 class RecoveryRefused(RuntimeError):
@@ -497,7 +518,10 @@ def analyze(records, spec, target):
 
 
 def launch(stage, cap, reference):
-    with output_lock():
+    # Inherited callers hold module-local writer aliases. Cover both the
+    # request checkpoints and raw transport receipts, without editing history.
+    with output_lock(), patch.object(p.engine, 'write_json', write_json), \
+            patch.object(p.legacy, 'write_json', write_json):
         write_json(p.OUTPUT/'readiness.json', dict(status='VALIDATION_PENDING', main_authorized=False))
         spec = p.load_contract()
         check_allowance(spec, stage, cap, reference)

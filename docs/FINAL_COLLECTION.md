@@ -37,7 +37,7 @@ before each request. Charges plus unresolved reservations share one cap across
 every model, method and condition. Resume cannot reset the allowance or rebuy a
 received reply. SDK retries remain zero.
 
-**Transport recovery (contract v4, October 18).** About 100,000 requests at the
+**Transport recovery (retained in contract v5, October 19).** About 100,000 requests at the
 V8 rate of two provider 5xx errors per ~11,600 means several interruptions are
 expected. `recover` handles exactly one kind: an attempt that got **no saved
 reply** after a connection error, timeout, 408/409/429 or 5xx. It keeps the
@@ -55,8 +55,23 @@ finishes only the missing writes from that existing ledger record. It preserves
 the original timestamp, authorization and full reservation. A conflicting journal
 or log stops execution; reconciliation never silently overwrites conflicting data.
 Reconciliation itself can be interrupted and restarted without authorizing a
-second replacement. The current contract supersedes v3 only before any main
+second replacement. The current contract supersedes v4 only before any main
 stage exists; old paid observations keep their original contracts.
+
+**Windows file-lock protection (October 19).** Saving an intent, received reply,
+request checkpoint, or runner JSON report retries only `PermissionError`, up to
+five times after the first write attempt. The waits are 0.05, 0.1, 0.25, 0.5 and
+1 second. Each attempt saves the same data using an atomic, flushed replacement;
+it does not call the model again or rerun parsing. Both inherited writer aliases
+are covered, including the post-reply and post-parse checkpoints. The aliases
+are restored when launch exits, so historical workflows are not modified.
+
+A persistent lock after all six attempts, disk-full error or other I/O failure
+still stops execution. This is not automatic repair of arbitrary damaged
+evidence. Do not use transport recovery to repurchase a received reply, delete a
+journal, or change the contract to bypass such a stop. Prefer a nonsynced working
+folder for collection; move the complete canonical workspace and ledger together,
+and never execute two copies. No antivirus exclusion is required by this repair.
 
 **No partial run is presented as a complete study.** All 896 attempts stay in the
 manifest. A cap or uncertain-transport stop is `STOPPED`/`PARTIAL`, not success.

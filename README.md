@@ -4,7 +4,7 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Final Collection (October 18)
+## Final Collection (October 19)
 
 **Corrected in code:** eight repetitions for every model/method/condition,
 **896 planned attempts total**, estimated **$102.44**, with an enforced **$120
@@ -29,6 +29,11 @@ in Git and reconciles interrupted recovery journals/logs from the paid ledger.
 It changes neither the prompts nor the eight-repetition allocation. The current
 verification report distinguishes fresh-checkout checks from earlier local-only
 results; no calibration regeneration is required for this repair.
+
+The October 19 file-lock repair adds five bounded retries for the same local
+JSON write, including post-reply checkpoints. It never retries the API call.
+Persistent locks still stop safely. Main generation remains unstarted and awaits
+the owner's launch command; the allocation, $120 ceiling and paid history are unchanged.
 
 ## Historical Review Gate (October 17)
 

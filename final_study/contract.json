@@ -1,5 +1,5 @@
 {
-  "version": "final-instruction-study-v4-budget120-restart-safe",
+  "version": "final-instruction-study-v5-budget120-local-write-retries",
   "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
   "main_authorized": false,
   "analysis": {
@@ -98,8 +98,8 @@
     "final_study/history/v1/final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
     "final_study/history/v1/final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
     "final_study/history/v1/final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
-    "final_study/protocol.py": "425a45d17dd4ef7931f678f0fe0f0774f6c98ec9351b8d1077b3b0ba5d258ef3",
-    "final_study/runner.py": "01c73b1c6f691d66abc0894dbe2751c56583323dbbca3ac657ed98613aee10f3",
+    "final_study/protocol.py": "454dd183ad7b9a1ab686a5cfa661490da7b1ed1bf363d35a2a8322cb5f82d9d0",
+    "final_study/runner.py": "b94f681d46026d758d08a71de010fe6ce11749a54f8abb4331859b340788edbb",
     "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
     "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
     "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
@@ -275,6 +275,7 @@
   "transport_policy": "SDK retries zero. Stop on uncertain transport; retain full reservation. `recover` (or launch --auto-recover) retires one lost-transport attempt with no saved reply and permits one replacement of that same request; 4xx, received replies, a failed replacement or more than 30 retirements stop for human review. Interrupted retirement journals/logs are reconciled from the unchanged ledger before any new request.",
   "max_transport_recoveries": 30,
   "replacements_per_request": 1,
+  "local_write_policy": "Atomic JSON writes retry PermissionError only, at most five times after the initial attempt (0.05, 0.1, 0.25, 0.5, 1 seconds). Retry identical local data, never transport or parsing. Exhaustion stops for inspection.",
   "retries_per_received_local_decision": 3,
   "calibration_reuse": false,
   "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",

@@ -1,8 +1,43 @@
 # Final Collection Verification
 
-## Restart-Safety Repair (October 18)
+## File-Lock Repair (October 19)
 
 Current candidate contract:
+`17c2750fe36a368150c73acc1fd080696684f273b5aa2c446d65695210e6d9c4`.
+
+- Reproduced `PermissionError` at intent, raw transport, post-receipt and
+  post-parse journal replacement. All four launch subcases failed before repair.
+- Added V8's five local retries (six write attempts total), with waits of
+  0.05, 0.1, 0.25, 0.5 and 1 second. Only `PermissionError` is retried. The
+  writer uses an atomic, flushed replacement and logs retries without reply text.
+- Applied the writer to both inherited aliases during launch, then restores
+  them even when launch fails. Historical source files were not edited.
+- Each transient-lock fixture failed five times, then completed with one mocked
+  HTTP POST, one received ledger row and a matching journal digest. Relaunch
+  made no second POST and left receipt/transport/run files byte-identical.
+- Persistent-lock tests stop at six attempts, preserve the prior complete JSON,
+  clean temporary files and refuse to repurchase the received reply. Non-lock
+  errors fail immediately. A persistent or corrupted checkpoint still needs
+  inspection; this repair does not claim automatic recovery from all disk errors.
+- **38/38 final-runner tests passed in 67.049 seconds with outbound sockets
+  blocked.** This is the complete focused runner suite, not a rerun of every
+  historical test. Parent review covered alias restoration, retry boundaries,
+  no-resend behavior and unchanged historical pins; no new independent agent
+  review is claimed for this narrow patch.
+- **112/112 offline preflight cases passed**; the generated manifest contains
+  896 attempts with eight repetitions per combination. All eight historical
+  Hindi observations replay successfully, including the valid empty graph.
+- All **58 historical source pins and 327 public artifact pins** still match.
+  No calibration or Hindi evidence was regenerated. New API spending: **$0**.
+- The v4-to-v5 migration is allowed only before a main-stage directory exists.
+  Main has not started; the $120 ceiling, prompts, parsing and allocation remain
+  unchanged. Canonical status is `LOCAL_CREDENTIAL_REQUIRED`, not a live launch.
+- Collection awaits the owner's command and a locally configured credential.
+  The existing price window ends October 25; refresh prices before later calls.
+
+## Historical Restart-Safety Repair (October 18)
+
+Previous candidate contract:
 `be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e`.
 
 - Fixed publication of five exact pinned source files. Their code text was
@@ -37,8 +72,9 @@ Current candidate contract:
   and [GPT-6-Sol: $2/$10](https://developers.openai.com/api/docs/models/gpt-6-sol).
   The existing conservative 1.25 input multiplier and $120 ceiling are unchanged.
 
-Full-suite, independent review and committed-checkout results will be recorded
-here before release. This candidate section is not yet a final clearance.
+This previous candidate did not have a new full-suite or independent review
+signoff. Its committed-checkout results above are scoped to that revision; the
+October 19 section records the current repair and its checks.
 
 ## Historical Budget Correction
 

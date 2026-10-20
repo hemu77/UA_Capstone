@@ -23,10 +23,11 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v4-budget120-restart-safe'
+VERSION = 'final-instruction-study-v5-budget120-local-write-retries'
 # Superseded before any main attempt; may be replaced by `freeze`.
 UNEXECUTED_V2_SHA = '9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc'
 UNEXECUTED_V3_SHA = '830d00cb180d3801cbccd2da7ec10c07987648a76d23ff6bbf5bb7f2115a3b4a'
+UNEXECUTED_V4_SHA = 'be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e'
 HISTORY = ROOT / 'final_study/history/v1'
 HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
@@ -94,6 +95,9 @@ def build_contract():
             'or more than 30 retirements stop for human review. Interrupted retirement journals/logs '
             'are reconciled from the unchanged ledger before any new request.',
         max_transport_recoveries=30, replacements_per_request=1,
+        local_write_policy='Atomic JSON writes retry PermissionError only, at most five times '
+            'after the initial attempt (0.05, 0.1, 0.25, 0.5, 1 seconds). '
+            'Retry identical local data, never transport or parsing. Exhaustion stops for inspection.',
         retries_per_received_local_decision=3, calibration_reuse=False,
         claim=analysis.load_spec()['claim'], human_bilingual_validation=False,
         live_gate='Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid.')
@@ -113,7 +117,7 @@ def freeze():
     spec = build_contract()
     if CONTRACT.exists() and read(CONTRACT) != spec:
         existing = legacy.digest(read(CONTRACT))
-        if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA} or (OUTPUT/existing[:12]/'main').exists():
+        if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA, UNEXECUTED_V4_SHA} or (OUTPUT/existing[:12]/'main').exists():
             raise ValueError('An existing freeze differs; do not overwrite it silently.')
         if existing == HISTORY_SHA:
             hindi_evidence_contract()

@@ -4,6 +4,7 @@ from collections import Counter
 import contextlib
 import io
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -32,10 +33,11 @@ class FinalContractTests(unittest.TestCase):
             fingerprint = protocol.legacy.digest(previous)
             (root/fingerprint[:12]/'main').mkdir(parents=True)
             before = path.read_bytes()
-            with patch.object(protocol, 'CONTRACT', path), patch.object(protocol, 'OUTPUT', root), \
-                    patch.object(protocol, 'UNEXECUTED_V3_SHA', fingerprint):
-                with self.assertRaisesRegex(ValueError, 'existing freeze'):
-                    protocol.freeze()
+            for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA'):
+                with self.subTest(version=version), patch.object(protocol, 'CONTRACT', path), \
+                        patch.object(protocol, 'OUTPUT', root), patch.object(protocol, version, fingerprint):
+                    with self.assertRaisesRegex(ValueError, 'existing freeze'):
+                        protocol.freeze()
             self.assertEqual(path.read_bytes(), before)
 
     def test_full_collection_and_live_check_are_disjoint(self):
@@ -134,6 +136,35 @@ class FinalContractTests(unittest.TestCase):
 
 
 class LaunchTests(unittest.TestCase):
+    def test_local_write_retries_are_bounded_and_atomic(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)/'checkpoint.json'
+            runner.write_json(path, {'before': True})
+            original = path.read_bytes()
+            error = PermissionError('Persistent lock fixture')
+            with patch.object(os, 'replace', side_effect=error) as replace, \
+                    patch.object(runner.time, 'sleep') as sleep, \
+                    self.assertLogs('final_study.runner', level='WARNING') as logs:
+                with self.assertRaises(PermissionError) as raised:
+                    runner.write_json(path, {'after': True})
+            self.assertIs(raised.exception, error)
+            self.assertEqual(replace.call_count, 6)
+            self.assertEqual(sleep.call_count, 5)
+            self.assertEqual(len(logs.output), 5)
+            self.assertEqual(path.read_bytes(), original)
+            self.assertEqual(list(Path(folder).iterdir()), [path])
+
+    def test_non_lock_errors_are_not_retried(self):
+        for error in (OSError(28, 'Disk full fixture'), ValueError('Bad JSON fixture')):
+            with self.subTest(error=type(error).__name__), \
+                    patch.object(runner, 'atomic_write_json', side_effect=error) as writer, \
+                    patch.object(runner.time, 'sleep') as sleep:
+                with self.assertRaises(type(error)) as raised:
+                    runner.write_json(Path('unused.json'), {})
+                self.assertIs(raised.exception, error)
+                self.assertEqual(writer.call_count, 1)
+                sleep.assert_not_called()
+
     def test_ceiling_rejects_oversized_allowance_before_credentials_or_network(self):
         root, spec, cells, fixtures = self.workspace()
         with patch.object(protocol.legacy.paid, 'credential', side_effect=AssertionError('Too early')):
@@ -202,6 +233,93 @@ class LaunchTests(unittest.TestCase):
     def launch(self, cap=1):
         with contextlib.redirect_stdout(io.StringIO()):
             return runner.launch('main', cap, 'offline-fixture-only')
+
+    def test_transient_file_locks_never_resend_received_reply(self):
+        for phase in ('intent', 'transport', 'received', 'parsed'):
+            with self.subTest(phase=phase), contextlib.ExitStack() as scope:
+                # Keep each injected failure in its own ledger and journal.
+                case = LaunchTests()
+                scope.callback(case.doCleanups)
+                root, spec, cells, fixtures = case.workspace()
+                case.enterContext(patch.object(runner, 'analyze'))
+                calls, failures, request_writes = [], [], []
+                def handler(request):
+                    if request.method == 'POST':
+                        calls.append(request)
+                    return case.response(request)
+                case.client(handler)
+                replace = os.replace
+                def locked_replace(source, destination):
+                    destination = Path(destination)
+                    at_boundary = (destination.parent.name == 'transport' if phase == 'transport'
+                        else destination.parent.name == 'requests'
+                        and len(request_writes) == {'intent': 0, 'received': 1, 'parsed': 2}[phase])
+                    if at_boundary and len(failures) < 5:
+                        failures.append(Path(source).read_bytes())
+                        raise PermissionError('Offline Windows sharing-lock fixture')
+                    result = replace(source, destination)
+                    if destination.parent.name == 'requests':
+                        request_writes.append(destination)
+                    return result
+                original_writers = protocol.engine.write_json, protocol.legacy.write_json
+                with patch.object(os, 'replace', side_effect=locked_replace), \
+                        patch.object(runner.time, 'sleep') as sleep, \
+                        self.assertLogs('final_study.runner', level='WARNING'):
+                    self.assertEqual(case.launch()['status'], 'COMPLETE')
+                self.assertEqual(len(failures), 5)
+                self.assertEqual(len(set(failures)), 1)  # Identical local bytes, not new responses.
+                self.assertEqual([c.args[0] for c in sleep.call_args_list], [.05, .1, .25, .5, 1.])
+                self.assertEqual(len(calls), 1)
+                self.assertEqual((protocol.engine.write_json, protocol.legacy.write_json), original_writers)
+                target = protocol.folder(spec, 'main')
+                budget = case.ledger(spec)
+                try:
+                    rows = budget.db.execute('SELECT id,phase,cost,status,request,response FROM attempts').fetchall()
+                    self.assertEqual(len(rows), 1)
+                    self.assertEqual(rows[0][3], 'received')
+                    self.assertEqual(protocol.read(request_writes[-1]),
+                        dict(request_id=rows[0][0], row_sha256=protocol.legacy.digest(rows[0])))
+                finally:
+                    budget.db.close()
+                before = {p: p.read_bytes() for folder in ('requests', 'transport', 'runs')
+                          for p in (target/folder).glob('*.json')}
+                self.assertEqual(case.launch()['status'], 'COMPLETE')
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(before, {p: p.read_bytes() for p in before})
+
+    def test_exhausted_checkpoint_lock_stops_without_rebuy(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(0)
+        original_writers = protocol.engine.write_json, protocol.legacy.write_json
+        replace, failures = os.replace, []
+        def locked_checkpoint(source, destination):
+            if Path(destination).parent.name == 'requests' and posts:
+                failures.append(Path(source).read_bytes())
+                raise PermissionError('Persistent received-checkpoint lock fixture')
+            return replace(source, destination)
+        with patch.object(os, 'replace', side_effect=locked_checkpoint), \
+                patch.object(runner.time, 'sleep'), self.assertLogs('final_study.runner', level='WARNING'):
+            with self.assertRaises(PermissionError):
+                self.launch()
+        self.assertEqual((protocol.engine.write_json, protocol.legacy.write_json), original_writers)
+        self.assertEqual(len(failures), 6)
+        self.assertEqual(len(posts), 1)
+        budget = self.ledger(spec)
+        try:
+            before = budget.db.execute('SELECT * FROM attempts').fetchall()
+            self.assertEqual(before[0][3], 'received')
+        finally:
+            budget.db.close()
+        with self.assertRaisesRegex(ValueError, 'Journal/ledger mismatch'):
+            self.launch()
+        with self.assertRaises(runner.RecoveryRefused), contextlib.redirect_stdout(io.StringIO()):
+            runner.run('main', 1, 'offline-fixture-only', True)
+        self.assertEqual(len(posts), 1)
+        budget = self.ledger(spec)
+        try:
+            self.assertEqual(budget.db.execute('SELECT * FROM attempts').fetchall(), before)
+        finally:
+            budget.db.close()
 
     def test_four_methods_received_resume_is_read_only(self):
         root, spec, cells, fixtures = self.workspace(protocol.analysis.METHODS)
