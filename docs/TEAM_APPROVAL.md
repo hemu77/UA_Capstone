@@ -1,5 +1,20 @@
 # Team Decision Before Main Collection
 
+## Current Review Follow-Up
+
+[Review of `71b84b2`](REVIEW_71B84B2.md): the follow-up retains Raghav's allocation,
+block order, conditional partial-study analysis and journal recovery. It repairs
+five reporting/integrity defects, with no new paid generation or historical
+regeneration. See the current contract and verification report before using
+older commands or status statements below.
+
+- [x] Same 896 attempts, eight repetitions per condition and $120 ceiling.
+- [x] Same prompts, parser, models, roster and historical paid evidence.
+- [x] Partial estimates retain missingness assumptions, bounds and all 24 tests.
+- [ ] Raghav has confirmed this exact follow-up commit and shared terms.
+- [ ] Professor approval or an explicit decision to proceed without it is recorded.
+- [ ] Owner has instructed launch of the main collection with a local credential.
+
 ## Update: Contract v6, October 19
 
 [Contract v6](FINAL_COLLECTION.md#contract-v6-october-19) keeps the 896-attempt,

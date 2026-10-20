@@ -33,7 +33,15 @@ results; no calibration regeneration is required for this repair.
 The October 19 file-lock repair adds bounded retries for the same local JSON
 write, including post-reply checkpoints. It never retries the API call.
 
-**Contract v6 (October 19, `04100ffe…`)** keeps 896 attempts, eight equal
+**Current follow-up: contract v6.1.** The [review of Raghav's commit](docs/REVIEW_71B84B2.md)
+records five reproduced fixes: analysis before launch no longer blocks
+authorization; unfinished cells are not called unattempted; failed verification
+invalidates stale analysis; and null journal hashes cannot be repaired as valid
+checkpoints; reconciliation-log provenance is validated against received evidence.
+Prompts, allocation and paid evidence are unchanged. Raghav's
+confirmation of this follow-up is pending.
+
+**Contract v6 (October 19, `04100ffe…`, superseded before collection)** kept 896 attempts, eight equal
 repetitions, the $120 ceiling, every prompt and the parser. It changes only how a
 run survives interruption ([details](docs/FINAL_COLLECTION.md#contract-v6-october-19)):
 schedule blocks run one after another, so a stop leaves complete blocks; a
@@ -41,7 +49,8 @@ predeclared fallback analyses contrasts with at least six of eight complete bloc
 labelled PARTIAL; `analyze --stage main` reports a stopped run offline; local
 write retries last about 54 s; and `recover` can rebuild one journal left stale by
 a persistent file lock, from the unchanged ledger. Main generation remains
-unstarted and awaits the owner's launch command.
+unstarted and awaits the owner's launch command. These v6 ordering, fallback and
+recovery policies remain in v6.1.
 
 **The price window ends October 25 and is checked before every request, so the
 run must *finish* by then.** At 26–40 serial API hours, launch no later than the

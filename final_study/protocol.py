@@ -23,12 +23,13 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v6-block-order-partial-analysis'
+VERSION = 'final-instruction-study-v6.1-terminal-reporting'
 # Superseded before any main attempt; may be replaced by `freeze`.
 UNEXECUTED_V2_SHA = '9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc'
 UNEXECUTED_V3_SHA = '830d00cb180d3801cbccd2da7ec10c07987648a76d23ff6bbf5bb7f2115a3b4a'
 UNEXECUTED_V4_SHA = 'be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e'
 UNEXECUTED_V5_SHA = '17c2750fe36a368150c73acc1fd080696684f273b5aa2c446d65695210e6d9c4'
+UNEXECUTED_V6_SHA = '04100ffe593c3887cabdd7cc74921bb0c65d2f078e0b1fe001cde7b56bdd9fab'
 HISTORY = ROOT / 'final_study/history/v1'
 HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
@@ -91,8 +92,8 @@ def build_contract():
         hindi_check_seeds=[45000, 45001], execution_order_seed=44032,
         execution_order='Schedule-block-major: seeds 44000-44007 in ascending order; the 112 cells '
             'of each block are shuffled by one Random(execution_order_seed) consumed block by block. '
-            'A stop therefore leaves complete earlier blocks, and provider drift over time aligns '
-            'with blocks, which the paired schedule-block analysis removes.',
+            'A stop leaves complete earlier blocks. Pairing removes shared additive block effects, '
+            'not arbitrary provider drift or model-by-condition changes within a block.',
         global_parser='Validate every line; collapse exact undirected duplicates; retain raw response and flags; NONE valid.',
         transport_policy='SDK retries zero. Stop on uncertain transport; retain full reservation. '
             '`recover` (or launch --auto-recover) retires one lost-transport attempt with no saved reply '
@@ -106,7 +107,8 @@ def build_contract():
         journal_reconciliation_policy='`recover` (or launch --auto-recover) may rewrite one stale request '
             'journal from the unchanged ledger only when the row is received, its transport receipt matches, '
             'and the journal equals the intent record or the exact pre-parse row digest. Each repair is '
-            'logged; at most 30 per run. Any other journal mismatch still stops for human review.',
+            'logged; at most 30 per run. Existing log provenance is validated against received rows '
+            'before further recovery or requests. Any other mismatch stops for human review.',
         max_journal_reconciliations=30,
         partial_analysis='`analyze --stage main` replays every saved receipt offline and reports a stopped '
             'or failed inventory under the predeclared analysis fallback, labelled PARTIAL.',
@@ -130,7 +132,7 @@ def freeze():
     if CONTRACT.exists() and read(CONTRACT) != spec:
         existing = legacy.digest(read(CONTRACT))
         if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA, UNEXECUTED_V4_SHA,
-                            UNEXECUTED_V5_SHA} or (OUTPUT/existing[:12]/'main').exists():
+                            UNEXECUTED_V5_SHA, UNEXECUTED_V6_SHA} or (OUTPUT/existing[:12]/'main').exists():
             raise ValueError('An existing freeze differs; do not overwrite it silently.')
         if existing == HISTORY_SHA:
             hindi_evidence_contract()

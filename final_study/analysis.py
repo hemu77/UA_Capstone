@@ -24,7 +24,7 @@ FALLBACK_MIN_BLOCKS = 6
 
 def load_spec():
     spec = historical.load_spec()
-    spec.update(version='final-eight-schedule-analysis-v2',
+    spec.update(version='final-eight-schedule-analysis-v3-terminal-coverage',
                 status='ADOPTED_EIGHT_EQUAL_SCHEDULES',
                 schedule_seeds=list(range(44000, 44008)),
                 precision_scenario_half_width=None,
@@ -37,8 +37,10 @@ def load_spec():
                     'and the hypothesis keeps its place in the family. Dropping a block assumes its '
                     'missingness is unrelated to the contrast outcome given schedule and condition. '
                     'Every result reports excluded blocks, missing cells, [0, 1]-bounded missing-data '
-                    'extremes over all eight blocks, and failure counts by method, condition and model '
-                    'as sensitivity evidence. Fallback results are labelled PARTIAL, never COMPLETE.',
+                    'extremes over all eight blocks, and terminal failure/undefined-endpoint counts '
+                    'by method, condition and model as sensitivity evidence. Without a terminal receipt, '
+                    'execution status is unknown, not unattempted. Fallback results are labelled PARTIAL, '
+                    'never COMPLETE. No stopping based on interim p-values.',
                 inference='Paired schedule-block t diagnostics on the complete blocks of each contrast '
                     '(n-1 degrees of freedom for n complete blocks), Holm across exactly 24 hypotheses, '
                     'Bonferroni simultaneous intervals. Assumes independent blocks and an adequate '
@@ -64,30 +66,32 @@ def design(spec):
 
 
 def _values(rows, spec):
-    """Index one explicit result per planned cell; unattempted cells count as missing."""
+    """Index terminal results; absence says nothing about partial paid work."""
     planned = {tuple(c[k] for k in IDENTITY) for c in design(spec)}
-    indexed, attempted = {}, {}
+    indexed, recorded = {}, {}
     for row in rows:
         key = tuple(row[k] for k in IDENTITY)
         if key in indexed or key not in planned:
             raise ValueError('Duplicate cell or mixed experiment identity.')
-        if type(row.get('attempted', True)) is not bool:
-            raise ValueError('attempted must be an explicit boolean.')
-        was_attempted = row.get('attempted', True)
-        if not was_attempted and row['valid_graph']:
-            raise ValueError('An unattempted cell cannot be a valid graph.')
+        if 'attempted' in row:
+            raise ValueError('Use terminal_recorded; terminal receipts cannot establish attempted counts.')
+        if type(row.get('terminal_recorded', True)) is not bool:
+            raise ValueError('terminal_recorded must be an explicit boolean.')
+        has_record = row.get('terminal_recorded', True)
+        if not has_record and row['valid_graph']:
+            raise ValueError('A cell without a terminal receipt cannot be a valid graph.')
         value = _math.endpoint(row, spec['primary_endpoints'][row['method']])
         if value is not None and not 0 <= value <= 1:
             raise ValueError('Primary endpoint outside [0, 1].')
-        indexed[key], attempted[key] = value, was_attempted
+        indexed[key], recorded[key] = value, has_record
     if set(indexed) != planned:
-        raise ValueError('Every planned cell needs an explicit result, including failures and unattempted cells.')
-    return indexed, attempted
+        raise ValueError('Every planned cell needs an explicit result, including failures and missing receipts.')
+    return indexed, recorded
 
 
 def primary_contrasts(rows, spec):
     """All 24 hypotheses stay in the family, including suppressed tests."""
-    indexed, attempted = _values(rows, spec)
+    indexed, recorded = _values(rows, spec)
     seeds = spec['schedule_seeds']
     n, m, alpha = len(seeds), spec['primary_family_size'], spec['alpha']
     minimum = spec['fallback_min_complete_blocks']
@@ -119,7 +123,7 @@ def primary_contrasts(rows, spec):
                     if value is None:
                         cell = key(model, method, arm, seed)
                         missing.append(dict(model=model, culture=arm[0], language=arm[1], seed=seed,
-                                            attempted=attempted[cell]))
+                                            terminal_recorded=recorded[cell]))
             for model, a, b in zip(MODELS, tv, bv):
                 if a is not None and b is not None:
                     model_differences[model].append(a-b)
@@ -155,14 +159,16 @@ def primary_contrasts(rows, spec):
 
 def missingness_report(rows, spec):
     """Failure and coverage counts, so readers can judge whether missingness was informative."""
-    indexed, attempted = _values(rows, spec)
+    indexed, recorded = _values(rows, spec)
+    valid = {tuple(row[k] for k in IDENTITY): row['valid_graph'] for row in rows}
     report = []
     for method, model, condition in itertools.product(METHODS, MODELS, CONDITIONS):
         keys = [(spec['version'], model, method, *condition, seed, spec['wording'], ROSTER)
                 for seed in spec['schedule_seeds']]
-        tried = [k for k in keys if attempted[k]]
+        terminal = [k for k in keys if recorded[k]]
         report.append(dict(method=method, model=model, culture=condition[0], language=condition[1],
-            planned=len(keys), attempted=len(tried), not_attempted=len(keys)-len(tried),
+            planned=len(keys), terminal_results=len(terminal), without_terminal_result=len(keys)-len(terminal),
             endpoint_defined=sum(indexed[k] is not None for k in keys),
-            attempted_without_endpoint=sum(indexed[k] is None for k in tried)))
+            terminal_failures=sum(not valid[k] for k in terminal),
+            valid_without_endpoint=sum(valid[k] and indexed[k] is None for k in terminal)))
     return report

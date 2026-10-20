@@ -1,5 +1,52 @@
 # Final Collection Verification
 
+## Current: Review Follow-Up To `71b84b2`
+
+Active contract `final-instruction-study-v6.1-terminal-reporting`:
+`c54e1a30cbdda201c441453bf725d73dc0aa1d036a059ce707f954c07cb8b990`.
+See [the findings and shared protocol](REVIEW_71B84B2.md). Earlier sections below
+are historical verification records, not the current contract.
+
+- **269/269 offline tests passed in 484.098 seconds**, in the publishing checkout
+  with Python 3.11.9 and outbound `socket.connect` / `connect_ex` blocked. This
+  includes the final-study regressions and the historical regression suite.
+- Five findings were reproduced as failing tests before repair: analysis-before-
+  launch blocking authorization; terminal counts mislabeled as attempts; stale
+  successful analysis surviving failed validation; a null checkpoint hash accepted
+  for repair; and modified reconciliation-log provenance accepted on relaunch.
+- Additional tests distinguish valid empty graphs from failures, reject duplicate
+  terminal records, invalidate reports on source/export failure and exercise both
+  recognized stale-journal states at all four log/journal write boundaries.
+  Repeated recovery interruption leaves ledger rows unchanged and makes no
+  duplicate mocked POST.
+- One bounded read-only AI reviewer independently found the log-provenance gap.
+  After the repair, that reviewer reran the three targeted provenance/crash tests
+  and reported no remaining concrete defect in that recovery-only scope.
+- **112/112 preflight conditions passed**, zero paid requests. The manifest has
+  896 unique planned cells, eight per model/method/setting and 224 per method,
+  ordered in eight contiguous schedule blocks.
+- **8/8 historical Hindi observations replayed**, including the one valid empty
+  graph, under their original `5886a306...` contract. No re-purchase or relabeling.
+- **58 historical source pins and 327 public artifact pins matched.** The new
+  contract also verifies its 68 current source pins without mocking hashes.
+- The same changes were byte-mirrored to the canonical workspace. Its historical
+  Hindi private accounting passed without changing the ledger or authorization
+  file hashes. This check did not require a credential or contact the provider.
+- Publication check: all 68 staged Git source blobs match the frozen contract;
+  all 12 staged files match the canonical copies. The scoped credential-pattern
+  and private-path scans found zero hits, and whitespace validation passed.
+  These are scoped integrity checks, not a comprehensive security audit.
+- Compared with Raghav's v6, prompts/catalog, global parser, roster, models,
+  settings, rates, price window, allocation, ceiling and Hindi evidence are
+  unchanged. Neither old v6 nor v6.1 has a main-stage directory.
+- Public readiness remains `VALIDATION_PENDING`; private accounting and local
+  credentials are not published. The report is engineering evidence, not an API
+  spending authorization, professor approval or Raghav's sign-off on the follow-up.
+
+**New model API spending: $0.** The $120 ceiling remains. Price validity still ends
+after October 25 and applies before every request. No main collection, merge or
+simulator deployment was performed.
+
 ## Contract v6: Block Order, Partial Analysis, Journal Repair (October 19)
 
 Current candidate contract:

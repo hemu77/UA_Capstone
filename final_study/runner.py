@@ -251,12 +251,7 @@ def accounting(budget, target, spec, stage):
                 raise ValueError('Orphan/changed terminal receipt; never regenerate.')
     if retirements > MAX_RECOVERIES:
         raise ValueError('Transport recovery limit exceeded.')
-    log = target/'journal_reconciliations.json'
-    if log.exists():
-        entries = p.read(log)
-        if (not isinstance(entries, list) or len(entries) > MAX_JOURNAL_RECONCILIATIONS
-                or any(rows.get(e.get('request_id'), (None,)*4)[3] != 'received' for e in entries)):
-            raise ValueError('Journal reconciliation log conflicts with the ledger.')
+    journal_reconciliations(target, rows)
     return retirements
 
 
@@ -510,9 +505,24 @@ def open_budget(spec, stage, approval):
     return budget
 
 
+def invalidate_analysis(target):
+    """Hide derived results before revalidation; paid receipts stay untouched."""
+    pending = dict(status='VALIDATION_PENDING')
+    write_json(target/'analysis_summary.json', pending)
+    for name in ('analysis_rows.json', 'primary_contrasts.json', 'missingness_report.json'):
+        if (target/name).exists():
+            write_json(target/name, pending)
+    for name in ('network_metrics.csv', 'primary_contrasts.csv'):
+        if (target/name).exists():
+            p.engine.write_csv(target/name, [pending])
+
+
 def analyze(records, spec, target):
-    """Analyse the saved inventory; unattempted planned cells stay explicit."""
+    """Analyse terminal receipts, without guessing which unfinished cells incurred calls."""
+    invalidate_analysis(target)
     by_run = {record['cell']['run_id']: record for record in records}
+    if len(by_run) != len(records):
+        raise ValueError('Duplicate terminal result.')
     planned = p.cells(spec, 'main')
     if set(by_run) - {c['run_id'] for c in planned}:
         raise ValueError('Unplanned terminal result.')
@@ -521,7 +531,7 @@ def analyze(records, spec, target):
         record = by_run.get(cell['run_id'])
         rows.append({k: cell[k] for k in p.analysis.IDENTITY if k != 'contract'} |
             dict(contract=spec['analysis']['version'], execution_contract_sha256=p.legacy.digest(spec),
-                run_id=cell['run_id'], attempted=record is not None,
+                run_id=cell['run_id'], terminal_recorded=record is not None,
                 valid_graph=record is not None and record['failure'] is None,
                 failure=None if record is None else record['failure'],
                 **((record or {}).get('metrics') or {})))
@@ -532,18 +542,21 @@ def analyze(records, spec, target):
     write_json(target/'analysis_rows.json', rows)
     write_json(target/'primary_contrasts.json', contrasts)
     write_json(target/'missingness_report.json', coverage)
-    write_json(target/'analysis_summary.json', dict(status=status, contract_sha256=p.legacy.digest(spec),
-        analysis_version=spec['analysis']['version'], planned=len(planned), attempted=len(by_run),
-        valid_graphs=sum(r['valid_graph'] for r in rows),
-        fallback_min_complete_blocks=spec['analysis']['fallback_min_complete_blocks'],
-        hypothesis_status={s: sum(c['status'] == s for c in contrasts) for s in sorted({c['status'] for c in contrasts})},
-        interpretation=('All planned cells attempted.' if complete else
-            'PARTIAL results use the predeclared block fallback and its stated assumption; '
-            'they are not a completed study.')))
     fields = sorted(set().union(*(row.keys() for row in rows)))
     p.engine.write_csv(target/'network_metrics.csv', [{k: row.get(k) for k in fields} for row in rows])
     p.engine.write_csv(target/'primary_contrasts.csv', [
         {k: json.dumps(v) if isinstance(v, (dict, list)) else v for k, v in row.items()} for row in contrasts])
+    # Publish success last, only after every derived export was written.
+    write_json(target/'analysis_summary.json', dict(status=status, contract_sha256=p.legacy.digest(spec),
+        analysis_version=spec['analysis']['version'], planned=len(planned), terminal_results=len(by_run),
+        without_terminal_result=len(planned)-len(by_run), valid_graphs=sum(r['valid_graph'] for r in rows),
+        fallback_min_complete_blocks=spec['analysis']['fallback_min_complete_blocks'],
+        hypothesis_status={s: sum(c['status'] == s for c in contrasts) for s in sorted({c['status'] for c in contrasts})},
+        coverage_basis='Terminal receipts only. Missing receipts may include paid, interrupted cells; '
+            'consult the private ledger for request attempts and charges.',
+        interpretation=('All planned cells have terminal results.' if complete else
+            'PARTIAL results use the predeclared block fallback and its stated assumption; '
+            'they are not a completed study.')))
     return status
 
 
@@ -555,8 +568,18 @@ def analyze_stage(stage='main'):
     if stage != 'main':
         raise ValueError('Only the main study has a primary analysis.')
     with output_lock():
+        # Locate old derived results before source/runtime validation can fail.
+        # The on-disk contract identifies a folder, not authority to replay it.
+        previous_target = p.folder(p.read(p.CONTRACT), stage)
+        if previous_target.exists():
+            invalidate_analysis(previous_target)
         spec = p.load_contract()
         target = p.folder(spec, stage)
+        if not target.exists():
+            return dict(status='NOT_STARTED', contract_sha256=p.legacy.digest(spec),
+                        planned=len(p.cells(spec, stage)), terminal_results=0)
+        if target != previous_target:
+            invalidate_analysis(target)
         planned = {c['run_id']: c for c in p.cells(spec, stage)}
         saved = {path.stem for path in (target/'runs').glob('*.json')}
         if saved - set(planned):
@@ -744,6 +767,48 @@ def _pre_parse_digest(row):
     return p.legacy.digest([*row[:5], json.dumps(response, ensure_ascii=False)])
 
 
+def journal_reconciliations(target, rows):
+    """Validate every logged repair against the unchanged received ledger row.
+
+    A later parser decision changes the row hash legitimately. An intent repair
+    must still match the exact pre-parse row; a post-parse repair matches the
+    final row. Neither permits arbitrary audit fields or duplicate repairs.
+    """
+    path = target/'journal_reconciliations.json'
+    entries = p.read(path) if path.exists() else []
+    if not isinstance(entries, list) or len(entries) > MAX_JOURNAL_RECONCILIATIONS:
+        raise RecoveryRefused('Journal reconciliation log is malformed or exceeds its limit.')
+    seen = set()
+    for entry in entries:
+        try:
+            row = rows[entry['request_id']]
+            request = json.loads(row[4])
+            before_parse = _pre_parse_digest(row)
+            state = entry['stale_state']
+            if state == 'intent_before_received_checkpoint':
+                previous = dict(request_id=row[0], status='INTENT_BEFORE_TRANSPORT')
+                reconciled = before_parse or p.legacy.digest(row)
+            elif state == 'received_before_parse_checkpoint' and before_parse is not None:
+                previous = dict(request_id=row[0], row_sha256=before_parse)
+                reconciled = p.legacy.digest(row)
+            else:
+                raise ValueError('Unknown repair state.')
+            expected = dict(request_id=row[0], run_id=request['cell']['run_id'],
+                ordinal=request['ordinal'], stale_state=state, previous_journal=previous,
+                reconciled_row_sha256=reconciled, date_utc=entry['date_utc'])
+            timestamp = datetime.fromisoformat(entry['date_utc'])
+            identity = (row[0], state)
+            if (row[3] != 'received' or entry != expected or type(entry['ordinal']) is not int
+                    or timestamp.utcoffset() is None or timestamp.utcoffset().total_seconds() != 0
+                    or identity in seen):
+                raise ValueError('Changed repair provenance.')
+            p.legacy.verify_transport(target, row[0], json.loads(row[5]))
+        except (KeyError, TypeError, ValueError, OSError) as error:
+            raise RecoveryRefused('Journal reconciliation log conflicts with received evidence.') from error
+        seen.add(identity)
+    return entries
+
+
 def reconcile_journals(budget, target, spec, repair=False):
     """Repair only a journal left stale by a persistent local file lock.
 
@@ -754,11 +819,11 @@ def reconcile_journals(budget, target, spec, repair=False):
     is never modified; anything else needs a person.
     """
     log = target/'journal_reconciliations.json'
-    entries = p.read(log) if log.exists() else []
-    if not isinstance(entries, list):
-        raise RecoveryRefused('Journal reconciliation log is malformed.')
+    rows = {row[0]: row for row in budget.db.execute(
+        'SELECT id,phase,cost,status,request,response FROM attempts').fetchall()}
+    entries = journal_reconciliations(target, rows)
     stale = []
-    for row in budget.db.execute('SELECT id,phase,cost,status,request,response FROM attempts').fetchall():
+    for row in rows.values():
         path = target/'requests'/(row[0]+'.json')
         if row[3] != 'received' or not path.exists():
             continue
@@ -767,9 +832,10 @@ def reconcile_journals(budget, target, spec, repair=False):
         if journal == current:
             continue
         response = json.loads(row[5])
+        before_parse = _pre_parse_digest(row)
         if journal == dict(request_id=row[0], status='INTENT_BEFORE_TRANSPORT') and 'parse' not in response:
             state = 'intent_before_received_checkpoint'
-        elif journal == dict(request_id=row[0], row_sha256=_pre_parse_digest(row)):
+        elif before_parse is not None and journal == dict(request_id=row[0], row_sha256=before_parse):
             state = 'received_before_parse_checkpoint'
         else:
             raise RecoveryRefused('Request journal differs from the ledger in an unrecognised way; inspect it.')
@@ -789,6 +855,9 @@ def reconcile_journals(budget, target, spec, repair=False):
             raise RecoveryRefused('A request journal is stale; run `recover` to reconcile it.')
         resumed = bool(entries) and {k: v for k, v in entries[-1].items() if k != 'date_utc'} == entry
         if not resumed:
+            if any((e['request_id'], e['stale_state']) == (entry['request_id'], entry['stale_state'])
+                   for e in entries):
+                raise RecoveryRefused('Journal reconciliation log repeats an earlier repair; inspect it.')
             if len(entries) >= MAX_JOURNAL_RECONCILIATIONS:
                 raise RecoveryRefused(f'Journal reconciliation limit ({MAX_JOURNAL_RECONCILIATIONS}) reached.')
             entries = entries + [entry | dict(date_utc=datetime.now(timezone.utc).isoformat())]

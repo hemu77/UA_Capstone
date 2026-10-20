@@ -5,6 +5,27 @@ allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
 a **$120 maximum additional main-study allowance**. No main generation has run.
 
+## Contract v6.1 Review Follow-Up
+
+The active contract is `final-instruction-study-v6.1-terminal-reporting`, SHA-256
+`c54e1a30cbdda201c441453bf725d73dc0aa1d036a059ce707f954c07cb8b990`.
+[Review findings and shared terms](REVIEW_71B84B2.md) explain the repairs to
+Raghav's `71b84b2`. It supersedes unexecuted v6 only; migration refuses if that
+version's main-stage folder already exists. The v6 block order, six-of-eight
+fallback, spending cap and longer local-write waits remain.
+
+Offline `analyze` on a checkout without a main stage now returns `NOT_STARTED`
+without creating the stage or interfering with future authorization. Once a
+stage exists, it invalidates old derived reports before verification and publishes
+success only after all exports finish. A `VALIDATION_PENDING` report is not usable
+analysis. Paid receipts, adjacency files and plots are never rewritten by analysis.
+
+Coverage fields count **terminal results**, not API attempts. A missing terminal
+receipt could mean an untouched cell or an interrupted, already-paid cell.
+Public analysis cannot distinguish them, so reports use `without_terminal_result`,
+not `not_attempted`. Terminal failures and valid graphs with undefined endpoints
+are reported separately. Consult the private ledger for request counts and cost.
+
 ## Contract v6 (October 19)
 
 Contract `final-instruction-study-v6-block-order-partial-analysis`, SHA-256
@@ -17,7 +38,7 @@ global parser, transport recovery, the price window and all paid evidence.
 
 | Change | Why |
 | --- | --- |
-| **Block-major execution order.** All 112 cells of seed 44000 run (shuffled within the block), then 44001, and so on. | Under v5's single shuffle across seeds, a stop at 90% or 95% left zero complete primary contrasts. Now a 90% stop leaves seven complete blocks. Provider drift over time aligns with blocks, which the paired analysis already removes. The historical Hindi check keeps its original order. |
+| **Block-major execution order.** All 112 cells of seed 44000 run (shuffled within the block), then 44001, and so on. | Under v5's single shuffle across seeds, a stop at 90% or 95% left zero complete primary contrasts. Now a 90% stop leaves seven complete blocks. Pairing removes shared additive block effects, not arbitrary provider drift or within-block model/condition changes. The historical Hindi check keeps its original order. |
 | **Predeclared partial-study rule** (analysis v2). A block is dropped from a contrast only if one of its eight cells (four models × two arms) lacks an endpoint; inference uses the remaining blocks if at least six remain. Fewer than six still suppresses inference. | Under v5, one invalid US-English global reply suppressed all six global hypotheses. A complete study gives exactly the v1 results (tested). |
 | **`analyze --stage main`** replays every saved receipt offline and writes `analysis_summary.json`, `primary_contrasts.json/.csv`, `missingness_report.json` and `analysis_rows.json`, labelled `COMPLETE` or `PARTIAL_STUDY`. | A stopped run previously had no supported reporting path. |
 | **Local write retries extended** to ten, about 54 s in total. | 1.9 s was shorter than typical antivirus or sync-client holds. |
@@ -30,6 +51,8 @@ false: failures may depend on language, model or graph size. Every result theref
 also reports the excluded blocks, each missing cell, the [0, 1]-bounded missing-data
 extremes over all eight blocks, and failure counts by method, condition and model.
 Read a PARTIAL result together with those, never as a completed study.
+Do not stop based on interim p-values; the fallback is for operationally incomplete
+observations, not a license to choose a favorable stopping point.
 
 **Run it so that it finishes by October 25.** The price window (verified October 18,
 valid through October 25) is checked before every request. A run still going on

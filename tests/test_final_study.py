@@ -33,7 +33,8 @@ class FinalContractTests(unittest.TestCase):
             fingerprint = protocol.legacy.digest(previous)
             (root/fingerprint[:12]/'main').mkdir(parents=True)
             before = path.read_bytes()
-            for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA', 'UNEXECUTED_V5_SHA'):
+            for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA',
+                            'UNEXECUTED_V5_SHA', 'UNEXECUTED_V6_SHA'):
                 with self.subTest(version=version), patch.object(protocol, 'CONTRACT', path), \
                         patch.object(protocol, 'OUTPUT', root), patch.object(protocol, version, fingerprint):
                     with self.assertRaisesRegex(ValueError, 'existing freeze'):
@@ -906,6 +907,95 @@ class LaunchTests(unittest.TestCase):
         self.assertFalse((target/'journal_reconciliations.json').exists())
         self.assertEqual(len(posts), 1)
 
+    def test_null_journal_hash_is_not_a_preparse_checkpoint(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        protocol.write_json(journal, dict(request_id=journal.stem, row_sha256=None))
+        before = journal.read_bytes()
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'unrecognised'):
+            runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(journal.read_bytes(), before)
+        self.assertFalse((target/'journal_reconciliations.json').exists())
+        self.assertEqual(len(posts), 1)
+
+    def test_tampered_journal_reconciliation_log_blocks_relaunch(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        runner.recover('main', 'offline-fixture-only')
+        log = target/'journal_reconciliations.json'
+        entries = protocol.read(log)
+        entries[0]['reconciled_row_sha256'] = '0'*64
+        protocol.write_json(log, entries)
+        before = log.read_bytes()
+        self.enterContext(patch.object(runner, 'analyze'))
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'reconciliation log'):
+            self.launch()
+        self.assertEqual(log.read_bytes(), before)
+        self.assertEqual(len(posts), 1)
+
+    def test_every_reconciliation_provenance_field_is_checked(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        runner.recover('main', 'offline-fixture-only')
+        log = target/'journal_reconciliations.json'
+        original = protocol.read(log)
+        changes = dict(request_id='unknown', run_id='other-run', ordinal=99,
+            stale_state='unknown', previous_journal={}, reconciled_row_sha256='0'*64,
+            date_utc='not-a-date')
+        for field, value in changes.items():
+            with self.subTest(field=field):
+                altered = copy.deepcopy(original)
+                altered[0][field] = value
+                protocol.write_json(log, altered)
+                with self.assertRaisesRegex(runner.RecoveryRefused, 'reconciliation log'):
+                    runner.recover('main', 'offline-fixture-only')
+                self.assertEqual(protocol.read(log), altered)
+        protocol.write_json(log, original * 2)
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'reconciliation log'):
+            runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(len(posts), 1)
+
+    def test_journal_repair_is_restart_safe_at_each_write_boundary(self):
+        for state in (1, 2):  # Intent checkpoint, then post-parse checkpoint.
+            for boundary in ('log_before', 'log_after', 'journal_before', 'journal_after'):
+                with self.subTest(state=state, boundary=boundary), contextlib.ExitStack() as scope:
+                    case = LaunchTests()
+                    scope.callback(case.doCleanups)
+                    root, spec, cells, fixtures = case.workspace()
+                    posts = case.failing_client(0)
+                    scope.enter_context(patch.object(runner, 'analyze'))
+                    with patch.object(os, 'replace', side_effect=case._persistent_journal_lock(state)), \
+                            patch.object(runner.time, 'sleep'), case.assertLogs('final_study.runner', level='WARNING'):
+                        with self.assertRaises(PermissionError):
+                            case.launch()
+                    target = protocol.folder(spec, 'main')
+                    ledger = case.ledger(spec)
+                    before = ledger.db.execute('SELECT * FROM attempts').fetchall()
+                    ledger.db.close()
+                    original_write = runner.write_json
+                    def interrupted(path, value):
+                        chosen = (Path(path).name == 'journal_reconciliations.json' if boundary.startswith('log')
+                                  else Path(path).parent.name == 'requests')
+                        if chosen and boundary.endswith('before'):
+                            raise OSError('Repair interrupted fixture')
+                        original_write(path, value)
+                        if chosen and boundary.endswith('after'):
+                            raise OSError('Repair interrupted fixture')
+                    # Repeat the interruption to test recovery of recovery.
+                    for _ in range(2):
+                        with patch.object(runner, 'write_json', side_effect=interrupted):
+                            try:
+                                runner.recover('main', 'offline-fixture-only')
+                            except (OSError, runner.RecoveryRefused):
+                                pass
+                    try:
+                        runner.recover('main', 'offline-fixture-only')
+                    except runner.RecoveryRefused as error:
+                        self.assertIn('0 unresolved', str(error))
+                    ledger = case.ledger(spec)
+                    self.assertEqual(ledger.db.execute('SELECT * FROM attempts').fetchall(), before)
+                    ledger.db.close()
+                    self.assertEqual(len(protocol.read(target/'journal_reconciliations.json')), 1)
+                    self.assertEqual(case.launch()['status'], 'COMPLETE')
+                    self.assertEqual(len(posts), 1)
+
     def test_stale_journal_needs_matching_transport_receipt(self):
         spec, target, journal, posts = self._stale_after_received_lock()
         receipt = target/'transport'/(journal.stem+'.json')
@@ -951,7 +1041,7 @@ class V6OrderAndAnalysisTests(unittest.TestCase):
             value = .1 + ((c['seed']*7 + i*3) % 11)*.005
             row = dict(c, valid_graph=True, edges=100, density=value, avg_clustering_coef=value+.2)
             if c['seed'] in unattempted_seeds:
-                row.update(attempted=False, valid_graph=False, density=None, avg_clustering_coef=None)
+                row.update(terminal_recorded=False, valid_graph=False, density=None, avg_clustering_coef=None)
             elif (c['method'], c['model'], c['culture'], c['language'], c['seed']) in drop:
                 row.update(valid_graph=False, density=None, avg_clustering_coef=None)
             result.append(row)
@@ -980,7 +1070,7 @@ class V6OrderAndAnalysisTests(unittest.TestCase):
             self.assertEqual(r['complete_schedule_blocks'], 7)
             self.assertEqual(r['excluded_schedule_seeds'], [44003])
             self.assertEqual(r['missing_cells'], [dict(model='gpt-6-sol', culture='us', language='english',
-                                                       seed=44003, attempted=True)])
+                                                       seed=44003, terminal_recorded=True)])
             self.assertLessEqual(r['missingness_lower'], r['complete_block_mean'])
             self.assertGreaterEqual(r['missingness_upper'], r['complete_block_mean'])
         self.assertTrue(all(r['status'] == 'COMPLETE_ASSUMPTIONS_REQUIRED' for r in results if r['method'] != 'global'))
@@ -1006,19 +1096,20 @@ class V6OrderAndAnalysisTests(unittest.TestCase):
         self.assertEqual(india['complete_schedule_blocks'], 5)
         self.assertEqual(len(results), 24)  # The family keeps its suppressed member.
 
-    def test_stopped_run_reports_partial_blocks_and_unattempted_cells(self):
+    def test_stopped_run_reports_partial_blocks_and_missing_terminal_receipts(self):
         spec = protocol.analysis.load_spec()
         rows = self.rows(spec, unattempted_seeds=(44006, 44007))
         results = protocol.analysis.primary_contrasts(rows, spec)
         self.assertEqual({r['status'] for r in results}, {'PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED'})
         self.assertEqual({r['complete_schedule_blocks'] for r in results}, {6})
-        self.assertTrue(all(not cell['attempted'] for r in results for cell in r['missing_cells']))
+        self.assertTrue(all(not cell['terminal_recorded'] for r in results for cell in r['missing_cells']))
         report = protocol.analysis.missingness_report(rows, spec)
         self.assertEqual(len(report), 4*4*7)
-        self.assertEqual({(r['planned'], r['attempted'], r['not_attempted'], r['attempted_without_endpoint'])
-                          for r in report}, {(8, 6, 2, 0)})
-        bad = [dict(r, valid_graph=True) if not r.get('attempted', True) else r for r in rows]
-        with self.assertRaisesRegex(ValueError, 'unattempted'):
+        self.assertEqual({(r['planned'], r['terminal_results'], r['without_terminal_result'],
+                           r['terminal_failures'], r['valid_without_endpoint'])
+                          for r in report}, {(8, 6, 2, 0, 0)})
+        bad = [dict(r, valid_graph=True) if not r.get('terminal_recorded', True) else r for r in rows]
+        with self.assertRaisesRegex(ValueError, 'without a terminal receipt'):
             protocol.analysis.primary_contrasts(bad, spec)
 
     def test_runner_analyze_writes_labelled_partial_study(self):
@@ -1033,21 +1124,102 @@ class V6OrderAndAnalysisTests(unittest.TestCase):
             target = Path(folder)
             self.assertEqual(runner.analyze(records, spec, target), 'PARTIAL_STUDY')
             summary = protocol.read(target/'analysis_summary.json')
-            self.assertEqual((summary['planned'], summary['attempted']), (896, 672))
+            self.assertEqual((summary['planned'], summary['terminal_results']), (896, 672))
             self.assertEqual(summary['hypothesis_status'], {'PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED': 24})
             rows = protocol.read(target/'analysis_rows.json')
-            self.assertEqual(sum(not r['attempted'] for r in rows), 224)
+            self.assertEqual(sum(not r['terminal_recorded'] for r in rows), 224)
             self.assertTrue((target/'missingness_report.json').exists())
 
     def test_analyze_stage_replays_receipts_offline_and_handles_empty_inventory(self):
+        spec = protocol.build_contract()
         with tempfile.TemporaryDirectory() as folder, \
                 patch.object(protocol, 'OUTPUT', Path(folder)), \
+                patch.object(protocol, 'load_contract', return_value=spec), \
                 patch.object(protocol.legacy.paid, 'OpenAI', side_effect=AssertionError('no client')), \
                 patch.object(protocol.legacy.paid, 'credential', side_effect=AssertionError('no key')):
             result = runner.analyze_stage('main')
-        self.assertEqual(result['status'], 'PARTIAL_STUDY')
-        self.assertEqual(result['attempted'], 0)
-        self.assertEqual(result['hypothesis_status'], {'MISSING_NO_INFERENCE': 24})
+            self.assertFalse(protocol.folder(protocol.load_contract(), 'main').exists())
+            with patch.object(runner, 'readiness'), patch.object(runner, 'require_preflight'), \
+                    patch.object(protocol, 'check_prices'):
+                approval = runner.authorize(spec, 'main', 120, 'offline-fixture-only')
+            self.assertEqual(approval['additional_usd'], 120)
+        self.assertEqual(result['status'], 'NOT_STARTED')
+        self.assertEqual(result['terminal_results'], 0)
+
+    def test_analysis_does_not_call_unfinished_paid_cells_unattempted(self):
+        spec = protocol.build_contract()
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder)
+            # A stopped run may have paid replies without any terminal graph.
+            # Public analysis has no private ledger, so it must report unknown
+            # execution status rather than inventing a zero-attempt count.
+            runner.analyze([], spec, target)
+            summary = protocol.read(target/'analysis_summary.json')
+            self.assertNotIn('attempted', summary)
+            self.assertEqual(summary['terminal_results'], 0)
+            self.assertEqual(summary['without_terminal_result'], 896)
+            rows = protocol.read(target/'analysis_rows.json')
+            self.assertTrue(all(r['terminal_recorded'] is False for r in rows))
+            self.assertTrue(all('attempted' not in r for r in rows))
+            coverage = protocol.read(target/'missingness_report.json')
+            self.assertTrue(all(r['terminal_failures'] == 0 for r in coverage))
+
+    def test_failed_analysis_invalidates_old_success_before_replay(self):
+        spec = protocol.build_contract()
+        cell = protocol.cells(spec, 'main')[0]
+        with tempfile.TemporaryDirectory() as folder, \
+                patch.object(protocol, 'OUTPUT', Path(folder)), \
+                patch.object(protocol, 'load_contract', return_value=spec):
+            target = protocol.folder(spec, 'main')
+            protocol.write_json(target/'analysis_summary.json', dict(status='COMPLETE'))
+            protocol.write_json(target/'primary_contrasts.json', [dict(raw_p=.001)])
+            protocol.write_json(target/'runs'/(cell['run_id']+'.json'), dict(cell='tampered'))
+            with self.assertRaisesRegex(ValueError, 'receipt'):
+                runner.analyze_stage()
+            self.assertEqual(protocol.read(target/'analysis_summary.json')['status'], 'VALIDATION_PENDING')
+            self.assertEqual(protocol.read(target/'primary_contrasts.json')['status'], 'VALIDATION_PENDING')
+
+    def test_analysis_source_failure_invalidates_prior_success(self):
+        spec = protocol.read(protocol.CONTRACT)
+        with tempfile.TemporaryDirectory() as folder, \
+                patch.object(protocol, 'OUTPUT', Path(folder)), \
+                patch.object(protocol, 'load_contract', side_effect=ValueError('Frozen source differs')):
+            target = protocol.folder(spec, 'main')
+            protocol.write_json(target/'analysis_summary.json', dict(status='COMPLETE'))
+            with self.assertRaisesRegex(ValueError, 'Frozen source'):
+                runner.analyze_stage()
+            self.assertEqual(protocol.read(target/'analysis_summary.json')['status'], 'VALIDATION_PENDING')
+
+    def test_failed_export_cannot_publish_analysis_success(self):
+        spec = protocol.build_contract()
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder)
+            with patch.object(protocol.engine, 'write_csv', side_effect=OSError('Disk full fixture')):
+                with self.assertRaisesRegex(OSError, 'Disk full'):
+                    runner.analyze([], spec, target)
+            self.assertEqual(protocol.read(target/'analysis_summary.json')['status'], 'VALIDATION_PENDING')
+
+    def test_duplicate_terminal_records_are_rejected(self):
+        spec = protocol.build_contract()
+        record = dict(cell=protocol.cells(spec, 'main')[0], failure='invalid_global_response', metrics=None)
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError, 'Duplicate terminal'):
+                runner.analyze([record, record], spec, Path(folder))
+
+    def test_coverage_separates_failed_graphs_from_valid_empty_graphs(self):
+        spec = protocol.analysis.load_spec()
+        rows = self.rows(spec)
+        for row in rows:
+            if row['seed'] == 44000:
+                row.update(edges=0, density=0, avg_clustering_coef=None)
+            elif row['seed'] == 44001:
+                row.update(valid_graph=False, density=None, avg_clustering_coef=None)
+        report = protocol.analysis.missingness_report(rows, spec)
+        for row in report:
+            self.assertEqual(row['terminal_results'], 8)
+            self.assertEqual(row['terminal_failures'], 1)
+            self.assertEqual(row['valid_without_endpoint'], 0 if row['method'] == 'global' else 1)
+            self.assertEqual(row['without_terminal_result'], 0)
 
 
 if __name__ == '__main__':
