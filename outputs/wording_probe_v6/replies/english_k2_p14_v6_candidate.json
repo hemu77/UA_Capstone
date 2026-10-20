@@ -1,0 +1,62 @@
+{
+  "probe_id": "english_k2_p14_v6_candidate",
+  "language": "english",
+  "count": 2,
+  "actor": "14",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "1f777965e7debd7e407d67a3f9133526a48dba10c3e56d5452f85d62f94585da",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "28,42",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 861,
+      "total_tokens": 867,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTXGUsAmtOrSG2Oc27MGwxIoi5Q5",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T09:08:03.690134+00:00",
+    "conservative_charge_usd": 0.00011062500000000002,
+    "diagnostics": {
+      "client_request_id": "1f777965e7debd7e407d67a3f9133526a48dba10c3e56d5452f85d62f94585da",
+      "server_request_id": "req_4d9d2f66c0254bb4992e66e291426c3e",
+      "http_status": 200,
+      "elapsed_ms": 1359.0,
+      "date_utc": "2026-10-02T09:08:03.690134+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "963",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4998",
+        "x-ratelimit-remaining-tokens": "1998436",
+        "x-ratelimit-reset-requests": "24ms",
+        "x-ratelimit-reset-tokens": "46ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

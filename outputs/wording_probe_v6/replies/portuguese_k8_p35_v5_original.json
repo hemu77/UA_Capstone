@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k8_p35_v5_original",
+  "language": "portuguese",
+  "count": 8,
+  "actor": "35",
+  "wording": "v5_original",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "a240a0d0075336c68f9d20b4f127a91efed98b1e438e273bba9b9ae98327506d",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "19,37,39,43,24,40,11,31",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 886,
+      "total_tokens": 904,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTHw6dmKdfOk3VUg50yiBqXtIHir",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T08:52:13.583441+00:00",
+    "conservative_charge_usd": 0.00011975000000000001,
+    "diagnostics": {
+      "client_request_id": "a240a0d0075336c68f9d20b4f127a91efed98b1e438e273bba9b9ae98327506d",
+      "server_request_id": "req_bc65b09ef4de456aa92c9f736453f5a0",
+      "http_status": 200,
+      "elapsed_ms": 1266.0,
+      "date_utc": "2026-10-02T08:52:13.583441+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "1119",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4997",
+        "x-ratelimit-remaining-tokens": "1997357",
+        "x-ratelimit-reset-requests": "36ms",
+        "x-ratelimit-reset-tokens": "79ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

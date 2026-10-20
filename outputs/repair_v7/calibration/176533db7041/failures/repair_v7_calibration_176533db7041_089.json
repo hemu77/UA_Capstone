@@ -1,0 +1,190 @@
+{
+  "cell": {
+    "model": "gpt-4.1",
+    "method": "global",
+    "culture": "us",
+    "language": "hindi",
+    "repetition": 0,
+    "seed": 33000,
+    "wording": "reference",
+    "global_arm": "a0_b0",
+    "run_id": "repair_v7_calibration_176533db7041_089",
+    "phase": "main",
+    "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+    "frozen_source_sha256": {
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+      "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+      "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+      "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+      "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+    },
+    "requested_service_tier": "default",
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "evidence_type": "repair_diagnostic_not_confirmation"
+  },
+  "evidence_type": "received_invalid_v8_observation",
+  "requests": [
+    {
+      "request_id": "dcfc86b1cccf89158f62f716b8a22db02f2a54fd54bf846f2b714bd023bdb8a8",
+      "request": {
+        "cell": {
+          "model": "gpt-4.1",
+          "method": "global",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 33000,
+          "wording": "reference",
+          "global_arm": "a0_b0",
+          "run_id": "repair_v7_calibration_176533db7041_089",
+          "phase": "main",
+          "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 0,
+        "model": "gpt-4.1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "नीचे दिए गए काल्पनिक व्यक्तियों का उपयोग करके एक सिमुलेशन के लिए मित्रताओं का एक काल्पनिक नेटवर्क बनाएँ। उम्मीदवारों के डेटा में पहले से दर्ज संबंधों को खोजने के बजाय, मित्रताओं का एक संभावित विन्यास उत्पन्न करें।\n\nसामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। सूचीबद्ध लोगों के पूरे नेटवर्क को परिभाषित करने वाली सभी मित्रता जोड़ियाँ चुनें, न कि केवल एक-से-एक जोड़ियाँ। प्रत्येक व्यक्ति के शून्य, एक या कई मित्र हो सकते हैं। अलग-अलग असंबद्ध समूह स्वीकार्य हैं। मित्रता में कोई दिशा नहीं होती: प्रत्येक जोड़ी केवल एक बार दें। हर पंक्ति में पूर्णांक ID की एक जोड़ी ID1, ID2 के रूप में दें, जहाँ ID1 < ID2 हो।  स्वयं से संबंध, दोहराई गई जोड़ियाँ, स्पष्टीकरण या अन्य पाठ न दें। उत्तर का प्रारूप: NONE या प्रत्येक पंक्ति में ID1, ID2 की एक जोड़ी।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":null,\"candidates\":[[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 8192,
+          "temperature": 0.8
+        },
+        "date_utc": "2026-10-13T10:50:34.257313+00:00",
+        "rates_per_million": [
+          2.0,
+          8.0
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "dcfc86b1cccf89158f62f716b8a22db02f2a54fd54bf846f2b714bd023bdb8a8"
+      },
+      "response": {
+        "text": "0,15\n1,25\n2,28\n3,25\n4,37\n5,20\n5,34\n6,29\n6,36\n7,17\n8,20\n9,12\n9,22\n10,32\n11,24\n12,48\n13,33\n13,41\n14,28\n15,32\n16,39\n17,21\n18,31\n19,35\n20,34\n21,17\n22,31\n23,38\n24,29\n26,36\n27,39\n27,40\n28,42\n29,36\n30,45\n31,18\n32,47\n33,41\n34,5\n35,19\n36,29\n37,4\n39,40\n41,47\n42,2\n44,14\n46,49",
+        "usage": {
+          "completion_tokens": 187,
+          "prompt_tokens": 1064,
+          "total_tokens": 1251,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYUNWKypvVbg5efOAdu7XBisndFp3",
+        "resolved_model": "gpt-4.1-2025-04-14",
+        "fingerprint": "fp_bee1fbc891",
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T10:50:36.539565+00:00",
+        "conservative_charge_usd": 0.004156,
+        "diagnostics": {
+          "client_request_id": "dcfc86b1cccf89158f62f716b8a22db02f2a54fd54bf846f2b714bd023bdb8a8",
+          "server_request_id": "req_b2045e0b3c9b4d99b1d28194ee873d7d",
+          "http_status": 200,
+          "elapsed_ms": 2125.0,
+          "date_utc": "2026-10-13T10:50:36.539565+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "1967",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "450000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "448820",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "157ms"
+          }
+        },
+        "parse": {
+          "valid": false,
+          "error": "Duplicate friendship choices are not allowed",
+          "duplicate_edges": [
+            [
+              "21",
+              "17"
+            ],
+            [
+              "31",
+              "18"
+            ],
+            [
+              "34",
+              "5"
+            ],
+            [
+              "35",
+              "19"
+            ],
+            [
+              "36",
+              "29"
+            ],
+            [
+              "37",
+              "4"
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "failure": "invalid_global_response"
+}

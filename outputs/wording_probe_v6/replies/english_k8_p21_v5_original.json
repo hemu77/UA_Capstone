@@ -1,0 +1,62 @@
+{
+  "probe_id": "english_k8_p21_v5_original",
+  "language": "english",
+  "count": 8,
+  "actor": "21",
+  "wording": "v5_original",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "24aa4886dd5841ae5219e831d5e1d15dfae867344a874d07f91533c9b410c0ca",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "17, 37, 40, 45, 16, 2, 28, 42",
+    "usage": {
+      "completion_tokens": 25,
+      "prompt_tokens": 861,
+      "total_tokens": 886,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTXEZIutZco7DPSJ6LI0fPtBiQn3",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T09:08:02.162340+00:00",
+    "conservative_charge_usd": 0.00012012500000000002,
+    "diagnostics": {
+      "client_request_id": "24aa4886dd5841ae5219e831d5e1d15dfae867344a874d07f91533c9b410c0ca",
+      "server_request_id": "req_074be0fcdd7e43b092e1936ae49d6856",
+      "http_status": 200,
+      "elapsed_ms": 1453.0,
+      "date_utc": "2026-10-02T09:08:02.163332+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "734",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4999",
+        "x-ratelimit-remaining-tokens": "1999322",
+        "x-ratelimit-reset-requests": "12ms",
+        "x-ratelimit-reset-tokens": "20ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

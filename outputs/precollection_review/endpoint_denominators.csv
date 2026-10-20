@@ -1,0 +1,29 @@
+method,endpoint,attempted,valid,nonempty,endpoint_defined
+global,density,26,22,18,22
+global,avg_clustering_coef,26,22,18,22
+global,modularity,26,22,18,18
+global,coleman_gender,26,22,18,18
+global,coleman_religion,26,22,18,18
+global,coleman_political orientation,26,22,18,18
+global,age_assortativity,26,22,18,18
+local,density,26,26,26,26
+local,avg_clustering_coef,26,26,26,26
+local,modularity,26,26,26,26
+local,coleman_gender,26,26,26,26
+local,coleman_religion,26,26,26,26
+local,coleman_political orientation,26,26,26,26
+local,age_assortativity,26,26,26,26
+sequential,density,26,26,26,26
+sequential,avg_clustering_coef,26,26,26,26
+sequential,modularity,26,26,26,26
+sequential,coleman_gender,26,26,26,26
+sequential,coleman_religion,26,26,26,26
+sequential,coleman_political orientation,26,26,26,26
+sequential,age_assortativity,26,26,26,26
+iterative,density,26,26,26,26
+iterative,avg_clustering_coef,26,26,26,26
+iterative,modularity,26,26,26,26
+iterative,coleman_gender,26,26,26,26
+iterative,coleman_religion,26,26,26,26
+iterative,coleman_political orientation,26,26,26,26
+iterative,age_assortativity,26,26,26,26

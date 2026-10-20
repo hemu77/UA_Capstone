@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k1_p14_v5_original",
+  "language": "portuguese",
+  "count": 1,
+  "actor": "14",
+  "wording": "v5_original",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "345409f35996447e52d68670e4f4c8de4c5972e0d87bfb1fb77ef522eb0a1710",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "28,42,2,31",
+    "usage": {
+      "completion_tokens": 10,
+      "prompt_tokens": 886,
+      "total_tokens": 896,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTXHuiBnEEpDJG8jBAbMaA9fdcWG",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T09:08:04.969814+00:00",
+    "conservative_charge_usd": 0.00011575000000000001,
+    "diagnostics": {
+      "client_request_id": "345409f35996447e52d68670e4f4c8de4c5972e0d87bfb1fb77ef522eb0a1710",
+      "server_request_id": "req_fdb59a09d42e4ed396aada0950386a43",
+      "http_status": 200,
+      "elapsed_ms": 1110.0,
+      "date_utc": "2026-10-02T09:08:04.970962+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "685",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4999",
+        "x-ratelimit-remaining-tokens": "1999115",
+        "x-ratelimit-reset-requests": "12ms",
+        "x-ratelimit-reset-tokens": "26ms"
+      }
+    },
+    "parse": {
+      "valid": false,
+      "error": "Choose 1 person",
+      "duplicate_edges": []
+    }
+  },
+  "valid": false,
+  "error": "Choose 1 person"
+}

@@ -1,0 +1,62 @@
+{
+  "probe_id": "portuguese_k1_p7_v5_original",
+  "language": "portuguese",
+  "count": 1,
+  "actor": "7",
+  "wording": "v5_original",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "810e7f0138bbd689ec00f54dc71146c62a8d10facba4e4028a533b587d41a84f",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "28,42,8,3,20,26,27,46,0,34,17,21,23,14,2,1,25,49,13,36,12,4,32,5,31,18,35,44,38,45,16,46,33,43,39,40,15,37,30,47,10,22,48,9,6,11,19,29,24,41,34,26,27,13,20,8,3,28,42,17,21,23,14,2,1,25,49,32,5,31,18,35,44,38,45,16,33,43,39,40,15,37,30,47,10,22,48,9,6,11,19,29,24,41,34,26,27,13,20,8,3,28,42,17,21,23,14,2,1,25,49,32,5,31,18,35,44,38,45,16,33,43,39,40,15,37,30,47,10,22,48,9,6,11,19,29,24,41,34,26,27,13,20,8,3,28,42,17,21,23,14,2,1,25,49,32,5,31,18,35,44,38,45,16,33,43,39,40,15,37,30,47,10,22,48,9,6,11,19,29,24,41,34,26,27,13,20,8,3,28,42,17,21,23,14,2,1,25,49,32,5,31,18,35,44,38,45,16,33,43,39,40,15,37,30,47,10,22,48,9,6,11,19,29,24,41,34,26,27,13,20,8,3,28,42,17,21,23,14,2,1,25,49,32,5,31,18,35,44,38,45,16,33,43,39",
+    "usage": {
+      "completion_tokens": 512,
+      "prompt_tokens": 886,
+      "total_tokens": 1398,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTI8UMmsZZQI1Q99gpP1ZX2hlMwC",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "length",
+    "date_utc": "2026-10-02T08:52:28.936421+00:00",
+    "conservative_charge_usd": 0.00036675,
+    "diagnostics": {
+      "client_request_id": "810e7f0138bbd689ec00f54dc71146c62a8d10facba4e4028a533b587d41a84f",
+      "server_request_id": "req_5822693acd8041c0bed4232e4a379266",
+      "http_status": 200,
+      "elapsed_ms": 3656.0,
+      "date_utc": "2026-10-02T08:52:28.936421+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "3479",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4999",
+        "x-ratelimit-remaining-tokens": "1999096",
+        "x-ratelimit-reset-requests": "12ms",
+        "x-ratelimit-reset-tokens": "27ms"
+      }
+    },
+    "parse": {
+      "valid": false,
+      "error": "Received abnormal finish: length",
+      "duplicate_edges": []
+    }
+  },
+  "valid": false,
+  "error": "Received abnormal finish: length"
+}

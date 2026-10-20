@@ -1,0 +1,12 @@
+[
+  {
+    "method": "global",
+    "language": "english",
+    "country": "us",
+    "count": null,
+    "wording": "reference",
+    "global_arm": "a0_b0",
+    "system": "Construct a hypothetical friendship network for a simulation using the fictional people below. Generate a plausible realization of friendships, rather than recovering relationships already recorded in the candidate data.\n\nThe social setting is the United States. The people are fictional adults. Keep their attributes unchanged. Their spoken language is unspecified. The candidate data uses fixed English field names and values in every condition. Choose all friendship pairs that together specify the entire network among the listed people, not a one-to-one pairing. Each person may have zero, one or multiple friends. Disconnected components are allowed. Friendship has no direction: list each pair only once. Output one pair of integer IDs per line as ID1, ID2, with ID1 < ID2.  No self-links, duplicate pairs, explanation or other text. Response syntax: NONE, or one ID1, ID2 pair per line.",
+    "retry": null
+  }
+]

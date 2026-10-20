@@ -1,0 +1,62 @@
+{
+  "probe_id": "english_k2_p35_v6_candidate",
+  "language": "english",
+  "count": 2,
+  "actor": "35",
+  "wording": "v6_candidate",
+  "contract_sha256": "f8c43e25e6eb24287068c3c37caa3f095a787f58c6be0269b9b17ff2f793c82c",
+  "request_id": "ab8714c636450f871f120efedf1d43d623f0df13eb57a33bf82c7dffb0fd6d9f",
+  "evidence_type": "paid_first_response_wording_probe_not_network",
+  "response": {
+    "text": "19,37",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 861,
+      "total_tokens": 867,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "response_id": "chatcmpl-EUTHT02TV7h4l3yd2G5lkaz9Ic4RE",
+    "resolved_model": "gpt-6-luna",
+    "fingerprint": null,
+    "finish_reason": "stop",
+    "date_utc": "2026-10-02T08:51:45.934197+00:00",
+    "conservative_charge_usd": 0.00011062500000000002,
+    "diagnostics": {
+      "client_request_id": "ab8714c636450f871f120efedf1d43d623f0df13eb57a33bf82c7dffb0fd6d9f",
+      "server_request_id": "req_02c5e4b40f27453687387baafd5ffa4f",
+      "http_status": 200,
+      "elapsed_ms": 1593.0,
+      "date_utc": "2026-10-02T08:51:45.934197+00:00",
+      "stage": "response",
+      "error_type": null,
+      "error_code": null,
+      "cause_types": [],
+      "headers": {
+        "openai-processing-ms": "1445",
+        "x-ratelimit-limit-requests": "5000",
+        "x-ratelimit-limit-tokens": "2000000",
+        "x-ratelimit-remaining-requests": "4998",
+        "x-ratelimit-remaining-tokens": "1998223",
+        "x-ratelimit-reset-requests": "24ms",
+        "x-ratelimit-reset-tokens": "53ms"
+      }
+    },
+    "parse": {
+      "valid": true,
+      "error": null,
+      "duplicate_edges": []
+    }
+  },
+  "valid": true,
+  "error": null
+}

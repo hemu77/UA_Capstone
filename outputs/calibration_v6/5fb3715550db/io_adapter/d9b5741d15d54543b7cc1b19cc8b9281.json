@@ -1,0 +1,126 @@
+{
+  "status": "COMPLETED_EXECUTION",
+  "started_at_utc": "2026-10-02T10:42:38.632672+00:00",
+  "adapter_source_sha256": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+  "contract_sha256": "5fb3715550db87bb86061bf9f3c1484ddc3203b6a1b989758e96fa8ff1772b3d",
+  "additional_ceiling_usd": 10.0,
+  "main_authorized": false,
+  "policy": "At most five retries of an identical local journal write on PermissionError only; never retry an API call.",
+  "frozen_generation_sources_unchanged": true,
+  "write_retries": [
+    {
+      "request_id": "5c83f7400e137e413fc6e5ba481b4cbe0e5883c99e7ea48a3a805770eebdeed1",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "63d06f80f5211156016df00f070aac860e2349caf4a17e3bbb6e9c2dc9646fe8",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "08a6b84764463747fd533c77c203cf6cd1c65497514df4070d520744b273634c",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "99df3a24889736581948697368b744f078f6751dfeb0e8b7d40aadb83f8f4693",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "1a49c0caa48d619aa34fc2c407804be3f0fe9c677451e6a9057d7ee07f7373b5",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "c8929b484cb77b692d7cbaaccec75a167581b57786e7d196af27137aa5b451c4",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "29c487e9d969138eadd5c847a13d37e4a16fe7c0373854a617f890054b933090",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "55333e7b13d444210d22a2eeea93dc845c74b77d187a0cc0d2a9152253624c81",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "3c4df056a37f0fcf381d90acd66de2c639155655a75b9d1173a1f43211227a5e",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "b2f515dcc8f2458829068d44f471339d863057fb4098d168880ade500278275f",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "1ed1afd811bf636047d0fab66aff65478e3197c5563b9c7e3c8a6dc419f7934a",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "58b86466ff0fd10120520b3badd45a31dd72d8e9a158ffa23f769938c07363a4",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "4ebab9e21409fd19eaf3f9fae43b595c4b64482e9eeda19cad1ac1e5c7365686",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "56d7b02d77e55e6638082be986eeb99c85792bb9624841bd7f554e9331433000",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "713f682365dada9c63ee14d6600079147464559cdbe78e96b7a1df980fdf60d6",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    },
+    {
+      "request_id": "77cbc3139ba95995baf7734dd2317f1623d29f500b82fb3a9775021a3e704770",
+      "write_attempt": 1,
+      "error_type": "PermissionError",
+      "winerror": 5,
+      "outcome": "write_succeeded"
+    }
+  ],
+  "ended_at_utc": "2026-10-02T13:35:57.931615+00:00",
+  "source_unchanged_during_execution": true
+}

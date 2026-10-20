@@ -1,8 +1,23 @@
 # Repository Architecture
 
-## Fresh 896-Run Pipeline
+## Current Revised Calibration
 
-**Latest inspection:** all 68 v5 calibration graphs verified, 204 offline controls
+October 2: `calibration_v6.py` completed 104 separately authorized graphs under
+contract `5fb3715550db`, using the unchanged shared graph engine and paid ledger.
+`revision_next.py` supplies revised prompts and independent actor/quota/display
+schedules. `calibration_v6_io.py` adds only audited local journal-write retries;
+it does not alter prompts, API retry policy or prices.
+
+`inspect_calibration_v6.py` replays received decisions, verifies artifacts and
+produces key-free compliance/cost reports under `outputs/calibration_v6/5fb3715550db/`.
+The maintained notebook validates that report's receipt/CSV hashes before display.
+Simulation exports remain unchanged. Read [the new results](docs/CALIBRATION_V6_RESULTS.md):
+$7.8549, 104 verified graphs, 142 tests, and a main-study hold because 22/26
+global graphs are empty and scientific allocation decisions remain pending.
+
+## Historical V5 896-Target Pipeline
+
+**Historical inspection:** all 68 v5 calibration graphs verified, 204 offline controls
 generated and 88 tests passing. Additional calibration accounting is $4.454524450,
 within the original $5 allowance. The reviewed replacement preserved the failed
 request's reservation, all 194 cached replies and the six original receipts.

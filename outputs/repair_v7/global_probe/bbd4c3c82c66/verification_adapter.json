@@ -1,0 +1,10 @@
+{
+  "version": "v7-json-event-verifier-1",
+  "contract_sha256": "bbd4c3c82c6660e073b0c05a8571bd4a350740656b6d001afe25b537b0b6ae5a",
+  "verifier_source_sha256": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e",
+  "frozen_runner_sha256": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+  "change": "Verification only: canonicalize event tuples to JSON lists using paid.clean_numbers.",
+  "prompts_changed": false,
+  "request_identity_changed": false,
+  "main_authorized": false
+}

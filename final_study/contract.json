@@ -1,0 +1,289 @@
+{
+  "version": "final-instruction-study-v6.1-terminal-reporting",
+  "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
+  "main_authorized": false,
+  "analysis": {
+    "version": "final-eight-schedule-analysis-v3-terminal-coverage",
+    "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
+    "main_authorized": false,
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "models": [
+      "gpt-4.1",
+      "gpt-5.6-luna",
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "methods": [
+      "global",
+      "local",
+      "sequential",
+      "iterative"
+    ],
+    "conditions": [
+      [
+        "us",
+        "english"
+      ],
+      [
+        "india",
+        "english"
+      ],
+      [
+        "japan",
+        "english"
+      ],
+      [
+        "brazil",
+        "english"
+      ],
+      [
+        "us",
+        "hindi"
+      ],
+      [
+        "us",
+        "japanese"
+      ],
+      [
+        "us",
+        "portuguese"
+      ]
+    ],
+    "schedule_seeds": [
+      44000,
+      44001,
+      44002,
+      44003,
+      44004,
+      44005,
+      44006,
+      44007
+    ],
+    "wording": "reference",
+    "primary_endpoints": {
+      "global": "density",
+      "local": "avg_clustering_coef",
+      "sequential": "avg_clustering_coef",
+      "iterative": "avg_clustering_coef"
+    },
+    "primary_family_size": 24,
+    "alpha": 0.05,
+    "meaningful_effect": null,
+    "precision_scenario_half_width": null,
+    "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",
+    "missingness": "Never zero-fill failures or undefined endpoints. A schedule block is complete for a contrast only when all four models have a defined endpoint in both arms. With all eight blocks complete, inference is unchanged from analysis v1. Otherwise incomplete blocks are dropped from that contrast only and inference uses the remaining blocks if at least six remain; with fewer, primary inference is suppressed and the hypothesis keeps its place in the family. Dropping a block assumes its missingness is unrelated to the contrast outcome given schedule and condition. Every result reports excluded blocks, missing cells, [0, 1]-bounded missing-data extremes over all eight blocks, and terminal failure/undefined-endpoint counts by method, condition and model as sensitivity evidence. Without a terminal receipt, execution status is unknown, not unattempted. Fallback results are labelled PARTIAL, never COMPLETE. No stopping based on interim p-values.",
+    "inference": "Paired schedule-block t diagnostics on the complete blocks of each contrast (n-1 degrees of freedom for n complete blocks), Holm across exactly 24 hypotheses, Bonferroni simultaneous intervals. Assumes independent blocks and an adequate approximation for their mean. No equivalence or guaranteed power claim.",
+    "secondary": "All categorical Coleman indices, age assortativity, modularity, degree distribution, per-model contrasts and matched controls remain descriptive. Do not select a primary from the strongest calibration result.",
+    "transport": "Governed by the execution contract transport_policy (contract v4 and later). This analysis specification neither approves nor restricts transport recovery.",
+    "confirmation_reuses_calibration": false,
+    "human_bilingual_validation": false,
+    "fallback_min_complete_blocks": 6
+  },
+  "analysis_adopted": true,
+  "sources": {
+    ".python-version": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+    "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+    "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+    "bias.py": "83469e6620d21720ef1c4290f8058c49a70055758bccb02242386f46ad2be4cf",
+    "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+    "calibration_v6_io.py": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+    "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+    "export_calibration_viewer.py": "07373b38870812f1b3271566e1c7d5f5ca7459842a5bded2fd4bb4d8332a64a6",
+    "export_research_viewer.py": "c8d97cb719578f8f312d1b8987eeae22c48ca1cac2077102dca8994d2ab45191",
+    "export_revised_viewer.py": "02db54cb90456685850fe9137ff6e4f9669fd3320aa88926e2d16cb9d54929fa",
+    "final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+    "final_study/__main__.py": "7f8719f054a580db4ddb91f2bb59586723350fd54fad8d30f8cfe2e93989a750",
+    "final_study/analysis.py": "e01f8de6429a37554ecfb324b5d8240f05a7eed7c079547c7bf20a19e1f90eab",
+    "final_study/history/v1/contract.json": "67d219d06dc6170f518c9200c764830ec68390b39f1be24e2b76a78cbb41898f",
+    "final_study/history/v1/final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+    "final_study/history/v1/final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
+    "final_study/history/v1/final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
+    "final_study/history/v1/final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+    "final_study/protocol.py": "058ce22d8cae9a683eb76afde9e336c583ffb20cf9f925f3e2b3510f3edb6b75",
+    "final_study/runner.py": "8beba1617d86deae6beacd14050bd43b7c89c06f91e05b93330c02bf3aa68e12",
+    "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
+    "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+    "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
+    "global_task_probe.py": "f3a87d7148bbd41fa1b9a8fe6cb0b4bed9315de930796d27c49a5526a17bd06a",
+    "inspect_calibration.py": "1f2aef1ed91ba4af517904d72ea102909cf9b3beec2f01fcbf239bafe902a9ed",
+    "inspect_calibration_v6.py": "435980a0ad310359eba6a1982012d87e6bc79cb3784f9eca7a45ea959c93d915",
+    "inspect_repair_v8.py": "1785073d2fdd4a592744ff9ddf23f42c424694aa8a2b551e540d8b5414519f6b",
+    "inspect_repair_v8_checkpoint.py": "b30b19cc65d6def4bf7e36f42cc431b65e066dd526b1784f449a457474bc03f5",
+    "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+    "make_persona_breakdown.py": "847f4eeff7356fb0b4bfee714e1f248135ecb3dc78bdbdcf12e353dc95f06c76",
+    "network_datasets.py": "e0f1cede7bf80c286004d4f71c0dff3258633b075d5238aa949263a1715d7e9c",
+    "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+    "plan_revision_study.py": "0a940e1802da1358d71de122d1280541c33bb58d48724b644ded769937ccc618",
+    "plotting.py": "93ae9681b309248c83931406f4476058c564145136a1a35885f835f2da896aad",
+    "precollection_analysis.py": "5311f912805acf9d445bdb8f086527bcd9c483be8b885d737d793bc1a7adeef4",
+    "precollection_audit.py": "dece2d9575aa492fc993c59f34003f32cfca2268080d92dc57f947f306ea266c",
+    "precollection_candidate.py": "62f5c05a44b989e4d837432c97260820290af5bf5b51e92ab7c349ec400b2321",
+    "precollection_spec.json": "2eb3f7ab78eb1bb97c9e59454d138ecec89efb2609e3211017cbed1bf66af7b2",
+    "probe_hindi_candidate.py": "325b1d3b4d9a576b1f8dd90580bfbc707dc10462681258fb18bf5083b858ee3d",
+    "recover_calibration_v6_checkpoint.py": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+    "render_pilot_figures.py": "4d643ef926e763fdf307fc0c88f4403e335fb18c5f0cfbf566c06a3dbc2aafb2",
+    "repair_capstone_outputs.py": "e1ddfc56a2929f177c7653047e8b1dc2558b3d2c568158bace2ed6b8cf81d4a8",
+    "repair_outputs.py": "8d3d9ffca4bcf351e1d69e6649f520dd2a36a0cc0bb1ab6558af18dfe3eff6f0",
+    "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+    "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e",
+    "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+    "repair_v8_io.py": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+    "repair_v8_transport.py": "6e76f96658322882d0a2ab9465bb4e2a65aae018489c8d663abf6747ae18f2a7",
+    "repair_v8_transport_second.py": "518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4",
+    "requirements.lock.txt": "d38e4bcafcb905468b7edea37a6a1da2703815e8a59bff0e96cdf46981492bc1",
+    "resume_wording_probe.py": "91e35f462632bb630b408b1c99bfbf01d53b500eea6ba250ec04e31d4a25bb25",
+    "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+    "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+    "revision_hindi_candidate.py": "336dcb4fd68cc70712a1f8d6e5ef4874b85ee97d52b541eba394f2ccf3596831",
+    "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+    "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+    "run_cultural_study.py": "6934d70c43328823e236595733301ace27a888e2794173fa0c391621363c2e02",
+    "run_language_study.py": "71d62821f65346b29a0cd42062c31f955207e4057808841286f714d346e12bcc",
+    "run_method_study.py": "3a8371966cea117a34f17d635e0b46a946439cb63f6800428ff4abf1a2587956",
+    "statistical_review.py": "2a827db50e4e885cbe230956bcb6cec369bf04f108302fd85c4399f8af1185bd",
+    "study_protocol.json": "ff79972a1e8b14ab9d3c4f8c9bba9b99f738ccb620fd9e4890f24d133d6f1ff2",
+    "study_protocol_224.json": "e4aa7d08db7fc2f845ad8e62f8c0860056ab51eca958f6680aeff62bf44c454a",
+    "study_protocol_896.json": "2cf4be649a46b73eb237ae7aec6a8b32a0217bad4addbc202eaa7ce77ee1e73b",
+    "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+    "study_runner_utils.py": "f31ca97d42d63f4efd29b2ebc3e8daced3419920ad4c7ccf81ed8d75a607387a",
+    "test_viewer_sources.py": "515272831b301e0bf85d2501e0a953dfee7d56e826a26a4905842828e08739b5",
+    "verify_viewer_sources.py": "3b0b85e4c311fb65881afc2b77bc624f6baa313665e59c77454db2427c64d5ba",
+    "wording_probe.py": "da51365b1a2ce17c6884bb2dc820a4171aa32e91a39d9fbdb6ddb5da09f6b4a1"
+  },
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "runtime": {
+    "python": "3.11.9",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.0",
+    "openai": "1.43.1",
+    "matplotlib": "3.6.2"
+  },
+  "catalog_sha256": "c8d3cde83c9d6e377bdf5f5d5364b614304003008f39ad24d84dabf52e2fe1ee",
+  "rates": {
+    "gpt-4.1": [
+      2.0,
+      8.0
+    ],
+    "gpt-5.6-luna": [
+      0.2,
+      1.2
+    ],
+    "gpt-6-luna": [
+      0.1,
+      0.5
+    ],
+    "gpt-6-sol": [
+      2.0,
+      10.0
+    ]
+  },
+  "prices_verified_on": "2026-10-18",
+  "prices_valid_through": "2026-10-25",
+  "price_sources": {
+    "gpt-4.1": "https://developers.openai.com/api/docs/models/gpt-4.1",
+    "gpt-5.6-luna": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+    "gpt-6-luna": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "gpt-6-sol": "https://developers.openai.com/api/docs/models/gpt-6-sol"
+  },
+  "gpt41_shutdown": "2027-01-14",
+  "requested_service_tier": "default",
+  "settings": {
+    "gpt-4.1": {
+      "global": {
+        "max_completion_tokens": 8192,
+        "temperature": 0.8
+      },
+      "local": {
+        "max_completion_tokens": 512,
+        "temperature": 0.8
+      },
+      "sequential": {
+        "max_completion_tokens": 512,
+        "temperature": 0.8
+      },
+      "iterative": {
+        "max_completion_tokens": 512,
+        "temperature": 0.8
+      }
+    },
+    "gpt-5.6-luna": {
+      "global": {
+        "max_completion_tokens": 8192,
+        "reasoning_effort": "none"
+      },
+      "local": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "sequential": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "iterative": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      }
+    },
+    "gpt-6-luna": {
+      "global": {
+        "max_completion_tokens": 8192,
+        "reasoning_effort": "none"
+      },
+      "local": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "sequential": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "iterative": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      }
+    },
+    "gpt-6-sol": {
+      "global": {
+        "max_completion_tokens": 8192,
+        "reasoning_effort": "none"
+      },
+      "local": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "sequential": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      },
+      "iterative": {
+        "max_completion_tokens": 512,
+        "reasoning_effort": "none"
+      }
+    }
+  },
+  "main_attempts": 896,
+  "schedule_blocks": 8,
+  "main_budget_ceiling_usd": 120,
+  "hindi_evidence_contract_sha256": "5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607",
+  "hindi_check_attempts": 8,
+  "hindi_check_seeds": [
+    45000,
+    45001
+  ],
+  "execution_order_seed": 44032,
+  "execution_order": "Schedule-block-major: seeds 44000-44007 in ascending order; the 112 cells of each block are shuffled by one Random(execution_order_seed) consumed block by block. A stop leaves complete earlier blocks. Pairing removes shared additive block effects, not arbitrary provider drift or model-by-condition changes within a block.",
+  "global_parser": "Validate every line; collapse exact undirected duplicates; retain raw response and flags; NONE valid.",
+  "transport_policy": "SDK retries zero. Stop on uncertain transport; retain full reservation. `recover` (or launch --auto-recover) retires one lost-transport attempt with no saved reply and permits one replacement of that same request; 4xx, received replies, a failed replacement or more than 30 retirements stop for human review. Interrupted retirement journals/logs are reconciled from the unchanged ledger before any new request.",
+  "max_transport_recoveries": 30,
+  "replacements_per_request": 1,
+  "local_write_policy": "Atomic JSON writes retry PermissionError only, at most ten times after the initial attempt (0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 15, 20 seconds; about 54 s). Retry identical local data, never transport or parsing. Exhaustion stops for inspection.",
+  "journal_reconciliation_policy": "`recover` (or launch --auto-recover) may rewrite one stale request journal from the unchanged ledger only when the row is received, its transport receipt matches, and the journal equals the intent record or the exact pre-parse row digest. Each repair is logged; at most 30 per run. Existing log provenance is validated against received rows before further recovery or requests. Any other mismatch stops for human review.",
+  "max_journal_reconciliations": 30,
+  "partial_analysis": "`analyze --stage main` replays every saved receipt offline and reports a stopped or failed inventory under the predeclared analysis fallback, labelled PARTIAL.",
+  "retries_per_received_local_decision": 3,
+  "calibration_reuse": false,
+  "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",
+  "human_bilingual_validation": false,
+  "live_gate": "Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid."
+}
