@@ -1,5 +1,39 @@
 # Final Collection Verification
 
+## Contract v6: Block Order, Partial Analysis, Journal Repair (October 19)
+
+Current candidate contract:
+`04100ffe593c3887cabdd7cc74921bb0c65d2f078e0b1fe001cde7b56bdd9fab`, frozen with
+`python -m final_study freeze` from the unexecuted v5 (`17c2750f…`). Design and
+rationale: [Final Collection, Contract v6](FINAL_COLLECTION.md#contract-v6-october-19).
+
+- **Full offline suite: 259/259 passed in 630.1 seconds** (Python 3.11.9,
+  `requirements.lock.txt`, no API key in the environment). That is the previous 248
+  plus 11 new tests; it includes the 58 historical source pins and 327 public
+  artifact pins, all unchanged.
+- **Final-study suite: 49/49.** New tests cover block-major order (eight
+  consecutive blocks of 112, deterministic, Hindi order identical to the original);
+  exact equality with analysis v1 on a complete study; one failed US-English global
+  cell dropping one block (7/8, partial) instead of six hypotheses; fewer than six
+  blocks still suppressing inference; a stopped run after six blocks reported as
+  `PARTIAL_STUDY` with 224 unattempted cells explicit; offline `analyze_stage` with no
+  client and no key; persistent post-reply and post-parse locks reconciled by
+  `recover` with exactly one POST; and refusal for an unrecognised journal, an altered
+  transport receipt or an exhausted reconciliation limit.
+- Two existing tests were updated to the intended new behaviour, not weakened: the
+  persistent-lock test still asserts that a plain relaunch refuses, then asserts that
+  opt-in `--auto-recover` completes the cell with the same single paid request; the
+  analysis test now asserts the dropped block rather than whole-contrast suppression.
+- **Preflight: 112/112 cases**, 0 paid requests. The rendered prompt catalog is
+  byte-identical to v5. The manifest is still 896 unique cells, eight per combination,
+  now ordered seed 44000 first.
+- **Hindi evidence replays unchanged:** 8/8 valid, one empty, original contract
+  `5886a306…`.
+- `readiness.json` is committed as `VALIDATION_PENDING`. `status` needs the owner's
+  private Hindi ledger and a key, so it was **not** run; the owner must run it before launch.
+- Not changed: prices or their window, allocation, ceiling, prompts, parser, transport
+  recovery, paid evidence. No API calls were made; new API spend $0.
+
 ## File-Lock Repair (October 19)
 
 Current candidate contract:

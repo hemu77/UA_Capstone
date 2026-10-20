@@ -30,10 +30,25 @@ It changes neither the prompts nor the eight-repetition allocation. The current
 verification report distinguishes fresh-checkout checks from earlier local-only
 results; no calibration regeneration is required for this repair.
 
-The October 19 file-lock repair adds five bounded retries for the same local
-JSON write, including post-reply checkpoints. It never retries the API call.
-Persistent locks still stop safely. Main generation remains unstarted and awaits
-the owner's launch command; the allocation, $120 ceiling and paid history are unchanged.
+The October 19 file-lock repair adds bounded retries for the same local JSON
+write, including post-reply checkpoints. It never retries the API call.
+
+**Contract v6 (October 19, `04100ffe…`)** keeps 896 attempts, eight equal
+repetitions, the $120 ceiling, every prompt and the parser. It changes only how a
+run survives interruption ([details](docs/FINAL_COLLECTION.md#contract-v6-october-19)):
+schedule blocks run one after another, so a stop leaves complete blocks; a
+predeclared fallback analyses contrasts with at least six of eight complete blocks,
+labelled PARTIAL; `analyze --stage main` reports a stopped run offline; local
+write retries last about 54 s; and `recover` can rebuild one journal left stale by
+a persistent file lock, from the unchanged ledger. Main generation remains
+unstarted and awaits the owner's launch command.
+
+**The price window ends October 25 and is checked before every request, so the
+run must *finish* by then.** At 26–40 serial API hours, launch no later than the
+morning of October 23, from a folder outside OneDrive or other sync clients, on a
+machine that will not sleep. Cumulative conservative local accounting across all
+stages is about **$28.65** (derived from the documented stage anchors; the owner's
+private ledger is authoritative, and it is not an invoice).
 
 ## Historical Review Gate (October 17)
 
@@ -49,6 +64,7 @@ four fixed models and 24 primary comparisons. RQ4 is explicitly about **named
 instruction contracts**, not a general language effect. A separate Hindi/global
 parser candidate is offline-only, not silently adopted into V8.
 
+*(Superseded October 18 by the adopted eight-block, 896-attempt contract.)*
 The 32-schedule planning scenario is **3,584 fresh attempts**, approximately
 **$409.77 / 105.22 serial API hours** at historical V8 usage/rates, before
 allowances. It is not the old ~$101 study and **is not authorized**. Final
@@ -176,8 +192,8 @@ Country framing is a prompt intervention, not a representative national sample.
 | Instruction languages | English, Hindi, Japanese, Brazilian Portuguese |
 | Personas | Same 50 designed fictional adults; no US party names or race labels |
 | Settings | Four countries in English, plus US in the other three languages |
-| Repetitions | Candidate: 32 fresh shared schedule blocks. Allocation and final collection contract not approved. |
-| Total | Candidate: 3,584 attempts; no automatic calibration reuse. Historical 896/1,568 scenarios remain separately labelled. |
+| Repetitions | Adopted: eight shared schedule blocks (seeds 44000–44007) for every model/method/condition. The earlier 32-block candidate is withdrawn. |
+| Total | Adopted: 896 attempts (224 per method), $120 ceiling; no calibration reuse. Main collection not yet run. |
 
 This is a seven-setting design, **not** the full country-by-language factorial.
 Candidate attributes stay in English JSON. It tests instruction-language

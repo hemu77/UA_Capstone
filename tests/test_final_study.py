@@ -33,7 +33,7 @@ class FinalContractTests(unittest.TestCase):
             fingerprint = protocol.legacy.digest(previous)
             (root/fingerprint[:12]/'main').mkdir(parents=True)
             before = path.read_bytes()
-            for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA'):
+            for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA', 'UNEXECUTED_V5_SHA'):
                 with self.subTest(version=version), patch.object(protocol, 'CONTRACT', path), \
                         patch.object(protocol, 'OUTPUT', root), patch.object(protocol, version, fingerprint):
                     with self.assertRaisesRegex(ValueError, 'existing freeze'):
@@ -122,10 +122,17 @@ class FinalContractTests(unittest.TestCase):
         self.assertEqual({r['complete_schedule_blocks'] for r in results}, {8})
         with self.assertRaisesRegex(ValueError, 'Every planned cell'):
             protocol.analysis.primary_contrasts(rows[:-1], spec)
-        # One failed model is not replaced by a three-model average or zero.
+        # One failed model is not replaced by a three-model average or zero: its
+        # whole schedule block leaves the affected contrasts, which are labelled partial.
         failed = dict(rows[0], valid_graph=False, density=None, avg_clustering_coef=None)
         missing = protocol.analysis.primary_contrasts([failed]+rows[1:], spec)
-        self.assertTrue(any(r['status'] == 'MISSING_NO_INFERENCE' for r in missing))
+        affected = [r for r in missing if r['method'] == rows[0]['method']]
+        self.assertTrue(affected)
+        for r in affected:
+            # This fixture has identical arms, so the partial result is zero-variance.
+            self.assertEqual(r['status'], 'PARTIAL_ZERO_VARIANCE_NO_T_INFERENCE')
+            self.assertEqual(r['complete_schedule_blocks'], 7)
+            self.assertEqual(r['excluded_schedule_seeds'], [rows[0]['seed']])
         changed = copy.deepcopy(spec)
         changed['schedule_seeds'] = list(range(44000, 44032))
         with self.assertRaises(ValueError):
@@ -148,9 +155,10 @@ class LaunchTests(unittest.TestCase):
                 with self.assertRaises(PermissionError) as raised:
                     runner.write_json(path, {'after': True})
             self.assertIs(raised.exception, error)
-            self.assertEqual(replace.call_count, 6)
-            self.assertEqual(sleep.call_count, 5)
-            self.assertEqual(len(logs.output), 5)
+            self.assertEqual(replace.call_count, len(runner.LOCAL_WRITE_DELAYS) + 1)
+            self.assertEqual([c.args[0] for c in sleep.call_args_list], list(runner.LOCAL_WRITE_DELAYS))
+            self.assertEqual(len(logs.output), len(runner.LOCAL_WRITE_DELAYS))
+            self.assertGreaterEqual(sum(runner.LOCAL_WRITE_DELAYS), 30)
             self.assertEqual(path.read_bytes(), original)
             self.assertEqual(list(Path(folder).iterdir()), [path])
 
@@ -302,24 +310,34 @@ class LaunchTests(unittest.TestCase):
             with self.assertRaises(PermissionError):
                 self.launch()
         self.assertEqual((protocol.engine.write_json, protocol.legacy.write_json), original_writers)
-        self.assertEqual(len(failures), 6)
+        self.assertEqual(len(failures), len(runner.LOCAL_WRITE_DELAYS) + 1)
         self.assertEqual(len(posts), 1)
         budget = self.ledger(spec)
         try:
             before = budget.db.execute('SELECT * FROM attempts').fetchall()
-            self.assertEqual(before[0][3], 'received')
+            before_ids = [r[0] for r in budget.db.execute('SELECT id,status FROM attempts').fetchall()]
+            self.assertEqual(budget.db.execute('SELECT status FROM attempts').fetchall(), [('received',)])
         finally:
             budget.db.close()
+        # A plain relaunch still refuses: repair is explicit or opt-in, never silent.
         with self.assertRaisesRegex(ValueError, 'Journal/ledger mismatch'):
             self.launch()
-        with self.assertRaises(runner.RecoveryRefused), contextlib.redirect_stdout(io.StringIO()):
-            runner.run('main', 1, 'offline-fixture-only', True)
-        self.assertEqual(len(posts), 1)
+        self.enterContext(patch.object(runner, 'analyze'))
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', True, sleep=lambda seconds: None)
+        self.assertEqual(result['status'], 'COMPLETE')
+        self.assertEqual(len(posts), 1)  # The received reply was reused, never bought again.
+        log = protocol.read(protocol.folder(spec, 'main')/'journal_reconciliations.json')
+        self.assertEqual([e['stale_state'] for e in log], ['intent_before_received_checkpoint'])
         budget = self.ledger(spec)
         try:
-            self.assertEqual(budget.db.execute('SELECT * FROM attempts').fetchall(), before)
+            after = budget.db.execute('SELECT id,phase,cost,status,request FROM attempts').fetchall()
         finally:
             budget.db.close()
+        # Same single paid row, charge and request; only the parser decision was recorded on resume.
+        self.assertEqual(len(after), 1)
+        self.assertEqual(after[0][0], before_ids[0])
+        self.assertEqual(after[0][3], 'received')
 
     def test_four_methods_received_resume_is_read_only(self):
         root, spec, cells, fixtures = self.workspace(protocol.analysis.METHODS)
@@ -828,6 +846,208 @@ class LaunchTests(unittest.TestCase):
             self.assertEqual(self.launch()['valid_graphs'], 1)
             self.assertEqual(len(protocol.read(protocol.folder(spec, 'main')/'transport_recoveries.json')), 1)
         self.assertEqual(len(posts), 2)
+
+
+    # --- v6: persistent local locks leave a stale journal; repair it from the ledger ---
+    def _persistent_journal_lock(self, after_writes):
+        """Lock every request-journal write after `after_writes` successful ones."""
+        replace, state = os.replace, dict(done=0)
+        def locked(source, destination):
+            if Path(destination).parent.name == 'requests':
+                if state['done'] >= after_writes:
+                    raise PermissionError('Persistent journal lock fixture')
+                result = replace(source, destination)
+                state['done'] += 1
+                return result
+            return replace(source, destination)
+        return locked
+
+    def test_persistent_post_parse_lock_is_reconciled_without_rebuy(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(0)
+        self.enterContext(patch.object(runner, 'analyze'))
+        # Intent and post-reply writes succeed; the post-parse checkpoint stays locked.
+        with patch.object(os, 'replace', side_effect=self._persistent_journal_lock(2)), \
+                patch.object(runner.time, 'sleep'), self.assertLogs('final_study.runner', level='WARNING'):
+            with self.assertRaises(PermissionError):
+                self.launch()
+        self.assertEqual(len(posts), 1)
+        with self.assertRaisesRegex(ValueError, 'Journal/ledger mismatch'):
+            self.launch()
+        info = runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(info['status'], 'JOURNAL_RECONCILED')
+        self.assertEqual(info['stale_state'], 'received_before_parse_checkpoint')
+        self.assertEqual(info['paid_calls'], 0)
+        self.assertEqual(self.launch()['status'], 'COMPLETE')
+        self.assertEqual(len(posts), 1)
+        # A second recover has nothing to repair and nothing unresolved.
+        with self.assertRaisesRegex(runner.RecoveryRefused, '0 unresolved'):
+            runner.recover('main', 'offline-fixture-only')
+
+    def _stale_after_received_lock(self):
+        root, spec, cells, fixtures = self.workspace()
+        posts = self.failing_client(0)
+        with patch.object(os, 'replace', side_effect=self._persistent_journal_lock(1)), \
+                patch.object(runner.time, 'sleep'), self.assertLogs('final_study.runner', level='WARNING'):
+            with self.assertRaises(PermissionError):
+                self.launch()
+        target = protocol.folder(spec, 'main')
+        journal = next((target/'requests').glob('*.json'))
+        self.assertEqual(protocol.read(journal)['status'], 'INTENT_BEFORE_TRANSPORT')
+        return spec, target, journal, posts
+
+    def test_unrecognised_journal_mismatch_is_never_rewritten(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        protocol.write_json(journal, dict(request_id=journal.stem, row_sha256='0'*64))
+        tampered = journal.read_bytes()
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'unrecognised'):
+            runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(journal.read_bytes(), tampered)
+        self.assertFalse((target/'journal_reconciliations.json').exists())
+        self.assertEqual(len(posts), 1)
+
+    def test_stale_journal_needs_matching_transport_receipt(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        receipt = target/'transport'/(journal.stem+'.json')
+        audit = protocol.read(receipt)
+        audit['response']['choices'][0]['message']['content'] = 'altered after receipt'
+        protocol.write_json(receipt, audit)
+        with self.assertRaisesRegex(runner.RecoveryRefused, 'transport evidence'):
+            runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(protocol.read(journal)['status'], 'INTENT_BEFORE_TRANSPORT')
+        self.assertEqual(len(posts), 1)
+
+    def test_journal_reconciliation_limit_is_enforced(self):
+        spec, target, journal, posts = self._stale_after_received_lock()
+        with patch.object(runner, 'MAX_JOURNAL_RECONCILIATIONS', 0):
+            with self.assertRaisesRegex(runner.RecoveryRefused, 'limit'):
+                runner.recover('main', 'offline-fixture-only')
+        self.assertEqual(protocol.read(journal)['status'], 'INTENT_BEFORE_TRANSPORT')
+
+
+class V6OrderAndAnalysisTests(unittest.TestCase):
+    """Block-major execution and the predeclared partial-study rule."""
+
+    def test_main_runs_block_major_and_hindi_order_is_unchanged(self):
+        spec = protocol.build_contract()
+        main = protocol.cells(spec, 'main')
+        seeds = [c['seed'] for c in main]
+        self.assertEqual(seeds, sorted(seeds))
+        self.assertEqual(Counter(seeds), Counter({s: 112 for s in range(44000, 44008)}))
+        design = {(c['method'], c['model'], c['culture'], c['language'], c['seed'])
+                  for c in protocol.analysis.design(spec['analysis'])}
+        self.assertEqual({(c['method'], c['model'], c['culture'], c['language'], c['seed']) for c in main}, design)
+        first = [c['run_id'] for c in main[:112]]
+        self.assertNotEqual(first, sorted(first))  # Shuffled within the block, not sorted.
+        self.assertEqual(protocol.cells(spec, 'main'), main)  # Deterministic.
+        old = protocol.hindi_evidence_contract()
+        self.assertEqual([c['run_id'] for c in protocol.cells(spec, 'hindi_check')],
+                         [c['run_id'] for c in protocol.cells(old, 'hindi_check')])
+
+    @staticmethod
+    def rows(spec, drop=(), unattempted_seeds=()):
+        result = []
+        for i, c in enumerate(protocol.analysis.design(spec)):
+            value = .1 + ((c['seed']*7 + i*3) % 11)*.005
+            row = dict(c, valid_graph=True, edges=100, density=value, avg_clustering_coef=value+.2)
+            if c['seed'] in unattempted_seeds:
+                row.update(attempted=False, valid_graph=False, density=None, avg_clustering_coef=None)
+            elif (c['method'], c['model'], c['culture'], c['language'], c['seed']) in drop:
+                row.update(valid_graph=False, density=None, avg_clustering_coef=None)
+            result.append(row)
+        return result
+
+    def test_complete_study_matches_analysis_v1_exactly(self):
+        spec = protocol.analysis.load_spec()
+        rows = self.rows(spec)
+        new = protocol.analysis.primary_contrasts(rows, spec)
+        old = protocol.analysis._math.primary_contrasts(rows, spec)
+        for a, b in zip(new, old):
+            for k in b:
+                self.assertEqual(a[k], b[k], k)
+            self.assertEqual(a['excluded_schedule_seeds'], [])
+            self.assertEqual(a['missing_cells'], [])
+        self.assertEqual({r['status'] for r in new}, {'COMPLETE_ASSUMPTIONS_REQUIRED'})
+
+    def test_one_failed_baseline_cell_drops_one_block_not_six_hypotheses(self):
+        spec = protocol.analysis.load_spec()
+        drop = {('global', 'gpt-6-sol', 'us', 'english', 44003)}
+        results = protocol.analysis.primary_contrasts(self.rows(spec, drop=drop), spec)
+        global_rows = [r for r in results if r['method'] == 'global']
+        self.assertEqual(len(global_rows), 6)
+        for r in global_rows:
+            self.assertEqual(r['status'], 'PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED')
+            self.assertEqual(r['complete_schedule_blocks'], 7)
+            self.assertEqual(r['excluded_schedule_seeds'], [44003])
+            self.assertEqual(r['missing_cells'], [dict(model='gpt-6-sol', culture='us', language='english',
+                                                       seed=44003, attempted=True)])
+            self.assertLessEqual(r['missingness_lower'], r['complete_block_mean'])
+            self.assertGreaterEqual(r['missingness_upper'], r['complete_block_mean'])
+        self.assertTrue(all(r['status'] == 'COMPLETE_ASSUMPTIONS_REQUIRED' for r in results if r['method'] != 'global'))
+        # The interval uses the complete blocks' own degrees of freedom.
+        import numpy as np
+        from scipy.stats import t
+        r = global_rows[0]
+        values = {(x['model'], x['culture'], x['language'], x['seed']): x['density']
+                  for x in self.rows(spec, drop=drop) if x['method'] == 'global'}
+        diffs = np.array([np.mean([values[(m, r['culture'], r['language'], s)] for m in protocol.analysis.MODELS])
+                          - np.mean([values[(m, 'us', 'english', s)] for m in protocol.analysis.MODELS])
+                          for s in range(44000, 44008) if s != 44003])
+        half = t.isf(.05/48, 6)*diffs.std(ddof=1)/np.sqrt(7)
+        self.assertAlmostEqual(r['simultaneous_ci'][1] - r['simultaneous_ci'][0], 2*half, places=12)
+
+    def test_fewer_than_six_complete_blocks_suppresses_inference(self):
+        spec = protocol.analysis.load_spec()
+        drop = {('local', 'gpt-4.1', 'india', 'english', s) for s in (44000, 44001, 44002)}
+        results = protocol.analysis.primary_contrasts(self.rows(spec, drop=drop), spec)
+        india = next(r for r in results if r['hypothesis_id'] == 'local:india:english')
+        self.assertEqual(india['status'], 'MISSING_NO_INFERENCE')
+        self.assertIsNone(india['holm_p'])
+        self.assertEqual(india['complete_schedule_blocks'], 5)
+        self.assertEqual(len(results), 24)  # The family keeps its suppressed member.
+
+    def test_stopped_run_reports_partial_blocks_and_unattempted_cells(self):
+        spec = protocol.analysis.load_spec()
+        rows = self.rows(spec, unattempted_seeds=(44006, 44007))
+        results = protocol.analysis.primary_contrasts(rows, spec)
+        self.assertEqual({r['status'] for r in results}, {'PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED'})
+        self.assertEqual({r['complete_schedule_blocks'] for r in results}, {6})
+        self.assertTrue(all(not cell['attempted'] for r in results for cell in r['missing_cells']))
+        report = protocol.analysis.missingness_report(rows, spec)
+        self.assertEqual(len(report), 4*4*7)
+        self.assertEqual({(r['planned'], r['attempted'], r['not_attempted'], r['attempted_without_endpoint'])
+                          for r in report}, {(8, 6, 2, 0)})
+        bad = [dict(r, valid_graph=True) if not r.get('attempted', True) else r for r in rows]
+        with self.assertRaisesRegex(ValueError, 'unattempted'):
+            protocol.analysis.primary_contrasts(bad, spec)
+
+    def test_runner_analyze_writes_labelled_partial_study(self):
+        spec = protocol.build_contract()
+        planned = protocol.cells(spec, 'main')
+        records = []
+        for i, cell in enumerate(planned[:6*112]):  # A stop after six complete blocks.
+            value = .1 + ((cell['seed']*7 + i*3) % 11)*.005
+            records.append(dict(cell=cell, failure=None,
+                                metrics=dict(density=value, avg_clustering_coef=value+.2, edges=100)))
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder)
+            self.assertEqual(runner.analyze(records, spec, target), 'PARTIAL_STUDY')
+            summary = protocol.read(target/'analysis_summary.json')
+            self.assertEqual((summary['planned'], summary['attempted']), (896, 672))
+            self.assertEqual(summary['hypothesis_status'], {'PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED': 24})
+            rows = protocol.read(target/'analysis_rows.json')
+            self.assertEqual(sum(not r['attempted'] for r in rows), 224)
+            self.assertTrue((target/'missingness_report.json').exists())
+
+    def test_analyze_stage_replays_receipts_offline_and_handles_empty_inventory(self):
+        with tempfile.TemporaryDirectory() as folder, \
+                patch.object(protocol, 'OUTPUT', Path(folder)), \
+                patch.object(protocol.legacy.paid, 'OpenAI', side_effect=AssertionError('no client')), \
+                patch.object(protocol.legacy.paid, 'credential', side_effect=AssertionError('no key')):
+            result = runner.analyze_stage('main')
+        self.assertEqual(result['status'], 'PARTIAL_STUDY')
+        self.assertEqual(result['attempted'], 0)
+        self.assertEqual(result['hypothesis_status'], {'MISSING_NO_INFERENCE': 24})
 
 
 if __name__ == '__main__':

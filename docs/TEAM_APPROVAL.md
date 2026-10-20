@@ -1,5 +1,15 @@
 # Team Decision Before Main Collection
 
+## Update: Contract v6, October 19
+
+[Contract v6](FINAL_COLLECTION.md#contract-v6-october-19) keeps the 896-attempt,
+eight-repetition, $120 design and every prompt. It changes the run order to one
+schedule block at a time, predeclares a six-of-eight-block partial-study analysis,
+adds offline `analyze`, and adds a narrow repair for journals left stale by
+persistent file locks. Still **not recorded**: professor approval of the analysis
+plan, API-key rotation, and the owner's launch instruction. The run must finish by
+October 25, so launch no later than the morning of October 23.
+
 ## Current Execution Handoff: October 18
 
 The [corrected contract](FINAL_COLLECTION.md) uses eight equal repetitions for

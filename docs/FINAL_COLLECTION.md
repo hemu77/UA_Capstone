@@ -5,6 +5,55 @@ allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
 a **$120 maximum additional main-study allowance**. No main generation has run.
 
+## Contract v6 (October 19)
+
+Contract `final-instruction-study-v6-block-order-partial-analysis`, SHA-256
+`04100ffe593c3887cabdd7cc74921bb0c65d2f078e0b1fe001cde7b56bdd9fab`, supersedes the
+unexecuted v5 (`17c2750f…`). It responds to the
+[October 19 pre-launch review](PR_REVIEW_OCT19.md) and the team's own check of it.
+**Unchanged:** 896 attempts, eight equal repetitions (seeds 44000–44007), the $120
+ceiling, models, settings, prompts (the rendered catalog is byte-identical), the
+global parser, transport recovery, the price window and all paid evidence.
+
+| Change | Why |
+| --- | --- |
+| **Block-major execution order.** All 112 cells of seed 44000 run (shuffled within the block), then 44001, and so on. | Under v5's single shuffle across seeds, a stop at 90% or 95% left zero complete primary contrasts. Now a 90% stop leaves seven complete blocks. Provider drift over time aligns with blocks, which the paired analysis already removes. The historical Hindi check keeps its original order. |
+| **Predeclared partial-study rule** (analysis v2). A block is dropped from a contrast only if one of its eight cells (four models × two arms) lacks an endpoint; inference uses the remaining blocks if at least six remain. Fewer than six still suppresses inference. | Under v5, one invalid US-English global reply suppressed all six global hypotheses. A complete study gives exactly the v1 results (tested). |
+| **`analyze --stage main`** replays every saved receipt offline and writes `analysis_summary.json`, `primary_contrasts.json/.csv`, `missingness_report.json` and `analysis_rows.json`, labelled `COMPLETE` or `PARTIAL_STUDY`. | A stopped run previously had no supported reporting path. |
+| **Local write retries extended** to ten, about 54 s in total. | 1.9 s was shorter than typical antivirus or sync-client holds. |
+| **Journal reconciliation in `recover`** (and `--auto-recover`). If a lock outlasts the retries after a reply was received and charged, `recover` rewrites that one request journal from the unchanged ledger, only when the transport receipt matches and the journal is the intent record or the exact pre-parse digest. Logged in `journal_reconciliations.json`; at most 30. A plain relaunch still refuses. | Previously this state had no supported repair; V6 and V8 each needed a one-off script for it. |
+| **Contradiction removed.** The embedded analysis no longer says automatic recovery is "not approved"; transport is governed by the contract's `transport_policy`. | The frozen contract stated two policies. |
+
+**What the fallback assumes.** Dropping an incomplete block assumes its missingness
+is unrelated to that contrast's outcome, given schedule and condition. That can be
+false: failures may depend on language, model or graph size. Every result therefore
+also reports the excluded blocks, each missing cell, the [0, 1]-bounded missing-data
+extremes over all eight blocks, and failure counts by method, condition and model.
+Read a PARTIAL result together with those, never as a completed study.
+
+**Run it so that it finishes by October 25.** The price window (verified October 18,
+valid through October 25) is checked before every request. A run still going on
+October 26 stops, and refreshing prices creates a new contract and output folder,
+which cannot continue the stopped run. At 26.3 serial API hours (39.5 with a 50%
+allowance) plus recovery waits, **launch no later than the morning of October 23**.
+Do not edit the dates to extend the window: refresh them only after re-checking the
+official prices, then `freeze` again before any main attempt exists.
+
+**Before launch, on the owner machine:**
+
+1. Rotate the exposed API key and configure the new one locally. Rotation is still
+   not recorded anywhere; record the date, never the key.
+2. Move the whole workspace and its private ledger together to a folder outside
+   OneDrive or any other sync client (for example `C:\research\UA_Captsone_SocN`),
+   and never run two copies. Sync clients are the most likely cause of persistent locks.
+3. Disable sleep and hibernation for the duration of the run.
+4. Run the offline suite, `preflight`, `verify --stage hindi_check` and `status`.
+   `status` must report `READY_FOR_MAIN_EXECUTION` (it needs the private Hindi
+   ledger and the key, so it cannot be checked on a public clone).
+5. Record the professor's approval of this analysis plan in
+   [TEAM_APPROVAL.md](TEAM_APPROVAL.md), or the explicit decision to proceed
+   without it. Neither is recorded today.
+
 ## Exact Scope
 
 | Dimension | Fixed selection |
@@ -60,15 +109,18 @@ stage exists; old paid observations keep their original contracts.
 
 **Windows file-lock protection (October 19).** Saving an intent, received reply,
 request checkpoint, or runner JSON report retries only `PermissionError`, up to
-five times after the first write attempt. The waits are 0.05, 0.1, 0.25, 0.5 and
-1 second. Each attempt saves the same data using an atomic, flushed replacement;
+ten times after the first write attempt (v6; v5 had five). The waits are 0.05,
+0.1, 0.25, 0.5, 1, 2, 5, 10, 15 and 20 seconds, about 54 s in total. Each attempt
+saves the same data using an atomic, flushed replacement;
 it does not call the model again or rerun parsing. Both inherited writer aliases
 are covered, including the post-reply and post-parse checkpoints. The aliases
 are restored when launch exits, so historical workflows are not modified.
 
-A persistent lock after all six attempts, disk-full error or other I/O failure
-still stops execution. This is not automatic repair of arbitrary damaged
-evidence. Do not use transport recovery to repurchase a received reply, delete a
+A persistent lock after all eleven attempts, disk-full error or other I/O failure
+still stops execution. If that stop leaves one request journal stale after a
+received reply, `recover` (or `--auto-recover`) reconciles only that journal from
+the unchanged ledger, under the narrow conditions in the Contract v6 section.
+This is not automatic repair of arbitrary damaged evidence. Do not use transport recovery to repurchase a received reply, delete a
 journal, or change the contract to bypass such a stop. Prefer a nonsynced working
 folder for collection; move the complete canonical workspace and ledger together,
 and never execute two copies. No antivirus exclusion is required by this repair.
@@ -82,7 +134,8 @@ Invoices may also include unrelated account usage or taxes; this ceiling applies
 to this runner's conservative token/rate accounting.
 
 October 18 checked rates and execution settings are unchanged. Price freshness
-expires after October 25 and then blocks new calls. The recorded GPT-4.1 shutdown
+expires after October 25 and then blocks new calls, so the whole run must
+**finish** by October 25, not merely start (see Contract v6 above). The recorded GPT-4.1 shutdown
 date is January 14, 2027; no automatic model substitution is allowed.
 
 ## Analysis And Claims
@@ -99,8 +152,11 @@ with an explicitly validated eight-schedule specification. The historical
   t diagnostics, Holm adjustment and Bonferroni simultaneous intervals retain
   their stated independence/distributional assumptions and family size.
 - Missing models never become three-model averages or zero-valued graphs.
-  Incomplete planned blocks suppress inference for the affected comparison;
-  available-block summaries and missing-data bounds remain labeled.
+  A schedule block with any missing cell is dropped from the affected comparison
+  only. With all eight blocks the result is `COMPLETE_ASSUMPTIONS_REQUIRED`; with
+  six or seven it is `PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED` (t on the remaining
+  blocks); with fewer than six, inference is suppressed. Missing cells, excluded
+  blocks and missing-data bounds are always reported.
 - Homophily dimensions, age assortativity, model-specific contrasts and other
   topology summaries remain descriptive, not causal demographic dominance.
 
@@ -154,6 +210,10 @@ python -X utf8 -B -m final_study recover --stage main --approval-reference owner
 
 # After collection: independently replay the complete attempt inventory.
 python -X utf8 -B -m final_study verify --stage main
+
+# Complete or stopped run: offline replay, then the primary analysis.
+# A stopped run is reported as PARTIAL_STUDY under the predeclared fallback.
+python -X utf8 -B -m final_study analyze --stage main
 ```
 
 The exact main command resumes saved evidence. Changing its cap/reference,

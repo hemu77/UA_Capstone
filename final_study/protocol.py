@@ -23,11 +23,12 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v5-budget120-local-write-retries'
+VERSION = 'final-instruction-study-v6-block-order-partial-analysis'
 # Superseded before any main attempt; may be replaced by `freeze`.
 UNEXECUTED_V2_SHA = '9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc'
 UNEXECUTED_V3_SHA = '830d00cb180d3801cbccd2da7ec10c07987648a76d23ff6bbf5bb7f2115a3b4a'
 UNEXECUTED_V4_SHA = 'be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e'
+UNEXECUTED_V5_SHA = '17c2750fe36a368150c73acc1fd080696684f273b5aa2c446d65695210e6d9c4'
 HISTORY = ROOT / 'final_study/history/v1'
 HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
@@ -88,6 +89,10 @@ def build_contract():
         main_attempts=896, schedule_blocks=8, main_budget_ceiling_usd=120,
         hindi_evidence_contract_sha256=HISTORY_SHA, hindi_check_attempts=8,
         hindi_check_seeds=[45000, 45001], execution_order_seed=44032,
+        execution_order='Schedule-block-major: seeds 44000-44007 in ascending order; the 112 cells '
+            'of each block are shuffled by one Random(execution_order_seed) consumed block by block. '
+            'A stop therefore leaves complete earlier blocks, and provider drift over time aligns '
+            'with blocks, which the paired schedule-block analysis removes.',
         global_parser='Validate every line; collapse exact undirected duplicates; retain raw response and flags; NONE valid.',
         transport_policy='SDK retries zero. Stop on uncertain transport; retain full reservation. '
             '`recover` (or launch --auto-recover) retires one lost-transport attempt with no saved reply '
@@ -95,9 +100,16 @@ def build_contract():
             'or more than 30 retirements stop for human review. Interrupted retirement journals/logs '
             'are reconciled from the unchanged ledger before any new request.',
         max_transport_recoveries=30, replacements_per_request=1,
-        local_write_policy='Atomic JSON writes retry PermissionError only, at most five times '
-            'after the initial attempt (0.05, 0.1, 0.25, 0.5, 1 seconds). '
+        local_write_policy='Atomic JSON writes retry PermissionError only, at most ten times '
+            'after the initial attempt (0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 15, 20 seconds; about 54 s). '
             'Retry identical local data, never transport or parsing. Exhaustion stops for inspection.',
+        journal_reconciliation_policy='`recover` (or launch --auto-recover) may rewrite one stale request '
+            'journal from the unchanged ledger only when the row is received, its transport receipt matches, '
+            'and the journal equals the intent record or the exact pre-parse row digest. Each repair is '
+            'logged; at most 30 per run. Any other journal mismatch still stops for human review.',
+        max_journal_reconciliations=30,
+        partial_analysis='`analyze --stage main` replays every saved receipt offline and reports a stopped '
+            'or failed inventory under the predeclared analysis fallback, labelled PARTIAL.',
         retries_per_received_local_decision=3, calibration_reuse=False,
         claim=analysis.load_spec()['claim'], human_bilingual_validation=False,
         live_gate='Replay the eight pinned historical Hindi global checks; identical prompts/parser/settings, no paid recheck. Empty graphs remain valid.')
@@ -117,7 +129,8 @@ def freeze():
     spec = build_contract()
     if CONTRACT.exists() and read(CONTRACT) != spec:
         existing = legacy.digest(read(CONTRACT))
-        if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA, UNEXECUTED_V4_SHA} or (OUTPUT/existing[:12]/'main').exists():
+        if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA, UNEXECUTED_V4_SHA,
+                            UNEXECUTED_V5_SHA} or (OUTPUT/existing[:12]/'main').exists():
             raise ValueError('An existing freeze differs; do not overwrite it silently.')
         if existing == HISTORY_SHA:
             hindi_evidence_contract()
@@ -147,8 +160,21 @@ def cells(spec, stage):
             run_id=f"final_{fingerprint[:12]}_{stage}_{row['method']}_{row['model']}_{row['culture']}_{row['language']}_s{row['seed']}",
             final_contract_sha256=fingerprint, frozen_source_sha256=spec['sources'],
             requested_service_tier='default', runtime_versions=spec['runtime']))
-    random.Random(spec['execution_order_seed']).shuffle(result)
-    return result
+    rng = random.Random(spec['execution_order_seed'])
+    if stage != 'main':
+        # Historical Hindi evidence keeps its original identity and order.
+        rng.shuffle(result)
+        return result
+    # Finish one schedule block before starting the next, so a stop leaves
+    # complete blocks; shuffle within each block against within-block drift.
+    ordered = []
+    for seed in spec['analysis']['schedule_seeds']:
+        block = [cell for cell in result if cell['seed'] == seed]
+        rng.shuffle(block)
+        ordered += block
+    if len(ordered) != len(result):
+        raise ValueError('Every main cell must belong to exactly one schedule block.')
+    return ordered
 
 
 def folder(spec, stage):

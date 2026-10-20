@@ -8,6 +8,7 @@ reply, a client error or more than MAX_RECOVERIES retirements stops for human
 review. Resume reuses received replies and never regenerates a completed graph.
 """
 import contextlib
+from datetime import datetime, timezone
 import hashlib
 import json
 import logging
@@ -28,14 +29,17 @@ MAX_RECOVERIES = 30
 TRANSPORT_ERRORS = {'APIConnectionError', 'APITimeoutError', 'InternalServerError',
                     'RateLimitError', 'APIStatusError', 'ConflictError'}
 RETRYABLE_HTTP = {408, 409, 429}
-LOCAL_WRITE_DELAYS = (.05, .1, .25, .5, 1.)
+# About 54 s in total: long enough for antivirus scans and sync clients to
+# release a file, still bounded. Only identical local bytes are rewritten.
+LOCAL_WRITE_DELAYS = (.05, .1, .25, .5, 1., 2., 5., 10., 15., 20.)
+MAX_JOURNAL_RECONCILIATIONS = 30
 
 
 def write_json(path, value):
     """Retry only the identical local write, never a paid request or parsing.
 
     Windows scanners/sync clients can briefly block atomic replacement. Keep
-    the old complete file until replacement succeeds, with V8's five retries.
+    the old complete file until replacement succeeds, with bounded retries.
     Permanent locks and other I/O errors still stop for inspection.
     """
     for attempt in range(len(LOCAL_WRITE_DELAYS) + 1):
@@ -247,6 +251,12 @@ def accounting(budget, target, spec, stage):
                 raise ValueError('Orphan/changed terminal receipt; never regenerate.')
     if retirements > MAX_RECOVERIES:
         raise ValueError('Transport recovery limit exceeded.')
+    log = target/'journal_reconciliations.json'
+    if log.exists():
+        entries = p.read(log)
+        if (not isinstance(entries, list) or len(entries) > MAX_JOURNAL_RECONCILIATIONS
+                or any(rows.get(e.get('request_id'), (None,)*4)[3] != 'received' for e in entries)):
+            raise ValueError('Journal reconciliation log conflicts with the ledger.')
     return retirements
 
 
@@ -501,20 +511,60 @@ def open_budget(spec, stage, approval):
 
 
 def analyze(records, spec, target):
+    """Analyse the saved inventory; unattempted planned cells stay explicit."""
+    by_run = {record['cell']['run_id']: record for record in records}
+    planned = p.cells(spec, 'main')
+    if set(by_run) - {c['run_id'] for c in planned}:
+        raise ValueError('Unplanned terminal result.')
     rows = []
-    for record in records:
-        c = record['cell']
-        rows.append({k: c[k] for k in p.analysis.IDENTITY if k != 'contract'} |
+    for cell in planned:
+        record = by_run.get(cell['run_id'])
+        rows.append({k: cell[k] for k in p.analysis.IDENTITY if k != 'contract'} |
             dict(contract=spec['analysis']['version'], execution_contract_sha256=p.legacy.digest(spec),
-                run_id=c['run_id'], valid_graph=record['failure'] is None,
-                **(record.get('metrics') or {})))
+                run_id=cell['run_id'], attempted=record is not None,
+                valid_graph=record is not None and record['failure'] is None,
+                failure=None if record is None else record['failure'],
+                **((record or {}).get('metrics') or {})))
     contrasts = p.analysis.primary_contrasts(rows, spec['analysis'])
+    coverage = p.analysis.missingness_report(rows, spec['analysis'])
+    complete = len(by_run) == len(planned)
+    status = 'COMPLETE' if complete else 'PARTIAL_STUDY'
     write_json(target/'analysis_rows.json', rows)
     write_json(target/'primary_contrasts.json', contrasts)
+    write_json(target/'missingness_report.json', coverage)
+    write_json(target/'analysis_summary.json', dict(status=status, contract_sha256=p.legacy.digest(spec),
+        analysis_version=spec['analysis']['version'], planned=len(planned), attempted=len(by_run),
+        valid_graphs=sum(r['valid_graph'] for r in rows),
+        fallback_min_complete_blocks=spec['analysis']['fallback_min_complete_blocks'],
+        hypothesis_status={s: sum(c['status'] == s for c in contrasts) for s in sorted({c['status'] for c in contrasts})},
+        interpretation=('All planned cells attempted.' if complete else
+            'PARTIAL results use the predeclared block fallback and its stated assumption; '
+            'they are not a completed study.')))
     fields = sorted(set().union(*(row.keys() for row in rows)))
     p.engine.write_csv(target/'network_metrics.csv', [{k: row.get(k) for k in fields} for row in rows])
     p.engine.write_csv(target/'primary_contrasts.csv', [
         {k: json.dumps(v) if isinstance(v, (dict, list)) else v for k, v in row.items()} for row in contrasts])
+    return status
+
+
+def analyze_stage(stage='main'):
+    """Offline replay of every saved receipt, then the (possibly partial) analysis.
+
+    Needs no key or private ledger. Never sends a request or rewrites evidence.
+    """
+    if stage != 'main':
+        raise ValueError('Only the main study has a primary analysis.')
+    with output_lock():
+        spec = p.load_contract()
+        target = p.folder(spec, stage)
+        planned = {c['run_id']: c for c in p.cells(spec, stage)}
+        saved = {path.stem for path in (target/'runs').glob('*.json')}
+        if saved - set(planned):
+            raise ValueError('Unplanned terminal result.')
+        records = [verify_record(target/'runs'/(rid+'.json'), planned[rid], spec)
+                   for rid in planned if rid in saved]
+        status = analyze(records, spec, target)
+        return p.read(target/'analysis_summary.json') | dict(status=status)
 
 
 def launch(stage, cap, reference):
@@ -685,6 +735,69 @@ def reconcile_recoveries(budget, target, spec, repair=False):
     return entries, bool(pending)
 
 
+def _pre_parse_digest(row):
+    """Digest of the received row exactly as settled, before record_parse added `parse`."""
+    response = json.loads(row[5])
+    if 'parse' not in response:
+        return None
+    response.pop('parse')
+    return p.legacy.digest([*row[:5], json.dumps(response, ensure_ascii=False)])
+
+
+def reconcile_journals(budget, target, spec, repair=False):
+    """Repair only a journal left stale by a persistent local file lock.
+
+    Two states are recognised, both after a received and charged reply whose
+    raw transport receipt matches the ledger: the journal still holds the
+    pre-transport intent (lock on the post-reply checkpoint), or it holds the
+    exact pre-parse row digest (lock on the post-parse checkpoint). The ledger
+    is never modified; anything else needs a person.
+    """
+    log = target/'journal_reconciliations.json'
+    entries = p.read(log) if log.exists() else []
+    if not isinstance(entries, list):
+        raise RecoveryRefused('Journal reconciliation log is malformed.')
+    stale = []
+    for row in budget.db.execute('SELECT id,phase,cost,status,request,response FROM attempts').fetchall():
+        path = target/'requests'/(row[0]+'.json')
+        if row[3] != 'received' or not path.exists():
+            continue
+        current = dict(request_id=row[0], row_sha256=p.legacy.digest(row))
+        journal = p.read(path)
+        if journal == current:
+            continue
+        response = json.loads(row[5])
+        if journal == dict(request_id=row[0], status='INTENT_BEFORE_TRANSPORT') and 'parse' not in response:
+            state = 'intent_before_received_checkpoint'
+        elif journal == dict(request_id=row[0], row_sha256=_pre_parse_digest(row)):
+            state = 'received_before_parse_checkpoint'
+        else:
+            raise RecoveryRefused('Request journal differs from the ledger in an unrecognised way; inspect it.')
+        try:
+            p.legacy.verify_transport(target, row[0], response)
+        except (OSError, ValueError, KeyError) as error:
+            raise RecoveryRefused('Stale journal without matching transport evidence; inspect it.') from error
+        request = json.loads(row[4])
+        stale.append((path, current, dict(request_id=row[0], run_id=request['cell']['run_id'],
+            ordinal=request['ordinal'], stale_state=state, previous_journal=journal,
+            reconciled_row_sha256=current['row_sha256'])))
+    if len(stale) > 1:
+        raise RecoveryRefused('More than one stale journal; a serial run can leave at most one.')
+    repaired = []
+    for path, current, entry in stale:
+        if not repair:
+            raise RecoveryRefused('A request journal is stale; run `recover` to reconcile it.')
+        resumed = bool(entries) and {k: v for k, v in entries[-1].items() if k != 'date_utc'} == entry
+        if not resumed:
+            if len(entries) >= MAX_JOURNAL_RECONCILIATIONS:
+                raise RecoveryRefused(f'Journal reconciliation limit ({MAX_JOURNAL_RECONCILIATIONS}) reached.')
+            entries = entries + [entry | dict(date_utc=datetime.now(timezone.utc).isoformat())]
+            write_json(log, entries)  # Log first; a crash before the journal write repeats only that write.
+        write_json(path, current)
+        repaired.append(entries[-1])
+    return dict(repaired=repaired, used=len(entries))
+
+
 def recover(stage, reference, automatic=False):
     """Finish interrupted evidence or retire one lost attempt; never call the API."""
     if stage != 'main':
@@ -698,7 +811,13 @@ def recover(stage, reference, automatic=False):
         budget = open_budget(spec, stage, approval)
         try:
             entries, repaired = reconcile_recoveries(budget, target, spec, repair=True)
+            journals = reconcile_journals(budget, target, spec, repair=True)
             rows = _unresolved(budget)
+            if not rows and journals['repaired']:
+                accounting(budget, target, spec, stage)
+                return dict(status='JOURNAL_RECONCILED', **journals['repaired'][-1],
+                    journal_reconciliations_used=journals['used'],
+                    journal_reconciliation_limit=MAX_JOURNAL_RECONCILIATIONS, paid_calls=0, retry_after=None)
             if not rows and repaired:
                 accounting(budget, target, spec, stage)
                 return dict(status='RECOVERY_RECONCILED', **entries[-1],
@@ -747,6 +866,11 @@ def run(stage, cap, reference, auto_recover=False, sleep=time.sleep, max_probe_w
                     probe_wait += 60
                     continue
                 raise refused from error
+            if info['status'] in {'JOURNAL_RECONCILED', 'RECOVERY_RECONCILED'}:
+                print(f"{stage}: {info['status'].lower().replace('_', ' ')} from the unchanged ledger; "
+                      'no paid request; resuming in 30s', flush=True)
+                sleep(30)
+                continue
             delay = 30
             try:
                 delay = min(120, max(30, float(info['retry_after'] or 0)))

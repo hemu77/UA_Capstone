@@ -5,7 +5,7 @@ import json
 from . import protocol, runner
 
 cli = argparse.ArgumentParser(description=__doc__)
-cli.add_argument('action', choices=['freeze', 'preflight', 'status', 'verify', 'launch', 'recover'])
+cli.add_argument('action', choices=['freeze', 'preflight', 'status', 'verify', 'analyze', 'launch', 'recover'])
 cli.add_argument('--stage', choices=['hindi_check', 'main'])
 cli.add_argument('--approve-usd', type=float)
 cli.add_argument('--approval-reference')
@@ -24,6 +24,9 @@ try:
             cli.error('--stage required')
         result = runner.verify_stage(protocol.load_contract(), args.stage)
         result = {k: v for k, v in result.items() if k != 'results'}
+    elif args.action == 'analyze':
+        # Offline: replays saved receipts and reports a complete or PARTIAL study.
+        result = runner.analyze_stage(args.stage or 'main')
     elif args.action == 'recover':
         if not args.stage or not args.approval_reference:
             cli.error('recover requires --stage and the original --approval-reference')
