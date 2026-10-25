@@ -1,5 +1,5 @@
 {
-  "version": "final-instruction-study-v6.1-terminal-reporting",
+  "version": "final-instruction-study-v6.2-price-refresh",
   "status": "ADOPTED_EIGHT_EQUAL_SCHEDULES",
   "main_authorized": false,
   "analysis": {
@@ -99,7 +99,7 @@
     "final_study/history/v1/final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
     "final_study/history/v1/final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
     "final_study/history/v1/final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
-    "final_study/protocol.py": "058ce22d8cae9a683eb76afde9e336c583ffb20cf9f925f3e2b3510f3edb6b75",
+    "final_study/protocol.py": "2cf1bbffa8f9f657df99b638168eedff82b5b9c11b1170b929e4da99716f8bbc",
     "final_study/runner.py": "8beba1617d86deae6beacd14050bd43b7c89c06f91e05b93330c02bf3aa68e12",
     "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
     "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
@@ -178,8 +178,8 @@
       10.0
     ]
   },
-  "prices_verified_on": "2026-10-18",
-  "prices_valid_through": "2026-10-25",
+  "prices_verified_on": "2026-10-25",
+  "prices_valid_through": "2026-11-01",
   "price_sources": {
     "gpt-4.1": "https://developers.openai.com/api/docs/models/gpt-4.1",
     "gpt-5.6-luna": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",

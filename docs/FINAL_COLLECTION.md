@@ -5,9 +5,25 @@ allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
 a **$120 maximum additional main-study allowance**. No main generation has run.
 
-## Contract v6.1 Review Follow-Up
+## Current: Contract v6.2, October 25
 
-The active contract is `final-instruction-study-v6.1-terminal-reporting`, SHA-256
+Active contract: `final-instruction-study-v6.2-price-refresh`, SHA-256
+`ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
+The [launch preparation record](LAUNCH_PREPARATION_OCT25.md) documents the owner's
+merge instruction and reported professor support. Prices were rechecked against
+official pages and remain unchanged. The internal freshness window is now
+**October 25 through November 1, inclusive**. Finish the run within that window.
+The previous October 23 launch deadline below is historical and superseded.
+
+Execution workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`. No main-stage
+directory exists; migration from v6.1 refuses if one exists. All prompts, settings,
+analysis, rates and paid evidence are unchanged. A local API credential is still
+required. GPU access is useful for a future open-model study, not these hosted
+API calls. No model calls are made by freeze, preflight or offline verification.
+
+## Retained v6.1 Review Follow-Up
+
+The preceding contract was `final-instruction-study-v6.1-terminal-reporting`, SHA-256
 `c54e1a30cbdda201c441453bf725d73dc0aa1d036a059ce707f954c07cb8b990`.
 [Review findings and shared terms](REVIEW_71B84B2.md) explain the repairs to
 Raghav's `71b84b2`. It supersedes unexecuted v6 only; migration refuses if that

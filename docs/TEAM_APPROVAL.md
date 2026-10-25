@@ -1,5 +1,21 @@
 # Team Decision Before Main Collection
 
+## Current Owner Decision: October 25
+
+- [x] Owner explicitly instructed merging PR #1 and preparing the main collection.
+- [x] Owner reported professor support for proceeding and offered GPU access.
+- [x] Retain 896 attempts, eight repetitions per cell and the $120 ceiling.
+- [x] Official prices rechecked; v6.2 freshness window ends November 1 inclusive.
+- [x] Execution workspace moved to `C:\Users\Hemu\Projects\UA_Captsone_SocN`.
+- [ ] Fresh API credential configured locally and final credential check passed.
+- [ ] Main collection launched and completed; no main stage exists yet.
+
+This records the owner's report, not a formal GitHub approval from the professor
+or Raghav. No review submissions or inline threads were present when checked.
+The owner requested merge directly; Raghav's confirmation is not invented.
+See [preparation, evidence and hardware scope](LAUNCH_PREPARATION_OCT25.md).
+Earlier unchecked approvals and October 23/25 deadlines below are historical.
+
 ## Current Review Follow-Up
 
 [Review of `71b84b2`](REVIEW_71B84B2.md): the follow-up retains Raghav's allocation,

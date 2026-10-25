@@ -23,13 +23,14 @@ import revision_v7_prompts as prompts
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / 'final_study/contract.json'
 OUTPUT = ROOT / 'outputs/final_study'
-VERSION = 'final-instruction-study-v6.1-terminal-reporting'
+VERSION = 'final-instruction-study-v6.2-price-refresh'
 # Superseded before any main attempt; may be replaced by `freeze`.
 UNEXECUTED_V2_SHA = '9d7c929fbff5a41865b741f4c0e053d8c72f00e8135e0213ae2ed6618fc37ecc'
 UNEXECUTED_V3_SHA = '830d00cb180d3801cbccd2da7ec10c07987648a76d23ff6bbf5bb7f2115a3b4a'
 UNEXECUTED_V4_SHA = 'be0e2e5740060bad8694bdc39d10ee2bcd60c50fc67717499395ca0bd490516e'
 UNEXECUTED_V5_SHA = '17c2750fe36a368150c73acc1fd080696684f273b5aa2c446d65695210e6d9c4'
 UNEXECUTED_V6_SHA = '04100ffe593c3887cabdd7cc74921bb0c65d2f078e0b1fe001cde7b56bdd9fab'
+UNEXECUTED_V61_SHA = 'c54e1a30cbdda201c441453bf725d73dc0aa1d036a059ce707f954c07cb8b990'
 HISTORY = ROOT / 'final_study/history/v1'
 HISTORY_SHA = '5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607'
 HINDI_OLD = 'मित्रताओं का एक संभावित विन्यास उत्पन्न करें।'
@@ -82,7 +83,7 @@ def build_contract():
         roster_sha256=analysis.ROSTER, runtime=engine.frozen.runtime_versions(),
         catalog_sha256=legacy.digest(catalog()),
         rates={m: list(legacy.paid.RATES[m]) for m in analysis.MODELS},
-        prices_verified_on='2026-10-18', prices_valid_through='2026-10-25',
+        prices_verified_on='2026-10-25', prices_valid_through='2026-11-01',
         price_sources={m: 'https://developers.openai.com/api/docs/models/'+m for m in analysis.MODELS},
         gpt41_shutdown='2027-01-14', requested_service_tier='default',
         settings={m: {method: engine.settings(m, method) for method in analysis.METHODS}
@@ -132,7 +133,7 @@ def freeze():
     if CONTRACT.exists() and read(CONTRACT) != spec:
         existing = legacy.digest(read(CONTRACT))
         if existing not in {HISTORY_SHA, UNEXECUTED_V2_SHA, UNEXECUTED_V3_SHA, UNEXECUTED_V4_SHA,
-                            UNEXECUTED_V5_SHA, UNEXECUTED_V6_SHA} or (OUTPUT/existing[:12]/'main').exists():
+                            UNEXECUTED_V5_SHA, UNEXECUTED_V6_SHA, UNEXECUTED_V61_SHA} or (OUTPUT/existing[:12]/'main').exists():
             raise ValueError('An existing freeze differs; do not overwrite it silently.')
         if existing == HISTORY_SHA:
             hindi_evidence_contract()

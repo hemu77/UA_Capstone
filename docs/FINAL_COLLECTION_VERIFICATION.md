@@ -1,8 +1,35 @@
 # Final Collection Verification
 
-## Current: Review Follow-Up To `71b84b2`
+## Current: Price Refresh Before Merge (October 25)
 
-Active contract `final-instruction-study-v6.1-terminal-reporting`:
+Contract v6.2: `ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
+The [price and launch record](LAUNCH_PREPARATION_OCT25.md) links official sources.
+Rates and research behavior remain unchanged; only version, protocol source pin
+and price-check dates change from v6.1. No main-stage directory exists.
+
+Two new regressions first reproduced refusal to refresh v6.1 and the old window's
+October 26 rejection. Both pass with v6.2: migration is permitted before a main
+stage exists, refused after one exists, and the new inclusive date boundaries
+remain enforced.
+
+- **61/61 final-study regressions passed in 56.543 seconds**, with outbound socket
+  connections blocked. This includes the new date and migration checks and the
+  existing recovery, accounting and analysis checks.
+- **112/112 offline preflight conditions passed**, with zero paid requests.
+- Relocated execution-workspace readiness passed with credential checking omitted:
+  historical Hindi replay and private accounting passed. This is not a claim that
+  an API credential is configured or provider access was tested.
+- The publishing checkout loads the new contract without hash overrides; all
+  **58 historical source pins / 327 artifact pins** passed again.
+- Current rates were read from official pages on October 25; their values and
+  GPT-4.1's recorded shutdown date are unchanged. No historical regeneration.
+- The earlier full 269-test suite is evidence for v6.1 below. This small follow-up
+  reran the complete final-study module, not a new whole-repository test suite.
+- Main generation is unstarted; no main stage or new API spending was created.
+
+## Historical: Review Follow-Up To `71b84b2`
+
+Then-active contract `final-instruction-study-v6.1-terminal-reporting`:
 `c54e1a30cbdda201c441453bf725d73dc0aa1d036a059ce707f954c07cb8b990`.
 See [the findings and shared protocol](REVIEW_71B84B2.md). Earlier sections below
 are historical verification records, not the current contract.

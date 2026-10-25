@@ -2,6 +2,7 @@
 import copy
 from collections import Counter
 import contextlib
+from datetime import date
 import io
 import json
 import os
@@ -17,6 +18,31 @@ from final_study import protocol, runner
 
 
 class FinalContractTests(unittest.TestCase):
+    def test_price_refresh_migrates_only_before_main_exists(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root/'contract.json'
+            previous = {'fixture_only': 'unexecuted v6.1'}
+            fingerprint = protocol.legacy.digest(previous)
+            with patch.object(protocol, 'CONTRACT', path), patch.object(protocol, 'OUTPUT', root), \
+                    patch.object(protocol, 'UNEXECUTED_V61_SHA', fingerprint, create=True):
+                protocol.write_json(path, previous)
+                protocol.freeze()
+                self.assertEqual(protocol.read(path), protocol.build_contract())
+                protocol.write_json(path, previous)
+                (root/fingerprint[:12]/'main').mkdir(parents=True)
+                with self.assertRaisesRegex(ValueError, 'existing freeze'):
+                    protocol.freeze()
+                self.assertEqual(protocol.read(path), previous)
+
+    def test_october25_price_window_accepts_boundaries_and_rejects_expiry(self):
+        spec = protocol.build_contract()
+        for day in (date(2026, 10, 25), date(2026, 10, 26), date(2026, 11, 1)):
+            protocol.check_prices(spec, today=day)
+        for day in (date(2026, 10, 24), date(2026, 11, 2)):
+            with self.assertRaisesRegex(ValueError, 'Price verification window'):
+                protocol.check_prices(spec, today=day)
+
     def test_published_contract_matches_actual_checkout_without_hash_overrides(self):
         # Unlike generated fixture contracts, this catches missing/normalized
         # Git blobs and stale committed source pins in an ordinary clone.
@@ -34,7 +60,7 @@ class FinalContractTests(unittest.TestCase):
             (root/fingerprint[:12]/'main').mkdir(parents=True)
             before = path.read_bytes()
             for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA',
-                            'UNEXECUTED_V5_SHA', 'UNEXECUTED_V6_SHA'):
+                            'UNEXECUTED_V5_SHA', 'UNEXECUTED_V6_SHA', 'UNEXECUTED_V61_SHA'):
                 with self.subTest(version=version), patch.object(protocol, 'CONTRACT', path), \
                         patch.object(protocol, 'OUTPUT', root), patch.object(protocol, version, fingerprint):
                     with self.assertRaisesRegex(ValueError, 'existing freeze'):

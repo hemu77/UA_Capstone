@@ -4,7 +4,21 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Final Collection (October 19)
+## Main Collection Preparation (October 25)
+
+The owner authorized merging PR #1 and reported the professor's support for
+proceeding. [Current preparation and price evidence](docs/LAUNCH_PREPARATION_OCT25.md)
+record the execution workspace outside OneDrive, GPU scope and remaining setup.
+**Main collection has not started.** A local API credential is still required.
+
+Contract **v6.2** refreshes verified, unchanged model prices through **November 1,
+2026, inclusive**. Its hash is
+`ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
+The study remains **896 attempts / eight repetitions everywhere / $120 ceiling**.
+The forecast remains about **$102.44 / 26.3 serial API hours**. The hosted-model
+study does not require a local GPU; an open-model extension would be separate.
+
+## Adopted Final Collection (October 19; Price Window Updated October 25)
 
 **Corrected in code:** eight repetitions for every model/method/condition,
 **896 planned attempts total**, estimated **$102.44**, with an enforced **$120
@@ -33,7 +47,7 @@ results; no calibration regeneration is required for this repair.
 The October 19 file-lock repair adds bounded retries for the same local JSON
 write, including post-reply checkpoints. It never retries the API call.
 
-**Current follow-up: contract v6.1.** The [review of Raghav's commit](docs/REVIEW_71B84B2.md)
+**Retained repairs from contract v6.1.** The [review of Raghav's commit](docs/REVIEW_71B84B2.md)
 records five reproduced fixes: analysis before launch no longer blocks
 authorization; unfinished cells are not called unattempted; failed verification
 invalidates stale analysis; and null journal hashes cannot be repaired as valid
@@ -50,11 +64,11 @@ labelled PARTIAL; `analyze --stage main` reports a stopped run offline; local
 write retries last about 54 s; and `recover` can rebuild one journal left stale by
 a persistent file lock, from the unchanged ledger. Main generation remains
 unstarted and awaits the owner's launch command. These v6 ordering, fallback and
-recovery policies remain in v6.1.
+recovery policies remain in v6.2.
 
-**The price window ends October 25 and is checked before every request, so the
-run must *finish* by then.** At 26–40 serial API hours, launch no later than the
-morning of October 23, from a folder outside OneDrive or other sync clients, on a
+**The refreshed price window ends November 1 and is checked before every request,
+so the run must finish by then.** Allow 26–40 serial API hours plus local work and
+recovery. Execute from `C:\Users\Hemu\Projects\UA_Captsone_SocN` on a plugged-in
 machine that will not sleep. Cumulative conservative local accounting across all
 stages is about **$28.65** (derived from the documented stage anchors; the owner's
 private ledger is authoritative, and it is not an invoice).
