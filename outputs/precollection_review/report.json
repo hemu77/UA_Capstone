@@ -1,0 +1,300 @@
+{
+  "status": "OFFLINE_AUDIT_PASSED_NOT_MAIN_READY",
+  "main_authorized": false,
+  "attempt": "2903a3975ae24f8ebde65f79972485ef",
+  "paid_calls": 0,
+  "historical_files_unchanged": 327,
+  "sources_checked": 58,
+  "pins_sha256": "822006626d7642e9afb81b6e700b59635a59ed2bdd2052524c3b307868075fd0",
+  "public_replay": {
+    "status": "PUBLIC_REPLAY_VERIFIED",
+    "contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+    "observations": 104,
+    "valid_graphs": 100,
+    "invalid_cells": 4,
+    "requests": 11634,
+    "empty_graphs": 4,
+    "conservative_usd": 7.889144774999999,
+    "api_seconds": 12096.271999999997,
+    "observed_elapsed_hours": 11.313895476944444,
+    "summary_sha256": "ac632885755a801cd6891c1e318d5df67db01a41260a81690cf3fc0d4dd78f55",
+    "main_authorized": false,
+    "human_bilingual_validation": false,
+    "forecasts": [
+      {
+        "scenario": "global_8_others_8",
+        "networks": 896,
+        "conservative_usd": 102.44275142124337,
+        "cost_with_25_percent_allowance": 128.05343927655423,
+        "serial_api_hours": 26.30387493650879,
+        "api_hours_with_50_percent_allowance": 39.455812404763186,
+        "unmeasured_country_transfer_networks": 288,
+        "calibration_reuse": false,
+        "main_authorized": false,
+        "interpretation": "Cost of attempted cells, including observed failures; not a guarantee of this many valid graphs."
+      },
+      {
+        "scenario": "global_32_others_8",
+        "networks": 1568,
+        "conservative_usd": 104.48650543320096,
+        "cost_with_25_percent_allowance": 130.6081317915012,
+        "serial_api_hours": 27.029089575739732,
+        "api_hours_with_50_percent_allowance": 40.5436343636096,
+        "unmeasured_country_transfer_networks": 504,
+        "calibration_reuse": false,
+        "main_authorized": false,
+        "interpretation": "Cost of attempted cells, including observed failures; not a guarantee of this many valid graphs."
+      }
+    ],
+    "billing_verified": false,
+    "limitations": "Public replay is not provider invoice reconciliation. Calibration is exploratory; missing graphs are not imputed.",
+    "retained_uncertain_reservation_usd": 0.002143625,
+    "total_charge_or_reservation_usd": 7.8912884
+  },
+  "endpoint_denominators": [
+    {
+      "method": "global",
+      "endpoint": "density",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 22
+    },
+    {
+      "method": "global",
+      "endpoint": "avg_clustering_coef",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 22
+    },
+    {
+      "method": "global",
+      "endpoint": "modularity",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 18
+    },
+    {
+      "method": "global",
+      "endpoint": "coleman_gender",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 18
+    },
+    {
+      "method": "global",
+      "endpoint": "coleman_religion",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 18
+    },
+    {
+      "method": "global",
+      "endpoint": "coleman_political orientation",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 18
+    },
+    {
+      "method": "global",
+      "endpoint": "age_assortativity",
+      "attempted": 26,
+      "valid": 22,
+      "nonempty": 18,
+      "endpoint_defined": 18
+    },
+    {
+      "method": "local",
+      "endpoint": "density",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "avg_clustering_coef",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "modularity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "coleman_gender",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "coleman_religion",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "coleman_political orientation",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "local",
+      "endpoint": "age_assortativity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "density",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "avg_clustering_coef",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "modularity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "coleman_gender",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "coleman_religion",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "coleman_political orientation",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "sequential",
+      "endpoint": "age_assortativity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "density",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "avg_clustering_coef",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "modularity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "coleman_gender",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "coleman_religion",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "coleman_political orientation",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    },
+    {
+      "method": "iterative",
+      "endpoint": "age_assortativity",
+      "attempted": 26,
+      "valid": 26,
+      "nonempty": 26,
+      "endpoint_defined": 26
+    }
+  ],
+  "analysis_candidate_sha256": "2eb3f7ab78eb1bb97c9e59454d138ecec89efb2609e3211017cbed1bf66af7b2",
+  "planned_candidate_attempts": 3584,
+  "output_sha256": {
+    "allocation_scenarios.csv": "9f89efb5cb87c8c5ff4124010073c0169c8751fb4e2771252336fe35e9e0a70f",
+    "calibration_denominators.png": "48c804db19da30b9146c5d512b6e8513a5995e8eefde0aa4071798cf2cae4bac",
+    "condition_endpoint_denominators.csv": "667ded4afcc4a61e6b255f7afd5225412da6156382b5df2362c7f325d6e1f54e",
+    "condition_summary.csv": "9d47473c14e6c12d1846151e08f4a32b564ab47a6c9017d6da669eadc38d31d9",
+    "endpoint_denominators.csv": "fa8e9c9a533afc7e32099f90b6ee37a3a99dd741c00cf718dd0bc028d78083b7",
+    "inspection_networks.csv": "6f2721d1423e2b26c07512677280a47881e9511b36b04d6b9cc71727af3b0b75",
+    "parser_candidate_diagnostic.csv": "f0574a61b22de1aa3319d1e1f442a9ad4c45e53862f1430878ab12719a980f5c",
+    "planned_analysis_cells.json": "c5fd593a74d32553289a0dfb135d6b6dd37777bc1ed700ff8e92860a0062d629",
+    "precision_scenarios.csv": "d52f3f75a12a9fe2beddc3fef109731ea5460c3082ee6feed757dc07c347cb17",
+    "prompt_candidate.json": "370e1863b6a8d35970cae76ead09bfebf1e16596d385d78cf0b7a818b2098bed"
+  },
+  "remaining": [
+    "Approve narrowed named-contract claim and analysis candidate.",
+    "Version and live-check adopted prompt/parser changes; never rewrite calibration.",
+    "Review the final execution manifest and transport policy, verify current prices and fresh credential.",
+    "Authorize an explicit main run; this offline command cannot do so."
+  ]
+}

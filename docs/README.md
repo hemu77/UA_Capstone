@@ -2,18 +2,33 @@
 
 | Read in order | Purpose |
 | --- | --- |
-| [Team knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) | Beginner explanation, history, feedback, fixes, limitations and ~$101 decision. |
+| [October 17 pre-collection repair](PRECOLLECTION_REVIEW.md) | Current entry point: Raghav's findings, copy-only audit, analysis/candidate fixes, costs and remaining gates. |
+| [Current V8 team handoff](V8_TEAM_HANDOFF.md) | Earlier versus now, completed calibration, recovery/debugging, costs and remaining decisions; read first. |
+| [V8 completion results](V8_COMPLETION_RESULTS.md) | 104 observations, 100 valid graphs/four failures, separate Hindi diagnostic, final costs and fresh-study projections. |
+| [Current V8 execution](V8_EXECUTION_NOTES.md) | Completed 96-cell wording screen, 94 graphs/two failures, prospective recalibration and exact evidence paths. |
+| [Hindi wording candidate](HINDI_WORDING_CANDIDATE.md) | Four-cell live diagnostic: one valid/three failed; clarification not adopted, frozen reference unchanged. |
+| [Latest V7 execution and findings](V7_EXECUTION_NOTES.md) | Paid diagnostic outcomes, verification-only recovery, costs and current advancement decision. |
+| [V7 repair and budget](REPAIR_V7_PLAN.md) | 41 directly affected V6 graphs; approved conditional probe/recalibration scope and cost assumptions. |
+| [V7 runner and checks](REPAIR_V7_RUNNER.md) | Commands, spending safeguards, exact-version gates and historical offline checks. |
+| [V7 independent review evidence](V7_REVIEW_OCT12.md) | GPT-6.1-Sol review, exact source/catalog hashes, regressions, Standard-tier pricing and pending live checks. |
+| [October 12 PR response](PR_REVIEW_OCT12.md) | Confirmed review findings, statistical caveats, unresolved gates; no new paid authorization. |
+| [Historical V6 calibration results](CALIBRATION_V6_RESULTS.md) | 104 verified graphs, $7.8549, empty-global finding and historical forecasts; not V8 results. |
+| [Revised plan](../plan.md) | October 2 completed fixes/calibration and scientific decisions before main spending. |
+| [Statistical/probe decision](STATISTICAL_ANALYSIS_DECISION.md) | Human-review waiver, $1 probe scope, inference safeguards and limits of approval. |
+| [Revised calibration runner](CALIBRATION_V6.md) | Approved 104/$10 scope, replay/accounting safeguards, bounded local I/O recovery and offline commands. |
+| [Team knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) | Beginner explanation and history; earlier ~$101 proposal is superseded. |
 | [Team approval](TEAM_APPROVAL.md) | Research and budget decisions before main collection. |
 | [Professor/team note](PROFESSOR_TEAM_REVIEW.md) | Focused review questions and requested decision through calibration. |
 | [Reusable reviewer](../agents/README.md) | Read-only agent prompt, canonical skill and team usage instructions. |
-| [Calibration results](../CALIBRATION_RESULTS.md) | Verified 68-run evidence, accounting and runtime estimates. |
-| [Current handoff](../RESEARCH_896_HANDOFF.md) | Frozen design and execution gates. |
+| [Historical V5 calibration results](../CALIBRATION_RESULTS.md) | Preserved 68-run evidence and superseded forecasts; not the new 104-run report. |
+| [V5 handoff](../RESEARCH_896_HANDOFF.md) | Preserved 896-target design and execution gates; not the revised collection plan. |
 | [Architecture](../ARCHITECTURE.md) | Script, notebook, storage and visualization responsibilities. |
 | [Review response](../REVIEW_RESPONSE_MATRIX.md) | Reviewer concerns; historical 224-run sections explicitly labelled. |
 | [Translation review](../TRANSLATION_REVIEW.md) | AI-assisted review and outstanding human-validation boundary. |
 | [Failure history](../CALIBRATION_FINDINGS.md) | Why earlier calibration versions were superseded. |
 | [API logging](../API_LOGGING.md) | Safe diagnostics, retained reservations and reviewed recovery. |
-| [Viewer guide](../FORMATION_STUDIO.md) | Private analysis UI, recorded replay and evidence limitations. |
+| [Viewer guide](../FORMATION_STUDIO.md) | Public team-review UI, recorded replay and evidence limitations. |
+| [Simulator deployment](SIMULATOR_DEPLOYMENT.md) | Public URL, V6 isolation, reproducible checks and deployment scope. |
 | [Project history](../PROJECT_HISTORY.md) | Previous long README; superseded statuses and plans. |
 | [Original capstone README](../CAPSTONE_README_ARCHIVE.md) | GitHub state before publishing this revision. |
 | [Original architecture](../ARCHITECTURE_BEFORE_REVISION.md) | Preserved previous team report. |

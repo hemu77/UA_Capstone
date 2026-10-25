@@ -1,7 +1,12 @@
 // Small, labeled SVGs keep the recorded values inspectable without a chart library.
 import {neighbors,edgeFrequencies} from './graph-data.js';
 export const countryNames={us:'United States',india:'India',japan:'Japan',brazil:'Brazil'};
-export const runLabel=run=>`${run.model} | ${run.method} | ${countryNames[run.culture]||run.culture} | ${run.language} | seed ${run.seed}`;
+export const runLabel=run=>`${run.model} | ${run.method} | ${countryNames[run.culture]||run.culture} | ${run.language} | ${Number.isInteger(run.repetition)?`rep ${run.repetition+1} / `:''}seed ${run.seed}`;
+export function layerLabel(runs,index) {
+  const run=runs[index],varied=['model','method','culture','language','seed'].filter(key=>new Set(runs.map(r=>r[key])).size>1);
+  const fields=varied.length?varied:['model','method'];
+  return `${index+1}. ${fields.map(key=>key==='culture'?countryNames[run[key]]||run[key]:key==='seed'?`${Number.isInteger(run.repetition)?`rep ${run.repetition+1} / `:''}seed ${run.seed}`:run[key]).join(' / ')}`;
+}
 export async function loadPresentation(fetcher) {
   try {
     const response=await fetcher('./data/presentation.json',{cache:'no-store'});
@@ -37,9 +42,9 @@ export function researchEvidence(runs, question) {
 }
 
 export function homophilyMatrix(runs) {
-  const demos=['gender','race/ethnicity','religion','political affiliation'];
+  const demos=[...new Set(runs.flatMap(run=>Object.keys(run.homophily||{})))];
   // Separate age: a numeric assortativity coefficient is not categorical Coleman homophily.
-  return `<table><caption>RQ2 / Saved final networks. Coleman: 0 = random-mixing reference, positive = more within-group ties. Undefined values stay NA.</caption><thead><tr><th>Run</th>${demos.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Age assortativity (different measure)</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><th>${i+1}. ${esc(r.model)}<br>${esc(r.method)}</th>${[...demos.map(d=>r.homophily?.[d]),r.age_assortativity].map(v=>`<td>${Number.isFinite(v)?`<span class="coefficient ${v>0?'positive':v<0?'negative':''}">${v.toFixed(3)}</span>`:'NA'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  return `<table><caption>RQ2 / Saved final networks. Coleman: 0 = random-mixing reference, positive = more within-group ties. Undefined values stay NA.</caption><thead><tr><th>Run</th>${demos.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Age assortativity (different measure)</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><th>${i+1}. ${esc(runLabel(r))}</th>${[...demos.map(d=>r.homophily?.[d]),r.age_assortativity].map(v=>`<td>${Number.isFinite(v)?`<span class="coefficient ${v>0?'positive':v<0?'negative':''}">${v.toFixed(3)}</span>`:'NA'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 export function frequencySvg(personas,runs,layout,selected='') {
@@ -51,7 +56,7 @@ export function frequencySvg(personas,runs,layout,selected='') {
   const cells=rows.flatMap(row=>[row.edge,[...row.edge].reverse()].map(([a,b])=>`<rect x="${at(a)}" y="${at(b)}" width="${cell-.5}" height="${cell-.5}" fill="#213d32" fill-opacity="${row.frequency}" tabindex="0"><title>Personas ${esc(a)} and ${esc(b)}: ${row.count}/${row.total} selected runs</title></rect>`)).join('');
   const chart=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 705" role="img" aria-label="Tie frequency matrix"><title>${rows.length} distinct ${selected?'persona '+esc(selected)+' incident ':''}ties across ${runs.length} saved runs. Symmetric cells represent one undirected tie.</title><rect width="710" height="705" fill="#f2f3ef"/><rect x="55" y="55" width="600" height="600" fill="#dce2dc"/>${labels}${cells}<text x="55" y="680" font-size="12">Row / column: persona ID. Darker = more runs. Blank = no recorded tie.</text></svg>`;
   const sets=runs.map(run=>new Set(run.edges.map(edge=>JSON.stringify([...edge].sort()))));
-  return `<p>${rows.length} distinct ties. A count of 2 / 3 means two of the three selected runs contain that connection. It is not a probability or accuracy score.</p><div class="tie-table"><table><caption>Exact recorded connections${selected?' involving persona '+esc(selected):''}. Run columns follow the experiment list above.</caption><thead><tr><th>Personas</th><th>Runs containing tie</th>${runs.map((r,i)=>`<th>Run ${i+1}<br>${esc(r.model)}<br>${esc(r.method)}</th>`).join('')}</tr></thead><tbody>${rows.sort((a,b)=>b.count-a.count).map(row=>`<tr><th>${row.edge.map(esc).join(' - ')}</th><td>${row.count} / ${row.total}</td>${sets.map(set=>`<td>${set.has(JSON.stringify([...row.edge].sort()))?'Present':'Absent'}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${runs.length+2}">No recorded connections for this selection.</td></tr>`}</tbody></table></div><details><summary>Optional matrix view</summary>${chart}</details>`;
+  return `<p>${rows.length} distinct ties. Each count is the number of saved graphs containing that tie, out of ${runs.length} selected runs. It is not a probability or accuracy score.</p><div class="tie-table"><table><caption>Exact recorded connections${selected?' involving persona '+esc(selected):''}. Run columns follow the experiment list above.</caption><thead><tr><th>Personas</th><th>Runs containing tie</th>${runs.map((r,i)=>`<th>Run ${i+1}<br>${esc(r.model)}<br>${esc(r.method)}</th>`).join('')}</tr></thead><tbody>${rows.sort((a,b)=>b.count-a.count).map(row=>`<tr><th>${row.edge.map(esc).join(' - ')}</th><td>${row.count} / ${row.total}</td>${sets.map(set=>`<td>${set.has(JSON.stringify([...row.edge].sort()))?'Present':'Absent'}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${runs.length+2}">No recorded connections for this selection.</td></tr>`}</tbody></table></div><details><summary>Optional matrix view</summary>${chart}</details>`;
 }
 export function trajectorySvg(frames, person, step) {
   if (!frames) return '<p class="empty-note">No recorded history. A final graph cannot reveal its construction order.</p>';

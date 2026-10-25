@@ -1,0 +1,1299 @@
+{
+  "cell": {
+    "model": "gpt-6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "hindi",
+    "seed": 45000,
+    "wording": "reference",
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "personas": 50,
+    "phase": "main",
+    "stage": "hindi_check",
+    "repetition": 0,
+    "global_arm": "a0_b0",
+    "run_id": "final_5886a306a053_hindi_check_global_gpt-6-luna_us_hindi_s45000",
+    "final_contract_sha256": "5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607",
+    "frozen_source_sha256": {
+      ".python-version": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "bias.py": "83469e6620d21720ef1c4290f8058c49a70055758bccb02242386f46ad2be4cf",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+      "calibration_v6_io.py": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "export_calibration_viewer.py": "07373b38870812f1b3271566e1c7d5f5ca7459842a5bded2fd4bb4d8332a64a6",
+      "export_research_viewer.py": "c8d97cb719578f8f312d1b8987eeae22c48ca1cac2077102dca8994d2ab45191",
+      "export_revised_viewer.py": "02db54cb90456685850fe9137ff6e4f9669fd3320aa88926e2d16cb9d54929fa",
+      "final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+      "final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
+      "final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
+      "final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+      "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
+      "global_task_probe.py": "f3a87d7148bbd41fa1b9a8fe6cb0b4bed9315de930796d27c49a5526a17bd06a",
+      "inspect_calibration.py": "1f2aef1ed91ba4af517904d72ea102909cf9b3beec2f01fcbf239bafe902a9ed",
+      "inspect_calibration_v6.py": "435980a0ad310359eba6a1982012d87e6bc79cb3784f9eca7a45ea959c93d915",
+      "inspect_repair_v8.py": "1785073d2fdd4a592744ff9ddf23f42c424694aa8a2b551e540d8b5414519f6b",
+      "inspect_repair_v8_checkpoint.py": "b30b19cc65d6def4bf7e36f42cc431b65e066dd526b1784f449a457474bc03f5",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "make_persona_breakdown.py": "847f4eeff7356fb0b4bfee714e1f248135ecb3dc78bdbdcf12e353dc95f06c76",
+      "network_datasets.py": "e0f1cede7bf80c286004d4f71c0dff3258633b075d5238aa949263a1715d7e9c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "plan_revision_study.py": "0a940e1802da1358d71de122d1280541c33bb58d48724b644ded769937ccc618",
+      "plotting.py": "93ae9681b309248c83931406f4476058c564145136a1a35885f835f2da896aad",
+      "precollection_analysis.py": "5311f912805acf9d445bdb8f086527bcd9c483be8b885d737d793bc1a7adeef4",
+      "precollection_audit.py": "dece2d9575aa492fc993c59f34003f32cfca2268080d92dc57f947f306ea266c",
+      "precollection_candidate.py": "62f5c05a44b989e4d837432c97260820290af5bf5b51e92ab7c349ec400b2321",
+      "precollection_spec.json": "2eb3f7ab78eb1bb97c9e59454d138ecec89efb2609e3211017cbed1bf66af7b2",
+      "probe_hindi_candidate.py": "325b1d3b4d9a576b1f8dd90580bfbc707dc10462681258fb18bf5083b858ee3d",
+      "recover_calibration_v6_checkpoint.py": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+      "render_pilot_figures.py": "4d643ef926e763fdf307fc0c88f4403e335fb18c5f0cfbf566c06a3dbc2aafb2",
+      "repair_capstone_outputs.py": "e1ddfc56a2929f177c7653047e8b1dc2558b3d2c568158bace2ed6b8cf81d4a8",
+      "repair_outputs.py": "8d3d9ffca4bcf351e1d69e6649f520dd2a36a0cc0bb1ab6558af18dfe3eff6f0",
+      "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+      "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e",
+      "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+      "repair_v8_io.py": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+      "repair_v8_transport.py": "6e76f96658322882d0a2ab9465bb4e2a65aae018489c8d663abf6747ae18f2a7",
+      "repair_v8_transport_second.py": "518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4",
+      "requirements.lock.txt": "d38e4bcafcb905468b7edea37a6a1da2703815e8a59bff0e96cdf46981492bc1",
+      "resume_wording_probe.py": "91e35f462632bb630b408b1c99bfbf01d53b500eea6ba250ec04e31d4a25bb25",
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "revision_hindi_candidate.py": "336dcb4fd68cc70712a1f8d6e5ef4874b85ee97d52b541eba394f2ccf3596831",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+      "run_cultural_study.py": "6934d70c43328823e236595733301ace27a888e2794173fa0c391621363c2e02",
+      "run_language_study.py": "71d62821f65346b29a0cd42062c31f955207e4057808841286f714d346e12bcc",
+      "run_method_study.py": "3a8371966cea117a34f17d635e0b46a946439cb63f6800428ff4abf1a2587956",
+      "statistical_review.py": "2a827db50e4e885cbe230956bcb6cec369bf04f108302fd85c4399f8af1185bd",
+      "study_protocol.json": "ff79972a1e8b14ab9d3c4f8c9bba9b99f738ccb620fd9e4890f24d133d6f1ff2",
+      "study_protocol_224.json": "e4aa7d08db7fc2f845ad8e62f8c0860056ab51eca958f6680aeff62bf44c454a",
+      "study_protocol_896.json": "2cf4be649a46b73eb237ae7aec6a8b32a0217bad4addbc202eaa7ce77ee1e73b",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "study_runner_utils.py": "f31ca97d42d63f4efd29b2ebc3e8daced3419920ad4c7ccf81ed8d75a607387a",
+      "test_viewer_sources.py": "515272831b301e0bf85d2501e0a953dfee7d56e826a26a4905842828e08739b5",
+      "verify_viewer_sources.py": "3b0b85e4c311fb65881afc2b77bc624f6baa313665e59c77454db2427c64d5ba",
+      "wording_probe.py": "da51365b1a2ce17c6884bb2dc820a4171aa32e91a39d9fbdb6ddb5da09f6b4a1"
+    },
+    "requested_service_tier": "default",
+    "runtime_versions": {
+      "python": "3.11.9",
+      "networkx": "3.1",
+      "numpy": "1.26.4",
+      "pandas": "1.5.0",
+      "openai": "1.43.1",
+      "matplotlib": "3.6.2"
+    }
+  },
+  "evidence_type": "received_final_study",
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "15"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "0",
+          "43"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "1",
+          "3"
+        ],
+        [
+          "1",
+          "8"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "10",
+          "18"
+        ],
+        [
+          "10",
+          "30"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "11",
+          "35"
+        ],
+        [
+          "11",
+          "43"
+        ],
+        [
+          "12",
+          "14"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "36"
+        ],
+        [
+          "13",
+          "47"
+        ],
+        [
+          "13",
+          "48"
+        ],
+        [
+          "14",
+          "15"
+        ],
+        [
+          "14",
+          "9"
+        ],
+        [
+          "15",
+          "43"
+        ],
+        [
+          "16",
+          "39"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "45"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "30"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "19",
+          "48"
+        ],
+        [
+          "2",
+          "31"
+        ],
+        [
+          "2",
+          "42"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "20",
+          "7"
+        ],
+        [
+          "20",
+          "8"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "22",
+          "30"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "24",
+          "35"
+        ],
+        [
+          "24",
+          "43"
+        ],
+        [
+          "25",
+          "3"
+        ],
+        [
+          "25",
+          "42"
+        ],
+        [
+          "25",
+          "7"
+        ],
+        [
+          "26",
+          "38"
+        ],
+        [
+          "27",
+          "40"
+        ],
+        [
+          "28",
+          "31"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "48"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "47"
+        ],
+        [
+          "31",
+          "42"
+        ],
+        [
+          "32",
+          "41"
+        ],
+        [
+          "32",
+          "47"
+        ],
+        [
+          "33",
+          "41"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "34",
+          "37"
+        ],
+        [
+          "34",
+          "5"
+        ],
+        [
+          "35",
+          "48"
+        ],
+        [
+          "36",
+          "47"
+        ],
+        [
+          "36",
+          "6"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "39",
+          "40"
+        ],
+        [
+          "4",
+          "45"
+        ],
+        [
+          "41",
+          "47"
+        ],
+        [
+          "48",
+          "6"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "decisions": [
+    {
+      "step": 0,
+      "attempt": 1,
+      "method": "global",
+      "prompt_method": "global",
+      "actor": null,
+      "requested_count": null,
+      "candidate_order": [
+        "11",
+        "0",
+        "43",
+        "25",
+        "26",
+        "3",
+        "16",
+        "34",
+        "28",
+        "10",
+        "48",
+        "32",
+        "46",
+        "35",
+        "22",
+        "17",
+        "6",
+        "1",
+        "45",
+        "30",
+        "31",
+        "44",
+        "15",
+        "19",
+        "12",
+        "36",
+        "47",
+        "2",
+        "41",
+        "27",
+        "7",
+        "9",
+        "29",
+        "42",
+        "13",
+        "33",
+        "18",
+        "8",
+        "21",
+        "5",
+        "37",
+        "20",
+        "14",
+        "24",
+        "49",
+        "4",
+        "23",
+        "38",
+        "39",
+        "40"
+      ],
+      "request_id": "184ee12a42bf463bf2ad7e444f1ba79f2301c63213627a48c384d04a6a4f3690",
+      "valid": true
+    }
+  ],
+  "schedule": {
+    "seed": 45000,
+    "display_order": [
+      "11",
+      "0",
+      "43",
+      "25",
+      "26",
+      "3",
+      "16",
+      "34",
+      "28",
+      "10",
+      "48",
+      "32",
+      "46",
+      "35",
+      "22",
+      "17",
+      "6",
+      "1",
+      "45",
+      "30",
+      "31",
+      "44",
+      "15",
+      "19",
+      "12",
+      "36",
+      "47",
+      "2",
+      "41",
+      "27",
+      "7",
+      "9",
+      "29",
+      "42",
+      "13",
+      "33",
+      "18",
+      "8",
+      "21",
+      "5",
+      "37",
+      "20",
+      "14",
+      "24",
+      "49",
+      "4",
+      "23",
+      "38",
+      "39",
+      "40"
+    ],
+    "actor_order": [
+      "24",
+      "44",
+      "40",
+      "14",
+      "13",
+      "15",
+      "18",
+      "29",
+      "6",
+      "31",
+      "12",
+      "16",
+      "1",
+      "0",
+      "42",
+      "11",
+      "28",
+      "8",
+      "5",
+      "41",
+      "37",
+      "39",
+      "33",
+      "27",
+      "32",
+      "38",
+      "4",
+      "9",
+      "30",
+      "43",
+      "36",
+      "7",
+      "45",
+      "21",
+      "3",
+      "10",
+      "25",
+      "35",
+      "20",
+      "26",
+      "23",
+      "34",
+      "22",
+      "17",
+      "49",
+      "2",
+      "47",
+      "48",
+      "46",
+      "19"
+    ],
+    "nomination_quotas": {
+      "24": 1,
+      "44": 1,
+      "40": 6,
+      "14": 2,
+      "13": 8,
+      "15": 1,
+      "18": 7,
+      "29": 4,
+      "6": 3,
+      "31": 2,
+      "12": 1,
+      "16": 2,
+      "1": 5,
+      "0": 1,
+      "42": 2,
+      "11": 1,
+      "28": 6,
+      "8": 1,
+      "5": 3,
+      "41": 2,
+      "37": 4,
+      "39": 1,
+      "33": 8,
+      "27": 20,
+      "32": 4,
+      "38": 7,
+      "4": 1,
+      "9": 4,
+      "30": 4,
+      "43": 14,
+      "36": 4,
+      "7": 1,
+      "45": 3,
+      "21": 2,
+      "3": 6,
+      "10": 15,
+      "25": 5,
+      "35": 17,
+      "20": 4,
+      "26": 1,
+      "23": 8,
+      "34": 15,
+      "22": 1,
+      "17": 1,
+      "49": 1,
+      "2": 1,
+      "47": 1,
+      "48": 6,
+      "46": 1,
+      "19": 2
+    },
+    "iterative_actor_orders": [
+      [
+        "19",
+        "45",
+        "6",
+        "36",
+        "11",
+        "39",
+        "26",
+        "2",
+        "0",
+        "48",
+        "13",
+        "15",
+        "46",
+        "4",
+        "35",
+        "23",
+        "42",
+        "9",
+        "17",
+        "31",
+        "44",
+        "25",
+        "5",
+        "7",
+        "47",
+        "40",
+        "21",
+        "33",
+        "18",
+        "20",
+        "43",
+        "49",
+        "41",
+        "27",
+        "37",
+        "1",
+        "24",
+        "38",
+        "16",
+        "30",
+        "10",
+        "3",
+        "14",
+        "29",
+        "8",
+        "28",
+        "32",
+        "12",
+        "22",
+        "34"
+      ],
+      [
+        "28",
+        "11",
+        "27",
+        "3",
+        "35",
+        "7",
+        "10",
+        "45",
+        "24",
+        "30",
+        "29",
+        "20",
+        "39",
+        "31",
+        "32",
+        "5",
+        "44",
+        "6",
+        "33",
+        "41",
+        "17",
+        "49",
+        "2",
+        "22",
+        "9",
+        "46",
+        "8",
+        "12",
+        "0",
+        "19",
+        "18",
+        "26",
+        "40",
+        "34",
+        "25",
+        "42",
+        "23",
+        "13",
+        "36",
+        "37",
+        "4",
+        "38",
+        "16",
+        "48",
+        "14",
+        "47",
+        "1",
+        "15",
+        "43",
+        "21"
+      ],
+      [
+        "47",
+        "20",
+        "3",
+        "32",
+        "31",
+        "1",
+        "7",
+        "9",
+        "12",
+        "40",
+        "2",
+        "42",
+        "17",
+        "21",
+        "45",
+        "37",
+        "39",
+        "46",
+        "34",
+        "49",
+        "15",
+        "14",
+        "24",
+        "48",
+        "27",
+        "22",
+        "29",
+        "4",
+        "44",
+        "8",
+        "33",
+        "11",
+        "18",
+        "10",
+        "23",
+        "30",
+        "13",
+        "38",
+        "0",
+        "16",
+        "36",
+        "25",
+        "19",
+        "43",
+        "28",
+        "26",
+        "41",
+        "6",
+        "35",
+        "5"
+      ]
+    ]
+  },
+  "metrics": {
+    "density": 0.05551020408163265,
+    "avg_clustering_coef": 0.3460000000000001,
+    "prop_nodes_lcc": 0.88,
+    "global_efficiency": 0.2069986000394151,
+    "num_components": 5,
+    "modularity": 0.709234429065744,
+    "radius_lcc": 8,
+    "diameter_lcc": 15,
+    "avg_shortest_path_lcc": 5.971458773784355,
+    "degree_one_share": 0.06,
+    "isolate_share": 0.06,
+    "degree_gini": 0.21764705882352942,
+    "coleman_gender": 0.5313390313390314,
+    "coleman_religion": 0.6140141467727674,
+    "coleman_political orientation": 0.5043550408426111,
+    "age_assortativity": 0.654468957383677
+  },
+  "requests": [
+    {
+      "request_id": "184ee12a42bf463bf2ad7e444f1ba79f2301c63213627a48c384d04a6a4f3690",
+      "request": {
+        "cell": {
+          "model": "gpt-6-luna",
+          "method": "global",
+          "culture": "us",
+          "language": "hindi",
+          "seed": 45000,
+          "wording": "reference",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "personas": 50,
+          "phase": "main",
+          "stage": "hindi_check",
+          "repetition": 0,
+          "global_arm": "a0_b0",
+          "run_id": "final_5886a306a053_hindi_check_global_gpt-6-luna_us_hindi_s45000",
+          "final_contract_sha256": "5886a306a053579ed95f47011a8a41acd893c8ee75480cd25968c64658790607",
+          "frozen_source_sha256": {
+            ".python-version": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "bias.py": "83469e6620d21720ef1c4290f8058c49a70055758bccb02242386f46ad2be4cf",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "calibration_v6_io.py": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "export_calibration_viewer.py": "07373b38870812f1b3271566e1c7d5f5ca7459842a5bded2fd4bb4d8332a64a6",
+            "export_research_viewer.py": "c8d97cb719578f8f312d1b8987eeae22c48ca1cac2077102dca8994d2ab45191",
+            "export_revised_viewer.py": "02db54cb90456685850fe9137ff6e4f9669fd3320aa88926e2d16cb9d54929fa",
+            "final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+            "final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
+            "final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
+            "final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+            "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
+            "global_task_probe.py": "f3a87d7148bbd41fa1b9a8fe6cb0b4bed9315de930796d27c49a5526a17bd06a",
+            "inspect_calibration.py": "1f2aef1ed91ba4af517904d72ea102909cf9b3beec2f01fcbf239bafe902a9ed",
+            "inspect_calibration_v6.py": "435980a0ad310359eba6a1982012d87e6bc79cb3784f9eca7a45ea959c93d915",
+            "inspect_repair_v8.py": "1785073d2fdd4a592744ff9ddf23f42c424694aa8a2b551e540d8b5414519f6b",
+            "inspect_repair_v8_checkpoint.py": "b30b19cc65d6def4bf7e36f42cc431b65e066dd526b1784f449a457474bc03f5",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "make_persona_breakdown.py": "847f4eeff7356fb0b4bfee714e1f248135ecb3dc78bdbdcf12e353dc95f06c76",
+            "network_datasets.py": "e0f1cede7bf80c286004d4f71c0dff3258633b075d5238aa949263a1715d7e9c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "plan_revision_study.py": "0a940e1802da1358d71de122d1280541c33bb58d48724b644ded769937ccc618",
+            "plotting.py": "93ae9681b309248c83931406f4476058c564145136a1a35885f835f2da896aad",
+            "precollection_analysis.py": "5311f912805acf9d445bdb8f086527bcd9c483be8b885d737d793bc1a7adeef4",
+            "precollection_audit.py": "dece2d9575aa492fc993c59f34003f32cfca2268080d92dc57f947f306ea266c",
+            "precollection_candidate.py": "62f5c05a44b989e4d837432c97260820290af5bf5b51e92ab7c349ec400b2321",
+            "precollection_spec.json": "2eb3f7ab78eb1bb97c9e59454d138ecec89efb2609e3211017cbed1bf66af7b2",
+            "probe_hindi_candidate.py": "325b1d3b4d9a576b1f8dd90580bfbc707dc10462681258fb18bf5083b858ee3d",
+            "recover_calibration_v6_checkpoint.py": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+            "render_pilot_figures.py": "4d643ef926e763fdf307fc0c88f4403e335fb18c5f0cfbf566c06a3dbc2aafb2",
+            "repair_capstone_outputs.py": "e1ddfc56a2929f177c7653047e8b1dc2558b3d2c568158bace2ed6b8cf81d4a8",
+            "repair_outputs.py": "8d3d9ffca4bcf351e1d69e6649f520dd2a36a0cc0bb1ab6558af18dfe3eff6f0",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v8_io.py": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+            "repair_v8_transport.py": "6e76f96658322882d0a2ab9465bb4e2a65aae018489c8d663abf6747ae18f2a7",
+            "repair_v8_transport_second.py": "518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4",
+            "requirements.lock.txt": "d38e4bcafcb905468b7edea37a6a1da2703815e8a59bff0e96cdf46981492bc1",
+            "resume_wording_probe.py": "91e35f462632bb630b408b1c99bfbf01d53b500eea6ba250ec04e31d4a25bb25",
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "revision_hindi_candidate.py": "336dcb4fd68cc70712a1f8d6e5ef4874b85ee97d52b541eba394f2ccf3596831",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "run_cultural_study.py": "6934d70c43328823e236595733301ace27a888e2794173fa0c391621363c2e02",
+            "run_language_study.py": "71d62821f65346b29a0cd42062c31f955207e4057808841286f714d346e12bcc",
+            "run_method_study.py": "3a8371966cea117a34f17d635e0b46a946439cb63f6800428ff4abf1a2587956",
+            "statistical_review.py": "2a827db50e4e885cbe230956bcb6cec369bf04f108302fd85c4399f8af1185bd",
+            "study_protocol.json": "ff79972a1e8b14ab9d3c4f8c9bba9b99f738ccb620fd9e4890f24d133d6f1ff2",
+            "study_protocol_224.json": "e4aa7d08db7fc2f845ad8e62f8c0860056ab51eca958f6680aeff62bf44c454a",
+            "study_protocol_896.json": "2cf4be649a46b73eb237ae7aec6a8b32a0217bad4addbc202eaa7ce77ee1e73b",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "study_runner_utils.py": "f31ca97d42d63f4efd29b2ebc3e8daced3419920ad4c7ccf81ed8d75a607387a",
+            "test_viewer_sources.py": "515272831b301e0bf85d2501e0a953dfee7d56e826a26a4905842828e08739b5",
+            "verify_viewer_sources.py": "3b0b85e4c311fb65881afc2b77bc624f6baa313665e59c77454db2427c64d5ba",
+            "wording_probe.py": "da51365b1a2ce17c6884bb2dc820a4171aa32e91a39d9fbdb6ddb5da09f6b4a1"
+          },
+          "requested_service_tier": "default",
+          "runtime_versions": {
+            "python": "3.11.9",
+            "networkx": "3.1",
+            "numpy": "1.26.4",
+            "pandas": "1.5.0",
+            "openai": "1.43.1",
+            "matplotlib": "3.6.2"
+          }
+        },
+        "ordinal": 0,
+        "model": "gpt-6-luna",
+        "messages": [
+          {
+            "role": "system",
+            "content": "नीचे दिए गए काल्पनिक व्यक्तियों का उपयोग करके एक सिमुलेशन के लिए मित्रताओं का एक काल्पनिक नेटवर्क बनाएँ। उम्मीदवारों के डेटा में पहले से दर्ज संबंधों को खोजने के बजाय, मित्रताओं का ऐसा विन्यास उत्पन्न करें जो यथार्थसंगत और विश्वसनीय हो।\n\nसामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। सूचीबद्ध लोगों के पूरे नेटवर्क को परिभाषित करने वाली सभी मित्रता जोड़ियाँ चुनें, न कि केवल एक-से-एक जोड़ियाँ। प्रत्येक व्यक्ति के शून्य, एक या कई मित्र हो सकते हैं। अलग-अलग असंबद्ध समूह स्वीकार्य हैं। मित्रता में कोई दिशा नहीं होती: प्रत्येक जोड़ी केवल एक बार दें। हर पंक्ति में पूर्णांक ID की एक जोड़ी ID1, ID2 के रूप में दें, जहाँ ID1 < ID2 हो।  स्वयं से संबंध, दोहराई गई जोड़ियाँ, स्पष्टीकरण या अन्य पाठ न दें। उत्तर का प्रारूप: NONE या प्रत्येक पंक्ति में ID1, ID2 की एक जोड़ी।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":null,\"candidates\":[[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 8192,
+          "reasoning_effort": "none"
+        },
+        "date_utc": "2026-10-18T07:42:54.158224+00:00",
+        "rates_per_million": [
+          0.1,
+          0.5
+        ],
+        "execution_source_sha256": {
+          ".python-version": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "bias.py": "83469e6620d21720ef1c4290f8058c49a70055758bccb02242386f46ad2be4cf",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "calibration_v6_io.py": "8518ffa7172f271905d12d46378d9b1e2d5b4cb7786e03ac0fcc14d58d4dbbfa",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "export_calibration_viewer.py": "07373b38870812f1b3271566e1c7d5f5ca7459842a5bded2fd4bb4d8332a64a6",
+          "export_research_viewer.py": "c8d97cb719578f8f312d1b8987eeae22c48ca1cac2077102dca8994d2ab45191",
+          "export_revised_viewer.py": "02db54cb90456685850fe9137ff6e4f9669fd3320aa88926e2d16cb9d54929fa",
+          "final_study/__init__.py": "f8acafe84360fb76e15394e806c479fd649127a410ba364e6272b6e90c3c129a",
+          "final_study/__main__.py": "be06f9e8962786fc1bda73e23c6e23c944f8bcbda2aaebeb1a08581bc8a2e83a",
+          "final_study/protocol.py": "03b5fe1a651860c2c438d02e55d8ad96ffc33cce243b6e3516b46afe74caee3d",
+          "final_study/runner.py": "1581f0202c51739957c735a125cd9c8d3e56eb95f3df505124107f8d8057feea",
+          "finish_global_task_probe.py": "04c68ddb67c26403590cf086882c5ef8ba26bade6822924ce22cad298c2d1f58",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "generate_personas.py": "607ed81af3fa2375f5cb8e84c465b71f5a4d88df014df8365d0906d1e9630f77",
+          "global_task_probe.py": "f3a87d7148bbd41fa1b9a8fe6cb0b4bed9315de930796d27c49a5526a17bd06a",
+          "inspect_calibration.py": "1f2aef1ed91ba4af517904d72ea102909cf9b3beec2f01fcbf239bafe902a9ed",
+          "inspect_calibration_v6.py": "435980a0ad310359eba6a1982012d87e6bc79cb3784f9eca7a45ea959c93d915",
+          "inspect_repair_v8.py": "1785073d2fdd4a592744ff9ddf23f42c424694aa8a2b551e540d8b5414519f6b",
+          "inspect_repair_v8_checkpoint.py": "b30b19cc65d6def4bf7e36f42cc431b65e066dd526b1784f449a457474bc03f5",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "make_persona_breakdown.py": "847f4eeff7356fb0b4bfee714e1f248135ecb3dc78bdbdcf12e353dc95f06c76",
+          "network_datasets.py": "e0f1cede7bf80c286004d4f71c0dff3258633b075d5238aa949263a1715d7e9c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "plan_revision_study.py": "0a940e1802da1358d71de122d1280541c33bb58d48724b644ded769937ccc618",
+          "plotting.py": "93ae9681b309248c83931406f4476058c564145136a1a35885f835f2da896aad",
+          "precollection_analysis.py": "5311f912805acf9d445bdb8f086527bcd9c483be8b885d737d793bc1a7adeef4",
+          "precollection_audit.py": "dece2d9575aa492fc993c59f34003f32cfca2268080d92dc57f947f306ea266c",
+          "precollection_candidate.py": "62f5c05a44b989e4d837432c97260820290af5bf5b51e92ab7c349ec400b2321",
+          "precollection_spec.json": "2eb3f7ab78eb1bb97c9e59454d138ecec89efb2609e3211017cbed1bf66af7b2",
+          "probe_hindi_candidate.py": "325b1d3b4d9a576b1f8dd90580bfbc707dc10462681258fb18bf5083b858ee3d",
+          "recover_calibration_v6_checkpoint.py": "88d62b885279d162a16d7aa83600bedaca86129415d2d9418083f16594cf223f",
+          "render_pilot_figures.py": "4d643ef926e763fdf307fc0c88f4403e335fb18c5f0cfbf566c06a3dbc2aafb2",
+          "repair_capstone_outputs.py": "e1ddfc56a2929f177c7653047e8b1dc2558b3d2c568158bace2ed6b8cf81d4a8",
+          "repair_outputs.py": "8d3d9ffca4bcf351e1d69e6649f520dd2a36a0cc0bb1ab6558af18dfe3eff6f0",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v8_io.py": "9f56c1085145843d0069a8e4019f1262e903b997b070395994aadbba8f9d502b",
+          "repair_v8_transport.py": "6e76f96658322882d0a2ab9465bb4e2a65aae018489c8d663abf6747ae18f2a7",
+          "repair_v8_transport_second.py": "518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4",
+          "requirements.lock.txt": "d38e4bcafcb905468b7edea37a6a1da2703815e8a59bff0e96cdf46981492bc1",
+          "resume_wording_probe.py": "91e35f462632bb630b408b1c99bfbf01d53b500eea6ba250ec04e31d4a25bb25",
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "revision_hindi_candidate.py": "336dcb4fd68cc70712a1f8d6e5ef4874b85ee97d52b541eba394f2ccf3596831",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "run_cultural_study.py": "6934d70c43328823e236595733301ace27a888e2794173fa0c391621363c2e02",
+          "run_language_study.py": "71d62821f65346b29a0cd42062c31f955207e4057808841286f714d346e12bcc",
+          "run_method_study.py": "3a8371966cea117a34f17d635e0b46a946439cb63f6800428ff4abf1a2587956",
+          "statistical_review.py": "2a827db50e4e885cbe230956bcb6cec369bf04f108302fd85c4399f8af1185bd",
+          "study_protocol.json": "ff79972a1e8b14ab9d3c4f8c9bba9b99f738ccb620fd9e4890f24d133d6f1ff2",
+          "study_protocol_224.json": "e4aa7d08db7fc2f845ad8e62f8c0860056ab51eca958f6680aeff62bf44c454a",
+          "study_protocol_896.json": "2cf4be649a46b73eb237ae7aec6a8b32a0217bad4addbc202eaa7ce77ee1e73b",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "study_runner_utils.py": "f31ca97d42d63f4efd29b2ebc3e8daced3419920ad4c7ccf81ed8d75a607387a",
+          "test_viewer_sources.py": "515272831b301e0bf85d2501e0a953dfee7d56e826a26a4905842828e08739b5",
+          "verify_viewer_sources.py": "3b0b85e4c311fb65881afc2b77bc624f6baa313665e59c77454db2427c64d5ba",
+          "wording_probe.py": "da51365b1a2ce17c6884bb2dc820a4171aa32e91a39d9fbdb6ddb5da09f6b4a1"
+        },
+        "client_request_id": "184ee12a42bf463bf2ad7e444f1ba79f2301c63213627a48c384d04a6a4f3690"
+      },
+      "response": {
+        "text": "0, 15\n0, 43\n0, 27\n0, 15\n1, 25\n1, 3\n1, 8\n2, 18\n2, 31\n2, 42\n3, 8\n3, 25\n4, 37\n4, 45\n5, 20\n5, 34\n6, 29\n6, 36\n6, 48\n7, 20\n7, 25\n8, 20\n9, 12\n9, 14\n9, 22\n10, 16\n10, 18\n10, 30\n11, 24\n11, 35\n11, 43\n12, 14\n12, 22\n13, 33\n13, 36\n13, 47\n13, 48\n14, 15\n15, 43\n16, 39\n16, 40\n17, 21\n17, 45\n18, 30\n19, 35\n19, 48\n20, 34\n21, 37\n22, 30\n23, 38\n24, 35\n24, 43\n25, 42\n26, 38\n27, 40\n28, 31\n29, 36\n29, 48\n30, 47\n31, 42\n32, 41\n32, 47\n33, 41\n33, 47\n34, 37\n35, 48\n36, 47\n39, 40\n41, 47\n",
+        "usage": {
+          "completion_tokens": 348,
+          "prompt_tokens": 1073,
+          "total_tokens": 1421,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 1070,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EaFpeOVqVHxQ3532zEZZH6dB4WAWU",
+        "resolved_model": "gpt-6-luna",
+        "fingerprint": null,
+        "finish_reason": "stop",
+        "date_utc": "2026-10-18T07:42:58.694860+00:00",
+        "conservative_charge_usd": 0.000308125,
+        "diagnostics": {
+          "client_request_id": "184ee12a42bf463bf2ad7e444f1ba79f2301c63213627a48c384d04a6a4f3690",
+          "server_request_id": "req_051fc75efa2748f5ae8e6c9faf13bc9d",
+          "http_status": 200,
+          "elapsed_ms": 4531.0,
+          "date_utc": "2026-10-18T07:42:58.694860+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "4373",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "2000000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "1998805",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "35ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    ".adj": "52d0f46a39453bf980c8815bdb907b66635e07eb021c47316e9c23d093155155",
+    ".png": "93a6f6371d1cc85dc459e9f8f4ecc711bbe02187d2eaf0fc7ea420fd12cba054"
+  },
+  "failure": null,
+  "normalization": [
+    {
+      "request_id": "184ee12a42bf463bf2ad7e444f1ba79f2301c63213627a48c384d04a6a4f3690",
+      "normalization": {
+        "raw_response": "0, 15\n0, 43\n0, 27\n0, 15\n1, 25\n1, 3\n1, 8\n2, 18\n2, 31\n2, 42\n3, 8\n3, 25\n4, 37\n4, 45\n5, 20\n5, 34\n6, 29\n6, 36\n6, 48\n7, 20\n7, 25\n8, 20\n9, 12\n9, 14\n9, 22\n10, 16\n10, 18\n10, 30\n11, 24\n11, 35\n11, 43\n12, 14\n12, 22\n13, 33\n13, 36\n13, 47\n13, 48\n14, 15\n15, 43\n16, 39\n16, 40\n17, 21\n17, 45\n18, 30\n19, 35\n19, 48\n20, 34\n21, 37\n22, 30\n23, 38\n24, 35\n24, 43\n25, 42\n26, 38\n27, 40\n28, 31\n29, 36\n29, 48\n30, 47\n31, 42\n32, 41\n32, 47\n33, 41\n33, 47\n34, 37\n35, 48\n36, 47\n39, 40\n41, 47\n",
+        "canonical_response": "0, 15\n0, 43\n0, 27\n1, 25\n1, 3\n1, 8\n2, 18\n2, 31\n2, 42\n3, 8\n3, 25\n4, 37\n4, 45\n5, 20\n5, 34\n6, 29\n6, 36\n6, 48\n7, 20\n7, 25\n8, 20\n9, 12\n9, 14\n9, 22\n10, 16\n10, 18\n10, 30\n11, 24\n11, 35\n11, 43\n12, 14\n12, 22\n13, 33\n13, 36\n13, 47\n13, 48\n14, 15\n15, 43\n16, 39\n16, 40\n17, 21\n17, 45\n18, 30\n19, 35\n19, 48\n20, 34\n21, 37\n22, 30\n23, 38\n24, 35\n24, 43\n25, 42\n26, 38\n27, 40\n28, 31\n29, 36\n29, 48\n30, 47\n31, 42\n32, 41\n32, 47\n33, 41\n33, 47\n34, 37\n35, 48\n36, 47\n39, 40\n41, 47",
+        "edges": [
+          [
+            "0",
+            "15"
+          ],
+          [
+            "0",
+            "43"
+          ],
+          [
+            "0",
+            "27"
+          ],
+          [
+            "1",
+            "25"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "18"
+          ],
+          [
+            "2",
+            "31"
+          ],
+          [
+            "2",
+            "42"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "3",
+            "25"
+          ],
+          [
+            "4",
+            "37"
+          ],
+          [
+            "4",
+            "45"
+          ],
+          [
+            "5",
+            "20"
+          ],
+          [
+            "5",
+            "34"
+          ],
+          [
+            "6",
+            "29"
+          ],
+          [
+            "6",
+            "36"
+          ],
+          [
+            "6",
+            "48"
+          ],
+          [
+            "7",
+            "20"
+          ],
+          [
+            "7",
+            "25"
+          ],
+          [
+            "8",
+            "20"
+          ],
+          [
+            "9",
+            "12"
+          ],
+          [
+            "9",
+            "14"
+          ],
+          [
+            "9",
+            "22"
+          ],
+          [
+            "10",
+            "16"
+          ],
+          [
+            "10",
+            "18"
+          ],
+          [
+            "10",
+            "30"
+          ],
+          [
+            "11",
+            "24"
+          ],
+          [
+            "11",
+            "35"
+          ],
+          [
+            "11",
+            "43"
+          ],
+          [
+            "12",
+            "14"
+          ],
+          [
+            "12",
+            "22"
+          ],
+          [
+            "13",
+            "33"
+          ],
+          [
+            "13",
+            "36"
+          ],
+          [
+            "13",
+            "47"
+          ],
+          [
+            "13",
+            "48"
+          ],
+          [
+            "14",
+            "15"
+          ],
+          [
+            "15",
+            "43"
+          ],
+          [
+            "16",
+            "39"
+          ],
+          [
+            "16",
+            "40"
+          ],
+          [
+            "17",
+            "21"
+          ],
+          [
+            "17",
+            "45"
+          ],
+          [
+            "18",
+            "30"
+          ],
+          [
+            "19",
+            "35"
+          ],
+          [
+            "19",
+            "48"
+          ],
+          [
+            "20",
+            "34"
+          ],
+          [
+            "21",
+            "37"
+          ],
+          [
+            "22",
+            "30"
+          ],
+          [
+            "23",
+            "38"
+          ],
+          [
+            "24",
+            "35"
+          ],
+          [
+            "24",
+            "43"
+          ],
+          [
+            "25",
+            "42"
+          ],
+          [
+            "26",
+            "38"
+          ],
+          [
+            "27",
+            "40"
+          ],
+          [
+            "28",
+            "31"
+          ],
+          [
+            "29",
+            "36"
+          ],
+          [
+            "29",
+            "48"
+          ],
+          [
+            "30",
+            "47"
+          ],
+          [
+            "31",
+            "42"
+          ],
+          [
+            "32",
+            "41"
+          ],
+          [
+            "32",
+            "47"
+          ],
+          [
+            "33",
+            "41"
+          ],
+          [
+            "33",
+            "47"
+          ],
+          [
+            "34",
+            "37"
+          ],
+          [
+            "35",
+            "48"
+          ],
+          [
+            "36",
+            "47"
+          ],
+          [
+            "39",
+            "40"
+          ],
+          [
+            "41",
+            "47"
+          ]
+        ],
+        "repeated_pairs": 1,
+        "reversed_pairs": 0,
+        "interior_blank_lines": 0
+      }
+    }
+  ]
+}

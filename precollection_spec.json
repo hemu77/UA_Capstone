@@ -1,0 +1,23 @@
+{
+  "version": "post-review-analysis-candidate-1",
+  "status": "OFFLINE_CANDIDATE_NOT_COLLECTION_APPROVAL",
+  "main_authorized": false,
+  "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+  "models": ["gpt-4.1", "gpt-5.6-luna", "gpt-6-luna", "gpt-6-sol"],
+  "methods": ["global", "local", "sequential", "iterative"],
+  "conditions": [["us", "english"], ["india", "english"], ["japan", "english"], ["brazil", "english"], ["us", "hindi"], ["us", "japanese"], ["us", "portuguese"]],
+  "schedule_seeds": [44000, 44001, 44002, 44003, 44004, 44005, 44006, 44007, 44008, 44009, 44010, 44011, 44012, 44013, 44014, 44015, 44016, 44017, 44018, 44019, 44020, 44021, 44022, 44023, 44024, 44025, 44026, 44027, 44028, 44029, 44030, 44031],
+  "wording": "reference",
+  "primary_endpoints": {"global": "density", "local": "avg_clustering_coef", "sequential": "avg_clustering_coef", "iterative": "avg_clustering_coef"},
+  "primary_family_size": 24,
+  "alpha": 0.05,
+  "meaningful_effect": null,
+  "precision_scenario_half_width": 0.03,
+  "claim": "Sensitivity to seven named instruction contracts on one fictional 50-adult roster and four fixed model configurations. Not representative language, national-population or LLM-family effects.",
+  "missingness": "Never zero-fill failures or undefined endpoints. Require all four models in both arms per schedule. Report complete-block summaries and bounded missing-data extremes. Suppress primary inference if any planned block is incomplete.",
+  "inference": "Paired schedule-block t diagnostics, Holm across exactly 24 hypotheses, Bonferroni simultaneous intervals. Assumes independent blocks and an adequate approximation for their mean. No equivalence or guaranteed power claim.",
+  "secondary": "All categorical Coleman indices, age assortativity, modularity, degree distribution, per-model contrasts and matched controls remain descriptive. Do not select a primary from the strongest calibration result.",
+  "transport": "SDK retries zero; automatic replacement retries zero. Reuse received responses. Any unresolved attempt blocks paid resume and retains its reservation. A general automatic-recovery runner is not approved by this document.",
+  "confirmation_reuses_calibration": false,
+  "human_bilingual_validation": false
+}

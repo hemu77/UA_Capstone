@@ -1,0 +1,849 @@
+{
+  "cell": {
+    "model": "gpt-6-luna",
+    "method": "global",
+    "culture": "us",
+    "language": "hindi",
+    "repetition": 0,
+    "seed": 33000,
+    "wording": "reference",
+    "global_arm": "a0_b0",
+    "run_id": "repair_v7_calibration_176533db7041_082",
+    "phase": "main",
+    "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+    "frozen_source_sha256": {
+      "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+      "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+      "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+      "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+      "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+      "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+      "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+      "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+      "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+      "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+      "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+      "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+      "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+      "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+      "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+    },
+    "requested_service_tier": "default",
+    "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+    "evidence_type": "repair_diagnostic_not_confirmation"
+  },
+  "evidence_type": "received_repair_v7",
+  "events": [
+    {
+      "step": 0,
+      "method": "global",
+      "run_method": "global",
+      "prompt_method": "global",
+      "persona": null,
+      "added": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "15"
+        ],
+        [
+          "0",
+          "27"
+        ],
+        [
+          "1",
+          "16"
+        ],
+        [
+          "1",
+          "25"
+        ],
+        [
+          "10",
+          "16"
+        ],
+        [
+          "10",
+          "27"
+        ],
+        [
+          "11",
+          "24"
+        ],
+        [
+          "11",
+          "30"
+        ],
+        [
+          "11",
+          "6"
+        ],
+        [
+          "12",
+          "22"
+        ],
+        [
+          "12",
+          "9"
+        ],
+        [
+          "13",
+          "33"
+        ],
+        [
+          "13",
+          "41"
+        ],
+        [
+          "14",
+          "18"
+        ],
+        [
+          "14",
+          "28"
+        ],
+        [
+          "15",
+          "43"
+        ],
+        [
+          "15",
+          "8"
+        ],
+        [
+          "16",
+          "40"
+        ],
+        [
+          "17",
+          "21"
+        ],
+        [
+          "17",
+          "3"
+        ],
+        [
+          "17",
+          "7"
+        ],
+        [
+          "18",
+          "2"
+        ],
+        [
+          "18",
+          "31"
+        ],
+        [
+          "19",
+          "35"
+        ],
+        [
+          "19",
+          "46"
+        ],
+        [
+          "19",
+          "48"
+        ],
+        [
+          "2",
+          "28"
+        ],
+        [
+          "2",
+          "31"
+        ],
+        [
+          "20",
+          "34"
+        ],
+        [
+          "20",
+          "4"
+        ],
+        [
+          "20",
+          "5"
+        ],
+        [
+          "21",
+          "37"
+        ],
+        [
+          "21",
+          "7"
+        ],
+        [
+          "22",
+          "42"
+        ],
+        [
+          "22",
+          "9"
+        ],
+        [
+          "23",
+          "26"
+        ],
+        [
+          "23",
+          "38"
+        ],
+        [
+          "23",
+          "45"
+        ],
+        [
+          "24",
+          "39"
+        ],
+        [
+          "24",
+          "43"
+        ],
+        [
+          "25",
+          "3"
+        ],
+        [
+          "25",
+          "49"
+        ],
+        [
+          "26",
+          "38"
+        ],
+        [
+          "27",
+          "39"
+        ],
+        [
+          "28",
+          "42"
+        ],
+        [
+          "29",
+          "30"
+        ],
+        [
+          "29",
+          "36"
+        ],
+        [
+          "29",
+          "6"
+        ],
+        [
+          "3",
+          "7"
+        ],
+        [
+          "3",
+          "8"
+        ],
+        [
+          "30",
+          "45"
+        ],
+        [
+          "31",
+          "9"
+        ],
+        [
+          "32",
+          "33"
+        ],
+        [
+          "32",
+          "41"
+        ],
+        [
+          "33",
+          "47"
+        ],
+        [
+          "34",
+          "47"
+        ],
+        [
+          "34",
+          "5"
+        ],
+        [
+          "35",
+          "39"
+        ],
+        [
+          "35",
+          "46"
+        ],
+        [
+          "36",
+          "6"
+        ],
+        [
+          "37",
+          "4"
+        ],
+        [
+          "37",
+          "40"
+        ],
+        [
+          "4",
+          "8"
+        ],
+        [
+          "40",
+          "43"
+        ],
+        [
+          "41",
+          "48"
+        ],
+        [
+          "44",
+          "49"
+        ]
+      ],
+      "removed": [],
+      "attempts": 1
+    }
+  ],
+  "decisions": [
+    {
+      "step": 0,
+      "attempt": 1,
+      "method": "global",
+      "prompt_method": "global",
+      "actor": null,
+      "requested_count": null,
+      "candidate_order": [
+        "32",
+        "40",
+        "7",
+        "17",
+        "18",
+        "43",
+        "15",
+        "14",
+        "27",
+        "37",
+        "16",
+        "1",
+        "26",
+        "25",
+        "6",
+        "12",
+        "30",
+        "48",
+        "28",
+        "0",
+        "39",
+        "11",
+        "19",
+        "5",
+        "34",
+        "29",
+        "36",
+        "24",
+        "21",
+        "22",
+        "38",
+        "42",
+        "13",
+        "31",
+        "9",
+        "20",
+        "41",
+        "2",
+        "44",
+        "49",
+        "46",
+        "35",
+        "8",
+        "33",
+        "47",
+        "45",
+        "4",
+        "10",
+        "23",
+        "3"
+      ],
+      "request_id": "f3a43603d2ee0357a4ae86a675d7b8e0386e35794846c1b34888899f16aa58e7",
+      "valid": true
+    }
+  ],
+  "schedule": {
+    "seed": 33000,
+    "display_order": [
+      "32",
+      "40",
+      "7",
+      "17",
+      "18",
+      "43",
+      "15",
+      "14",
+      "27",
+      "37",
+      "16",
+      "1",
+      "26",
+      "25",
+      "6",
+      "12",
+      "30",
+      "48",
+      "28",
+      "0",
+      "39",
+      "11",
+      "19",
+      "5",
+      "34",
+      "29",
+      "36",
+      "24",
+      "21",
+      "22",
+      "38",
+      "42",
+      "13",
+      "31",
+      "9",
+      "20",
+      "41",
+      "2",
+      "44",
+      "49",
+      "46",
+      "35",
+      "8",
+      "33",
+      "47",
+      "45",
+      "4",
+      "10",
+      "23",
+      "3"
+    ],
+    "actor_order": [
+      "0",
+      "6",
+      "42",
+      "32",
+      "9",
+      "3",
+      "29",
+      "26",
+      "11",
+      "31",
+      "41",
+      "13",
+      "38",
+      "48",
+      "34",
+      "15",
+      "28",
+      "44",
+      "19",
+      "40",
+      "30",
+      "47",
+      "39",
+      "20",
+      "22",
+      "25",
+      "43",
+      "35",
+      "8",
+      "16",
+      "2",
+      "21",
+      "4",
+      "49",
+      "46",
+      "24",
+      "1",
+      "23",
+      "33",
+      "10",
+      "5",
+      "14",
+      "7",
+      "37",
+      "36",
+      "17",
+      "45",
+      "18",
+      "12",
+      "27"
+    ],
+    "nomination_quotas": {
+      "0": 7,
+      "6": 6,
+      "42": 5,
+      "32": 2,
+      "9": 3,
+      "3": 5,
+      "29": 2,
+      "26": 5,
+      "11": 1,
+      "31": 5,
+      "41": 10,
+      "13": 8,
+      "38": 2,
+      "48": 15,
+      "34": 2,
+      "15": 11,
+      "28": 1,
+      "44": 4,
+      "19": 1,
+      "40": 1,
+      "30": 1,
+      "47": 8,
+      "39": 1,
+      "20": 18,
+      "22": 7,
+      "25": 7,
+      "43": 14,
+      "35": 1,
+      "8": 1,
+      "16": 1,
+      "2": 7,
+      "21": 13,
+      "4": 2,
+      "49": 11,
+      "46": 7,
+      "24": 1,
+      "1": 1,
+      "23": 1,
+      "33": 2,
+      "10": 8,
+      "5": 1,
+      "14": 1,
+      "7": 1,
+      "37": 3,
+      "36": 10,
+      "17": 5,
+      "45": 1,
+      "18": 1,
+      "12": 5,
+      "27": 1
+    },
+    "iterative_actor_orders": [
+      [
+        "34",
+        "4",
+        "41",
+        "36",
+        "47",
+        "33",
+        "13",
+        "22",
+        "20",
+        "49",
+        "24",
+        "0",
+        "37",
+        "2",
+        "46",
+        "30",
+        "27",
+        "43",
+        "15",
+        "32",
+        "7",
+        "29",
+        "40",
+        "38",
+        "3",
+        "11",
+        "6",
+        "48",
+        "42",
+        "18",
+        "23",
+        "21",
+        "5",
+        "10",
+        "8",
+        "39",
+        "9",
+        "31",
+        "35",
+        "44",
+        "14",
+        "1",
+        "19",
+        "12",
+        "45",
+        "28",
+        "16",
+        "25",
+        "26",
+        "17"
+      ],
+      [
+        "33",
+        "18",
+        "12",
+        "3",
+        "1",
+        "45",
+        "15",
+        "41",
+        "43",
+        "23",
+        "27",
+        "37",
+        "29",
+        "10",
+        "2",
+        "19",
+        "0",
+        "38",
+        "11",
+        "13",
+        "20",
+        "34",
+        "5",
+        "24",
+        "40",
+        "32",
+        "6",
+        "14",
+        "48",
+        "39",
+        "46",
+        "9",
+        "16",
+        "7",
+        "36",
+        "42",
+        "31",
+        "21",
+        "26",
+        "28",
+        "30",
+        "44",
+        "17",
+        "25",
+        "49",
+        "22",
+        "8",
+        "35",
+        "4",
+        "47"
+      ],
+      [
+        "22",
+        "39",
+        "6",
+        "20",
+        "18",
+        "36",
+        "3",
+        "16",
+        "17",
+        "45",
+        "21",
+        "9",
+        "27",
+        "32",
+        "34",
+        "28",
+        "38",
+        "35",
+        "0",
+        "5",
+        "8",
+        "33",
+        "10",
+        "30",
+        "12",
+        "19",
+        "43",
+        "48",
+        "41",
+        "42",
+        "15",
+        "31",
+        "29",
+        "11",
+        "49",
+        "46",
+        "37",
+        "2",
+        "14",
+        "47",
+        "26",
+        "24",
+        "4",
+        "13",
+        "1",
+        "40",
+        "25",
+        "7",
+        "44",
+        "23"
+      ]
+    ]
+  },
+  "metrics": {
+    "density": 0.054693877551020405,
+    "avg_clustering_coef": 0.2366666666666667,
+    "prop_nodes_lcc": 0.82,
+    "global_efficiency": 0.20186853962364165,
+    "num_components": 2,
+    "modularity": 0.6931387836934728,
+    "radius_lcc": 7,
+    "diameter_lcc": 12,
+    "avg_shortest_path_lcc": 5.274390243902439,
+    "degree_one_share": 0.02,
+    "isolate_share": 0.0,
+    "degree_gini": 0.09582089552238807,
+    "coleman_gender": 0.26448243114909786,
+    "coleman_religion": 0.8354244031830239,
+    "coleman_political orientation": 0.558052978164534,
+    "age_assortativity": 0.4253275220148169
+  },
+  "requests": [
+    {
+      "request_id": "f3a43603d2ee0357a4ae86a675d7b8e0386e35794846c1b34888899f16aa58e7",
+      "request": {
+        "cell": {
+          "model": "gpt-6-luna",
+          "method": "global",
+          "culture": "us",
+          "language": "hindi",
+          "repetition": 0,
+          "seed": 33000,
+          "wording": "reference",
+          "global_arm": "a0_b0",
+          "run_id": "repair_v7_calibration_176533db7041_082",
+          "phase": "main",
+          "repair_contract_sha256": "176533db70415212b5b53e72afd3ba1400dc50ba2c6847f235d19ae65202a3b8",
+          "frozen_source_sha256": {
+            "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+            "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+            "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+            "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+            "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+            "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+            "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+            "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+            "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+            "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+            "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+            "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+            "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+            "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+            "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+          },
+          "requested_service_tier": "default",
+          "roster_sha256": "26744d2c8fb08406aef3ccba968799473bf7b47456d38baadd7595a5882e90ac",
+          "evidence_type": "repair_diagnostic_not_confirmation"
+        },
+        "ordinal": 0,
+        "model": "gpt-6-luna",
+        "messages": [
+          {
+            "role": "system",
+            "content": "नीचे दिए गए काल्पनिक व्यक्तियों का उपयोग करके एक सिमुलेशन के लिए मित्रताओं का एक काल्पनिक नेटवर्क बनाएँ। उम्मीदवारों के डेटा में पहले से दर्ज संबंधों को खोजने के बजाय, मित्रताओं का एक संभावित विन्यास उत्पन्न करें।\n\nसामाजिक परिवेश संयुक्त राज्य अमेरिका है। ये लोग काल्पनिक वयस्क हैं। उनके गुण अपरिवर्तित रखें। उनकी बोली जाने वाली भाषा निर्दिष्ट नहीं है। सभी स्थितियों में उम्मीदवारों के डेटा के फ़ील्ड नाम और मान अंग्रेज़ी में ही रहते हैं और बदले नहीं जाते। सूचीबद्ध लोगों के पूरे नेटवर्क को परिभाषित करने वाली सभी मित्रता जोड़ियाँ चुनें, न कि केवल एक-से-एक जोड़ियाँ। प्रत्येक व्यक्ति के शून्य, एक या कई मित्र हो सकते हैं। अलग-अलग असंबद्ध समूह स्वीकार्य हैं। मित्रता में कोई दिशा नहीं होती: प्रत्येक जोड़ी केवल एक बार दें। हर पंक्ति में पूर्णांक ID की एक जोड़ी ID1, ID2 के रूप में दें, जहाँ ID1 < ID2 हो।  स्वयं से संबंध, दोहराई गई जोड़ियाँ, स्पष्टीकरण या अन्य पाठ न दें। उत्तर का प्रारूप: NONE या प्रत्येक पंक्ति में ID1, ID2 की एक जोड़ी।"
+          },
+          {
+            "role": "user",
+            "content": "{\"fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor_fields\":[\"id\",\"gender\",\"age\",\"religion\",\"political orientation\"],\"actor\":null,\"candidates\":[[\"32\",\"Woman\",24,\"Nonreligious\",\"Left-leaning\"],[\"40\",\"Man\",62,\"Muslim\",\"Centrist\"],[\"7\",\"Nonbinary\",27,\"Hindu\",\"Right-leaning\"],[\"17\",\"Woman\",67,\"Hindu\",\"Right-leaning\"],[\"18\",\"Woman\",57,\"Buddhist\",\"Centrist\"],[\"43\",\"Man\",43,\"Muslim\",\"Centrist\"],[\"15\",\"Man\",28,\"Muslim\",\"Centrist\"],[\"14\",\"Man\",37,\"Buddhist\",\"Right-leaning\"],[\"27\",\"Nonbinary\",51,\"Muslim\",\"Centrist\"],[\"37\",\"Man\",60,\"Hindu\",\"Centrist\"],[\"16\",\"Woman\",61,\"Muslim\",\"Right-leaning\"],[\"1\",\"Woman\",18,\"Muslim\",\"Right-leaning\"],[\"26\",\"Nonbinary\",31,\"Christian\",\"Right-leaning\"],[\"25\",\"Woman\",23,\"Muslim\",\"Right-leaning\"],[\"6\",\"Man\",45,\"Christian\",\"Left-leaning\"],[\"12\",\"Man\",33,\"Buddhist\",\"Left-leaning\"],[\"30\",\"Woman\",59,\"Christian\",\"Left-leaning\"],[\"48\",\"Man\",46,\"Nonreligious\",\"Left-leaning\"],[\"28\",\"Woman\",35,\"Buddhist\",\"Right-leaning\"],[\"0\",\"Nonbinary\",20,\"Muslim\",\"Centrist\"],[\"39\",\"Man\",66,\"Muslim\",\"Centrist\"],[\"11\",\"Man\",40,\"Christian\",\"Centrist\"],[\"19\",\"Man\",53,\"Nonreligious\",\"Centrist\"],[\"5\",\"Woman\",30,\"Hindu\",\"Left-leaning\"],[\"34\",\"Nonbinary\",47,\"Hindu\",\"Left-leaning\"],[\"29\",\"Man\",48,\"Christian\",\"Left-leaning\"],[\"36\",\"Nonbinary\",49,\"Christian\",\"Left-leaning\"],[\"24\",\"Man\",54,\"Christian\",\"Centrist\"],[\"21\",\"Man\",65,\"Hindu\",\"Right-leaning\"],[\"22\",\"Man\",56,\"Buddhist\",\"Left-leaning\"],[\"38\",\"Woman\",38,\"Christian\",\"Right-leaning\"],[\"42\",\"Woman\",32,\"Buddhist\",\"Right-leaning\"],[\"13\",\"Nonbinary\",36,\"Nonreligious\",\"Left-leaning\"],[\"31\",\"Woman\",50,\"Buddhist\",\"Centrist\"],[\"9\",\"Man\",44,\"Buddhist\",\"Left-leaning\"],[\"20\",\"Nonbinary\",29,\"Hindu\",\"Left-leaning\"],[\"41\",\"Woman\",42,\"Nonreligious\",\"Left-leaning\"],[\"2\",\"Woman\",55,\"Buddhist\",\"Right-leaning\"],[\"44\",\"Man\",19,\"Buddhist\",\"Right-leaning\"],[\"49\",\"Man\",22,\"Nonreligious\",\"Centrist\"],[\"46\",\"Nonbinary\",52,\"Nonreligious\",\"Right-leaning\"],[\"35\",\"Man\",58,\"Nonreligious\",\"Centrist\"],[\"8\",\"Woman\",25,\"Hindu\",\"Centrist\"],[\"33\",\"Nonbinary\",34,\"Nonreligious\",\"Left-leaning\"],[\"47\",\"Woman\",41,\"Nonreligious\",\"Left-leaning\"],[\"45\",\"Woman\",64,\"Christian\",\"Right-leaning\"],[\"4\",\"Man\",39,\"Hindu\",\"Centrist\"],[\"10\",\"Woman\",63,\"Muslim\",\"Left-leaning\"],[\"23\",\"Woman\",26,\"Christian\",\"Right-leaning\"],[\"3\",\"Woman\",21,\"Hindu\",\"Right-leaning\"]]}"
+          }
+        ],
+        "settings": {
+          "max_completion_tokens": 8192,
+          "reasoning_effort": "none"
+        },
+        "date_utc": "2026-10-13T10:28:01.669573+00:00",
+        "rates_per_million": [
+          0.1,
+          0.5
+        ],
+        "execution_source_sha256": {
+          "revision224.py": "6838d42940fe6f270955a52e8d572765a1984170653a3fd05c90c4fb64df7224",
+          "revision224_prompts.py": "da28d0524571c5117aecbaff8e99237d454b03bcc257cff2ac603beaaf4b99bd",
+          "generate_networks.py": "bf0ba27ba2819f7639e03f9ba78bc5dbacb5880d12aaf529efdccd5584fc040f",
+          "constants_and_utils.py": "6266e32f702fdf3192030c06e648b358d8e6c2ef37b89a0c192a33f78d42a7e6",
+          "analyze_networks.py": "ada4b6c09b0f90cc3af9a0072126c243b56bae29ca68caf9a49250838b106eee",
+          "make_matched_baselines.py": "034149960365e77defbda21fefd2bc4f38f475934b3619ff32246f73a943f02c",
+          "paid_study.py": "63eca2523864db7161e716186012fe3481fc1e4ed0e42bd6121e719b6fc7d239",
+          "revision_next.py": "76f96bf3b265370067caed99b3a8c777c8407fa56fc1814e7312bf4e9101e348",
+          "study_protocol_next.json": "3ee991b61d093adc2b8230e05f0733c58ce6626f25eda73f23e96ae07fefdb1a",
+          "analyze_saved_study.py": "8e56be42e44fc67e98bba2794bcc26b4027d56c01415d7f6b666d7648e257149",
+          "calibration_v6.py": "31cb6587113827c5d4a4ad62db7f8a14e1e1ab0dd48382d945a076f9b21a8a88",
+          "revision_v7_prompts.py": "06a2fa7d617a31ca87e1e8a115496587618e5cbb1e56c0bfa6fe0fc62a531766",
+          "repair_v7.py": "b99a97a548af0c51ae5090ea6b177227a9855fda27f2bcf8e0f67dc71b14bbf1",
+          "repair_v8.py": "bba9050afadcdd6866495474c22ba81756f25010ad498472a128184adfd3d474",
+          "repair_v7_checked.py": "75a200aaf4d6c12c105b8a4774726a11e497e59ef3e1f94a729308f5dc2ffa5e"
+        },
+        "client_request_id": "f3a43603d2ee0357a4ae86a675d7b8e0386e35794846c1b34888899f16aa58e7"
+      },
+      "response": {
+        "text": "0, 1\n0, 15\n0, 27\n1, 16\n1, 25\n2, 18\n2, 28\n2, 31\n3, 7\n3, 8\n3, 17\n3, 25\n4, 8\n4, 20\n4, 37\n5, 20\n5, 34\n6, 11\n6, 29\n6, 36\n7, 17\n7, 21\n8, 15\n9, 12\n9, 22\n9, 31\n10, 16\n10, 27\n11, 24\n11, 30\n12, 22\n13, 33\n13, 41\n14, 18\n14, 28\n15, 43\n16, 40\n17, 21\n18, 31\n19, 35\n19, 46\n19, 48\n20, 34\n21, 37\n22, 42\n23, 26\n23, 38\n23, 45\n24, 39\n24, 43\n25, 49\n26, 38\n27, 39\n28, 42\n29, 30\n29, 36\n30, 45\n32, 33\n32, 41\n33, 47\n34, 47\n35, 39\n35, 46\n37, 40\n40, 43\n41, 48\n44, 49",
+        "usage": {
+          "completion_tokens": 337,
+          "prompt_tokens": 1063,
+          "total_tokens": 1400,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 1060,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+          }
+        },
+        "response_id": "chatcmpl-EYU1hluhAmbYEdDK9CpPFdrZpoLbt",
+        "resolved_model": "gpt-6-luna",
+        "fingerprint": null,
+        "finish_reason": "stop",
+        "date_utc": "2026-10-13T10:28:04.978391+00:00",
+        "conservative_charge_usd": 0.000301375,
+        "diagnostics": {
+          "client_request_id": "f3a43603d2ee0357a4ae86a675d7b8e0386e35794846c1b34888899f16aa58e7",
+          "server_request_id": "req_51e18633b9e84c719cc4726e24e61235",
+          "http_status": 200,
+          "elapsed_ms": 3141.0,
+          "date_utc": "2026-10-13T10:28:04.978391+00:00",
+          "stage": "response",
+          "error_type": null,
+          "error_code": null,
+          "cause_types": [],
+          "headers": {
+            "openai-processing-ms": "2987",
+            "x-ratelimit-limit-requests": "5000",
+            "x-ratelimit-limit-tokens": "2000000",
+            "x-ratelimit-remaining-requests": "4999",
+            "x-ratelimit-remaining-tokens": "1998820",
+            "x-ratelimit-reset-requests": "12ms",
+            "x-ratelimit-reset-tokens": "35ms"
+          }
+        },
+        "parse": {
+          "valid": true,
+          "error": null,
+          "duplicate_edges": []
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    ".adj": "6234ebcbf108a4bc2d878564d6ea191bb131c1c31051c34c5b72c0f4d8be115a",
+    ".png": "fe86e64028526cb1f31a8a20a56a17507ddef603541dafef99265ccc24aafe13"
+  }
+}

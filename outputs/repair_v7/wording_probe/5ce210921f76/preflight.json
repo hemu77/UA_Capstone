@@ -1,0 +1,874 @@
+{
+  "status": "OFFLINE_PREFLIGHT_PASSED",
+  "contract_sha256": "5ce210921f764f077744fe85efef2cb60324f5958d2ec447269c352f5987a731",
+  "fixture_cells": [
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_000",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1336925000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_001",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.17116
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_002",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12360925000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_003",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.06235549999999999
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_004",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05927199999999999
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_005",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.06293312500000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_006",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.059075499999999975
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_007",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12235749999999997
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_008",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05855799999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_009",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05924524999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_010",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1959100000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_011",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2583275000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_012",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1844399999999995
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_013",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05910062499999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_014",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.13089850000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_015",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1330350000000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_016",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12370100000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_017",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1273450000000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_018",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12356400000000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_019",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.13083950000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_020",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.184905
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_021",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.257195
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_022",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1785450000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_023",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05841274999999997
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_024",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.168255
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_025",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12232599999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_026",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12354350000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_027",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.1229325
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_028",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12361050000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_029",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12194550000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_030",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12197375000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_031",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12228425000000002
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_032",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1858099999999996
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_033",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.1309527500000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_034",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05892725
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_035",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1173375
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_036",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2577849999999995
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_037",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.058906250000000014
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_038",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1268250000000002
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_039",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2471099999999993
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_040",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12366400000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_041",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1337050000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_042",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1342400000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_043",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05842687499999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_044",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.133240000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_045",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1685375
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_046",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.058618749999999976
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_047",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12292250000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_048",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.13098625000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_049",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12297450000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_050",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1303100000000006
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_051",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1346100000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_052",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1854399999999994
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_053",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.206585
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_054",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1265800000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_055",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1716425
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_056",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.06285974999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_057",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1199600000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_058",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2074624999999999
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_059",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2586624999999996
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_060",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1781250000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_061",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.058889000000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_062",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1269250000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_063",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05922199999999999
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_064",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12332124999999997
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_065",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.062916375
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_066",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1208600000000002
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_067",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2059950000000002
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_068",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12289800000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_069",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1720600000000003
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_070",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.172375
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_071",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1815099999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_072",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.06288925000000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_073",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1820125
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_074",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1204425000000005
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_075",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1848924999999995
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_076",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05858212499999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_077",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1308125000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_078",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12223600000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_079",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.117055
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_080",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1842350000000004
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_081",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.059211749999999966
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_082",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.1780250000000008
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_083",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.06238899999999998
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_084",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.19658
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_085",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.129898
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_086",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12983100000000006
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_087",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.058602999999999975
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_088",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2477799999999997
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_089",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.059244624999999995
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_090",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.2071275000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_091",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.05890124999999999
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_092",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.059290499999999975
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_093",
+      "nodes": 50,
+      "edges": 265,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.121175
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_094",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 1.177780000000001
+    },
+    {
+      "run_id": "repair_v7_wording_probe_5ce210921f76_095",
+      "nodes": 50,
+      "edges": 246,
+      "events": 50,
+      "decisions": 50,
+      "request_count": 50,
+      "first_attempt_reservation_sum_usd": 0.12327099999999994
+    }
+  ],
+  "paid_requests": 0,
+  "main_authorized": false,
+  "first_attempt_reservation_sum_usd": 60.677791500000005,
+  "cost_basis": "Historical rates; byte/framing input bounds plus configured output caps; no corrections. Not an invoice or completion guarantee. Stateful prompts follow fixture, not real, edges."
+}
