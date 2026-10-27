@@ -97,7 +97,7 @@ A fresh local publishing checkout passed 284 offline tests with sockets blocked.
 The final environment-hardening change then passed all 75 runner/wrapper tests,
 including a regression proving that inherited `PYTHONOPTIMIZE` cannot disable
 assertions. All eight wrapper tests subsequently passed, including disabled
-scheduler requeue. Six separate deployment guard tests also passed, with malformed
+scheduler requeue. Nine separate deployment guard tests also passed, with malformed
 archives, stale/incomplete reports, echoed-key fallback, attempted-main updates
 and failed temporary-folder allocation/resolution rejected. Those local
 guard fixtures use a stand-in lock; the two-node check above uses the real lock.
@@ -118,11 +118,28 @@ evidence inventory was unchanged. The report matches contract
 `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 New model API calls: zero. The original nine path failures are resolved by the
 full rerun, not waived. No API key was transferred with the source bundle.
-Private key entry and live model-access checks remain before main submission.
+Private key entry and all four live model-access checks subsequently succeeded.
 The key helper requires matching successful validation reports and Slurm exit
 codes, then checks access to all four models before creating an owner-only key
 file outside the repository and submitting the main job once. A durable launch
 intent blocks blind resubmission after an uncertain submission outcome.
+
+The login-node helper uses standard-library metadata/hash checks rather than
+importing the analysis stack: an earlier login attempt exhausted memory before
+key entry. The unchanged collector repeats full readiness on the compute node
+before creating the main ledger or making a paid request. The lightweight helper
+also rejects redirected model-access requests and creates launch records once.
+
+## Main Launch Status
+
+On October 27, Slurm accepted **job 518356**, with the same contract and one
+**$120 main-study ceiling**. A read-only check at 12:48 PM Phoenix time confirmed
+`RUNNING`, three terminal attempt records and 119 saved provider-response receipts.
+This verifies execution has begun, not that all 896 attempts finished or that
+every saved attempt produced a valid graph. Actual total spending remains to be
+reported from the ledger. The laptop and SSH window need not remain open for the
+submitted job to continue; inspect any stopped job before manually resubmitting.
+The key is in protected scratch storage outside Git, never in the public artifacts.
 
 The official standard input/output rates were checked again on October 27 and
 still match the frozen rates: [GPT-4.1](https://developers.openai.com/api/docs/models/gpt-4.1),

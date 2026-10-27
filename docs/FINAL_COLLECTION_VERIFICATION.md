@@ -1,6 +1,6 @@
 # Final Collection Verification
 
-## Current: Hoffman2 Preparation (October 27)
+## Current: Hoffman2 Launch (October 27)
 
 Contract v6.3 is `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 The [Hoffman2 execution record](HOFFMAN2_EXECUTION.md) distinguishes completed
@@ -10,7 +10,11 @@ eight historical Hindi checks passed, with private evidence unchanged.
 Allocation, prompts, analysis and the $120 ceiling are unchanged.
 The scheduler deadline pauses before new request intents, keeps the same ledger
 across continuation jobs and never treats a partial cell as a terminal result.
-No main collection or new paid API usage is asserted by these preparation checks.
+The preparation checks made no paid API calls. All four model-access checks then
+passed and Slurm accepted main job 518356. A read-only status check at 12:48 PM
+Phoenix time confirmed it running with three terminal attempt records and 119
+provider-response receipts. Those counts are not a final validity or billing
+report. The active collector owns the unchanged $120 main-study allowance.
 
 ## Historical: Price Refresh Before Merge (October 25)
 

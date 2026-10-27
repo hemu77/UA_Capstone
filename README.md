@@ -4,16 +4,18 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Main Collection Preparation (October 27)
+## Main Collection Running (October 27)
 
 The owner authorized merging PR #1 and reported the professor's support for
 proceeding. [Current preparation and price evidence](docs/LAUNCH_PREPARATION_OCT25.md)
 record the execution workspace outside OneDrive, GPU scope and remaining setup.
-**Main collection has not started.** [Hoffman2 execution setup](docs/HOFFMAN2_EXECUTION.md)
+**Main job 518356 is running on Hoffman2.** [Execution record](docs/HOFFMAN2_EXECUTION.md)
 adds CPU-job checkpoint continuations. Remote setup, two-node storage checks,
 286 offline tests (zero skips), 112 preflight cases and eight historical Hindi
-checks passed. Private key entry and model-access checks remain; submission is
-not proof that generation completed.
+checks passed, followed by access checks for all four models. At 12:48 PM Phoenix
+time, three of 896 terminal attempt records and 119 provider-response receipts
+were saved. These are progress counts, not a verified final count of valid graphs.
+The key is outside the repository; collection continues independently of the laptop.
 
 Contract **v6.3** adds scheduled checkpoint pauses while retaining the verified,
 unchanged model prices through **November 1, 2026, inclusive**. Its hash is
@@ -29,7 +31,7 @@ study does not require a local GPU; an open-model extension would be separate.
 maximum main-study allowance**. Four models x four methods x seven conditions
 x eight repetitions means **224 attempts per method**. The assistant's earlier
 32-repetition / ~$410 expansion is withdrawn; it was not a requirement from
-Raghav. No main collection has started.
+Raghav. This was the prelaunch allocation; the current execution status is above.
 
 The [current contract and commands](docs/FINAL_COLLECTION.md) cover generation,
 saved graph/PNG artifacts, budgeted resume, public replay and eight-schedule

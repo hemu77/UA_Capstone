@@ -3,7 +3,8 @@
 October 18, 2026. The owner rejected the assistant's expanded 32-repetition
 allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
-a **$120 maximum additional main-study allowance**. No main generation has run.
+a **$120 maximum additional main-study allowance**. This October 18 decision
+predated execution; the current launch status is below.
 
 ## Current: Contract v6.3, October 27
 
@@ -15,10 +16,12 @@ official pages and remain unchanged. The internal freshness window is now
 **October 25 through November 1, inclusive**. Finish the run within that window.
 The previous October 23 launch deadline below is historical and superseded.
 
-Execution workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`. No main-stage
-directory exists; migration from v6.2 refuses if one exists. All prompts, settings,
-analysis, rates and paid evidence are unchanged. A local API credential is still
-required. GPU access is useful for a future open-model study, not these hosted
+Canonical local workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`.
+The active main stage now runs on Hoffman2 under job 518356. Do not start a local
+collector, refreeze the contract, or change frozen source while it runs.
+All prompts, settings, analysis, rates and historical paid evidence are unchanged.
+The API credential is held outside the remote repository. GPU access is useful
+for a future open-model study, not these hosted
 API calls. No model calls are made by freeze, preflight or offline verification.
 
 [Hoffman2 deployment](HOFFMAN2_EXECUTION.md) uses a CPU Slurm job, not a GPU.
@@ -28,7 +31,10 @@ continuation. Every continuation uses the same authorization and $120 ledger;
 saved replies are replayed, not repurchased. Runtime, filesystem and access
 checks must pass on Hoffman2 before paid execution. Setup, cross-node storage and
 full compute validation passed: 286 tests, zero skips, 112 preflight cases and
-eight historical Hindi checks. Private key entry and model access remain.
+eight historical Hindi checks. All four model-access checks subsequently passed.
+At 12:48 PM Phoenix time on October 27, job 518356 was running with three terminal
+attempt records and 119 saved provider responses. Completion and final graph
+validity have not yet been established.
 No API speedup is claimed.
 Earlier dated instructions below are history;
 use this section and the Hoffman2 document for the current deployment.
