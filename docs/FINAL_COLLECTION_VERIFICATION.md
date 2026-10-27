@@ -1,6 +1,18 @@
 # Final Collection Verification
 
-## Current: Price Refresh Before Merge (October 25)
+## Current: Hoffman2 Preparation (October 27)
+
+Contract v6.3 is `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
+The [Hoffman2 execution record](HOFFMAN2_EXECUTION.md) distinguishes completed
+local tests and successful remote setup/storage/compute checks. Compute job
+518030 completed with exit `0:0`: 286 tests, zero skips, 112 preflight cases and
+eight historical Hindi checks passed, with private evidence unchanged.
+Allocation, prompts, analysis and the $120 ceiling are unchanged.
+The scheduler deadline pauses before new request intents, keeps the same ledger
+across continuation jobs and never treats a partial cell as a terminal result.
+No main collection or new paid API usage is asserted by these preparation checks.
+
+## Historical: Price Refresh Before Merge (October 25)
 
 Contract v6.2: `ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
 The [price and launch record](LAUNCH_PREPARATION_OCT25.md) links official sources.

@@ -60,7 +60,8 @@ class FinalContractTests(unittest.TestCase):
             (root/fingerprint[:12]/'main').mkdir(parents=True)
             before = path.read_bytes()
             for version in ('UNEXECUTED_V2_SHA', 'UNEXECUTED_V3_SHA', 'UNEXECUTED_V4_SHA',
-                            'UNEXECUTED_V5_SHA', 'UNEXECUTED_V6_SHA', 'UNEXECUTED_V61_SHA'):
+                            'UNEXECUTED_V5_SHA', 'UNEXECUTED_V6_SHA', 'UNEXECUTED_V61_SHA',
+                            'UNEXECUTED_V62_SHA'):
                 with self.subTest(version=version), patch.object(protocol, 'CONTRACT', path), \
                         patch.object(protocol, 'OUTPUT', root), patch.object(protocol, version, fingerprint):
                     with self.assertRaisesRegex(ValueError, 'existing freeze'):
@@ -170,6 +171,127 @@ class FinalContractTests(unittest.TestCase):
 
 
 class LaunchTests(unittest.TestCase):
+    def test_deadline_before_first_request_creates_no_intent_or_charge(self):
+        root, spec, cells, fixtures = self.workspace()
+        self.client(lambda request: self.fail('No provider request may start after deadline'))
+        with patch.object(runner.time, 'monotonic', return_value=10), \
+                contextlib.redirect_stdout(io.StringIO()):
+            result = runner.launch('main', 1, 'offline-fixture-only', deadline=10)
+        self.assertEqual(result['status'], 'PAUSED_AT_CHECKPOINT')
+        target = protocol.folder(spec, 'main')
+        budget = runner.open_budget(spec, 'main', protocol.read(target/'authorization.json'))
+        try:
+            self.assertEqual(budget.spent(), 0)
+            self.assertEqual(budget.unresolved_count(), 0)
+            self.assertEqual(runner.accounting(budget, target, spec, 'main'), 0)
+        finally:
+            budget.db.close()
+        self.assertFalse(list((target/'requests').glob('*.json')))
+        self.assertFalse(list((target/'runs').glob('*.json')))
+
+    def test_deadline_after_received_reply_resumes_without_rebuying(self):
+        root, spec, cells, fixtures = self.workspace(('local',))
+        clock, posts = [0], []
+        def handler(request):
+            if request.method == 'GET':
+                return self.response(request)
+            posts.append(request)
+            clock[0] = 2
+            body = json.loads(request.content)
+            return self.response(request, fixtures[json.dumps(body['messages'], sort_keys=True)])
+        self.client(handler)
+        analyze = self.enterContext(patch.object(runner, 'analyze'))
+        with patch.object(runner.time, 'monotonic', side_effect=lambda: clock[0]), \
+                contextlib.redirect_stdout(io.StringIO()):
+            result = runner.launch('main', 1, 'offline-fixture-only', deadline=1)
+        self.assertEqual(result['status'], 'PAUSED_AT_CHECKPOINT')
+        self.assertEqual(len(posts), 1)
+        analyze.assert_not_called()
+        target = protocol.folder(spec, 'main')
+        self.assertFalse(list((target/'runs').glob('*.json')))
+        budget = runner.open_budget(spec, 'main', protocol.read(target/'authorization.json'))
+        before = budget.db.execute('SELECT * FROM attempts').fetchall()
+        self.assertEqual(budget.unresolved_count(), 0)
+        runner.accounting(budget, target, spec, 'main')
+        budget.db.close()
+        self.assertEqual(self.launch()['status'], 'COMPLETE')
+        self.assertEqual(len(posts), 50)
+        budget = runner.open_budget(spec, 'main', protocol.read(target/'authorization.json'))
+        self.assertEqual(budget.db.execute('SELECT * FROM attempts WHERE id=?', (before[0][0],)).fetchall(), before)
+        budget.db.close()
+        self.assertEqual(runner.verify_stage(spec, 'main')['valid_graphs'], 1)
+
+    def test_walltime_validation_precedes_launch(self):
+        with patch.object(runner, 'launch') as launch:
+            for value in (0, -1, True, float('nan'), float('inf'), '60'):
+                with self.subTest(value=value), self.assertRaises(ValueError):
+                    runner.run('main', 1, 'fixture', walltime_seconds=value)
+            launch.assert_not_called()
+
+    def test_recovery_does_not_reset_absolute_deadline(self):
+        root, spec, cells, fixtures = self.workspace()
+        runner.authorize(spec, 'main', 1, 'offline-fixture-only')
+        paused = {'status': 'PAUSED_AT_CHECKPOINT'}
+        recovery = dict(status='JOURNAL_RECONCILED')
+        with patch.object(runner.time, 'monotonic', return_value=10), \
+                patch.object(runner, 'launch', side_effect=[RuntimeError('fixture'), paused]) as launch, \
+                patch.object(runner, 'recover', return_value=recovery), \
+                contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', auto_recover=True,
+                                sleep=lambda seconds: None, walltime_seconds=60)
+        self.assertEqual(result, paused)
+        self.assertEqual([call.kwargs['deadline'] for call in launch.call_args_list], [70, 70])
+
+    def test_cli_uses_distinct_exit_code_for_scheduled_pause(self):
+        import runpy
+        with patch('sys.argv', ['final_study', 'launch', '--stage', 'main', '--approve-usd', '120',
+                               '--approval-reference', 'fixture', '--walltime-seconds', '82800']), \
+                patch.object(runner, 'run', return_value={'status': 'PAUSED_AT_CHECKPOINT'}) as run, \
+                contextlib.redirect_stdout(io.StringIO()), self.assertRaises(SystemExit) as stopped:
+            runpy.run_module('final_study', run_name='__main__')
+        self.assertEqual(stopped.exception.code, 75)
+        self.assertEqual(run.call_args.kwargs['walltime_seconds'], 82800)
+
+    def test_real_recovery_expiry_pauses_before_replacement_post(self):
+        root, spec, cells, fixtures = self.workspace()
+        clock, posts = [0], []
+        def handler(request):
+            if request.method == 'POST':
+                posts.append(request)
+                if len(posts) == 1:
+                    clock[0] = 2
+                    return httpx.Response(520, json={'error': {'message': 'fixture'}}, request=request)
+            return self.response(request)
+        self.client(handler)
+        self.enterContext(patch.object(runner, 'analyze'))
+        with patch.object(runner.time, 'monotonic', side_effect=lambda: clock[0]), \
+                contextlib.redirect_stdout(io.StringIO()):
+            result = runner.run('main', 1, 'offline-fixture-only', auto_recover=True,
+                                sleep=lambda seconds: None, walltime_seconds=1)
+        self.assertEqual(result['status'], 'PAUSED_AT_CHECKPOINT')
+        self.assertEqual(len(posts), 1)
+        target = protocol.folder(spec, 'main')
+        budget = runner.open_budget(spec, 'main', protocol.read(target/'authorization.json'))
+        self.assertEqual(budget.unresolved_count(), 0)
+        self.assertGreater(budget.spent(), 0)
+        self.assertEqual(budget.db.execute('SELECT status FROM attempts').fetchall(), [('abandoned',)])
+        budget.db.close()
+        self.assertEqual(self.launch()['status'], 'COMPLETE')
+        self.assertEqual(len(posts), 2)
+
+    def test_pause_accounting_error_is_not_scheduler_retry_exit(self):
+        import runpy
+        self.workspace()
+        self.client(lambda request: self.fail('Must not call provider'))
+        with patch('sys.argv', ['final_study', 'launch', '--stage', 'main', '--approve-usd', '1',
+                               '--approval-reference', 'offline-fixture-only', '--walltime-seconds', '1']), \
+                patch.object(runner.time, 'monotonic', side_effect=[0, 2]), \
+                patch.object(runner, 'accounting', side_effect=[0, ValueError('accounting fixture')]), \
+                contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()), \
+                self.assertRaises(SystemExit) as stopped:
+            runpy.run_module('final_study', run_name='__main__')
+        self.assertEqual(stopped.exception.code, 1)
+
     def test_local_write_retries_are_bounded_and_atomic(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder)/'checkpoint.json'

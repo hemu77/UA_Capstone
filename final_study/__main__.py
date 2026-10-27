@@ -11,7 +11,11 @@ cli.add_argument('--approve-usd', type=float)
 cli.add_argument('--approval-reference')
 cli.add_argument('--auto-recover', action='store_true',
     help='Retire lost-transport attempts and resume (one replacement per request, capped).')
+cli.add_argument('--walltime-seconds', type=int,
+    help='Pause between requests before scheduler expiry; scheduled pause exits with code 75.')
 args = cli.parse_args()
+if args.walltime_seconds is not None and args.action != 'launch':
+    cli.error('--walltime-seconds is only supported by launch')
 try:
     if args.action == 'freeze':
         result = protocol.freeze()
@@ -34,8 +38,11 @@ try:
     else:
         if not args.stage or args.approve_usd is None or not args.approval_reference:
             cli.error('launch requires --stage, --approve-usd and --approval-reference')
-        result = runner.run(args.stage, args.approve_usd, args.approval_reference, args.auto_recover)
+        result = runner.run(args.stage, args.approve_usd, args.approval_reference, args.auto_recover,
+                            walltime_seconds=args.walltime_seconds)
     print(json.dumps(result, ensure_ascii=False, indent=2))
+    if result.get('status') == 'PAUSED_AT_CHECKPOINT':
+        raise SystemExit(75)
 except Exception as error:
     if isinstance(error, runner.RecoveryRefused):
         cli.exit(2, 'RecoveryRefused: ' + str(error) + '\n')

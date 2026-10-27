@@ -58,6 +58,15 @@ class RecoveryRefused(RuntimeError):
     """The stop is not a plain lost-transport attempt; a person must review it."""
 
 
+class ScheduledPause(RuntimeError):
+    """A scheduler deadline reached a safe boundary before another request."""
+
+
+def check_deadline(deadline):
+    if deadline is not None and time.monotonic() >= deadline:
+        raise ScheduledPause('Scheduled walltime reached; resume the same ledger.')
+
+
 def replacement_nonce(original_id):
     return 'final-r1-' + original_id
 
@@ -121,7 +130,13 @@ def requests_from_ledger(budget, cell):
 
 class Caller(p.legacy.Caller):
     """Reuse the reviewed transport, intent-before-send, and tier safeguards."""
+    def __init__(self, client, budget, cell, spec, folder, *, deadline=None):
+        super().__init__(client, budget, cell, spec, folder)
+        self.deadline = deadline
+
     def __call__(self, model, messages, **kwargs):
+        # Pause before intent creation, never while saving or settling a reply.
+        check_deadline(self.deadline)
         p.verify_contract(self.spec)
         p.check_prices(self.spec)
         try:
@@ -590,7 +605,7 @@ def analyze_stage(stage='main'):
         return p.read(target/'analysis_summary.json') | dict(status=status)
 
 
-def launch(stage, cap, reference):
+def launch(stage, cap, reference, *, deadline=None):
     # Inherited callers hold module-local writer aliases. Cover both the
     # request checkpoints and raw transport receipts, without editing history.
     with output_lock(), patch.object(p.engine, 'write_json', write_json), \
@@ -613,6 +628,7 @@ def launch(stage, cap, reference):
                 stack.enter_context(patch.object(p.engine, 'request_id', mapped_request_id(budget)))
                 client = None
                 for cell in planned:
+                    check_deadline(deadline)
                     path = target/'runs'/(cell['run_id']+'.json')
                     if path.exists():
                         record = verify_record(path, cell, spec)
@@ -624,7 +640,7 @@ def launch(stage, cap, reference):
                                 if client.models.retrieve(model).id != model:
                                     raise ValueError('Requested model identity not available.')
                         with p.adapter(cell, spec):
-                            live = Caller(client, budget, cell, spec, target)
+                            live = Caller(client, budget, cell, spec, target, deadline=deadline)
                             caller = Replay(requests_from_ledger(budget, cell), live)
                             result, failure = observe(cell, caller)
                         items = requests_from_ledger(budget, cell)
@@ -657,6 +673,14 @@ def launch(stage, cap, reference):
             else:
                 write_json(p.OUTPUT/'readiness.json', readiness(spec))
             return {k: v for k, v in summary.items() if k != 'results'}
+        except ScheduledPause:
+            accounting(budget, target, spec, stage)
+            summary = dict(status='PAUSED_AT_CHECKPOINT', completed=len(records),
+                planned=len(p.cells(spec, stage)), contract_sha256=p.legacy.digest(spec),
+                conservative_charge_or_reservation_usd=budget.spent(),
+                reason='Scheduled walltime reached before creating another request intent.')
+            write_json(target/'summary.json', summary)
+            return summary
         except Exception as error:
             write_json(target/'summary.json', dict(status='STOPPED', error_type=type(error).__name__,
                 completed=len(records), contract_sha256=p.legacy.digest(spec),
@@ -912,12 +936,18 @@ def recover(stage, reference, automatic=False):
 FREE_PROBE_ERRORS = ('APIConnectionError', 'APITimeoutError', 'InternalServerError', 'RateLimitError')
 
 
-def run(stage, cap, reference, auto_recover=False, sleep=time.sleep, max_probe_wait_s=3600):
+def run(stage, cap, reference, auto_recover=False, sleep=time.sleep, max_probe_wait_s=3600,
+        walltime_seconds=None):
     """launch(); with auto_recover, retire lost attempts and resume under the same cap."""
+    if walltime_seconds is not None and (type(walltime_seconds) not in {int, float}
+            or not math.isfinite(walltime_seconds) or walltime_seconds <= 0):
+        raise ValueError('Walltime must be a finite positive number of seconds.')
+    # Recovery must consume the same job allowance, not restart its clock.
+    deadline = None if walltime_seconds is None else time.monotonic() + walltime_seconds
     probe_wait = 0
     while True:
         try:
-            return launch(stage, cap, reference)
+            return launch(stage, cap, reference, deadline=deadline)
         except Exception as error:
             if not auto_recover or stage != 'main':
                 raise

@@ -5,10 +5,10 @@ allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
 a **$120 maximum additional main-study allowance**. No main generation has run.
 
-## Current: Contract v6.2, October 25
+## Current: Contract v6.3, October 27
 
-Active contract: `final-instruction-study-v6.2-price-refresh`, SHA-256
-`ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
+Active contract: `final-instruction-study-v6.3-scheduled-checkpoints`, SHA-256
+`060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 The [launch preparation record](LAUNCH_PREPARATION_OCT25.md) documents the owner's
 merge instruction and reported professor support. Prices were rechecked against
 official pages and remain unchanged. The internal freshness window is now
@@ -16,10 +16,22 @@ official pages and remain unchanged. The internal freshness window is now
 The previous October 23 launch deadline below is historical and superseded.
 
 Execution workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`. No main-stage
-directory exists; migration from v6.1 refuses if one exists. All prompts, settings,
+directory exists; migration from v6.2 refuses if one exists. All prompts, settings,
 analysis, rates and paid evidence are unchanged. A local API credential is still
 required. GPU access is useful for a future open-model study, not these hosted
 API calls. No model calls are made by freeze, preflight or offline verification.
+
+[Hoffman2 deployment](HOFFMAN2_EXECUTION.md) uses a CPU Slurm job, not a GPU.
+The frozen wrapper requests 24 hours and pauses the collector between requests
+after 23 hours. Only a successful checkpoint pause schedules a dependent
+continuation. Every continuation uses the same authorization and $120 ledger;
+saved replies are replayed, not repurchased. Runtime, filesystem and access
+checks must pass on Hoffman2 before paid execution. Setup, cross-node storage and
+full compute validation passed: 286 tests, zero skips, 112 preflight cases and
+eight historical Hindi checks. Private key entry and model access remain.
+No API speedup is claimed.
+Earlier dated instructions below are history;
+use this section and the Hoffman2 document for the current deployment.
 
 ## Retained v6.1 Review Follow-Up
 

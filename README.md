@@ -4,16 +4,20 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Main Collection Preparation (October 25)
+## Main Collection Preparation (October 27)
 
 The owner authorized merging PR #1 and reported the professor's support for
 proceeding. [Current preparation and price evidence](docs/LAUNCH_PREPARATION_OCT25.md)
 record the execution workspace outside OneDrive, GPU scope and remaining setup.
-**Main collection has not started.** A local API credential is still required.
+**Main collection has not started.** [Hoffman2 execution setup](docs/HOFFMAN2_EXECUTION.md)
+adds CPU-job checkpoint continuations. Remote setup, two-node storage checks,
+286 offline tests (zero skips), 112 preflight cases and eight historical Hindi
+checks passed. Private key entry and model-access checks remain; submission is
+not proof that generation completed.
 
-Contract **v6.2** refreshes verified, unchanged model prices through **November 1,
-2026, inclusive**. Its hash is
-`ff50df9c176ee6eee1d1dd9802002fc57632a56364c2f719332eaab3f472d1cf`.
+Contract **v6.3** adds scheduled checkpoint pauses while retaining the verified,
+unchanged model prices through **November 1, 2026, inclusive**. Its hash is
+`060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 The study remains **896 attempts / eight repetitions everywhere / $120 ceiling**.
 The forecast remains about **$102.44 / 26.3 serial API hours**. The hosted-model
 study does not require a local GPU; an open-model extension would be separate.
@@ -64,7 +68,7 @@ labelled PARTIAL; `analyze --stage main` reports a stopped run offline; local
 write retries last about 54 s; and `recover` can rebuild one journal left stale by
 a persistent file lock, from the unchanged ledger. Main generation remains
 unstarted and awaits the owner's launch command. These v6 ordering, fallback and
-recovery policies remain in v6.2.
+recovery policies remain in v6.3.
 
 **The refreshed price window ends November 1 and is checked before every request,
 so the run must finish by then.** Allow 26–40 serial API hours plus local work and
