@@ -197,6 +197,12 @@ date is January 14, 2027; no automatic model substitution is allowed.
 
 ## Analysis And Claims
 
+Read [method rationale and unequal-computation limits](METHOD_COMPUTE_FAIRNESS.md)
+alongside this analysis. Eight repetitions per condition equalize planned sample
+allocation, not API requests or refinement opportunities. Cross-method differences
+describe complete procedures, not equal-budget superiority. The note adds
+reporting guidance, not new primary hypotheses or changes to the active contract.
+
 The [analysis adapter](../final_study/analysis.py) reuses reviewed calculations
 with an explicitly validated eight-schedule specification. The historical
 32-schedule analysis and its evidence remain unchanged.

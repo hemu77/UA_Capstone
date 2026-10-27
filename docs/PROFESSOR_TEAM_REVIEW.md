@@ -1,6 +1,26 @@
 # Professor and Team Review: V8 Calibration Complete
 
-**Current, October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
+## Current: Method Interpretation And Main Collection
+
+October 27: the approved main collection is running on Hoffman2. This is a
+documentation clarification only, not a new request to change repetitions,
+rerun calibration, or interrupt the collector. See [execution status](HOFFMAN2_EXECUTION.md).
+
+Please read [the method-computation rationale and limitation](METHOD_COMPUTE_FAIRNESS.md).
+Each condition has eight repetitions, but iterative has more decisions and
+refinement opportunities than global/local/sequential. We can compare these
+complete procedures and their within-method instruction contrasts; we cannot
+claim a compute-matched advantage or intrinsic superiority for iterative.
+
+The note identifies the actual resource/failure reporting required at completion
+and supplies manuscript wording. Those tables remain pending. An equal-budget
+or round-count sensitivity experiment is not part of the active run and could
+still be requested by reviewers. Clear disclosure is not an acceptance guarantee.
+All earlier review notes below are historical, not current launch instructions.
+
+## Historical October 18 Review
+
+**October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
 Code and analysis specify eight repetitions for every method/model/condition:
 896 attempts total, approximately $102.44, with a $120 maximum new main allowance.
 The assistant's 32-repetition expansion is withdrawn, not attributed to Raghav.
@@ -36,7 +56,7 @@ completed. The clarification still failed and is **not adopted**; calibration's
 selected reference wording is unchanged. Please review missingness and inference
 limits, not just test counts. Main collection remains unauthorized; V6 below is history.
 
-## Current Note To The Professor
+## Historical V8 Note To The Professor
 
 Professor, I have updated the core pipeline and preserved the previous results
 instead of overwriting them. The new work clarifies the hypothetical-network

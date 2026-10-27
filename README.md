@@ -21,8 +21,16 @@ Contract **v6.3** adds scheduled checkpoint pauses while retaining the verified,
 unchanged model prices through **November 1, 2026, inclusive**. Its hash is
 `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 The study remains **896 attempts / eight repetitions everywhere / $120 ceiling**.
-The forecast remains about **$102.44 / 26.3 serial API hours**. The hosted-model
-study does not require a local GPU; an open-model extension would be separate.
+The historical forecast is **$102.44 / 26.3 serial API hours**, not end-to-end
+cluster runtime. Persistence, verification and queueing add overhead; provider
+latency can differ from calibration. Use timestamped monitoring for actual progress. The hosted-model study
+does not require a local GPU; an open-model extension would be separate.
+
+**Equal repetitions, not equal computation:** global, local/sequential and
+iterative use different decision budgets. Read [the rationale, limitations and
+reporting checklist](docs/METHOD_COMPUTE_FAIRNESS.md). We compare complete
+procedures, not equal-cost algorithmic superiority. No equal-budget experiment
+has been performed; the running collector is unchanged by this clarification.
 
 ## Adopted Final Collection (October 19; Price Window Updated October 25)
 

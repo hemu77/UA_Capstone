@@ -1,6 +1,24 @@
 # Team Knowledge Brief: What We Built and What Needs a Decision
 
-**Current, October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
+## Current: October 27 Main Collection
+
+Main collection has started on Hoffman2; see [the execution record](HOFFMAN2_EXECUTION.md).
+The allocation remains 896 attempts, eight repetitions per condition and one
+$120 main-study ceiling. Do not launch another collector or change frozen files.
+
+Read [method rationale and unequal-computation limits](METHOD_COMPUTE_FAIRNESS.md)
+before interpreting method differences. Global uses one planned decision, local
+and sequential use 50, and iterative uses up to 350 per graph before corrections.
+Equal repetitions are not equal compute. We compare complete procedures, not
+which algorithm is best at the same cost. The note includes reporting requirements
+and reviewer-facing wording; an equal-budget experiment has not been performed.
+
+The sections below preserve dated decisions and estimates. The old 26.3-hour
+forecast is serial API time, not a promised cluster completion time.
+
+## Historical October 18 Handoff
+
+**October 18:** [budget-corrected execution handoff](FINAL_COLLECTION.md).
 The code now uses eight repetitions equally across four models, four methods
 and seven settings: **896 attempts**, about **$102.44**, with a **$120 ceiling**.
 The assistant mistakenly expanded every method to 32 repetitions; that plan is
