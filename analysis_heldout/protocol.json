@@ -1,0 +1,44 @@
+{
+  "version": "heldout-structural-transfer-20261105-v1",
+  "planning_clock_utc_before_raw_download": "2026-11-05T21:46:23Z",
+  "scope": "Post-collection evaluation-held-out structural transfer only. Not preregistered primary inference, matched-person prediction, national realism, or pretraining-unseen data.",
+  "development": "The existing eight legacy friendship graphs only. Average the two Tailor waves first, then weight the seven source communities equally. No new public graph enters parameter fitting.",
+  "evaluation_sources": [
+    {
+      "id": "snap_facebook",
+      "url": "https://snap.stanford.edu/data/facebook.tar.gz",
+      "documentation": "https://snap.stanford.edu/data/ego-Facebook.html",
+      "citation": "McAuley and Leskovec, Learning to Discover Social Circles in Ego Networks, NIPS 2012",
+      "license_note": "Public SNAP research download; no additional redistribution license inferred. Do not republish raw IDs/features.",
+      "population": "Ten Facebook alter networks, ego node excluded. Roster from first column of .feat, no feature values used. Positive simple undirected friend edges.",
+      "dependence": "Egonets can share people and ties. Ten records are not ten independent populations."
+    },
+    {
+      "id": "sociopatterns_friendship",
+      "url": "https://sociopatterns.org/assets/data/HighSchool2013_friendship_network.csv.gz",
+      "documentation": "https://sociopatterns.org/datasets/high-school-contact-and-friendship-networks/",
+      "citation": "Mastrandrea, Fournet and Barrat, PLoS ONE 10(9):e0136497, 2015, doi:10.1371/journal.pone.0136497",
+      "license_note": "CC BY-NC-SA 3.0 source data. Attribute the source; publish aggregate results, not raw student IDs.",
+      "population": "One directed reported-friendship survey. Use positive-reporting source IDs as the node roster, retain nominations only between roster members, then undirected OR projection. Zero-nominating/nonresponding people cannot be recovered from this edge list; do not add metadata IDs as zero-tie observations.",
+      "dependence": "One school cohort, incomplete survey coverage; not a representative population or complete true friendship graph."
+    }
+  ],
+  "published_metadata_seen_before_protocol": "Dataset documentation, advertised sizes and published overview statistics were viewed for source feasibility. No downloaded graph or benchmark outcome was inspected to choose parameters.",
+  "primary": {"attempts": 896, "valid_graphs": 890, "supplemental_graphs": 0, "groups": "Sixteen fixed method/model groups, pooling the seven instruction conditions; preserve failed denominators."},
+  "node_sampling": {"nodes": 50, "draws_per_cohort": 32, "scheme": "Uniform without replacement within each original cohort; induced subgraphs, retain all 50 sampled nodes and isolates; no connectivity selection or resampling empty graphs.", "small_cohort_policy": "Fail if any planned cohort has fewer than 50 observed roster nodes. Never silently skip or change sampling to obtain nicer results."},
+  "transfer_baselines": {
+    "banks": 8,
+    "graphs_per_bank": 56,
+    "ER": "G(n,p), p is development community-balanced mean density.",
+    "BA": "n=50, integer m in 1..24 minimizing absolute expected density difference from development mean, tie chooses smaller m.",
+    "WS": "n=50, even k in 2..48 minimizing density difference from development mean, tie smaller k. Choose p from the fixed grid by mean-clustering squared error against development community-balanced mean, 64 draws per grid point, tie smaller p.",
+    "WS_p_grid": [0.0, 0.05, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0],
+    "WS_fit_draws": 64
+  },
+  "conditional_controls": {"draws_per_sample": 8, "Gnm": "Match each held-out subgraph's observed n and m: target-informed diagnostic, NOT a fitted transfer baseline.", "degree_swap": "Copy the held-out subgraph; 10*m successful double-edge swaps with max 100*m tries, preserve exact node set, degree sequence, m and simple graph. Degenerate m<2 graphs return exact conditional values; other swap failures are missing, not successful randomizations. Finite swaps do not establish uniform mixing."},
+  "metrics": ["density", "avg_clustering_coef", "global_efficiency", "transitivity", "degree_gini", "prop_nodes_lcc"],
+  "distances": "Wasserstein-1 distance separately on each bounded graph-level metric. Do not pool individual nodes/dyads as independent samples, invent p-values, optimize a composite winner or tune baselines on held-out outcomes.",
+  "aggregation": "Show per-original-cohort distances and source-level equal-cohort means. Keep Facebook and school separate. Baseline-bank min/max measures Monte Carlo sensitivity, never a CI. Thirty-two overlapping node draws are not independent human samples. No cross-study confidence interval with only two source studies.",
+  "randomness": "Deterministic SHA256-derived seeds keyed by protocol version, role, source/cohort, draw and replicate. No paid/model calls.",
+  "preservation": "Previous frozen primary/analysis manifests and their bound code/data/artifacts remain byte-identical; six selectively completed supplements excluded from every benchmark input. New output directory only."
+}

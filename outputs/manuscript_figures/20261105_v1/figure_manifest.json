@@ -1,0 +1,59 @@
+{
+  "artifacts": {
+    "01_primary_contrasts.pdf": {
+      "bytes": 26061,
+      "sha256": "7e119d4ccc17ef5fcb26eb3395c898b0eabb31ab3ef2128411eb2e4f7aaf7f6f"
+    },
+    "01_primary_contrasts.png": {
+      "bytes": 219297,
+      "sha256": "46df5f75bc72a522f5e83a53e3ea7ecadb3ae5120a090ccfb8c3a6adc37ecf6c"
+    },
+    "01_primary_contrasts.svg": {
+      "bytes": 61524,
+      "sha256": "0bec4a2123fd2d690dd165a83fa1a5a8dccc03b470f7df45417553f9b0731847"
+    },
+    "02_iterative_hindi_robustness.pdf": {
+      "bytes": 12728,
+      "sha256": "8aad846cfbec88d412b0fbe52836a8d2019bcbb3703131969f65407798ab1fbc"
+    },
+    "02_iterative_hindi_robustness.png": {
+      "bytes": 116196,
+      "sha256": "127a3c0c98ab19c86fa76ab34886a00a0d0be281f9854c354eed63a065c98054"
+    },
+    "02_iterative_hindi_robustness.svg": {
+      "bytes": 22532,
+      "sha256": "a8154415e257697cbb7bf70dce74b66c024770fa4f7d5a95cf9e302f59ec4f98"
+    },
+    "03_model_endpoint_means.pdf": {
+      "bytes": 15645,
+      "sha256": "cb98e6efb9d0095b99a9c20ef7090fae783365a5a6d1301d9a9ceac9764c23f4"
+    },
+    "03_model_endpoint_means.png": {
+      "bytes": 185136,
+      "sha256": "1a98b35771d256d4588e54f12064ed203ed1f445aab1c848b3936ceb07adbb98"
+    },
+    "03_model_endpoint_means.svg": {
+      "bytes": 46575,
+      "sha256": "23d9e03a5b21bbfc221f862573e491c4e055076a63bc36feffaa57e717abd163"
+    }
+  },
+  "code_sha256": {
+    "analysis_figures/__init__.py": "1ac971bbefee751577972a41b8d7104770de8b5aa87ba4cb2969d4d0510e8a88",
+    "analysis_figures/manuscript.py": "734c38fd47bf1cab87fd0bed845b839cf44e1f903e9a7b6e60d25c3be4ac8766",
+    "docs/MANUSCRIPT_FIGURE_CAPTIONS.md": "594572ab6a7e02b28125c6876ea0a7cde0a11354d1f92445a005316f2d133205",
+    "scripts/run_manuscript_figures.py": "34c1647b3e440b64e7bc9e0dff3de7de2a317cc26912e17dbd747b9699f41246"
+  },
+  "created_utc": "2026-11-05T22:12:40.249306+00:00",
+  "interpretation": "New presentation only. Original data, tests, intervals, failures and earlier plots remain unchanged.",
+  "ledger_queries": 0,
+  "paid_calls": 0,
+  "previous_primary_seal_sha256": "9f8ebb0c826692c8ada6c4235b77b96956dc79f7fb9d1de775da2fcdde59d4d6",
+  "primary_attempts": 896,
+  "runtime": {
+    "matplotlib": "3.6.2",
+    "python": "3.11.9"
+  },
+  "status": "COMPLETE_MANUSCRIPT_FIGURES_WITH_CAVEATS",
+  "supplemental_graphs": 0,
+  "valid_primary_graphs": 890
+}

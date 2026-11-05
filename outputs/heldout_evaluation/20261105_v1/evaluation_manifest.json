@@ -1,0 +1,118 @@
+{
+  "artifacts": {
+    "candidate_metrics.csv": {
+      "bytes": 387568,
+      "sha256": "18decdd48f2fa437eb8a069676cde804f3a462e9c8327d61b3280023bc79abdc"
+    },
+    "cohort_overlap.csv": {
+      "bytes": 1362,
+      "sha256": "8d1ddbaa15afaee4ad24a7071e11fe915998ca5db57a3bb120c5e57ea8572c35"
+    },
+    "conditional_control_metrics.csv": {
+      "bytes": 912468,
+      "sha256": "a2b9e079f4d91201793bed9c45a93e2c23642ba3a10e42f8cb841f3531fa5b11"
+    },
+    "conditional_residuals.csv": {
+      "bytes": 11764,
+      "sha256": "23889602f9b6ece04ae104cdc8a1c90279bc9ec33ec679c3259a9e673f3945cc"
+    },
+    "dataset_quality.csv": {
+      "bytes": 2813,
+      "sha256": "7210cb6a2910027bd86b5234ce6f515c1db34bb8fdffffdae78b0807e6257503"
+    },
+    "development_fit.json": {
+      "bytes": 1384,
+      "sha256": "83f371c287aa1f3cf920c73e3e0fa8253e8d2a70f4dc958371307a2dd6c3f8d0"
+    },
+    "figures/01_heldout_transfer.pdf": {
+      "bytes": 35338,
+      "sha256": "04a2ebbcbcd22fdd2cf8855f5057d097d746069da60d3079eac3c776a713039a"
+    },
+    "figures/01_heldout_transfer.png": {
+      "bytes": 404874,
+      "sha256": "0fec4897cff12f60c3b5692a04fd38a891a133c1e9d718b99bd662df14c6eff0"
+    },
+    "figures/01_heldout_transfer.svg": {
+      "bytes": 199249,
+      "sha256": "f52a0af2a5a118e31d98c15cd1a3256385385ba53d79a66886bdce65bd7bc1ff"
+    },
+    "figures/02_sampling_shift.pdf": {
+      "bytes": 24649,
+      "sha256": "ffb59739fe293dde31c9e4e340077ee804564c4ec5d5de6ac3669223e5cd7dfd"
+    },
+    "figures/02_sampling_shift.png": {
+      "bytes": 105482,
+      "sha256": "1ee8f9a145fda60f42bd255d6afee20d16c190ae10cbb1fdf79f40726345859f"
+    },
+    "figures/02_sampling_shift.svg": {
+      "bytes": 80529,
+      "sha256": "a702a63d8f2bcbd9470b44624c94949463a1dcb22ac6d8fc2bb8a95ca000354a"
+    },
+    "figures/03_conditional_structure.pdf": {
+      "bytes": 21936,
+      "sha256": "717b23e2ede22c3f004181cc703fb93fa3b10c7b40e19ffc8f268f2f6a0f74e1"
+    },
+    "figures/03_conditional_structure.png": {
+      "bytes": 77973,
+      "sha256": "1b5639281eb120b3cb9a4008072e4f6ac01c9f10fc1b0f92d884c548f2fbef9b"
+    },
+    "figures/03_conditional_structure.svg": {
+      "bytes": 61450,
+      "sha256": "8355157d3ceb1bec7fae1ad42b2ebf66f32f5dfffbaa66f97a5e30b5474c0c71"
+    },
+    "figures/04_cohort_sensitivity.pdf": {
+      "bytes": 30382,
+      "sha256": "5d95d043db3bc8111d7639156cd1fba1a8198814cb14aa05d7bc5580b13b8f80"
+    },
+    "figures/04_cohort_sensitivity.png": {
+      "bytes": 149989,
+      "sha256": "92b26b9b9b548b10c1b2cd0a65a72f3c667ecd6964b485026a42d9e617c1f8b6"
+    },
+    "figures/04_cohort_sensitivity.svg": {
+      "bytes": 86403,
+      "sha256": "e179f0d08cbc4036816afe9450bfa87957160a3d6f9112300f650f34835ab90a"
+    },
+    "heldout_sample_metrics.csv": {
+      "bytes": 43843,
+      "sha256": "5ceacb175e06598da1691a88af7bf2a5d6b1d5fce7bc1d51b1eb16fb38108b53"
+    },
+    "per_cohort_distances.csv": {
+      "bytes": 235654,
+      "sha256": "437e3e40bcff25a0e14a00105fef968f3aaad15ce2c88909b21bbbaeabc6c661"
+    },
+    "source_distance_summary.csv": {
+      "bytes": 27651,
+      "sha256": "be01961cde2d1024b209de49ae82588b8eecd9ae5a76ebb82b638cbadb51d6f8"
+    },
+    "summary.json": {
+      "bytes": 15768,
+      "sha256": "f5282ba004eecca05f3e6efb1d78c894adb3a8ce015040936e92be5a4b5908fc"
+    }
+  },
+  "causal_or_population_inference": false,
+  "code_sha256": {
+    "analysis_heldout/__init__.py": "2ce21727b4a1b5b3a7b158dddd2a61344b1419022e2ed2ebf89193d64e550c10",
+    "analysis_heldout/benchmark.py": "cd13323562e5630d89a506faa97e9f19aff49c53dbb839878f85923fbebc6dbd",
+    "analysis_heldout/clarifications.json": "90a73e2a35b18c763e04143a48dd18928be80dfd70bb99ad1789797bbedb797a",
+    "analysis_heldout/data.py": "8e228827b1e29ae18bb7516565ffa9e16c014df9757a153a0b7b482a837e5b86",
+    "analysis_heldout/figures.py": "8b3746b3b4288b5d4f24fe5dc50374240eebb24fbf2433aa94c0994de576aa6c",
+    "analysis_heldout/protocol.json": "eeab443106fa389e66bdf88d0b71d884d4da1815aefe9cf57269b13209f51d2a",
+    "scripts/fetch_heldout_public.py": "27c68b68dfb5c0519308925ab340d1655cb43b979663786c832ae7d258b59b59",
+    "scripts/run_heldout_evaluation.py": "261a1b54ae35f770d9449dee6115e10376be6958899f194bfdc7c152f6e170db"
+  },
+  "cohort_records": 11,
+  "created_utc": "2026-11-05T21:57:49.974507+00:00",
+  "figures": 12,
+  "graph_metrics": 6,
+  "ledger_queries": 0,
+  "paid_calls": 0,
+  "previous_primary_seal_sha256": "9f8ebb0c826692c8ada6c4235b77b96956dc79f7fb9d1de775da2fcdde59d4d6",
+  "public_studies": 2,
+  "source_sha256": {
+    "snap_facebook": "78594c43169b698e99a77741bc298581af87146e4f3d3e8ad48a48361b5d92b6",
+    "sociopatterns_friendship": "22b2c9d09bfca93a18962698918ad58dce683952dc4fce4c69a9fc03d3c11713"
+  },
+  "status": "COMPLETE_HELDOUT_STRUCTURAL_EVALUATION_WITH_CAVEATS",
+  "supplemental_graphs": 0,
+  "valid_primary_graphs": 890
+}

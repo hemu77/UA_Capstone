@@ -1,0 +1,54 @@
+{
+  "BA_m": 5,
+  "ER_p": 0.18893569470401766,
+  "WS_grid": [
+    {
+      "mean_clustering": 0.666666666666667,
+      "p": 0.0,
+      "squared_error": 0.04664737669117011
+    },
+    {
+      "mean_clustering": 0.5892531080031083,
+      "p": 0.05,
+      "squared_error": 0.01920066911658347
+    },
+    {
+      "mean_clustering": 0.5220277951215451,
+      "p": 0.1,
+      "squared_error": 0.005089561990411203
+    },
+    {
+      "mean_clustering": 0.40160487949550444,
+      "p": 0.2,
+      "squared_error": 0.0024090181297235754
+    },
+    {
+      "mean_clustering": 0.26219218766323543,
+      "p": 0.4,
+      "squared_error": 0.035530154396814874
+    },
+    {
+      "mean_clustering": 0.20467304321280716,
+      "p": 0.6,
+      "squared_error": 0.06052268436832222
+    },
+    {
+      "mean_clustering": 0.19136816308691307,
+      "p": 0.8,
+      "squared_error": 0.06724606673869292
+    },
+    {
+      "mean_clustering": 0.1888649637417536,
+      "p": 1.0,
+      "squared_error": 0.06855058437353768
+    }
+  ],
+  "WS_k": 10,
+  "WS_p": 0.2,
+  "clustering_target": 0.45068662895213624,
+  "density_target": 0.18893569470401766,
+  "development_communities": 7,
+  "development_records": 8,
+  "fit_scope": "Legacy development panel only; Tailor waves averaged first, then seven equal community weights.",
+  "fitted_from_heldout": false
+}

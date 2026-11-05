@@ -54,6 +54,20 @@ and missingness remain explicit.
 
 ## Primary Analysis And Real-Network Evaluation
 
+**New: [held-out public-data evaluation](docs/HELDOUT_REAL_WORLD_EVALUATION.md)**
+with development-only ER/BA/WS baselines, equal-size node draws and separate
+target-conditioned controls. [Notebook 03](analysis/03_heldout_public_evaluation.ipynb)
+reproduces every distance independently. This is structural transfer, not
+pretraining-unseen or matched-human behavioral validation. Six supplements stay
+excluded, and no new paid calls were made.
+
+**Recommended figures:** [clean manuscript notebook 04](analysis/04_manuscript_figures.ipynb),
+[PNG/SVG/PDF files](outputs/manuscript_figures/20261105_v1/), and
+[captions](docs/MANUSCRIPT_FIGURE_CAPTIONS.md). The redesign uses the five papers'
+actual figures as [visual references](docs/VISUAL_REFERENCE_NOTES.md), preserves
+all original results and archived plots, and removes the oversized dashboard
+headings/footers. [Claude review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+
 The [analysis entry point](ANALYSIS_START_HERE.md) links separated data catalogs,
 executed [statistics](analysis/01_primary_statistical_analysis.ipynb) and
 [comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, eight

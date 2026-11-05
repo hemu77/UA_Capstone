@@ -12,8 +12,11 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
-Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb), then
-[comparison plots](analysis/02_primary_comparison_plots.ipynb). They verify the
+Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
+[held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb), then
+[clean manuscript figures](analysis/04_manuscript_figures.ipynb). The earlier
+[comparison plots](analysis/02_primary_comparison_plots.ipynb) remain archived,
+but notebook 04 is the recommended primary figure set. The original notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)
 and do not query a ledger or call models. The original collection outputs stay
 unchanged. Read [findings and limitations](docs/PRIMARY_ANALYSIS_FINDINGS.md) and
@@ -22,6 +25,34 @@ unchanged. Read [findings and limitations](docs/PRIMARY_ANALYSIS_FINDINGS.md) an
 All primary tests exclude the six selectively completed supplementary graphs.
 The real-friendship-network and synthetic-reference comparisons are descriptive,
 post-collection checks, not new confirmatory tests or proof of human realism.
+
+## Held-Out Public Data And Cleaner Figures
+
+The [new held-out evaluation](docs/HELDOUT_REAL_WORLD_EVALUATION.md) uses two
+public friendship studies, development-only ER/BA/WS settings, equal-size
+50-node draws, explicit missingness weights and separate target-conditioned
+controls. It does not pretend that these data were absent from LLM pretraining
+or that overlapping subgraphs are independent human samples. No paid calls.
+
+The [figure redesign](docs/VISUAL_REFERENCE_NOTES.md) follows visual principles
+from actual figures in the five supplied papers. It preserves earlier images
+and primary results, with [new captions](docs/MANUSCRIPT_FIGURE_CAPTIONS.md)
+and separate PNG/SVG/PDF artifacts. Use the
+[updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+
+Full new benchmark/figure reproduction after the environment setup below:
+
+```powershell
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_manuscript_figures.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_heldout_notebook.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_manuscript_notebook.py
+```
+
+Both new notebooks can rerun from the published tables without downloading
+raw public data. Raw public caches remain outside Git, separate from all
+original/supplementary study outputs.
 
 Full offline regeneration after installing the pinned release archives:
 
