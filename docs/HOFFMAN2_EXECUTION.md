@@ -1,5 +1,29 @@
 # Hoffman2 Execution
 
+## Completion: November 5
+
+Job **814020 COMPLETED 0:0**. The final marker was followed by a separate
+downloaded-checkpoint graph/failure/accounting audit; the result is 890 valid
+graphs and six failed terminal attempts out of 896, not 896 valid graphs.
+See [final results and data access](MAIN_STUDY_RESULTS_NOV05.md).
+
+Delays included depleted API credits, cluster queues, a pre-transport SQLite
+reservation failure, and offline recovery verification. The reservation rolled
+back before a provider call, leaving one request-intent file. A reviewed,
+exactly scoped archival reconciliation preserved it and all saved replies,
+then verified the checkpoint before paid continuation. Prior billing failure
+reservations were retained, not refunded or reset. No index or end-to-end
+speedup claim follows from these repairs.
+
+The full final archive and job logs were retrieved and hash-checked locally.
+Only allowlisted public evidence is published. Never audit an actively written
+ledger with a long read transaction; use file-only monitoring and protected
+checkpoint copies for full accounting.
+
+The deployment instructions below describe the completed run. They do not
+authorize duplicate submissions. The separate local supplement is documented
+in the results page and does not change this original study.
+
 This deployment moves the reviewed collector to a CPU batch job. It does not
 run GPT models on a GPU, introduce parallel API calls, or change the study.
 The allocation remains 896 attempts, eight repetitions per condition, and one

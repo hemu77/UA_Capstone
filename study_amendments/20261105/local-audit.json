@@ -1,0 +1,53 @@
+{
+  "status": "DOWNLOADED_CHECKPOINT_AUDITED",
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "original_archive_sha256": "9c7e01c6ebad0430b12a93c78f2bdfb2ba0cb18f5dce88c2554a391827d277e7",
+  "ledger_sha256": "3c2c191e5fedf0f82e4f1ddfb2f571b73be61bd0016d1011a34e8e55d9c598a6",
+  "attempted": 896,
+  "valid_graphs": 890,
+  "empty_graphs": 12,
+  "failed_attempts": 6,
+  "saved_receipts": 99632,
+  "ledger_rows": 99639,
+  "ledger_statuses": {
+    "abandoned": 6,
+    "received": 99632,
+    "uncertain": 1
+  },
+  "ledger_charge_or_reservation_usd": 101.98695215000001,
+  "cap_usd": 120,
+  "failures": [
+    {
+      "run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44000",
+      "failure": "invalid_global_response",
+      "sha256": "4ebc76a8fd9dbc8b74d868c16109a30f755b6d6d89bc4b1417532c620c5982a7"
+    },
+    {
+      "run_id": "final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002",
+      "failure": "invalid_global_response",
+      "sha256": "34d2b68853ae486edce703f558bb912da7deddbde9a1bfb7bd50fbf5f14842c8"
+    },
+    {
+      "run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004",
+      "failure": "invalid_global_response",
+      "sha256": "347013c04fd11f84c0e35d2062fefaf83a726b7a55d3e2d4967c2d2efd8ce8e7"
+    },
+    {
+      "run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_japanese_s44004",
+      "failure": "invalid_global_response",
+      "sha256": "44955b01e816940e5ad0fdf7cf9afe7823aa553a0f53e248471130d81ef501cb"
+    },
+    {
+      "run_id": "final_060dcd3a86d5_main_global_gpt-6-sol_us_japanese_s44005",
+      "failure": "invalid_global_response",
+      "sha256": "6ef1a7f696b1178b1867e7595caee9f0794ac125ec98e8fe9871aacccd5d62ae"
+    },
+    {
+      "run_id": "final_060dcd3a86d5_main_iterative_gpt-4.1_us_japanese_s44006",
+      "failure": "local_corrections_exhausted",
+      "sha256": "c960a908741b420ace29c60ea1370e2896e9f3f8a857365025afc69a2fbe78bc"
+    }
+  ],
+  "paid_calls": 0,
+  "verification": "All ledger/journal/transport/terminal records reconciled on downloaded copy; all graph and PNG hashes, node sets, density and PNG integrity checked; six failure replays passed. Full graph replay was performed by the completed Hoffman2 job, not repeated locally."
+}

@@ -4,33 +4,43 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
-## Main Collection Running (October 27)
+## Main Collection Complete (November 5)
 
-The owner authorized merging PR #1 and reported the professor's support for
-proceeding. [Current preparation and price evidence](docs/LAUNCH_PREPARATION_OCT25.md)
-record the execution workspace outside OneDrive, GPU scope and remaining setup.
-**Main job 518356 is running on Hoffman2.** [Execution record](docs/HOFFMAN2_EXECUTION.md)
-adds CPU-job checkpoint continuations. Remote setup, two-node storage checks,
-286 offline tests (zero skips), 112 preflight cases and eight historical Hindi
-checks passed, followed by access checks for all four models. At 12:48 PM Phoenix
-time, three of 896 terminal attempt records and 119 provider-response receipts
-were saved. These are progress counts, not a verified final count of valid graphs.
-The key is outside the repository; collection continues independently of the laptop.
+**All 896 planned attempts have terminal records: 890 valid graphs and six
+failures.** Twelve valid graphs are empty; those remain valid observations.
+Hoffman2 job 814020 completed with exit 0, and the downloaded checkpoint was
+hash-verified. This is collection completion, not a claim of flawless research.
+See the [final results and audit](docs/MAIN_STUDY_RESULTS_NOV05.md).
+
+The [complete public release](https://github.com/hemu77/UA_Capstone/releases/tag/main-study-20261105)
+contains all original terminal records, 890 adjacency files and 890 PNG plots.
+The repository includes graph data, analysis tables, failures and file hashes;
+large response records and plots are in the lossless release archive. Private
+ledgers, authorization, credentials and raw transport journals are excluded.
+
+Six separately authorized local supplemental attempts are recorded separately.
+They do not replace the original failures or enter the original primary analysis.
+See the results page for their actual outcomes rather than assuming six successes.
 
 Contract **v6.3** adds scheduled checkpoint pauses while retaining the verified,
-unchanged model prices through **November 1, 2026, inclusive**. Its hash is
+unchanged original design. Its hash is
 `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
-The study remains **896 attempts / eight repetitions everywhere / $120 ceiling**.
-The historical forecast is **$102.44 / 26.3 serial API hours**, not end-to-end
-cluster runtime. Persistence, verification and queueing add overhead; provider
-latency can differ from calibration. Use timestamped monitoring for actual progress. The hosted-model study
-does not require a local GPU; an open-model extension would be separate.
+The primary study remains **896 attempts / eight repetitions everywhere**.
+Original charges plus retained reservations total **$101.98695215**, not an
+invoice. The supplement shares the **$120 cumulative ceiling**. Reviewed execution
+amendments retained the frozen rates with a November 2-8 UTC validity window;
+they did not silently extend the frozen contract. Historical forecasts below are
+not observed wall-clock runtime. This hosted-model study did not require a GPU.
 
 **Equal repetitions, not equal computation:** global, local/sequential and
 iterative use different decision budgets. Read [the rationale, limitations and
 reporting checklist](docs/METHOD_COMPUTE_FAIRNESS.md). We compare complete
 procedures, not equal-cost algorithmic superiority. No equal-budget experiment
-has been performed; the running collector is unchanged by this clarification.
+has been performed. Of 24 primary comparisons, 21 have complete blocks, two use
+the predeclared partial-block fallback, and one has no inference. Assumptions
+and missingness remain explicit.
+
+The dated preparation sections below are historical, not current launch instructions.
 
 ## Adopted Final Collection (October 19; Price Window Updated October 25)
 

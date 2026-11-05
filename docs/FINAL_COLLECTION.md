@@ -1,12 +1,25 @@
 # Final Collection: Eight Equal Repetitions, $120 Ceiling
 
+## Final Status: November 5
+
+The original collection finished: **896 terminal attempts, 890 valid graphs,
+six failures**. All original outcomes stay intact. A separately authorized
+six-attempt local supplement is not a replacement for those failures and is
+excluded from the primary analysis. Both share the original $120 ceiling.
+See [final results, public downloads and audit qualifications](MAIN_STUDY_RESULTS_NOV05.md).
+The November 2-8 UTC execution price review superseded the dated operational
+price window below without editing frozen source or contract.
+
+Everything below is dated protocol/execution history, not permission to launch
+another collector or regenerate a saved response.
+
 October 18, 2026. The owner rejected the assistant's expanded 32-repetition
 allocation. It is withdrawn, not a requirement from Raghav. The active code and
 [contract](../final_study/contract.json) now specify **896 planned attempts** and
 a **$120 maximum additional main-study allowance**. This October 18 decision
 predated execution; the current launch status is below.
 
-## Current: Contract v6.3, October 27
+## Historical Launch: Contract v6.3, October 27
 
 Active contract: `final-instruction-study-v6.3-scheduled-checkpoints`, SHA-256
 `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.

@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETE",
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "analysis_version": "final-eight-schedule-analysis-v3-terminal-coverage",
+  "planned": 896,
+  "terminal_results": 896,
+  "without_terminal_result": 0,
+  "valid_graphs": 890,
+  "fallback_min_complete_blocks": 6,
+  "hypothesis_status": {
+    "COMPLETE_ASSUMPTIONS_REQUIRED": 21,
+    "MISSING_NO_INFERENCE": 1,
+    "PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED": 2
+  },
+  "coverage_basis": "Terminal receipts only. Missing receipts may include paid, interrupted cells; consult the private ledger for request attempts and charges.",
+  "interpretation": "All planned cells have terminal results."
+}

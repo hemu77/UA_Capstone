@@ -1,0 +1,989 @@
+[
+  {
+    "hypothesis_id": "global:india:english",
+    "method": "global",
+    "culture": "india",
+    "language": "english",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0030102040816326527,
+    "missingness_lower": -0.003010204081632676,
+    "missingness_upper": -0.0030102040816326102,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.6121807222485741,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.029964107099990867,
+      0.023943698936725565
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.0027551020408163266
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.023979591836734693
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.00826530612244898
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.006428571428571428
+      }
+    }
+  },
+  {
+    "hypothesis_id": "global:japan:english",
+    "method": "global",
+    "culture": "japan",
+    "language": "english",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0021938775510204067,
+    "missingness_lower": -0.00219387755102043,
+    "missingness_upper": -0.0021938775510203833,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.6626852470460716,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.02508269126155368,
+      0.020694936159512865
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.000816326530612246
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.008877551020408166
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.002755102040816325
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.0036734693877551
+      }
+    }
+  },
+  {
+    "hypothesis_id": "global:brazil:english",
+    "method": "global",
+    "culture": "brazil",
+    "language": "english",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0011989795918367343,
+    "missingness_lower": -0.0011989795918367577,
+    "missingness_upper": -0.0011989795918367118,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.8332312002388584,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.02725747968380711,
+      0.02485952050013364
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.0014285714285714266
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.0034693877551020408
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.0027551020408163257
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 1.734723475976807e-18
+      }
+    }
+  },
+  {
+    "hypothesis_id": "global:us:hindi",
+    "method": "global",
+    "culture": "us",
+    "language": "hindi",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": 0.009668367346938773,
+    "missingness_lower": 0.009668367346938751,
+    "missingness_upper": 0.009668367346938789,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.03421624765674971,
+    "holm_p": 0.6158924578214947,
+    "simultaneous_ci": [
+      -0.007834598266211384,
+      0.02717133296008893
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.0011224489795918354
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.0052040816326530594
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.036326530612244896
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": -0.0039795918367346965
+      }
+    }
+  },
+  {
+    "hypothesis_id": "global:us:japanese",
+    "method": "global",
+    "culture": "us",
+    "language": "japanese",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 5,
+    "excluded_schedule_seeds": [
+      44002,
+      44004,
+      44005
+    ],
+    "missing_cells": [
+      {
+        "model": "gpt-6-luna",
+        "culture": "us",
+        "language": "japanese",
+        "seed": 44002,
+        "terminal_recorded": true
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "culture": "us",
+        "language": "japanese",
+        "seed": 44004,
+        "terminal_recorded": true
+      },
+      {
+        "model": "gpt-6-sol",
+        "culture": "us",
+        "language": "japanese",
+        "seed": 44005,
+        "terminal_recorded": true
+      }
+    ],
+    "complete_block_mean": 0.003632653061224486,
+    "missingness_lower": 0.001020408163265281,
+    "missingness_upper": 0.09477040816326532,
+    "status": "MISSING_NO_INFERENCE",
+    "raw_p": null,
+    "holm_p": null,
+    "simultaneous_ci": null,
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.004183673469387754
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 7,
+        "mean": -0.010612244897959186
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 7,
+        "mean": 0.026355685131195333
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 7,
+        "mean": 0.00746355685131195
+      }
+    }
+  },
+  {
+    "hypothesis_id": "global:us:portuguese",
+    "method": "global",
+    "culture": "us",
+    "language": "portuguese",
+    "endpoint": "density",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 6,
+    "excluded_schedule_seeds": [
+      44000,
+      44004
+    ],
+    "missing_cells": [
+      {
+        "model": "gpt-5.6-luna",
+        "culture": "us",
+        "language": "portuguese",
+        "seed": 44000,
+        "terminal_recorded": true
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "culture": "us",
+        "language": "portuguese",
+        "seed": 44004,
+        "terminal_recorded": true
+      }
+    ],
+    "complete_block_mean": 0.006564625850340139,
+    "missingness_lower": 0.0012755102040816098,
+    "missingness_upper": 0.06377551020408162,
+    "status": "PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.5274573227317283,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.04991762859769603,
+      0.06304688029837631
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.001326530612244897
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 6,
+        "mean": 0.010204081632653057
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.006122448979591838
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.011020408163265306
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:india:english",
+    "method": "local",
+    "culture": "india",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": 0.006067621743989324,
+    "missingness_lower": 0.006067621743989365,
+    "missingness_upper": 0.006067621743989324,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.2960302374124687,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.019456949057618744,
+      0.03159219254559739
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.017342968994133345
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.014256787457319085
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.003482969923952868
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.017701335515190077
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:japan:english",
+    "method": "local",
+    "culture": "japan",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.01319253522076115,
+    "missingness_lower": -0.013192535220761109,
+    "missingness_upper": -0.013192535220761123,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.014385151690396643,
+    "holm_p": 0.2877030338079329,
+    "simultaneous_ci": [
+      -0.032573613522871206,
+      0.006188543081348901
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.026503757275252407
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.025838080542608284
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.0059629485667411775
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.00553464550155728
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:brazil:english",
+    "method": "local",
+    "culture": "brazil",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": 0.0021915827475017385,
+    "missingness_lower": 0.00219158274750178,
+    "missingness_upper": 0.0021915827475017663,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.7491538517543918,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.029105092670097713,
+      0.03348825816510119
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.005974318947742349
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.004184021348747499
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.00680841400171904
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": -0.008200423308201948
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:us:hindi",
+    "method": "local",
+    "culture": "us",
+    "language": "hindi",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.017113089840476957,
+    "missingness_lower": -0.017113089840476915,
+    "missingness_upper": -0.01711308984047695,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.008988817100980845,
+    "holm_p": 0.20674279332255943,
+    "simultaneous_ci": [
+      -0.03982605191899231,
+      0.005599872238038393
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.069008034984053
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.01523031950587806
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.006992879420201346
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.022778874548224567
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:us:japanese",
+    "method": "local",
+    "culture": "us",
+    "language": "japanese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.018031128406284465,
+    "missingness_lower": -0.018031128406284423,
+    "missingness_upper": -0.018031128406284444,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.012777279826425814,
+    "holm_p": 0.2683228763549421,
+    "simultaneous_ci": [
+      -0.043834512827277475,
+      0.007772256014708545
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.06984548762279788
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.007203711942362773
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.003844703446820155
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.008769389386842984
+      }
+    }
+  },
+  {
+    "hypothesis_id": "local:us:portuguese",
+    "method": "local",
+    "culture": "us",
+    "language": "portuguese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0052660052541808056,
+    "missingness_lower": -0.005266005254180764,
+    "missingness_upper": -0.005266005254180792,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.33027644652134314,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.02917703487359344,
+      0.01864502436523183
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.025947390192939762
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.0038651922511761805
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.0032262736016993726
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.005522287825693431
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:india:english",
+    "method": "sequential",
+    "culture": "india",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0028384065612326384,
+    "missingness_lower": -0.002838406561232583,
+    "missingness_upper": -0.0028384065612326315,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.8073165919626629,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.056066943987551,
+      0.050390130865085724
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.01993026773303226
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.008697843326040233
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.010200056183627355
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.010078854345688754
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:japan:english",
+    "method": "sequential",
+    "culture": "japan",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -3.6317541926532415e-05,
+    "missingness_lower": -3.6317541926476904e-05,
+    "missingness_upper": -3.63175419265116e-05,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.9959836135501461,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.03310829705196017,
+      0.0330356619681071
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.0014166875553266525
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.012434356181463713
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.017437741220730232
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.003441427316233807
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:brazil:english",
+    "method": "sequential",
+    "culture": "brazil",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.004467889618184055,
+    "missingness_lower": -0.004467889618184,
+    "missingness_upper": -0.004467889618184062,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.5218911386091609,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.03595206647390726,
+      0.027016287237539148
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.008989667142756404
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.006838319149890332
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.0009616832198252531
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": -0.0166818936996955
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:us:hindi",
+    "method": "sequential",
+    "culture": "us",
+    "language": "hindi",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -5.151172731680115e-05,
+    "missingness_lower": -5.151172731674564e-05,
+    "missingness_upper": -5.151172731684972e-05,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.9955135068484422,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.042044596925005936,
+      0.041941573470372334
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.018202929008816503
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.011472377767962429
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.011355741334937816
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.004419143184816572
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:us:japanese",
+    "method": "sequential",
+    "culture": "us",
+    "language": "japanese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.017050732002340578,
+    "missingness_lower": -0.017050732002340523,
+    "missingness_upper": -0.01705073200234053,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.02071553209415749,
+    "holm_p": 0.3935951097889923,
+    "simultaneous_ci": [
+      -0.0442921178134452,
+      0.010190653808764043
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.07295987033093643
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.009724215570889073
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.0022659224980061746
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": -0.0072331957473211125
+      }
+    }
+  },
+  {
+    "hypothesis_id": "sequential:us:portuguese",
+    "method": "sequential",
+    "culture": "us",
+    "language": "portuguese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.012894501446645897,
+    "missingness_lower": -0.012894501446645841,
+    "missingness_upper": -0.01289450144664589,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.28196088947433623,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.06544347133360837,
+      0.03965446844031657
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.07490354365507318
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.00011208063167446325
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.011919287247018115
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.011294169989797036
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:india:english",
+    "method": "iterative",
+    "culture": "india",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.006936092785158443,
+    "missingness_lower": -0.006936092785158429,
+    "missingness_upper": -0.006936092785158457,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.5569172883595852,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.0603562180657082,
+      0.04648403249539131
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.007833312806825588
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.01417847597878559
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.025092224532433427
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.003693016563759574
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:japan:english",
+    "method": "iterative",
+    "culture": "japan",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.0016257770698737406,
+    "missingness_lower": -0.0016257770698737267,
+    "missingness_upper": -0.0016257770698737267,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.8488403417267766,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.04067261005700816,
+      0.03742105591726068
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.008555921951890644
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.0006445599678958497
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.012653990660182649
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.015351364300474221
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:brazil:english",
+    "method": "iterative",
+    "culture": "brazil",
+    "language": "english",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": 0.0017118602570610486,
+    "missingness_lower": 0.0017118602570610625,
+    "missingness_upper": 0.0017118602570610625,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.8080429307402028,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.030515055943686087,
+      0.033938776457808184
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": 0.0007751539027448656
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.009408558310454562
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": 0.009995631840639618
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.005485213595314287
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:us:hindi",
+    "method": "iterative",
+    "culture": "us",
+    "language": "hindi",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.04527889372665199,
+    "missingness_lower": -0.045278893726651975,
+    "missingness_upper": -0.04527889372665199,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.000992967599648964,
+    "holm_p": 0.023831222391575133,
+    "simultaneous_ci": [
+      -0.08500170664739456,
+      -0.0055560808059094205
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.036684070807215446
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.05172381478036597
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.07035802629714993
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": -0.022349663021876562
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:us:japanese",
+    "method": "iterative",
+    "culture": "us",
+    "language": "japanese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 7,
+    "excluded_schedule_seeds": [
+      44006
+    ],
+    "missing_cells": [
+      {
+        "model": "gpt-4.1",
+        "culture": "us",
+        "language": "japanese",
+        "seed": 44006,
+        "terminal_recorded": true
+      }
+    ],
+    "complete_block_mean": -0.05323943013214917,
+    "missingness_lower": -0.07622720389892228,
+    "missingness_upper": -0.044977203898922305,
+    "status": "PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.010699362372179074,
+    "holm_p": 0.23538597218793963,
+    "simultaneous_ci": [
+      -0.12857432490604576,
+      0.022095464641747428
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 7,
+        "mean": -0.050440344784286086
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.08289197294363702
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.11124349165626252
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.015419304530179145
+      }
+    }
+  },
+  {
+    "hypothesis_id": "iterative:us:portuguese",
+    "method": "iterative",
+    "culture": "us",
+    "language": "portuguese",
+    "endpoint": "avg_clustering_coef",
+    "planned_schedule_blocks": 8,
+    "complete_schedule_blocks": 8,
+    "excluded_schedule_seeds": [],
+    "missing_cells": [],
+    "complete_block_mean": -0.02028997750564833,
+    "missingness_lower": -0.020289977505648316,
+    "missingness_upper": -0.0202899775056483,
+    "status": "COMPLETE_ASSUMPTIONS_REQUIRED",
+    "raw_p": 0.07493323388509797,
+    "holm_p": 1.0,
+    "simultaneous_ci": [
+      -0.06639694998820847,
+      0.025816994976911804
+    ],
+    "per_model": {
+      "gpt-4.1": {
+        "complete_blocks": 8,
+        "mean": -0.01716129093012775
+      },
+      "gpt-5.6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.019958982537929854
+      },
+      "gpt-6-luna": {
+        "complete_blocks": 8,
+        "mean": -0.04591418885981574
+      },
+      "gpt-6-sol": {
+        "complete_blocks": 8,
+        "mean": 0.0018745523052799001
+      }
+    }
+  }
+]
