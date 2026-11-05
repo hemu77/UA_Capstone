@@ -18,16 +18,21 @@ The repository includes graph data, analysis tables, failures and file hashes;
 large response records and plots are in the lossless release archive. Private
 ledgers, authorization, credentials and raw transport journals are excluded.
 
-Six separately authorized local supplemental attempts are recorded separately.
-They do not replace the original failures or enter the original primary analysis.
-See the results page for their actual outcomes rather than assuming six successes.
+**Six valid supplemental graphs are now complete.** The initial six extra
+attempts produced four valid graphs; an explicitly approved bounded completion
+needed three more attempts for the remaining two cells. Total: **896 valid
+graphs across 905 attempts**, retaining all nine failures. The original study
+remains **890/896**. These selectively completed supplements do not replace
+original failures or enter the primary analysis. See the results page for the
+separate outcomes, selected-graph mapping and verification.
 
 Contract **v6.3** adds scheduled checkpoint pauses while retaining the verified,
 unchanged original design. Its hash is
 `060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f`.
 The primary study remains **896 attempts / eight repetitions everywhere**.
 Original charges plus retained reservations total **$101.98695215**, not an
-invoice. The supplement shares the **$120 cumulative ceiling**. Reviewed execution
+invoice. Including both supplements, cumulative conservative accounting is
+**$102.634921875**, under the shared **$120 ceiling**. Reviewed execution
 amendments retained the frozen rates with a November 2-8 UTC validity window;
 they did not silently extend the frozen contract. Historical forecasts below are
 not observed wall-clock runtime. This hosted-model study did not require a GPU.

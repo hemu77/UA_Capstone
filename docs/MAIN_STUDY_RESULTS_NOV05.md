@@ -41,9 +41,33 @@ There is no repeat-until-success policy. Uncertain transport stops rather than
 silently purchasing a replacement. Original spending and reservations remain
 in the cumulative $120 accounting anchor.
 
-Supplemental outcomes will be recorded here after completion. They are not
-included in the original 896-attempt primary analysis. Even six new valid graphs
-would mean **896 valid graphs across 902 attempts**, not 896/896 primary success.
+The first six attempts completed with **four valid graphs and two failures**,
+costing $0.646534075 in conservative accounting. The owner then separately
+approved at most three additional attempts per still-missing cell, stopping at
+each first success. Three additional draws produced **two valid graphs and one
+failure** ($0.00143565). Both missing cells therefore have valid supplemental
+graphs, with no change to prompts, settings or validator.
+
+| Collection | Attempts | Valid Graphs | Failures |
+| --- | ---: | ---: | ---: |
+| Original primary study | 896 | 890 | 6 |
+| First separate supplement | 6 | 4 | 2 |
+| Bounded completion supplement | 3 | 2 | 1 |
+| Total retained observations | 905 | 896 | 9 |
+
+**Six supplemental graphs are verified, one for each original failed cell.**
+The [final supplementary audit and selected-graph mapping](../study_amendments/20261105/completion/final-audit.json)
+identify their exact records and artifact hashes. All supplementary terminal
+records replayed offline; stopped-copy accounting, graph and PNG integrity passed.
+The bounded continuation exited 0 on November 5 at 12:12:23 p.m. America/Phoenix.
+No further paid attempts are needed for this target.
+
+Total conservative charges plus retained reservations are **$102.634921875**,
+below the original cumulative $120 cap; this is not an invoice. All nine failed
+records remain. The [completion addendum](../study_amendments/20261105/completion/AMENDMENT.md)
+documents the adaptive stopping rule and bounded IDs. Supplemental selection
+depends on success and is therefore excluded from the original primary
+inference. Do not report 896/896 primary success or erase its missingness.
 
 ## Data and Interpretation
 
@@ -55,6 +79,13 @@ the archive hash and every included file's byte count and SHA-256. Extract into
 an isolated checkout using the stored repository-relative paths; never overwrite
 an active collection workspace. Private ledgers, credentials, authorization
 and raw transport/request journals are deliberately not published.
+
+`supplement-20261105-public.zip` contains all first-supplement outcomes, including
+its two failures; [file hashes](../study_amendments/20261105/supplement-manifest.json).
+`completion-20261105-public.zip` contains all bounded-completion outcomes,
+including its failed draw; [file hashes](../study_amendments/20261105/completion-manifest.json).
+These small supplementary datasets, graphs and plots are also kept directly in
+the repository under their distinct `outputs/supplement_*` folders.
 
 The repo keeps all adjacency files and analysis tables directly under
 `outputs/final_study/060dcd3a86d5/main/`; the larger response records and PNGs are

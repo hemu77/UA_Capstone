@@ -1,0 +1,17 @@
+{
+  "status": "CONDITIONAL_PAID_GO",
+  "policy_sha256": "fa84ca4def62903a010591e86da7f42386d9335563bb61fb6cb74c9614674015",
+  "reviewer_id": "01a1ace9-1050-7880-8950-dc01d1260a2d",
+  "reviewer_model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "runner_sha256": "43b681c65e64f55221b477dc9211cc5821bea737ab60005ec8397c5941876253",
+  "tests_sha256": "7cfd2f1ca5cbdeb541f671e4f3710ca9be9198af52609752522cb7b4d164e1a0",
+  "offline_tests_passed": 11,
+  "prior_replays_passed": 6,
+  "fixture_cases_passed": 6,
+  "offline_paid_calls": 0,
+  "prior_checkpoint_manifest_sha256": "08e5e2a705d2399fceb54d32477e8fc283872fdf5749a465320aadb52103bd4b",
+  "scope": "Only the two failed supplemental cells; at most three additional fresh IDs per cell; stop after first valid result; retain all failures and original primary data; cumulative $120 cap.",
+  "resolved_findings": "Full all-chain preflight occurs before credentials, including later received prefixes. Positive insufficient-cap and zero-rounded-cap tests both fail closed. No automatic transport replacement.",
+  "conditions": "Runner rechecks immutable prior evidence, all policy/code/test/review bindings, price window and model access. No success guarantee. Supplement remains excluded from primary inference."
+}

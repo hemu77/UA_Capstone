@@ -1,0 +1,30 @@
+{
+  "supplement_id": "owner-six-supplemental-attempts-20261105-v1",
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "original_archive_sha256": "9c7e01c6ebad0430b12a93c78f2bdfb2ba0cb18f5dce88c2554a391827d277e7",
+  "original_ledger_sha256": "3c2c191e5fedf0f82e4f1ddfb2f571b73be61bd0016d1011a34e8e55d9c598a6",
+  "original_spent_usd": 101.98695215000001,
+  "additional_cap_usd": 18.01304784,
+  "cumulative_cap_usd": 120,
+  "original_attempts": 896,
+  "original_valid_graphs": 890,
+  "credential_selection": "Owner confirmed existing local key/project on 2026-11-05; never prompt or save a key.",
+  "original_failed_attempts": 6,
+  "original_failures": {
+    "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44000": "invalid_global_response",
+    "final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002": "invalid_global_response",
+    "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004": "invalid_global_response",
+    "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_japanese_s44004": "invalid_global_response",
+    "final_060dcd3a86d5_main_global_gpt-6-sol_us_japanese_s44005": "invalid_global_response",
+    "final_060dcd3a86d5_main_iterative_gpt-4.1_us_japanese_s44006": "local_corrections_exhausted"
+  },
+  "runner_sha256": "d7dac09925abdf85df49cf1f400b43384ba6aea1bcc8fde6c5500267117fa008",
+  "tests_sha256": "a915bff5080eaf6e894e6b5ed3ed0faa92d0000e4f0c646137dbcf33d58e76c2",
+  "adapter_sha256": {
+    "amended_runner.py": "6ccfbe9b1b848c5f51ddfabf17a16855d3b06e2262f62729c58fb749a8c40964",
+    "billing_amendment.py": "5800a8e97aa9c34b1b849a4e30eb669cbb7196a5becb1b6cf1bb9eb0eb7a37eb",
+    "checkpoint/verified.json": "dbef39105d5e11bc912c0997dc45fa1b44aaa0d370523ee78d901493a4e3e761"
+  },
+  "owner_authorization": "2026-11-05: six separately labeled supplemental local attempts with offline checks and one bounded reviewer; retain all original failures and cumulative $120 cap.",
+  "policy": "One fresh observation per listed cell; same prompts/settings/seed. No automatic transport recovery or repeat-until-valid. Do not merge into original primary analysis."
+}

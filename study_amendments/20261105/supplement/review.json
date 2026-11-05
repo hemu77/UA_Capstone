@@ -1,0 +1,16 @@
+{
+  "status": "CONDITIONAL_PAID_GO",
+  "policy_sha256": "681b38967545a660cefc659bc0bd468a4ce1a01952c99cb0541845d515757df2",
+  "reviewer_model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "reviewer_id": "01a1acd5-8b40-7652-9cea-689cdd7d7872",
+  "runner_sha256": "d7dac09925abdf85df49cf1f400b43384ba6aea1bcc8fde6c5500267117fa008",
+  "tests_sha256": "a915bff5080eaf6e894e6b5ed3ed0faa92d0000e4f0c646137dbcf33d58e76c2",
+  "offline_tests_passed": 10,
+  "original_audit_status": "DOWNLOADED_CHECKPOINT_AUDITED",
+  "original_ledger_sha256": "3c2c191e5fedf0f82e4f1ddfb2f571b73be61bd0016d1011a34e8e55d9c598a6",
+  "streaming_audit_equivalence_reviewer": "01a1ace9-1050-7880-8950-dc01d1260a2d",
+  "streaming_audit_equivalence_result": "GO; exact archived rows and corruption fixtures passed, all original accounting checks preserved",
+  "conditions_satisfied": "Original complete audit passed; six original failure replays and six supplemental fixtures passed with zero paid calls. Owner confirmed existing local key/project. The runner must still verify matching policy and model access before transport.",
+  "scope": "Six new separately labeled supplemental attempts, no original replacement, no repeat-until-valid, no automatic transport recovery, cumulative $120 cap."
+}

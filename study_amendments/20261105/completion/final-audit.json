@@ -1,0 +1,87 @@
+{
+  "status": "SIX_SUPPLEMENTAL_GRAPHS_VERIFIED",
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "original_attempts": 896,
+  "original_valid_graphs": 890,
+  "original_failed_attempts": 6,
+  "supplemental_attempts": 9,
+  "supplemental_valid_graphs": 6,
+  "supplemental_failed_attempts": 3,
+  "all_attempts": 905,
+  "all_valid_graphs": 896,
+  "all_failed_attempts": 9,
+  "cumulative_charge_or_reservation_usd": 102.63492187500002,
+  "cap_usd": 120,
+  "paid_calls": 0,
+  "prior_checkpoint_manifest_sha256": "08e5e2a705d2399fceb54d32477e8fc283872fdf5749a465320aadb52103bd4b",
+  "final_checkpoint_manifest_sha256": "6bc5a7172b3ebc7e8a9c466062d793babea65968fd7cd258992806b3d1fe3e78",
+  "selected": [
+    {
+      "original_run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44000",
+      "selected_run_id": "supplement_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44000",
+      "source": "supplement_20261105_v1",
+      "receipt_sha256": "01f8b7001805011d4c606ac51c25f71c2fead2587ffc96603cd93d5a3e2737d4",
+      "artifacts": {
+        ".adj": "1c06f8449ad4561d03dc6e9f7456e8e42da9a6065d3c4c6d79349ab18c5f1f7d",
+        ".png": "0e572f76b3b735a2540cd2643631ef34851a43b12b0a0648cc0660cad8dbeae7"
+      },
+      "edges": 116
+    },
+    {
+      "original_run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_japanese_s44004",
+      "selected_run_id": "supplement_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_japanese_s44004",
+      "source": "supplement_20261105_v1",
+      "receipt_sha256": "79fae8b89c569f629a5c106bd0d1694294f37011e2aefb46ea66f263fde11851",
+      "artifacts": {
+        ".adj": "ca7ad41b71607f3181d925e0baa0292a16dd7b832d9a873eaf8527f943590531",
+        ".png": "4eefca1867c7184d85eb952fb8daa1cf027526ec03b19e947711fab1efaaa108"
+      },
+      "edges": 119
+    },
+    {
+      "original_run_id": "final_060dcd3a86d5_main_global_gpt-6-sol_us_japanese_s44005",
+      "selected_run_id": "supplement_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-sol_us_japanese_s44005",
+      "source": "supplement_20261105_v1",
+      "receipt_sha256": "089828489222ba845f0293a4a2c2ac2e7c574d0dfe7412a52d1c6acee2943e93",
+      "artifacts": {
+        ".adj": "3030d99387c8c4674385e2922acbaf235316cb02fd4b7b2574694fe510954398",
+        ".png": "21cf09ee9c85efa0f711d9ec9f6031b2aa141133d831bf964bab90d326eeaa80"
+      },
+      "edges": 105
+    },
+    {
+      "original_run_id": "final_060dcd3a86d5_main_iterative_gpt-4.1_us_japanese_s44006",
+      "selected_run_id": "supplement_20261105_v1_final_060dcd3a86d5_main_iterative_gpt-4.1_us_japanese_s44006",
+      "source": "supplement_20261105_v1",
+      "receipt_sha256": "1e617cb247b2d413e0d12811f53b9ae774e7408e5c327609450154368f27ec04",
+      "artifacts": {
+        ".adj": "99f3d3dfc0cc239a5c0091ba6b9a9d96be409e1ae1e94dffdd3d5cd638e564ff",
+        ".png": "251a944fbcca2a81a7e8f344f6a62b1b5cf6890d971f66c9d39507705ab23a24"
+      },
+      "edges": 270
+    },
+    {
+      "original_run_id": "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004",
+      "selected_run_id": "supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004_a1",
+      "source": "supplement_completion_20261105_v1",
+      "receipt_sha256": "f0e9d297845ba234d514d3a72bb136e0a1c66d1333801da64cb7164e30367c50",
+      "artifacts": {
+        ".adj": "e8b8da3f2e108d6ad8ffb2af35972043a97f7b0c2b35bbcf987f2574f558cc1f",
+        ".png": "da99830a546bcbef97d4c0eab471d4da45c28664fabbdc7d61f54f9305bc906f"
+      },
+      "edges": 109
+    },
+    {
+      "original_run_id": "final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002",
+      "selected_run_id": "supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002_a2",
+      "source": "supplement_completion_20261105_v1",
+      "receipt_sha256": "ff8d97869c6ae4f914f8d79955dd66c20b2f5d6a1f94b95dc90afdfbdec5fcf2",
+      "artifacts": {
+        ".adj": "8927023e8215ceca91bbee6e2e44cbb3a077177b5633f72ec7b1f2fbc43764f2",
+        ".png": "ade7ff54d6a4e0e2112fa2661c672a4c6550bdbaa1c3e4bb8b24398f65b46a30"
+      },
+      "edges": 0
+    }
+  ],
+  "qualification": "All supplementary terminal records replayed; accounting reconciled on stopped copies; selected graph/PNG integrity passed. Supplemental selection is adaptive and excluded from primary inference. Conservative accounting is not an invoice."
+}

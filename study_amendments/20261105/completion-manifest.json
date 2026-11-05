@@ -1,0 +1,72 @@
+{
+  "archive_bytes": 226391,
+  "archive_sha256": "0125f39cbc4788e56a856f7e351e1d1a5b0fc73cf51dfa4c1f49956af2aa929a",
+  "asset": "completion-20261105-public.zip",
+  "entries": {
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004_a1.adj": {
+      "bytes": 577,
+      "sha256": "e8b8da3f2e108d6ad8ffb2af35972043a97f7b0c2b35bbcf987f2574f558cc1f"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004_a1.json": {
+      "bytes": 51551,
+      "sha256": "f0e9d297845ba234d514d3a72bb136e0a1c66d1333801da64cb7164e30367c50"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004_a1.png": {
+      "bytes": 176452,
+      "sha256": "da99830a546bcbef97d4c0eab471d4da45c28664fabbdc7d61f54f9305bc906f"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002_a1.json": {
+      "bytes": 31629,
+      "sha256": "5402128f16970444d278e856f22f350929899e238914ccdb51166874106b6356"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002_a2.adj": {
+      "bytes": 254,
+      "sha256": "8927023e8215ceca91bbee6e2e44cbb3a077177b5633f72ec7b1f2fbc43764f2"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002_a2.json": {
+      "bytes": 37059,
+      "sha256": "ff8d97869c6ae4f914f8d79955dd66c20b2f5d6a1f94b95dc90afdfbdec5fcf2"
+    },
+    "outputs/supplement_completion_20261105_v1/runs/supp_complete_20261105_v1_final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002_a2.png": {
+      "bytes": 32676,
+      "sha256": "ade7ff54d6a4e0e2112fa2661c672a4c6550bdbaa1c3e4bb8b24398f65b46a30"
+    },
+    "outputs/supplement_completion_20261105_v1/summary.json": {
+      "bytes": 2119,
+      "sha256": "5c200b1b935fc520bbba2927c5119d04acb9e8fe26b9735f2c92af9266a908e5"
+    },
+    "study_amendments/20261105/completion/AMENDMENT.md": {
+      "bytes": 1901,
+      "sha256": "b39252b698ac8c5057e7672e4385291450502b56b4b61991870118f92ea4cd2d"
+    },
+    "study_amendments/20261105/completion/final-audit.json": {
+      "bytes": 4437,
+      "sha256": "10a74b2f992ced34c75130359122e39be1c1c1e743e9be2b1973c739bd50c4ab"
+    },
+    "study_amendments/20261105/completion/offline-verified.json": {
+      "bytes": 196,
+      "sha256": "ee57b3e033f21e0328d1c9fcc9dabe0828eb2880c44e6938510a0e727b267d2b"
+    },
+    "study_amendments/20261105/completion/policy.json": {
+      "bytes": 1190,
+      "sha256": "fa84ca4def62903a010591e86da7f42386d9335563bb61fb6cb74c9614674015"
+    },
+    "study_amendments/20261105/completion/review.json": {
+      "bytes": 1265,
+      "sha256": "d769cbe9fb89890b03622982da9f376fea6c2c88894f32e15f4f733c5143bbb7"
+    },
+    "study_amendments/20261105/completion/run-secure.ps1": {
+      "bytes": 1602,
+      "sha256": "1cdf0cb28f10fee4617463b6f26187eb01cb57ee902ba2303a33cdc600c455e5"
+    },
+    "study_amendments/20261105/completion/runner.py": {
+      "bytes": 15602,
+      "sha256": "43b681c65e64f55221b477dc9211cc5821bea737ab60005ec8397c5941876253"
+    },
+    "study_amendments/20261105/completion/test_completion.py": {
+      "bytes": 9801,
+      "sha256": "7cfd2f1ca5cbdeb541f671e4f3710ca9be9198af52609752522cb7b4d164e1a0"
+    }
+  },
+  "qualification": "Lossless public evidence only; private ledger, credentials, authorization and raw transport journals excluded."
+}

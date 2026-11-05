@@ -4,8 +4,11 @@
 
 The original collection finished: **896 terminal attempts, 890 valid graphs,
 six failures**. All original outcomes stay intact. A separately authorized
-six-attempt local supplement is not a replacement for those failures and is
-excluded from the primary analysis. Both share the original $120 ceiling.
+local supplement and bounded completion produced six valid supplementary graphs
+across nine extra attempts. The combined archive has 896 valid graphs across
+905 attempts, not 896/896 primary success. These additions are excluded from
+the primary analysis. All collection shares the original $120 ceiling; final
+conservative accounting is $102.634921875, not an invoice.
 See [final results, public downloads and audit qualifications](MAIN_STUDY_RESULTS_NOV05.md).
 The November 2-8 UTC execution price review superseded the dated operational
 price window below without editing frozen source or contract.

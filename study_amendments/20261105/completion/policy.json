@@ -1,0 +1,19 @@
+{
+  "supplement_id": "owner-bounded-supplement-completion-20261105-v1",
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "runner_sha256": "43b681c65e64f55221b477dc9211cc5821bea737ab60005ec8397c5941876253",
+  "tests_sha256": "7cfd2f1ca5cbdeb541f671e4f3710ca9be9198af52609752522cb7b4d164e1a0",
+  "upstream_sha256": "d7dac09925abdf85df49cf1f400b43384ba6aea1bcc8fde6c5500267117fa008",
+  "prior_manifest_sha256": "08e5e2a705d2399fceb54d32477e8fc283872fdf5749a465320aadb52103bd4b",
+  "original_and_prior_usd": 102.63348622500001,
+  "additional_cap_usd": 17.36651377,
+  "cumulative_cap_usd": 120,
+  "missing_originals": [
+    "final_060dcd3a86d5_main_global_gpt-5.6-luna_us_portuguese_s44004",
+    "final_060dcd3a86d5_main_global_gpt-6-luna_us_japanese_s44002"
+  ],
+  "max_additional_per_cell": 3,
+  "target_unique_valid_cells": 6,
+  "interpretation": "Adaptive post-collection supplement. Keep every failure; no primary substitution or repeat beyond three additional draws per missing cell.",
+  "owner_authorization": "2026-11-05: bounded supplemental completion with review and offline checks; existing intended project key, $120 cumulative ceiling."
+}
