@@ -13,10 +13,12 @@ inputs only; it does not run statistical inference or make model calls.
 ## Statistical Analysis And Evaluations
 
 Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
-[held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb), then
-[clean manuscript figures](analysis/04_manuscript_figures.ipynb). The earlier
-[comparison plots](analysis/02_primary_comparison_plots.ipynb) remain archived,
-but notebook 04 is the recommended primary figure set. The original notebooks verify the
+[primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
+[held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).
+All three now embed the revised figures directly. [Notebook 04](analysis/04_manuscript_figures.ipynb)
+collects all 12 figures; it is not a substitute for updating the main notebooks.
+The [analysis gallery](analysis/README.md) shows previews without opening a notebook.
+The notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)
 and do not query a ledger or call models. The original collection outputs stay
 unchanged. Read [findings and limitations](docs/PRIMARY_ANALYSIS_FINDINGS.md) and
@@ -26,7 +28,7 @@ All primary tests exclude the six selectively completed supplementary graphs.
 The real-friendship-network and synthetic-reference comparisons are descriptive,
 post-collection checks, not new confirmatory tests or proof of human realism.
 
-## Held-Out Public Data And Cleaner Figures
+## Held-Out Public Data And Revised Figures
 
 The [new held-out evaluation](docs/HELDOUT_REAL_WORLD_EVALUATION.md) uses two
 public friendship studies, development-only ER/BA/WS settings, equal-size
@@ -34,23 +36,34 @@ public friendship studies, development-only ER/BA/WS settings, equal-size
 controls. It does not pretend that these data were absent from LLM pretraining
 or that overlapping subgraphs are independent human samples. No paid calls.
 
-The [figure redesign](docs/VISUAL_REFERENCE_NOTES.md) follows visual principles
-from actual figures in the five supplied papers. It preserves earlier images
-and primary results, with [new captions](docs/MANUSCRIPT_FIGURE_CAPTIONS.md)
-and separate PNG/SVG/PDF artifacts. Use the
+The [revision 2 figure notes and captions](docs/PUBLICATION_FIGURES_V2.md) document
+the actual figures inspected in all five supplied papers. Compact dot/interval
+panels and distribution curves replace the dense heatmaps; original numerical
+results and revision 1 images remain unchanged. Current PNG/SVG/PDF files are in
+`outputs/publication_figures/20261105_v2/`. Use the
 [updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
-Full new benchmark/figure reproduction after the environment setup below:
+Execute all four current notebooks from the published tables and figures:
+
+```powershell
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_publication_notebooks.py
+```
+
+This checks exact embedded PNG hashes as well as old analysis/code/source pins.
+To edit and preview plots, use `analysis_figures/publication.py` and call its
+`render(root, temporary_directory)` function. The first-build driver is
+`scripts/run_publication_figures.py`; it refuses to overwrite a completed seal.
+A later published revision needs a new version, never silently changed bytes.
+
+Full benchmark reproduction after the environment setup below (not needed for
+figure or notebook inspection):
 
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_manuscript_figures.py
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_heldout_notebook.py
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_manuscript_notebook.py
 ```
 
-Both new notebooks can rerun from the published tables without downloading
+All four current notebooks can rerun from the published tables without downloading
 raw public data. Raw public caches remain outside Git, separate from all
 original/supplementary study outputs.
 
@@ -65,11 +78,10 @@ rtk proxy .\.venv\Scripts\python.exe -m ipykernel install --user --name ua-capst
 
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation.py
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_primary_notebooks.py
 ```
 
-The second command executes both notebooks with the registered frozen kernel
-and checks that all sealed analysis outputs remain unchanged. A clean GitHub
+The current notebook checker above executes all four notebooks with the registered
+frozen kernel and checks that sealed analysis outputs remain unchanged. A clean GitHub
 clone can rerun the notebooks from the published tables without downloading
 the large response archive; full resource recomputation needs that archive.
 

@@ -6,16 +6,17 @@ the work because tests pass or because AI agents reviewed it. No paid provider
 calls, credential/ledger access, graph regeneration, or changes to frozen data.
 
 Start with `ANALYSIS_START_HERE.md`, `docs/HELDOUT_REAL_WORLD_EVALUATION.md`,
-`docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/MANUSCRIPT_FIGURE_CAPTIONS.md`,
-`docs/VISUAL_REFERENCE_NOTES.md`, and executed notebooks 01, 03 and 04.
+`docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/PUBLICATION_FIGURES_V2.md`,
+`analysis/README.md`, and executed notebooks 01, 02, 03 and 04.
 Read both evaluation manifests. The six selectively completed supplemental
 graphs must remain outside every primary test and held-out benchmark.
 
 **Inspect actual plots, not just source code or captions.** Open the rendered
-PNG and SVG/PDF figures in `outputs/manuscript_figures/20261105_v1/` and
-`outputs/heldout_evaluation/20261105_v1/figures/`. Read the five supplied papers
+12 PNG and SVG/PDF figures in `outputs/publication_figures/20261105_v2/`.
+The manuscript-v1 and heldout-v1 figures are archived comparisons, not current
+displays. Read the five supplied papers
 and inspect their figures as visual references, using the exact versions and
-pages in the visual-reference notes. Do not copy source graphics, adopt their
+pages in the revision-2 reference notes. Do not copy source graphics, adopt their
 uncertainty assumptions, or force static graph results into political-compass
 or dynamic-intervention plots.
 
@@ -51,11 +52,17 @@ Audit the following independently:
 6. **Plot quality.** For EACH figure, return **KEEP / REVISE / REPLACE / REMOVE**.
    Assess the scientific question, plot type, denominator, units, axis ranges,
    uncertainty meaning, missing data, legend, ordering, color accessibility,
-   text size at manuscript width, panel alignment and clipping. Is a dense
-   heatmap actually useful, or would small-multiple dot/interval/distribution
-   plots make the evidence clearer? Are point estimates wrongly made to look
+   text size at manuscript width, panel alignment and clipping. The replacement
+   uses dot/interval panels and ECDFs: are there too many panels/curves or
+   overly small marks? Verify all 24 primary contrasts, individual block dots,
+   all 16 model/method groups and three baselines. Ensure the descriptive
+   Facebook mixture ECDF does not replace mean cohort-wise W1. Are point estimates wrongly made to look
    precise? Are repeated disclaimers, decorative titles or overpacked legends
    still obscuring the data? Identify the exact panel and concrete remedy.
+7. **Actual delivery.** Run `scripts/check_publication_notebooks.py` with the
+   registered frozen kernel. Verify the four notebooks embed exactly 3, 7, 5
+   and 12 replacement PNGs, not stale figures or temporary-path links. Check
+   public README/gallery links, protected-input hashes and the completed v2 seal.
 
 Return findings first, ordered by severity with file/line or figure/panel
 references and reproducible evidence. Separate numeric defects, design limits,

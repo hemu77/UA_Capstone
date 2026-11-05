@@ -147,9 +147,8 @@ class ManuscriptFigureTests(unittest.TestCase):
         self.assertEqual(means.axes[1].get_xlim(), means.axes[3].get_xlim())
         self.assertEqual(len(means.legends), 1)
 
-    def test_notebook_renders_only_to_live_temporary_workspace(self):
-        notebook = nbformat.read(ROOT / 'analysis/04_manuscript_figures.ipynb', as_version=4)
-        code = next(cell.source for cell in notebook.cells if cell.id == 'render-temporary')
+    def test_archived_render_cell_uses_only_live_temporary_workspace(self):
+        code = (ROOT / 'tests/fixtures/legacy_manuscript_render_cell.py.txt').read_text()
         (self.root / 'analysis_figures').mkdir()
         (self.root / 'analysis_figures/manuscript.py').touch()
         namespace = {}

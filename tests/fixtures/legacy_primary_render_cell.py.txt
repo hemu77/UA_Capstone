@@ -1,0 +1,42 @@
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import hashlib
+import json
+import shutil
+import sys
+from IPython.display import Image, Markdown, display
+
+ROOT = next((p for p in (Path.cwd(), *Path.cwd().parents) if (p / 'analysis_primary/core.py').is_file()), None)
+if ROOT is None:
+    raise FileNotFoundError('Start this notebook within the project checkout.')
+sys.path.insert(0, str(ROOT))
+from analysis_primary.core import load_inputs
+from analysis_primary.plots import render_figures
+
+OUTPUT = ROOT / 'outputs/primary_analysis/20261105'
+manifest_path = OUTPUT / 'evaluation_manifest.json'
+if not manifest_path.is_file():
+    raise FileNotFoundError('Completed evaluation manifest required: ' + str(manifest_path))
+manifest = json.loads(manifest_path.read_text(encoding='utf8'))
+if manifest.get('status') != 'COMPLETE_PRIMARY_ANALYSIS_WITH_CAVEATS':
+    raise ValueError('Evaluation manifest must be COMPLETE_PRIMARY_ANALYSIS_WITH_CAVEATS before validating or rendering inputs.')
+required = ['primary_contrasts.csv', 'paired_schedule_blocks.csv', 'descriptive_metrics.csv', 'resources_by_method_model.csv']
+missing = [name for name in required if not (OUTPUT / name).is_file()]
+if missing:
+    raise FileNotFoundError('Core output not ready: ' + ', '.join(missing))
+spec, primary, original_rows = load_inputs(ROOT)
+print('Frozen sources and primary-input hashes validated:', len(primary), 'attempts')
+optional = ['synthetic_reference_per_run.csv', 'empirical_reference_metrics.csv', 'empirical_comparisons_descriptive.csv']
+inputs = required + [name for name in optional if (OUTPUT / name).is_file()]
+# Keep this object alive through display; never modify sealed OUTPUT figures.
+plot_workspace = TemporaryDirectory(prefix='primary-comparison-plots-')
+PLOT_OUTPUT = Path(plot_workspace.name)
+for name in inputs:
+    target = PLOT_OUTPUT / name
+    shutil.copyfile(OUTPUT / name, target)
+    expected = manifest['artifacts'][name]['sha256']
+    if hashlib.sha256(target.read_bytes()).hexdigest() != expected:
+        raise ValueError('Evaluation manifest hash mismatch: ' + name)
+print('Evaluation CSV hashes verified.')
+figure_paths = render_figures(ROOT, primary, PLOT_OUTPUT)
+print('Wrote', len(figure_paths), 'temporary files; sealed OUTPUT unchanged.')

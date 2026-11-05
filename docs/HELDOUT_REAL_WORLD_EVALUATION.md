@@ -120,8 +120,9 @@ that the LLMs match human mechanisms or that these effects generalize.
 
 ## Reading The Figures
 
-1. **Transfer distances:** same 0-1 color scale for both sources, all fixed
-   models/procedures and all three development baselines. Each column is a
+1. **Transfer distances:** revision 2 uses dot panels, shared zero-based axes
+   between sources within each metric, all fixed models/procedures and all
+   three development baselines. Baseline spans are bank ranges, not CIs. Each column is a
    separate estimand; do not average columns into an invented realism score.
 2. **Sampling shift:** open circles are the complete observed rosters; diamonds
    are 50-node-draw means. Lines show the minimum-to-maximum node-draw range,
@@ -130,17 +131,20 @@ that the LLMs match human mechanisms or that these effects generalize.
    transitivity. Positive values mean excess closure relative to that control,
    not a p-value or human-behavior validation. Both controls are target informed.
 4. **Cohort sensitivity:** do not hide differences among source records behind
-   a source mean. Adjacent Facebook columns can share people and edges.
+   a source mean. Facebook records can share people and edges.
+5. **Distributions:** ECDFs show the observed mixture and generated distributions
+   for three metrics. The source mixture is descriptive, not a replacement for
+   cohort-wise W1. No population uncertainty bands are inferred.
 
 See the [executed notebook](../analysis/03_heldout_public_evaluation.ipynb),
 [sealed results](../outputs/heldout_evaluation/20261105_v1/evaluation_manifest.json),
 [all distances](../outputs/heldout_evaluation/20261105_v1/per_cohort_distances.csv)
-and [compact manuscript-figure captions](MANUSCRIPT_FIGURE_CAPTIONS.md).
+and [current revision-2 captions](PUBLICATION_FIGURES_V2.md).
 The [verification receipt](HELDOUT_VERIFICATION.md) distinguishes completed
 checks from remaining scientific limits.
-The earlier dashboard-like figures are archived unchanged; the clean manuscript
-set is a separate version, with source-inspired choices documented in
-[visual-reference notes](VISUAL_REFERENCE_NOTES.md).
+Both earlier figure sets are archived unchanged. Notebooks 01-04 now display
+the [revision-2 set](../outputs/publication_figures/20261105_v2/) directly;
+the figure notes identify the five reference papers and inspected pages.
 
 ## Reproduce Without Paid Calls
 
@@ -149,7 +153,7 @@ Use the pinned Python 3.11.9 environment and registered notebook kernel:
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_heldout_notebook.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_publication_notebooks.py
 ```
 
 The fetcher accepts only the two pinned public downloads, bounds sizes,

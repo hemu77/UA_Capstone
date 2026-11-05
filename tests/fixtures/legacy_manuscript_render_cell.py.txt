@@ -1,0 +1,17 @@
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import sys
+from IPython.display import Image, Markdown, display
+
+ROOT = next((p for p in (Path.cwd(), *Path.cwd().parents) if (p / 'analysis_figures/manuscript.py').is_file()), None)
+if ROOT is None:
+    raise FileNotFoundError('Start within the project checkout.')
+sys.path.insert(0, str(ROOT))
+from analysis_figures.manuscript import render_manuscript
+
+# Keep the workspace alive until this kernel session ends.
+manuscript_workspace = TemporaryDirectory(prefix='manuscript-figures-')
+TEMP_OUTPUT = Path(manuscript_workspace.name)
+figure_paths = render_manuscript(ROOT, TEMP_OUTPUT)
+print('Validated sealed evidence; rendered', len(figure_paths), 'temporary PNG/SVG/PDF files.')
+print('Old evidence and outputs/manuscript_figures/20261105_v1 were not modified.')

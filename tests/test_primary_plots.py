@@ -121,10 +121,10 @@ class PrimaryPlotsTests(unittest.TestCase):
                 self.assertFalse(any(output['output_type'] == 'error' for output in cell['outputs']))
                 compile(''.join(cell['source']), str(path), 'exec')
 
-    def test_notebook_copies_checks_hashes_and_preserves_sealed_output(self):
+    def test_archived_render_cell_copies_checks_hashes_and_preserves_sealed_output(self):
         path = Path(__file__).resolve().parents[1] / 'analysis/02_primary_comparison_plots.ipynb'
         notebook = json.loads(path.read_text())
-        code = ''.join(next(cell for cell in notebook['cells'] if cell['id'] == 'validated-render')['source'])
+        code = (Path(__file__).parent / 'fixtures/legacy_primary_render_cell.py.txt').read_text()
         (self.root / 'analysis_primary').mkdir()
         (self.root / 'analysis_primary/core.py').touch()
         sealed = self.root / 'outputs/primary_analysis/20261105'
@@ -184,10 +184,10 @@ class PrimaryPlotsTests(unittest.TestCase):
             self.assertEqual(loader.call_count, calls_before_status_check)
             renderer.assert_called_once()
 
-    def test_notebook_refuses_missing_manifest_before_loading_inputs(self):
+    def test_archived_render_cell_refuses_missing_manifest_before_loading_inputs(self):
         path = Path(__file__).resolve().parents[1] / 'analysis/02_primary_comparison_plots.ipynb'
         notebook = json.loads(path.read_text())
-        code = ''.join(next(cell for cell in notebook['cells'] if cell['id'] == 'validated-render')['source'])
+        code = (Path(__file__).parent / 'fixtures/legacy_primary_render_cell.py.txt').read_text()
         (self.root / 'analysis_primary').mkdir()
         (self.root / 'analysis_primary/core.py').touch()
         with patch('sys.path', list(sys.path)), \

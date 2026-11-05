@@ -61,17 +61,18 @@ reproduces every distance independently. This is structural transfer, not
 pretraining-unseen or matched-human behavioral validation. Six supplements stay
 excluded, and no new paid calls were made.
 
-**Recommended figures:** [clean manuscript notebook 04](analysis/04_manuscript_figures.ipynb),
-[PNG/SVG/PDF files](outputs/manuscript_figures/20261105_v1/), and
-[captions](docs/MANUSCRIPT_FIGURE_CAPTIONS.md). The redesign uses the five papers'
-actual figures as [visual references](docs/VISUAL_REFERENCE_NOTES.md), preserves
-all original results and archived plots, and removes the oversized dashboard
-headings/footers. [Claude review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+**Revised figures, now inside notebooks 01-04:** [open the visual gallery](analysis/README.md),
+[all 12 figures in notebook 04](analysis/04_manuscript_figures.ipynb),
+[PNG/SVG/PDF files](outputs/publication_figures/20261105_v2/), and
+[captions with five-paper visual references](docs/PUBLICATION_FIGURES_V2.md).
+Dot/interval panels, visible paired observations and distribution curves replace
+the old heatmaps and dashboard layouts. Original statistics and archived figures
+are preserved. [Claude review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
 The [analysis entry point](ANALYSIS_START_HERE.md) links separated data catalogs,
 executed [statistics](analysis/01_primary_statistical_analysis.ipynb) and
-[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, eight
-PNG/SVG figure pairs, and an offline reproduction command. All primary tests
+[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, 12
+PNG/SVG/PDF figure sets, and offline reproduction commands. All primary tests
 retain the original 896 attempts and exclude the six selected supplements.
 
 [Findings and limitations](docs/PRIMARY_ANALYSIS_FINDINGS.md): the locked family
