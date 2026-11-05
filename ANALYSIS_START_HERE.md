@@ -3,6 +3,9 @@
 Canonical workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`.
 Use this workspace, not the historical OneDrive checkout.
 
+[Browse all 896 saved network files and plots](NETWORKS.md): 890 primary plus
+six separate supplements. Each entry links to its original ADJ and PNG.
+
 Open [the readiness notebook](analysis/00_data_readiness.ipynb) with the
 **UA Capstone (frozen Python 3.11)** kernel. It validates and loads prepared
 inputs only; it does not run statistical inference or make model calls.

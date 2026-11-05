@@ -4,6 +4,13 @@ A research revision of [Stanford SNAP's LLM social-network code](https://github.
 We study how language models generate friendships between fictional personas
 under different country framings, instruction languages and generation methods.
 
+## Browse The 896 Saved Networks
+
+**[Open all graph files and original PNG plots](NETWORKS.md).** The index separates
+890 primary networks from six selectively completed supplements. Each graph has
+direct ADJ and PNG links in this repository; the primary study remains 890/896
+valid, and supplements remain outside primary tests.
+
 ## Main Collection Complete (November 5)
 
 **All 896 planned attempts have terminal records: 890 valid graphs and six
