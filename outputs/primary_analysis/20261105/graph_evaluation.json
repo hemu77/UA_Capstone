@@ -1,0 +1,48 @@
+{
+  "attempts": 896,
+  "baseline_pvalues": false,
+  "cohort": "primary",
+  "empirical_ground_truth": false,
+  "failed_attempts": 6,
+  "files": [
+    "graph_quality.csv",
+    "synthetic_reference_per_run.csv",
+    "synthetic_reference_descriptive.csv",
+    "graph_evaluation.json"
+  ],
+  "interpretation": "Equal-n/equal-m synthetic descriptive context only; not empirical ground truth, a realism benchmark, or a new primary hypothesis test. Density is fixed by n,m. Eight draws do not establish null convergence. Efficiency observations are retained from CSV; recomputed efficiency is descriptive, not a frozen-math verification claim.",
+  "metric_absolute_tolerance": 1e-12,
+  "metric_checks": {
+    "avg_clustering_coef": {
+      "failure": 6,
+      "match": 890,
+      "undefined": 0
+    },
+    "density": {
+      "failure": 6,
+      "match": 890,
+      "undefined": 0
+    }
+  },
+  "networkx_version": "3.1",
+  "primary_csv": "outputs/analysis_ready/060dcd3a86d5/primary_attempts.csv",
+  "primary_csv_sha256": "ec24e7867a22d687d40d99253aa823a76bd506a734b6afb022ca359b64aac073",
+  "primary_hypothesis_test": false,
+  "record_provenance": "record_path and record_sha256 must match the hash-sealed primary CSV; parent core verifies receipt bytes. This lane hashes adjacency bytes only, not raw receipt archives.",
+  "reference_MC_reps": 8,
+  "reference_SD_interpretation": "Sample SD across eight Monte Carlo draws, not a confidence interval. Between-run SD and mean within-run SD are descriptive only.",
+  "reference_SD_is_CI": false,
+  "reference_empty_graphs": 96,
+  "reference_failure_policy": "Fail fast; reference generation exceptions abort without writing new outputs. Primary failures are skipped, not successful zero graphs.",
+  "reference_failures": 0,
+  "reference_model": "G(n,m)",
+  "reference_replicates": 8,
+  "reference_sd_ddof": 1,
+  "reference_skipped_primary_failures": 6,
+  "schema_version": 1,
+  "seed_scheme": "first 8 SHA-256 bytes, big-endian: primary-graph-evaluation-v1:{original_run_id}:{replicate}; replicate=0..7",
+  "synthetic_graphs": 7120,
+  "undefined_policy": "Preserve missing observations and failure rows; only defined metrics are compared. Empty 50-node graphs have defined zero density, clustering and efficiency.",
+  "valid_empty_graphs": 12,
+  "verified_graphs": 890
+}

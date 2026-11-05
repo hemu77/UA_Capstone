@@ -45,6 +45,26 @@ has been performed. Of 24 primary comparisons, 21 have complete blocks, two use
 the predeclared partial-block fallback, and one has no inference. Assumptions
 and missingness remain explicit.
 
+## Primary Analysis And Real-Network Evaluation
+
+The [analysis entry point](ANALYSIS_START_HERE.md) links separated data catalogs,
+executed [statistics](analysis/01_primary_statistical_analysis.ipynb) and
+[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, eight
+PNG/SVG figure pairs, and an offline reproduction command. All primary tests
+retain the original 896 attempts and exclude the six selected supplements.
+
+[Findings and limitations](docs/PRIMARY_ANALYSIS_FINDINGS.md): the locked family
+has one Holm-adjusted t contrast, lower iterative Hindi clustering versus
+US-English. Its significance is sensitive to block omission and test assumptions;
+no equivalence, national behavior or model-superiority claim follows.
+
+All 890 valid graphs are checked. Equal-node/edge synthetic controls and eight
+documented real friendship networks provide **post-collection descriptive**
+structural comparisons, not new primary tests or proof of human realism.
+Held-out, population/tie-matched human evaluation remains the priority.
+See the [five-paper review](docs/PRIMARY_LITERATURE_REVIEW.md) and the
+[independent Claude review prompt](docs/CLAUDE_PRIMARY_ANALYSIS_REVIEW_PROMPT.md).
+
 The dated preparation sections below are historical, not current launch instructions.
 
 ## Adopted Final Collection (October 19; Price Window Updated October 25)

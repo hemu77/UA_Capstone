@@ -1,0 +1,431 @@
+[
+  {
+    "bounded_missingness_lower": -0.0030102040816326597,
+    "bounded_missingness_upper": -0.0030102040816326597,
+    "ci": [
+      -0.02996410709999086,
+      0.023943698936725537
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "global:india:english",
+    "mean": -0.0030102040816326597,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.612180722248573,
+    "sample_sd": 0.01604967522197152,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.6015625
+  },
+  {
+    "bounded_missingness_lower": -0.0021938775510204154,
+    "bounded_missingness_upper": -0.0021938775510204154,
+    "ci": [
+      -0.025082691261553672,
+      0.020694936159512844
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "global:japan:english",
+    "mean": -0.0021938775510204154,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.6626852470460702,
+    "sample_sd": 0.013629121764668425,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.6875
+  },
+  {
+    "bounded_missingness_lower": -0.0011989795918367465,
+    "bounded_missingness_upper": -0.0011989795918367465,
+    "ci": [
+      -0.027257479683807113,
+      0.02485952050013362
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "global:brazil:english",
+    "mean": -0.0011989795918367465,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.8332312002388569,
+    "sample_sd": 0.01551650842414118,
+    "sign_consistency": 0.75,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.875
+  },
+  {
+    "bounded_missingness_lower": 0.009668367346938763,
+    "bounded_missingness_upper": 0.009668367346938763,
+    "ci": [
+      -0.007834598266211391,
+      0.027171332960088918
+    ],
+    "holm_p": 0.6158924578214968,
+    "hypothesis_id": "global:us:hindi",
+    "mean": 0.009668367346938763,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.034216247656749826,
+    "sample_sd": 0.010422123776325239,
+    "sign_consistency": 0.875,
+    "sign_flip_holm_p": 0.46875,
+    "sign_flip_p": 0.0234375
+  },
+  {
+    "bounded_missingness_lower": 0.0010204081632653001,
+    "bounded_missingness_upper": 0.0947704081632653,
+    "ci": null,
+    "holm_p": null,
+    "hypothesis_id": "global:us:japanese",
+    "mean": 0.0036326530612244834,
+    "minimum_exact_two_sided_p": 0.0625,
+    "n": 5,
+    "raw_p": null,
+    "sample_sd": 0.018529555845101707,
+    "sign_consistency": 0.6,
+    "sign_flip_holm_p": null,
+    "sign_flip_p": null
+  },
+  {
+    "bounded_missingness_lower": 0.001275510204081622,
+    "bounded_missingness_upper": 0.06377551020408162,
+    "ci": [
+      -0.049917628597696044,
+      0.06304688029837628
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "global:us:portuguese",
+    "mean": 0.00656462585034012,
+    "minimum_exact_two_sided_p": 0.03125,
+    "n": 6,
+    "raw_p": 0.5274573227317294,
+    "sample_sd": 0.02369190579314093,
+    "sign_consistency": 0.6666666666666666,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.5
+  },
+  {
+    "bounded_missingness_lower": 0.006067621743989324,
+    "bounded_missingness_upper": 0.006067621743989324,
+    "ci": [
+      -0.019456949057618727,
+      0.03159219254559738
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "local:india:english",
+    "mean": 0.006067621743989324,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.2960302374124682,
+    "sample_sd": 0.015198580749771488,
+    "sign_consistency": 0.75,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.296875
+  },
+  {
+    "bounded_missingness_lower": -0.013192535220761137,
+    "bounded_missingness_upper": -0.013192535220761137,
+    "ci": [
+      -0.03257361352287119,
+      0.006188543081348915
+    ],
+    "holm_p": 0.28770303380793416,
+    "hypothesis_id": "local:japan:english",
+    "mean": -0.013192535220761137,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.014385151690396709,
+    "sample_sd": 0.011540444142304873,
+    "sign_consistency": 0.75,
+    "sign_flip_holm_p": 0.59375,
+    "sign_flip_p": 0.03125
+  },
+  {
+    "bounded_missingness_lower": 0.0021915827475017524,
+    "bounded_missingness_upper": 0.0021915827475017524,
+    "ci": [
+      -0.0291050926700977,
+      0.0334882581651012
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "local:brazil:english",
+    "mean": 0.0021915827475017524,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.7491538517543902,
+    "sample_sd": 0.018635574804799715,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.7421875
+  },
+  {
+    "bounded_missingness_lower": -0.017113089840476943,
+    "bounded_missingness_upper": -0.017113089840476943,
+    "ci": [
+      -0.03982605191899227,
+      0.005599872238038383
+    ],
+    "holm_p": 0.20674279332255913,
+    "hypothesis_id": "local:us:hindi",
+    "mean": -0.017113089840476943,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.008988817100980831,
+    "sample_sd": 0.013524411082166555,
+    "sign_consistency": 0.875,
+    "sign_flip_holm_p": 0.359375,
+    "sign_flip_p": 0.015625
+  },
+  {
+    "bounded_missingness_lower": -0.018031128406284486,
+    "bounded_missingness_upper": -0.018031128406284486,
+    "ci": [
+      -0.043834512827277475,
+      0.0077722560147085035
+    ],
+    "holm_p": 0.2683228763549397,
+    "hypothesis_id": "local:us:japanese",
+    "mean": -0.018031128406284486,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.012777279826425698,
+    "sample_sd": 0.015364600047071133,
+    "sign_consistency": 0.875,
+    "sign_flip_holm_p": 0.359375,
+    "sign_flip_p": 0.015625
+  },
+  {
+    "bounded_missingness_lower": -0.005266005254180799,
+    "bounded_missingness_upper": -0.005266005254180799,
+    "ci": [
+      -0.029177034873593428,
+      0.01864502436523183
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "local:us:portuguese",
+    "mean": -0.005266005254180799,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.33027644652134364,
+    "sample_sd": 0.014237799229044256,
+    "sign_consistency": 0.75,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.3359375
+  },
+  {
+    "bounded_missingness_lower": -0.0028384065612326523,
+    "bounded_missingness_upper": -0.0028384065612326523,
+    "ci": [
+      -0.05606694398755104,
+      0.05039013086508574
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "sequential:india:english",
+    "mean": -0.0028384065612326523,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.807316591962662,
+    "sample_sd": 0.03169488061343491,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.8203125
+  },
+  {
+    "bounded_missingness_lower": -3.6317541926532415e-05,
+    "bounded_missingness_upper": -3.6317541926532415e-05,
+    "ci": [
+      -0.03310829705196017,
+      0.0330356619681071
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "sequential:japan:english",
+    "mean": -3.6317541926532415e-05,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.9959836135501461,
+    "sample_sd": 0.01969267789240818,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 1.0
+  },
+  {
+    "bounded_missingness_lower": -0.004467889618184048,
+    "bounded_missingness_upper": -0.004467889618184048,
+    "ci": [
+      -0.03595206647390725,
+      0.027016287237539155
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "sequential:brazil:english",
+    "mean": -0.004467889618184048,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.5218911386091616,
+    "sample_sd": 0.018747222352967014,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.5234375
+  },
+  {
+    "bounded_missingness_lower": -5.151172731680115e-05,
+    "bounded_missingness_upper": -5.151172731680115e-05,
+    "ci": [
+      -0.042044596925005936,
+      0.041941573470372334
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "sequential:us:hindi",
+    "mean": -5.151172731680115e-05,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.9955135068484422,
+    "sample_sd": 0.025004741559411573,
+    "sign_consistency": 0.5,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.9921875
+  },
+  {
+    "bounded_missingness_lower": -0.017050732002340585,
+    "bounded_missingness_upper": -0.017050732002340585,
+    "ci": [
+      -0.04429211781344522,
+      0.01019065380876405
+    ],
+    "holm_p": 0.39359510978899237,
+    "hypothesis_id": "sequential:us:japanese",
+    "mean": -0.017050732002340585,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.020715532094157493,
+    "sample_sd": 0.016220856570080662,
+    "sign_consistency": 0.875,
+    "sign_flip_holm_p": 0.59375,
+    "sign_flip_p": 0.03125
+  },
+  {
+    "bounded_missingness_lower": -0.01289450144664589,
+    "bounded_missingness_upper": -0.01289450144664589,
+    "ci": [
+      -0.06544347133360838,
+      0.0396544684403166
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "sequential:us:portuguese",
+    "mean": -0.01289450144664589,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.28196088947433656,
+    "sample_sd": 0.03129023278597082,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.2578125
+  },
+  {
+    "bounded_missingness_lower": -0.006936092785158443,
+    "bounded_missingness_upper": -0.006936092785158443,
+    "ci": [
+      -0.0603562180657082,
+      0.04648403249539131
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "iterative:india:english",
+    "mean": -0.006936092785158443,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.5569172883595852,
+    "sample_sd": 0.03180896141408161,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.5703125
+  },
+  {
+    "bounded_missingness_lower": -0.0016257770698737406,
+    "bounded_missingness_upper": -0.0016257770698737406,
+    "ci": [
+      -0.04067261005700816,
+      0.03742105591726068
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "iterative:japan:english",
+    "mean": -0.0016257770698737406,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.8488403417267766,
+    "sample_sd": 0.02325039855872584,
+    "sign_consistency": 0.625,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.8671875
+  },
+  {
+    "bounded_missingness_lower": 0.0017118602570610486,
+    "bounded_missingness_upper": 0.0017118602570610486,
+    "ci": [
+      -0.030515055943686087,
+      0.033938776457808184
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "iterative:brazil:english",
+    "mean": 0.0017118602570610486,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.8080429307402028,
+    "sample_sd": 0.01918948577040585,
+    "sign_consistency": 0.5,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.78125
+  },
+  {
+    "bounded_missingness_lower": -0.04527889372665199,
+    "bounded_missingness_upper": -0.04527889372665199,
+    "ci": [
+      -0.08500170664739456,
+      -0.0055560808059094205
+    ],
+    "holm_p": 0.023831222391575133,
+    "hypothesis_id": "iterative:us:hindi",
+    "mean": -0.04527889372665199,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.000992967599648964,
+    "sample_sd": 0.023652910149852036,
+    "sign_consistency": 1.0,
+    "sign_flip_holm_p": 0.1875,
+    "sign_flip_p": 0.0078125
+  },
+  {
+    "bounded_missingness_lower": -0.07622720389892229,
+    "bounded_missingness_upper": -0.04497720389892229,
+    "ci": [
+      -0.12857432490604576,
+      0.022095464641747428
+    ],
+    "holm_p": 0.23538597218793966,
+    "hypothesis_id": "iterative:us:japanese",
+    "mean": -0.05323943013214917,
+    "minimum_exact_two_sided_p": 0.015625,
+    "n": 7,
+    "raw_p": 0.010699362372179076,
+    "sample_sd": 0.03858554770246724,
+    "sign_consistency": 1.0,
+    "sign_flip_holm_p": 0.359375,
+    "sign_flip_p": 0.015625
+  },
+  {
+    "bounded_missingness_lower": -0.02028997750564833,
+    "bounded_missingness_upper": -0.02028997750564833,
+    "ci": [
+      -0.06639694998820847,
+      0.025816994976911804
+    ],
+    "holm_p": 1.0,
+    "hypothesis_id": "iterative:us:portuguese",
+    "mean": -0.02028997750564833,
+    "minimum_exact_two_sided_p": 0.0078125,
+    "n": 8,
+    "raw_p": 0.07493323388509797,
+    "sample_sd": 0.027454351724477737,
+    "sign_consistency": 0.75,
+    "sign_flip_holm_p": 1.0,
+    "sign_flip_p": 0.078125
+  }
+]

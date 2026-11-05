@@ -1,0 +1,39 @@
+{
+  "archived_primary_agreement": {
+    "absolute_tolerance": 1e-12,
+    "identity_and_status_exact": true,
+    "maximum_absolute_difference": 1.1102230246251565e-16,
+    "numeric_fields_differing": 5
+  },
+  "caveats": [
+    "Single fictional roster; four fixed models; eight schedule blocks; conditional t assumptions.",
+    "Sign flips are a post-collection symmetry sensitivity diagnostic, not causal randomization inference.",
+    "Missingness bounds are identification bounds, not confidence intervals. Complete blocks need ignorable missingness.",
+    "No equivalence margin; nonsignificance is not evidence of sameness. Supplementary graphs excluded."
+  ],
+  "contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "exploratory_sign_flip_holm_significant": [],
+  "family_size": 24,
+  "independent_numeric_crosscheck": true,
+  "primary_attempts": 896,
+  "primary_failures": 6,
+  "primary_holm_significant": [
+    "iterative:us:hindi"
+  ],
+  "resources": {
+    "api_seconds": 90984.97299900008,
+    "cost_grouping_excludes_unallocated_retained_reservations": true,
+    "note": "Received-cost groupings charge failed graph attempts. Retained reservations are reported only in the study total, not fabricated method allocations. API seconds are serial provider time, not wall time or a speedup claim. No invoice or equal-compute comparison.",
+    "received_conservative_usd": 101.91528510000003,
+    "received_request_count": 99632,
+    "retained_reservations_usd": 0.07166704999997364,
+    "total_charge_or_reservation_usd": 101.98695215000001
+  },
+  "status_counts": {
+    "COMPLETE_ASSUMPTIONS_REQUIRED": 21,
+    "MISSING_NO_INFERENCE": 1,
+    "PARTIAL_BLOCKS_ASSUMPTIONS_REQUIRED": 2
+  },
+  "valid_empty_primary_graphs": 12,
+  "valid_primary_graphs": 890
+}

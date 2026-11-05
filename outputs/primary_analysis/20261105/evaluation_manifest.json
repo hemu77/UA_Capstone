@@ -1,0 +1,190 @@
+{
+  "artifacts": {
+    "coverage_by_cell.csv": {
+      "bytes": 4634,
+      "sha256": "9956b3e3a4935b0eaa615faf33e43eb3fee09640ef5eb69c52c8fa43a2deeaa5"
+    },
+    "descriptive_metrics.csv": {
+      "bytes": 153222,
+      "sha256": "6d9e75ab59b2d1192ee237f0e370a0fdfe1e6e6cd10180783beece6e03455ac4"
+    },
+    "empirical_comparisons_descriptive.csv": {
+      "bytes": 7858,
+      "sha256": "aea0495a785fb896800d33fd90da6c6114980565d257afc5d53b4fdc46133322"
+    },
+    "empirical_evaluation.json": {
+      "bytes": 2058,
+      "sha256": "d737370c2c59c25117e6236f54a1c96fe17cd13faa3ec26584a672a3ab560151"
+    },
+    "empirical_reference_metrics.csv": {
+      "bytes": 2799,
+      "sha256": "a9a10bb96fe2f8f9c28ca54c72a97baf06dcdf11be42fc4878d44823f8db2846"
+    },
+    "figures/01_primary_forest.png": {
+      "bytes": 277297,
+      "sha256": "e9c686ecdac1c75e55aa0c6c999042727e2b11fafd440afd2474a45b2f503ba4"
+    },
+    "figures/01_primary_forest.svg": {
+      "bytes": 48440,
+      "sha256": "848f6de4a3872dde20e1286ed5d9020fe61cd8e877c2f980e8dd93b409d9b48d"
+    },
+    "figures/02_paired_blocks.png": {
+      "bytes": 335002,
+      "sha256": "62fa5e6f3839ecc34e1116f6b82845d6b30ecfbc483be9d09d35da1da4438acb"
+    },
+    "figures/02_paired_blocks.svg": {
+      "bytes": 82242,
+      "sha256": "f75bec2573c27384690cdc0f31f1cb648b6eeef3d713b27bd3ef92d4ede27790"
+    },
+    "figures/03_model_endpoint_means.png": {
+      "bytes": 278685,
+      "sha256": "7b31cfd0174e7a442cd89365c55dee08e1f33a132b5b2effba8de50d81aa1434"
+    },
+    "figures/03_model_endpoint_means.svg": {
+      "bytes": 74084,
+      "sha256": "7bd3e08364d55528d520a5117bf171ede73725b073fe693bc9070e755e21844d"
+    },
+    "figures/04_endpoint_coverage.png": {
+      "bytes": 264350,
+      "sha256": "6cf7f89bc99ca12810e8e7c7d425a42e4a41b20e36a292703e487bb69d1bff57"
+    },
+    "figures/04_endpoint_coverage.svg": {
+      "bytes": 71828,
+      "sha256": "f687da0bceecea41c4395cd07eac0bae5468d54a5c199cc1b806b67804599a1f"
+    },
+    "figures/05_resource_use.png": {
+      "bytes": 207484,
+      "sha256": "00f5a2f5b3cd8c56ad5de0da529008e2763bf38c6788379eb84dfd30e75664c7"
+    },
+    "figures/05_resource_use.svg": {
+      "bytes": 109521,
+      "sha256": "ceae5694f2caa7db5bd2f3c0ec8415479404498667d53bccf1eee70cd2a4f0e8"
+    },
+    "figures/06_missingness_bounds.png": {
+      "bytes": 282003,
+      "sha256": "fb3736ca3a9424f183eb442109918a4efb442669a38a6f481d044a7b97a9a52e"
+    },
+    "figures/06_missingness_bounds.svg": {
+      "bytes": 52473,
+      "sha256": "c7e31b1c45dad2089b58d19c65c19d5fb448b5c398271e9048ba384f46228b25"
+    },
+    "figures/07_gnm_clustering_context.png": {
+      "bytes": 373063,
+      "sha256": "4e1a8ea950b08c387d775172ca3fe086fe485a87ed7925e923ae197a848d9ebc"
+    },
+    "figures/07_gnm_clustering_context.svg": {
+      "bytes": 170358,
+      "sha256": "e17764a5cc18c2053e7a87096d99298d5aed2c64d6c245d63b3f941a402055ea"
+    },
+    "figures/08_empirical_context.png": {
+      "bytes": 357209,
+      "sha256": "12fe5dae3944b8f73b829d947fa05ee7789ecd53407cf26cda4348d80739e1df"
+    },
+    "figures/08_empirical_context.svg": {
+      "bytes": 451735,
+      "sha256": "fac3485a6b8d494bb2379f3eedabff842c050c0f703c7eb9981d395c8d207802"
+    },
+    "graph_evaluation.json": {
+      "bytes": 2359,
+      "sha256": "6d64afd3b1d6d57b7a64c74c131bd163587603014e98bb486321f707b7c6cb06"
+    },
+    "graph_quality.csv": {
+      "bytes": 691978,
+      "sha256": "d63c0a5a455b6145cc9f43c944249f6d70d2c9882f7d127ed4b70dd2ae6ae46b"
+    },
+    "leave_one_seed_out.csv": {
+      "bytes": 15161,
+      "sha256": "59ebecbe78cc4b222571b44bac5999679eed75766af75a117300a8dc1a0b3777"
+    },
+    "missingness.json": {
+      "bytes": 32341,
+      "sha256": "ef90468dcb05158112e11d527857c5972ecad06e5baa563347a4d42684f2bab1"
+    },
+    "model_contrasts_descriptive.csv": {
+      "bytes": 12010,
+      "sha256": "d4ba8e1798286ab61419730fef723de282ddbdebb2611667286b4b4b217f59fe"
+    },
+    "paired_schedule_blocks.csv": {
+      "bytes": 26951,
+      "sha256": "1d05d7aeab05c9323076005d0a8cbfa010c246e8543c1ec8a4efb224a3279217"
+    },
+    "primary_contrasts.csv": {
+      "bytes": 5667,
+      "sha256": "b6418b813384ab471273e764188407771eb79a3a071611b5a322b83a4e84324e"
+    },
+    "primary_contrasts.json": {
+      "bytes": 27143,
+      "sha256": "a6aaf4d0f195ffac6cc61b35782d23d2ce971c2950de9a72c18e0e2dd8461581"
+    },
+    "resource_accounting.json": {
+      "bytes": 585,
+      "sha256": "23addeb95971db92c05527cd318b1f7136df49d9abc3d793e62f554b302e02b0"
+    },
+    "resources_by_cell.csv": {
+      "bytes": 13967,
+      "sha256": "37c7f303bba4e22aeb581791348ab19028c5ac6d205fe5df2f019457def0a337"
+    },
+    "resources_by_method_model.csv": {
+      "bytes": 2076,
+      "sha256": "e858395b092593d99369862285a6e9f4e76a975d1ac9bd657d6e8e77f8ad8f8f"
+    },
+    "resources_per_attempt.csv": {
+      "bytes": 139590,
+      "sha256": "fb987202d0ef6bbdb53a7c71a635aeee91c63509799962c2bb315aae3f4bbd88"
+    },
+    "sensitivity.csv": {
+      "bytes": 4190,
+      "sha256": "cd5a8a45b1073a2235acb0aefaa52a8622da08bf260b35d5d8c58531586c5196"
+    },
+    "sensitivity.json": {
+      "bytes": 12737,
+      "sha256": "bb62571049745b4acaec326ec28ece41a59b3c049b5c87a39ab5c2e857a4cd1d"
+    },
+    "summary.json": {
+      "bytes": 1836,
+      "sha256": "6ae28d7a333bf1a6981e98d41229e8f89e9e1ddc881649d9ccb7c5fb91c2220d"
+    },
+    "synthetic_reference_descriptive.csv": {
+      "bytes": 90620,
+      "sha256": "433dc1f63717d740aefd2e7444283b0e0eaa16bb1997f9a6fe4072e54e19b07d"
+    },
+    "synthetic_reference_per_run.csv": {
+      "bytes": 1447497,
+      "sha256": "79290070ea5f1002d1ea549b3a3acaa6cf79a841d1544e427134f7dda90a5b17"
+    }
+  },
+  "code_sha256": {
+    "analysis_primary/__init__.py": "c71f544411001a9101e1bb9b1673d239ff7dd8e4339846491ac0f814903afd3b",
+    "analysis_primary/core.py": "3781aa68adac4337dfc7c1f09f588c3bf2ade237fb27dedde327099cbf66fa96",
+    "analysis_primary/empirical.py": "4f14a10978cc72d3893b0ec03ed065f2547f261472903eb11a9abaad3511c3a0",
+    "analysis_primary/graph_evaluation.py": "3e09964e351cfe579b97fbc01370bb2bcba4fee8a3639bd592da6d247b72a49a",
+    "analysis_primary/plots.py": "1d7bdd976dc9ecf8bb0f75b5b3e131d6ccd0d781f028534809faf925d4aad5bd",
+    "scripts/run_primary_evaluation.py": "753bfcac28014975a2a32be6021b063c0d281a16abde1c4c4a2c78c77c8cae9a"
+  },
+  "created_utc": "2026-11-05T21:29:51.790936+00:00",
+  "empirical_reference_networks": 8,
+  "figure_files": 16,
+  "frozen_contract_sha256": "060dcd3a86d58d0c288dfbebd3f958dfea4587f1e0225f98d24692ba9e93b52f",
+  "independent_primary_crosscheck": true,
+  "ledger_queries": 0,
+  "paid_calls": 0,
+  "preserved_original_artifacts": {
+    "outputs/final_study/060dcd3a86d5/main/analysis_rows.json": "24dba80dedc50e00e02903cbbad8778b1fd8d471340ea42460681cd7e81e1f71",
+    "outputs/final_study/060dcd3a86d5/main/analysis_summary.json": "ddb6c550feb591d10ff6e4d3ecaf1ca9038d80c42696f578a056b7733f9d672f",
+    "outputs/final_study/060dcd3a86d5/main/missingness_report.json": "7562779647a142dd65f22b988961da7adeadada5813b519ab4df6f80ca053f70",
+    "outputs/final_study/060dcd3a86d5/main/network_metrics.csv": "e6d6227c31cecd6dbb01ad34db8c32c9e0afe89c365d90c2872adc3e83f1b03a",
+    "outputs/final_study/060dcd3a86d5/main/primary_contrasts.csv": "c99671dd1a0d6692506ab4fcada9cf06e3077fa123f61beeb8beaa5398e12474",
+    "outputs/final_study/060dcd3a86d5/main/primary_contrasts.json": "ea99fa579d2862802cd78b03d6761d23125ed7362c84ab52c5d881f945d8af37",
+    "outputs/final_study/060dcd3a86d5/main/summary.json": "a1fb2c94946f1f5e65e5dc1d814d0847473fa10ca791272e2b5feea07de6c956"
+  },
+  "primary_attempts": 896,
+  "primary_failures": 6,
+  "primary_only": true,
+  "scope": "Fixed roster, fixed models, named instructions; not national populations, equivalence or empirical realism.",
+  "statistical_assumptions_verified": false,
+  "status": "COMPLETE_PRIMARY_ANALYSIS_WITH_CAVEATS",
+  "supplemental_graphs_in_inference": 0,
+  "synthetic_reference_graphs": 7120,
+  "valid_primary_graphs": 890,
+  "verified_primary_graphs": 890
+}
