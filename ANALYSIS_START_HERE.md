@@ -16,7 +16,7 @@ Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
 [primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
 [held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).
 All three now embed the revised figures directly. [Notebook 04](analysis/04_manuscript_figures.ipynb)
-collects all 12 figures; it is not a substitute for updating the main notebooks.
+collects all 13 figures, including the largest-component appendix.
 The [analysis gallery](analysis/README.md) shows previews without opening a notebook.
 The notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)
@@ -39,20 +39,22 @@ or that overlapping subgraphs are independent human samples. No paid calls.
 The [revision 2 figure notes and captions](docs/PUBLICATION_FIGURES_V2.md) document
 the actual figures inspected in all five supplied papers. Compact dot/interval
 panels and distribution curves replace the dense heatmaps; original numerical
-results and revision 1 images remain unchanged. Current PNG/SVG/PDF files are in
-`outputs/publication_figures/20261105_v2/`. Use the
+results and the first two figure releases remain unchanged. The
+[revision 3 review response](docs/FIGURE_REVIEW_RESPONSE_V3.md) explains the
+new record-level ranges, matched-size diagnostic and main/appendix split.
+Current PNG/SVG/PDF files are in `outputs/publication_figures/20261105_v3/`. Use the
 [updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
 Execute all four current notebooks from the published tables and figures:
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_publication_notebooks.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\review_publication.py check
 ```
 
 This checks exact embedded PNG hashes as well as old analysis/code/source pins.
-To edit and preview plots, use `analysis_figures/publication.py` and call its
-`render(root, temporary_directory)` function. The first-build driver is
-`scripts/run_publication_figures.py`; it refuses to overwrite a completed seal.
+To edit and preview plots, use `analysis_figures/publication_v3.py` and run
+`scripts/review_publication.py build --cache <public-cache> --dest <unused-directory>`
+from the pinned Python environment. The build refuses an existing destination.
 A later published revision needs a new version, never silently changed bytes.
 
 Full benchmark reproduction after the environment setup below (not needed for

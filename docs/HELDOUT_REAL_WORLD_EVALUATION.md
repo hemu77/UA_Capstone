@@ -33,7 +33,7 @@ these are not ten independent populations. The official download is public;
 we do not infer an additional redistribution license or republish its raw IDs
 and features. Source-member filenames are retained as provenance identifiers.
 
-**SocioPatterns:** [official friendship-survey dataset](https://sociopatterns.org/datasets/high-school-contact-and-friendship-networks/),
+**SocioPatterns, Marseille, France:** [official friendship-survey dataset](https://sociopatterns.org/datasets/high-school-contact-and-friendship-networks/),
 Mastrandrea, Fournet and Barrat, [PLoS ONE 10(9):e0136497](https://doi.org/10.1371/journal.pone.0136497),
 2015. Source data carry **CC BY-NC-SA 3.0** terms. Only aggregate benchmark
 results are published here; retain attribution and source terms when reusing
@@ -114,37 +114,39 @@ and continue calling the same data held out.
 Uniform node sampling can materially lower observed clustering; the sampling
 figure shows full-roster values alongside the 50-node distributions. Observed
 clustering remains above the finite degree-swap controls in every source record:
-mean residuals span **0.1516-0.4259** for Facebook and are **0.2771** for the
+mean degree-swap clustering residuals span **0.1516-0.4259** for Facebook and are **0.2771** for the
 school roster. This is evidence about these observed topologies, not proof
 that the LLMs match human mechanisms or that these effects generalize.
 
 ## Reading The Figures
 
-1. **Transfer distances:** revision 2 uses dot panels, shared zero-based axes
-   between sources within each metric, all fixed models/procedures and all
-   three development baselines. Baseline spans are bank ranges, not CIs. Each column is a
+1. **Transfer distances:** revision 3 puts both sources on the same axis for each
+   of five metrics. Facebook spans are ranges of ten record-specific procedure
+   values, not CIs or bank ranges; school is one record. Largest-component
+   fraction remains available in appendix figure 13. Each column is a
    separate estimand; do not average columns into an invented realism score.
 2. **Sampling shift:** open circles are the complete observed rosters; diamonds
    are 50-node-draw means. Lines show the minimum-to-maximum node-draw range,
    **not a CI**. Sampling effects and source coverage must remain visible.
-3. **Conditional structure:** observed minus control means for clustering and
-   transitivity. Positive values mean excess closure relative to that control,
+3. **Conditional structure:** mean and range of the 32 paired observed-minus-control
+   values for clustering and transitivity. Positive values mean excess closure relative to that control,
    not a p-value or human-behavior validation. Both controls are target informed.
 4. **Cohort sensitivity:** do not hide differences among source records behind
    a source mean. Facebook records can share people and edges.
-5. **Distributions:** ECDFs show the observed mixture and generated distributions
-   for three metrics. The source mixture is descriptive, not a replacement for
+5. **Distributions:** ECDFs compare both observed sources with the LLMs or classical
+   baselines for density and clustering. The Facebook mixture is descriptive, not a replacement for
    cohort-wise W1. No population uncertainty bands are inferred.
 
 See the [executed notebook](../analysis/03_heldout_public_evaluation.ipynb),
 [sealed results](../outputs/heldout_evaluation/20261105_v1/evaluation_manifest.json),
 [all distances](../outputs/heldout_evaluation/20261105_v1/per_cohort_distances.csv)
-and [current revision-2 captions](PUBLICATION_FIGURES_V2.md).
+and the [review response and matched-size findings](FIGURE_REVIEW_RESPONSE_V3.md).
 The [verification receipt](HELDOUT_VERIFICATION.md) distinguishes completed
 checks from remaining scientific limits.
 Both earlier figure sets are archived unchanged. Notebooks 01-04 now display
-the [revision-2 set](../outputs/publication_figures/20261105_v2/) directly;
-the figure notes identify the five reference papers and inspected pages.
+the [revision-3 set](../outputs/publication_figures/20261105_v3/) directly.
+The original 50-node results do not imply size-invariant rankings: on matched
+25-node induced subgraphs, the closest clustering baselines change on both sources.
 
 ## Reproduce Without Paid Calls
 
@@ -153,7 +155,7 @@ Use the pinned Python 3.11.9 environment and registered notebook kernel:
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_publication_notebooks.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\review_publication.py check
 ```
 
 The fetcher accepts only the two pinned public downloads, bounds sizes,

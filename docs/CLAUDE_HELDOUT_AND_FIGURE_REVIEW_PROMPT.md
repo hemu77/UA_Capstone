@@ -6,13 +6,13 @@ the work because tests pass or because AI agents reviewed it. No paid provider
 calls, credential/ledger access, graph regeneration, or changes to frozen data.
 
 Start with `ANALYSIS_START_HERE.md`, `docs/HELDOUT_REAL_WORLD_EVALUATION.md`,
-`docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/PUBLICATION_FIGURES_V2.md`,
+`docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/FIGURE_REVIEW_RESPONSE_V3.md`, `docs/PUBLICATION_FIGURES_V2.md`,
 `analysis/README.md`, and executed notebooks 01, 02, 03 and 04.
 Read both evaluation manifests. The six selectively completed supplemental
 graphs must remain outside every primary test and held-out benchmark.
 
 **Inspect actual plots, not just source code or captions.** Open the rendered
-12 PNG and SVG/PDF figures in `outputs/publication_figures/20261105_v2/`.
+13 PNG and SVG/PDF figures in `outputs/publication_figures/20261105_v3/`.
 The manuscript-v1 and heldout-v1 figures are archived comparisons, not current
 displays. Read the five supplied papers
 and inspect their figures as visual references, using the exact versions and
@@ -59,10 +59,17 @@ Audit the following independently:
    Facebook mixture ECDF does not replace mean cohort-wise W1. Are point estimates wrongly made to look
    precise? Are repeated disclaimers, decorative titles or overpacked legends
    still obscuring the data? Identify the exact panel and concrete remedy.
-7. **Actual delivery.** Run `scripts/check_publication_notebooks.py` with the
-   registered frozen kernel. Verify the four notebooks embed exactly 3, 7, 5
-   and 12 replacement PNGs, not stale figures or temporary-path links. Check
-   public README/gallery links, protected-input hashes and the completed v2 seal.
+7. **Review-response evidence.** Recompute the within-record averaging and ranges in 08;
+   contrast these with bank ranges and population uncertainty. Verify the 32 paired
+   residuals in 11, and ER 447/448 versus BA/WS 448/448 connected in the LCC appendix.
+   Assess nested 25/40/50-node sensitivity on targets AND candidates, reconstructed
+   50-node anchors, a single thinning per parent, US-English-only weights, and the
+   absence of independent population replicates. Do not infer native small-network
+   generation quality or treat either dataset as geographic validation.
+8. **Actual delivery.** Run `scripts/review_publication.py check` with the
+   registered frozen kernel. Verify the notebooks embed exactly 3, 7, 6 and
+   13 figures with current captions. Check gallery links, the 3 unchanged figure
+   copies, the untouched v2 release, and the new v3 seal.
 
 Return findings first, ordered by severity with file/line or figure/panel
 references and reproducible evidence. Separate numeric defects, design limits,

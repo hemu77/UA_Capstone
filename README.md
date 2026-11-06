@@ -62,16 +62,17 @@ pretraining-unseen or matched-human behavioral validation. Six supplements stay
 excluded, and no new paid calls were made.
 
 **Revised figures, now inside notebooks 01-04:** [open the visual gallery](analysis/README.md),
-[all 12 figures in notebook 04](analysis/04_manuscript_figures.ipynb),
-[PNG/SVG/PDF files](outputs/publication_figures/20261105_v2/), and
-[captions with five-paper visual references](docs/PUBLICATION_FIGURES_V2.md).
-Dot/interval panels, visible paired observations and distribution curves replace
-the old heatmaps and dashboard layouts. Original statistics and archived figures
-are preserved. [Claude review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+[13 figures including the LCC appendix](analysis/04_manuscript_figures.ipynb),
+[PNG/SVG/PDF files](outputs/publication_figures/20261105_v3/), and
+[review response, sensitivity results and manuscript selection](docs/FIGURE_REVIEW_RESPONSE_V3.md).
+At 50 and 40 nodes, WS is closest on Facebook clustering and BA on school clustering;
+on nested 25-node samples those change to BA and ER. Figure 08 shows variation across
+records, not uncertainty about a population. The original 50-node scores are unchanged.
+[Claude review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
 The [analysis entry point](ANALYSIS_START_HERE.md) links separated data catalogs,
 executed [statistics](analysis/01_primary_statistical_analysis.ipynb) and
-[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, 12
+[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, 13
 PNG/SVG/PDF figure sets, and offline reproduction commands. All primary tests
 retain the original 896 attempts and exclude the six selected supplements.
 
