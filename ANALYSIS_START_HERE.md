@@ -12,6 +12,8 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
+For the meeting or an external review, start with the [professor's research brief](docs/PROFESSOR_RESEARCH_BRIEF.md): main plots, effect sizes, significance, failure consequences and the proposed contribution.
+
 Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
 [primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
 [held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).

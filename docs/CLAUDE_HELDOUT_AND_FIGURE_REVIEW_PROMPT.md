@@ -5,6 +5,19 @@ visualization reviewer. Audit this repository critically; do not rubber-stamp
 the work because tests pass or because AI agents reviewed it. No paid provider
 calls, credential/ledger access, graph regeneration, or changes to frozen data.
 
+**First deliverable: audit the [professor's brief](PROFESSOR_RESEARCH_BRIEF.md).**
+Return a six-row checklist: comparative plots, effect sizes/significance, failure
+analysis, limitations, strongest finding, and proposed contribution. Mark each
+supported, needs revision, or missing; cite the exact table row or figure panel.
+For the four headline comparisons, independently find the minimum within each
+candidate family in the 50-node, original-weighting rows (not the US-English-only
+rows). Reconcile the three failure counts to 5/6/7 complete blocks and distinguish
+an untestable contrast from a nonsignificant one. Challenge the proposed novelty
+against Chang et al. and the other four supplied papers: what is inherited,
+what is demonstrated here, and what would require a new study? Recommend one
+headline in plain English, one claim to omit, and the most useful next experiment.
+Review only; do not edit files or launch any study run.
+
 Start with `ANALYSIS_START_HERE.md`, `docs/HELDOUT_REAL_WORLD_EVALUATION.md`,
 `docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/FIGURE_REVIEW_RESPONSE_V3.md`, `docs/PUBLICATION_FIGURES_V2.md`,
 `analysis/README.md`, and executed notebooks 01, 02, 03 and 04.
