@@ -18,7 +18,7 @@ Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
 [primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
 [held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).
 All three now embed the revised figures directly. [Notebook 04](analysis/04_manuscript_figures.ipynb)
-collects all 13 figures, including the largest-component appendix.
+collects all 13 v3 figures plus the exploratory [RQ2 demographic mixing figure and notebook](analysis/05_rq2_demographic_mixing.ipynb). RQ2 uses the same primary cohort, not the six selected supplements.
 The [analysis gallery](analysis/README.md) shows previews without opening a notebook.
 The notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)

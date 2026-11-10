@@ -27,6 +27,10 @@ With iterative generation, the estimated difference in average clustering was **
 
 [All effects and intervals](../outputs/primary_analysis/20261105/primary_contrasts.csv) | [Leave-one-block-out results](../outputs/publication_figures/20261105_v3/02_primary_robustness.png)
 
+## RQ2: Which demographic similarities show up in ties?
+
+In [Figure 14](../outputs/publication_figures/20261110_rq2/14_demographic_mixing.png), religion has the highest mean same-group mixing score in 22 of 28 global conditions. Political orientation leads in the remaining six and in all 84 person-level conditions (local, sequential and iterative). Gender never ranks first. Scores adjust for each group's share of the fictional roster, not for every other attribute. This is not a causal or population ranking. The [executed notebook](../analysis/05_rq2_demographic_mixing.ipynb) compares all three scores on the same 878 nonempty primary graphs, excluding supplements; no new inferential tests.
+
 ## What failed, and why it matters
 
 Of **896 planned attempts**, **890 produced valid graphs**, including 12 with no edges. The six failures were not evenly distributed. Each row below represents 32 planned attempts (four models by eight seeds); a comparison block is complete only when the required model pairs are present.

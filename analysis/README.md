@@ -9,7 +9,8 @@ the six selectively completed supplements remain separate. No new paid calls.
 | [01: Primary statistics](01_primary_statistical_analysis.ipynb) | Independent statistical checks, all 24 contrasts, robustness and legacy context. |
 | [02: Primary comparisons](02_primary_comparison_plots.ipynb) | Seven revised figures: contrasts, model profiles, failures, resources and references. |
 | [03: Held-out evaluation](03_heldout_public_evaluation.ipynb) | Independent W1 checks, matched-size sensitivity, five real-data figures and LCC appendix. |
-| [04: Complete figure gallery](04_manuscript_figures.ipynb) | All 13 figures with full captions. |
+| [04: Complete figure gallery](04_manuscript_figures.ipynb) | The 13 v3 figures plus Figure 14, a separate descriptive RQ2 addendum. |
+| [05: RQ2 demographic mixing](05_rq2_demographic_mixing.ipynb) | Primary-only categorical Coleman scores, equal-weight method summaries and all 112 combination rankings. |
 
 [Review findings, scope and figure selection](../docs/FIGURE_REVIEW_RESPONSE_V3.md) |
 [PNG/SVG/PDF files and sensitivity tables](../outputs/publication_figures/20261105_v3/) |
@@ -17,6 +18,8 @@ the six selectively completed supplements remain separate. No new paid calls.
 [Claude review prompt](../docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md)
 
 ## Primary Contrasts
+
+[Figure 14: political orientation, religion and gender](../outputs/publication_figures/20261110_rq2/14_demographic_mixing.png) is a descriptive companion to the planned tests below; it does not extend their 24-test family.
 
 ![All 24 planned contrasts and the Hindi block-omission flag](../outputs/publication_figures/20261105_v3/01_primary_contrasts.png)
 
@@ -51,4 +54,4 @@ and ER on school clustering. Other metrics differ. This is a limited structural 
 not proof of cultural realism, human decision fidelity or publication readiness.
 
 Earlier figure versions remain in their original directories as provenance.
-The current displays are hash-verified against the revision-3 manifest.
+The 13 v3 displays are hash-verified against the revision-3 manifest. Figure 14 is a separate addendum; notebook 05 pins both primary inputs and renders its PNG from the scores.
