@@ -18,7 +18,11 @@ const version=createHash('sha256').update(JSON.stringify(sources)).digest('hex')
 for(const [file,source] of sources)await writeFile(`dist/${file}`,source.replace(/(\.\/[\w-]+\.(?:js|css))(['"])/g,`$1?v=${version}$2`));
 // The public entry opens current evidence; retain the original archive separately.
 await copyFile('dist/index.html','dist/archive.html');
-await copyFile('dist/layers.html','dist/index.html');
+for(const name of ['study.html','study.css','study.js'])await copyFile(name,`dist/${name}`);
+await copyFile('dist/study.html','dist/index.html');
+await mkdir('dist/data/study-figures',{recursive:true});
+await copyFile('public/data/primary-study.json','dist/data/primary-study.json');
+await copyFile('../outputs/publication_figures/20261111_v4/15_efficiency_density.png','dist/data/study-figures/15_efficiency_density.png');
 for (const file of ['three.module.js', 'three.core.js']) await copyFile(`node_modules/three/build/${file}`, `dist/vendor/${file}`);
 await copyFile('node_modules/three/examples/jsm/controls/OrbitControls.js', 'dist/vendor/addons/controls/OrbitControls.js');
 await mkdir('dist/vendor/addons/lines', {recursive: true});

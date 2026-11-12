@@ -18,7 +18,7 @@ Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
 [primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
 [held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).
 All three now embed the revised figures directly. [Notebook 04](analysis/04_manuscript_figures.ipynb)
-collects all 13 v3 figures plus the exploratory [RQ2 demographic mixing figure and notebook](analysis/05_rq2_demographic_mixing.ipynb). RQ2 uses the same primary cohort, not the six selected supplements.
+collects all 15 current figures, including target-density efficiency and the exploratory [RQ2 demographic mixing figure and notebook](analysis/05_rq2_demographic_mixing.ipynb). RQ2 uses the same primary cohort, not the six selected supplements.
 The [analysis gallery](analysis/README.md) shows previews without opening a notebook.
 The notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)
@@ -44,13 +44,13 @@ panels and distribution curves replace the dense heatmaps; original numerical
 results and the first two figure releases remain unchanged. The
 [revision 3 review response](docs/FIGURE_REVIEW_RESPONSE_V3.md) explains the
 new record-level ranges, matched-size diagnostic and main/appendix split.
-Current PNG/SVG/PDF files are in `outputs/publication_figures/20261105_v3/`. Use the
+[Revision 4](docs/DEEP_REVIEW_RESPONSE.md) updates 08, 11, 14 and adds 15. Unchanged figures remain in v3. Use the
 [updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
-Execute all four current notebooks from the published tables and figures:
+Execute all five current notebooks from the published tables and figures:
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\review_publication.py check
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_deep_review.py
 ```
 
 This checks exact embedded PNG hashes as well as old analysis/code/source pins.

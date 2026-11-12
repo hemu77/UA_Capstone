@@ -61,10 +61,10 @@ reproduces every distance independently. This is structural transfer, not
 pretraining-unseen or matched-human behavioral validation. Six supplements stay
 excluded, and no new paid calls were made.
 
-**Revised figures, now inside notebooks 01-04:** [open the visual gallery](analysis/README.md),
-[13 figures including the LCC appendix](analysis/04_manuscript_figures.ipynb),
-[PNG/SVG/PDF files](outputs/publication_figures/20261105_v3/), and
-[review response, sensitivity results and manuscript selection](docs/FIGURE_REVIEW_RESPONSE_V3.md).
+**Revised figures, now inside notebooks 01-05:** [open the visual gallery](analysis/README.md),
+[15 figures including target-density efficiency and the LCC appendix](analysis/04_manuscript_figures.ipynb),
+[revised PNG/SVG/PDF files](outputs/publication_figures/20261111_v4/), and
+[review response, sensitivity results and manuscript selection](docs/DEEP_REVIEW_RESPONSE.md).
 At 50 and 40 nodes, WS is closest on Facebook clustering and BA on school clustering;
 on nested 25-node samples those change to BA and ER. Figure 08 shows variation across
 records, not uncertainty about a population. The original 50-node scores are unchanged.
@@ -72,7 +72,7 @@ records, not uncertainty about a population. The original 50-node scores are unc
 
 The [analysis entry point](ANALYSIS_START_HERE.md) links separated data catalogs,
 executed [statistics](analysis/01_primary_statistical_analysis.ipynb) and
-[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, 13
+[comparison-plot](analysis/02_primary_comparison_plots.ipynb) notebooks, 15
 PNG/SVG/PDF figure sets, and offline reproduction commands. All primary tests
 retain the original 896 attempts and exclude the six selected supplements.
 
@@ -247,7 +247,7 @@ neither calibration is automatically reused for confirmation.
   version, regressions, current pricing, billing-tier fix and limitations.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
   findings, unresolved scientific decisions and versioned next steps; dated review history.
-- [Public simulator for team review](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
+- [Completed-study interactive walkthrough](https://ua-network-observatory.handm01042024.chatgpt.site/study.html): inspect the original 896 attempts and read the revised real-data findings. [Earlier calibration replay](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
   104 revised V6 graphs, recorded replay, matched filters and original artifacts.
   [Deployment and verification notes](docs/SIMULATOR_DEPLOYMENT.md). No API calls;
   this is an exploratory review tool, not approval for main collection.

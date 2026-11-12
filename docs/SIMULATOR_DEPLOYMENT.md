@@ -1,6 +1,12 @@
 # Simulator Team Handoff
 
-## Public Review Link
+## Current public entry: November 11
+
+[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/study.html) is the hiring-manager walkthrough. The home page now opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges, not inferred event sequences. No supplements, model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
+
+Rebuild the minimized public catalog with `python scripts/export_study_demo.py`, then use the existing viewer build and checks below.
+
+## Historical calibration link
 
 [Open Network Observatory](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)
 

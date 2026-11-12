@@ -1,0 +1,337 @@
+method,model,culture,language,attribute,coleman,excess,graphs
+global,gpt-4.1,brazil,english,gender,0.4387061402717345,0.28260913642186436,8
+global,gpt-4.1,brazil,english,political orientation,0.559487722165033,0.39093039842346167,8
+global,gpt-4.1,brazil,english,religion,0.7164858473163552,0.5914932848075092,8
+global,gpt-4.1,india,english,gender,0.4266794106279982,0.27606459292977487,8
+global,gpt-4.1,india,english,political orientation,0.5907557195676572,0.40994203071991797,8
+global,gpt-4.1,india,english,religion,0.7816134034119033,0.6407117264569581,8
+global,gpt-4.1,japan,english,gender,0.44546578583945234,0.2877480933007973,8
+global,gpt-4.1,japan,english,political orientation,0.5682871095685509,0.39535959209906846,8
+global,gpt-4.1,japan,english,religion,0.7023415029000404,0.5801333289845505,8
+global,gpt-4.1,us,english,gender,0.34463389516778686,0.2189355479750945,8
+global,gpt-4.1,us,english,political orientation,0.5915063423729877,0.41236866681844964,8
+global,gpt-4.1,us,english,religion,0.788677245729423,0.64610277565828,8
+global,gpt-4.1,us,hindi,gender,0.36518361914732683,0.23346460864318008,8
+global,gpt-4.1,us,hindi,political orientation,0.5684426777510211,0.3970959807166704,8
+global,gpt-4.1,us,hindi,religion,0.757306145911653,0.6234059973468841,8
+global,gpt-4.1,us,japanese,gender,0.35247873029784926,0.22336238819234616,8
+global,gpt-4.1,us,japanese,political orientation,0.6272154448457523,0.433526055697664,8
+global,gpt-4.1,us,japanese,religion,0.7589624512705859,0.6195751895398648,8
+global,gpt-4.1,us,portuguese,gender,0.34141075711385244,0.2220162514904218,8
+global,gpt-4.1,us,portuguese,political orientation,0.5904827192276981,0.4151844491715181,8
+global,gpt-4.1,us,portuguese,religion,0.8545472960081041,0.6993120770279184,8
+global,gpt-5.6-luna,brazil,english,gender,0.45221146269901863,0.29680643406034807,8
+global,gpt-5.6-luna,brazil,english,political orientation,0.5758851418275012,0.4004173433744328,8
+global,gpt-5.6-luna,brazil,english,religion,0.48816472925375604,0.40832484167311806,8
+global,gpt-5.6-luna,india,english,gender,0.48796047923362956,0.31781900626390197,7
+global,gpt-5.6-luna,india,english,political orientation,0.592145752378387,0.41021951073801644,7
+global,gpt-5.6-luna,india,english,religion,0.48683839523808714,0.4048605279554062,7
+global,gpt-5.6-luna,japan,english,gender,0.5062410730400202,0.33283486235511495,8
+global,gpt-5.6-luna,japan,english,political orientation,0.5149176667089491,0.3576150556174742,8
+global,gpt-5.6-luna,japan,english,religion,0.4756312066810964,0.3986673363299733,8
+global,gpt-5.6-luna,us,english,gender,0.4338264248245589,0.28521847837958897,8
+global,gpt-5.6-luna,us,english,political orientation,0.5281014208007928,0.3678096169220218,8
+global,gpt-5.6-luna,us,english,religion,0.5366205644709732,0.44840538093955357,8
+global,gpt-5.6-luna,us,hindi,gender,0.4505450622312099,0.2997937582186327,7
+global,gpt-5.6-luna,us,hindi,political orientation,0.4983624046429078,0.3483391995760607,7
+global,gpt-5.6-luna,us,hindi,religion,0.4824356887765508,0.4033942181875932,7
+global,gpt-5.6-luna,us,japanese,gender,0.45548112755392617,0.29784982636914775,7
+global,gpt-5.6-luna,us,japanese,political orientation,0.5545189787596089,0.3852503796464824,7
+global,gpt-5.6-luna,us,japanese,religion,0.5693310015806715,0.471112062205649,7
+global,gpt-5.6-luna,us,portuguese,gender,0.3959699616026307,0.26124736294192435,6
+global,gpt-5.6-luna,us,portuguese,political orientation,0.5861396806939169,0.40526040071314684,6
+global,gpt-5.6-luna,us,portuguese,religion,0.5186685819685972,0.4343927345932514,6
+global,gpt-6-luna,brazil,english,gender,0.4710745402146732,0.3082661756458856,6
+global,gpt-6-luna,brazil,english,political orientation,0.5118190544581822,0.35767284243446484,6
+global,gpt-6-luna,brazil,english,religion,0.5096157848599118,0.4251087491448193,6
+global,gpt-6-luna,india,english,gender,0.44212857809455797,0.2889640180396483,7
+global,gpt-6-luna,india,english,political orientation,0.40822795843221443,0.2884685831744655,7
+global,gpt-6-luna,india,english,religion,0.6391425298223641,0.5301596915042294,7
+global,gpt-6-luna,japan,english,gender,0.4504859477819036,0.294039223025934,6
+global,gpt-6-luna,japan,english,political orientation,0.5009185746141137,0.3528019736740667,6
+global,gpt-6-luna,japan,english,religion,0.6486977915417348,0.5350741497959106,6
+global,gpt-6-luna,us,english,gender,0.4785942507796097,0.31241967654037867,6
+global,gpt-6-luna,us,english,political orientation,0.48139220816917394,0.33843030737514984,6
+global,gpt-6-luna,us,english,religion,0.5689255601423858,0.46937561640934206,6
+global,gpt-6-luna,us,hindi,gender,0.43850559223203295,0.28752880857996727,7
+global,gpt-6-luna,us,hindi,political orientation,0.4305940995494172,0.30595515763015274,7
+global,gpt-6-luna,us,hindi,religion,0.48046379040453296,0.4010368234024404,7
+global,gpt-6-luna,us,japanese,gender,0.41681891037015895,0.2720545749257725,7
+global,gpt-6-luna,us,japanese,political orientation,0.4796221488825176,0.3402621662163955,7
+global,gpt-6-luna,us,japanese,religion,0.5836703681495574,0.48562583608674553,7
+global,gpt-6-luna,us,portuguese,gender,0.41905037008982915,0.27497344642324284,6
+global,gpt-6-luna,us,portuguese,political orientation,0.4472033981425631,0.31548697142087073,6
+global,gpt-6-luna,us,portuguese,religion,0.5805003685350513,0.4812192505868327,6
+global,gpt-6-sol,brazil,english,gender,0.1452991910827211,0.0977324626898256,8
+global,gpt-6-sol,brazil,english,political orientation,0.46395292625578044,0.32939602431006243,8
+global,gpt-6-sol,brazil,english,religion,0.7066062919822308,0.5787731557009936,8
+global,gpt-6-sol,india,english,gender,0.15188625497701858,0.10433877146761622,8
+global,gpt-6-sol,india,english,political orientation,0.4496825497130269,0.3159849206948713,8
+global,gpt-6-sol,india,english,religion,0.6511961482334538,0.5367713873124107,8
+global,gpt-6-sol,japan,english,gender,0.16220732246379227,0.10962324029767331,8
+global,gpt-6-sol,japan,english,political orientation,0.4720077092064136,0.3320005603051459,8
+global,gpt-6-sol,japan,english,religion,0.6169253450395785,0.5089091432025875,8
+global,gpt-6-sol,us,english,gender,0.13360440481364105,0.09224343485692041,8
+global,gpt-6-sol,us,english,political orientation,0.4097796370510278,0.2907680964939798,8
+global,gpt-6-sol,us,english,religion,0.7386347397207965,0.606402015837417,8
+global,gpt-6-sol,us,hindi,gender,0.08079620559470432,0.06083932826028013,8
+global,gpt-6-sol,us,hindi,political orientation,0.4225466286527297,0.30002622784665833,8
+global,gpt-6-sol,us,hindi,religion,0.8302935078227327,0.6797592767052383,8
+global,gpt-6-sol,us,japanese,gender,0.14614304886681848,0.10061603396453919,7
+global,gpt-6-sol,us,japanese,political orientation,0.3787935742511691,0.2684252298923558,7
+global,gpt-6-sol,us,japanese,religion,0.750060519902535,0.6140141163260839,7
+global,gpt-6-sol,us,portuguese,gender,0.14202774303128538,0.098752850675912,8
+global,gpt-6-sol,us,portuguese,political orientation,0.4369712204609522,0.3073860591271346,8
+global,gpt-6-sol,us,portuguese,religion,0.675807591657494,0.5545590132560777,8
+iterative,gpt-4.1,brazil,english,gender,0.09048345492118978,0.06860716217094232,8
+iterative,gpt-4.1,brazil,english,political orientation,0.6893644808643022,0.4706904041229474,8
+iterative,gpt-4.1,brazil,english,religion,0.10207415871852295,0.10139239106115308,8
+iterative,gpt-4.1,india,english,gender,0.08255316487198425,0.06282366670650977,8
+iterative,gpt-4.1,india,english,political orientation,0.6827758220473686,0.47014843581367055,8
+iterative,gpt-4.1,india,english,religion,0.07139493339753097,0.08108004740748023,8
+iterative,gpt-4.1,japan,english,gender,0.07306519478163018,0.06207638626311426,8
+iterative,gpt-4.1,japan,english,political orientation,0.683512726183797,0.46937010802717205,8
+iterative,gpt-4.1,japan,english,religion,0.08921377847147915,0.09366685717620393,8
+iterative,gpt-4.1,us,english,gender,0.0718539649793956,0.059537042962532774,8
+iterative,gpt-4.1,us,english,political orientation,0.6864388932578517,0.4683943772305258,8
+iterative,gpt-4.1,us,english,religion,0.08886382362003838,0.09237731585230508,8
+iterative,gpt-4.1,us,hindi,gender,0.04297187528616065,0.04572005966866997,8
+iterative,gpt-4.1,us,hindi,political orientation,0.44968191247129174,0.318452214056248,8
+iterative,gpt-4.1,us,hindi,religion,0.031009901180070513,0.05668100243863787,8
+iterative,gpt-4.1,us,japanese,gender,0.09858489708243524,0.07283053954858838,7
+iterative,gpt-4.1,us,japanese,political orientation,0.6456524326804379,0.4504982882978528,7
+iterative,gpt-4.1,us,japanese,religion,0.13350109738720928,0.12975213170951672,7
+iterative,gpt-4.1,us,portuguese,gender,0.09136576185365217,0.07031632721667984,8
+iterative,gpt-4.1,us,portuguese,political orientation,0.6724671678125068,0.46673243196799796,8
+iterative,gpt-4.1,us,portuguese,religion,0.12267168128115433,0.1235570186667867,8
+iterative,gpt-5.6-luna,brazil,english,gender,0.20567336982548926,0.13809701540296745,8
+iterative,gpt-5.6-luna,brazil,english,political orientation,0.8768796958518748,0.59664109964637,8
+iterative,gpt-5.6-luna,brazil,english,religion,0.11126281930293987,0.10732588262446896,8
+iterative,gpt-5.6-luna,india,english,gender,0.19175410907328483,0.13006561514053203,8
+iterative,gpt-5.6-luna,india,english,political orientation,0.8611711025411053,0.5895147575162946,8
+iterative,gpt-5.6-luna,india,english,religion,0.11067346966397097,0.11025962475087032,8
+iterative,gpt-5.6-luna,japan,english,gender,0.20596072073667687,0.14224016867999215,8
+iterative,gpt-5.6-luna,japan,english,political orientation,0.8622910616527044,0.5893660790310956,8
+iterative,gpt-5.6-luna,japan,english,religion,0.12698872377773965,0.12449363699924332,8
+iterative,gpt-5.6-luna,us,english,gender,0.18663596984367747,0.12809122683713056,8
+iterative,gpt-5.6-luna,us,english,political orientation,0.884076981959482,0.604155321135289,8
+iterative,gpt-5.6-luna,us,english,religion,0.11188656837648804,0.10707936770257892,8
+iterative,gpt-5.6-luna,us,hindi,gender,0.15639262609400503,0.1086917295003813,8
+iterative,gpt-5.6-luna,us,hindi,political orientation,0.7394914133871859,0.5075953399984972,8
+iterative,gpt-5.6-luna,us,hindi,religion,0.09742042862656036,0.09993992052626144,8
+iterative,gpt-5.6-luna,us,japanese,gender,0.19918829286723796,0.13514888920055523,8
+iterative,gpt-5.6-luna,us,japanese,political orientation,0.8318784972431654,0.5686392945114705,8
+iterative,gpt-5.6-luna,us,japanese,religion,0.10919019977763636,0.10732949332852225,8
+iterative,gpt-5.6-luna,us,portuguese,gender,0.1849537331300879,0.12475865692615538,8
+iterative,gpt-5.6-luna,us,portuguese,political orientation,0.8316763973502237,0.5676730103923049,8
+iterative,gpt-5.6-luna,us,portuguese,religion,0.11516730232183545,0.11487225289745091,8
+iterative,gpt-6-luna,brazil,english,gender,0.19496982484488928,0.13699418664877067,8
+iterative,gpt-6-luna,brazil,english,political orientation,0.7325108726203532,0.5103746763256716,8
+iterative,gpt-6-luna,brazil,english,religion,0.15472297005540908,0.14273872499989165,8
+iterative,gpt-6-luna,india,english,gender,0.19730147311859292,0.1400849228336131,8
+iterative,gpt-6-luna,india,english,political orientation,0.7035821818501475,0.4941213451658203,8
+iterative,gpt-6-luna,india,english,religion,0.16986566048919502,0.15322634860186465,8
+iterative,gpt-6-luna,japan,english,gender,0.19287244109217636,0.14034559240332264,8
+iterative,gpt-6-luna,japan,english,political orientation,0.6882032067384249,0.4841528534732792,8
+iterative,gpt-6-luna,japan,english,religion,0.1558910299256576,0.14288725719875242,8
+iterative,gpt-6-luna,us,english,gender,0.17053318669313675,0.12407387573370583,8
+iterative,gpt-6-luna,us,english,political orientation,0.7203952008233222,0.5041161930038137,8
+iterative,gpt-6-luna,us,english,religion,0.13810737406152776,0.13009365630403544,8
+iterative,gpt-6-luna,us,hindi,gender,0.1634643302849263,0.1245758701256489,8
+iterative,gpt-6-luna,us,hindi,political orientation,0.6189774944249172,0.4386988280947398,8
+iterative,gpt-6-luna,us,hindi,religion,0.16365023219486327,0.151435911924361,8
+iterative,gpt-6-luna,us,japanese,gender,0.2123259110310485,0.15211611551192675,8
+iterative,gpt-6-luna,us,japanese,political orientation,0.6614635099534278,0.4597338512282,8
+iterative,gpt-6-luna,us,japanese,religion,0.18110896146425587,0.16261924113801407,8
+iterative,gpt-6-luna,us,portuguese,gender,0.1960151939976279,0.14034672083645583,8
+iterative,gpt-6-luna,us,portuguese,political orientation,0.6748301370962605,0.47144576021850687,8
+iterative,gpt-6-luna,us,portuguese,religion,0.15751533832478207,0.14578506059434976,8
+iterative,gpt-6-sol,brazil,english,gender,0.07305895927899253,0.05467545490788987,8
+iterative,gpt-6-sol,brazil,english,political orientation,0.6908382278808926,0.4830255345546316,8
+iterative,gpt-6-sol,brazil,english,religion,0.17854574425500008,0.15649778874569953,8
+iterative,gpt-6-sol,india,english,gender,0.0788317119496424,0.061076105635181885,8
+iterative,gpt-6-sol,india,english,political orientation,0.6646610997539747,0.4619417358348533,8
+iterative,gpt-6-sol,india,english,religion,0.09951809897583658,0.09794941008547885,8
+iterative,gpt-6-sol,japan,english,gender,0.049875650842428954,0.040943843911493125,8
+iterative,gpt-6-sol,japan,english,political orientation,0.6679641947511467,0.4649857241816776,8
+iterative,gpt-6-sol,japan,english,religion,0.16970076763432934,0.14963678304057476,8
+iterative,gpt-6-sol,us,english,gender,0.0587711415055128,0.04674832300805698,8
+iterative,gpt-6-sol,us,english,political orientation,0.6906320169287401,0.4763897925939737,8
+iterative,gpt-6-sol,us,english,religion,0.12472798116739528,0.1152724757768947,8
+iterative,gpt-6-sol,us,hindi,gender,0.044592885658965103,0.03787782034064977,8
+iterative,gpt-6-sol,us,hindi,political orientation,0.684899875754569,0.4723829228492208,8
+iterative,gpt-6-sol,us,hindi,religion,0.13483124578179595,0.12508109994215746,8
+iterative,gpt-6-sol,us,japanese,gender,0.053610518061077264,0.0451591733477524,8
+iterative,gpt-6-sol,us,japanese,political orientation,0.7412036056268608,0.5132647461214804,8
+iterative,gpt-6-sol,us,japanese,religion,0.1304901987111826,0.12276441649777023,8
+iterative,gpt-6-sol,us,portuguese,gender,0.039106061149637716,0.034404235148919174,8
+iterative,gpt-6-sol,us,portuguese,political orientation,0.6619101907372164,0.45560584427827244,8
+iterative,gpt-6-sol,us,portuguese,religion,0.1584186427595212,0.1405123589679757,8
+local,gpt-4.1,brazil,english,gender,0.13153496522965338,0.0929118506934469,8
+local,gpt-4.1,brazil,english,political orientation,0.746586049820611,0.5098559279155782,8
+local,gpt-4.1,brazil,english,religion,0.25014827260393846,0.21714228817467993,8
+local,gpt-4.1,india,english,gender,0.15130426238278152,0.1054450439782998,8
+local,gpt-4.1,india,english,political orientation,0.7565276841357991,0.5135925467388136,8
+local,gpt-4.1,india,english,religion,0.2275030170680439,0.19891258493268701,8
+local,gpt-4.1,japan,english,gender,0.12457714760960244,0.08910678934110242,8
+local,gpt-4.1,japan,english,political orientation,0.6753392503579697,0.4601858453084998,8
+local,gpt-4.1,japan,english,religion,0.2731552086212492,0.2331540303499397,8
+local,gpt-4.1,us,english,gender,0.1226946300873692,0.08626047272536272,8
+local,gpt-4.1,us,english,political orientation,0.7274356377814689,0.4965039506283137,8
+local,gpt-4.1,us,english,religion,0.2718189048185833,0.23367899190463792,8
+local,gpt-4.1,us,hindi,gender,0.10170267521500832,0.07645811072697106,8
+local,gpt-4.1,us,hindi,political orientation,0.5659824082849058,0.39551378837822576,8
+local,gpt-4.1,us,hindi,religion,0.1888404329335055,0.17023900941171333,8
+local,gpt-4.1,us,japanese,gender,0.13272216281987398,0.09659389555054505,8
+local,gpt-4.1,us,japanese,political orientation,0.6246086032112861,0.43211290376981015,8
+local,gpt-4.1,us,japanese,religion,0.24769649333753851,0.21373040706790164,8
+local,gpt-4.1,us,portuguese,gender,0.12172505803584029,0.08674258633166118,8
+local,gpt-4.1,us,portuguese,political orientation,0.7109102601778927,0.4879148119338604,8
+local,gpt-4.1,us,portuguese,religion,0.31782862384204846,0.268476514065333,8
+local,gpt-5.6-luna,brazil,english,gender,0.22726344288038516,0.15406353570454792,8
+local,gpt-5.6-luna,brazil,english,political orientation,0.6584146556467437,0.4531859840390673,8
+local,gpt-5.6-luna,brazil,english,religion,0.20870655284276063,0.1849873755607959,8
+local,gpt-5.6-luna,india,english,gender,0.21994248878398676,0.15049346256207494,8
+local,gpt-5.6-luna,india,english,political orientation,0.6046692787209489,0.4199796543149058,8
+local,gpt-5.6-luna,india,english,religion,0.2024464060817514,0.18231858371944198,8
+local,gpt-5.6-luna,japan,english,gender,0.21824439766885717,0.15297241171029938,8
+local,gpt-5.6-luna,japan,english,political orientation,0.6222271803502586,0.42915190414323234,8
+local,gpt-5.6-luna,japan,english,religion,0.21302542042043082,0.1894690124607128,8
+local,gpt-5.6-luna,us,english,gender,0.22072296755450196,0.15175479075447368,8
+local,gpt-5.6-luna,us,english,political orientation,0.6581173554009673,0.45312664498238164,8
+local,gpt-5.6-luna,us,english,religion,0.21290608227969543,0.1898463499775426,8
+local,gpt-5.6-luna,us,hindi,gender,0.23921721253962763,0.16326914137103227,8
+local,gpt-5.6-luna,us,hindi,political orientation,0.5833260598500662,0.4070196447066537,8
+local,gpt-5.6-luna,us,hindi,religion,0.20128909206973475,0.18071076310978504,8
+local,gpt-5.6-luna,us,japanese,gender,0.23266449159792665,0.15937704787586168,8
+local,gpt-5.6-luna,us,japanese,political orientation,0.66652075955844,0.4565685092278062,8
+local,gpt-5.6-luna,us,japanese,religion,0.19600000872386314,0.17510423367045228,8
+local,gpt-5.6-luna,us,portuguese,gender,0.2289054074706302,0.15590198579068823,8
+local,gpt-5.6-luna,us,portuguese,political orientation,0.6126184588947372,0.4233333285512548,8
+local,gpt-5.6-luna,us,portuguese,religion,0.21339313050287317,0.1911738086181065,8
+local,gpt-6-luna,brazil,english,gender,0.26467952884608065,0.18137503487000228,8
+local,gpt-6-luna,brazil,english,political orientation,0.5483834126559394,0.3806519694756031,8
+local,gpt-6-luna,brazil,english,religion,0.27436281147670366,0.23617824193714432,8
+local,gpt-6-luna,india,english,gender,0.21915489626802204,0.15218067831397605,8
+local,gpt-6-luna,india,english,political orientation,0.5368264454011198,0.3742392991680733,8
+local,gpt-6-luna,india,english,religion,0.2648097644306786,0.23035213970711618,8
+local,gpt-6-luna,japan,english,gender,0.2268548524610216,0.1578822455724887,8
+local,gpt-6-luna,japan,english,political orientation,0.5087052178822347,0.3557765585106815,8
+local,gpt-6-luna,japan,english,religion,0.2759235807399495,0.2379979673986249,8
+local,gpt-6-luna,us,english,gender,0.21532514300482733,0.15104296712523163,8
+local,gpt-6-luna,us,english,political orientation,0.5476023889195981,0.379391370977582,8
+local,gpt-6-luna,us,english,religion,0.2750350174474464,0.23786100140383581,8
+local,gpt-6-luna,us,hindi,gender,0.20564783901384526,0.14306785755026402,8
+local,gpt-6-luna,us,hindi,political orientation,0.5147566170156546,0.3586007377897204,8
+local,gpt-6-luna,us,hindi,religion,0.29140052536393335,0.2526631252539626,8
+local,gpt-6-luna,us,japanese,gender,0.26017299095220375,0.18024029284511098,8
+local,gpt-6-luna,us,japanese,political orientation,0.5416668543718769,0.37644737715989085,8
+local,gpt-6-luna,us,japanese,religion,0.28909816850169434,0.24831300051423938,8
+local,gpt-6-luna,us,portuguese,gender,0.24892872014399492,0.17243503755156495,8
+local,gpt-6-luna,us,portuguese,political orientation,0.5332357630030674,0.3717064042362955,8
+local,gpt-6-luna,us,portuguese,religion,0.28644883837899576,0.24689072545011143,8
+local,gpt-6-sol,brazil,english,gender,0.12716498199945953,0.09534940838178729,8
+local,gpt-6-sol,brazil,english,political orientation,0.4755176711585025,0.3322591441545616,8
+local,gpt-6-sol,brazil,english,religion,0.29621932758793224,0.2544633822425554,8
+local,gpt-6-sol,india,english,gender,0.11125478071115893,0.08619121488620932,8
+local,gpt-6-sol,india,english,political orientation,0.4670475265280819,0.32489521916104985,8
+local,gpt-6-sol,india,english,religion,0.23185812782522397,0.20278938176623562,8
+local,gpt-6-sol,japan,english,gender,0.1303733339735152,0.09741395144756398,8
+local,gpt-6-sol,japan,english,political orientation,0.4693964282820561,0.32647790600408066,8
+local,gpt-6-sol,japan,english,religion,0.25836339788641566,0.22511834926021532,8
+local,gpt-6-sol,us,english,gender,0.11634594587652333,0.09049544012538173,8
+local,gpt-6-sol,us,english,political orientation,0.4667826526892085,0.32525486140490634,8
+local,gpt-6-sol,us,english,religion,0.26461037939098214,0.22905112060267047,8
+local,gpt-6-sol,us,hindi,gender,0.06707441159046698,0.058379824008165604,8
+local,gpt-6-sol,us,hindi,political orientation,0.46716852144371407,0.3250920036173092,8
+local,gpt-6-sol,us,hindi,religion,0.2382702879194849,0.20794839261297368,8
+local,gpt-6-sol,us,japanese,gender,0.0845438261312931,0.06856285158501452,8
+local,gpt-6-sol,us,japanese,political orientation,0.4674423731940164,0.3263691712397313,8
+local,gpt-6-sol,us,japanese,religion,0.2343253592659658,0.20577884836108876,8
+local,gpt-6-sol,us,portuguese,gender,0.11453106521302574,0.0866280517194071,8
+local,gpt-6-sol,us,portuguese,political orientation,0.45557495811129795,0.31762216719382524,8
+local,gpt-6-sol,us,portuguese,religion,0.2577233574254425,0.2233105301716609,8
+sequential,gpt-4.1,brazil,english,gender,0.09670186002960124,0.0709955537069337,8
+sequential,gpt-4.1,brazil,english,political orientation,0.6214951581652729,0.43057363228785006,8
+sequential,gpt-4.1,brazil,english,religion,0.29351325836207204,0.25040026844637014,8
+sequential,gpt-4.1,india,english,gender,0.12349380118430638,0.08806205483030963,8
+sequential,gpt-4.1,india,english,political orientation,0.630738749599799,0.43492150072897834,8
+sequential,gpt-4.1,india,english,religion,0.2635888164549538,0.2274296937971757,8
+sequential,gpt-4.1,japan,english,gender,0.09043183178921088,0.06683353146942148,8
+sequential,gpt-4.1,japan,english,political orientation,0.6502662910530513,0.4468644718435132,8
+sequential,gpt-4.1,japan,english,religion,0.28426732548098443,0.24413383233331754,8
+sequential,gpt-4.1,us,english,gender,0.07238227542498922,0.058473493721968854,8
+sequential,gpt-4.1,us,english,political orientation,0.5734049976197768,0.3983907314262797,8
+sequential,gpt-4.1,us,english,religion,0.3035505633775632,0.2604418144134265,8
+sequential,gpt-4.1,us,hindi,gender,-0.013747903238724163,0.012264545826697539,8
+sequential,gpt-4.1,us,hindi,political orientation,0.10007348827632623,0.08984377278955494,8
+sequential,gpt-4.1,us,hindi,religion,0.025553067154817876,0.05020941248441137,8
+sequential,gpt-4.1,us,japanese,gender,-0.002680997257460362,0.014078743282845287,8
+sequential,gpt-4.1,us,japanese,political orientation,0.17072864443046643,0.1303284021967904,8
+sequential,gpt-4.1,us,japanese,religion,0.08782680451438221,0.09425932977590949,8
+sequential,gpt-4.1,us,portuguese,gender,0.08595401376402069,0.06741565397218457,8
+sequential,gpt-4.1,us,portuguese,political orientation,0.5098023296381125,0.3547038177877144,8
+sequential,gpt-4.1,us,portuguese,religion,0.29135077815593224,0.2494084918974382,8
+sequential,gpt-5.6-luna,brazil,english,gender,0.21651620551036685,0.14852217540279194,8
+sequential,gpt-5.6-luna,brazil,english,political orientation,0.5993743521108842,0.4156528547586561,8
+sequential,gpt-5.6-luna,brazil,english,religion,0.20734520071645796,0.18652286622951753,8
+sequential,gpt-5.6-luna,india,english,gender,0.2005622078113424,0.1344725969070364,8
+sequential,gpt-5.6-luna,india,english,political orientation,0.5891009121437311,0.40631426613234417,8
+sequential,gpt-5.6-luna,india,english,religion,0.1711238731113965,0.16046276740499316,8
+sequential,gpt-5.6-luna,japan,english,gender,0.19794478408994512,0.1345932829807991,8
+sequential,gpt-5.6-luna,japan,english,political orientation,0.6081173888937776,0.420573455357643,8
+sequential,gpt-5.6-luna,japan,english,religion,0.20112107555796901,0.18210175622132455,8
+sequential,gpt-5.6-luna,us,english,gender,0.1969506070375929,0.13709844404914762,8
+sequential,gpt-5.6-luna,us,english,political orientation,0.6402266575018497,0.44144461920879213,8
+sequential,gpt-5.6-luna,us,english,religion,0.20700268898889704,0.18544096165292917,8
+sequential,gpt-5.6-luna,us,hindi,gender,0.15661111168255246,0.10902015198294664,8
+sequential,gpt-5.6-luna,us,hindi,political orientation,0.4737140244714825,0.3364130880534259,8
+sequential,gpt-5.6-luna,us,hindi,religion,0.17535479432414583,0.16005796233662908,8
+sequential,gpt-5.6-luna,us,japanese,gender,0.20106506186956669,0.13714710356632415,8
+sequential,gpt-5.6-luna,us,japanese,political orientation,0.6278120230201436,0.4320383379854633,8
+sequential,gpt-5.6-luna,us,japanese,religion,0.17080551441010705,0.15694121289292381,8
+sequential,gpt-5.6-luna,us,portuguese,gender,0.18226523030534844,0.12813029359081157,8
+sequential,gpt-5.6-luna,us,portuguese,political orientation,0.6036917859447215,0.419664419691739,8
+sequential,gpt-5.6-luna,us,portuguese,religion,0.19252154151451123,0.17388632041888658,8
+sequential,gpt-6-luna,brazil,english,gender,0.21208067278904985,0.1499415544871143,8
+sequential,gpt-6-luna,brazil,english,political orientation,0.5673132797661035,0.3920493329367104,8
+sequential,gpt-6-luna,brazil,english,religion,0.27100591097310156,0.23827496850699525,8
+sequential,gpt-6-luna,india,english,gender,0.20843396187337218,0.14646886660344746,8
+sequential,gpt-6-luna,india,english,political orientation,0.5600695646775646,0.388441026861246,8
+sequential,gpt-6-luna,india,english,religion,0.27401670027179204,0.23822536372135528,8
+sequential,gpt-6-luna,japan,english,gender,0.22640140383910087,0.15836985636061657,8
+sequential,gpt-6-luna,japan,english,political orientation,0.5717445456097835,0.39490610673485843,8
+sequential,gpt-6-luna,japan,english,religion,0.2795075652600453,0.24184668979210772,8
+sequential,gpt-6-luna,us,english,gender,0.19613888974094373,0.13977716003806187,8
+sequential,gpt-6-luna,us,english,political orientation,0.5880935167954592,0.4075198590520127,8
+sequential,gpt-6-luna,us,english,religion,0.27754221174169735,0.23991252466047014,8
+sequential,gpt-6-luna,us,hindi,gender,0.17523456435375886,0.12637732686441494,8
+sequential,gpt-6-luna,us,hindi,political orientation,0.4858009050553105,0.33721724866280345,8
+sequential,gpt-6-luna,us,hindi,religion,0.2581786268737201,0.2255934835560322,8
+sequential,gpt-6-luna,us,japanese,gender,0.2306955372670964,0.162290440180268,8
+sequential,gpt-6-luna,us,japanese,political orientation,0.526292810342386,0.3651384227023332,8
+sequential,gpt-6-luna,us,japanese,religion,0.288438057283127,0.24724125352293114,8
+sequential,gpt-6-luna,us,portuguese,gender,0.2182087332292245,0.1511776335160567,8
+sequential,gpt-6-luna,us,portuguese,political orientation,0.6109473307584726,0.4217933603849433,8
+sequential,gpt-6-luna,us,portuguese,religion,0.28238990534383607,0.24446568264347407,8
+sequential,gpt-6-sol,brazil,english,gender,0.12920699857187343,0.09753320289326133,8
+sequential,gpt-6-sol,brazil,english,political orientation,0.4678801120009045,0.326719440775857,8
+sequential,gpt-6-sol,brazil,english,religion,0.30346998382465573,0.26025196835112496,8
+sequential,gpt-6-sol,india,english,gender,0.14012851404141155,0.10309012474398457,8
+sequential,gpt-6-sol,india,english,political orientation,0.5038779661144024,0.3488068561635193,8
+sequential,gpt-6-sol,india,english,religion,0.27779650081289403,0.2397529324395165,8
+sequential,gpt-6-sol,japan,english,gender,0.136057853134898,0.10162630404318101,8
+sequential,gpt-6-sol,japan,english,political orientation,0.46875235188023673,0.3271283061880092,8
+sequential,gpt-6-sol,japan,english,religion,0.2892387536828724,0.24974815425446473,8
+sequential,gpt-6-sol,us,english,gender,0.12044921467515302,0.09221205478752155,8
+sequential,gpt-6-sol,us,english,political orientation,0.4743949149235617,0.33071633571030107,8
+sequential,gpt-6-sol,us,english,religion,0.302349819084289,0.2588604636060209,8
+sequential,gpt-6-sol,us,hindi,gender,0.13723024815998164,0.10114055411923076,8
+sequential,gpt-6-sol,us,hindi,political orientation,0.4701056166651776,0.3272048207395266,8
+sequential,gpt-6-sol,us,hindi,religion,0.28308944812407294,0.2442085662859389,8
+sequential,gpt-6-sol,us,japanese,gender,0.17177403423798895,0.12448385912204173,8
+sequential,gpt-6-sol,us,japanese,political orientation,0.5029380741050697,0.35061999921779485,8
+sequential,gpt-6-sol,us,japanese,religion,0.3273063261755387,0.278678945804136,8
+sequential,gpt-6-sol,us,portuguese,gender,0.12617942555827305,0.09418032155198662,8
+sequential,gpt-6-sol,us,portuguese,political orientation,0.48346253616524915,0.3366288919510467,8
+sequential,gpt-6-sol,us,portuguese,religion,0.28693551726279054,0.24637730788790624,8

@@ -5,6 +5,8 @@ visualization reviewer. Audit this repository critically; do not rubber-stamp
 the work because tests pass or because AI agents reviewed it. No paid provider
 calls, credential/ledger access, graph regeneration, or changes to frozen data.
 
+Start with the [November 11 response](DEEP_REVIEW_RESPONSE.md). Recalculate the 88 target-density ER bank W1s and average by record, not from pooled ECDFs. Separate Facebook and school; verify the two clustering margins and the 90-to-85 change under the alternative mixing score. Look for wording that turns a descriptive gap into a causal explanation or an attribute ranking into independent importance.
+
 **First deliverable: audit the [professor's brief](PROFESSOR_RESEARCH_BRIEF.md).**
 Return a six-row checklist: comparative plots, effect sizes/significance, failure
 analysis, limitations, strongest finding, and proposed contribution. Mark each
@@ -20,12 +22,12 @@ Review only; do not edit files or launch any study run.
 
 Start with `ANALYSIS_START_HERE.md`, `docs/HELDOUT_REAL_WORLD_EVALUATION.md`,
 `docs/PRIMARY_ANALYSIS_FINDINGS.md`, `docs/FIGURE_REVIEW_RESPONSE_V3.md`, `docs/PUBLICATION_FIGURES_V2.md`,
-`analysis/README.md`, and executed notebooks 01, 02, 03 and 04.
+`analysis/README.md`, and executed notebooks 01 through 05.
 Read both evaluation manifests. The six selectively completed supplemental
 graphs must remain outside every primary test and held-out benchmark.
 
 **Inspect actual plots, not just source code or captions.** Open the rendered
-13 PNG and SVG/PDF figures in `outputs/publication_figures/20261105_v3/`.
+15 figures: v4 overrides 08, 11, 14 and adds 15; the rest remain in v3. Inspect their PNG and vector versions.
 The manuscript-v1 and heldout-v1 figures are archived comparisons, not current
 displays. Read the five supplied papers
 and inspect their figures as visual references, using the exact versions and
@@ -79,9 +81,8 @@ Audit the following independently:
    50-node anchors, a single thinning per parent, US-English-only weights, and the
    absence of independent population replicates. Do not infer native small-network
    generation quality or treat either dataset as geographic validation.
-8. **Actual delivery.** Run `scripts/review_publication.py check` with the
-   registered frozen kernel. Verify the notebooks embed exactly 3, 7, 6 and
-   13 figures with current captions. Check gallery links, the 3 unchanged figure
+8. **Actual delivery.** Run `scripts/check_deep_review.py` with the
+   registered frozen kernel. Verify the notebooks embed exactly 3, 7, 7, 15 and 1 figures with current captions. Check gallery links, the 3 unchanged figure
    copies, the untouched v2 release, and the new v3 seal.
 
 Return findings first, ordered by severity with file/line or figure/panel

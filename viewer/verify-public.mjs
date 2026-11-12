@@ -6,6 +6,19 @@ import {validateData,replayFrames} from './graph-data.js';
 const root=new URL('./dist/',import.meta.url);
 const data=validateData(JSON.parse(await readFile(new URL('data/revised-calibration.json',root),'utf8')));
 assert.equal(data.runs.length,104);assert.equal(data.main_authorized,false);
+const primary=JSON.parse(await readFile(new URL('data/primary-study.json',root),'utf8'));
+assert.equal(primary.length,896);
+assert.equal(new Set(primary.map(r=>r.id)).size,896);
+assert.equal(primary.filter(r=>r.edges===null).length,6);
+assert.equal(primary.filter(r=>r.edges?.length===0).length,12);
+for(const r of primary){
+  assert.match(r.id,/^final_060dcd3a86d5_main_[a-zA-Z0-9._-]+$/);
+  assert.equal(r.edges===null,Boolean(r.failure));
+  if(r.edges!==null){
+    assert.equal(new Set(r.edges).size,r.edges.length);
+    assert.ok(r.edges.every(e=>Number.isInteger(e)&&e>=0&&e<2500&&Math.floor(e/50)<e%50));
+  }
+}
 const files=await readdir(root,{recursive:true});
 const blocked=/(^|[/\\])(?:\.env[^/\\]*|api-key\.txt|authorization\.json|requests|ledger|billing)([/\\.]|$)/i;
 for(const file of files)assert.ok(!blocked.test(file),`Private path in public build: ${file}`);

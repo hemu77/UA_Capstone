@@ -1,0 +1,35 @@
+{
+  "seed": 20261111,
+  "banks": 8,
+  "graphs_per_bank": 56,
+  "n": 50,
+  "roster_cramers_v": 0.3156459297079189,
+  "roster_sha256_raw": "26745f4858aefcd4a3dae8a0dfd5984d64c0a4d3deba011948d5b2766028190e",
+  "inputs": {
+    "outputs/publication_figures/20261105_v3/figure_manifest.json": "9c5a7575d6fb718ac36d3bc1f995092dc1920a718b2c3153590416df09f2d94a",
+    "outputs/analysis_ready/060dcd3a86d5/primary_valid_graphs.csv": "f62db1d6ae788193af39005fd92a969d5418bd2d7fa1acef437577aa5edf5591"
+  },
+  "code_sha256": "29506355949b12c71e01f49ce074e7abbb6e37280c42cc859ce5f51269043bc2",
+  "artifacts": {
+    "08_heldout_distances.pdf": "149ed4d2535266033ed9a94c4ccdae98c5e6b57c1cafff56cc593c0857b7bbb7",
+    "08_heldout_distances.png": "962301e8eacd1322a37e21298b5378e26e9b3be9e710e1c144fb2a3fd3dc7014",
+    "08_heldout_distances.svg": "c5390ee6b102d639424b19e7a3474112b63ae25888affcacc7fb609675d9ebbf",
+    "11_conditional_controls.pdf": "e80a99b6c5d6bea814172bcea468d05468f146d9d59e57a6a1fa68b3ac4f89a9",
+    "11_conditional_controls.png": "fd747eda1715fe81a7b5e65a0c3f2c16102614fd5301021599535c961a4e389d",
+    "11_conditional_controls.svg": "8fa28e2b7a9a3fab04628fbd83685733e3ad99db5d7cdbdb883476e9255cd545",
+    "14_demographic_mixing.pdf": "e88b58074adc90c6bfe6ce8b51d51a3ca01d1110afa5704ce81c3b42f985103f",
+    "14_demographic_mixing.png": "6742db5fa80cf8031f8f5e64925bbe610f21f6e653f0f375c33f19e2f9760fd9",
+    "14_demographic_mixing.svg": "38a69b7d804442f706b4082c79994131adc1dde419444472a7e7721940d0c520",
+    "15_efficiency_density.pdf": "896e5a1ffad3b4f198711ee0b7176d4c86202024da7572e19a8b935becb57bbe",
+    "15_efficiency_density.png": "d3624f30eb34c678861ae22f8897e645a95042ed1a5733989e717f6e54df7930",
+    "15_efficiency_density.svg": "9dc7fb6af1bba1541bc7e970b1ac7926bc5a8a1fd00495a4708e75256474d99c",
+    "attribute_cells.csv": "2f12d9b5becc186b4f9aeff9c81a0e055b6d574904adedb4c81b969956c77307",
+    "attribute_ranks.csv": "89508f1e3b6ebcac7ff1896efdfefa8344448d002064be06531e7d13dc1e8edd",
+    "clustering_margins.csv": "cd0c99e5ccfda90ee8e864a586cd2427193817932cd08d0d403727048ee2119f",
+    "efficiency_banks.csv": "8857ac8b6006902ff55b6f06d46b9c270f02bf2646c421481b8f6a5a3eb77baf",
+    "efficiency_records.csv": "e35d94a0d4a3ac566f610364baacc3b68a1d2d4145b29140c1ce6d4d21a968fd",
+    "efficiency_simulations.csv": "a1b83c60a3647e2920115ed34b874bcd0a127a763f0909a60972aff397a4164a",
+    "efficiency_summary.csv": "11550ce06804f026817b17d4fbebad5c3314047c31d36ab0d109e9ee12bbdc0a",
+    "roster_crosstab.csv": "f617ad81256dea1bf4774699eaa45271a88bc2a4b9ee905f26c2ea5856e1007d"
+  }
+}

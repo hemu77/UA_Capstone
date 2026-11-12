@@ -103,9 +103,11 @@ tests, equivalence tests, or a model-quality leaderboard**.
 | Development BA | 0.1454 | 0.0416 |
 | Development WS | 0.1259 | 0.0813 |
 
+**November 11 diagnostic:** At 50 nodes the equal-record mean efficiency W1 is 0.119 for Global, 0.365 for fixed WS and 0.153 for ER given each record's full density. Target-informed ER is closer on the school record; Global remains closer on the Facebook mean. This is a diagnostic, not a new transfer competitor. [Figure and reproduction](DEEP_REVIEW_RESPONSE.md).
+
 WS is closer on this metric than each four-model LLM procedure average for
 Facebook; BA is closer for the school roster. Other metrics tell a different
-story: global graphs better match sparse density/efficiency here, while some
+story: Global is close on density/efficiency relative to the development-fixed settings, while some
 local/sequential or iterative graphs better match transitivity or degree
 inequality. Dense legacy development graphs also disadvantage those frozen
 baseline settings on sparse new sources. Do not retune them on these results
@@ -155,7 +157,7 @@ Use the pinned Python 3.11.9 environment and registered notebook kernel:
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\review_publication.py check
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_deep_review.py
 ```
 
 The fetcher accepts only the two pinned public downloads, bounds sizes,

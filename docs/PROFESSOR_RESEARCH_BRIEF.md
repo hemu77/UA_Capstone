@@ -1,23 +1,24 @@
 # What the network study can claim
 
-**For the professor and manuscript reviewer | November 6, 2026.** Lead with the real-network comparison, not with the smallest p-value. On the two held-out friendship sources, the best match for how tightly friends cluster was a classical generator. The best match for how easily people can reach each other was an LLM procedure. These are different properties of the same networks.
+**November 11, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
 
 ## The comparison to show first
 
-At 50 people, compare the closest of four LLM procedures with the closest of three classical generators. The numbers are Wasserstein distances (W1): zero means identical distributions **on that metric**; smaller is closer. Each Facebook record gets equal weight; the school is one survey. These are descriptive comparisons, not significance tests.
+At 50 nodes we compared the distribution of global efficiency (short paths, counting disconnected pairs as zero). W1 is a distance: smaller means a closer match **on this property alone**. Global asks an LLM to generate the whole network at once. WS is a small-world baseline calibrated on development data. As a separate diagnostic we gave a random-edge generator (ER) the full density of each target record. It has information neither transfer competitor was fitted on.
 
-| Real source | Property | Closest LLM (W1) | Closest classical model (W1) |
-| --- | --- | --- | --- |
-| Facebook friendship circles | Clustering | Sequential, 0.1678 | Small-world (WS), **0.1259** |
-| School friendship survey | Clustering | Global, 0.1067 | Preferential attachment (BA), **0.0416** |
-| Facebook friendship circles | Efficiency | Global, **0.1173** | Small-world (WS), 0.3563 |
-| School friendship survey | Efficiency | Global, **0.1383** | Small-world (WS), 0.4550 |
+| Mean efficiency W1 | Global LLM | Fixed WS | ER given target density |
+| --- | ---: | ---: | ---: |
+| Facebook, ten records weighted equally | 0.117 | 0.356 | 0.156 |
+| School, one survey | 0.138 | 0.455 | 0.121 |
+| All 11 records weighted equally | 0.119 | 0.365 | 0.153 |
 
-**Why size matters:** keep only 25 people from each 50-person graph, on both the generated and observed sides, and the closest clustering baseline changes on *both* sources: WS to BA on Facebook, BA to random edges (ER) at school. Global remains closest on efficiency at 25, 40 and 50. This checks sensitivity to observing fewer people; it does not test models asked to generate smaller networks. Efficiency measures short paths, counting disconnected pairs as zero, not how well people communicate.
+The random reference closes **86% of the fixed-WS-to-Global gap**. It is strictly closer than Global on five records and within 0.015 behind on one more. That cutoff is descriptive, not an equivalence margin. This does **not** mean density causes 86% of real friendship behavior. The school result reverses the ordering seen in the Facebook mean; eleven records are not eleven independent communities.
 
-![Five structural comparisons; spans show the range across Facebook records, not confidence intervals.](../outputs/publication_figures/20261105_v3/08_heldout_distances.png)
+![Paired efficiency distances for each observed record and distributions by source](../outputs/publication_figures/20261111_v4/15_efficiency_density.png)
 
-[Full scores](../outputs/publication_figures/20261105_v3/sensitivity_source_summary.csv) | [How sampling changes the target](../outputs/publication_figures/20261105_v3/10_sampling_effect.png) | [Distribution shapes](../outputs/publication_figures/20261105_v3/09_heldout_distributions.png)
+**Clustering is a different question:** do friends of a person also tend to be friends with one another? At 50 nodes, WS had the smallest mean distance on Facebook (0.1259); BA, a preferential-attachment model, did at school (0.0416). At 40 nodes on Facebook the top two are only 0.0037 apart; at 25 nodes at school ER and Global differ by 0.0171. The ordering changes with size. Classical models are competitive; there is no stable overall winner. Positive mean observed-minus-degree-swap clustering in all 11 records is descriptive evidence of closure not reproduced by these controls, not a significance test.
+
+[Five-metric comparison](../outputs/publication_figures/20261111_v4/08_heldout_distances.png) | [Rank margins](../outputs/publication_figures/20261111_v4/clustering_margins.csv) | [Record distances](../outputs/publication_figures/20261111_v4/efficiency_records.csv)
 
 ## The planned statistical result
 
@@ -29,7 +30,7 @@ With iterative generation, the estimated difference in average clustering was **
 
 ## RQ2: Which demographic similarities show up in ties?
 
-In [Figure 14](../outputs/publication_figures/20261110_rq2/14_demographic_mixing.png), religion has the highest mean same-group mixing score in 22 of 28 global conditions. Political orientation leads in the remaining six and in all 84 person-level conditions (local, sequential and iterative). Gender never ranks first. Scores adjust for each group's share of the fictional roster, not for every other attribute. This is not a causal or population ranking. The [executed notebook](../analysis/05_rq2_demographic_mixing.ipynb) compares all three scores on the same 878 nonempty primary graphs, excluding supplements; no new inferential tests.
+[Figure 14](../outputs/publication_figures/20261111_v4/14_demographic_mixing.png) shows all 28 model/instruction combinations per method. In all three person-level methods, political orientation ranks first in 28/28 on both measures. Under Global it ranks first in 6/28 with Coleman and only 1/28 by excess same-group edge share; religion leads in the other combinations. Neither is a measure of independent importance. All 878 scored graphs use one roster with different category sizes; religion and politics co-vary (descriptive Cramer's V = 0.316). Prompt field order was fixed. Separating these explanations would require new counterbalanced prompts and rosters. [Executed RQ2 notebook](../analysis/05_rq2_demographic_mixing.ipynb).
 
 ## What failed, and why it matters
 
@@ -51,4 +52,4 @@ These are recorded failure modes, not evidence that a language caused a failure.
 - **What the design cannot establish:** one fictional roster, four fixed models, eight paired blocks and unequal computation across procedures. The language result concerns these prompts, not Hindi speakers or national culture. Held out means not used to fit the baselines, not necessarily unseen in model training.
 - **Where external evidence stops:** ten Facebook records overlap; the Marseille school is one incomplete survey. Repeated node samples are not independent communities. Matching a structural statistic does not mean predicting real friendships. The next informative test would freeze the evaluation on additional independent communities and multiple rosters, with a comparable compute budget. That test has not been run.
 
-**Decision for the meeting:** Does the metric-and-size result warrant the paper's headline, with the instruction effect as a qualified secondary finding? Ask the reviewer to argue against that framing using the [Claude review instructions](CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+**Decision for the meeting:** Does the density and size sensitivity warrant the paper's headline, with the instruction effect as a qualified secondary finding? Ask the reviewer to argue against that framing using the [Claude review instructions](CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).

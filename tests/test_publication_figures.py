@@ -19,11 +19,12 @@ from analysis_figures import publication as pub
 
 class NotebookPresentationTests(unittest.TestCase):
     def test_main_notebooks_use_current_gallery_not_archived_renderer(self):
-        for number in ('01', '02', '03', '04'):
+        for number in ('01', '02', '03', '04', '05'):
             path = next((ROOT / 'analysis').glob(number + '_*.ipynb'))
             notebook = nbformat.read(path, as_version=4)
             source = '\n'.join(cell.source for cell in notebook.cells)
-            self.assertIn('analysis_figures.publication', source, path.name)
+            renderer = 'publication_v3' if number in ('01','02') else 'deep_review'
+            self.assertIn(f'from analysis_figures.{renderer} import show', source, path.name)
             self.assertNotIn('from analysis_primary.plots import render_figures', source)
             self.assertNotIn("OUT / 'figures/01_primary_forest.png'", source)
             self.assertNotIn("OUT/'figures'/(stem+'.png')", source)
