@@ -19,7 +19,7 @@ export async function loadPresentation(fetcher) {
 
 // Matching is a design check, not a significance test or evidence of human validity.
 export function researchEvidence(runs, question) {
-  const varied={rq1:'culture',rq3:'model',rq4:'language'}[question];
+  const varied={method:'method',rq1:'culture',rq3:'model',rq4:'language'}[question];
   const issues=[];
   if(!runs.length)return {matched:false,issues:['Select saved runs first.'],pairs:[]};
   if(new Set(runs.map(r=>r.roster_id)).size>1)issues.push('Different persona rosters.');
@@ -28,7 +28,7 @@ export function researchEvidence(runs, question) {
   if(new Set(runs.map(r=>r.study)).size>1)issues.push('Different study collections selected.');
   if(question==='rq1'&&runs.some(r=>r.language!=='english'))issues.push('RQ1 here requires English instructions throughout.');
   if(varied){
-    if(new Set(runs.map(r=>r[varied])).size<2)issues.push(`Select at least two ${varied==='culture'?'country framings':varied==='language'?'instruction languages':'models'}.`);
+    if(new Set(runs.map(r=>r[varied])).size<2)issues.push(`Select at least two ${varied==='culture'?'country framings':varied==='language'?'instruction languages':varied==='method'?'generation methods':'models'}.`);
     for(const key of ['method','model','culture','language','seed'])if(key!==varied&&new Set(runs.map(r=>r[key])).size>1)issues.push(`${key} also varies; hold it constant for this comparison.`);
   }
   if(question==='rq4'&&runs.some(r=>r.language_confound))issues.push('Historical language prompts changed participant language too.');

@@ -69,7 +69,7 @@ try{
   assert.equal(await page.locator('#incident').isChecked(),true);
   assert.match(await page.locator('.canvas-legend').innerText(),new RegExp(`persona ${person} across 4 runs`));
   const expected=await page.evaluate(async selected=>{
-    const data=await (await fetch('./data/revised-calibration.json')).json();
+    const data=await (await fetch('./data/primary-viewer.json')).json();
     const view=JSON.parse(new URL(location.href).searchParams.get('view'));
     return view.runs.map(id=>{const run=data.runs.find(r=>r.run_id===id);return {id,people:[selected,...run.edges.filter(edge=>edge.includes(selected)).flat().filter(id=>id!==selected)].sort()};});
   },person);

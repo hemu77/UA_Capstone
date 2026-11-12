@@ -31,7 +31,8 @@ import {comparisonModels} from './graph-data.js';
 import {togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
 
 test('dataset routes preserve old links and reject unknown datasets',()=>{
-  assert.equal(evidenceDataset(null),'revised_calibration');
+  assert.equal(evidenceDataset(null),'primary');
+  assert.equal(evidenceDataset(null,['final_060dcd3a86d5_main_example']),'primary');
   assert.equal(evidenceDataset(null,['calibration_v6_example']),'revised_calibration');
   assert.equal(evidenceDataset(null,['revision896_example']),'calibration');
   assert.equal(evidenceDataset(null,['old_pilot']),'legacy');

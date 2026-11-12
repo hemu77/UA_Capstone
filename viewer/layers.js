@@ -21,7 +21,8 @@ let fitOnResize=false;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const filterKeys=['collection','method','culture','language','model','seed'];
 const url = new URL(location.href);
-let dataset='revised_calibration';
+let dataset='primary';
+const historyLoads=new Map();
 const label = runLabel;
 const fmt = v => typeof v === 'number' && Number.isFinite(v) ? v.toFixed(3) : 'NA';
 function option(select, value, text) { select.add(new Option(text, value)); }
@@ -34,8 +35,46 @@ function announce(message) {$('action-status').textContent=message;}
 function activeRun() {return runs.find(run=>run.run_id===activeId)||runs[0];}
 function stop() {clearTimeout(timer);timer=null;playing=false;}
 function selectPersona(id,toggle=true) {stop();journey=false;const next=toggle?togglePersona($('person').value,id):id;$('person').value=next;$('incident').checked=!!next;draw();}
+async function verifiedHistory(run) {
+  if(traceCache.has(run.run_id)){
+    const frames=traceCache.get(run.run_id);
+    if(!frames)throw Error('Recorded history failed verification; reload to retry');
+    return frames;
+  }
+  if(historyLoads.has(run.run_id))return historyLoads.get(run.run_id);
+  const id=run.run_id,owner=data;
+  const task=(async()=>{
+    let events=run.events;
+    if(!events?.length){
+      if(run.events_url!==`./data/primary-events/${id}.json`||!/^[a-zA-Z0-9_.-]+$/.test(id))throw Error('Invalid event path');
+      const response=await fetch(run.events_url);
+      if(!response.ok)throw Error('Recorded replay could not be loaded');
+      const bytes=await response.arrayBuffer();
+      const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(b=>b.toString(16).padStart(2,'0')).join('');
+      if(digest!==run.events_sha256)throw Error('Recorded replay failed its integrity check');
+      events=JSON.parse(new TextDecoder().decode(bytes));
+    }
+    const frames=replayFrames({...run,events},owner.personas.map(p=>p.id));
+    if(!frames)throw Error('Recorded history is empty');
+    // Retain verified raw events for offline revisits; bound expanded replay prefixes.
+    run.events=events;traceCache.set(id,frames);
+    if(traceCache.size>12){const oldest=traceCache.keys().next().value;traceCache.delete(oldest);historyLoads.delete(oldest);}
+    return frames;
+  })();
+  historyLoads.set(id,task);
+  try{return await task;}catch(error){historyLoads.delete(id);traceCache.set(id,null);throw error;}
+}
 function loadTrace() {
   const run=activeRun();activeId=run.run_id;
+  if(run.events_url&&!traceCache.has(activeId)){
+    trace=null;const owner=data,id=activeId;
+    verifiedHistory(run).then(frames=>{
+      if(data===owner&&activeId===id){trace=frames;frame=Math.min(frame,frames.length-1);draw();}
+    }).catch(error=>{
+      if(data===owner&&activeId===id){announce(error.message+' Final graph is still available. Reload to retry.');draw();}
+    });
+    return;
+  }
   if(!traceCache.has(activeId))traceCache.set(activeId,run.replay_status==='actual_recorded_graph_changes'?replayFrames(run,data.personas.map(p=>p.id)):null);
   trace=traceCache.get(activeId);frame=Math.min(frame,trace?trace.length-1:0);
 }
@@ -57,11 +96,12 @@ function play() {
 }
 function renderPlayback() {
   const run=activeRun(),selected=$('person').value,available=!!trace&&mode==='formation';
+  const pending=!!run.events_url&&!traceCache.has(run.run_id),failed=!!run.events_url&&traceCache.has(run.run_id)&&!trace;
   const current=trace?.[frame],event=current?.event,edges=current?.edges||run.edges;
   $('formation-mode').setAttribute('aria-pressed',String(mode==='formation'&&!journey&&!($('incident').checked&&selected)));
   $('compare-mode').setAttribute('aria-pressed',String(mode==='compare'));
   $('stage-title').textContent=mode==='formation'?label(run):`${runs.length} final networks / shared coordinates`;
-  $('stage-state').textContent=mode==='compare'?'Final snapshots':trace?`Event ${frame} / ${trace.length-1}`:'History unavailable';
+  $('stage-state').textContent=mode==='compare'?'Final snapshots':trace?`Event ${frame} / ${trace.length-1}`:run.events_url&&!traceCache.has(run.run_id)?'Loading verified replay…':'History unavailable';
   $('play').textContent=playing?'Pause':mode==='compare'?'Play active run':journey?'Play persona journey':'Play / resume';
   $('play').disabled=!trace;
   for(const id of ['rewind','previous','next','timeline','show-final','speed'])$(id).disabled=!available;
@@ -76,9 +116,11 @@ function renderPlayback() {
   document.querySelector('.canvas-legend').innerHTML=mode==='compare'?'<span>Each plane: one final run</span><span>Cross-plane line: same persona, not a tie</span>':'<span class="new-key">New ties</span><span class="removed-key">Removed: dashed</span><span>Outline: actor / larger: selected</span>';
   if(mode==='compare'&&selected){const note=document.createElement('span');note.className='identity-key';note.textContent=`Gold dashed line: persona ${selected} across ${runs.length} runs. Not a friendship.`;document.querySelector('.canvas-legend').replaceChildren(note);}
   $('replay-note').textContent=mode==='compare'?'Each plane is a separate saved experiment, not a time slice or country map. Whole network replays one run.':!trace?'Playback unavailable: only the final graph exists. Its history cannot be reconstructed honestly.':run.method==='global'?'Global generation recorded the entire network in one batch. No per-person order was recorded.':`${run.method==='sequential'?'Sequential generation asks one persona at a time.':run.method==='local'?'Local generation records one persona\'s choices per update.':'Iterative generation records successive additions and removals.'} Whole-network replay shows every recorded update, not simultaneous agents. Several ties can belong to one update: they animate together because their internal order was not recorded.`;
+  if(pending)$('replay-note').textContent='Loading and verifying this run’s recorded events. Final graph remains visible; playback will become available after the checks pass.';
+  if(failed)$('replay-note').textContent='Recorded history could not be verified. Playback is disabled; the saved final graph remains available. Reload the page to retry.';
   if(journey&&available)$('replay-note').textContent+=' Persona playback includes their own decisions and other actors changing their ties; unrelated events are skipped on screen but retained in the graph. Manual scrubbing returns to all-event mode.';
-  if(run.study==='revised_calibration'&&run.method==='global'&&!run.edges.length)$('replay-note').textContent+=' This run recorded NONE: all 50 personas remain, with zero ties. No connection history exists to animate.';
-  $('event-heading').textContent=mode==='compare'?'Final comparison':!trace?'No event log':!event?'Before the first decision':event.persona==null?'Global batch':`Event actor: persona ${event.persona}`;
+  if(['primary','revised_calibration'].includes(run.study)&&run.method==='global'&&!run.edges.length)$('replay-note').textContent+=' This valid run has no ties: all 50 personas remain. No connection history exists to animate.';
+  $('event-heading').textContent=mode==='compare'?'Final comparison':pending?'Verifying replay':failed?'Replay unavailable':!trace?'No event log':!event?'Before the first decision':event.persona==null?'Global batch':`Event actor: persona ${event.persona}`;
   const incidentChange=event&&selected&&[...event.added,...event.removed].some(edge=>edge.includes(selected));
   const relevance=!event||!selected?'':event.persona===selected?' The selected persona made this recorded decision.':incidentChange?` ${event.persona==null?'The batch':'Another persona'} changed a tie involving persona ${selected}.`:' This event does not change the selected persona\'s ties.';
   $('event-explanation').textContent=mode==='compare'?'Select Formation to inspect the active run.':!trace?'Only the final edges are available.':!event?'Press Play formation or choose a decision below.':`${event.method}: ${event.added.length} new ties; ${event.removed.length} removed.${!event.added.length&&!event.removed.length?' No net change.':''}${relevance}${event.attempts?` Recorded attempts: ${event.attempts}.`:''} Ties are undirected.`;
@@ -98,10 +140,10 @@ function renderPlayback() {
   $('trajectory-title').textContent=`${run.model}: ${selected?`persona ${selected} connections`:'network growth'}`;
   if(!renderer)$('status').textContent='WebGL unavailable. Playback counts, the ledger and tables remain available.';
   $('trajectory').innerHTML=trajectorySvg(trace,selected,mode==='compare'&&trace?trace.length-1:frame);
-  const key=`${activeId}|${selected}`;
+  const key=`${activeId}|${selected}|${run.events?.length||0}|${pending}`;
   if(ledgerKey!==key){ledgerKey=key;$('events').replaceChildren();const indices=selected?personaSteps(run.events,selected):Array.from({length:run.events?.length||0},(_,i)=>i+1);
     $('ledger-count').textContent=`${indices.length} ${selected?'relevant':'recorded'} events`;
-    if(!indices.length){const p=document.createElement('p');p.className='empty-note';p.textContent=trace?'No recorded decisions involve this persona.':'No event log was saved for this run.';$('events').append(p);}
+    if(!indices.length){const p=document.createElement('p');p.className='empty-note';p.textContent=pending?'Verifying recorded decisions…':failed?'Recorded decisions unavailable; playback is disabled.':trace?'No recorded decisions involve this persona.':'No event log was saved for this run.';$('events').append(p);}
     for(const index of indices){const e=run.events[index-1],button=document.createElement('button');button.className='event-row';button.dataset.step=index;button.setAttribute('aria-label',`Seek event ${index}`);const n=document.createElement('span'),who=document.createElement('span'),delta=document.createElement('span');n.textContent=String(index).padStart(3,'0');who.textContent=e.persona==null?'Global batch':`Persona ${e.persona} / ${e.method}`;const added=selected?e.added.filter(edge=>edge.includes(selected)).length:e.added.length,removed=selected?e.removed.filter(edge=>edge.includes(selected)).length:e.removed.length;delta.textContent=`${selected?'Person':'Run'} +${added} / -${removed}`;button.title=`Whole recorded batch: ${e.added.length} added, ${e.removed.length} removed. No within-batch ordering exists.`;button.append(n,who,delta);button.onclick=()=>{mode='formation';seek(index);};$('events').append(button);}
   }
   for(const button of $('events').querySelectorAll('button')){button.setAttribute('aria-current',String(Number(button.dataset.step)===(mode==='compare'&&trace?trace.length-1:frame)));button.setAttribute('aria-label',`Seek event ${button.dataset.step}: ${[...button.children].slice(1).map(child=>child.textContent).join('; ')}`);}
@@ -216,14 +258,14 @@ function draw() {
   const point=(id,index)=>{const p=layout.get(id),scale=mode==='formation'?1.8:1.25;return new THREE.Vector3(p[0]*scale,mode==='formation'?0:(index-(runs.length-1)/2)*spacing,p[1]*scale);};
   $('layers').replaceChildren();$('rows').replaceChildren();$('plane-labels').replaceChildren();$('person-degrees').replaceChildren();planeLabels=[];
   runs.forEach((run,index)=>{
-    const li=document.createElement('li');li.style.setProperty('--layer',colors[index]);li.classList.toggle('active',run.run_id===activeId);const title=document.createElement('button');title.className='select-run';title.setAttribute('aria-label',`Inspect run ${index+1}`);title.setAttribute('aria-pressed',String(run.run_id===activeId));title.title=label(run);title.textContent=`${index+1}. ${run.model}\n${run.method} / ${countryNames[run.culture]||run.culture}\n${run.language} / seed ${run.seed}\n${run.events?.length?run.events.length+' recorded updates':'Final graph only'}`;title.onclick=()=>activate(run);li.append(title);
-    const remove=document.createElement('button');remove.textContent='×';remove.className='remove-run';remove.setAttribute('aria-label',`Remove layer ${index+1}`);remove.disabled=runs.length===1;remove.onclick=()=>{removed.push({run,index});runs.splice(index,1);refresh();candidates();announce(`Removed ${run.model} / ${run.method}. Undo remove restores it even if filters change.`);};li.append(remove);$('layers').append(li);
+    const li=document.createElement('li');li.style.setProperty('--layer',colors[index]);li.classList.toggle('active',run.run_id===activeId);const title=document.createElement('button');title.className='select-run';title.setAttribute('aria-label',`Inspect run ${index+1}`);title.setAttribute('aria-pressed',String(run.run_id===activeId));title.title=label(run);title.textContent=`${index+1}. ${run.model}\n${run.method} / ${countryNames[run.culture]||run.culture}\n${run.language} / seed ${run.seed}\n${run.events?.length?run.events.length+' recorded updates':run.events_url?'Recorded replay available':'Final graph only'}`;title.onclick=()=>activate(run);li.append(title);
+    const remove=document.createElement('button');remove.textContent='×';remove.className='remove-run';remove.setAttribute('aria-label',`Remove layer ${index+1}`);remove.disabled=runs.length===1;remove.onclick=()=>{removed.push({run,index});runs.splice(index,1);refresh();candidates();announce(`Removed ${run.model} / ${run.method}. Undo remove restores it even if filters change.`);$('undo').focus({preventScroll:true});};li.append(remove);$('layers').append(li);
     const renderedEdges=mode==='formation'&&run.run_id===activeId&&trace?trace[frame].edges:run.edges;
     const currentEvent=mode==='formation'&&run.run_id===activeId?trace?.[frame].event:null;
     const ego=personaView(renderedEdges,selected,$('incident').checked),adjacent=ego.neighbors;
     const removedNeighbors=new Set((currentEvent?.removed||[]).filter(edge=>selected&&edge.includes(selected)).flat());
     if(ego.visibleIds)for(const id of removedNeighbors)ego.visibleIds.add(id);
-    if(selected&&(mode==='compare'||run.run_id===activeId)){const item=document.createElement('p');item.textContent=`Run ${index+1} / ${run.model}: ${adjacent.length} ${mode==='compare'?'final':'current'} neighbors${adjacent.length?'':' (isolated)'}`;item.style.borderLeft=`3px solid ${colors[index]}`;for(const id of adjacent.sort((a,b)=>Number(a)-Number(b))){const button=document.createElement('button');button.className='neighbor';button.textContent=id;button.title=`Inspect persona ${id} across selected runs`;button.onclick=()=>selectPersona(id);item.append(button);}$('person-degrees').append(item);}
+    if(selected&&(mode==='compare'||run.run_id===activeId)){const item=document.createElement('p');item.textContent=`Run ${index+1} / ${run.model}: ${adjacent.length} ${mode==='compare'?'final':'current'} neighbors${adjacent.length?'':' (isolated)'}`;item.style.borderLeft=`3px solid ${colors[index]}`;for(const id of adjacent.sort((a,b)=>Number(a)-Number(b))){const button=document.createElement('button');button.className='neighbor';button.textContent=id;button.title=`Inspect persona ${id} across selected runs`;button.onclick=()=>{selectPersona(id);$('person').focus({preventScroll:true});};item.append(button);}$('person-degrees').append(item);}
     const finalAdjacent=selected?[...neighbors(run.edges,selected)].sort():[];
     const row=document.createElement('tr');for(const value of [`${index+1}. ${label(run)}`,data.personas.length,run.edges.length,fmt(run.metrics.density),fmt(run.metrics.avg_clustering_coef),selected?`${finalAdjacent.length}: ${finalAdjacent.join(', ')||'none'}`:'Select a persona']){const td=document.createElement('td');td.textContent=value;row.append(td);}$('rows').append(row);
     if(!group||(mode==='formation'&&run.run_id!==activeId))return;
@@ -300,10 +342,13 @@ function renderEvidence() {
       const link=document.createElement('a');link.href=item.png_url;link.textContent='Original calibration PNG';link.target='_blank';link.rel='noopener';caption.append(document.createElement('br'),link);
       const adjacency=document.createElement('a');adjacency.href=item.adjacency_url;adjacency.textContent='Saved adjacency list';adjacency.download='';caption.append(adjacency);
       const note=document.createElement('p');note.textContent='Original artifacts, not a publication panel. Their hashes were checked during export.';caption.append(note);
+    }else if(item.study==='primary'){
+      const link=document.createElement('a');link.href='https://github.com/hemu77/UA_Capstone/blob/main/'+item.source;link.target='_blank';link.rel='noopener';link.textContent='Verified original adjacency';caption.append(link);
+      const note=document.createElement('p');note.textContent='Final primary graph. Actual recorded changes are loaded only for the active replay.';caption.append(note);
     }else caption.append(document.createTextNode(' / Presentation figure not available; no placeholder graph.'));
     figure.append(caption);$('source-gallery').append(figure);
   }}
-  const descriptions={rq1:'RQ1: Does changing country framing alter topology and homophily with English instructions held constant? Match model, method, seed and roster. This tests prompt framing, not entire national cultures.',rq2:'RQ2: Which recorded attributes show within-group mixing? Compare categorical Coleman homophily within each run. Age uses a separate assortativity measure. These descriptive scores cannot establish what caused a tie.',rq3:'RQ3: How similar are different models under otherwise matched conditions? Compare final topology and exact shared edges. Code/prompt changes prevent clean model-only attribution.',rq4:'RQ4: Does instruction language change the graph at a fixed country framing? Match model, method, seed and roster. Translation equivalence still needs independent review.'};
+  const descriptions={method:'Method comparison: hold model, roster, seed and instructions fixed while the generation procedure changes. This is a descriptive view; the computational budget and interaction sequence differ by procedure.',rq1:'RQ1: Does changing country framing alter topology and homophily with English instructions held constant? Match model, method, seed and roster. This tests prompt framing, not entire national cultures.',rq2:'RQ2: Which recorded attributes show within-group mixing? Compare categorical Coleman homophily within each run. Age uses a separate assortativity measure. These descriptive scores cannot establish what caused a tie.',rq3:'RQ3: How similar are different models under otherwise matched conditions? Compare final topology and exact shared edges. Code/prompt changes prevent clean model-only attribution.',rq4:'RQ4: Does instruction language change the graph at a fixed country framing? Match model, method, seed and roster. Translation equivalence still needs independent review.'};
   $('rq-explanation').textContent=descriptions[question];
   $('rq-status').textContent=result.matched?'Selection matches the recorded comparison fields. Still exploratory, not a significance test.':'Comparison is not controlled for this research question.';
   $('rq-status').className=result.matched?'selection-matched':'selection-unmatched';
@@ -319,7 +364,7 @@ function renderEvidence() {
   if(question==='rq3')for(const pair of result.pairs){const p=document.createElement('p');p.textContent=`Runs ${pair.a} and ${pair.b}: ${pair.shared} shared / ${pair.union} distinct ties. Edge Jaccard ${pair.jaccard===null?'NA':(100*pair.jaccard).toFixed(1)+'%'} (100% means identical edges; not accuracy).`;$('rq-pairs').append(p);}
   $('provenance-summary').textContent=dataset!=='legacy'?data.verification:run.study==='engineering_pilot'?'Saved engineering output from synthetic personas. Receipt hashes, adjacency, final replay and recomputed metrics are checked offline. This does not establish human validity or independently reconcile every API response.':'Historical model output. Conditions inferred from filenames; original API logs, snapshot and event history unavailable.';
   $('provenance-fields').replaceChildren();
-  const fields=[['Experiment',label(run)],['Collection',dataset!=='legacy'?`${dataset==='revised_calibration'?'Revised V6':'Historical V5'} calibration (not main study)`:run.study==='engineering_pilot'?'Engineering pilot (not confirmatory)':'Historical archive'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
+  const fields=[['Experiment',label(run)],['Collection',dataset==='primary'?'Final primary collection (supplements excluded)':dataset!=='legacy'?`${dataset==='revised_calibration'?'Revised V6':'Historical V5'} calibration (not main study)`:run.study==='engineering_pilot'?'Engineering pilot (not confirmatory)':'Historical archive'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':run.events_url?'History loads on demand and must pass its checksum':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
   for(const [key,value] of fields){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;$('provenance-fields').append(dt,dd);}
   const png=$('source-png');png.hidden=!run.png_url;
   if(run.png_url&&/^\.\/data\/(artifacts|calibration|revised-calibration)\/[a-zA-Z0-9_.-]+\.png$/.test(run.png_url))png.href=run.png_url;else{png.hidden=true;png.removeAttribute('href');}
@@ -329,18 +374,24 @@ function refresh() {stop();$('match-note').textContent='';layerComparison(runs);
 function renderCoverage() {
   $('coverage-panel').hidden=dataset==='legacy';
   if(dataset==='legacy')return;
+  $('primary-findings').hidden=dataset!=='primary';
+  $('failure-panel').hidden=dataset!=='primary';
+  if(dataset==='primary'){
+    $('failure-list').replaceChildren();
+    for(const r of data.failures){const li=document.createElement('li');li.textContent=`${label(r)} — ${r.failure.replaceAll('_',' ')}. No valid graph.`;$('failure-list').append(li);}
+  }
   $('coverage-summary').textContent=`${data.runs.length} / ${data.planned_networks} saved`;
   const table=document.createElement('table'),caption=document.createElement('caption'),head=document.createElement('thead'),body=document.createElement('tbody'),header=document.createElement('tr');
-  caption.textContent=dataset==='revised_calibration'?'Revised calibration: saved / allocated repetitions. Not in scope means no calibration was allocated; it is not an empty graph.':'Historical V5 coverage against the former eight-repetition plan, not a current collection authorization.';
+  caption.textContent=dataset==='primary'?'Valid graphs / 8 planned attempts per condition. The six failed attempts are retained below, never rendered as graphs. Click a cell to filter its seeds.':dataset==='revised_calibration'?'Revised calibration: saved / allocated repetitions. Not in scope means no calibration was allocated; it is not an empty graph.':'Historical V5 coverage against the former eight-repetition plan, not a current collection authorization.';
   for(const text of ['Model / method',...data.settings.map(([country,language])=>`${countryNames[country]} / ${language}`)]){const th=document.createElement('th');th.scope='col';th.textContent=text;header.append(th);}head.append(header);
   for(const model of data.models)for(const method of data.methods){
     const row=document.createElement('tr'),name=document.createElement('th');name.scope='row';name.textContent=`${model} / ${method}`;row.append(name);
     for(const [culture,language] of data.settings){
-      const {saved:selected,planned}=conditionCoverage(data,model,method,culture,language),td=document.createElement('td'),button=document.createElement('button');
-      button.textContent=planned?`${selected.length} / ${planned}`:'Not in scope';button.disabled=!selected.length;
+      const {saved:selected,planned,failed}=conditionCoverage(data,model,method,culture,language),td=document.createElement('td'),button=document.createElement('button');
+      button.textContent=planned?`${selected.length} / ${planned}${failed.length?' · '+failed.length+' failed':''}`:'Not in scope';button.disabled=!selected.length;
       button.setAttribute('aria-label',`${model}, ${method}, ${countryNames[culture]}, ${language}: ${selected.length} saved of ${planned} allocated`);
       button.title=selected.length?'Inspect every saved repetition in this condition':'Not collected; no generated graph exists';
-      button.onclick=()=>{try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
+      button.onclick=()=>{if(selected.length>6){for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;candidates();saveView();const drawer=document.querySelector('.run-drawer');drawer.open=true;drawer.scrollIntoView({block:'start'});$('seed').focus({preventScroll:true});announce(`${selected.length} valid runs. Choose a seed then Apply, or add a matching run. Current layers were kept.`);return;}try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
       td.append(button);row.append(td);
     }body.append(row);
   }table.append(caption,head,body);$('coverage-table').replaceChildren(table);
@@ -349,14 +400,14 @@ async function start() {
   let saved;try{saved=JSON.parse(url.searchParams.get('view')||'null');}catch{saved=null;}
   if(!saved||typeof saved!=='object'||Array.isArray(saved)||!Array.isArray(saved.runs))saved=null;
   dataset=evidenceDataset(url.searchParams.get('dataset'),saved?.runs);
-  const paths={revised_calibration:'revised-calibration',calibration:'calibration',legacy:'networks'};
+  const paths={primary:'primary-viewer',revised_calibration:'revised-calibration',calibration:'calibration',legacy:'networks'};
   const response=await fetch(`./data/${paths[dataset]}.json`,{cache:'no-store'});if(!response.ok)throw new Error(`Data request failed: ${response.status}. Run the offline viewer export; no substitute data is loaded.`);data=validateData(await response.json());
   $('dataset').value=dataset;
   $('dataset').onchange=()=>{stop();const next=new URL(location.href);next.search='';next.searchParams.set('dataset',$('dataset').value);location.assign(next);};
-  $('dataset-summary').textContent=dataset!=='legacy'?`${data.runs.length} saved calibration graphs | ${data.personas.length} fictional adults | ${data.models.length} models | ${data.settings.length} settings`:`${data.runs.length} saved historical/pilot graphs | ${data.personas.length} original personas | separate from fresh calibration`;
+  $('dataset-summary').textContent=dataset==='primary'?'890 valid networks / 896 attempts · 6 failures · 12 valid empty · 50 fictional adults':dataset!=='legacy'?`${data.runs.length} saved calibration graphs | ${data.personas.length} fictional adults | ${data.models.length} models | ${data.settings.length} settings`:`${data.runs.length} saved historical/pilot graphs | ${data.personas.length} original personas | separate from fresh calibration`;
   $('evidence-notice').textContent=data.evidence_notice||(dataset==='calibration'?'Historical V5 evidence, retained separately. Superseded by revised V6 calibration; do not pool these runs.':'Historical and engineering evidence only. Not the revised calibration.');
   $('roster-limitations').textContent=data.limitations||'These are descriptive model outputs, not observed human ties. This US-structured historical roster includes nine minors. Single-pilot differences are not general population or causal evidence.';
-  if(dataset!=='legacy'){$('collection').replaceChildren();option($('collection'),dataset,dataset==='revised_calibration'?'Revised V6 calibration':'Historical V5 calibration');}
+  if(dataset!=='legacy'){$('collection').replaceChildren();option($('collection'),dataset,dataset==='primary'?'Final primary study':dataset==='revised_calibration'?'Revised V6 calibration':'Historical V5 calibration');}
   else{const figures=await loadPresentation(fetch);presentation=figures.runs;if(figures.error)announce(figures.error);}
   for(const key of ['method','culture','language','model','seed'])for(const value of [...new Set(data.runs.map(r=>String(r[key])))].sort()){
     const run=data.runs.find(r=>String(r[key])===value);
@@ -366,8 +417,10 @@ async function start() {
   $('color').replaceChildren();option($('color'),'layer','Run identity');
   for(const key of Object.keys(data.personas[0].attributes))option($('color'),key,key);
   $('color').value='age';
+  if(!saved&&dataset==='primary')$('research-question').value='method';
   for(const [key,value] of Object.entries(topologyMetrics))option($('metric'),key,value);
-  if(saved&&Array.isArray(saved.runs)){runs=saved.runs.map(id=>data.runs.find(r=>r.run_id===id)).filter(Boolean);try{layerComparison(runs);}catch{runs=[];}}
+  if(saved&&Array.isArray(saved.runs)){runs=saved.runs.map(id=>data.runs.find(r=>r.run_id===id));if(runs.some(run=>!run))throw Error('The saved selection contains a run absent from this dataset. Open the default comparison to choose again.');layerComparison(runs);}
+  if(!runs.length&&dataset==='primary')runs=data.methods.map(method=>data.runs.find(r=>r.model==='gpt-4.1'&&r.method===method&&r.culture==='us'&&r.language==='english'&&r.seed===44000)).filter(Boolean);
   if(!runs.length)runs=(data.models||comparisonModels).map(model=>data.runs.find(r=>r.study===(dataset!=='legacy'?dataset:'engineering_pilot')&&r.model===model&&r.method==='sequential'&&r.culture==='us'&&r.language==='english')).filter(Boolean);
   if(!runs.length)runs=[data.runs[0]];
   startingRuns=[...runs];
@@ -408,18 +461,25 @@ async function start() {
   for(const [id,factor] of [['zoom-in',.8],['zoom-out',1.25]])$(id).onclick=()=>{if(!camera)return;const offset=camera.position.clone().sub(controls.target),distance=Math.min(controls.maxDistance,Math.max(controls.minDistance,offset.length()*factor));camera.position.copy(controls.target).add(offset.setLength(distance));controls.update();requestFrame();};
   $('rotate').onclick=()=>{if(!controls)return;controls.autoRotate=!controls.autoRotate;$('rotate').setAttribute('aria-pressed',String(controls.autoRotate));requestFrame();};
   $('share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('share').textContent='Link copied';}catch{$('share').textContent='Copy the URL from your address bar';}};
-  $('download-selection').onclick=()=>{
-    const value={schema_version:1,dataset,scope:'Selected saved final graphs; not a population estimate or completed main study.',view:JSON.parse(url.searchParams.get('view')),personas:data.personas,runs};
+  $('download-selection').onclick=async()=>{
+    const selected=[...runs],owner=data;
+    $('download-selection').disabled=true;
+    try{
+    for(const run of selected)if(run.events_url)await verifiedHistory(run);
+    if(data!==owner)throw Error('Dataset changed during export');
+    const value={schema_version:1,dataset,scope:'Selected valid saved final graphs; not a population estimate. Histories are included only after verified replay loads.',view:JSON.parse(url.searchParams.get('view')),personas:owner.personas,runs:selected};
     const objectUrl=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));
     const link=document.createElement('a');link.href=objectUrl;link.download=`network-selection-${dataset}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
-    announce(`Download requested: ${runs.length} saved networks with personas, events, measurements and source hashes.`);
+    announce(`Download requested: ${selected.length} saved networks with verified recorded events, measurements and source hashes.`);
+    }catch(error){announce('Export stopped: '+error.message+'. No incomplete download was created.');}
+    finally{$('download-selection').disabled=false;}
   };
   $('expand-stage').onclick=()=>{fitOnResize=true;const expanded=document.querySelector('.laboratory').classList.toggle('expanded');$('expand-stage').setAttribute('aria-pressed',String(expanded));$('expand-stage').textContent=expanded?'Collapse':'Expand';};
   for(const button of document.querySelectorAll('[data-match]'))button.onclick=()=>{
     const reference=activeRun(),dimension=button.dataset.match;
     try{runs=applyLayerSelection(matchedRuns(data.runs,reference,dimension));removed=[];mode='compare';
       for(const key of filterKeys)$(key).value=key==='collection'?(dataset!=='legacy'?dataset:reference.study==='engineering_pilot'?'engineering_pilot':'historical'):key===dimension?'':String(reference[key]);
-      if(dimension!=='method')$('research-question').value={model:'rq3',culture:'rq1',language:'rq4'}[dimension];
+      $('research-question').value={model:'rq3',culture:'rq1',language:'rq4',method:'method'}[dimension];
       refresh();candidates();pose('orbit');announce('Matched comparison applied. No missing conditions were filled.');
       $('match-note').textContent=`${runs.length} saved runs matched to ${reference.model} / ${reference.method} / ${reference.culture} / ${reference.language} / seed ${reference.seed}. Only ${dimension} varies among the matched fields.`;
     }catch(error){announce(error.message);}
@@ -430,4 +490,4 @@ async function start() {
   const missing=comparisonModels.filter(model=>!data.runs.some(r=>r.study==='engineering_pilot'&&r.model===model));
   if(dataset==='legacy'&&missing.length)announce(`Requested comparison: ${comparisonModels.join(', ')}. No saved results for ${missing.join(', ')}; no substitute graph displayed. Older results remain in the archive/all-pilot collection.`);
 }
-start().catch(error=>{$('status').textContent=`Cannot load layers: ${error.message}`;console.error(error);});
+start().catch(error=>{const message=`Saved evidence could not be loaded: ${error.message}`;$('status').textContent=message;$('dataset-summary').textContent=message;$('evidence-notice').textContent='No substitute data has been loaded. Use Retry to request the saved files again.';for(const control of document.querySelectorAll('main button,main select,main input'))control.disabled=true;$('retry-load').hidden=false;$('retry-load').disabled=false;$('retry-load').onclick=()=>location.reload();$('reset-view').hidden=false;$('reset-view').href='./layers.html?dataset='+encodeURIComponent(dataset);});

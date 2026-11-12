@@ -43,3 +43,23 @@ header{min-height:76px;padding:16px 26px;display:flex;align-items:center;justify
 .navigation-bar label{min-width:170px;margin:0}.navigation-bar p{flex:1;color:var(--muted);font-size:12px;line-height:1.6;margin:0}
 #viewport canvas:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media(max-width:850px){.navigation-bar{flex-wrap:wrap;padding:12px 16px;gap:12px}.navigation-bar p{flex-basis:100%;order:3}}
+/* Study context stays inside the existing laboratory, not a separate landing page. */
+.lab-intro{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:3rem;padding:32px 26px;background:radial-gradient(ellipse at 0 0,#31413770,transparent 65%);border-bottom:1px solid var(--line)}
+.lab-intro h1{font-family:Georgia,serif;font-size:clamp(27px,3.3vw,45px);letter-spacing:-.035em;font-weight:400}
+.lab-intro p{font-size:14px;line-height:1.75;max-width:70ch;color:var(--muted);margin-bottom:0}
+.lab-intro ol{padding:0;list-style:none;margin:0;display:grid;gap:14px;counter-reset:guide}
+.lab-intro li{counter-increment:guide;display:grid;grid-template-columns:28px 75px 1fr;gap:8px;align-items:baseline;font-size:12px}
+.lab-intro li:before{content:"0" counter(guide);color:var(--accent);font-variant-numeric:tabular-nums}.lab-intro li span{color:var(--muted)}
+.workspace-bar h2{font-size:24px;margin:6px 0 0;letter-spacing:-.025em}
+.findings{margin:24px 26px}.finding-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:24px}.finding-grid article+article{border-left:1px solid var(--line);padding-left:24px}.finding-number{font-size:12px;color:var(--accent)}.finding-grid p{font-size:13px;line-height:1.8;color:var(--muted)}.finding-grid h3{line-height:1.5}.finding-plots{display:grid;gap:20px;margin:20px 0}.finding-plots figure{margin:0}.finding-plots img{width:100%;max-width:1100px;height:auto;display:block;background:#fafaf8}.finding-plots figcaption{font-size:12px;line-height:1.6;color:var(--muted);margin-top:8px}
+#failure-list{font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+@media(max-width:850px){.lab-intro{grid-template-columns:1fr;padding:24px 16px;gap:20px}.lab-intro ol{max-width:560px}.findings{margin:15px}.finding-grid{grid-template-columns:1fr;gap:12px}.finding-grid article+article{border-left:0;border-top:1px solid var(--line);padding:12px 0 0}}
+/* Keep mobile visual order and keyboard order aligned: stage, runs, inspector. */
+.laboratory>.stage{grid-column:2;grid-row:1}.laboratory>.controls{grid-column:1;grid-row:1}.laboratory>.inspector{grid-column:3;grid-row:1}
+.laboratory.expanded>.stage{grid-column:1/-1;grid-row:1}.laboratory.expanded>.controls{grid-column:1;grid-row:2}.laboratory.expanded>.inspector{grid-column:2;grid-row:2}
+@media(max-width:850px){.laboratory>.stage{grid-column:1/-1;grid-row:1}.laboratory>.controls{grid-column:1;grid-row:2}.laboratory>.inspector{grid-column:2;grid-row:2}}
+@media(max-width:500px){.laboratory>.controls,.laboratory.expanded>.controls{grid-column:1;grid-row:2}.laboratory>.inspector,.laboratory.expanded>.inspector{grid-column:1;grid-row:3}}
+.lab-shortcut{display:inline-block;font-size:13px;margin-top:14px;text-underline-offset:4px}#laboratory{scroll-margin-top:12px}
+
+
+
