@@ -10,7 +10,8 @@ import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchE
 import {configureNavigation,panCamera} from './navigation.js';
 
 const $ = id => document.getElementById(id);
-const colors = ['#b7c9c3','#d0baa0','#aebacd','#c7b9c7','#bac4aa','#c8c6be'];
+// Distinct but equal-weight run hues; identity is always repeated in text labels.
+const colors = ['#6fd6ba','#f0b56c','#8fb6ff','#e995c4','#c5d86d','#b7a6ff'];
 let data, runs=[], layout, renderer, scene, camera, controls, group, meshes=[], scheduled=false;
 let removed=[], startingRuns=[], planeLabels=[];
 let mode='formation',activeId='',frame=0,trace=null,journey=false,playing=false,timer=null,ledgerKey='';
@@ -190,14 +191,21 @@ function setupScene() {
   renderer.domElement.addEventListener('pointermove',e=>{
     const rect=renderer.domElement.getBoundingClientRect();pointer.set(2*(e.clientX-rect.left)/rect.width-1,1-2*(e.clientY-rect.top)/rect.height);ray.setFromCamera(pointer,camera);
     const hit=ray.intersectObjects(meshes,false)[0],tooltip=$('node-tooltip');tooltip.hidden=!hit;
-    if(hit){const person=data.personas.find(p=>p.id===hit.object.userData.person),run=runs.find(r=>r.run_id===hit.object.userData.run);tooltip.textContent=`${run.model} / ${run.method} | Persona ${person.id} | ${Object.entries(person.attributes).map(([k,v])=>`${k}: ${v}`).join(' | ')}`;}
+    if(hit){const person=data.personas.find(p=>p.id===hit.object.userData.person),run=runs.find(r=>r.run_id===hit.object.userData.run);tooltip.replaceChildren(personaCard(person,`${run.model} / ${run.method}`));}renderer.domElement.style.cursor=hit?'pointer':'';
   });
   renderer.domElement.addEventListener('pointerleave',()=>$('node-tooltip').hidden=true);
   renderer.domElement.addEventListener('pointerdown',e=>tap.down(e));
   renderer.domElement.addEventListener('pointerup',e=>{if(!tap.up(e))return;const rect=renderer.domElement.getBoundingClientRect();pointer.set(2*(e.clientX-rect.left)/rect.width-1,1-2*(e.clientY-rect.top)/rect.height);ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(meshes,false)[0];selectPersona(hit?hit.object.userData.person:'',!!hit);});
   pose('orbit');
 }
-function pose(view) {if(!camera)return;const radius=mode==='formation'?145:Math.hypot(156,(runs.length-1)*Number($('separation').value)/2),d=radius/Math.sin(THREE.MathUtils.degToRad(camera.fov/2))/Math.min(1,camera.aspect);camera.position.set(...(view==='top'?[0,1,.0001]:view==='front'?[0,.8,1]:[.55,.95,.75])).normalize().multiplyScalar(d);controls.target.set(0,0,0);controls.update();requestFrame();}
+function pose(view) {if(!camera)return;const radius=mode==='formation'?118:Math.hypot(134,(runs.length-1)*Number($('separation').value)/2),d=radius/Math.sin(THREE.MathUtils.degToRad(camera.fov/2))/Math.min(1,camera.aspect);camera.position.set(...(view==='top'?[0,1,.0001]:view==='front'?[0,.8,1]:[.55,.95,.75])).normalize().multiplyScalar(d);controls.target.set(0,0,0);controls.update();requestFrame();}
+// Shared by the hover card and the inspector so a persona reads the same everywhere.
+function personaCard(person,context) {
+  const card=document.createElement('div'),title=document.createElement('strong'),list=document.createElement('dl');card.className='persona-card';title.textContent=`Persona ${person.id}`;card.append(title);
+  if(context){const source=document.createElement('span');source.className='persona-context';source.textContent=context;card.append(source);}
+  for(const [key,value] of Object.entries(person.attributes)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;if(key===$('color').value)dd.classList.add('colored-by');list.append(dt,dd);}
+  card.append(list);return card;
+}
 function category(p) {const key=$('color').value,decade=Math.floor(Number(p.attributes.age)/10)*10;return key==='age'?`${decade}-${decade+9}`:String(p.attributes[key]??'Unknown');}
 function draw() {
   const focusedRun=document.activeElement?.classList.contains('select-run')?document.activeElement.getAttribute('aria-label'):null;
@@ -205,7 +213,7 @@ function draw() {
   animation=null;animatedMaterials=[];
   const comparison=layerComparison(runs), selected=$('person').value, spacing=Number($('separation').value);
   const categories=[...new Set(data.personas.map(category))].sort();
-  const categoryColor = i => $('color').value==='age'?`hsl(${175+i*5}, ${32+i*2}%, ${78-i*4}%)`:`hsl(${Math.round(25+i*360/Math.max(1,categories.length))}, 44%, 68%)`;
+  const categoryColor = i => $('color').value==='age'?`hsl(${168+i*9}, ${46+i*4}%, ${84-i*7}%)`:`hsl(${Math.round(25+i*360/Math.max(1,categories.length))}, 62%, 68%)`;
   $('legend').replaceChildren();
   if($('color').value!=='layer') categories.forEach((c,i)=>{const el=document.createElement('span');el.textContent=c;el.style.setProperty('--swatch',categoryColor(i));$('legend').append(el);});
   else runs.forEach((run,i)=>{const el=document.createElement('span');el.textContent=layerLabel(runs,i);el.style.setProperty('--swatch',colors[i]);$('legend').append(el);});
@@ -229,12 +237,18 @@ function draw() {
     if(!group||(mode==='formation'&&run.run_id!==activeId))return;
     if(mode==='compare'){const badge=document.createElement('span');badge.className='plane-label run-label';badge.textContent=layerLabel(runs,index);badge.title=label(run);badge.style.borderColor=colors[index];$('plane-labels').append(badge);planeLabels.push({element:badge,position:point(data.personas[0].id,index).set(-112,point(data.personas[0].id,index).y,-95),priority:4});}
     if(mode==='compare'){
-      const plane=new THREE.Mesh(new THREE.PlaneGeometry(220,220),new THREE.MeshBasicMaterial({color:colors[index],transparent:true,opacity:.045,side:THREE.DoubleSide,depthWrite:false}));plane.rotation.x=-Math.PI/2;plane.position.y=point(data.personas[0].id,index).y;group.add(plane);
-      const border=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([[-110,-110],[110,-110],[110,110],[-110,110]].map(([x,z])=>new THREE.Vector3(x,plane.position.y,z))),new THREE.LineBasicMaterial({color:colors[index],transparent:true,opacity:.3}));group.add(border);
+      const plane=new THREE.Mesh(new THREE.PlaneGeometry(220,220),new THREE.MeshBasicMaterial({color:colors[index],transparent:true,opacity:.06,side:THREE.DoubleSide,depthWrite:false}));plane.rotation.x=-Math.PI/2;plane.position.y=point(data.personas[0].id,index).y;group.add(plane);
+      const border=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([[-110,-110],[110,-110],[110,110],[-110,110]].map(([x,z])=>new THREE.Vector3(x,plane.position.y,z))),new THREE.LineBasicMaterial({color:colors[index],transparent:true,opacity:.55}));group.add(border);
     }
-    const vertices=[],newVertices=[],newKeys=new Set((currentEvent?.added||[]).map(edgeKey));
-    for(const edge of ego.edges){const count=comparison.counts.get(edgeKey(edge));if(mode==='compare'&&($('ties').value==='shared'&&count!==runs.length||$('ties').value==='different'&&count===runs.length))continue;for(const id of edge)(newKeys.has(edgeKey(edge))?newVertices:vertices).push(point(id,index));}
-    tieLines(vertices,selected?'#aad8c5':'#88948f',selected?0.9:Number($('opacity').value)/100,selected?2.3:1.4);
+    if(mode==='formation'){
+      // Reference rings give the flat replay layout a readable ground plane. Decoration only.
+      for(const radius of [60,120,180]){const ring=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({length:96},(_,i)=>new THREE.Vector3(Math.cos(i/96*Math.PI*2)*radius,-4,Math.sin(i/96*Math.PI*2)*radius))),new THREE.LineBasicMaterial({color:'#5d7480',transparent:true,opacity:radius===180?.28:.14}));group.add(ring);}
+    }
+    const vertices=[],contextVertices=[],newVertices=[],newKeys=new Set((currentEvent?.added||[]).map(edgeKey));
+    for(const edge of ego.edges){const count=comparison.counts.get(edgeKey(edge));if(mode==='compare'&&($('ties').value==='shared'&&count!==runs.length||$('ties').value==='different'&&count===runs.length))continue;for(const id of edge)(newKeys.has(edgeKey(edge))?newVertices:selected&&!edge.includes(selected)?contextVertices:vertices).push(point(id,index));}
+    // With a persona selected, ties that do not involve them recede instead of sharing the highlight.
+    tieLines(contextVertices,'#8fa3ad',Number($('opacity').value)/100*.45,1.1);
+    tieLines(vertices,selected?'#9fe8d0':'#8fa3ad',selected?0.9:Number($('opacity').value)/100,selected?2.3:1.4);
     const additions=tieLines(newVertices,'#80e2c4',1,2.5);
     if(additions)animatedMaterials.push({material:additions,from:.05,to:1});
     for(const edge of currentEvent?.removed||[]){if($('incident').checked&&selected&&!edge.includes(selected))continue;const material=tieLines(edge.map(id=>point(id,index)),'#ff9a79',.65,2,true);if(material)animatedMaterials.push({material,from:1,to:.25});}
@@ -249,7 +263,7 @@ function draw() {
     tieLines(points,'#f0d59b',1,3,true);
   }
   const person=data.personas.find(p=>p.id===selected);
-  $('person-detail').textContent=person?`Persona ${selected}: ${Object.entries(person.attributes).map(([k,v])=>`${k}: ${v}`).join('; ')}`:'Choose a node or persona to compare their neighbors.';
+  if(person)$('person-detail').replaceChildren(personaCard(person));else $('person-detail').textContent='Choose a node or persona to compare their neighbors.';
   if(renderer)$('status').textContent=`${runs.length} layers · ${data.personas.length} people per layer · ${comparison.shared} ties shared across all layers`;
   $('comparison').textContent=`${comparison.shared} shared ties / ${comparison.union} distinct ties across selected final networks.`;
   $('quick-summary').replaceChildren();
@@ -414,7 +428,7 @@ async function start() {
     const link=document.createElement('a');link.href=objectUrl;link.download=`network-selection-${dataset}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
     announce(`Download requested: ${runs.length} saved networks with personas, events, measurements and source hashes.`);
   };
-  $('expand-stage').onclick=()=>{fitOnResize=true;const expanded=document.querySelector('.laboratory').classList.toggle('expanded');$('expand-stage').setAttribute('aria-pressed',String(expanded));$('expand-stage').textContent=expanded?'Collapse':'Expand';};
+  $('expand-stage').onclick=()=>{fitOnResize=true;const expanded=document.querySelector('.laboratory').classList.toggle('expanded');$('expand-stage').setAttribute('aria-pressed',String(expanded));$('expand-stage').textContent=expanded?'Collapse graph':'Expand graph';};
   for(const button of document.querySelectorAll('[data-match]'))button.onclick=()=>{
     const reference=activeRun(),dimension=button.dataset.match;
     try{runs=applyLayerSelection(matchedRuns(data.runs,reference,dimension));removed=[];mode='compare';
@@ -430,4 +444,4 @@ async function start() {
   const missing=comparisonModels.filter(model=>!data.runs.some(r=>r.study==='engineering_pilot'&&r.model===model));
   if(dataset==='legacy'&&missing.length)announce(`Requested comparison: ${comparisonModels.join(', ')}. No saved results for ${missing.join(', ')}; no substitute graph displayed. Older results remain in the archive/all-pilot collection.`);
 }
-start().catch(error=>{$('status').textContent=`Cannot load layers: ${error.message}`;console.error(error);});
+start().catch(error=>{$('status').textContent=`Cannot load layers: ${error.message}`;document.body.dataset.state='error';console.error(error);}).finally(()=>{document.body.dataset.ready='true';});
