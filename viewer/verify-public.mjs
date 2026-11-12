@@ -22,7 +22,7 @@ for(const r of primary.runs){
   for(const e of events)assert.deepEqual(Object.keys(e).sort(),['added','attempts','method','persona','removed','step']);
   assert.ok(replayFrames({...r,events},primary.personas.map(p=>p.id)),'Missing replay');
 }
-const files=(await readdir(root,{recursive:true})).map(f=>f.replaceAll('\\\\','/'));
+const files=(await readdir(root,{recursive:true})).map(f=>f.replaceAll('\\','/'));
 const expected=primary.runs.map(r=>r.events_url.slice(2)).sort();
 assert.deepEqual(files.filter(f=>f.startsWith('data/primary-events/')&&f.endsWith('.json')).sort(),expected,'Orphan event exports');
 for(const path of ['index.html','layers.html','study.html','layers.js','layers.css','graph-data.js','formation-charts.js','navigation.js','research-plots.js','vendor/three.module.js','vendor/three.core.js','vendor/addons/controls/OrbitControls.js','data/study-figures/14_demographic_mixing.png','data/study-figures/15_efficiency_density.png'])assert.ok((await readFile(new URL(path,root))).length>0,path);
@@ -43,4 +43,4 @@ for(const run of data.runs){
     assert.equal(createHash('sha256').update(await readFile(new URL(path,root))).digest('hex'),digest);
   }
 }
-console.log(JSON.stringify({status:'PASS',graphs:data.runs.length,verified_artifacts:data.runs.length*2,credential_patterns:0,paid_calls:0}));
+console.log(JSON.stringify({status:'PASS',primary_graphs:primary.runs.length,primary_attempts:896,verified_event_logs:primary.runs.length,graphs:data.runs.length,verified_artifacts:data.runs.length*2,credential_patterns:0,paid_calls:0}));

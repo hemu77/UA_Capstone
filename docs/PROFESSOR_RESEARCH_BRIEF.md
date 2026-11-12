@@ -1,6 +1,6 @@
 # What the network study can claim
 
-**November 11, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
+**November 12, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
 
 ## The comparison to show first
 
@@ -12,13 +12,22 @@ At 50 nodes we compared the distribution of global efficiency (short paths, coun
 | School, one survey | 0.138 | 0.455 | 0.121 |
 | All 11 records weighted equally | 0.119 | 0.365 | 0.153 |
 
-The random reference closes **86% of the fixed-WS-to-Global gap**. It is strictly closer than Global on five records and within 0.015 behind on one more. That cutoff is descriptive, not an equivalence margin. This does **not** mean density causes 86% of real friendship behavior. The school result reverses the ordering seen in the Facebook mean; eleven records are not eleven independent communities.
+**The pooled result hides density sensitivity.** Using the review's post-hoc split, not a preregistered threshold:
 
-![Paired efficiency distances for each observed record and distributions by source](../outputs/publication_figures/20261111_v4/15_efficiency_density.png)
+| Full-record density | Records | Global mean W1 | Target ER mean W1 |
+| --- | ---: | ---: | ---: |
+| Below 0.06 | 4 Facebook + school | 0.1484 | 0.1103 |
+| At least 0.06 | 6 Facebook | 0.0949 | 0.1886 |
+
+ER is strictly closer on four of the five sparse records. The exception (FB02) favors Global by 0.0056. Global is strictly closer on five of six denser records; FB05 favors ER by 0.0003. These near matches are **not exact ties**. A 0.015 tolerance is descriptive, not a tested equivalence bound. Density alone is not sufficient to reproduce every record; neither band is an independent population sample.
+
+The random reference closes **86% of the fixed-WS-to-Global gap**. It is strictly closer than Global on five records and within 0.015 behind on one more. That cutoff is descriptive, not an equivalence margin. This ratio can exceed 100%: it is 105% on the school record because ER is closer there than Global. It is not a bounded quality score. This does **not** mean density causes 86% of real friendship behavior. The school result reverses the ordering seen in the Facebook mean; eleven records are not eleven independent communities.
+
+![Paired efficiency distances for each observed record and distributions by source](../outputs/publication_figures/20261112_v5/15_efficiency_density.png)
 
 **Clustering is a different question:** do friends of a person also tend to be friends with one another? At 50 nodes, WS had the smallest mean distance on Facebook (0.1259); BA, a preferential-attachment model, did at school (0.0416). At 40 nodes on Facebook the top two are only 0.0037 apart; at 25 nodes at school ER and Global differ by 0.0171. The ordering changes with size. Classical models are competitive; there is no stable overall winner. Positive mean observed-minus-degree-swap clustering in all 11 records is descriptive evidence of closure not reproduced by these controls, not a significance test.
 
-[Five-metric comparison](../outputs/publication_figures/20261111_v4/08_heldout_distances.png) | [Rank margins](../outputs/publication_figures/20261111_v4/clustering_margins.csv) | [Record distances](../outputs/publication_figures/20261111_v4/efficiency_records.csv)
+[Five-metric comparison](../outputs/publication_figures/20261112_v5/08_heldout_distances.png) | [Rank margins](../outputs/publication_figures/20261111_v4/clustering_margins.csv) | [Record distances](../outputs/publication_figures/20261111_v4/efficiency_records.csv)
 
 ## The planned statistical result
 
@@ -30,7 +39,7 @@ With iterative generation, the estimated difference in average clustering was **
 
 ## RQ2: Which demographic similarities show up in ties?
 
-[Figure 14](../outputs/publication_figures/20261111_v4/14_demographic_mixing.png) shows all 28 model/instruction combinations per method. In all three person-level methods, political orientation ranks first in 28/28 on both measures. Under Global it ranks first in 6/28 with Coleman and only 1/28 by excess same-group edge share; religion leads in the other combinations. Neither is a measure of independent importance. All 878 scored graphs use one roster with different category sizes; religion and politics co-vary (descriptive Cramer's V = 0.316). Prompt field order was fixed. Separating these explanations would require new counterbalanced prompts and rosters. [Executed RQ2 notebook](../analysis/05_rq2_demographic_mixing.ipynb).
+[Figure 14](../outputs/publication_figures/20261112_v5/14_demographic_mixing.png) shows all 28 model/instruction combinations per method. In all three person-level methods, political orientation ranks first in 28/28 on both measures. Under Global it ranks first in 6/28 with Coleman and only 1/28 by excess same-group edge share; religion leads in the other combinations. Neither is a measure of independent importance. All 878 scored graphs use one roster with different category sizes; religion and politics co-vary (descriptive Cramer's V = 0.316). Prompt field order was fixed. Separating these explanations would require new counterbalanced prompts and rosters. [Executed RQ2 notebook](../analysis/05_rq2_demographic_mixing.ipynb).
 
 ## What failed, and why it matters
 

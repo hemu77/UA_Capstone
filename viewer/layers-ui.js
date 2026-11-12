@@ -62,9 +62,11 @@ document.addEventListener('keydown',event=>{
 const stage=document.querySelector('.stage'),tooltip=$('node-tooltip');
 stage.addEventListener('pointermove',event=>{
   if(event.pointerType==='touch')return;
-  const box=stage.getBoundingClientRect(),width=tooltip.offsetWidth||260,height=tooltip.offsetHeight||90;
+  const box=stage.getBoundingClientRect(),view=$('viewport').getBoundingClientRect(),width=tooltip.offsetWidth||260,height=tooltip.offsetHeight||90;
+  const left=view.left-box.left+8,right=view.right-box.left-8;
   let x=event.clientX-box.left+16,y=event.clientY-box.top+16;
-  if(x+width>box.width-8)x=Math.max(8,event.clientX-box.left-width-16);
+  if(x+width>right)x=Math.max(left,event.clientX-box.left-width-16);
+  x=Math.max(left,Math.min(x,right-width));
   if(y+height>box.height-8)y=Math.max(8,event.clientY-box.top-height-16);
   tooltip.style.setProperty('--x',`${x}px`);tooltip.style.setProperty('--y',`${y}px`);
   tooltip.dataset.follow='true';
@@ -97,6 +99,7 @@ function paintChips(){
     chip.addEventListener('click',()=>{drawer.open=true;select.focus();select.scrollIntoView({block:'nearest'});});
     chipHost.append(chip);
   }
+  const countPrefix=document.createElement('span');countPrefix.className='filter-count';countPrefix.textContent='Filter query — Apply to replace layers';chipHost.prepend(countPrefix);
   const preview=$('filter-preview').textContent.match(/^\d+ saved runs? match/);
   if(preview){const count=document.createElement('span');count.className='filter-count';count.textContent=preview[0];chipHost.append(count);}
 }

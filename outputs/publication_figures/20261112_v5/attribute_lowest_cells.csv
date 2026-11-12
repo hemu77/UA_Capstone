@@ -1,0 +1,13 @@
+method,model,culture,language,attribute,coleman,excess,graphs
+sequential,gpt-4.1,us,hindi,gender,-0.0137479032387241,0.0122645458266975,8
+sequential,gpt-4.1,us,hindi,religion,0.0255530671548178,0.0502094124844113,8
+iterative,gpt-4.1,us,hindi,religion,0.0310099011800705,0.0566810024386378,8
+iterative,gpt-6-sol,us,portuguese,gender,0.0391060611496377,0.0344042351489191,8
+local,gpt-6-sol,us,hindi,gender,0.0670744115904669,0.0583798240081656,8
+global,gpt-6-sol,us,hindi,gender,0.0807962055947043,0.0608393282602801,8
+sequential,gpt-4.1,us,hindi,political orientation,0.1000734882763262,0.0898437727895549,8
+local,gpt-4.1,us,hindi,religion,0.1888404329335055,0.1702390094117133,8
+global,gpt-6-sol,us,japanese,political orientation,0.3787935742511691,0.2684252298923558,7
+iterative,gpt-4.1,us,hindi,political orientation,0.4496819124712917,0.318452214056248,8
+local,gpt-6-sol,us,portuguese,political orientation,0.4555749581112979,0.3176221671938252,8
+global,gpt-5.6-luna,japan,english,religion,0.4756312066810964,0.3986673363299733,8

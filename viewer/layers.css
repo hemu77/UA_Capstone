@@ -87,7 +87,7 @@ details summary{font-size:13px;cursor:pointer}
 .add-row{display:grid;grid-template-columns:minmax(100px,620px) auto 1fr;gap:15px;align-items:end;padding-bottom:8px}
 .add-row label{margin:0}
 .add-row p{font-size:12px;color:var(--muted);margin:0}
-.filter-chips::before{content:"Showing";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:0 4px}
+.filter-chips::before{content:"Filters";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:0 4px}
 .filter-chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px;flex:1 1 300px;order:1;min-width:0}
 .filter-chip{display:inline-flex;align-items:baseline;gap:6px;padding:5px 10px;border-radius:99px;font-size:12px;background:transparent;border-color:var(--line-strong)}
 .filter-chip span{color:var(--faint);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
@@ -159,7 +159,7 @@ details summary{font-size:13px;cursor:pointer}
 .stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
   background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:44px 44px;
   -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%)}
-#viewport,#plane-labels{position:absolute;inset:0}
+#viewport,#plane-labels{position:absolute;inset:108px 0 82px}
 #viewport canvas{display:block;width:100%;height:100%;touch-action:none}
 #viewport canvas:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 #plane-labels{pointer-events:none;overflow:hidden}
@@ -398,7 +398,8 @@ dialog form{padding:20px 22px}
   .brand{font-size:8.5px}
   .brand-mark{font-size:19px}
   .brand-sub{font-size:13px}
-  nav a{display:none}
+  nav a{display:inline-block;font-size:11px}
+  header nav{flex-wrap:wrap;gap:7px}
   .query-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
   .query-bar .action-row{grid-column:1/-1}
   .add-row{grid-template-columns:1fr}
@@ -411,7 +412,7 @@ dialog form{padding:20px 22px}
   .canvas-legend{left:12px;right:12px;bottom:54px;font-size:11px;gap:4px 10px}
   .stage-footer{padding:20px 12px 10px}
   #status{display:none}
-  body[data-state=error] #status{display:block;max-width:100%}
+  body[data-state=error] #status,body[data-renderer=unavailable] #status{display:block;max-width:100%}
   .stage-footer{justify-content:flex-end}
   .camera button{padding:6px 8px}
   #trajectory{overflow:auto}

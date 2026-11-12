@@ -63,7 +63,7 @@ excluded, and no new paid calls were made.
 
 **Revised figures, now inside notebooks 01-05:** [open the visual gallery](analysis/README.md),
 [15 figures including target-density efficiency and the LCC appendix](analysis/04_manuscript_figures.ipynb),
-[revised PNG/SVG/PDF files](outputs/publication_figures/20261111_v4/), and
+[revised PNG/SVG/PDF files](outputs/publication_figures/20261112_v5/), and
 [review response, sensitivity results and manuscript selection](docs/DEEP_REVIEW_RESPONSE.md).
 At 50 and 40 nodes, WS is closest on Facebook clustering and BA on school clustering;
 on nested 25-node samples those change to BA and ER. Figure 08 shows variation across
@@ -247,7 +247,7 @@ neither calibration is automatically reused for confirmation.
   version, regressions, current pricing, billing-tier fix and limitations.
 - [October 12 PR review response](docs/PR_REVIEW_OCT12.md): independently checked
   findings, unresolved scientific decisions and versioned next steps; dated review history.
-- [Completed-study interactive walkthrough](https://ua-network-observatory.handm01042024.chatgpt.site/study.html): inspect the original 896 attempts and read the revised real-data findings. [Earlier calibration replay](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html):
+- [Three.js primary-study lab](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html): inspect the original 896 attempts and read the revised real-data findings. [Earlier calibration replay](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html?dataset=revised_calibration):
   104 revised V6 graphs, recorded replay, matched filters and original artifacts.
   [Deployment and verification notes](docs/SIMULATOR_DEPLOYMENT.md). No API calls;
   this is an exploratory review tool, not approval for main collection.

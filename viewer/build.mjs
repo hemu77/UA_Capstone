@@ -29,7 +29,7 @@ for(const run of primary.runs){
   if(!/^[a-zA-Z0-9_.-]+$/.test(run.run_id)||run.events_url!==`./data/primary-events/${run.run_id}.json`)throw Error('Invalid public event path');
   await copyFile('public/data/primary-events/'+run.run_id+'.json','dist/data/primary-events/'+run.run_id+'.json');
 }
-for(const name of ['15_efficiency_density','14_demographic_mixing'])await copyFile(`../outputs/publication_figures/20261111_v4/${name}.png`,`dist/data/study-figures/${name}.png`);
+for(const name of ['15_efficiency_density','14_demographic_mixing'])await copyFile(`public/data/study-figures/${name}.png`,`dist/data/study-figures/${name}.png`);
 for (const file of ['three.module.js', 'three.core.js']) await copyFile(`node_modules/three/build/${file}`, `dist/vendor/${file}`);
 await copyFile('node_modules/three/examples/jsm/controls/OrbitControls.js', 'dist/vendor/addons/controls/OrbitControls.js');
 await mkdir('dist/vendor/addons/lines', {recursive: true});

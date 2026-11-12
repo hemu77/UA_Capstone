@@ -1,10 +1,10 @@
 # Simulator Team Handoff
 
-## Current public entry: November 11
+## Current public entry: November 12
 
-[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/study.html) is the hiring-manager walkthrough. The home page now opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges, not inferred event sequences. No supplements, model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
+[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html) is the original Three.js lab with Claude's presentation retained. The mistaken standalone page is retired; its URL aliases the lab. The home page opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges and lazy-loads hash-verified actual updates. All 99,552 recorded events reconstruct the 890 final graphs. No supplements, model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
 
-Rebuild the minimized public catalog with `python scripts/export_study_demo.py`, then use the existing viewer build and checks below.
+Rebuild the minimized public catalog with `python scripts/export_primary_viewer.py --evidence-root <protected-local-download>`, then use the existing viewer build and checks below.
 
 ## Historical calibration link
 

@@ -44,7 +44,7 @@ panels and distribution curves replace the dense heatmaps; original numerical
 results and the first two figure releases remain unchanged. The
 [revision 3 review response](docs/FIGURE_REVIEW_RESPONSE_V3.md) explains the
 new record-level ranges, matched-size diagnostic and main/appendix split.
-[Revision 4](docs/DEEP_REVIEW_RESPONSE.md) updates 08, 11, 14 and adds 15. Unchanged figures remain in v3. Use the
+[Revision 5](docs/DEEP_REVIEW_RESPONSE.md) updates 08, 11, 14 and adds 15. Unchanged figures remain in v3. Use the
 [updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
 
 Execute all five current notebooks from the published tables and figures:

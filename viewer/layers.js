@@ -207,7 +207,7 @@ function tieLines(points,color,opacity,width=1.4,dashed=false) {
 }
 function setupScene() {
   try {renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}
-  catch { $('status').textContent='WebGL unavailable. Measurements and condition plots remain usable.';return; }
+  catch { document.body.dataset.renderer='unavailable';$('status').textContent='WebGL unavailable. Measurements and condition plots remain usable.';return; }
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));$('viewport').append(renderer.domElement);
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.1,10000);
   controls=new OrbitControls(camera,renderer.domElement);controls.autoRotateSpeed=.35;
@@ -240,7 +240,7 @@ function setupScene() {
   renderer.domElement.addEventListener('pointerup',e=>{if(!tap.up(e))return;const rect=renderer.domElement.getBoundingClientRect();pointer.set(2*(e.clientX-rect.left)/rect.width-1,1-2*(e.clientY-rect.top)/rect.height);ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(meshes,false)[0];selectPersona(hit?hit.object.userData.person:'',!!hit);});
   pose('orbit');
 }
-function pose(view) {if(!camera)return;const radius=mode==='formation'?118:Math.hypot(134,(runs.length-1)*Number($('separation').value)/2),d=radius/Math.sin(THREE.MathUtils.degToRad(camera.fov/2))/Math.min(1,camera.aspect);camera.position.set(...(view==='top'?[0,1,.0001]:view==='front'?[0,.8,1]:[.55,.95,.75])).normalize().multiplyScalar(d);controls.target.set(0,0,0);controls.update();requestFrame();}
+function pose(view) {if(!camera)return;const radius=mode==='formation'?145:Math.hypot(156,(runs.length-1)*Number($('separation').value)/2),d=radius/Math.sin(THREE.MathUtils.degToRad(camera.fov/2))/Math.min(1,camera.aspect);camera.position.set(...(view==='top'?[0,1,.0001]:view==='front'?[0,.8,1]:[.55,.95,.75])).normalize().multiplyScalar(d);controls.target.set(0,0,0);controls.update();requestFrame();}
 // Shared by the hover card and the inspector so a persona reads the same everywhere.
 function personaCard(person,context) {
   const card=document.createElement('div'),title=document.createElement('strong'),list=document.createElement('dl');card.className='persona-card';title.textContent=`Persona ${person.id}`;card.append(title);
@@ -476,12 +476,12 @@ async function start() {
   $('rotate').onclick=()=>{if(!controls)return;controls.autoRotate=!controls.autoRotate;$('rotate').setAttribute('aria-pressed',String(controls.autoRotate));requestFrame();};
   $('share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('share').textContent='Link copied';}catch{$('share').textContent='Copy the URL from your address bar';}};
   $('download-selection').onclick=async()=>{
-    const selected=[...runs],owner=data;
+    const selected=[...runs],owner=data,exportView=JSON.parse(url.searchParams.get('view'));
     $('download-selection').disabled=true;
     try{
     for(const run of selected)if(run.events_url)await verifiedHistory(run);
     if(data!==owner)throw Error('Dataset changed during export');
-    const value={schema_version:1,dataset,scope:'Selected valid saved final graphs; not a population estimate. Histories are included only after verified replay loads.',view:JSON.parse(url.searchParams.get('view')),personas:owner.personas,runs:selected};
+    const value={schema_version:1,dataset,scope:'Selected valid saved final graphs; not a population estimate. Histories are included only after verified replay loads.',view:exportView,personas:owner.personas,runs:selected};
     const objectUrl=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));
     const link=document.createElement('a');link.href=objectUrl;link.download=`network-selection-${dataset}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
     announce(`Download requested: ${selected.length} saved networks with verified recorded events, measurements and source hashes.`);
