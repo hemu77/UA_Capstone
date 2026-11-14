@@ -70,4 +70,19 @@ Never call the collection or supplemental runners for a UI build.
 
 The prior version 6 release and its exact deployment record are preserved in
 [the dated handoff snapshot](history/20261114/SIMULATOR_DEPLOYMENT-before-cleanup.md).
-Current cleanup deployment verification will be recorded after publication.
+## Verified Publication: November 14, 2026
+
+Site version **7** published at **2:11 a.m. America/Phoenix**.
+GitHub implementation commit: `4318066db60848cb8129a1c6f8337de3077cdb23`.
+Site source commit: `e902e0e6ac828535cae0f4155428039d99d8065f`.
+
+The deployment archive contains 918 files / 10,721,280 bytes. Static assets are
+10,006,074 bytes, down from 261,353,250 bytes in version 6; this is package size,
+not a measured loading-speed claim. Original PNGs stay in GitHub.
+
+The live public browser passed the four-method / 896-network check, exact graph
+catalog checksum, actual rotate/zoom, neighbor inspection, primary-state
+isolation, supplement labeling, empty graphs, mobile viewport, keyboard close,
+retry, checksum refusal and WebGL fallback. Local checks additionally verified
+all 890 replay histories, 435 byte-preserved archived files and all 69 frozen
+source pins. See [the QA record](qa/VIEWER_CLEANUP_20261114.md).

@@ -41,5 +41,5 @@ No physical-device, Safari or Firefox validation. Back/Forward cache suspension
 was checked with page-transition events, not every browser's actual cache policy.
 The historical interface is a source archive, not a maintained second app.
 
-Deployment provenance is recorded in [the current handoff](../SIMULATOR_DEPLOYMENT.md)
-after publication.
+Site version 7 was published and its live 896-network browser checks passed.
+Deployment provenance is recorded in [the current handoff](../SIMULATOR_DEPLOYMENT.md).
