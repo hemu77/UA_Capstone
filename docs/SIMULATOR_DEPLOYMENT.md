@@ -1,198 +1,73 @@
-# Simulator Team Handoff
-
-## Saved plot gallery: November 14
-
-[Browse all 896 original PNGs](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
-This is 890 valid primary graphs plus six selected supplemental successes, not
-896 valid primary graphs. All twelve valid empty primary graphs remain present.
-Supplements appear only in this labeled descriptive gallery and never enter
-the primary replay, comparisons, statistical analyses, or coverage totals.
-
-Published as Site version 6 on November 14, 2026 (Phoenix). All 896 live PNG
-URLs returned image responses; the live catalog hash, eight original image
-hashes (including all six supplements), and compressed replay were verified.
-Site source commit: `b4e5a18cee52faf06d864fa4a0b88d8c9d21c57b`.
-The 263,096,320-byte tar includes 2,245 files and remains below the host limit.
-
-Use the top **896 saved plots** link, filter by cohort/method or search by
-model, framing, language and seed. Open a card, then use Previous/Next or arrow
-keys to move through matching full-size originals. Escape closes the image.
-Eight cards load per page; the image archive is not fetched during 3D startup.
-
-The source PNG bytes are unchanged. Run `python scripts/export_plot_gallery.py`
-to regenerate the whitelisted catalog from the pinned analysis-ready CSV.
-The build checks both immutable catalog/projection pins and every PNG SHA256,
-then copies exactly 896 originals into `viewer/dist/data/saved-plots/`.
-No private records, receipts, ledgers or new generation are needed.
-
-To fit the host archive limit without altering any PNG, replay JSON is shipped
-as gzip. The browser decompresses it, enforces a 2 MB expansion limit and checks
-the unchanged original SHA256 before replay. The build verifier compares every
-decompressed file byte-for-byte with the original public event export.
-
-Checks: 39 Node tests; built-output verification of all 896 plot hashes and
-890 replay histories; gallery browser checks (lazy loading, filtering,
-pagination, modal/keyboard, mobile, catalog retry, missing-image fallback);
-existing polish, primary error-path and actual pointer navigation checks.
-Run `npm --prefix viewer run test:gallery` with `PLAYWRIGHT_MODULE` and
-`VIEWER_URL` set for the local server. Physical devices/Safari not checked.
-
-## Current primary replay entry: November 12
-
-[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html) is the original Three.js lab with Claude's presentation retained. The mistaken standalone page is retired; its URL aliases the lab. The home page opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges and lazy-loads hash-verified actual updates. All 99,552 recorded events reconstruct the 890 final graphs. Supplements never enter this replay. No model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
-
-Rebuild the minimized public catalog with `python scripts/export_primary_viewer.py --evidence-root <protected-local-download>`, then use the existing viewer build and checks below.
-
-## Historical calibration link
+# Current Demo And Deployment
 
 [Open Network Observatory](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)
+or [explore all 896 networks in 3D](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
 
-Revision branch: `r1/social-netw`, [pull request #1](https://github.com/hemu77/UA_Capstone/pull/1).
-The root URL also opens the revised workspace; `archive.html` retains the older
-two-network/condition-analysis interface. Publication does not merge the branch
-or authorize model generation.
+## Scope
 
-## Evidence Included
+The public Three.js workspace uses only the final primary study:
+896 original attempts, 890 valid graphs (12 empty), six failures retained in the
+repository audit. Replay loads saved, hash-verified graph updates, not live agents.
 
-- [x] Default: 104 V6 calibration graphs from contract `5fb3715550db`.
-- [x] The same 50 designed fictional adults, four models and four methods.
-- [x] English country framing: US, India, Japan, Brazil. US-language comparison:
-  English, Hindi, Japanese, Brazilian Portuguese. Seven settings, not a full factorial.
-- [x] Coverage uses actual calibration allocations: Luna two repetitions in all
-  settings; other models one repetition per method/language at US framing.
-  Conditions not allocated are labelled **Not in scope**.
-- [x] All 22 empty global graphs are retained. A `NONE` reply leaves 50 nodes
-  and zero ties; it does not imply a missing file. Undefined homophily stays NA.
-- [x] V5's 68 graphs and earlier historical/pilot evidence remain selectable
-  separately. IDs shared by different rosters are not evidence of shared people.
-- [x] Exported graphs, source PNGs and adjacency files remain byte-for-byte
-  linked to inspected receipts. The interactive layout is not a PNG reconstruction.
+The separate final-graph browser contains 890 primary networks and six explicitly
+labeled supplements, grouped by Global, Local, Sequential and Iterative (224 per
+method in this descriptive browser, not the primary cohort). Rotate, pan, zoom
+and select a persona to inspect its actual saved neighbors. One reusable canvas
+renders one selected graph; graphs are never merged into a fictitious network.
+Supplements never enter primary replay, comparisons or statistics. Twelve primary
+and one supplemental graph are valid empty graphs and retain all 50 nodes.
+Original PNG and adjacency links remain in GitHub; PNG tiles are no longer deployed.
 
-## Review Workflows
+Calibration, engineering pilots and their old interface live in
+[`viewer/archive/`](../viewer/archive/README.md). They are excluded from the
+production build. Old entry paths (`index.html`, `study.html`, `archive.html`)
+open the current lab; old dataset queries stop with an explicit reset link.
+No historical selection is silently relabeled as primary.
 
-1. Open **Filters & saved runs**, choose a model/method/country/language/repetition,
-   then **Apply filters**. This replaces the displayed layers, up to six; larger
-   selections are rejected rather than silently truncated. **Add selected layer**,
-   **Undo remove** and **Restore** preserve explicit user control.
-2. Use **Match active run by** for RQ1 country, RQ3 model or RQ4 language contrasts.
-   RQ2 displays recorded demographic homophily. Matching checks recorded fields,
-   not causal validity or statistical significance.
-3. Replay a saved run or select a persona and follow their relevant recorded
-   events. Clear selection returns to whole-network scope. Global results have
-   one batch, not an invented sequence of individual decisions.
-4. Inspect exact descriptors, shared ties and source hashes; download a selection
-   or its original PNG/adjacency artifacts. NA overlap means no union of ties
-   exists to divide by, not a fabricated zero-similarity score.
+## Build And Verify
 
-### Camera and Persona Controls
-
-Play/pause, timeline and Filters are above the graph in both modes, not buried
-below it. **Rotate 360 degrees** is the default drag tool; choose **Pan** to move
-freely across the view. Shift-drag swaps the tool. Scroll or trackpad pinch zooms
-toward the pointer without the previous far-away zoom limit. Shift-scroll pans;
-arrow keys pan a focused canvas and Shift-arrows rotate it. Touchscreens support
-one-finger rotation/panning and two-finger pan/pinch. **3D** resets the view.
-
-Clicking a rendered node shows its direct neighbors in each displayed run. Gold
-dashed lines join the same selected persona across layers; these are identity
-guides, never added friendships. The selected identity stays labelled even with
-other labels off. **Center selected persona** recenters the camera without
-changing data. Clicking the same node again or **Clear persona selection**
-returns to the whole graph. Replay uses the selected event's actual neighbors.
-
-## Verification
-
-### October 12 Follow-Up
-
-- [x] Inspected the user's already-open public page before reloading: Play,
-  filters and camera controls were present. Its saved URL selected persona 4
-  and incident ties, restricting the display to that neighborhood.
-- [x] Moved the unique **Clear persona selection** button beside the camera
-  controls above the graph. Existing reset behavior and saved data are unchanged.
-- [x] Corrected signed-difference wording, actual selected-run denominators in
-  tie explanations, and the instruction pointing to Play above the graph.
-- [x] Two new targeted regressions failed before the fixes; all 31 JavaScript
-  tests now pass. Built-output verification passes for 104 graphs and 208 artifacts.
-- [x] Live CUA browser checks: rotation by drag, filter drawer access, Play/Pause,
-  persona 4's per-layer neighbor counts (0/11/10/7 for the selected Luna methods),
-  and whole-network reset. After publication, new controls/text and playback were
-  rechecked on the public page. No captured browser console errors.
-- [x] GPT-6.1-Sol independently checked the review response and scoped patch;
-  no blockers. No model API generation, frozen-source or metric changes.
-
-This follow-up did not rerun the full Python/notebook or automated browser suite.
-The broader checks below describe the prior October 4 deployment verification;
-they are not presented as freshly rerun results. See
-[the research review response](PR_REVIEW_OCT12.md) for unresolved design findings.
-
-### October 4 Baseline
-
-- [x] Offline export rechecks contract, complete inspection, receipt/artifact
-  hashes, prompt/parser/event replay and recomputed metrics before publication.
-- [x] 29 JavaScript tests pass, including exact final replay of all 104 V6 and
-  all 68 V5 graphs, empty/null handling, collection isolation and old URL routing.
-- [x] Eight focused Python tests pass: three V6 export tests and five V5 regressions.
-- [x] Built-output verification checks 208 V6 artifact hashes, recorded replay,
-  prohibited private paths and credential patterns.
-- [x] Headless Edge/Playwright desktop and 390-pixel mobile flows pass: default
-  data, root/archive navigation, Portuguese comparisons, persona journey/clear,
-  remove/undo, empty global replay, artifact links and JSON download.
-- [x] The same flow passes against the deployed public URL in a fresh anonymous
-  browser context, with no HTTP/page errors. Hosted clean-URL redirects are supported.
-- [x] Mobile playback controls no longer stick over and obscure the graph.
-- [x] Actual pointer-event tests verify Rotate/Pan, wheel zoom, Shift-wheel,
-  keyboard panning, click/toggle and exact per-layer saved neighbor lists.
-  Browser-native two-finger touch gestures work in comparison and replay.
-- [x] One bounded read-only reviewer found no material/blocking findings. The
-  suggested root/archive navigation regression was added and passed.
-
-The Browser plugin was unavailable; checks used installed Playwright. Automated
-mouse/mobile-viewport checks do not certify every physical touchpad/browser.
-These checks establish tested software behavior, not error-free research or
-conference acceptance. No study prompts, frozen contracts, source graphs or
-accounting records were changed. No model API calls were made.
-
-## Reproduce and Maintain
-
-From the project root, using the pinned Python environment:
+From `viewer/`:
 
 ```powershell
-.\.venv\Scripts\python.exe -B export_revised_viewer.py
-.\.venv\Scripts\python.exe -B -m unittest discover -s tests -p test_revised_viewer.py
-.\.venv\Scripts\python.exe -B -m unittest discover -s tests -p test_calibration_viewer.py
-npm --prefix viewer ci
-npm --prefix viewer test
-npm --prefix viewer run build
-npm --prefix viewer run verify:public
-.\.venv\Scripts\python.exe -m http.server 8766 --bind 127.0.0.1 --directory viewer/dist
+npm ci
+npm test
+npm run build
+npm run verify:public
+python -m http.server 8781 --bind 127.0.0.1 --directory dist
 ```
 
-In a second terminal, run `npm --prefix viewer run test:browser` and
-`npm --prefix viewer run test:navigation` with Playwright
-installed. `PLAYWRIGHT_MODULE` optionally gives its installed module path;
-`BROWSER_CHANNEL` defaults to `msedge`. `VIEWER_URL` defaults to
-`http://127.0.0.1:8766`. No packages are installed automatically by the test.
+The build pins the descriptive catalog, final-edge projection and all 896 original
+PNG hashes (repository files only). Regenerate the final-edge export offline with
+`python scripts/export_saved_networks.py`; it verifies every adjacency hash and
+primary graph parity against the unchanged primary export.
+All 890 recorded histories are compressed for transport, then decompressed,
+size-limited and checked against their original SHA256 before replay.
+The build verifier checks exact history bytes, final graph parity, primary /
+supplement separation, absence of archive payloads and credential patterns.
 
-Static hosting project: `appgprj_6ac225ce79208191ae15aaca77d8a299`.
-Deployment version: 3; source bundle commit `de5355727f614ea60f43b48ecb43992fd239d0c2`.
-The hosting service confirmed publication succeeded on October 12, 2026.
-Previous version 2: `ea4848b58b6c258134e2befb92476183819aa7ff` (October 4).
-The deployment contains only the verified `viewer/dist` derivative, with Three.js
-vendored locally. It has no model endpoint, connector, database or runtime secret.
-API replies, request journals, billing ledgers and authorization files are not
-included. A public link is intentionally accessible to anyone, not team-only.
-Future deployments must use the same hosting project, rebuild, verify, publish,
-then test the hosted URL; never point the static server at the repository root.
-On this Windows host, the Sites packaging helper needs Git Bash ahead of the
-Windows WSL stub in the process PATH, plus `TAR_OPTIONS=--force-local` so GNU tar
-treats `C:/...` as a local archive path. These are packaging settings only;
-credentials must still be passed through the helper's hidden stdin, never files.
+Browser scripts use installed Playwright with Edge; set `PLAYWRIGHT_MODULE`
+only when Playwright is outside this checkout, and `VIEWER_URL` to the server.
 
-## Still Pending
+```powershell
+npm run test:browser
+npm run test:navigation
+node primary-browser-check.mjs
+node polish-browser-check.mjs
+npm run test:gallery
+```
 
-- [ ] Team/professor decision on the predominantly empty global outcomes.
-- [ ] Approved estimands, precision/repetition allocation and finite main budget.
-- [ ] Main collection and supported final research findings.
+The tests cover current-only routing, legacy link rejection, empty graphs,
+selection/download, actual pointer navigation, delayed/invalid replay,
+keyboard/dialog behavior, mobile layout, 3D browser pagination/neighbor inspection, cohort isolation, checksum refusal
+and WebGL fallback. The final-graph browser does not synthesize replay events.
+Headless mobile viewports are not physical-device or Safari validation.
 
-The viewer does not remove these gates. See [calibration results](CALIBRATION_V6_RESULTS.md)
-and [team approval checklist](TEAM_APPROVAL.md).
+## Publication Boundary
+
+Publish only verified `viewer/dist/` to the existing Site. Do not publish
+`viewer/archive/`, raw responses, ledgers, credentials or operational scripts.
+Never call the collection or supplemental runners for a UI build.
+
+The prior version 6 release and its exact deployment record are preserved in
+[the dated handoff snapshot](history/20261114/SIMULATOR_DEPLOYMENT-before-cleanup.md).
+Current cleanup deployment verification will be recorded after publication.

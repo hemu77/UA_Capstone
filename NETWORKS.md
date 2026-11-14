@@ -15,7 +15,7 @@ The large response JSON records remain in the [verified public release](https://
 | Iterative | 223 | [All graphs and PNGs](docs/network_catalog/iterative.md) |
 
 [Browse the six separate supplemental graphs](docs/network_catalog/supplemental.md).
-[All nine retained failed attempts](outputs/analysis_ready/060dcd3a86d5/failures.csv).
+[All nine retained failures: six primary and three supplemental](outputs/analysis_ready/060dcd3a86d5/failures.csv).
 [Machine-readable 896-network catalog and hashes](outputs/analysis_ready/060dcd3a86d5/all_valid_graphs_descriptive_only.csv).
 
 ## Example Original Plots

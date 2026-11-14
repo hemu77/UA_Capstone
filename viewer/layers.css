@@ -445,12 +445,21 @@ body[data-state=error] #dataset-summary{display:none}
 .plot-card h3{line-height:1.5;overflow-wrap:anywhere}.plot-card a{font-size:12px}
 .plot-badge{font-size:11px;letter-spacing:.03em;color:var(--accent);margin:0 0 10px}
 .plot-badge[data-cohort^=supplement]{color:var(--warn)}
-.plot-thumbnail{display:block;width:100%;padding:0;background:#fff;overflow:hidden;min-height:150px}
-.plot-thumbnail img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#fff}
 .plot-pagination{display:flex;gap:16px;align-items:center;justify-content:center;margin:18px 0}
 #plot-dialog{width:min(1100px,94vw);max-width:94vw;max-height:94vh;padding:22px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--panel);color:var(--text);overflow:auto}
 #plot-dialog::backdrop{background:#000b}#plot-dialog h2{overflow-wrap:anywhere}
-#plot-dialog-image img{display:block;max-width:100%;max-height:66vh;width:auto;height:auto;margin:auto;background:white}
 #plot-record{overflow-wrap:anywhere}
 @media(max-width:1000px){.plot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#plot-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.plot-grid{grid-template-columns:1fr}.saved-plots{margin:15px}#plot-filters{grid-template-columns:1fr}.plot-pagination{gap:8px;font-size:12px}#plot-dialog{padding:14px}}
+
+/* The saved-network browser reuses the lab palette; no image grid or extra renderer per card. */
+.plot-card[data-method=global]{border-top:2px solid #6fd6ba}
+.plot-card[data-method=local]{border-top:2px solid #f0b56c}
+.plot-card[data-method=sequential]{border-top:2px solid #8fb6ff}
+.plot-card[data-method=iterative]{border-top:2px solid #e995c4}
+.network-open{width:100%;margin-top:10px;text-align:left}
+#network-stage{height:min(48vh,480px);min-height:230px;background:#0b1216;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+#network-stage canvas{display:block;width:100%;height:100%;touch-action:none}
+.network-tools{display:flex;flex-wrap:wrap;align-items:end;gap:10px}
+.network-tools label{margin:0;min-width:160px}
+#network-status{font-size:12px;color:var(--muted);min-height:2em;overflow-wrap:anywhere}

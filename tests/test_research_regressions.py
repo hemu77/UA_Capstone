@@ -307,7 +307,7 @@ class ResearchRegressionTests(unittest.TestCase):
 
     def test_export_matches_original_graphs_and_keeps_quarantine_visible(self):
         import export_research_viewer as exporter
-        data = json.loads(Path('viewer/public/data/networks.json').read_text(encoding='utf-8'))
+        data = json.loads(Path('viewer/archive/public/data/networks.json').read_text(encoding='utf-8'))
         manifest = json.loads(Path('stats/revision_v1/manifest.json').read_text())
         historical = [run for run in data['runs'] if run['status'] == 'historical_reanalyzed']
         self.assertEqual({run['run_id'] for run in historical} | set(data['quarantined_runs']), exporter.expected_runs())

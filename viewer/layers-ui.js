@@ -84,10 +84,10 @@ new MutationObserver(paint).observe($('step-label'),{childList:true,characterDat
 paint();
 
 // --- Filter summary --------------------------------------------------------
-// The six run filters stay readable while the drawer is closed. Each chip
+// The five run filters stay readable while the drawer is closed. Each chip
 // mirrors a select that layers.js owns and opens the drawer on that field.
 const chipHost=$('filter-chips'),drawer=document.querySelector('.run-drawer');
-const filterFields=[['model','Model'],['method','Method'],['culture','Country framing'],['language','Language'],['seed','Repetition'],['collection','Collection']];
+const filterFields=[['model','Model'],['method','Method'],['culture','Country framing'],['language','Language'],['seed','Repetition']];
 function paintChips(){
   chipHost.replaceChildren();
   for(const [id,name] of filterFields){

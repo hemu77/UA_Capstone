@@ -5,9 +5,8 @@ import {gunzipSync} from 'node:zlib';
 import assert from 'node:assert/strict';
 import {validateData,replayFrames} from './graph-data.js';
 import {verifiedPlotProjection} from './plot-catalog-build.mjs';
+import {SAVED_NETWORKS_SHA256,validateNetworkCatalog} from './network-catalog.js';
 const root=new URL('./dist/',import.meta.url);
-const data=validateData(JSON.parse(await readFile(new URL('data/revised-calibration.json',root),'utf8')));
-assert.equal(data.runs.length,104);assert.equal(data.main_authorized,false);
 const primary=validateData(JSON.parse(await readFile(new URL('data/primary-viewer.json',root),'utf8')));
 assert.equal(primary.runs.length,890);
 assert.equal(primary.failures.length,6);
@@ -29,8 +28,11 @@ const files=(await readdir(root,{recursive:true})).map(f=>f.replaceAll('\\','/')
 const plots=verifiedPlotProjection(await readFile(new URL('data/saved-plots.json',root)));
 assert.deepEqual(plots.filter(p=>p.cohort==='primary').map(p=>p.run_id).sort(),primary.runs.map(p=>p.run_id).sort());
 assert.ok(plots.filter(p=>p.cohort!=='primary').every(p=>!primary.runs.some(r=>r.run_id===p.run_id)));
-assert.deepEqual(files.filter(f=>f.startsWith('data/saved-plots/')).sort(),plots.map(p=>p.png_url.slice(2)).sort(),'Missing or orphan PNGs');
-for(const p of plots)assert.equal(createHash('sha256').update(await readFile(new URL(p.png_url,root))).digest('hex'),p.png_sha256);
+assert.ok(!files.some(f=>f.startsWith('data/saved-plots/')),'PNG gallery unexpectedly deployed');
+const rawNetworks=await readFile(new URL('data/saved-networks.json',root));
+assert.equal(createHash('sha256').update(rawNetworks).digest('hex'),SAVED_NETWORKS_SHA256);
+const networks=validateNetworkCatalog(JSON.parse(rawNetworks),plots,primary);
+for(const r of primary.runs)assert.deepEqual(networks.get(r.run_id).edges,r.edges);
 assert.match(await readFile(new URL('index.html',root),'utf8'),/id="saved-plots"/);
 assert.ok((await readFile(new URL('plot-gallery.js',root))).length);
 const expected=primary.runs.map(r=>r.events_url.slice(2)).sort();
@@ -44,13 +46,7 @@ for(const file of files.filter(name=>/\.(json|js|html|css|adj|svg|txt)$/.test(na
   const text=await readFile(new URL(file.replaceAll('\\','/'),root),'utf8');
   assert.ok(!/sk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{24,}/.test(text),`Credential pattern in ${file}`);
 }
-for(const run of data.runs){
-  assert.equal(run.study,'revised_calibration');
-  for(const key of ['requests','decisions','responses','raw_response','billing','authorization'])assert.ok(!(key in run));
-  replayFrames(run,data.personas.map(person=>person.id));
-  for(const [path,digest] of [[run.png_url,run.png_sha256],[run.adjacency_url,run.source_sha256]]){
-    assert.match(path,/^\.\/data\/revised-calibration\/[a-zA-Z0-9_.-]+\.(png|adj)$/);
-    assert.equal(createHash('sha256').update(await readFile(new URL(path,root))).digest('hex'),digest);
-  }
-}
-console.log(JSON.stringify({status:'PASS',primary_graphs:primary.runs.length,primary_attempts:896,verified_event_logs:primary.runs.length,saved_original_plots:plots.length,supplemental_plots:6,graphs:data.runs.length,verified_artifacts:data.runs.length*2,credential_patterns:0,paid_calls:0}));
+const legacy=/(^|\/)(?:archive\/|calibration|revised-calibration|presentation|artifacts|networks\.json|main\.js|style\.css)/;
+assert.ok(!files.some(file=>legacy.test(file)),'Historical viewer payload leaked into deployment');
+assert.equal(await readFile(new URL('archive.html',root),'utf8'),await readFile(new URL('layers.html',root),'utf8'));
+console.log(JSON.stringify({status:'PASS',primary_graphs:primary.runs.length,primary_attempts:896,verified_event_logs:primary.runs.length,saved_3d_graphs:networks.size,supplemental_plots:6,archived_payloads:0,credential_patterns:0,paid_calls:0}));

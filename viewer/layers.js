@@ -5,8 +5,8 @@ import {LineSegmentsGeometry} from 'three/addons/lines/LineSegmentsGeometry.js';
 import {LineMaterial} from 'three/addons/lines/LineMaterial.js';
 import {validateData, comparisonLayout, layerComparison, layerCandidates, applyLayerSelection, edgeKey, neighbors, replayFrames, personaSteps, personaView, personaTag, personaComparison} from './graph-data.js';
 import {topology as topologyMetrics} from './research-plots.js';
-import {comparisonModels,togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
-import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchEvidence, homophilyMatrix, frequencySvg, loadPresentation} from './formation-charts.js';
+import {togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
+import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchEvidence, homophilyMatrix, frequencySvg} from './formation-charts.js';
 import {configureNavigation,panCamera} from './navigation.js';
 import {decodeVerifiedEvents} from './verified-events.js';
 
@@ -18,12 +18,12 @@ let removed=[], startingRuns=[], planeLabels=[];
 let mode='formation',activeId='',frame=0,trace=null,journey=false,playing=false,timer=null,ledgerKey='';
 const traceCache=new Map();
 let animation=null,animatedMaterials=[],animateNext=false;
-let presentation={},galleryKey='',aggregateKey='';
+let galleryKey='',aggregateKey='';
 let fitOnResize=false;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
-const filterKeys=['collection','method','culture','language','model','seed'];
+const filterKeys=['method','culture','language','model','seed'];
 const url = new URL(location.href);
-let dataset='primary';
+const dataset='primary';
 const historyLoads=new Map();
 const label = runLabel;
 const fmt = v => typeof v === 'number' && Number.isFinite(v) ? v.toFixed(3) : 'NA';
@@ -32,7 +32,7 @@ function saveView() {
   const state={runs:runs.map(r=>r.run_id),filters:readFilters(),mode,active:activeId,frame,journey,person:$('person').value,color:$('color').value,separation:$('separation').value,ties:$('ties').value,opacity:$('opacity').value,incident:$('incident').checked,metric:$('metric').value,'research-question':$('research-question').value,'node-labels':$('node-labels').value};
   url.searchParams.set('dataset',dataset);url.searchParams.set('view',JSON.stringify(state)); history.replaceState(null,'',url);
 }
-function readFilters() {return Object.fromEntries(filterKeys.map(key=>[key,$(key).value]));}
+function readFilters() {return {collection:dataset,...Object.fromEntries(filterKeys.map(key=>[key,$(key).value]))};}
 function announce(message) {$('action-status').textContent=message;}
 function activeRun() {return runs.find(run=>run.run_id===activeId)||runs[0];}
 function stop() {clearTimeout(timer);timer=null;playing=false;}
@@ -344,21 +344,10 @@ function renderEvidence() {
   const selectionKey=runs.map(r=>r.run_id).join('|'),summaryKey=selectionKey+'|'+$('person').value;
   if(summaryKey!==aggregateKey){aggregateKey=summaryKey;$('aggregate-graph').innerHTML=frequencySvg(data.personas,runs,layout,$('person').value);$('aggregate-note').textContent=`Based on ${runs.length} selected final graphs${$('person').value?`, showing persona ${$('person').value}'s direct ties`:''}. It does not follow the playback cursor. Inputs: ${runs.map(label).join('; ')}.`;}
   if(selectionKey!==galleryKey){galleryKey=selectionKey;$('source-gallery').replaceChildren();for(const item of runs){
-    const figure=document.createElement('figure'),caption=document.createElement('figcaption'),record=presentation[item.run_id];caption.textContent=label(item);
-    if(record&&record.source_sha256===item.source_sha256&&record.source===item.source&&record.png_url===`./data/presentation/${item.run_id}.png`&&/^\.\/data\/presentation\/[a-zA-Z0-9_.-]+\.png$/.test(record.png_url)){
-      const image=document.createElement('img');image.src=record.png_url;image.alt=`Presentation rendering of ${label(item)}. ${item.edges.length} saved ties; no new generation.`;image.loading='lazy';figure.append(image);
-      const link=document.createElement('a');link.href=record.png_url;link.target='_blank';link.rel='noopener';link.textContent='PNG panel (400 dpi)';caption.append(document.createElement('br'),link);
-      if(record.svg_url===`./data/presentation/${item.run_id}.svg`){const vector=document.createElement('a');vector.href=record.svg_url;vector.target='_blank';vector.rel='noopener';vector.textContent='Vector SVG';caption.append(vector);}
-      if(record.caption){const details=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');summary.textContent='Suggested manuscript caption';text.textContent=record.caption;details.append(summary,text);caption.append(details);}
-    }else if(['calibration','revised_calibration'].includes(item.study)&&item.png_url===`./data/${item.study==='calibration'?'calibration':'revised-calibration'}/${item.run_id}.png`){
-      const link=document.createElement('a');link.href=item.png_url;link.textContent='Original calibration PNG';link.target='_blank';link.rel='noopener';caption.append(document.createElement('br'),link);
-      const adjacency=document.createElement('a');adjacency.href=item.adjacency_url;adjacency.textContent='Saved adjacency list';adjacency.download='';caption.append(adjacency);
-      const note=document.createElement('p');note.textContent='Original artifacts, not a publication panel. Their hashes were checked during export.';caption.append(note);
-    }else if(item.study==='primary'){
-      const link=document.createElement('a');link.href='https://github.com/hemu77/UA_Capstone/blob/main/'+item.source;link.target='_blank';link.rel='noopener';link.textContent='Verified original adjacency';caption.append(link);
-      const png=document.createElement('a');png.href='./data/saved-plots/'+item.run_id+'.png';png.target='_blank';png.rel='noopener';png.textContent='Original saved PNG';caption.append(document.createElement('br'),png);
-      const note=document.createElement('p');note.textContent='Final primary graph. Actual recorded changes are loaded only for the active replay.';caption.append(note);
-    }else caption.append(document.createTextNode(' / Presentation figure not available; no placeholder graph.'));
+    const figure=document.createElement('figure'),caption=document.createElement('figcaption');caption.textContent=label(item);
+    const link=document.createElement('a');link.href='https://github.com/hemu77/UA_Capstone/blob/main/'+item.source;link.target='_blank';link.rel='noopener';link.textContent='Verified original adjacency';caption.append(link);
+    const png=document.createElement('a');png.href='https://github.com/hemu77/UA_Capstone/blob/main/'+item.source.replace(/\.adj$/,'.png');png.target='_blank';png.rel='noopener';png.textContent='Original saved PNG';caption.append(document.createElement('br'),png);
+    const note=document.createElement('p');note.textContent='Final primary graph. Actual recorded changes are loaded only for the active replay.';caption.append(note);
     figure.append(caption);$('source-gallery').append(figure);
   }}
   const descriptions={method:'Method comparison: hold model, roster, seed and instructions fixed while the generation procedure changes. This is a descriptive view; the computational budget and interaction sequence differ by procedure.',rq1:'RQ1: Does changing country framing alter topology and homophily with English instructions held constant? Match model, method, seed and roster. This tests prompt framing, not entire national cultures.',rq2:'RQ2: Which recorded attributes show within-group mixing? Compare categorical Coleman homophily within each run. Age uses a separate assortativity measure. These descriptive scores cannot establish what caused a tie.',rq3:'RQ3: How similar are different models under otherwise matched conditions? Compare final topology and exact shared edges. Code/prompt changes prevent clean model-only attribution.',rq4:'RQ4: Does instruction language change the graph at a fixed country framing? Match model, method, seed and roster. Translation equivalence still needs independent review.'};
@@ -367,35 +356,23 @@ function renderEvidence() {
   $('rq-status').className=result.matched?'selection-matched':'selection-unmatched';
   $('rq-issues').replaceChildren();
   for(const issue of result.issues){const li=document.createElement('li');li.textContent=issue;$('rq-issues').append(li);}
-  if(question==='rq1'&&runs.every(r=>r.study==='engineering_pilot')){const li=document.createElement('li');li.textContent='Pilot country coverage: United States only. No new pilot evidence for a country-framing effect.';$('rq-issues').append(li);}
-  if(dataset!=='legacy'){
-    const note=document.createElement('li');note.textContent=data.calibration_note||'Historical V5 calibration: two repetitions for GPT-6-Luna and one US-English repetition for each other model. The earlier eight-repetition plan is not an approved main study.';$('rq-issues').append(note);
-    if(question==='rq3'){const config=document.createElement('li');config.textContent='Model configurations differ in supported decoding settings. Treat this as configuration comparison, not a causal model-architecture test.';$('rq-issues').append(config);}
-  }
+  if(question==='rq3'){const config=document.createElement('li');config.textContent='Model configurations differ in supported decoding settings. Treat this as configuration comparison, not a causal model-architecture test.';$('rq-issues').append(config);}
   $('rq-homophily').hidden=question!=='rq2';$('rq-homophily').innerHTML=question==='rq2'?homophilyMatrix(runs):'';
   $('rq-pairs').replaceChildren();
   if(question==='rq3')for(const pair of result.pairs){const p=document.createElement('p');p.textContent=`Runs ${pair.a} and ${pair.b}: ${pair.shared} shared / ${pair.union} distinct ties. Edge Jaccard ${pair.jaccard===null?'NA':(100*pair.jaccard).toFixed(1)+'%'} (100% means identical edges; not accuracy).`;$('rq-pairs').append(p);}
-  $('provenance-summary').textContent=dataset!=='legacy'?data.verification:run.study==='engineering_pilot'?'Saved engineering output from synthetic personas. Receipt hashes, adjacency, final replay and recomputed metrics are checked offline. This does not establish human validity or independently reconcile every API response.':'Historical model output. Conditions inferred from filenames; original API logs, snapshot and event history unavailable.';
+  $('provenance-summary').textContent=data.verification;
   $('provenance-fields').replaceChildren();
-  const fields=[['Experiment',label(run)],['Collection',dataset==='primary'?'Final primary collection (supplements excluded)':dataset!=='legacy'?`${dataset==='revised_calibration'?'Revised V6':'Historical V5'} calibration (not main study)`:run.study==='engineering_pilot'?'Engineering pilot (not confirmatory)':'Historical archive'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':run.events_url?'History loads on demand and must pass its checksum':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
+  const fields=[['Experiment',label(run)],['Collection','Final primary collection (supplements excluded)'],['Graph source',run.source],['Replay',trace?'Recorded deltas reconstruct the final saved graph':run.events_url?'History loads on demand and must pass its checksum':'Unavailable; final graph only'],['PNG',run.png_provenance||'Historical PNG-to-graph correspondence unknown; no verified image is offered here.'],['Analysis',run.analysis_version||data.analysis_version]];
   for(const [key,value] of fields){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;$('provenance-fields').append(dt,dd);}
-  const png=$('source-png');png.hidden=!run.png_url;
-  if(run.png_url&&/^\.\/data\/(artifacts|calibration|revised-calibration)\/[a-zA-Z0-9_.-]+\.png$/.test(run.png_url))png.href=run.png_url;else{png.hidden=true;png.removeAttribute('href');}
+  const png=$('source-png');png.hidden=false;png.href='https://github.com/hemu77/UA_Capstone/blob/main/'+run.source.replace(/\.adj$/,'.png');
   $('provenance-hashes').textContent=JSON.stringify({run_id:run.run_id,roster_sha256:run.roster_id,adjacency_sha256:run.source_sha256,png_sha256:run.png_sha256||null,receipt_sha256:run.receipt_sha256||null,protocol_sha256:run.protocol_sha256||null,generation_source_variant:run.prompt_variant||'unrecorded'},null,2);
 }
 function refresh() {stop();$('match-note').textContent='';layerComparison(runs);if(!runs.some(run=>run.run_id===activeId)){activeId=runs[0].run_id;frame=Number.MAX_SAFE_INTEGER;journey=false;}loadTrace();layout=comparisonLayout(data.personas,runs.flatMap(r=>r.edges),[]);draw();}
 function renderCoverage() {
-  $('coverage-panel').hidden=dataset==='legacy';
-  if(dataset==='legacy')return;
-  $('primary-findings').hidden=dataset!=='primary';
-  $('failure-panel').hidden=dataset!=='primary';
-  if(dataset==='primary'){
-    $('failure-list').replaceChildren();
-    for(const r of data.failures){const li=document.createElement('li');li.textContent=`${label(r)} — ${r.failure.replaceAll('_',' ')}. No valid graph.`;$('failure-list').append(li);}
-  }
+  $('primary-findings').hidden=false;
   $('coverage-summary').textContent=`${data.runs.length} / ${data.planned_networks} saved`;
   const table=document.createElement('table'),caption=document.createElement('caption'),head=document.createElement('thead'),body=document.createElement('tbody'),header=document.createElement('tr');
-  caption.textContent=dataset==='primary'?'Valid graphs / 8 planned attempts per condition. The six failed attempts are retained below, never rendered as graphs. Click a cell to filter its seeds.':dataset==='revised_calibration'?'Revised calibration: saved / allocated repetitions. Not in scope means no calibration was allocated; it is not an empty graph.':'Historical V5 coverage against the former eight-repetition plan, not a current collection authorization.';
+  caption.textContent='Valid graphs / 8 planned attempts per condition. Failed attempts remain in the repository audit, never rendered as graphs. Click a cell to filter its seeds.';
   for(const text of ['Model / method',...data.settings.map(([country,language])=>`${countryNames[country]} / ${language}`)]){const th=document.createElement('th');th.scope='col';th.textContent=text;header.append(th);}head.append(header);
   for(const model of data.models)for(const method of data.methods){
     const row=document.createElement('tr'),name=document.createElement('th');name.scope='row';name.textContent=`${model} / ${method}`;row.append(name);
@@ -404,7 +381,7 @@ function renderCoverage() {
       button.textContent=planned?`${selected.length} / ${planned}${failed.length?' · '+failed.length+' failed':''}`:'Not in scope';button.disabled=!selected.length;
       button.setAttribute('aria-label',`${model}, ${method}, ${countryNames[culture]}, ${language}: ${selected.length} saved of ${planned} allocated`);
       button.title=selected.length?'Inspect every saved repetition in this condition':'Not collected; no generated graph exists';
-      button.onclick=()=>{if(selected.length>6){for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;candidates();saveView();const drawer=document.querySelector('.run-drawer');drawer.open=true;drawer.scrollIntoView({block:'start'});$('seed').focus({preventScroll:true});announce(`${selected.length} valid runs. Choose a seed then Apply, or add a matching run. Current layers were kept.`);return;}try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({collection:dataset,model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
+      button.onclick=()=>{if(selected.length>6){for(const [key,value] of Object.entries({model,method,culture,language,seed:''}))$(key).value=value;candidates();saveView();const drawer=document.querySelector('.run-drawer');drawer.open=true;drawer.scrollIntoView({block:'start'});$('seed').focus({preventScroll:true});announce(`${selected.length} valid runs. Choose a seed then Apply, or add a matching run. Current layers were kept.`);return;}try{runs=applyLayerSelection(selected);removed=[];mode='compare';for(const [key,value] of Object.entries({model,method,culture,language,seed:''}))$(key).value=value;refresh();candidates();pose('orbit');$('match-note').textContent='Inspecting repetitions of one condition, not a cross-model or cross-country contrast.';announce(`Loaded ${selected.length} recorded repetitions.`);}catch(error){announce(error.message);}};
       td.append(button);row.append(td);
     }body.append(row);
   }table.append(caption,head,body);$('coverage-table').replaceChildren(table);
@@ -412,16 +389,12 @@ function renderCoverage() {
 async function start() {
   let saved;try{saved=JSON.parse(url.searchParams.get('view')||'null');}catch{saved=null;}
   if(!saved||typeof saved!=='object'||Array.isArray(saved)||!Array.isArray(saved.runs))saved=null;
-  dataset=evidenceDataset(url.searchParams.get('dataset'),saved?.runs);
-  const paths={primary:'primary-viewer',revised_calibration:'revised-calibration',calibration:'calibration',legacy:'networks'};
-  const response=await fetch(`./data/${paths[dataset]}.json`,{cache:'no-store'});if(!response.ok)throw new Error(`Data request failed: ${response.status}. Run the offline viewer export; no substitute data is loaded.`);data=validateData(await response.json());
-  $('dataset').value=dataset;
-  $('dataset').onchange=()=>{stop();const next=new URL(location.href);next.search='';next.searchParams.set('dataset',$('dataset').value);location.assign(next);};
-  $('dataset-summary').textContent=dataset==='primary'?'890 valid networks / 896 attempts · 6 failures · 12 valid empty · 50 fictional adults':dataset!=='legacy'?`${data.runs.length} saved calibration graphs | ${data.personas.length} fictional adults | ${data.models.length} models | ${data.settings.length} settings`:`${data.runs.length} saved historical/pilot graphs | ${data.personas.length} original personas | separate from fresh calibration`;
-  $('evidence-notice').textContent=data.evidence_notice||(dataset==='calibration'?'Historical V5 evidence, retained separately. Superseded by revised V6 calibration; do not pool these runs.':'Historical and engineering evidence only. Not the revised calibration.');
-  $('roster-limitations').textContent=data.limitations||'These are descriptive model outputs, not observed human ties. This US-structured historical roster includes nine minors. Single-pilot differences are not general population or causal evidence.';
-  if(dataset!=='legacy'){$('collection').replaceChildren();option($('collection'),dataset,dataset==='primary'?'Final primary study':dataset==='revised_calibration'?'Revised V6 calibration':'Historical V5 calibration');}
-  else{const figures=await loadPresentation(fetch);presentation=figures.runs;if(figures.error)announce(figures.error);}
+  const requested=url.searchParams.get('dataset');
+  if((requested&&requested!=='primary')||evidenceDataset(null,saved?.runs)!=='primary')throw Error('This link selects archived research. The public demo now shows only the final primary study. Open the default comparison; historical files remain in the repository archive.');
+  const response=await fetch('./data/primary-viewer.json',{cache:'no-store'});if(!response.ok)throw new Error(`Data request failed: ${response.status}. No substitute data is loaded.`);data=validateData(await response.json());
+  $('dataset-summary').textContent='890 valid networks / 896 attempts · 6 failures · 12 valid empty · 50 fictional adults';
+  $('evidence-notice').textContent='Replay and comparisons use primary graphs only. The saved-plot gallery labels the six supplements separately.';
+  $('roster-limitations').textContent=data.limitations;
   for(const key of ['method','culture','language','model','seed'])for(const value of [...new Set(data.runs.map(r=>String(r[key])))].sort()){
     const run=data.runs.find(r=>String(r[key])===value);
     option($(key),value,key==='culture'?countryNames[value]||value:key==='seed'&&Number.isInteger(run.repetition)?`Rep ${run.repetition+1} / seed ${value}`:value);
@@ -434,11 +407,10 @@ async function start() {
   for(const [key,value] of Object.entries(topologyMetrics))option($('metric'),key,value);
   if(saved&&Array.isArray(saved.runs)){runs=saved.runs.map(id=>data.runs.find(r=>r.run_id===id));if(runs.some(run=>!run))throw Error('The saved selection contains a run absent from this dataset. Open the default comparison to choose again.');layerComparison(runs);}
   if(!runs.length&&dataset==='primary')runs=data.methods.map(method=>data.runs.find(r=>r.model==='gpt-4.1'&&r.method===method&&r.culture==='us'&&r.language==='english'&&r.seed===44000)).filter(Boolean);
-  if(!runs.length)runs=(data.models||comparisonModels).map(model=>data.runs.find(r=>r.study===(dataset!=='legacy'?dataset:'engineering_pilot')&&r.model===model&&r.method==='sequential'&&r.culture==='us'&&r.language==='english')).filter(Boolean);
   if(!runs.length)runs=[data.runs[0]];
   startingRuns=[...runs];
   activeId=runs.some(run=>run.run_id===saved?.active)?saved.active:(runs.find(run=>run.model==='gpt-6-luna')||runs[0]).run_id;mode=saved?.mode==='formation'?'formation':'compare';frame=Number.isSafeInteger(saved?.frame)&&saved.frame>=0?saved.frame:Number.MAX_SAFE_INTEGER;
-  for(const key of filterKeys){const inferred=key==='collection'?(dataset!=='legacy'?dataset:runs.every(r=>r.study!=='engineering_pilot')?'historical':'engineering_pilot'):(new Set(runs.map(r=>String(r[key]))).size===1?String(runs[0][key]):'');const value=saved?.filters?.[key]??inferred;if([...$(key).options].some(o=>o.value===value))$(key).value=value;}
+  for(const key of filterKeys){const inferred=new Set(runs.map(r=>String(r[key]))).size===1?String(runs[0][key]):'';const value=saved?.filters?.[key]??inferred;if([...$(key).options].some(o=>o.value===value))$(key).value=value;}
   for(const id of ['person','color','ties','metric','research-question','node-labels'])if(saved&&[...$(id).options].some(o=>o.value===saved[id]))$(id).value=saved[id];
   for(const id of ['separation','opacity'])if(saved&&Number.isFinite(Number(saved[id])))$(id).value=saved[id];
   $('incident').checked=saved?.incident===true;
@@ -446,7 +418,7 @@ async function start() {
   for(const id of filterKeys)$(id).onchange=()=>{candidates();saveView();};
   $('candidate').onchange=updateAdd;
   $('filter-form').onsubmit=event=>{event.preventDefault();try{runs=applyLayerSelection(layerCandidates(data.runs,readFilters()));removed=[];refresh();candidates();pose('orbit');announce(`Applied filters: ${runs.length} saved networks now displayed.`);}catch(error){announce(`${error.message} Current layers were kept.`);}};
-  $('reset-filters').onclick=()=>{for(const key of filterKeys)$(key).value=key==='collection'?(dataset!=='legacy'?dataset:'engineering_pilot'):'';candidates();saveView();announce('Filters reset. Displayed layers were kept.');};
+  $('reset-filters').onclick=()=>{for(const key of filterKeys)$(key).value='';candidates();saveView();announce('Filters reset. Displayed layers were kept.');};
   $('add').onclick=()=>{const run=data.runs.find(r=>r.run_id===$('candidate').value);if(!run)return;try{runs=applyLayerSelection([...runs,run]);removed=removed.filter(entry=>entry.run.run_id!==run.run_id);refresh();candidates();pose('orbit');announce(`Added ${run.model} / ${run.method}. ${runs.length} layers displayed.`);}catch(error){announce(error.message);}};
   $('undo').onclick=()=>{const last=removed.at(-1);if(!last)return;try{const next=[...runs];next.splice(Math.min(last.index,next.length),0,last.run);runs=applyLayerSelection(next);removed.pop();refresh();candidates();pose('orbit');announce(`Restored ${last.run.model} / ${last.run.method}.`);}catch(error){announce(error.message);}};
   $('restore').onclick=()=>{runs=[...startingRuns];removed=[];refresh();candidates();pose('orbit');announce('Restored the comparison present when you opened this page.');};
@@ -491,16 +463,13 @@ async function start() {
   for(const button of document.querySelectorAll('[data-match]'))button.onclick=()=>{
     const reference=activeRun(),dimension=button.dataset.match;
     try{runs=applyLayerSelection(matchedRuns(data.runs,reference,dimension));removed=[];mode='compare';
-      for(const key of filterKeys)$(key).value=key==='collection'?(dataset!=='legacy'?dataset:reference.study==='engineering_pilot'?'engineering_pilot':'historical'):key===dimension?'':String(reference[key]);
+      for(const key of filterKeys)$(key).value=key===dimension?'':String(reference[key]);
       $('research-question').value={model:'rq3',culture:'rq1',language:'rq4',method:'method'}[dimension];
       refresh();candidates();pose('orbit');announce('Matched comparison applied. No missing conditions were filled.');
       $('match-note').textContent=`${runs.length} saved runs matched to ${reference.model} / ${reference.method} / ${reference.culture} / ${reference.language} / seed ${reference.seed}. Only ${dimension} varies among the matched fields.`;
     }catch(error){announce(error.message);}
   };
   renderCoverage();
-  if(!saved&&dataset==='legacy')$('collection').value='revised';
   setupScene();refresh();candidates();pose('orbit');
-  const missing=comparisonModels.filter(model=>!data.runs.some(r=>r.study==='engineering_pilot'&&r.model===model));
-  if(dataset==='legacy'&&missing.length)announce(`Requested comparison: ${comparisonModels.join(', ')}. No saved results for ${missing.join(', ')}; no substitute graph displayed. Older results remain in the archive/all-pilot collection.`);
 }
 start().catch(error=>{document.body.dataset.state='error';const message=`Saved evidence could not be loaded: ${error.message}`;$('status').textContent=message;$('dataset-summary').textContent=message;$('evidence-notice').textContent='No substitute data has been loaded. Use Retry to request the saved files again.';for(const control of document.querySelectorAll('main button,main select,main input'))control.disabled=true;$('retry-load').hidden=false;$('retry-load').disabled=false;$('retry-load').onclick=()=>location.reload();$('reset-view').hidden=false;$('reset-view').href='./layers.html?dataset='+encodeURIComponent(dataset);}).finally(()=>{document.body.dataset.ready='true';});

@@ -1,7 +1,7 @@
 # Analysis Starts Here
 
-Canonical workspace: `C:\Users\Hemu\Projects\UA_Captsone_SocN`.
-Use this workspace, not the historical OneDrive checkout.
+Work from the repository root in your checkout. Use the pinned Python environment
+below for reproduction; browsing the published notebooks needs no local setup.
 
 [Browse all 896 saved network files and plots](NETWORKS.md): 890 primary plus
 six separate supplements. Each entry links to its original ADJ and PNG.
@@ -67,7 +67,7 @@ rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cac
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
 ```
 
-All four current notebooks can rerun from the published tables without downloading
+The current analysis notebooks can rerun from the published tables without downloading
 raw public data. Raw public caches remain outside Git, separate from all
 original/supplementary study outputs.
 
@@ -84,7 +84,7 @@ rtk proxy .\.venv\Scripts\python.exe -m ipykernel install --user --name ua-capst
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation.py
 ```
 
-The current notebook checker above executes all four notebooks with the registered
+The current notebook checker above executes the five analysis notebooks (01-05) with the registered
 frozen kernel and checks that sealed analysis outputs remain unchanged. A clean GitHub
 clone can rerun the notebooks from the published tables without downloading
 the large response archive; full resource recomputation needs that archive.

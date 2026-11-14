@@ -30,7 +30,7 @@ try{
   assert.match(await page.locator('#filter-chips').innerText(),/Filter query/);
   assert.match(await page.locator('#layers').innerText(),/gpt-4.1/,'Unapplied query must not change layers');
   await page.setViewportSize({width:390,height:844});
-  assert.equal(await page.getByRole('link',{name:'Archive & analysis'}).isVisible(),true);
+  assert.equal(await page.getByRole('link',{name:'Research & files'}).isVisible(),true);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No mobile overflow');
   assert.doesNotMatch(await page.locator('.replay-banner').innerText(),/Historical calibration replay/);
   assert.deepEqual(errors,[]);

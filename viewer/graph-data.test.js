@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {validateData, differences, replayEdges, neighbors, comparisonLayout, layerComparison, layerCandidates, applyLayerSelection, replayFrames, personaSteps} from './graph-data.js';
 import {filterRuns, conditionRows, coverage, measurement, topologySvg, homophilySvg, selectionCsv} from './research-plots.js';
 import {trajectorySvg, metricBars, researchEvidence, homophilyMatrix, runLabel, layerLabel} from './formation-charts.js';
-const data = JSON.parse(readFileSync(new URL('./public/data/networks.json', import.meta.url)));
+const data = JSON.parse(readFileSync(new URL('./archive/public/data/networks.json', import.meta.url)));
 test('tie explanation uses the actual selected-run denominator',()=>{
   const personas=[{id:'0'},{id:'1'}];
   const runs=Array.from({length:4},(_,i)=>({...data.runs[0],run_id:String(i),edges:[['0','1']]}));
@@ -41,7 +41,7 @@ test('dataset routes preserve old links and reject unknown datasets',()=>{
 });
 
 test('all 104 revised graphs replay exactly; coverage and empty outcomes stay distinct',()=>{
-  const revised=validateData(JSON.parse(readFileSync(new URL('./public/data/revised-calibration.json',import.meta.url))));
+  const revised=validateData(JSON.parse(readFileSync(new URL('./archive/public/data/revised-calibration.json',import.meta.url))));
   assert.equal(revised.runs.length,104);assert.equal(revised.personas.length,50);
   assert.equal(revised.runs.filter(r=>r.method==='global'&&!r.edges.length).length,22);
   for(const run of revised.runs){
@@ -297,7 +297,7 @@ test('fresh homophily labels use recorded attributes, not legacy party or ethnic
 });
 
 test('all 68 fresh exports reconstruct their exact final graph and preserve study coverage', () => {
-  const fresh=validateData(JSON.parse(readFileSync(new URL('./public/data/calibration.json',import.meta.url))));
+  const fresh=validateData(JSON.parse(readFileSync(new URL('./archive/public/data/calibration.json',import.meta.url))));
   assert.equal(fresh.runs.length,68);assert.equal(fresh.personas.length,50);
   assert.ok(fresh.personas.every(p=>p.attributes.age>=18));
   assert.deepEqual(fresh.models,['gpt-4.1','gpt-5.6-luna','gpt-6-luna','gpt-6-sol']);
