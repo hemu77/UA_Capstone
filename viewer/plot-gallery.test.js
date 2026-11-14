@@ -41,4 +41,3 @@ test('Reject duplicate identities, cohort mixing, paths, hashes and inconsistent
     d=>{d.plots[0].raw_response='private fixture';}
   ]){const changed=structuredClone(catalog);mutate(changed);assert.throws(()=>validatePlotCatalog(changed));}
 });
-

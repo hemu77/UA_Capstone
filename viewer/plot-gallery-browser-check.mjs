@@ -49,4 +49,3 @@ try{
   assert.deepEqual(errors,[]);
   console.log('PASS: lazy 896-plot gallery, cohort/method/search filters, pagination, modal images/arrows/Escape, replay isolation, mobile, 503 recovery, missing-image fallback.');
 }finally{await browser.close();}
-

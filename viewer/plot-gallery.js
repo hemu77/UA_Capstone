@@ -19,7 +19,6 @@ export function filterPlots(plots,cohort,method,query){
   const words=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   return plots.filter(p=>(cohort==='all'||(cohort==='primary'?p.cohort==='primary':p.cohort!=='primary'))&&(!method||p.method===method)&&words.every(w=>[p.run_id,p.model,p.culture,p.language,String(p.seed)].join(' ').toLowerCase().includes(w)));
 }
-
 if(typeof document!=='undefined')initGallery();
 function initGallery(){
   const $=id=>document.getElementById(id),section=$('saved-plots');
@@ -82,4 +81,3 @@ function initGallery(){
     e.stopPropagation();
   });
 }
-
