@@ -1,12 +1,18 @@
 # Simulator Team Handoff
 
-## Saved plot gallery: November 13
+## Saved plot gallery: November 14
 
 [Browse all 896 original PNGs](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
 This is 890 valid primary graphs plus six selected supplemental successes, not
 896 valid primary graphs. All twelve valid empty primary graphs remain present.
 Supplements appear only in this labeled descriptive gallery and never enter
 the primary replay, comparisons, statistical analyses, or coverage totals.
+
+Published as Site version 6 on November 14, 2026 (Phoenix). All 896 live PNG
+URLs returned image responses; the live catalog hash, eight original image
+hashes (including all six supplements), and compressed replay were verified.
+Site source commit: `b4e5a18cee52faf06d864fa4a0b88d8c9d21c57b`.
+The 263,096,320-byte tar includes 2,245 files and remains below the host limit.
 
 Use the top **896 saved plots** link, filter by cohort/method or search by
 model, framing, language and seed. Open a card, then use Previous/Next or arrow
