@@ -1,0 +1,48 @@
+{
+  "authors": [
+    "Piotr Sapiezynski",
+    "Arkadiusz Stopczynski",
+    "David Dreyer Lassen",
+    "Sune Lehmann J\u00f8rgensen"
+  ],
+  "doi": "10.6084/m9.figshare.7267433.v1",
+  "duplicate_undirected_pairs": 0,
+  "endpoint_roster": true,
+  "expected_edges_in_50": 24.599655819774718,
+  "files": {
+    "fb_friends.README": {
+      "bytes": 193,
+      "published_md5": "86dcef05caae3c0eca1dd99f75ee6960",
+      "sha256": "6d4c46978282d34197d2400dfc51c199180843454c120eea008df453a76ee416",
+      "url": "https://ndownloader.figshare.com/files/13389839"
+    },
+    "fb_friends.csv": {
+      "bytes": 49636,
+      "published_md5": "b1f96bae3e79949ed4278e90d0753843",
+      "sha256": "825527f445776d48d095be4d81a1ce7823407c3354d2602af3a6cfae6952c74d",
+      "url": "https://ndownloader.figshare.com/files/13389320"
+    },
+    "genders.csv": {
+      "bytes": 4632,
+      "published_md5": "eb033aae23fff859684a82d00ffd8099",
+      "sha256": "daff3d3232518ed2c662cabae0dd492a6e705056a9bd41e2ef216e8950ba9f9f",
+      "url": "https://ndownloader.figshare.com/files/13389440"
+    }
+  },
+  "friendship_nodes_with_gender": 747,
+  "full_network_isolates_observable": false,
+  "gender_only_ids": 40,
+  "gender_rows": 787,
+  "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT",
+    "value": 3
+  },
+  "metadata_url": "https://api.figshare.com/v2/articles/7267433/versions/1",
+  "no_politics_or_religion_released": true,
+  "observed_edges": 6418,
+  "observed_roster_nodes": 800,
+  "raw_edge_rows": 6429,
+  "removed_self_links": 11,
+  "suitability": "endpoint-conditioned structural comparison only; not representative friendship or RQ2 validation"
+}

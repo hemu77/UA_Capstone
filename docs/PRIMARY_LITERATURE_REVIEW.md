@@ -1,5 +1,16 @@
 # Primary Literature Review: The Professor's Five Papers
 
+**Status note, November 14, 2026:** This is the November 5 literature snapshot.
+Its statements that ER/BA/WS comparisons remain future work are historical;
+see the [completed held-out evaluation](HELDOUT_REAL_WORLD_EVALUATION.md) and
+[current brief](PROFESSOR_RESEARCH_BRIEF.md). For proposed follow-up work and
+claim limits, use the [dated research plan](research/NEXT_STEPS_20261114.md).
+The original review and its source-version caveats are preserved below.
+Four [additional methodological papers](research/NEXT_STEPS_20261114.md#3a-additional-papers-tagged-to-specific-changes)
+are tagged to metric validity, diversity, sampling and demographic mixing.
+The [sampling/mixing subset and Copenhagen comparison](research/EXTENSION_RESULTS_20261114.md)
+are now executed; the proposed evaluator-perturbation/diversity experiments remain unrun.
+
 Reviewed November 5, 2026. **Exact five-paper set: CONFIRMED by the user.**
 This supersedes the earlier unconfirmed, two-reference locating note. Park is
 not one of these five. Only clean primary URLs are retained; no email or tracking

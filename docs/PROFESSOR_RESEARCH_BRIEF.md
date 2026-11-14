@@ -1,5 +1,16 @@
 # What the network study can claim
 
+**November 14 addendum:** [executed RQ2, sampling and Copenhagen extension](research/EXTENSION_RESULTS_20261114.md)
+and [notebook 06](../analysis/06_rq2_sampling_copenhagen.ipynb). Political orientation
+remains first in all 28 combinations for each person-level method across three
+scores and each seed omission. The new Copenhagen comparison is explicitly
+endpoint-conditioned: its mean clustering falls from 0.315 in the full record
+to 0.080 in 50-node samples. Fixed ER is closer on sampled clustering than Global;
+Global is closer on several other metrics. Giving ER target density changes
+the efficiency comparison but does not reproduce transitivity. These are
+exploratory findings, not additional corrected tests or human-behavior validation.
+The older results below retain their original 11-record scope.
+
 **November 12, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
 
 ## The comparison to show first
@@ -59,6 +70,6 @@ These are recorded failure modes, not evidence that a language caused a failure.
 
 - **What builds on prior work:** Chang et al. already compared LLM friendship graphs with empirical networks and classical generators. Neither that comparison nor the use of ER, BA and WS is our novelty. Our extension separates a locked instruction comparison from a transfer benchmark: we keep the baseline settings fixed on new sources, show how the answer changes by metric and observation size, and expose which conclusions survive missing attempts. This is a contribution relative to the [five reviewed papers](PRIMARY_LITERATURE_REVIEW.md), not a claim of being first in the field.
 - **What the design cannot establish:** one fictional roster, four fixed models, eight paired blocks and unequal computation across procedures. The language result concerns these prompts, not Hindi speakers or national culture. Held out means not used to fit the baselines, not necessarily unseen in model training.
-- **Where external evidence stops:** ten Facebook records overlap; the Marseille school is one incomplete survey. Repeated node samples are not independent communities. Matching a structural statistic does not mean predicting real friendships. The next informative test would freeze the evaluation on additional independent communities and multiple rosters, with a comparable compute budget. That test has not been run.
+- **Where external evidence stops:** ten Facebook records overlap; the Marseille school is one incomplete survey. The November 14 extension adds one Copenhagen endpoint-conditioned record, not a complete observation roster. Repeated node samples are not independent communities. Matching a structural statistic does not mean predicting real friendships. Multiple independently constructed fictional rosters and compute-comparable generation remain unrun future work.
 
 **Decision for the meeting:** Does the density and size sensitivity warrant the paper's headline, with the instruction effect as a qualified secondary finding? Ask the reviewer to argue against that framing using the [Claude review instructions](CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).

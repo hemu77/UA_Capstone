@@ -1,0 +1,45 @@
+{
+  "version": "research-extension-20261114-v1",
+  "status": "post-collection exploratory extension; specified before Copenhagen comparison outcomes",
+  "primary_attempts": 896,
+  "valid_primary_graphs": 890,
+  "primary_empty_graphs": 12,
+  "primary_failures": 6,
+  "supplements_in_analysis": 0,
+  "paid_calls": 0,
+  "rq2": {
+    "main_descriptive_score": "excess same-group edge share over finite-roster chance",
+    "sensitivity_scores": ["archived population-weighted Coleman", "Newman edge-end assortativity"],
+    "method_order": ["global", "local", "sequential", "iterative"],
+    "contrasts": "all six unordered method pairs; second minus first on shared model/setting/seed support",
+    "aggregation": "mean paired seeds within each model/setting; equal weight of 28 cells; missing cells suppress overall mean",
+    "support": ["score-specific paired support", "all-three-score paired support"],
+    "ranks": "shared defined seeds across attributes; cross-score sensitivity additionally uses shared support across all scores",
+    "omission": "omit each of eight seeds globally; descriptive sensitivity, not confidence intervals",
+    "new_hypothesis_tests": false,
+    "rewiring": "not added: inherited diagnostic does not establish labeled-degree convergence"
+  },
+  "external": {
+    "primary_size": 50,
+    "sizes": [25, 40, 50],
+    "draws_per_record": 32,
+    "sampling": "uniform 50-node induced draws with historical nested 25/40 thinning; isolates retained",
+    "copenhagen_roster": "union of released friendship endpoints only; complete Facebook-observation roster unavailable",
+    "screening": "documented friendship; >=50 observed nodes; expected edges at n=50 >=1; exact published 800 endpoints and 6429 raw edge records",
+    "pre_comparison_cleaning_amendment": "Raw inventory check found 11 self-links and zero duplicate undirected pairs before comparison outcomes were computed. Remove only those self-links, retain all 800 endpoints; analyze 6418 simple edges and zero observed isolates. Raw files remain unchanged.",
+    "old_baselines": "reuse sealed 8 banks x56 graphs each; ER p=.18893569470401766, BA m=5, WS k=10 p=.2; no refit",
+    "new_transfer_baselines": "none: preserve historical transfer comparison and avoid target-driven extra tuning",
+    "target_density_ER": "8 banks x56 G(n,p) graphs at Copenhagen full-record density; explicitly target-informed diagnostic, not transfer competitor",
+    "metrics": ["density", "avg_clustering_coef", "global_efficiency", "transitivity", "degree_gini", "prop_nodes_lcc"],
+    "weighting": "equal seven instruction weights within each method/model; average four model distances, not pooled W1; equal eight baseline-bank distances",
+    "sampling_ranges": "finite-record min/max, NOT confidence intervals or independent-community replication",
+    "publish_raw_public_node_data": false
+  },
+  "sources": {
+    "doi": "10.6084/m9.figshare.7267433.v1",
+    "license": "MIT, from version-specific deposit metadata; not inferred from article license",
+    "fb_friends.csv": "825527f445776d48d095be4d81a1ce7823407c3354d2602af3a6cfae6952c74d",
+    "genders.csv": "daff3d3232518ed2c662cabae0dd492a6e705056a9bd41e2ef216e8950ba9f9f",
+    "fb_friends.README": "6d4c46978282d34197d2400dfc51c199180843454c120eea008df453a76ee416"
+  }
+}

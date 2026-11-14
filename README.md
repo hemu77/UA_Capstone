@@ -28,6 +28,7 @@ empty graph is not a failed attempt. Supplements never replace primary observati
 
 - [Professor's brief](docs/PROFESSOR_RESEARCH_BRIEF.md): research questions, main findings, effect sizes, significance and limitations.
 - [Analysis guide](ANALYSIS_START_HERE.md) and [notebook gallery](analysis/README.md): readiness, primary statistics, comparison figures, held-out evaluation and demographic mixing.
+- [New RQ2, sampling and Copenhagen results](docs/research/EXTENSION_RESULTS_20261114.md): four exploratory figures and [executed notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb), primary only.
 - [Findings in plain language](docs/PRIMARY_ANALYSIS_FINDINGS.md) and [held-out evaluation](docs/HELDOUT_REAL_WORLD_EVALUATION.md).
 - [All graph files and original PNGs](NETWORKS.md), with a [separate supplemental index](docs/network_catalog/supplemental.md).
 - [Research file map](docs/research/README.md): primary data, supplements, failures and historical evidence.
@@ -37,7 +38,7 @@ empty graph is not a failed attempt. Supplements never replace primary observati
 | Location | Purpose |
 | --- | --- |
 | `viewer/` | Current Three.js lab, 896-network browser, public exports and checks |
-| `analysis/`, `analysis_primary/`, `analysis_heldout/`, `analysis_figures/` | Notebooks and reproducible analysis code |
+| `analysis/`, `analysis_primary/`, `analysis_heldout/`, `analysis_figures/`, `analysis_extension/` | Notebooks and reproducible analysis code |
 | `outputs/final_study/060dcd3a86d5/` | Original primary graphs and collection evidence |
 | `outputs/supplement_20261105_v1/`, `outputs/supplement_completion_20261105_v1/` | Separately labeled extra attempts |
 | `outputs/analysis_ready/060dcd3a86d5/` | Sealed input catalogs, cohort mapping and failure audit |

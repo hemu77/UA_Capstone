@@ -4,6 +4,9 @@ Revision 5 replaces the displays in the main notebooks, not just an optional
 gallery. All results use the original **896 attempts / 890 valid graphs**;
 the six selectively completed supplements remain separate. No new paid calls.
 
+**November 14 extension:** notebook 06 adds four exploratory figures without
+replacing sealed earlier figures. [Findings, denominators and limitations](../docs/research/EXTENSION_RESULTS_20261114.md).
+
 | Notebook | Contents |
 | --- | --- |
 | [01: Primary statistics](01_primary_statistical_analysis.ipynb) | Independent statistical checks, all 24 contrasts, robustness and legacy context. |
@@ -11,6 +14,7 @@ the six selectively completed supplements remain separate. No new paid calls.
 | [03: Held-out evaluation](03_heldout_public_evaluation.ipynb) | Independent W1 checks, matched-size sensitivity, seven figures including the density diagnostic and LCC appendix. |
 | [04: Complete figure gallery](04_manuscript_figures.ipynb) | 15 figures, including RQ2 score sensitivity and target-density efficiency. |
 | [05: RQ2 demographic mixing](05_rq2_demographic_mixing.ipynb) | Primary-only categorical Coleman scores, equal-weight method summaries and all 112 combination rankings. |
+| [06: RQ2, sampling and Copenhagen](06_rq2_sampling_copenhagen.ipynb) | Paired mixing contrasts, matrices, Newman/shared-support sensitivity, full-versus-sampled structure, and six-metric Copenhagen evaluation. |
 
 [Review findings, scope and figure selection](../docs/DEEP_REVIEW_RESPONSE.md) |
 [PNG/SVG/PDF files and sensitivity tables](../outputs/publication_figures/20261112_v5/) |

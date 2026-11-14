@@ -3,6 +3,15 @@
 Current results, selected supplements and failed attempts are different cohorts.
 Use the entry points below; do not pool their directories for primary analysis.
 
+[Next research steps, November 14](NEXT_STEPS_20261114.md) maps the four questions
+to supported findings, falsification checks, candidate external datasets and an
+evidence-first five-agent review workflow. It is a proposal, not new results.
+
+**Executed follow-up:** [RQ2 mixing, sampling and Copenhagen](EXTENSION_RESULTS_20261114.md)
+has four new figures, explicit paired denominators and an
+[executed notebook](../../analysis/06_rq2_sampling_copenhagen.ipynb).
+Only that subset of the plan is complete; supplements remain excluded.
+
 | Category | Location | Meaning |
 | --- | --- | --- |
 | Primary graphs | [Original runs](../../outputs/final_study/060dcd3a86d5/main/runs/) and [896 primary attempt rows](../../outputs/analysis_ready/060dcd3a86d5/primary_attempts.csv) | 890 valid, including 12 empty; six failed |

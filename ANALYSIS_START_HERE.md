@@ -12,6 +12,13 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
+**New exploratory extension:** [Notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb)
+and [plain-language findings](docs/research/EXTENSION_RESULTS_20261114.md) add
+paired RQ2 mixing, sampling diagnostics and an endpoint-conditioned Copenhagen
+comparison. All six supplements stay excluded. The historical notebooks and
+locked primary tests remain unchanged. Check the new notebook with
+`rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_research_extension.py`.
+
 For the meeting or an external review, start with the [professor's research brief](docs/PROFESSOR_RESEARCH_BRIEF.md): main plots, effect sizes, significance, failure consequences and the proposed contribution.
 
 Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
@@ -59,12 +66,14 @@ To edit and preview plots, use `analysis_figures/publication_v3.py` and run
 from the pinned Python environment. The build refuses an existing destination.
 A later published revision needs a new version, never silently changed bytes.
 
-Full benchmark reproduction after the environment setup below (not needed for
-figure or notebook inspection):
+Public-cache acquisition after environment setup (not needed for notebook
+inspection). **Do not rerun the historical held-out runner in place:** it targets
+a sealed directory. Use the extension's new-destination build instead:
 
 ```powershell
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_heldout_public.py --cache data_external\heldout_20261105
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_heldout_evaluation.py --cache data_external\heldout_20261105
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\fetch_copenhagen_public.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_research_extension.py --output outputs\research_extension\local_reproduction
 ```
 
 The current analysis notebooks can rerun from the published tables without downloading
