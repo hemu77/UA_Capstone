@@ -8,6 +8,7 @@ import {topology as topologyMetrics} from './research-plots.js';
 import {comparisonModels,togglePersona,tapTracker,matchedRuns,filterOptions,evidenceDataset,conditionCoverage} from './graph-data.js';
 import {trajectorySvg, metricBars, runLabel, layerLabel, countryNames, researchEvidence, homophilyMatrix, frequencySvg, loadPresentation} from './formation-charts.js';
 import {configureNavigation,panCamera} from './navigation.js';
+import {decodeVerifiedEvents} from './verified-events.js';
 
 const $ = id => document.getElementById(id);
 // Distinct but equal-weight run hues; identity is always repeated in text labels.
@@ -47,13 +48,10 @@ async function verifiedHistory(run) {
   const task=(async()=>{
     let events=run.events;
     if(!events?.length){
-      if(run.events_url!==`./data/primary-events/${id}.json`||!/^[a-zA-Z0-9_.-]+$/.test(id))throw Error('Invalid event path');
+      if(![`./data/primary-events/${id}.json`,`./data/primary-events/${id}.json.gz`].includes(run.events_url)||!/^[a-zA-Z0-9_.-]+$/.test(id))throw Error('Invalid event path');
       const response=await fetch(run.events_url);
       if(!response.ok)throw Error('Recorded replay could not be loaded');
-      const bytes=await response.arrayBuffer();
-      const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(b=>b.toString(16).padStart(2,'0')).join('');
-      if(digest!==run.events_sha256)throw Error('Recorded replay failed its integrity check');
-      events=JSON.parse(new TextDecoder().decode(bytes));
+      events=await decodeVerifiedEvents(await response.arrayBuffer(),run.events_sha256);
     }
     const frames=replayFrames({...run,events},owner.personas.map(p=>p.id));
     if(!frames)throw Error('Recorded history is empty');

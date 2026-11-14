@@ -1,6 +1,7 @@
 // A static build needs no application server, bundler, credentials, or remote CDN.
-import {mkdir, copyFile, cp, readFile, writeFile, rm} from 'node:fs/promises';
+import {mkdir, copyFile, cp, readFile, writeFile, rm, readdir, stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {gzipSync} from 'node:zlib';
 import {fileURLToPath} from 'node:url';
 import {resolve,sep} from 'node:path';
 import {verifiedPlotProjection} from './plot-catalog-build.mjs';
@@ -11,7 +12,7 @@ const destination=resolve(root,'dist');
 if(destination!==resolve(process.cwd(),'dist'))throw new Error('Unsafe build destination.');
 await rm(destination,{recursive:true,force:true});
 await mkdir('dist/vendor/addons/controls', {recursive: true});
-const files=['index.html', 'style.css', 'main.js', 'graph-data.js', 'research-plots.js', 'layers.html', 'layers.css', 'layers.js', 'formation-charts.js', 'navigation.js', 'layers-ui.js', 'plot-gallery.js'];
+const files=['index.html', 'style.css', 'main.js', 'graph-data.js', 'research-plots.js', 'layers.html', 'layers.css', 'layers.js', 'formation-charts.js', 'navigation.js', 'layers-ui.js', 'plot-gallery.js', 'verified-events.js'];
 const sources=[];
 for(const file of files)sources.push([file,await readFile(file,'utf8')]);
 // An updated HTML document must not load an older cached controller or stylesheet.
@@ -35,13 +36,17 @@ for(const p of plots){
   await writeFile(resolve(destination,p.png_url),bytes);
 }
 await copyFile('public/data/saved-plots.json','dist/data/saved-plots.json');
-await copyFile('public/data/primary-viewer.json','dist/data/primary-viewer.json');
+
 await mkdir('dist/data/primary-events',{recursive:true});
 const primary=JSON.parse(await readFile('public/data/primary-viewer.json','utf8'));
 for(const run of primary.runs){
   if(!/^[a-zA-Z0-9_.-]+$/.test(run.run_id)||run.events_url!==`./data/primary-events/${run.run_id}.json`)throw Error('Invalid public event path');
-  await copyFile('public/data/primary-events/'+run.run_id+'.json','dist/data/primary-events/'+run.run_id+'.json');
+  const bytes=await readFile('public/data/primary-events/'+run.run_id+'.json');
+  if(createHash('sha256').update(bytes).digest('hex')!==run.events_sha256)throw Error('Recorded event hash mismatch');
+  await writeFile('dist/data/primary-events/'+run.run_id+'.json.gz',gzipSync(bytes));
+  run.events_url+='.gz';
 }
+await writeFile('dist/data/primary-viewer.json',JSON.stringify(primary));
 for(const name of ['15_efficiency_density','14_demographic_mixing'])await copyFile(`public/data/study-figures/${name}.png`,`dist/data/study-figures/${name}.png`);
 for (const file of ['three.module.js', 'three.core.js']) await copyFile(`node_modules/three/build/${file}`, `dist/vendor/${file}`);
 await copyFile('node_modules/three/examples/jsm/controls/OrbitControls.js', 'dist/vendor/addons/controls/OrbitControls.js');
@@ -52,4 +57,8 @@ await copyFile('node_modules/three/LICENSE', 'dist/vendor/THREE-LICENSE.txt');
 for(const name of ['networks.json','calibration.json','revised-calibration.json','presentation.json','artifacts','calibration','revised-calibration','presentation']){
   await cp(`public/data/${name}`,`dist/data/${name}`,{recursive:true});
 }
+// Leave conservative per-file archive overhead below the host's expanded limit.
+let expanded=0;
+for(const file of await readdir('dist',{recursive:true})){const info=await stat(resolve(destination,file));if(info.isFile())expanded+=info.size+2048;}
+if(expanded>256*1024*1024)throw Error('Static package exceeds the 256 MiB host limit');
 console.log('Static viewer built in viewer/dist. Serve this directory on localhost.');

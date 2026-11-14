@@ -19,7 +19,12 @@ The build checks both immutable catalog/projection pins and every PNG SHA256,
 then copies exactly 896 originals into `viewer/dist/data/saved-plots/`.
 No private records, receipts, ledgers or new generation are needed.
 
-Checks: 37 Node tests; built-output verification of all 896 plot hashes and
+To fit the host archive limit without altering any PNG, replay JSON is shipped
+as gzip. The browser decompresses it, enforces a 2 MB expansion limit and checks
+the unchanged original SHA256 before replay. The build verifier compares every
+decompressed file byte-for-byte with the original public event export.
+
+Checks: 39 Node tests; built-output verification of all 896 plot hashes and
 890 replay histories; gallery browser checks (lazy loading, filtering,
 pagination, modal/keyboard, mobile, catalog retry, missing-image fallback);
 existing polish, primary error-path and actual pointer navigation checks.

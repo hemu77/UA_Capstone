@@ -3,6 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {"build": "node build.mjs", "test": "node --test graph-data.test.js navigation.test.js primary-data.test.js plot-gallery.test.js", "verify:public": "node verify-public.mjs", "test:browser": "node browser-check.mjs", "test:navigation": "node navigation-check.mjs", "test:gallery": "node plot-gallery-browser-check.mjs"},
+  "scripts": {"build": "node build.mjs", "test": "node --test graph-data.test.js navigation.test.js primary-data.test.js plot-gallery.test.js verified-events.test.js", "verify:public": "node verify-public.mjs", "test:browser": "node browser-check.mjs", "test:navigation": "node navigation-check.mjs", "test:gallery": "node plot-gallery-browser-check.mjs"},
   "dependencies": {"three": "0.186.1"}
 }
