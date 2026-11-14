@@ -31,7 +31,7 @@ const activates=target=>target instanceof HTMLElement&&['BUTTON','A','SUMMARY'].
 document.addEventListener('keydown',event=>{
   if(event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey)return;
   const target=event.target,onCanvas=target instanceof HTMLCanvasElement;
-  if(help.open)return; // The native dialog handles Escape and focus.
+  if(document.querySelector('dialog[open]'))return; // Native dialogs own Escape and focus.
   if(event.key==='?'){if(!typing(target)||target.type==='range'||target.type==='checkbox'){event.preventDefault();openHelp();}return;}
   if(typing(target))return;
   let handled=true;

@@ -437,4 +437,20 @@ body[data-state=error] #dataset-summary{display:none}
 /* Final-study evidence uses the existing visual system. */
 .findings{margin:24px 26px}.finding-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:20px}.finding-grid p{font-size:13px;line-height:1.8;color:var(--muted)}.finding-number{font-size:12px;color:var(--accent)}.finding-plots{display:grid;gap:20px;margin:20px 0}.finding-plots figure{margin:0}.finding-plots img{width:100%;max-width:1100px;height:auto;display:block;background:#fafaf8}.finding-plots figcaption{font-size:12px;color:var(--muted);margin-top:8px}#failure-list{font-size:13px;line-height:1.8;overflow-wrap:anywhere}
 @media(max-width:850px){.finding-grid{grid-template-columns:1fr}.findings{margin:15px}}
-
+.saved-plots{margin:24px var(--gutter);scroll-margin-top:80px}
+#plot-filters{display:grid;grid-template-columns:1fr 1fr 2fr auto;gap:14px;align-items:end;margin:18px 0;border:1px solid var(--line);border-radius:var(--radius);min-width:0}
+#plot-filters label{margin:0;min-width:0}#plot-search{display:block;width:100%;margin-top:6px;padding:7px 12px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--raised);color:var(--text)}
+.plot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.plot-card{border:1px solid var(--line);border-radius:var(--radius);padding:12px;min-width:0}
+.plot-card h3{line-height:1.5;overflow-wrap:anywhere}.plot-card a{font-size:12px}
+.plot-badge{font-size:11px;letter-spacing:.03em;color:var(--accent);margin:0 0 10px}
+.plot-badge[data-cohort^=supplement]{color:var(--warn)}
+.plot-thumbnail{display:block;width:100%;padding:0;background:#fff;overflow:hidden;min-height:150px}
+.plot-thumbnail img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#fff}
+.plot-pagination{display:flex;gap:16px;align-items:center;justify-content:center;margin:18px 0}
+#plot-dialog{width:min(1100px,94vw);max-width:94vw;max-height:94vh;padding:22px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--panel);color:var(--text);overflow:auto}
+#plot-dialog::backdrop{background:#000b}#plot-dialog h2{overflow-wrap:anywhere}
+#plot-dialog-image img{display:block;max-width:100%;max-height:66vh;width:auto;height:auto;margin:auto;background:white}
+#plot-record{overflow-wrap:anywhere}
+@media(max-width:1000px){.plot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#plot-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.plot-grid{grid-template-columns:1fr}.saved-plots{margin:15px}#plot-filters{grid-template-columns:1fr}.plot-pagination{gap:8px;font-size:12px}#plot-dialog{padding:14px}}

@@ -5,6 +5,7 @@
   <a class="brand" href="./layers.html"><span class="brand-mark" aria-hidden="true">N/</span><span>NETWORK OBSERVATORY<span class="brand-sub">Formation &amp; evidence</span></span></a>
   <div class="header-context">FINAL STUDY / SAVED MODEL OUTPUTS</div>
   <nav>
+    <a href="#saved-plots">896 saved plots</a>
     <a href="#primary-findings">Study findings</a>
     <a href="./archive.html">Archive &amp; analysis</a>
     <button id="help-open" type="button" aria-haspopup="dialog" aria-keyshortcuts="?" title="Keyboard shortcuts and gestures (?)">Shortcuts</button>
@@ -81,7 +82,21 @@
 <div class="finding-grid"><article><span class="finding-number">01</span><h3>Density explains part of the apparent advantage</h3><p>Giving random graphs each observed network's density closed 86% of the fixed-baseline-to-Global efficiency gap. Global was closer on the Facebook mean; the random reference was closer at school. In the post-hoc density split, mean W1 was Global 0.1484 / ER 0.1103 in five sparse records, and Global 0.0949 / ER 0.1886 in six denser records. This diagnostic uses target information, not blind prediction. The gap-closed ratio is not bounded (school: 105%) or causal.</p></article><article><span class="finding-number">02</span><h3>Rankings depend on the comparison</h3><p>Classical models remained competitive on clustering. The top-two gap was just 0.0037 at 40 nodes on Facebook. Neither one metric nor one network size establishes an overall winner.</p></article><article><span class="finding-number">03</span><h3>Attribute scores are not causal preferences</h3><p>Political orientation led all person-level conditions on two scores. For Global it led 6/28 on Coleman and 1/28 on excess edge share. All graphs use one designed roster; politics and religion co-vary and prompt order was fixed.</p></article></div>
 <details><summary>Inspect the comparative evidence</summary><p class="hint">These figures summarize the full primary dataset, not just the selected layers. Ranges are descriptive, not population confidence intervals.</p><div class="finding-plots"><figure><img src="./data/study-figures/15_efficiency_density.png" loading="lazy" alt="Paired efficiency distances by real-world record; density-matched random reference narrows the fixed-baseline gap."><figcaption>Reachability: fixed-baseline comparison versus target-informed density diagnostic.</figcaption></figure><figure><img src="./data/study-figures/14_demographic_mixing.png" loading="lazy" alt="28 model and instruction condition means per method and attribute; Global rank changes between two scoring rules."><figcaption>RQ2: spread across conditions and sensitivity to how mixing is scored.</figcaption></figure></div></details>
 <p class="hint">Only one of 24 planned contrasts passed the original correction: iterative US-Hindi minus US-English clustering −0.0453; familywise 95% interval [−0.0850, −0.0056], adjusted p = 0.0238. Significance persisted in only 3/8 leave-one-block-out fits. This is not evidence about Hindi speakers. Facebook records overlap; the school is one incomplete survey. Structural similarity is not behavioral validation.</p></section>
-<footer>Saved outputs from fictional personas; six selected supplements excluded. No live generation, API spending, or ties invented by the animation.</footer>
+<section id="saved-plots" class="analysis-card saved-plots">
+<div class="section-top"><div><span class="eyebrow">06 / ORIGINAL PLOT ARCHIVE</span><h2>896 saved network plots</h2></div><span class="small-tag">Original PNGs / no generation</span></div>
+<p>890 valid primary graphs + six separately labeled supplemental successes. The 896 primary attempts still include six failures; supplements do not replace them in analysis. Twelve primary graphs are valid empty networks.</p>
+<details id="plot-drawer"><summary>Browse all saved plots <span class="hint">Filter, enlarge, or open the original file</span></summary>
+<fieldset id="plot-filters" disabled><legend>Find a saved plot</legend>
+<label>Cohort<select id="plot-cohort"><option value="all">All 896 / descriptive display only</option><option value="primary">Primary only / 890</option><option value="supplement">Supplements only / 6</option></select></label>
+<label>Method<select id="plot-method"><option value="">All methods</option><option value="global">Global</option><option value="local">Local</option><option value="sequential">Sequential</option><option value="iterative">Iterative</option></select></label>
+<label>Search model, framing, language or seed<input id="plot-search" type="search" placeholder="e.g. gpt-4.1 english 44000"></label>
+<button id="plot-clear" type="button">Clear filters</button></fieldset>
+<p id="plot-status" role="status">Open the gallery to load its catalog. Plot images load one page at a time.</p>
+<button id="plot-retry" type="button" hidden>Retry plot catalog</button>
+<div id="plot-grid" class="plot-grid"></div>
+<div class="plot-pagination"><button id="plot-page-back" type="button" disabled>Previous page</button><button id="plot-page-next" type="button" disabled>Next page</button></div>
+</details></section>
+<footer>Saved outputs from fictional personas. Supplements appear only in the labeled plot archive, not primary analysis or replay. No live generation, API spending, or ties invented by the animation.</footer>
 </main>
 <dialog id="help" aria-labelledby="help-title">
   <form method="dialog"><div class="help-top"><h2 id="help-title">Shortcuts &amp; gestures</h2><button id="help-close" value="close" aria-label="Close shortcuts">Close</button></div>
@@ -111,4 +126,10 @@
   </div>
   <p class="hint">Playback steps through the generation order that was actually recorded. It is not elapsed time, human motion, or a simulation of simultaneous agents.</p></form>
 </dialog>
-<script type="module" src="./layers.js"></script><script type="module" src="./layers-ui.js"></script></body></html>
+<dialog id="plot-dialog" aria-labelledby="plot-dialog-title">
+<div class="help-top"><h2 id="plot-dialog-title"></h2><button id="plot-close" type="button" autofocus>Close plot</button></div>
+<p id="plot-dialog-cohort" class="plot-badge"></p><div id="plot-dialog-image"></div>
+<div class="plot-pagination"><button id="plot-back" type="button">Previous plot</button><span id="plot-dialog-position" role="status"></span><button id="plot-forward" type="button">Next plot</button></div>
+<p><a id="plot-original" target="_blank" rel="noopener">Open full-size original PNG</a> / <a id="plot-source" target="_blank" rel="noopener">View source in repository</a></p>
+<p id="plot-record" class="hint"></p></dialog>
+<script type="module" src="./layers.js"></script><script type="module" src="./layers-ui.js"></script><script type="module" src="./plot-gallery.js"></script></body></html>

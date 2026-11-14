@@ -358,6 +358,7 @@ function renderEvidence() {
       const note=document.createElement('p');note.textContent='Original artifacts, not a publication panel. Their hashes were checked during export.';caption.append(note);
     }else if(item.study==='primary'){
       const link=document.createElement('a');link.href='https://github.com/hemu77/UA_Capstone/blob/main/'+item.source;link.target='_blank';link.rel='noopener';link.textContent='Verified original adjacency';caption.append(link);
+      const png=document.createElement('a');png.href='./data/saved-plots/'+item.run_id+'.png';png.target='_blank';png.rel='noopener';png.textContent='Original saved PNG';caption.append(document.createElement('br'),png);
       const note=document.createElement('p');note.textContent='Final primary graph. Actual recorded changes are loaded only for the active replay.';caption.append(note);
     }else caption.append(document.createTextNode(' / Presentation figure not available; no placeholder graph.'));
     figure.append(caption);$('source-gallery').append(figure);

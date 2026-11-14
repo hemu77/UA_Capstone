@@ -3,6 +3,7 @@ import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {validateData,replayFrames} from './graph-data.js';
+import {verifiedPlotProjection} from './plot-catalog-build.mjs';
 const root=new URL('./dist/',import.meta.url);
 const data=validateData(JSON.parse(await readFile(new URL('data/revised-calibration.json',root),'utf8')));
 assert.equal(data.runs.length,104);assert.equal(data.main_authorized,false);
@@ -23,6 +24,13 @@ for(const r of primary.runs){
   assert.ok(replayFrames({...r,events},primary.personas.map(p=>p.id)),'Missing replay');
 }
 const files=(await readdir(root,{recursive:true})).map(f=>f.replaceAll('\\','/'));
+const plots=verifiedPlotProjection(await readFile(new URL('data/saved-plots.json',root)));
+assert.deepEqual(plots.filter(p=>p.cohort==='primary').map(p=>p.run_id).sort(),primary.runs.map(p=>p.run_id).sort());
+assert.ok(plots.filter(p=>p.cohort!=='primary').every(p=>!primary.runs.some(r=>r.run_id===p.run_id)));
+assert.deepEqual(files.filter(f=>f.startsWith('data/saved-plots/')).sort(),plots.map(p=>p.png_url.slice(2)).sort(),'Missing or orphan PNGs');
+for(const p of plots)assert.equal(createHash('sha256').update(await readFile(new URL(p.png_url,root))).digest('hex'),p.png_sha256);
+assert.match(await readFile(new URL('index.html',root),'utf8'),/id="saved-plots"/);
+assert.ok((await readFile(new URL('plot-gallery.js',root))).length);
 const expected=primary.runs.map(r=>r.events_url.slice(2)).sort();
 assert.deepEqual(files.filter(f=>f.startsWith('data/primary-events/')&&f.endsWith('.json')).sort(),expected,'Orphan event exports');
 for(const path of ['index.html','layers.html','study.html','layers.js','layers.css','graph-data.js','formation-charts.js','navigation.js','research-plots.js','vendor/three.module.js','vendor/three.core.js','vendor/addons/controls/OrbitControls.js','data/study-figures/14_demographic_mixing.png','data/study-figures/15_efficiency_density.png'])assert.ok((await readFile(new URL(path,root))).length>0,path);
@@ -43,4 +51,4 @@ for(const run of data.runs){
     assert.equal(createHash('sha256').update(await readFile(new URL(path,root))).digest('hex'),digest);
   }
 }
-console.log(JSON.stringify({status:'PASS',primary_graphs:primary.runs.length,primary_attempts:896,verified_event_logs:primary.runs.length,graphs:data.runs.length,verified_artifacts:data.runs.length*2,credential_patterns:0,paid_calls:0}));
+console.log(JSON.stringify({status:'PASS',primary_graphs:primary.runs.length,primary_attempts:896,verified_event_logs:primary.runs.length,saved_original_plots:plots.length,supplemental_plots:6,graphs:data.runs.length,verified_artifacts:data.runs.length*2,credential_patterns:0,paid_calls:0}));

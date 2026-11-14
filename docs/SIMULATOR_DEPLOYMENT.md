@@ -1,8 +1,34 @@
 # Simulator Team Handoff
 
-## Current public entry: November 12
+## Saved plot gallery: November 13
 
-[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html) is the original Three.js lab with Claude's presentation retained. The mistaken standalone page is retired; its URL aliases the lab. The home page opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges and lazy-loads hash-verified actual updates. All 99,552 recorded events reconstruct the 890 final graphs. No supplements, model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
+[Browse all 896 original PNGs](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
+This is 890 valid primary graphs plus six selected supplemental successes, not
+896 valid primary graphs. All twelve valid empty primary graphs remain present.
+Supplements appear only in this labeled descriptive gallery and never enter
+the primary replay, comparisons, statistical analyses, or coverage totals.
+
+Use the top **896 saved plots** link, filter by cohort/method or search by
+model, framing, language and seed. Open a card, then use Previous/Next or arrow
+keys to move through matching full-size originals. Escape closes the image.
+Eight cards load per page; the image archive is not fetched during 3D startup.
+
+The source PNG bytes are unchanged. Run `python scripts/export_plot_gallery.py`
+to regenerate the whitelisted catalog from the pinned analysis-ready CSV.
+The build checks both immutable catalog/projection pins and every PNG SHA256,
+then copies exactly 896 originals into `viewer/dist/data/saved-plots/`.
+No private records, receipts, ledgers or new generation are needed.
+
+Checks: 37 Node tests; built-output verification of all 896 plot hashes and
+890 replay histories; gallery browser checks (lazy loading, filtering,
+pagination, modal/keyboard, mobile, catalog retry, missing-image fallback);
+existing polish, primary error-path and actual pointer navigation checks.
+Run `npm --prefix viewer run test:gallery` with `PLAYWRIGHT_MODULE` and
+`VIEWER_URL` set for the local server. Physical devices/Safari not checked.
+
+## Current primary replay entry: November 12
+
+[Network Observatory: friendship study](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html) is the original Three.js lab with Claude's presentation retained. The mistaken standalone page is retired; its URL aliases the lab. The home page opens the completed study: 896 original attempts, 890 valid networks (12 empty), six failures. It renders saved undirected edges and lazy-loads hash-verified actual updates. All 99,552 recorded events reconstruct the 890 final graphs. Supplements never enter this replay. No model calls, private receipts or spending information are exported. Figure 15 and the benchmark comparison distinguish fixed baselines from target-informed ER. The calibration player is a separate historical view; its 104 graphs are not the main collection.
 
 Rebuild the minimized public catalog with `python scripts/export_primary_viewer.py --evidence-root <protected-local-download>`, then use the existing viewer build and checks below.
 
