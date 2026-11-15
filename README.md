@@ -1,4 +1,4 @@
-# Network Observatory
+# Cross-Cultural and Linguistic LLM Network Study
 
 How do language models generate friendship networks when prompts change country
 framing, instruction language, model and generation method? This project extends
