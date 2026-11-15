@@ -11,6 +11,8 @@ the efficiency comparison but does not reproduce transitivity. These are
 exploratory findings, not additional corrected tests or human-behavior validation.
 The older results below retain their original 11-record scope.
 
+**Figure release v6 (November 15, 2026).** All 19 current figures were redesigned and are now the ones displayed in notebooks 01-06: [`outputs/publication_figures/20261115_v6/`](../outputs/publication_figures/20261115_v6/). Presentation only: no estimate, weight or test changed; earlier releases are untouched. Read the [methods review, per-figure verdicts and corrected interpretations](../docs/figure_redesign/README.md). Check with `.venv/bin/python -B scripts/check_figure_release_v6.py`. Image links further down this page still point to the earlier releases.
+
 **November 12, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
 
 ## The comparison to show first
@@ -42,7 +44,7 @@ The random reference closes **86% of the fixed-WS-to-Global gap**. It is strictl
 
 ## The planned statistical result
 
-With iterative generation, the estimated difference in average clustering was **-0.0453 on a 0-1 scale** (US-Hindi minus US-English; 95% familywise interval **[-0.0850, -0.0056]**, Holm-adjusted **p = 0.0238**). This is an absolute difference, not a 4.53% relative decrease. Of 24 planned contrasts, 23 were testable and only this one passed the original correction. All eight paired seed blocks had the same direction, but only **3 of 8** leave-one-block-out fits retained significance. An exploratory sign-flip test gave adjusted p = 0.1875. Report the direction and the fragility together; the other comparisons do not establish equivalence.
+With iterative generation, the estimated difference in average clustering was **-0.0453 on a 0-1 scale** (US-Hindi minus US-English; 95% familywise interval **[-0.0850, -0.0056]**, Holm-adjusted **p = 0.0238**). This is an absolute difference, not a 4.53% relative decrease. Of 24 planned contrasts, 23 were testable and only this one passed the original correction. All eight paired seed blocks had the same direction, but only **3 of 8** leave-one-block-out fits retained significance. An exploratory eight-block sign-flip test gave adjusted p = 0.1875, but that is the smallest value this test can return in a 24-contrast family (2/256 x 24), so it neither supports nor undermines the result (corrected November 15). Report the direction and the fragility together; the other comparisons do not establish equivalence.
 
 ![All planned contrasts with effects, uncertainty and missing comparisons.](../outputs/publication_figures/20261105_v3/01_primary_contrasts.png)
 

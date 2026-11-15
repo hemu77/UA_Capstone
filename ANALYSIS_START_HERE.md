@@ -12,6 +12,9 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
+**Figure release v6 (November 15, 2026).** All 19 current figures were redesigned and are now the ones displayed in notebooks 01-06: [`outputs/publication_figures/20261115_v6/`](outputs/publication_figures/20261115_v6/). Presentation only: no estimate, weight or test changed; earlier releases are untouched. Read the [methods review, per-figure verdicts and corrected interpretations](docs/figure_redesign/README.md). Check with `.venv/bin/python -B scripts/check_figure_release_v6.py`. Image links further down this page still point to the earlier releases.
+
+
 **New exploratory extension:** [Notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb)
 and [plain-language findings](docs/research/EXTENSION_RESULTS_20261114.md) add
 paired RQ2 mixing, sampling diagnostics and an endpoint-conditioned Copenhagen

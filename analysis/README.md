@@ -4,6 +4,15 @@ Revision 5 replaces the displays in the main notebooks, not just an optional
 gallery. All results use the original **896 attempts / 890 valid graphs**;
 the six selectively completed supplements remain separate. No new paid calls.
 
+**November 15, figure release v6:** notebooks 01-06 now display the redesigned figures in [`outputs/publication_figures/20261115_v6/`](../outputs/publication_figures/20261115_v6/). Notebook 04 shows all 19. [Review, verdicts and corrected interpretations](../docs/figure_redesign/README.md). Previews below this note are the earlier releases.
+
+| Fig. | Release v6 preview |
+| --- | --- |
+| 01 | ![01_primary_contrasts](../outputs/publication_figures/20261115_v6/01_primary_contrasts.png) |
+| 04 | ![04_coverage_missingness](../outputs/publication_figures/20261115_v6/04_coverage_missingness.png) |
+| 15 | ![15_efficiency_density](../outputs/publication_figures/20261115_v6/15_efficiency_density.png) |
+| 14 | ![14_demographic_mixing](../outputs/publication_figures/20261115_v6/14_demographic_mixing.png) |
+
 **November 14 extension:** notebook 06 adds four exploratory figures without
 replacing sealed earlier figures. [Findings, denominators and limitations](../docs/research/EXTENSION_RESULTS_20261114.md).
 

@@ -23,8 +23,8 @@ class NotebookPresentationTests(unittest.TestCase):
             path = next((ROOT / 'analysis').glob(number + '_*.ipynb'))
             notebook = nbformat.read(path, as_version=4)
             source = '\n'.join(cell.source for cell in notebook.cells)
-            renderer = 'publication_v3' if number in ('01','02') else 'review_v5'
-            self.assertIn(f'from analysis_figures.{renderer} import show', source, path.name)
+            # Release v6 (2026-11-15) replaced the displayed figures; earlier releases stay sealed on disk.
+            self.assertIn('from analysis_figures.v6.release import show', source, path.name)
             self.assertNotIn('from analysis_primary.plots import render_figures', source)
             self.assertNotIn("OUT / 'figures/01_primary_forest.png'", source)
             self.assertNotIn("OUT/'figures'/(stem+'.png')", source)

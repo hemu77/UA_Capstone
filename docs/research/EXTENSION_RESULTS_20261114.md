@@ -10,6 +10,10 @@ No provider calls, live-ledger queries or changes to the locked 24 primary tests
 [Execution protocol](../../analysis_extension/protocol.json) |
 [Integrity manifest](../../outputs/research_extension/20261114_v2/manifest.json)
 
+**Figure release v6 (November 15, 2026).** All 19 current figures were redesigned and are now the ones displayed in notebooks 01-06: [`outputs/publication_figures/20261115_v6/`](../../outputs/publication_figures/20261115_v6/). Presentation only: no estimate, weight or test changed; earlier releases are untouched. Read the [methods review, per-figure verdicts and corrected interpretations](../../docs/figure_redesign/README.md). Check with `.venv/bin/python -B scripts/check_figure_release_v6.py`. Image links further down this page still point to the earlier releases.
+
+Corrections from that review: efficiency distance largely restates density distance (rank correlation 0.87 across record-procedure pairs), so Global's efficiency result is mostly a density match; the classic Coleman index differs from the index used here (same rank counts).
+
 ## The Professor Version
 
 "I strengthened the demographic analysis by comparing the procedures on the
