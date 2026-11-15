@@ -3,9 +3,9 @@
 ## Current Allocation Update
 
 **Current handoff:** all 68 calibration graphs are verified; the 896-network
-main batch remains unapproved. [The team brief](docs/TEAM_KNOWLEDGE_BRIEF.md)
+main batch remains unapproved. [The team brief](../../TEAM_KNOWLEDGE_BRIEF.md)
 explains what is fixed, what remains a research decision, and the ~$101 remaining
-cost. [Team approval](docs/TEAM_APPROVAL.md) must precede further paid collection.
+cost. [Team approval](../../TEAM_APPROVAL.md) must precede further paid collection.
 
 The author has now selected **eight repetitions, 896 total graphs**, retaining
 all four models and all four methods, and authorized **$5 additional calibration

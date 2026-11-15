@@ -6,7 +6,7 @@
 The reviewed transport recovery retained the failed request's full reservation
 and reused 194 cached replies. No further transport failure occurred. Additional
 charges and reservations total $4.454524450 of the original $5 allowance.
-[CALIBRATION_RESULTS.md](CALIBRATION_RESULTS.md) records exact evidence and the
+[CALIBRATION_RESULTS.md](../calibration/CALIBRATION_RESULTS.md) records exact evidence and the
 current-calibration forecast: $103.37 for the full 896 design; $101.00 remaining
 for 828 graphs, or $121.20 with 20% allowance. Remaining serial API time is
 28.44 hours, or 42.66 with 50% allowance, excluding offline work and pauses.
@@ -14,7 +14,7 @@ These estimates transfer Luna treatment ratios to other models; they are not
 guarantees. Main generation remains unapproved.
 
 Live checks exposed retry-completeness, example contamination, empty-response and
-output-capacity issues; see [CALIBRATION_FINDINGS.md](CALIBRATION_FINDINGS.md).
+output-capacity issues; see [CALIBRATION_FINDINGS.md](../calibration/CALIBRATION_FINDINGS.md).
 Superseded protocols remain preserved and excluded. V5 uses 8192 completion
 tokens for global responses and 512 for per-person responses, sufficient for the
 declared 50-person numeric reply schema. Abnormal finishes still stop collection.
@@ -96,7 +96,7 @@ retains raw token totals, failures, usage and actual conservative charges.
 - [x] Inspect every currently completed graph, actual usage and partial analysis.
 - [x] Complete and inspect all 68 calibration cells; 204 offline controls generated.
 - [x] Complete independent AI-assisted instruction/retry review; findings and
-  limits are in [the translation review](TRANSLATION_REVIEW.md).
+  limits are in [the translation review](../calibration/TRANSLATION_REVIEW.md).
 - [ ] Obtain human bilingual signoff or explicitly document the accepted review
   standard before approving main-study translation acceptance.
 - [ ] Justify required effect sensitivity/precision or retain exploratory claims.

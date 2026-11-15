@@ -2,13 +2,13 @@
 
 This preserves the previous long README, including earlier targets, costs and
 completion claims. It is history, not the current approval or research status.
-Use [README.md](README.md) and [the team brief](docs/TEAM_KNOWLEDGE_BRIEF.md) first.
+Use [README.md](../../../README.md) and [the team brief](../../TEAM_KNOWLEDGE_BRIEF.md) first.
 
 ## Previous README
 
 ## Fresh Study: Eight Repetitions, Calibration First
 
-**Logging update:** [API diagnostics](API_LOGGING.md) now capture client/server
+**Logging update:** [API diagnostics](../calibration/API_LOGGING.md) now capture client/server
 request IDs, HTTP status, timing and safe error details in the existing ledger.
 The read-only `python paid_study.py --diagnostics` command needs no API key.
 Logging/recovery passed a bounded independent review, SDK request parity tests
@@ -20,8 +20,8 @@ generated. All 88 tests pass. Additional calibration accounting totals **$4.4545
 of the original $5**, including superseded attempts and retained failure reserves.
 One reviewed replacement retained the lost request's full reservation and reused
 194 cached replies. The main batch has not started.
-See [the inspection and estimates](CALIBRATION_RESULTS.md) and
-[the failure history](CALIBRATION_FINDINGS.md).
+See [the inspection and estimates](../calibration/CALIBRATION_RESULTS.md) and
+[the failure history](../calibration/CALIBRATION_FINDINGS.md).
 
 The current-calibration forecast is **$103.37 for the full 896-network design**.
 With the 68 calibration graphs reused under an unchanged reviewed protocol,
@@ -32,7 +32,7 @@ costs use measured Luna ratios, so these are estimates, not guarantees.
 There were 140 rejected parse attempts among 7,749 received replies; all are
 recorded and charged. Calibration completion is not scientific certification.
 
-The current study is specified in [the 896-study handoff](RESEARCH_896_HANDOFF.md)
+The current study is specified in [the 896-study handoff](../planning/RESEARCH_896_HANDOFF.md)
 and `study_protocol_896.json`. It starts with a fresh fictional 50-adult roster,
 four models (GPT-4.1, GPT-5.6-Luna, GPT-6-Luna, GPT-6-Sol), all four methods,
 US/India/Japan/Brazil framing, and English/Hindi/Japanese/Brazilian Portuguese
@@ -42,14 +42,14 @@ fixture outputs are explicitly labelled. Superseded calibration graphs do not
 count as corrected-study results.
 The current web viewer still displays the earlier evidence. The new study awaits
 translation/design acceptance and explicit cost approval before the main batch.
-The [independent AI-assisted language review](TRANSLATION_REVIEW.md) covers all
+The [independent AI-assisted language review](../calibration/TRANSLATION_REVIEW.md) covers all
 four instruction languages and actual retry paths. It fixes shared-friend ambiguity
 and two localized wording issues; it is not human bilingual signoff.
 The author removed the historical $50 maximum but authorized only **$5 additional
 calibration usage** so far. Every live scope still has an explicit finite ceiling.
 Instructions and review evidence are in the handoff; sections below describe earlier work.
 
-**Review status:** [the PDF response matrix](REVIEW_RESPONSE_MATRIX.md) distinguishes
+**Review status:** [the PDF response matrix](../planning/REVIEW_RESPONSE_MATRIX.md) distinguishes
 repaired code from unanswered scientific concerns. The new scope is **896 total**,
 or 224 per method. Eight repetitions improve replication but do not by themselves
 prove adequate precision, population validity or conference readiness.
@@ -111,7 +111,7 @@ from playback and are not accuracy scores. See [the studio guide](FORMATION_STUD
 **Population design update:** US party labels remain in archived runs. The proposed
 adult-only primary cross-country experiment omits explicit political affiliation,
 with a separate matched sensitivity arm. This controls one cue; it does not make
-synthetic personas representative. See [population revision](POPULATION_REVISION.md)
+synthetic personas representative. See [population revision](../planning/POPULATION_REVISION.md)
 for the proposed GPT-5 / Luna / Sol / Hugging Face panel and collection gates.
 
 **3D layer laboratory:** open `http://127.0.0.1:8765/layers.html` after rebuilding
@@ -125,7 +125,7 @@ the displayed comparison. See the [critical usability review](VIEWER_USABILITY_R
 
 **The project is under revision, not ready for resubmission.** The earlier
 completion claims below are archival. They are superseded by the corrected audit
-and [revision status report](REVISION_STATUS.md), which separates software checks
+and [revision status report](../planning/REVISION_STATUS.md), which separates software checks
 from scientific evidence. No conference acceptance or absence of all bugs can
 be guaranteed.
 
@@ -175,9 +175,9 @@ metric as well as A/B, color and projection. All filtering and plotting is local
 and costs no model tokens. Evidence notes are available on demand.
 
 Saved Sol/Luna comparison artifacts are also available directly:
-[topology SVG](stats/revision_v1/sol_luna_topology.svg),
-[mixing SVG](stats/revision_v1/sol_luna_mixing.svg), and
-[selected measurements CSV](stats/revision_v1/sol_luna_selected_runs.csv).
+[topology SVG](../../../stats/revision_v1/sol_luna_topology.svg),
+[mixing SVG](../../../stats/revision_v1/sol_luna_mixing.svg), and
+[selected measurements CSV](../../../stats/revision_v1/sol_luna_selected_runs.csv).
 
 ### Research Questions
 
@@ -225,9 +225,9 @@ these fictional people or proof that demographic stereotyping is accurate.
 
 ### Where to start
 
-Read [REVISION_STATUS.md](REVISION_STATUS.md) for the feedback-to-fix checklist,
+Read [REVISION_STATUS.md](../planning/REVISION_STATUS.md) for the feedback-to-fix checklist,
 [ARCHITECTURE.md](ARCHITECTURE.md) for the data flow, and
-[RESEARCH_REVISION_PLAN.md](RESEARCH_REVISION_PLAN.md) for the full approved direction.
+[RESEARCH_REVISION_PLAN.md](../planning/RESEARCH_REVISION_PLAN.md) for the full approved direction.
 Run instructions for the maintained offline workflow are at the bottom of this README.
 The request-count estimator is **not** a dollar quote or authorization to run models.
 
@@ -622,7 +622,7 @@ rtk proxy .\.venv\Scripts\python.exe -B revision224.py --analyze
 ```
 
 These commands cost no API tokens. Review the
-[current handoff](RESEARCH_896_HANDOFF.md), exact prompt catalog and current
+[current handoff](../planning/RESEARCH_896_HANDOFF.md), exact prompt catalog and current
 preflight report before any paid execution. The execution commands and matching
 review receipt requirements are documented in that handoff.
 

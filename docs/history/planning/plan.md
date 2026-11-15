@@ -2,7 +2,7 @@
 
 ## Current Gate: October 18
 
-Use [the budget-corrected executable contract](docs/FINAL_COLLECTION.md), not the
+Use [the budget-corrected executable contract](../../FINAL_COLLECTION.md), not the
 historical candidate checklist below. Code and analysis now use eight equal
 repetitions: 896 planned attempts, 224 per method. Expected new usage is $102.44;
 the main allowance cannot exceed $120. The rejected 32-block expansion was an
@@ -19,8 +19,8 @@ assistant planning error, not a reviewer mandate. Main generation has not run.
 
 ## Historical Gate: October 17
 
-The [post-review repair package](docs/PRECOLLECTION_REVIEW.md) and
-[`precollection_spec.json`](precollection_spec.json) supersede earlier candidate
+The [post-review repair package](../../PRECOLLECTION_REVIEW.md) and
+[`precollection_spec.json`](../../../precollection_spec.json) supersede earlier candidate
 analysis/allocation descriptions below. Historical outcomes and costs stay intact.
 
 - [x] Add independently pinned, copy-only public replay with fail-closed audit status.
@@ -37,9 +37,9 @@ Do not use earlier 24/84-family or 1/3/12-forecast tables as the current analysi
 
 ## Historical V8 Plan And Completion
 
-**Active V8 update, October 13:** [current execution and evidence](docs/V8_EXECUTION_NOTES.md).
+**Active V8 update, October 13:** [current execution and evidence](../../V8_EXECUTION_NOTES.md).
 The owner-approved stage allowances remain $5/$10/$15, not new allowances per
-source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.
+source version. [V7 diagnostics](../../V7_EXECUTION_NOTES.md) are preserved.
 
 - [x] Complete the 96-cell local wording screen: 94 valid graphs/two failures,
   $5.9461527 including failures; private cached and public replay verified.
@@ -59,7 +59,7 @@ source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.
   four global failures**. Four valid global graphs are empty. Usage plus retained
   reservations is $7.8912884; no terminal failure was regenerated as a success.
 - [x] Report costs, duration, missingness and fresh-study scenarios in
-  [V8 completion results](docs/V8_COMPLETION_RESULTS.md): 896 attempts ~$102.44,
+  [V8 completion results](../../V8_COMPLETION_RESULTS.md): 896 attempts ~$102.44,
   or global-32/others-eight (1,568 attempts) ~$104.49, before contingencies.
 - [x] Pass 191 offline regressions, final two recovery tests and seven focused
   publishing checks; replay both completed stages without API calls.
@@ -67,14 +67,14 @@ source version. [V7 diagnostics](docs/V7_EXECUTION_NOTES.md) are preserved.
 
 The V6 history below stays intact. Neither a passing test suite nor calibration
 completion guarantees research validity or conference acceptance.
-Read the [current handoff](docs/V8_TEAM_HANDOFF.md) for the remaining scientific
+Read the [current handoff](../../V8_TEAM_HANDOFF.md) for the remaining scientific
 decisions and professor/team review questions. Completion is not main-study clearance.
 
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**
 The earlier 72-call wording probe had its own $1 permission. Read the
-[new calibration findings](docs/CALIBRATION_V6_RESULTS.md) before any spending decision.
-See [the statistical/probe decision](docs/STATISTICAL_ANALYSIS_DECISION.md).
+[new calibration findings](../../CALIBRATION_V6_RESULTS.md) before any spending decision.
+See [the statistical/probe decision](../../STATISTICAL_ANALYSIS_DECISION.md).
 Human bilingual review is unavailable and explicitly waived by the owner; it
 must remain disclosed as absent, not completed.
 
@@ -86,7 +86,7 @@ graphs passed replay/accounting. **22/26 global graphs are empty**; the task mus
 be reviewed before main collection. Statistical/sample-allocation decisions
 remain open. **October 12 update:** the public simulator now defaults to the
 104 V6 graphs; historical collections remain separate. See the
-[new PR review response](docs/PR_REVIEW_OCT12.md) for confirmed defects and
+[new PR review response](../../PR_REVIEW_OCT12.md) for confirmed defects and
 prospective design decisions. The active V7 authorization boundary is above;
 this historical V6 section does not authorize further collection.
 
@@ -234,7 +234,7 @@ execution path. Every future batch needs its own scope/budget approval.
 - [x] Integrate the revised adapter into `calibration_v6.py`, with the existing
   ledger/caller, exact request journaling, cached replay and explicit finite-cap
   authorization. A bounded review and 128 Python tests passed before payment.
-  The owner then authorized `extended104` and $10. See [runner instructions](docs/CALIBRATION_V6.md).
+  The owner then authorized `extended104` and $10. See [runner instructions](../../CALIBRATION_V6.md).
 - [x] Prepare new source/prompt/roster/runtime/response-limit/decoding contract
   `5fb3715550db`; 104 full-roster offline fixtures and their saved artifacts pass.
   This engineering freeze is not paid authorization. Never relabel V5 graphs as

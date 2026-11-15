@@ -36,7 +36,7 @@ sequence. V5 and the pilot counts below describe separate historical datasets.
 ## Use the workspace
 
 Current interaction checks and remaining team gates are recorded in
-[the interaction handoff](docs/VIEWER_INTERACTION_REVIEW.md). Click a selected
+[the interaction handoff](../../VIEWER_INTERACTION_REVIEW.md). Click a selected
 node again, click empty space, or use Clear persona selection to restore the
 whole graph. Trackpad navigation defaults on in replay and comparison; disable
 it to scroll the page over the canvas. Replay active run starts at event zero.

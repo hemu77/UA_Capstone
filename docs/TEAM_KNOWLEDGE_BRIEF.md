@@ -68,7 +68,7 @@ Successful parsing does not certify realistic human behavior.
 
 **October 2 update: revised calibration complete; main study still on hold.**
 All 104 approved graphs passed replay/accounting checks at **$7.8549 of $10**.
-Read [the new results](CALIBRATION_V6_RESULTS.md) and [plan](../plan.md).
+Read [the new results](CALIBRATION_V6_RESULTS.md) and [plan](history/planning/plan.md).
 The important finding is **22/26 global graphs are empty**. This is genuine
 output under the frozen instructions, not a software failure to conceal.
 We recommend resolving the intended global task before spending on main collection.
@@ -135,14 +135,14 @@ budgeting and visualization. They used historical personas and debugging
 variants. They are not 28 extra clean repetitions for the current study.
 
 Older reports and PDFs remain historical documents. See
-[the archived capstone README](../CAPSTONE_README_ARCHIVE.md) and
-[project history](../PROJECT_HISTORY.md); do not quote their completion claims
+[the archived capstone README](history/legacy/CAPSTONE_README_ARCHIVE.md) and
+[project history](history/legacy/PROJECT_HISTORY.md); do not quote their completion claims
 as current research validation.
 
 ## 4. Why the Reviewers Were Not Satisfied
 
 The following summarizes the supplied review PDF as documented in the
-[review-response matrix](../REVIEW_RESPONSE_MATRIX.md). We are not claiming that
+[review-response matrix](history/planning/REVIEW_RESPONSE_MATRIX.md). We are not claiming that
 the reviewers have approved our fixes or that every concern has disappeared.
 
 | Concern | Plain-language meaning | Current response |
@@ -385,9 +385,9 @@ does not authorize paid generation.
 
 ## 12. Where to Look
 
-Start at [the README](../README.md). Read [the current architecture](../ARCHITECTURE.md)
-for file responsibilities, [the review matrix](../REVIEW_RESPONSE_MATRIX.md) for
-feedback, [translation review](../TRANSLATION_REVIEW.md) for its actual scope,
+Start at [the README](../README.md). Read [the current architecture](history/legacy/ARCHITECTURE.md)
+for file responsibilities, [the review matrix](history/planning/REVIEW_RESPONSE_MATRIX.md) for
+feedback, [translation review](history/calibration/TRANSLATION_REVIEW.md) for its actual scope,
 and [the revised cost/results report](CALIBRATION_V6_RESULTS.md) for measured evidence.
 Historical PDFs and earlier plans are not the current protocol.
 

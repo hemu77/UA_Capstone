@@ -86,7 +86,7 @@ research validity or conference acceptance. No main batch is running.
 
 Status: **NOT APPROVED. No main-generation permission is recorded here.**
 Read [the knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) and
-[the revised plan](../plan.md) first. The October 2 review supersedes the old
+[the revised plan](history/planning/plan.md) first. The October 2 review supersedes the old
 eight-repeat/896-target allocation. Preserved V5 calibration is exploratory,
 not automatically reusable in the revised confirmation sample.
 

@@ -11,7 +11,7 @@ it does not alter prompts, API retry policy or prices.
 `inspect_calibration_v6.py` replays received decisions, verifies artifacts and
 produces key-free compliance/cost reports under `outputs/calibration_v6/5fb3715550db/`.
 The maintained notebook validates that report's receipt/CSV hashes before display.
-Simulation exports remain unchanged. Read [the new results](docs/CALIBRATION_V6_RESULTS.md):
+Simulation exports remain unchanged. Read [the new results](../../CALIBRATION_V6_RESULTS.md):
 $7.8549, 104 verified graphs, 142 tests, and a main-study hold because 22/26
 global graphs are empty and scientific allocation decisions remain pending.
 
@@ -22,10 +22,10 @@ generated and 88 tests passing. Additional calibration accounting is $4.45452445
 within the original $5 allowance. The reviewed replacement preserved the failed
 request's reservation, all 194 cached replies and the six original receipts.
 Generation is stopped; the 896-run main batch is not authorized.
-See [CALIBRATION_RESULTS.md](CALIBRATION_RESULTS.md) for actual spend, updated
+See [CALIBRATION_RESULTS.md](../calibration/CALIBRATION_RESULTS.md) for actual spend, updated
 cost/runtime estimates and the distinction between software checks and research acceptance.
 
-The replacement pipeline is documented in [RESEARCH_896_HANDOFF.md](RESEARCH_896_HANDOFF.md).
+The replacement pipeline is documented in [RESEARCH_896_HANDOFF.md](../planning/RESEARCH_896_HANDOFF.md).
 `revision224_prompts.py` constructs the declared fictional adult roster and
 independent country/instruction-language treatments. `revision224.py` prepares
 the 896-cell manifest and 80 prompt examples, runs labelled offline fixtures,
@@ -35,7 +35,7 @@ The original durable ledger retains prior costs; transport uncertainty stops
 without automatic resending. Missing ledgers fail closed. Earlier experiments
 and the private team viewer remain historical evidence. The first paid calibration
 was stopped for an incomplete global correction, documented in
-[CALIBRATION_FINDINGS.md](CALIBRATION_FINDINGS.md). Four original graphs remain
+[CALIBRATION_FINDINGS.md](../calibration/CALIBRATION_FINDINGS.md). Four original graphs remain
 preserved and excluded from the current `revision896_retry_v5` namespace.
 Later versions exposed example contamination, empty responses and an undersized
 per-person output cap; each repair is versioned and tested. Global corrections preserve the original
@@ -61,7 +61,7 @@ metrics, controls and charges. It sums request intervals for an API-only runtime
 forecast, excludes pauses between requests, and checks PNG file integrity.
 Visual review and scientific validity remain separate from those automated checks.
 The PDF concerns and remaining evidence gates are mapped in
-[REVIEW_RESPONSE_MATRIX.md](REVIEW_RESPONSE_MATRIX.md).
+[REVIEW_RESPONSE_MATRIX.md](../planning/REVIEW_RESPONSE_MATRIX.md).
 
 The seven-setting design estimates country-framing and instruction-language
 contrasts on one fictional roster. Eight repetitions are not a power guarantee.
@@ -75,7 +75,7 @@ does not complete the rejection plan's broader ablation or model-family scope.
 **Current status: offline repairs and exploration implemented; scientific
 revision and main study incomplete; 28 engineering pilots completed.** Older report sections below are archival
 context and are superseded where they conflict with this section or
-[REVISION_STATUS.md](REVISION_STATUS.md).
+[REVISION_STATUS.md](../planning/REVISION_STATUS.md).
 
 ```mermaid
 flowchart LR

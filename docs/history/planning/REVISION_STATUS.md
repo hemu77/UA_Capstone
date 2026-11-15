@@ -3,8 +3,8 @@
 **Historical revision log.** Earlier 24-pilot/640-study counts and $50 planning
 below describe an earlier stage, not current authorization. Current evidence is
 68 completed calibration graphs toward a proposed 896. Read
-[the team brief](docs/TEAM_KNOWLEDGE_BRIEF.md) and
-[calibration results](CALIBRATION_RESULTS.md) for the present status.
+[the team brief](../../TEAM_KNOWLEDGE_BRIEF.md) and
+[calibration results](../calibration/CALIBRATION_RESULTS.md) for the present status.
 
 This report tracks implementation, not a promise of acceptance. The supplied
 review-action document is feedback to investigate, not an executable specification
@@ -48,7 +48,7 @@ software checks do not turn unfinished research into a positive research result.
   node/edge counts and explicit degree-rewiring completion flags. These are
   exploratory synthetic baselines, not real-network validation or new LLM runs.
 - [ ] Astra review: after actual pilot results, before main protocol freeze.
-  Use [ASTRA_REVIEW_HANDOFF.md](ASTRA_REVIEW_HANDOFF.md) with the real pilot artifacts.
+  Use [ASTRA_REVIEW_HANDOFF.md](../legacy/ASTRA_REVIEW_HANDOFF.md) with the real pilot artifacts.
 - [ ] Five adult rosters, reviewed translations, final uncertainty plan and main
   collection still require scientific work; this update does not mark the project complete.
 
@@ -232,7 +232,7 @@ event replay, budget lock, source/export parity, quarantine, and display helpers
 The notebook executes its maintained section offline while explicitly skipping
 32 archived cells. Browser checks cover graph rendering, filtering, persona
 selection, sandbox isolation, self-link rejection, downloads and responsive layout.
-See [validation report](stats/revision_v1/validation_report.md) for observed results.
+See [validation report](../../../stats/revision_v1/validation_report.md) for observed results.
 
 The reviewer identified the paid-run authorization gap and missing failure/usage
 records; the shared dispatch lock remains for old runners, while the new budgeted

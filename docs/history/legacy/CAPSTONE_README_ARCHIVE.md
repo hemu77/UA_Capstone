@@ -1,7 +1,7 @@
 # Original Capstone README Archive
 
 Preserved from GitHub commit `8224daa`, before publishing the research revision.
-Claims below describe earlier work and are superseded by [README.md](README.md).
+Claims below describe earlier work and are superseded by [README.md](../../../README.md).
 
 ## Project framing
 This repository has been adapted into a four-question capstone project.
@@ -144,7 +144,7 @@ For the exact generated summaries and tables, see:
 - `stats/language_study/language_summary.csv`
 - `stats/language_study/verification_summary.csv`
 
-## Prerequisites 
+## Prerequisites
 To run OpenAI models, set `OPENAI_API_KEY` in your environment. As a backward-compatible fallback, you can still put an OpenAI key on the first line of `api-key.txt`.
 
 To run Llama, Gemma, or other open-source models, set `LLAMA_API_KEY` or add it as the optional second line of `api-key.txt`.
