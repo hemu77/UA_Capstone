@@ -79,11 +79,27 @@ class FreshStudyTests(unittest.TestCase):
                 self.assertEqual(row['mutual'], len(set(graph[row['id']]) & set(graph['0'])))
 
     def test_preparation_exports_actual_localized_retry_messages_without_api(self):
+        config = study.load_config()
+        source_hashes = study.source_hashes()
+        original_roster = study.ROOT / config['persona_file']
+        original_bytes = original_roster.read_bytes()
         with tempfile.TemporaryDirectory() as directory:
-            destination = Path(directory)
-            with patch.object(study, 'DESTINATION', destination), patch.object(study.shared, 'OpenAI') as client:
-                study.prepare(study.load_config())
+            root = Path(directory)
+            roster = root / config['persona_file']
+            roster.parent.mkdir(parents=True)
+            roster.write_bytes(original_bytes)
+            destination = root / 'prepared'
+            write_json = study.write_json
+            def temporary_write(path, value):
+                self.assertTrue(Path(path).resolve().is_relative_to(root.resolve()), path)
+                return write_json(path, value)
+            with patch.object(study, 'ROOT', root), patch.object(study, 'DESTINATION', destination), \
+                    patch.object(study.shared, 'OpenAI') as client, \
+                    patch.object(study, 'source_hashes', return_value=source_hashes), \
+                    patch.object(study, 'write_json', side_effect=temporary_write):
+                study.prepare(config)
             client.assert_not_called()
+            self.assertEqual(original_roster.read_bytes(), original_bytes)
             catalog = json.loads((destination / 'retry_catalog.json').read_text(encoding='utf-8'))
         self.assertEqual(len(catalog), 20)
         for language, prefix in {'english': 'Invalid response.', 'hindi': 'अमान्य उत्तर।',

@@ -1,5 +1,10 @@
 # Figure release v6: methods review and redesign of all 19 figures
 
+**Review follow-up:** current notebooks use [v6.1](../../outputs/publication_figures/20261115_v6_1/).
+[Codex review and fixes](CODEX_REVIEW.md) correct Figure 16, caption scope, verification
+coverage and notebook integration. This document records the original v6 review;
+the original commit and release remain unchanged.
+
 **November 15, 2026.** Reviewed from commit `b24e20d`. Offline only: no provider calls, no new
 generation, no credentials, no ledger queries. Primary population unchanged: 896 attempts, 890 valid
 graphs including 12 empty, six failures. The six supplementary graphs are excluded from every table
@@ -38,7 +43,7 @@ else is a reading of the existing tables.
    (Shapiro-Wilk p = 0.013, one block at -0.099), which matters for a t interval on n = 8.
 3. **Medium: intervals and p-values in figure 01 come from two different procedures.** The interval
    is a Bonferroni simultaneous t interval at 0.05/24; the p-value is Holm step-down over the same 24
-   (the untested contrast is carried as p = 1). They agree only for the smallest p. The old figure did
+   (the untested contrast is carried as p = 1). They use the same threshold for the smallest p but can differ at later ranks. The old figure did
    not say so and printed no numbers. All 24 means, intervals and Holm p-values were **reproduced**
    from `primary_attempts.csv` to within 3e-15. Seven contrasts have unadjusted p < .05, all negative
    for clustering or involving a non-English instruction; only one survives correction. That pattern
@@ -48,8 +53,8 @@ else is a reading of the existing tables.
    1e-16, pairing before averaging is correct, all six procedure pairs and the 28-cell equal weighting
    match, 878/12/6 defined/empty/failed. Additional reviewer diagnostic (not in any figure): among
    tie pairs of *different* religion, politics excess still exceeds religion excess among
-   different-politics pairs in 28/28 cells for each person-level procedure and 0/28 for Global, so the
-   0.32 Cramer V between religion and politics does not by itself produce the ordering. What remains
+   different-politics pairs in 28/28 cells for each person-level procedure and 0/28 for Global, but this conditioning is not an independent intervention and does not rule out
+   confounding by the single fixed roster. What remains
    unseparated: one roster, three near-equal politics groups (17/17/16) against five religion groups
    of 10, and one fixed prompt field order. Chang et al. used a shuffled-demographics control for this;
    that needs new generation and is out of scope.
@@ -130,10 +135,9 @@ Publisher and author versions are not asserted to be identical.
 
 See [HANDOFF.md](HANDOFF.md) for commands and results, including the checks that are superseded.
 
-## 5. Repository hazard found while verifying (not fixed here)
+## 5. Repository hazard found while verifying
 
-Running the full unit-test suite on Linux rewrites `text-files/revision224_adults.json` with LF line
-endings. That file is a pinned frozen input (CRLF bytes), so afterwards `check_deep_review.py` and the
-held-out notebook check fail with "Protected input differs". The parsed roster is identical; restore
-with `git checkout text-files/revision224_adults.json`. The test that writes it was not identified in
-this review. It should write to a temporary directory.
+The historical full-suite run could rewrite the frozen roster while preparing a test
+fixture. The follow-up isolates the roster and every preparation write in a temporary
+root. Do not repair failed checks by overwriting frozen evidence; investigate the
+writer. See [review corrections](CODEX_REVIEW.md) for current verification evidence.

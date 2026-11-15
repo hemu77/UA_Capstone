@@ -24,7 +24,7 @@ class NotebookPresentationTests(unittest.TestCase):
             notebook = nbformat.read(path, as_version=4)
             source = '\n'.join(cell.source for cell in notebook.cells)
             # Release v6 (2026-11-15) replaced the displayed figures; earlier releases stay sealed on disk.
-            self.assertIn('from analysis_figures.v6.release import show', source, path.name)
+            self.assertIn('from analysis_figures.reviewed_v6 import show', source, path.name)
             self.assertNotIn('from analysis_primary.plots import render_figures', source)
             self.assertNotIn("OUT / 'figures/01_primary_forest.png'", source)
             self.assertNotIn("OUT/'figures'/(stem+'.png')", source)

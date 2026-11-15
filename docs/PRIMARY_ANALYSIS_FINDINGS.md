@@ -29,8 +29,9 @@ significance claim is fragile. Removing one block at a time retains adjusted
 significance in only **three of eight** reruns. An exploratory exact sign-flip
 check has raw p = **0.0078125** and 24-family adjusted p = **0.1875**.
 This diagnostic requires sign symmetry; it is not a randomized causal test.
-With eight blocks its p-values are coarse, so lack of adjusted significance
-does not settle whether an effect exists.
+With eight blocks, 2/256 is the smallest possible two-sided p-value, above
+0.05/24, the first Holm threshold. The adjusted p = 0.1875 is therefore this
+diagnostic's attainable floor, not additional evidence against the effect.
 
 The other comparisons do not show adjusted evidence in the locked analysis.
 That does **not** show that methods, languages or conditions are equivalent.

@@ -1,5 +1,9 @@
 # Handoff for Codex: figure release v6
 
+**Historical handoff from the imported commit.** Follow-up corrections and current
+commands are in [CODEX_REVIEW.md](CODEX_REVIEW.md). Do not use the old restore or
+checker instructions below as current workflow; the original v6 artifacts remain preserved.
+
 Branch: `claude/figure-redesign-v6`, based on `main` at `b24e20d`. Pull request: see the PR that
 carries this file (URL is reported in chat, not written here, to avoid a self-referential hash).
 Nothing is merged or deployed. No paid calls, no generation, no ledger queries. Supplements excluded.
