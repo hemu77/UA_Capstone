@@ -6,9 +6,13 @@ including 12 empty graphs, and six failures. **All six supplements are excluded.
 No provider calls, live-ledger queries or changes to the locked 24 primary tests.
 
 [Executed notebook 06](../../analysis/06_rq2_sampling_copenhagen.ipynb) |
-[All CSV/PNG/SVG/PDF outputs](../../outputs/research_extension/20261114_v2/) |
+[Original numerical tables and historical figures](../../outputs/research_extension/20261114_v2/) |
 [Execution protocol](../../analysis_extension/protocol.json) |
 [Integrity manifest](../../outputs/research_extension/20261114_v2/manifest.json)
+
+**Reviewed figure release v6.1 (November 15, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](../figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
+
+Corrections from that review: efficiency distance largely restates density distance (rank correlation 0.87 across record-procedure pairs), so Global's efficiency result is mostly a density match; the classic Coleman index differs from the index used here (same rank counts).
 
 ## The Professor Version
 
@@ -28,7 +32,7 @@ and where observation size or baseline information changes them."
 
 ## 1. RQ2: Paired Mixing, Not Independent Attribute Importance
 
-![Paired method contrasts](../../outputs/research_extension/20261114_v2/16_rq2_paired_mixing.png)
+![Paired method contrasts](../../outputs/publication_figures/20261115_v6_1/16_rq2_paired_mixing.png)
 
 **Point at the religion panel.** Compared with Global, the mean excess
 same-religion edge share is lower by 0.3110 for Local, 0.3103 for Sequential,
@@ -48,7 +52,7 @@ the overall estimate. [All pairs and denominators](../../outputs/research_extens
 
 ### Score And Seed Sensitivity
 
-| Method | Politics first: Coleman | Excess edge share | Newman |
+| Method | Politics first: Coleman-type | Excess edge share | Newman |
 | --- | ---: | ---: | ---: |
 | Global | 6/28 | 1/28 | 6/28 |
 | Local | 28/28 | 28/28 | 28/28 |
@@ -57,33 +61,35 @@ the overall estimate. [All pairs and denominators](../../outputs/research_extens
 
 These rankings use shared defined seeds across attributes **and scores**.
 Omitting each seed globally leaves the person-level methods at 28/28 for every
-score. Global varies: Coleman 4-7/28, excess 0-3/28, Newman 4-9/28.
+score. Global varies: Coleman-type 4-7/28, excess 0-3/28, Newman 4-9/28.
 This is descriptive sensitivity in the same fixed panel, not independent
 replication or a probability of future success.
 
 All three scores are defined on the same 878 nonempty primary graphs here:
 207 Global, 224 Local, 224 Sequential, 223 Iterative. Twelve empty graphs have
 undefined mixing scores; six failures have no graph. Both remain in the coverage
-tables. Newman compares edge-end shares, while Coleman/excess use roster-based
+tables. Newman compares edge-end shares, while Coleman-type/excess use roster-based
 references. Their agreement does not remove attribute correlation or fixed
 prompt-order confounding. [Coverage](../../outputs/research_extension/20261114_v2/mixing_coverage.csv) |
 [Rank sensitivity](../../outputs/research_extension/20261114_v2/mixing_rank_sensitivity.csv).
 
-![Category mixing matrices](../../outputs/research_extension/20261114_v2/17_rq2_mixing_matrices.png)
+![Category mixing matrices](../../outputs/publication_figures/20261115_v6_1/17_rq2_mixing_matrices.png)
 
 **Point at the religion diagonals across procedures**, not darkness across
 different attributes. Each undirected edge contributes in both directions;
-each matrix sums to one. Nonempty graphs are averaged within cells, then cells
-equally. Category prevalence and edge-end marginals affect the diagonal.
+the archived fraction matrix sums to one. Figure 17 instead displays each mean
+fraction divided by its finite-roster chance fraction. The displayed ratios do
+not sum to one: 1 is chance. Nonempty graphs are averaged within cells, then
+cells equally. Category prevalence and edge-end marginals affect mixing.
 [Matrices and marginals](../../outputs/research_extension/20261114_v2/mixing_matrices.csv).
 
 This extends the earlier [RQ2 notebook](../../analysis/05_rq2_demographic_mixing.ipynb),
-without altering it. It does not infer political polarization dynamics, causal
+while preserving its original numerical checks. It does not infer political polarization dynamics, causal
 attribute importance or cultural fidelity.
 
 ## 2. Sampling: 50 People Do Not Preserve The Whole Network
 
-![Full observed networks versus induced samples](../../outputs/research_extension/20261114_v2/18_sampling_distortion.png)
+![Full observed networks versus induced samples](../../outputs/publication_figures/20261115_v6_1/18_sampling_distortion.png)
 
 Black diamonds show full observed records. Colored points and spans show means
 and full ranges of 32 overlapping induced draws at 25, 40 and 50 nodes. Smaller
@@ -135,7 +141,7 @@ isolates**. No political/religion labels are released. This is an
 **endpoint-conditioned structural comparison**, not RQ2 human validation.
 [Acquisition and suitability record](../../outputs/research_extension/20261114_v2/copenhagen_source.json).
 
-![Copenhagen six-metric comparison](../../outputs/research_extension/20261114_v2/19_copenhagen_transfer.png)
+![Copenhagen six-metric comparison](../../outputs/publication_figures/20261115_v6_1/19_copenhagen_transfer.png)
 
 All numbers below are mean W1 at n=50; smaller is closer on that metric alone.
 LLM values average four model-specific distances after equal weighting of seven

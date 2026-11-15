@@ -21,7 +21,7 @@ cross-check, not human bilingual review or scientific approval.
 Evidence: [V6 results](CALIBRATION_V6_RESULTS.md),
 [V5 reanalysis](../stats/public_v5_reanalysis/),
 [candidate source](../revision_next.py),
-[translation record](../TRANSLATION_REVIEW.md),
+[translation record](history/calibration/TRANSLATION_REVIEW.md),
 [protocol](../study_protocol_next.json).
 The third-party `review_experiments/` folder is absent from this checkout.
 We inspected the supplied review text and committed evidence, not an unavailable

@@ -1,61 +1,64 @@
 # Analysis And Current Figures
 
-Revision 5 replaces the displays in the main notebooks, not just an optional
-gallery. All results use the original **896 attempts / 890 valid graphs**;
-the six selectively completed supplements remain separate. No new paid calls.
+**Reviewed release v6.1, November 15, 2026.** The six notebooks below display all
+19 redesigned figures. Figure 16's sign-agreement count and several captions
+were corrected after review. Figure 17 now uses vector cells, and SVG glyphs are
+outlined for portable fonts; the other 17 PNG/PDF/plotted-CSV sets retain exact v6 bytes.
+[Corrections and verification](../docs/figure_redesign/CODEX_REVIEW.md).
 
-**November 14 extension:** notebook 06 adds four exploratory figures without
-replacing sealed earlier figures. [Findings, denominators and limitations](../docs/research/EXTENSION_RESULTS_20261114.md).
+Primary analysis uses **896 original attempts: 890 valid graphs, including 12
+empty, and six failures**. The six selectively completed supplemental graphs
+remain outside all inference and empirical evaluations.
 
 | Notebook | Contents |
 | --- | --- |
-| [01: Primary statistics](01_primary_statistical_analysis.ipynb) | Independent statistical checks, all 24 contrasts, robustness and legacy context. |
-| [02: Primary comparisons](02_primary_comparison_plots.ipynb) | Seven revised figures: contrasts, model profiles, failures, resources and references. |
-| [03: Held-out evaluation](03_heldout_public_evaluation.ipynb) | Independent W1 checks, matched-size sensitivity, seven figures including the density diagnostic and LCC appendix. |
-| [04: Complete figure gallery](04_manuscript_figures.ipynb) | 15 figures, including RQ2 score sensitivity and target-density efficiency. |
-| [05: RQ2 demographic mixing](05_rq2_demographic_mixing.ipynb) | Primary-only categorical Coleman scores, equal-weight method summaries and all 112 combination rankings. |
-| [06: RQ2, sampling and Copenhagen](06_rq2_sampling_copenhagen.ipynb) | Paired mixing contrasts, matrices, Newman/shared-support sensitivity, full-versus-sampled structure, and six-metric Copenhagen evaluation. |
+| [00: Data readiness](00_data_readiness.ipynb) | Cohort separation and integrity; no interpretation |
+| [01: Primary statistics](01_primary_statistical_analysis.ipynb) | The locked 24 contrasts, effect sizes, intervals and sensitivity |
+| [02: Primary comparisons](02_primary_comparison_plots.ipynb) | Figures 01-07: contrasts, models, failures, resources and references |
+| [03: Held-out evaluation](03_heldout_public_evaluation.ipynb) | Seven figures, W1 checks, size sensitivity and density diagnostic |
+| [04: Complete gallery](04_manuscript_figures.ipynb) | All 19 current figures and their captions |
+| [05: RQ2 demographic mixing](05_rq2_demographic_mixing.ipynb) | Marginal mixing, scoring conventions and fixed-roster limitations |
+| [06: RQ2, sampling and Copenhagen](06_rq2_sampling_copenhagen.ipynb) | Paired mixing, ratio matrices, overlapping sampling and structural transfer |
 
-[Review findings, scope and figure selection](../docs/DEEP_REVIEW_RESPONSE.md) |
-[PNG/SVG/PDF files and sensitivity tables](../outputs/publication_figures/20261112_v5/) |
-[Reproduction and integrity checks](../ANALYSIS_START_HERE.md) |
-[Claude review prompt](../docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md)
+## Figures To Start With
 
-## Primary Contrasts
+![All 24 planned contrasts and their simultaneous intervals](../outputs/publication_figures/20261115_v6_1/01_primary_contrasts.png)
 
-[Figure 14: political orientation, religion and gender](../outputs/publication_figures/20261112_v5/14_demographic_mixing.png) is a descriptive companion to the planned tests below; it does not extend their 24-test family.
+The iterative Hindi contrast passes the original correction but is sensitive to
+block omission: only 3/8 refits remain significant. Eight blocks are not eight
+human populations. The sign-flip test's attainable p-value floor cannot cross
+the first Holm threshold here; it is not another failure of the effect.
 
-![All 24 planned contrasts and the Hindi block-omission flag](../outputs/publication_figures/20261105_v3/01_primary_contrasts.png)
+![Held-out metric-specific distances with observed record spread](../outputs/publication_figures/20261115_v6_1/08_heldout_distances.png)
 
-Faint dots are paired schedule blocks, not individual independent people.
-Intervals use the original 24-contrast family. One contrast is suppressed for
-insufficient complete blocks. Zero does not establish equivalence.
+Lower W1 means closer on that metric, not more realistic overall. Record ticks
+are heterogeneous, overlapping observations, not independent confidence limits.
+Read efficiency alongside the density-informed diagnostic below.
 
-## Real Networks And Classical Baselines
+![Record-level efficiency distances and density dependence](../outputs/publication_figures/20261115_v6_1/15_efficiency_density.png)
 
-![Five metrics with Facebook across-record ranges and the single school record](../outputs/publication_figures/20261112_v5/08_heldout_distances.png)
+Target-density ER narrows the fixed-baseline gap. It uses target information,
+so it is a diagnostic, not a fair transfer competitor or causal decomposition.
 
-Lower distance means closer on that metric only. The source studies are excluded
-from baseline fitting, not necessarily from LLM pretraining. Spans show variation
-across the ten Facebook records, not confidence intervals. No universal winner is established.
+![Demographic excess edge share and politics-first margins](../outputs/publication_figures/20261115_v6_1/14_demographic_mixing.png)
 
-## Look Beyond Average Distances
+Politics leads consistently for the person-level procedures, but Global depends
+on scoring. One roster, correlated attributes and fixed prompt order prevent an
+independent attribute-importance claim.
 
-![Two observed sources against separate LLM and baseline distributions](../outputs/publication_figures/20261105_v3/09_heldout_distributions.png)
+## Reproduce
 
-These curves show distributions rather than only distances. The black curves
-represent Facebook and school separately and do not replace cohort-wise scoring. Overlapping
-50-node samples are not independent human communities.
+From the repository root, using the frozen Python 3.11.9 environment/kernel:
 
-## What We Can Say
+```powershell
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_figure_release_v6.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_research_extension.py
+```
 
-One primary iterative Hindi-versus-English contrast passes the original Holm
-test, but is sensitive to block omission and test assumptions. Classical
-baselines are competitive: WS is closer on mean clustering distance for the
-Facebook records and BA for the observed school roster than each four-model
-LLM method average at 50 nodes. At 25 nodes BA is closest on Facebook clustering
-and ER on school clustering. Other metrics differ. This is a limited structural test,
-not proof of cultural realism, human decision fidelity or publication readiness.
+[PNG/SVG/PDF and plotted CSVs](../outputs/publication_figures/20261115_v6_1/) |
+[Environment and data guide](../ANALYSIS_START_HERE.md) |
+[Professor's brief](../docs/PROFESSOR_RESEARCH_BRIEF.md) |
+[Historical versions](../docs/history/README.md).
 
-Earlier figure versions remain in their original directories as provenance.
-[Figure 15](../outputs/publication_figures/20261112_v5/15_efficiency_density.png): matching target density closes 86% of the mean fixed-WS-to-Global efficiency gap, but the source-level results differ. Run `scripts/check_deep_review.py` to verify the embedded figures and their captions.
+These checks execute six notebooks from published tables, verify 41 embedded
+images/captions and historical seals, and make no provider calls or ledger queries.

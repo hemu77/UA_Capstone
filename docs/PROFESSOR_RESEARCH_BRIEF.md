@@ -11,6 +11,8 @@ the efficiency comparison but does not reproduce transitivity. These are
 exploratory findings, not additional corrected tests or human-behavior validation.
 The older results below retain their original 11-record scope.
 
+**Reviewed figure release v6.1 (November 15, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
+
 **November 12, 2026.** How much does an AI-generated friendship network tell us beyond a simple random graph? Our clearest finding is that a seemingly large advantage on reachability gets much smaller once the random graph has the same chance of a tie as the observed network. That is a useful check on what counts as evidence of social realism.
 
 ## The comparison to show first
@@ -34,23 +36,23 @@ ER is strictly closer on four of the five sparse records. The exception (FB02) f
 
 The random reference closes **86% of the fixed-WS-to-Global gap**. It is strictly closer than Global on five records and within 0.015 behind on one more. That cutoff is descriptive, not an equivalence margin. This ratio can exceed 100%: it is 105% on the school record because ER is closer there than Global. It is not a bounded quality score. This does **not** mean density causes 86% of real friendship behavior. The school result reverses the ordering seen in the Facebook mean; eleven records are not eleven independent communities.
 
-![Paired efficiency distances for each observed record and distributions by source](../outputs/publication_figures/20261112_v5/15_efficiency_density.png)
+![Record-level efficiency distances and the density-informed diagnostic](../outputs/publication_figures/20261115_v6_1/15_efficiency_density.png)
 
 **Clustering is a different question:** do friends of a person also tend to be friends with one another? At 50 nodes, WS had the smallest mean distance on Facebook (0.1259); BA, a preferential-attachment model, did at school (0.0416). At 40 nodes on Facebook the top two are only 0.0037 apart; at 25 nodes at school ER and Global differ by 0.0171. The ordering changes with size. Classical models are competitive; there is no stable overall winner. Positive mean observed-minus-degree-swap clustering in all 11 records is descriptive evidence of closure not reproduced by these controls, not a significance test.
 
-[Five-metric comparison](../outputs/publication_figures/20261112_v5/08_heldout_distances.png) | [Rank margins](../outputs/publication_figures/20261111_v4/clustering_margins.csv) | [Record distances](../outputs/publication_figures/20261111_v4/efficiency_records.csv)
+[Five-metric comparison](../outputs/publication_figures/20261115_v6_1/08_heldout_distances.png) | [Rank margins](../outputs/publication_figures/20261111_v4/clustering_margins.csv) | [Record distances](../outputs/publication_figures/20261111_v4/efficiency_records.csv)
 
 ## The planned statistical result
 
-With iterative generation, the estimated difference in average clustering was **-0.0453 on a 0-1 scale** (US-Hindi minus US-English; 95% familywise interval **[-0.0850, -0.0056]**, Holm-adjusted **p = 0.0238**). This is an absolute difference, not a 4.53% relative decrease. Of 24 planned contrasts, 23 were testable and only this one passed the original correction. All eight paired seed blocks had the same direction, but only **3 of 8** leave-one-block-out fits retained significance. An exploratory sign-flip test gave adjusted p = 0.1875. Report the direction and the fragility together; the other comparisons do not establish equivalence.
+With iterative generation, the estimated difference in average clustering was **-0.0453 on a 0-1 scale** (US-Hindi minus US-English; 95% familywise interval **[-0.0850, -0.0056]**, Holm-adjusted **p = 0.0238**). This is an absolute difference, not a 4.53% relative decrease. Of 24 planned contrasts, 23 were testable and only this one passed the original correction. All eight paired seed blocks had the same direction, but only **3 of 8** leave-one-block-out fits retained significance. An exploratory eight-block sign-flip test gave adjusted p = 0.1875, but that is the smallest value this test can return in a 24-contrast family (2/256 x 24), so it neither supports nor undermines the result (corrected November 15). Report the direction and the fragility together; the other comparisons do not establish equivalence.
 
-![All planned contrasts with effects, uncertainty and missing comparisons.](../outputs/publication_figures/20261105_v3/01_primary_contrasts.png)
+![All planned contrasts with effects, uncertainty and missing comparisons.](../outputs/publication_figures/20261115_v6_1/01_primary_contrasts.png)
 
-[All effects and intervals](../outputs/primary_analysis/20261105/primary_contrasts.csv) | [Leave-one-block-out results](../outputs/publication_figures/20261105_v3/02_primary_robustness.png)
+[All effects and intervals](../outputs/primary_analysis/20261105/primary_contrasts.csv) | [Leave-one-block-out results](../outputs/publication_figures/20261115_v6_1/02_primary_robustness.png)
 
 ## RQ2: Which demographic similarities show up in ties?
 
-[Figure 14](../outputs/publication_figures/20261112_v5/14_demographic_mixing.png) shows all 28 model/instruction combinations per method. In all three person-level methods, political orientation ranks first in 28/28 on both measures. Under Global it ranks first in 6/28 with Coleman and only 1/28 by excess same-group edge share; religion leads in the other combinations. Neither is a measure of independent importance. All 878 scored graphs use one roster with different category sizes; religion and politics co-vary (descriptive Cramer's V = 0.316). Prompt field order was fixed. Separating these explanations would require new counterbalanced prompts and rosters. [Executed RQ2 notebook](../analysis/05_rq2_demographic_mixing.ipynb).
+[Figure 14](../outputs/publication_figures/20261115_v6_1/14_demographic_mixing.png) shows all 28 model/instruction combinations per method. In all three person-level methods, political orientation ranks first in 28/28 on all three displayed scores. Under Global it ranks first in 6/28 with the Coleman-type index and Newman and only 1/28 by excess same-group edge share; religion leads in the other combinations. Neither is a measure of independent importance. All 878 scored graphs use one roster with different category sizes; religion and politics co-vary (descriptive Cramer's V = 0.316). Prompt field order was fixed. Separating these explanations would require new counterbalanced prompts and rosters. [Executed RQ2 notebook](../analysis/05_rq2_demographic_mixing.ipynb).
 
 ## What failed, and why it matters
 
@@ -64,7 +66,7 @@ Of **896 planned attempts**, **890 produced valid graphs**, including 12 with no
 
 These are recorded failure modes, not evidence that a language caused a failure. The held-out comparison describes graphs the methods successfully produced. We retain the failures rather than setting their metrics to zero or substituting the six later successes. Those supplements were selected after failure and are excluded from both evaluations.
 
-[Coverage and missingness plot](../outputs/publication_figures/20261105_v3/04_coverage_missingness.png) | [Failure records, filter to primary](../outputs/analysis_ready/060dcd3a86d5/failures.csv) | [Per-cell denominators](../outputs/primary_analysis/20261105/coverage_by_cell.csv)
+[Coverage and missingness plot](../outputs/publication_figures/20261115_v6_1/04_coverage_missingness.png) | [Failure records, filter to primary](../outputs/analysis_ready/060dcd3a86d5/failures.csv) | [Per-cell denominators](../outputs/primary_analysis/20261105/coverage_by_cell.csv)
 
 ## Contribution and limits
 

@@ -107,7 +107,7 @@ and a new finite spending authorization are still required.
 
 Please read [the plain-language team brief](TEAM_KNOWLEDGE_BRIEF.md),
 [the measured calibration results](CALIBRATION_V6_RESULTS.md), and
-[the implementation/decision plan](../plan.md). The brief includes the earlier
+[the implementation/decision plan](history/planning/plan.md). The brief includes the earlier
 capstone work, reviewer concerns, model rationale and remaining full scope.
 
 ## What We Completed

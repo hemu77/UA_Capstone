@@ -12,11 +12,14 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
+**Reviewed figure release v6.1 (November 15, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](docs/figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
+
+
 **New exploratory extension:** [Notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb)
 and [plain-language findings](docs/research/EXTENSION_RESULTS_20261114.md) add
 paired RQ2 mixing, sampling diagnostics and an endpoint-conditioned Copenhagen
-comparison. All six supplements stay excluded. The historical notebooks and
-locked primary tests remain unchanged. Check the new notebook with
+comparison. All six supplements stay excluded. The historical numerical artifacts and
+locked primary tests remain unchanged; notebook displays and captions are updated. Check the new notebook with
 `rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_research_extension.py`.
 
 For the meeting or an external review, start with the [professor's research brief](docs/PROFESSOR_RESEARCH_BRIEF.md): main plots, effect sizes, significance, failure consequences and the proposed contribution.
@@ -25,7 +28,7 @@ Open [primary statistics](analysis/01_primary_statistical_analysis.ipynb),
 [primary comparison plots](analysis/02_primary_comparison_plots.ipynb), and
 [held-out public-data evaluation](analysis/03_heldout_public_evaluation.ipynb).
 All three now embed the revised figures directly. [Notebook 04](analysis/04_manuscript_figures.ipynb)
-collects all 15 current figures, including target-density efficiency and the exploratory [RQ2 demographic mixing figure and notebook](analysis/05_rq2_demographic_mixing.ipynb). RQ2 uses the same primary cohort, not the six selected supplements.
+collects all 19 current figures, including target-density efficiency and the exploratory [RQ2 demographic mixing figure and notebook](analysis/05_rq2_demographic_mixing.ipynb). RQ2 uses the same primary cohort, not the six selected supplements.
 The [analysis gallery](analysis/README.md) shows previews without opening a notebook.
 The notebooks verify the
 separate [evaluation manifest](outputs/primary_analysis/20261105/evaluation_manifest.json)
@@ -45,26 +48,31 @@ public friendship studies, development-only ER/BA/WS settings, equal-size
 controls. It does not pretend that these data were absent from LLM pretraining
 or that overlapping subgraphs are independent human samples. No paid calls.
 
-The [revision 2 figure notes and captions](docs/PUBLICATION_FIGURES_V2.md) document
-the actual figures inspected in all five supplied papers. Compact dot/interval
-panels and distribution curves replace the dense heatmaps; original numerical
-results and the first two figure releases remain unchanged. The
-[revision 3 review response](docs/FIGURE_REVIEW_RESPONSE_V3.md) explains the
-new record-level ranges, matched-size diagnostic and main/appendix split.
-[Revision 5](docs/DEEP_REVIEW_RESPONSE.md) updates 08, 11, 14 and adds 15. Unchanged figures remain in v3. Use the
-[updated Claude methods-and-figure review prompt](docs/CLAUDE_HELDOUT_AND_FIGURE_REVIEW_PROMPT.md).
+The [v6 design review](docs/figure_redesign/README.md) records the five-paper
+visual references. [Review corrections](docs/figure_redesign/CODEX_REVIEW.md)
+explain v6.1 and the distinction between historical seals and current displays.
 
-Execute all five current notebooks from the published tables and figures:
+Execute all six current notebooks from the published tables and figures:
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_deep_review.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_figure_release_v6.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_research_extension.py
 ```
 
-This checks exact embedded PNG hashes as well as old analysis/code/source pins.
-To edit and preview plots, use `analysis_figures/publication_v3.py` and run
-`scripts/review_publication.py build --cache <public-cache> --dest <unused-directory>`
-from the pinned Python environment. The build refuses an existing destination.
-A later published revision needs a new version, never silently changed bytes.
+This checks 41 embedded PNGs/captions and historical source/data hashes. The second
+command also checks notebook 06 against its generator. The old
+`check_deep_review.py` command forwards to the current checker. The pinned
+`check_publication_notebooks.py` and `review_publication.py check` describe earlier
+figure releases; their old-image requirements are not current notebook checks.
+Their historical artifact/code pins remain enforced by the current checker.
+
+To reproduce the reviewed figures in a new directory:
+
+```powershell
+rtk proxy .\.venv\Scripts\python.exe -B -m analysis_figures.reviewed_v6 --output outputs/publication_figures/local_v6_1_reproduction
+```
+
+The build refuses existing destinations and preserves every original v6 byte.
 
 Public-cache acquisition after environment setup (not needed for notebook
 inspection). **Do not rerun the historical held-out runner in place:** it targets
@@ -93,7 +101,7 @@ rtk proxy .\.venv\Scripts\python.exe -m ipykernel install --user --name ua-capst
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation.py
 ```
 
-The current notebook checker above executes the five analysis notebooks (01-05) with the registered
+The current notebook checker above executes the six analysis notebooks (01-06) with the registered
 frozen kernel and checks that sealed analysis outputs remain unchanged. A clean GitHub
 clone can rerun the notebooks from the published tables without downloading
 the large response archive; full resource recomputation needs that archive.

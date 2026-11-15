@@ -10,6 +10,9 @@ import nbformat
 from nbclient import NotebookClient
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from analysis_figures import reviewed_v6 as release
+from scripts.check_figure_release_v6 import BANNER, EXPECTED, embedded
 OUT = ROOT/'outputs/research_extension/20261114_v2'
 NOTEBOOK = ROOT/'analysis/06_rq2_sampling_copenhagen.ipynb'
 
@@ -23,7 +26,7 @@ def notebook():
     def code(text, name):
         cells.append(nbformat.v4.new_code_cell(text, id=name))
     def figure(name):
-        code(f"display(Image(filename=str(folder/'{name}.png')))\ndisplay(Markdown(seal['captions']['{name}']))", name)
+        code(f"show(root, ['{name}'])", name)
     md('''# RQ2 mixing, sampling and Copenhagen
 
 **Exploratory extension, not new confirmatory tests.** Only the original 896 attempts enter:
@@ -37,6 +40,7 @@ tables; no public node-level data or provider credentials are required.
 The Copenhagen protocol was written after study collection, before comparison outcomes.
 A raw-inventory check found 11 self-links; the recorded pre-comparison cleaning amendment
 removes those only. This is **not preregistered** and not proof of held-out model training data.''', 'scope')
+    md(BANNER, 'figure-release-v6')
     code(f'''from pathlib import Path
 import hashlib, json, sys, warnings
 import numpy as np
@@ -46,6 +50,8 @@ warnings.filterwarnings('ignore', category=DeprecationWarning)
 root = Path.cwd()
 if not (root/'analysis_extension').is_dir():
     root = root.parent
+sys.path.insert(0, str(root))
+from analysis_figures.reviewed_v6 import show
 folder = root/'outputs/research_extension/20261114_v2'
 digest = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 assert digest(folder/'manifest.json') == '{pin}'
@@ -70,7 +76,7 @@ more accurate. Each procedure pair first matches model, setting and seed. We ave
 seed differences within each cell, then give the 28 cells equal weight. Missing a whole cell
 suppresses the overall estimate. Empty graphs have undefined mixing scores, not zero scores.
 
-Coleman uses roster proportions; Newman uses edge-end proportions. Different denominators
+The archived Coleman-type score uses roster proportions; Newman uses edge-end proportions. Different denominators
 answer different questions. Newman does not remove roster or prompt-order confounding.''', 'mixing-intro')
     code("""coverage = pd.read_csv(folder/'mixing_coverage.csv')
 display(coverage)
@@ -81,10 +87,11 @@ display(main[['attribute','first','second','mean_difference','defined_pairs','de
     figure('16_rq2_paired_mixing')
     md('''## 2. RQ2: inspect mixing, not just attribute winners
 
-The matrix diagonal contains within-category edges. Every undirected edge is counted in both
-directions; each matrix sums to one. A large diagonal can reflect category prevalence or who
-receives edges. Do not rank attributes directly from panel darkness. The scores, category
-mixing and edge-end marginal shares are supplied together in the CSVs.
+The diagonal contains within-category ties. Each undirected edge counts in both directions.
+The archived edge fractions sum to one; Figure 17 divides each mean fraction by its
+finite-roster chance fraction. The displayed ratios do NOT sum to one: 1 means chance,
+above 1 means more ties than roster group sizes alone predict. Do not rank attributes by
+panel darkness. Numerators, denominators and ratios are in the released plotted CSV.
 
 Rank comparisons below use the same defined seeds across attributes **and all three scores**.
 Seed omission is a sensitivity check, not eight replications or a confidence interval.''', 'matrices-intro')
@@ -163,18 +170,7 @@ professor-supplied papers. This is AI-assisted analysis, not peer review or publ
 
 
 def check_outputs(nb):
-    nbformat.validate(nb)
-    seal = json.loads((OUT/'manifest.json').read_text())
-    outputs = [o for c in nb.cells if c.cell_type == 'code' for o in c.outputs]
-    if any(o.output_type == 'error' for o in outputs) or any(c.get('attachments') for c in nb.cells):
-        raise ValueError('Notebook error or alternate image attachment')
-    images = [hashlib.sha256(base64.b64decode(o.data['image/png'])).hexdigest()
-              for o in outputs if 'image/png' in o.get('data', {})]
-    if images != [seal['artifacts'][name+'.png'] for name in seal['captions']]:
-        raise ValueError('Embedded figure hashes/order differ')
-    captions = [o.data['text/markdown'] for o in outputs if 'text/markdown' in o.get('data', {})]
-    if captions != list(seal['captions'].values()):
-        raise ValueError('Embedded captions differ')
+    embedded(nb, release.verify(ROOT), EXPECTED['06'])
 
 
 def check(write=False):
@@ -185,10 +181,11 @@ def check(write=False):
             raise ValueError('Notebook source differs from generator')
         check_outputs(nb)
     NotebookClient(nb, timeout=300, kernel_name='ua-capstone-final060d',
-                   resources={'metadata':{'path':str(ROOT)}}, allow_errors=False).execute()
+                   resources={'metadata':{'path':str(ROOT / 'analysis')}}, allow_errors=False).execute()
     check_outputs(nb)
     if write:
-        nbformat.write(nb, NOTEBOOK)
+        with NOTEBOOK.open('w', encoding='utf8', newline='\n') as stream:
+            nbformat.write(nb, stream)
         check_outputs(nbformat.read(NOTEBOOK, as_version=4))
     print('06: frozen-kernel execution passed; four exact PNGs/captions; primary-only checks passed')
 
