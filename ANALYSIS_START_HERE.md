@@ -98,8 +98,14 @@ rtk proxy .\.venv\Scripts\python.exe -m ipykernel install --user --name ua-capst
 ```
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation_v2.py --output outputs\primary_analysis\local_reproduction
 ```
+
+Choose a **new direct child** of `outputs/primary_analysis` each time. Existing
+destinations are refused, including an empty directory or a nested path inside
+a prior release. Failed rebuilds mark only the new directory incomplete.
+Do not execute `scripts/run_primary_evaluation.py`: it is preserved as historical,
+hash-pinned code and can overwrite the sealed `20261105` derived outputs.
 
 The current notebook checker above executes the six analysis notebooks (01-06) with the registered
 frozen kernel and checks that sealed analysis outputs remain unchanged. A clean GitHub
