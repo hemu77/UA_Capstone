@@ -19,12 +19,14 @@ from analysis_figures import publication as pub
 
 class NotebookPresentationTests(unittest.TestCase):
     def test_main_notebooks_use_current_gallery_not_archived_renderer(self):
-        for number in ('01', '02', '03', '04', '05'):
+        for number in ('01', '02', '03', '04', '05', '06'):
             path = next((ROOT / 'analysis').glob(number + '_*.ipynb'))
             notebook = nbformat.read(path, as_version=4)
             source = '\n'.join(cell.source for cell in notebook.cells)
             # Release v6 (2026-11-15) replaced the displayed figures; earlier releases stay sealed on disk.
-            self.assertIn('from analysis_figures.reviewed_v6 import show', source, path.name)
+            self.assertIn('from analysis_figures.reviewed_v62 import show', source, path.name)
+            self.assertNotIn('analysis_figures.reviewed_v6 import', source, path.name)
+            self.assertNotIn('20261115_v6_1/', source, path.name)
             self.assertNotIn('from analysis_primary.plots import render_figures', source)
             self.assertNotIn("OUT / 'figures/01_primary_forest.png'", source)
             self.assertNotIn("OUT/'figures'/(stem+'.png')", source)

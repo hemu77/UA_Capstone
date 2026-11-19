@@ -16,7 +16,7 @@ hosting address or older interface branding.
 - Professor brief: <https://github.com/hemu77/UA_Capstone/blob/main/docs/PROFESSOR_RESEARCH_BRIEF.md>
 - Analysis guide: <https://github.com/hemu77/UA_Capstone/blob/main/ANALYSIS_START_HERE.md>
 - Notebooks: <https://github.com/hemu77/UA_Capstone/tree/main/analysis>
-- Current figure release: <https://github.com/hemu77/UA_Capstone/tree/main/outputs/publication_figures/20261115_v6_1>
+- Current figure release: <https://github.com/hemu77/UA_Capstone/tree/main/outputs/publication_figures/20261118_v6_2>
 - Graph-file index: <https://github.com/hemu77/UA_Capstone/blob/main/NETWORKS.md>
 - Deployment documentation: <https://github.com/hemu77/UA_Capstone/blob/main/docs/SIMULATOR_DEPLOYMENT.md>
 
@@ -69,7 +69,7 @@ This is not a provider invoice or authorization to spend the remaining amount.
 Six analysis notebooks (01-06), a separate readiness notebook (00), and **19
 research figures** cover primary inference, comparison plots, failures,
 resources, demographic mixing, sampling and external structural evaluation.
-Current figures are release **v6.1**, with PNG, SVG, PDF and plotted CSV files.
+Current figures are release **v6.2**, with PNG, SVG, PDF and plotted CSV files.
 Earlier sealed releases remain preserved; a layout-only successor is unfinished.
 
 The locked primary family contains **24 contrasts**. Four-model averages are
@@ -193,8 +193,8 @@ the analysis notebooks from published tables does not require a paid call.
 
 ### Pending Engineering And Presentation Work
 
-- Finish the identified plot-overlap corrections, inspect affected PNG/PDF/SVG
-  exports, and update notebook displays in a new release. Do not call v6.2 finished.
+- The v6.2 reporting release revises figures 02, 10, 15, 18 and 19;
+  deployment is separate from the offline notebook release.
 - Publish the local established-name correction and synchronize production
   branding. The live page still had the unwanted old display title at the last
   November 16 check; the hosting URL intentionally remains unchanged.

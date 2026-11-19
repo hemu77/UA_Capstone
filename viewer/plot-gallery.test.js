@@ -5,6 +5,10 @@ import {validatePlotCatalog,filterPlots} from './plot-gallery.js';
 import {verifiedPlotProjection} from './plot-catalog-build.mjs';
 const bytes=await readFile(new URL('./public/data/saved-plots.json',import.meta.url));
 const catalog=JSON.parse(bytes);
+test('gallery opens on the primary cohort, not the mixed display',async()=>{
+  const html=await readFile(new URL('./layers.html',import.meta.url),'utf8');
+  assert.match(html,/<select id="plot-cohort">\s*<option value="primary" selected>/);
+});
 test('Packaging pins the entire audited projection, not a self-reported CSV label',()=>{
   assert.equal(verifiedPlotProjection(bytes).length,896);
   for(const mutate of [

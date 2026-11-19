@@ -1,9 +1,9 @@
 # Analysis And Current Figures
 
-**Reviewed release v6.1, November 15, 2026.** The six notebooks below display all
+**Reviewed release v6.2, November 18, 2026.** The six notebooks below display all
 19 redesigned figures. Figure 16's sign-agreement count and several captions
 were corrected after review. Figure 17 now uses vector cells, and SVG glyphs are
-outlined for portable fonts; the other 17 PNG/PDF/plotted-CSV sets retain exact v6 bytes.
+outlined for portable fonts. v6.2 revises five displays; all 19 plotted CSVs retain exact v6.1 bytes.
 [Corrections and verification](../docs/figure_redesign/CODEX_REVIEW.md).
 
 Primary analysis uses **896 original attempts: 890 valid graphs, including 12
@@ -22,25 +22,25 @@ remain outside all inference and empirical evaluations.
 
 ## Figures To Start With
 
-![All 24 planned contrasts and their simultaneous intervals](../outputs/publication_figures/20261115_v6_1/01_primary_contrasts.png)
+![All 24 planned contrasts and their simultaneous intervals](../outputs/publication_figures/20261118_v6_2/01_primary_contrasts.png)
 
 The iterative Hindi contrast passes the original correction but is sensitive to
 block omission: only 3/8 refits remain significant. Eight blocks are not eight
 human populations. The sign-flip test's attainable p-value floor cannot cross
 the first Holm threshold here; it is not another failure of the effect.
 
-![Held-out metric-specific distances with observed record spread](../outputs/publication_figures/20261115_v6_1/08_heldout_distances.png)
+![Held-out metric-specific distances with observed record spread](../outputs/publication_figures/20261118_v6_2/08_heldout_distances.png)
 
 Lower W1 means closer on that metric, not more realistic overall. Record ticks
 are heterogeneous, overlapping observations, not independent confidence limits.
 Read efficiency alongside the density-informed diagnostic below.
 
-![Record-level efficiency distances and density dependence](../outputs/publication_figures/20261115_v6_1/15_efficiency_density.png)
+![Record-level efficiency distances and density dependence](../outputs/publication_figures/20261118_v6_2/15_efficiency_density.png)
 
 Target-density ER narrows the fixed-baseline gap. It uses target information,
 so it is a diagnostic, not a fair transfer competitor or causal decomposition.
 
-![Demographic excess edge share and politics-first margins](../outputs/publication_figures/20261115_v6_1/14_demographic_mixing.png)
+![Demographic excess edge share and politics-first margins](../outputs/publication_figures/20261118_v6_2/14_demographic_mixing.png)
 
 Politics leads consistently for the person-level procedures, but Global depends
 on scoring. One roster, correlated attributes and fixed prompt order prevent an
@@ -55,7 +55,7 @@ rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_figure_release_v6.py
 rtk proxy .\.venv\Scripts\python.exe -I -B scripts\check_research_extension.py
 ```
 
-[PNG/SVG/PDF and plotted CSVs](../outputs/publication_figures/20261115_v6_1/) |
+[PNG/SVG/PDF and plotted CSVs](../outputs/publication_figures/20261118_v6_2/) |
 [Environment and data guide](../ANALYSIS_START_HERE.md) |
 [Professor's brief](../docs/PROFESSOR_RESEARCH_BRIEF.md) |
 [Historical versions](../docs/history/README.md).

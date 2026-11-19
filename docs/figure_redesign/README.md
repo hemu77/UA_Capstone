@@ -1,6 +1,6 @@
 # Figure release v6: methods review and redesign of all 19 figures
 
-**Review follow-up:** current notebooks use [v6.1](../../outputs/publication_figures/20261115_v6_1/).
+**Review follow-up:** current notebooks use [v6.2](../../outputs/publication_figures/20261118_v6_2/).
 [Codex review and fixes](CODEX_REVIEW.md) correct Figure 16, caption scope, verification
 coverage and notebook integration. This document records the original v6 review;
 the original commit and release remain unchanged.
