@@ -16,7 +16,7 @@
 ## Historical Material
 
 [History index](history/README.md) separates [calibration](history/calibration/README.md),
-[older study plans](history/planning/README.md), and [legacy handoffs](history/legacy/README.md).
+[older study plans](history/older/PLANNING.md), and [legacy handoffs](history/older/LEGACY.md).
 Those documents describe earlier states; they do not authorize new collection.
 
 Some old source, output and documentation paths remain in place because manifests

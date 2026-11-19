@@ -59,7 +59,7 @@ The [Hindi candidate](HINDI_WORDING_CANDIDATE.md) was tested separately under $1
 four observations cost $0.30618, but only one graph completed. The clarified
 instruction still failed in one of two repetitions; it is **not adopted**.
 The selected reference wording remains unchanged. No main study is authorized.
-The [new report](V8_COMPLETION_RESULTS.md) estimates $102.44 for 896 fresh
+The [new report](history/calibration/V8_COMPLETION_RESULTS.md) estimates $102.44 for 896 fresh
 attempts or $104.49 for 1,568, before contingency, with 26.30/27.03 serial API
 hours respectively. These are projections, not guarantees of valid graphs.
 Successful parsing does not certify realistic human behavior.
@@ -68,7 +68,7 @@ Successful parsing does not certify realistic human behavior.
 
 **October 2 update: revised calibration complete; main study still on hold.**
 All 104 approved graphs passed replay/accounting checks at **$7.8549 of $10**.
-Read [the new results](CALIBRATION_V6_RESULTS.md) and [plan](history/planning/plan.md).
+Read [the new results](history/calibration/CALIBRATION_V6_RESULTS.md) and [plan](history/older/plan.md).
 The important finding is **22/26 global graphs are empty**. This is genuine
 output under the frozen instructions, not a software failure to conceal.
 We recommend resolving the intended global task before spending on main collection.
@@ -135,14 +135,14 @@ budgeting and visualization. They used historical personas and debugging
 variants. They are not 28 extra clean repetitions for the current study.
 
 Older reports and PDFs remain historical documents. See
-[the archived capstone README](history/legacy/CAPSTONE_README_ARCHIVE.md) and
-[project history](history/legacy/PROJECT_HISTORY.md); do not quote their completion claims
+[the archived capstone README](history/older/CAPSTONE_README_ARCHIVE.md) and
+[project history](history/older/PROJECT_HISTORY.md); do not quote their completion claims
 as current research validation.
 
 ## 4. Why the Reviewers Were Not Satisfied
 
 The following summarizes the supplied review PDF as documented in the
-[review-response matrix](history/planning/REVIEW_RESPONSE_MATRIX.md). We are not claiming that
+[review-response matrix](history/older/REVIEW_RESPONSE_MATRIX.md). We are not claiming that
 the reviewers have approved our fixes or that every concern has disappeared.
 
 | Concern | Plain-language meaning | Current response |
@@ -305,7 +305,7 @@ That does not describe revised calibration completeness. The new inspector says
 `COMPLETE_CALIBRATION`: 104/104, 11,548 received requests, 12 first failures in
 11,536 decisions, no unresolved new charges. Exactly-one US nomination prompts
 had zero failures in 243 decisions per language; that is not translation accuracy.
-The [new report](CALIBRATION_V6_RESULTS.md) includes method ranges and missingness.
+The [new report](history/calibration/CALIBRATION_V6_RESULTS.md) includes method ranges and missingness.
 
 ## 8. What the Interactive Viewer Does
 
@@ -368,7 +368,7 @@ non-US country costs for the other models still transfer Luna country/US ratios.
 Runtime excludes future local processing, reviews and downtime. Global is cheap
 because most replies are `NONE`; a revised task could cost more. Calibration
 used 2.81 API hours over a 3.59-hour dispatch span, including pauses/recovery.
-See [the calibration report](CALIBRATION_V6_RESULTS.md) for exact assumptions.
+See [the calibration report](history/calibration/CALIBRATION_V6_RESULTS.md) for exact assumptions.
 
 ## 11. The Decision We Need From the Team
 
@@ -385,10 +385,10 @@ does not authorize paid generation.
 
 ## 12. Where to Look
 
-Start at [the README](../README.md). Read [the current architecture](history/legacy/ARCHITECTURE.md)
-for file responsibilities, [the review matrix](history/planning/REVIEW_RESPONSE_MATRIX.md) for
+Start at [the README](../README.md). Read [the current architecture](history/older/ARCHITECTURE.md)
+for file responsibilities, [the review matrix](history/older/REVIEW_RESPONSE_MATRIX.md) for
 feedback, [translation review](history/calibration/TRANSLATION_REVIEW.md) for its actual scope,
-and [the revised cost/results report](CALIBRATION_V6_RESULTS.md) for measured evidence.
+and [the revised cost/results report](history/calibration/CALIBRATION_V6_RESULTS.md) for measured evidence.
 Historical PDFs and earlier plans are not the current protocol.
 
 Share [the professor/team review note](PROFESSOR_TEAM_REVIEW.md) with the brief.

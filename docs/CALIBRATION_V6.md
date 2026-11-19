@@ -8,7 +8,7 @@ with a **$10 additional ceiling**, separately from the earlier $1 wording probe.
 ## Scope
 
 **Paid execution is complete: 104/104, $7.854865725 of $10, zero unresolved new
-requests.** Read [the results and main-study hold](CALIBRATION_V6_RESULTS.md).
+requests.** Read [the results and main-study hold](history/calibration/CALIBRATION_V6_RESULTS.md).
 The 22/26 empty global graphs require a scientific task decision, not silent reruns.
 Latest suite: 142 tests passed; notebook: 45 cells handled, 32 archival bodies skipped.
 

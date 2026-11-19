@@ -8,7 +8,7 @@ is approved. Read [scope, regeneration map and costs](REPAIR_V7_PLAN.md) first.
 extension are complete, with one invalid reply retained. A nonempty-event JSON
 round-trip defect was reproduced after three received replies and repaired in a
 separate verification adapter without changing the frozen experiment. See the
-[execution/recovery record](V7_EXECUTION_NOTES.md) for current status and evidence.
+[execution/recovery record](history/calibration/V7_EXECUTION_NOTES.md) for current status and evidence.
 
 ## What Changed, in Plain Language
 
@@ -179,5 +179,5 @@ folders, not mixed into V6 calibration or presented as confirmation.
 For the completed eight-call extension, `finish_global_task_probe.py --verify-only`
 is the key-free local ledger replay. It preserves the original parser stop and
 reports completion separately, including the invalid reply. See the
-[execution record](V7_EXECUTION_NOTES.md) for exact source hashes, costs, recovery
+[execution record](history/calibration/V7_EXECUTION_NOTES.md) for exact source hashes, costs, recovery
 regressions and the distinction between public graph evidence and private billing checks.

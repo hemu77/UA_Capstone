@@ -48,7 +48,7 @@ software checks do not turn unfinished research into a positive research result.
   node/edge counts and explicit degree-rewiring completion flags. These are
   exploratory synthetic baselines, not real-network validation or new LLM runs.
 - [ ] Astra review: after actual pilot results, before main protocol freeze.
-  Use [ASTRA_REVIEW_HANDOFF.md](../legacy/ASTRA_REVIEW_HANDOFF.md) with the real pilot artifacts.
+  Use [ASTRA_REVIEW_HANDOFF.md](ASTRA_REVIEW_HANDOFF.md) with the real pilot artifacts.
 - [ ] Five adult rosters, reviewed translations, final uncertainty plan and main
   collection still require scientific work; this update does not mark the project complete.
 

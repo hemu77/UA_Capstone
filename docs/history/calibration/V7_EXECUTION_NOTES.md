@@ -113,7 +113,7 @@ suspect clauses did not resolve the concentration of empty outputs. The valid
 empty graphs are preserved, not dropped from analysis or called parser errors.
 The earlier assumption that a clause change would be sufficient was not supported.
 
-Source: [complete 64-run summary](../outputs/repair_v7/global_probe/bbd4c3c82c66/summary.json).
+Source: [complete 64-run summary](../../../outputs/repair_v7/global_probe/bbd4c3c82c66/summary.json).
 Its canonical SHA-256 is
 `9a4a6585730109984133d7292e18e1fdac3840c3cc6674e63a2cf75a867b2412`.
 
@@ -212,10 +212,10 @@ Combined summed API time was **129.030 seconds**, excluding local verification,
 review and recovery time. These conservative usage-based amounts are not an
 invoice reconciliation or a reliable forecast for the larger multilingual study.
 
-Evidence: [extension completion report](../outputs/repair_v7/global_task_probe/669a46f811a5/completion.json),
-[eight-attempt CSV](../outputs/repair_v7/global_task_probe/669a46f811a5/summary.csv),
-[64-run CSV](../outputs/repair_v7/global_probe/bbd4c3c82c66/summary.csv), and
-[16-condition clause summary](../outputs/repair_v7/global_probe/bbd4c3c82c66/condition_summary.csv).
+Evidence: [extension completion report](../../../outputs/repair_v7/global_task_probe/669a46f811a5/completion.json),
+[eight-attempt CSV](../../../outputs/repair_v7/global_task_probe/669a46f811a5/summary.csv),
+[64-run CSV](../../../outputs/repair_v7/global_probe/bbd4c3c82c66/summary.csv), and
+[16-condition clause summary](../../../outputs/repair_v7/global_probe/bbd4c3c82c66/condition_summary.csv).
 Failure receipts are in the extension's `failures/` directory, not `runs/`.
 
 **Interpretation:** explicit hypothetical construction is a promising task

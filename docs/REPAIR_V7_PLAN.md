@@ -6,7 +6,7 @@ $15, conditional on the gates below, not main-study approval. The owner approved
 eight additional explicit-task responses within the remaining original $5 allowance.
 They are complete: seven valid nonempty graphs, one retained invalid reply; total
 V7 diagnostic charge $0.1422011. The remaining gates are not cleared by this small screen.
-See [paid findings, recovery and current status](V7_EXECUTION_NOTES.md) and the
+See [paid findings, recovery and current status](history/calibration/V7_EXECUTION_NOTES.md) and the
 [runner guide](REPAIR_V7_RUNNER.md). The prospective plan below does not override
 that live decision or authorize automatic advancement.
 This is the active next-step plan following [the PR response](PR_REVIEW_OCT12.md).

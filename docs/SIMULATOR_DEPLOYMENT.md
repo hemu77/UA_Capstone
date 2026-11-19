@@ -73,7 +73,7 @@ Publish only verified `viewer/dist/` to the existing Site. Do not publish
 Never call the collection or supplemental runners for a UI build.
 
 The prior version 6 release and its exact deployment record are preserved in
-[the dated handoff snapshot](history/20261114/SIMULATOR_DEPLOYMENT-before-cleanup.md).
+[the dated handoff snapshot](history/older/SIMULATOR_DEPLOYMENT-before-cleanup.md).
 ## Verified Publication: November 14, 2026
 
 Site version **7** published at **2:11 a.m. America/Phoenix**.

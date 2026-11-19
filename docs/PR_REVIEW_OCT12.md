@@ -18,7 +18,7 @@ cross-check, not human bilingual review or scientific approval.
 | Contradictory handoff | README, plan and professor note still described a V5-only simulator while deployment defaults to V6. | Corrected current-status text; retained the dated October 2 report context. |
 | Multiplicity and precision | The saved power CSV already includes n=8 thresholds 2.092758 and 2.559688 SD for families of 24 and 84 tests under its stated assumptions. | Use the actual proposed family sizes in planning, not an illustrative six-test figure. These are planning calculations, not achieved power guarantees. |
 
-Evidence: [V6 results](CALIBRATION_V6_RESULTS.md),
+Evidence: [V6 results](history/calibration/CALIBRATION_V6_RESULTS.md),
 [V5 reanalysis](../stats/public_v5_reanalysis/),
 [candidate source](../revision_next.py),
 [translation record](history/calibration/TRANSLATION_REVIEW.md),

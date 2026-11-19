@@ -75,7 +75,7 @@ is important evidence, not something to hide by regenerating until it passes.
 
 Please read the [current handoff](V8_TEAM_HANDOFF.md),
 [full knowledge brief](TEAM_KNOWLEDGE_BRIEF.md),
-[final results and forecasts](V8_COMPLETION_RESULTS.md), and
+[final results and forecasts](history/calibration/V8_COMPLETION_RESULTS.md), and
 [technical execution record](V8_EXECUTION_NOTES.md) before reviewing the code.
 The handoff explains what changed, why, the actual costs, and the work still
 remaining. A fresh 896-attempt study projects **$102.44 and 26.30 serial API hours**,
@@ -106,8 +106,8 @@ the earlier statement that it was unchanged is superseded. Scientific approval
 and a new finite spending authorization are still required.
 
 Please read [the plain-language team brief](TEAM_KNOWLEDGE_BRIEF.md),
-[the measured calibration results](CALIBRATION_V6_RESULTS.md), and
-[the implementation/decision plan](history/planning/plan.md). The brief includes the earlier
+[the measured calibration results](history/calibration/CALIBRATION_V6_RESULTS.md), and
+[the implementation/decision plan](history/older/plan.md). The brief includes the earlier
 capstone work, reviewer concerns, model rationale and remaining full scope.
 
 ## What We Completed
