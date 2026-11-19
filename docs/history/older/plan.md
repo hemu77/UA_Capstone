@@ -354,7 +354,7 @@ or retry rates. Gate B's updated measured estimates are now delivered above.
 | `statistical_review.py`, `outputs/statistical_review_v6/` | Offline statistical safeguards and 8,000 synthetic null worlds; not scientific approval. |
 | `calibration_v6.py`, `outputs/calibration_v6/<contract-hash>/` | Frozen revised runner, manifest, labelled fixtures and 104 separately approved paid artifact sets. |
 | `calibration_v6_io.py`, `recover_calibration_v6_checkpoint.py` | Audited local-file retries and one checkpoint-specific recovery; no paid reply replacement. |
-| `inspect_calibration_v6.py`, `docs/CALIBRATION_V6_RESULTS.md` | Public replay/metrics/compliance verification, forecasts and findings requiring a team decision. |
+| `inspect_calibration_v6.py`, [calibration results](../calibration/CALIBRATION_V6_RESULTS.md) | Public replay/metrics/compliance verification, forecasts and findings requiring a team decision. |
 | `analyze_saved_study.py` | Public graph/receipt reanalysis; no key/private ledger needed. |
 | `stats/public_v5_reanalysis/` | V5 metrics, descriptive contrasts, compliance, reference draws/summaries, power sensitivity and provenance report. |
 | `analyze_networks.ipynb` | Historical sections retained; new review section loads isolated public analysis with hash checks. |
