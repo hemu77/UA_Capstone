@@ -39,7 +39,7 @@ Do not use earlier 24/84-family or 1/3/12-forecast tables as the current analysi
 
 **Active V8 update, October 13:** [current execution and evidence](../../V8_EXECUTION_NOTES.md).
 The owner-approved stage allowances remain $5/$10/$15, not new allowances per
-source version. [V7 diagnostics](../../V7_EXECUTION_NOTES.md) are preserved.
+source version. [V7 diagnostics](../calibration/V7_EXECUTION_NOTES.md) are preserved.
 
 - [x] Complete the 96-cell local wording screen: 94 valid graphs/two failures,
   $5.9461527 including failures; private cached and public replay verified.
@@ -59,7 +59,7 @@ source version. [V7 diagnostics](../../V7_EXECUTION_NOTES.md) are preserved.
   four global failures**. Four valid global graphs are empty. Usage plus retained
   reservations is $7.8912884; no terminal failure was regenerated as a success.
 - [x] Report costs, duration, missingness and fresh-study scenarios in
-  [V8 completion results](../../V8_COMPLETION_RESULTS.md): 896 attempts ~$102.44,
+  [V8 completion results](../calibration/V8_COMPLETION_RESULTS.md): 896 attempts ~$102.44,
   or global-32/others-eight (1,568 attempts) ~$104.49, before contingencies.
 - [x] Pass 191 offline regressions, final two recovery tests and seven focused
   publishing checks; replay both completed stages without API calls.
@@ -73,7 +73,7 @@ decisions and professor/team review questions. Completion is not main-study clea
 Updated: October 2, 2026. **104 revised calibration graphs complete at
 $7.854865725 of the separately approved $10. Main collection remains unauthorized.**
 The earlier 72-call wording probe had its own $1 permission. Read the
-[new calibration findings](../../CALIBRATION_V6_RESULTS.md) before any spending decision.
+[new calibration findings](../calibration/CALIBRATION_V6_RESULTS.md) before any spending decision.
 See [the statistical/probe decision](../../STATISTICAL_ANALYSIS_DECISION.md).
 Human bilingual review is unavailable and explicitly waived by the owner; it
 must remain disclosed as absent, not completed.

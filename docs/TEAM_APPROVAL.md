@@ -86,7 +86,7 @@ research validity or conference acceptance. No main batch is running.
 
 Status: **NOT APPROVED. No main-generation permission is recorded here.**
 Read [the knowledge brief](TEAM_KNOWLEDGE_BRIEF.md) and
-[the revised plan](history/planning/plan.md) first. The October 2 review supersedes the old
+[the revised plan](history/older/plan.md) first. The October 2 review supersedes the old
 eight-repeat/896-target allocation. Preserved V5 calibration is exploratory,
 not automatically reusable in the revised confirmation sample.
 
@@ -105,7 +105,7 @@ guarantees scientific validity or acceptance.
 - [x] **Revised calibration completed under separate permission.** Owner approved
   104 graphs and $10. All 104 passed replay/accounting at $7.854865725, with zero
   unresolved new requests. This is not permission for the main study; see
-  [actual findings](CALIBRATION_V6_RESULTS.md). V5 graphs remain separate.
+  [actual findings](history/calibration/CALIBRATION_V6_RESULTS.md). V5 graphs remain separate.
 - [ ] **Global-method outcome reviewed.** The revised calibration includes many
   valid empty networks. Decide whether this is the intended estimand or requires
   a separately versioned prompt comparison before scaling collection. Do not

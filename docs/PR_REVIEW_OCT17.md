@@ -4,8 +4,8 @@
 **Branch reviewed:** `r1/social-netw` at `8fa654b` (8 commits after the
 [October 7 review](PR_REVIEW_r1_social-netw.md) at `3dc14e3`)
 **Responds to:** [PR review response, October 12](PR_REVIEW_OCT12.md),
-[V7 execution record](V7_EXECUTION_NOTES.md), [V8 execution record](V8_EXECUTION_NOTES.md),
-[V8 results](V8_COMPLETION_RESULTS.md), [V8 handoff](V8_TEAM_HANDOFF.md)
+[V7 execution record](history/calibration/V7_EXECUTION_NOTES.md), [V8 execution record](V8_EXECUTION_NOTES.md),
+[V8 results](history/calibration/V8_COMPLETION_RESULTS.md), [V8 handoff](V8_TEAM_HANDOFF.md)
 **Reviewer:** Claude (AI coding assistant), requested by the repository owner. This is
 an independent, evidence-based design review. It is **not** human bilingual validation,
 professor approval, or authorization to spend.
@@ -32,7 +32,7 @@ of importance:
 | 4 | **The main study will interrupt often.** V8 hit two provider 5xx errors in 11,634 requests, and each needed owner approval plus a new one-off recovery script. A 896-graph main study is about 100,000 requests. | Medium | Expect on the order of 5–20 interruptions. A general, pre-reviewed transport-retry policy is needed before main collection, not a new bespoke adapter each time. |
 | 5 | **The statistical plan is still undecided, and new artifacts disagree with old ones.** `detectable_effect_scenarios.csv` uses families of 1, 3 and 12 hypotheses; `plan.md` still declares 24 and 84. No primary outcome, family, precision target or failure rule has been chosen. | Medium | This is now the critical-path blocker, not data collection. |
 | 6 | **The Hindi global instruction is weaker than the other three.** It renders "plausible" as संभावित ("possible / potential"). | Low | Fix in the next contract; it is exactly the kind of drift a fluent reader catches in minutes. |
-| 7 | **An exposed API key has not been confirmed rotated.** [V7_EXECUTION_NOTES.md](V7_EXECUTION_NOTES.md) records that the credential "remains exposed in prior chat and should be rotated." | **High (security)** | Rotate it now, before any further paid run. No key is committed to the repository; this concerns the chat exposure only. |
+| 7 | **An exposed API key has not been confirmed rotated.** [V7_EXECUTION_NOTES.md](history/calibration/V7_EXECUTION_NOTES.md) records that the credential "remains exposed in prior chat and should be rotated." | **High (security)** | Rotate it now, before any further paid run. No key is committed to the repository; this concerns the chat exposure only. |
 | 8 | Stale figures remain in `README.md` (October 2 status block, $14.34 cumulative ledger). | Low | Doc cleanup (Section 7). |
 
 **Recommendation:** keep main collection blocked. **No further paid diagnostics are
@@ -400,7 +400,7 @@ budget reset, full audit) while removing the need for a new script and approval 
 
 ### 6.2 Credential rotation
 
-[V7_EXECUTION_NOTES.md](V7_EXECUTION_NOTES.md) (lines 16–18) states that the API key used for
+[V7_EXECUTION_NOTES.md](history/calibration/V7_EXECUTION_NOTES.md) (lines 16–18) states that the API key used for
 V7 "remains exposed in prior chat and should be rotated; this run does not assert that a fresh
 key was configured." V8 then ran further paid stages. **Rotate the key in the provider dashboard
 now** and record in the execution notes that it was rotated, without recording the key itself.

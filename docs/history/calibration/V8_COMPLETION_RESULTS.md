@@ -2,7 +2,7 @@
 
 October 13, 2026. This report supersedes the 101/104 checkpoint for current
 calibration status. It does not overwrite historical results or authorize main
-collection. Read [the plain-language handoff](V8_TEAM_HANDOFF.md) first.
+collection. Read [the plain-language handoff](../../V8_TEAM_HANDOFF.md) first.
 
 ## Completed Calibration
 
@@ -114,7 +114,7 @@ The frozen calibration's selected `reference` instructions remain unchanged.
 
 Private cached verification and public key-free replay both passed, with earlier
 ledger rows unchanged. Evidence:
-[`outputs/repair_v7/hindi_candidate_probe/9a643535816c`](../outputs/repair_v7/hindi_candidate_probe/9a643535816c).
+[`outputs/repair_v7/hindi_candidate_probe/9a643535816c`](../../../outputs/repair_v7/hindi_candidate_probe/9a643535816c).
 Contract: `9a643535816c13df8ae3d201a65764b4d7c31b1eb5379e963fc3d9e438856745`.
 Summary: `9de66358fe3e0718fe1cf1000e1e9c51d0218954dffa036fc6d3a65816214507`.
 
@@ -159,7 +159,7 @@ Second recovery adapter hash:
 `518bdea90d03b4d7b1c5c86f46ce9548f5f64b64959d3b244efb4be8aaed0fe4`.
 
 Public evidence directory:
-[`outputs/repair_v7/calibration/176533db7041`](../outputs/repair_v7/calibration/176533db7041).
+[`outputs/repair_v7/calibration/176533db7041`](../../../outputs/repair_v7/calibration/176533db7041).
 Its `inspection.json`, `inspection_networks.csv`, `condition_summary.csv`,
 `decision_compliance.csv`, `hypothetical_main_forecasts.csv`, and
 `detectable_effect_scenarios.csv` contain the machine-readable results.

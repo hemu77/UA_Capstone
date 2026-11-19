@@ -32,7 +32,7 @@ costs use measured Luna ratios, so these are estimates, not guarantees.
 There were 140 rejected parse attempts among 7,749 received replies; all are
 recorded and charged. Calibration completion is not scientific certification.
 
-The current study is specified in [the 896-study handoff](../planning/RESEARCH_896_HANDOFF.md)
+The current study is specified in [the 896-study handoff](RESEARCH_896_HANDOFF.md)
 and `study_protocol_896.json`. It starts with a fresh fictional 50-adult roster,
 four models (GPT-4.1, GPT-5.6-Luna, GPT-6-Luna, GPT-6-Sol), all four methods,
 US/India/Japan/Brazil framing, and English/Hindi/Japanese/Brazilian Portuguese
@@ -49,7 +49,7 @@ The author removed the historical $50 maximum but authorized only **$5 additiona
 calibration usage** so far. Every live scope still has an explicit finite ceiling.
 Instructions and review evidence are in the handoff; sections below describe earlier work.
 
-**Review status:** [the PDF response matrix](../planning/REVIEW_RESPONSE_MATRIX.md) distinguishes
+**Review status:** [the PDF response matrix](REVIEW_RESPONSE_MATRIX.md) distinguishes
 repaired code from unanswered scientific concerns. The new scope is **896 total**,
 or 224 per method. Eight repetitions improve replication but do not by themselves
 prove adequate precision, population validity or conference readiness.
@@ -111,7 +111,7 @@ from playback and are not accuracy scores. See [the studio guide](FORMATION_STUD
 **Population design update:** US party labels remain in archived runs. The proposed
 adult-only primary cross-country experiment omits explicit political affiliation,
 with a separate matched sensitivity arm. This controls one cue; it does not make
-synthetic personas representative. See [population revision](../planning/POPULATION_REVISION.md)
+synthetic personas representative. See [population revision](POPULATION_REVISION.md)
 for the proposed GPT-5 / Luna / Sol / Hugging Face panel and collection gates.
 
 **3D layer laboratory:** open `http://127.0.0.1:8765/layers.html` after rebuilding
@@ -125,7 +125,7 @@ the displayed comparison. See the [critical usability review](VIEWER_USABILITY_R
 
 **The project is under revision, not ready for resubmission.** The earlier
 completion claims below are archival. They are superseded by the corrected audit
-and [revision status report](../planning/REVISION_STATUS.md), which separates software checks
+and [revision status report](REVISION_STATUS.md), which separates software checks
 from scientific evidence. No conference acceptance or absence of all bugs can
 be guaranteed.
 
@@ -225,9 +225,9 @@ these fictional people or proof that demographic stereotyping is accurate.
 
 ### Where to start
 
-Read [REVISION_STATUS.md](../planning/REVISION_STATUS.md) for the feedback-to-fix checklist,
+Read [REVISION_STATUS.md](REVISION_STATUS.md) for the feedback-to-fix checklist,
 [ARCHITECTURE.md](ARCHITECTURE.md) for the data flow, and
-[RESEARCH_REVISION_PLAN.md](../planning/RESEARCH_REVISION_PLAN.md) for the full approved direction.
+[RESEARCH_REVISION_PLAN.md](RESEARCH_REVISION_PLAN.md) for the full approved direction.
 Run instructions for the maintained offline workflow are at the bottom of this README.
 The request-count estimator is **not** a dollar quote or authorization to run models.
 
@@ -622,7 +622,7 @@ rtk proxy .\.venv\Scripts\python.exe -B revision224.py --analyze
 ```
 
 These commands cost no API tokens. Review the
-[current handoff](../planning/RESEARCH_896_HANDOFF.md), exact prompt catalog and current
+[current handoff](RESEARCH_896_HANDOFF.md), exact prompt catalog and current
 preflight report before any paid execution. The execution commands and matching
 review receipt requirements are documented in that handoff.
 

@@ -17,7 +17,7 @@ Private accounting and public replay passed without new calls or ledger changes.
 There were 123 received requests, 111 observed first decisions and 12 corrections.
 Early termination makes the arm denominators unequal: 26 original decisions and
 85 clarified decisions, not 100 per arm. Two graph repetitions cannot establish
-reliability improvement or language equivalence. See [full evidence](V8_COMPLETION_RESULTS.md).
+reliability improvement or language equivalence. See [full evidence](history/calibration/V8_COMPLETION_RESULTS.md).
 
 The existing calibration uses `reference`, not this `alternative_2`. No automatic
 wording switch or additional paid probe is authorized. The sections below

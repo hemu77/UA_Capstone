@@ -20,7 +20,7 @@ observations, one valid graph, three failures, $0.30618**. Original alternative 
 failed both repetitions; its clarified version failed one. It is **not adopted**.
 This does not replace or modify the calibration's prospectively fixed reference.
 
-The final [results and forecasts](V8_COMPLETION_RESULTS.md) and
+The final [results and forecasts](history/calibration/V8_COMPLETION_RESULTS.md) and
 [plain-language handoff](V8_TEAM_HANDOFF.md) supersede older incomplete status.
 191 offline tests passed in 455.082 seconds; final recovery tests passed 2/2,
 and seven focused publishing checks passed in 20.057 seconds. A failing test

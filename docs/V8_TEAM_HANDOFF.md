@@ -157,7 +157,7 @@ also needs replay/review time; no concurrency speedup is assumed.
 - [x] Complete all 104 observations within the original calibration allowance;
   retain four invalid and four valid-empty global outcomes.
 - [x] Finish final private accounting and public replay of all 104 observations;
-  [full results and reproducible evidence](V8_COMPLETION_RESULTS.md).
+  [full results and reproducible evidence](history/calibration/V8_COMPLETION_RESULTS.md).
 - [x] Complete and inspect the separate Hindi comparison: original 0/2 valid,
   clarified 1/2 valid. The extra instruction still produced multiline answers.
   Do not adopt it or claim the Hindi alternative is fixed. The already selected

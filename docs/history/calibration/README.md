@@ -6,8 +6,8 @@ and commands are historical, not instructions to generate more graphs.
 - [Calibration results](CALIBRATION_RESULTS.md) and [failure findings](CALIBRATION_FINDINGS.md).
 - [API logging and diagnostics](API_LOGGING.md).
 - [Translation review](TRANSLATION_REVIEW.md).
-- [V6 results](../../CALIBRATION_V6_RESULTS.md), [V7 execution](../../V7_EXECUTION_NOTES.md),
-  and [V8 completion](../../V8_COMPLETION_RESULTS.md) remain at their original documentation paths.
+- [V6 results](CALIBRATION_V6_RESULTS.md), [V7 execution](V7_EXECUTION_NOTES.md),
+  and [V8 completion](V8_COMPLETION_RESULTS.md).
 
-Frozen calibration evidence stays under its original `outputs/` directories.
+The [frozen V6 calibration evidence](../../../outputs/calibration_v6/) stays at its original path.
 For the completed study use the [full-run entry point](../../research/main_study/README.md).
