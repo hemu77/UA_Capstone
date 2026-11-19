@@ -88,7 +88,7 @@ function initGallery(){
   window.addEventListener('hashchange',openFromLink);openFromLink();
   $('plot-retry').addEventListener('click',load);
   $('plot-filters').addEventListener('input',()=>{if(plots){page=0;render();}});
-  $('plot-clear').addEventListener('click',()=>{$('plot-search').value='';$('plot-cohort').value='all';$('plot-method').value='';page=0;render();});
+  $('plot-clear').addEventListener('click',()=>{$('plot-search').value='';$('plot-cohort').selectedIndex=0;$('plot-method').value='';page=0;render();});
   for(const [id,delta] of [['plot-page-back',-1],['plot-page-next',1]])$(id).addEventListener('click',()=>{page+=delta;render();status.scrollIntoView({block:'nearest'});});
   $('plot-back').addEventListener('click',()=>show(current-1));$('plot-forward').addEventListener('click',()=>show(current+1));
   $('plot-close').addEventListener('click',()=>dialog.close());

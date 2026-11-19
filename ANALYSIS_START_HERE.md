@@ -12,7 +12,7 @@ inputs only; it does not run statistical inference or make model calls.
 
 ## Statistical Analysis And Evaluations
 
-**Reviewed figure release v6.1 (November 15, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](docs/figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
+**Reviewed figure release v6.2 (November 18, 2026).** Notebooks 01-06 display all 19 redesigned figures, with raw and adjusted Hindi refits and the Copenhagen sampling stress test. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](docs/figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
 
 
 **New exploratory extension:** [Notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb)
@@ -50,7 +50,7 @@ or that overlapping subgraphs are independent human samples. No paid calls.
 
 The [v6 design review](docs/figure_redesign/README.md) records the five-paper
 visual references. [Review corrections](docs/figure_redesign/CODEX_REVIEW.md)
-explain v6.1 and the distinction between historical seals and current displays.
+explain v6.2 and the distinction between historical seals and current displays.
 
 Execute all six current notebooks from the published tables and figures:
 
@@ -69,7 +69,7 @@ Their historical artifact/code pins remain enforced by the current checker.
 To reproduce the reviewed figures in a new directory:
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -B -m analysis_figures.reviewed_v6 --output outputs/publication_figures/local_v6_1_reproduction
+rtk proxy .\.venv\Scripts\python.exe -B -m analysis_figures.reviewed_v62 --output outputs/publication_figures/local_v6_2_reproduction
 ```
 
 The build refuses existing destinations and preserves every original v6 byte.
@@ -98,8 +98,14 @@ rtk proxy .\.venv\Scripts\python.exe -m ipykernel install --user --name ua-capst
 ```
 
 ```powershell
-rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation.py
+rtk proxy .\.venv\Scripts\python.exe -I -B scripts\run_primary_evaluation_v2.py --output outputs\primary_analysis\local_reproduction
 ```
+
+Choose a **new direct child** of `outputs/primary_analysis` each time. Existing
+destinations are refused, including an empty directory or a nested path inside
+a prior release. Failed rebuilds mark only the new directory incomplete.
+Do not execute `scripts/run_primary_evaluation.py`: it is preserved as historical,
+hash-pinned code and can overwrite the sealed `20261105` derived outputs.
 
 The current notebook checker above executes the six analysis notebooks (01-06) with the registered
 frozen kernel and checks that sealed analysis outputs remain unchanged. A clean GitHub

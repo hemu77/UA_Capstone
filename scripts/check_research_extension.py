@@ -11,7 +11,7 @@ from nbclient import NotebookClient
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from analysis_figures import reviewed_v6 as release
+from analysis_figures import reviewed_v62 as release
 from scripts.check_figure_release_v6 import BANNER, EXPECTED, embedded
 OUT = ROOT/'outputs/research_extension/20261114_v2'
 NOTEBOOK = ROOT/'analysis/06_rq2_sampling_copenhagen.ipynb'
@@ -51,7 +51,7 @@ root = Path.cwd()
 if not (root/'analysis_extension').is_dir():
     root = root.parent
 sys.path.insert(0, str(root))
-from analysis_figures.reviewed_v6 import show
+from analysis_figures.reviewed_v62 import show
 folder = root/'outputs/research_extension/20261114_v2'
 digest = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 assert digest(folder/'manifest.json') == '{pin}'

@@ -1,4 +1,23 @@
-# Review Corrections: v6.1
+# Figure Release Review
+
+## v6.2: reporting freeze for manuscript drafting
+
+[All 19 figures and plotted tables](../../outputs/publication_figures/20261118_v6_2/).
+No new fits or generation. Every plotted CSV is byte-identical to v6.1.
+
+| Review question | Resolution |
+|---|---|
+| Does the Hindi direction depend on one block? | No block changes the sign. Figure 02b shows raw and Holm refit p-values together; only 3/8 pass Holm. Panel c distinguishes the sign-flip resolution limit from contrary evidence. |
+| Is Copenhagen a realism ranking? | Figure 19 describes a sampling stress test: about 25 edges and 47% isolates per 50-node draw. The redundant largest-component panel is omitted, not the data. A connected sampler would change the target population; it is a future sensitivity experiment, not evidence reported here. |
+| Does Global clustering fit change with density? | Figure 12's caption reports FB09 and FB06 distances and avoids interpreting overlapping records as a causal density experiment. |
+| Are graph counts unambiguous? | Opening or clearing the viewer selects the 890 valid primary graphs. The six supplements require an explicit cohort change; the original 896 attempts still include six failures. |
+| Are the visual ranges and labels readable? | Figure 10 displays the full draw range with padding at zero. Figure 15 separates coincident markers and identifies school by its legend symbol. Figure 18 separates its legend from its note. |
+
+For the paper, distinguish graph similarity from human behavioral prediction and
+fixed development baselines from target-informed diagnostics. Deployment is a
+separate release: packaging the viewer does not publish it.
+
+## v6.1 historical corrections
 
 Original imported commit: `5c6fe253a89d97ab537fc3ed114b50e6f786d7f3`, parent `b24e20d`.
 Its commit, renderer and released artifacts remain intact. Corrective commits are

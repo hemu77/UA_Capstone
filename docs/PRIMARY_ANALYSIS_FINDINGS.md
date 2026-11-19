@@ -154,7 +154,11 @@ and design choices, not a target result or a promised publication outcome.
   [Claude review prompt](CLAUDE_PRIMARY_ANALYSIS_REVIEW_PROMPT.md).
 - [Offline checks and review scope](PRIMARY_ANALYSIS_VERIFICATION.md).
 
-Run `scripts/run_primary_evaluation.py` with the pinned Python environment and
-hash-verified release files installed. No API key, paid call or SQLite query is
-used. Completed artifact hashes are checked by both notebooks; plot notebook
-rerenders go to a temporary directory and cannot rewrite sealed analysis files.
+Run `scripts/run_primary_evaluation_v2.py --output outputs/primary_analysis/local_reproduction`
+with the pinned Python environment and hash-verified release files installed.
+The destination must be a new direct child of `outputs/primary_analysis`;
+existing paths are refused. Do not execute the historical, hash-pinned
+`scripts/run_primary_evaluation.py`, which can overwrite the sealed derived release.
+No API key, paid call or SQLite query is used. Completed artifact hashes are
+checked by both notebooks; plot notebook rerenders go to a temporary directory
+and cannot rewrite sealed analysis files.

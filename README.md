@@ -1,4 +1,4 @@
-# Network Observatory
+# Cross-Cultural and Linguistic LLM Network Study
 
 How do language models generate friendship networks when prompts change country
 framing, instruction language, model and generation method? This project extends
@@ -28,7 +28,7 @@ empty graph is not a failed attempt. Supplements never replace primary observati
 
 - [Professor's brief](docs/PROFESSOR_RESEARCH_BRIEF.md): research questions, main findings, effect sizes, significance and limitations.
 - [Analysis guide](ANALYSIS_START_HERE.md) and [notebook gallery](analysis/README.md): readiness, primary statistics, comparison figures, held-out evaluation and demographic mixing.
-- [All 19 reviewed figures](outputs/publication_figures/20261115_v6_1/) and [review corrections](docs/figure_redesign/CODEX_REVIEW.md): current v6.1 PNG, SVG, PDF and plotted tables, with earlier releases preserved.
+- [All 19 reviewed figures](outputs/publication_figures/20261118_v6_2/) and [review corrections](docs/figure_redesign/CODEX_REVIEW.md): current v6.2 PNG, SVG, PDF and plotted tables, with earlier releases preserved.
 - [New RQ2, sampling and Copenhagen results](docs/research/EXTENSION_RESULTS_20261114.md): four exploratory figures and [executed notebook 06](analysis/06_rq2_sampling_copenhagen.ipynb), primary only.
 - [Findings in plain language](docs/PRIMARY_ANALYSIS_FINDINGS.md) and [held-out evaluation](docs/HELDOUT_REAL_WORLD_EVALUATION.md).
 - [All graph files and original PNGs](NETWORKS.md), with a [separate supplemental index](docs/network_catalog/supplemental.md).

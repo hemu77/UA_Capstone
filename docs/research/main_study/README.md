@@ -9,7 +9,7 @@ real-network comparisons use this cohort only.
 - [Primary attempt catalog](../../../outputs/analysis_ready/060dcd3a86d5/primary_attempts.csv).
 - [Original graph/record files](../../../outputs/final_study/060dcd3a86d5/main/runs/).
 - [Executed analysis notebooks](../../../analysis/README.md).
-- [All 19 current research figures](../../../outputs/publication_figures/20261115_v6_1/).
+- [All 19 current research figures](../../../outputs/publication_figures/20261118_v6_2/).
 - [Research brief](../../PROFESSOR_RESEARCH_BRIEF.md), [limitations and failure analysis](../../PRIMARY_ANALYSIS_FINDINGS.md).
 
 ## Supplements And Failures

@@ -10,7 +10,7 @@ No provider calls, live-ledger queries or changes to the locked 24 primary tests
 [Execution protocol](../../analysis_extension/protocol.json) |
 [Integrity manifest](../../outputs/research_extension/20261114_v2/manifest.json)
 
-**Reviewed figure release v6.1 (November 15, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](../figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
+**Reviewed figure release v6.2 (November 18, 2026).** Notebooks 01-06 display all 19 redesigned figures, with the Figure 16 sign-count correction and reviewed captions. Primary estimates and tests are unchanged; all earlier sealed artifacts remain intact. See [review corrections](../figure_redesign/CODEX_REVIEW.md). Current checker: `scripts/check_figure_release_v6.py`.
 
 Corrections from that review: efficiency distance largely restates density distance (rank correlation 0.87 across record-procedure pairs), so Global's efficiency result is mostly a density match; the classic Coleman index differs from the index used here (same rank counts).
 
@@ -32,7 +32,7 @@ and where observation size or baseline information changes them."
 
 ## 1. RQ2: Paired Mixing, Not Independent Attribute Importance
 
-![Paired method contrasts](../../outputs/publication_figures/20261115_v6_1/16_rq2_paired_mixing.png)
+![Paired method contrasts](../../outputs/publication_figures/20261118_v6_2/16_rq2_paired_mixing.png)
 
 **Point at the religion panel.** Compared with Global, the mean excess
 same-religion edge share is lower by 0.3110 for Local, 0.3103 for Sequential,
@@ -73,7 +73,7 @@ references. Their agreement does not remove attribute correlation or fixed
 prompt-order confounding. [Coverage](../../outputs/research_extension/20261114_v2/mixing_coverage.csv) |
 [Rank sensitivity](../../outputs/research_extension/20261114_v2/mixing_rank_sensitivity.csv).
 
-![Category mixing matrices](../../outputs/publication_figures/20261115_v6_1/17_rq2_mixing_matrices.png)
+![Category mixing matrices](../../outputs/publication_figures/20261118_v6_2/17_rq2_mixing_matrices.png)
 
 **Point at the religion diagonals across procedures**, not darkness across
 different attributes. Each undirected edge contributes in both directions;
@@ -89,7 +89,7 @@ attribute importance or cultural fidelity.
 
 ## 2. Sampling: 50 People Do Not Preserve The Whole Network
 
-![Full observed networks versus induced samples](../../outputs/publication_figures/20261115_v6_1/18_sampling_distortion.png)
+![Full observed networks versus induced samples](../../outputs/publication_figures/20261118_v6_2/18_sampling_distortion.png)
 
 Black diamonds show full observed records. Colored points and spans show means
 and full ranges of 32 overlapping induced draws at 25, 40 and 50 nodes. Smaller
@@ -141,7 +141,7 @@ isolates**. No political/religion labels are released. This is an
 **endpoint-conditioned structural comparison**, not RQ2 human validation.
 [Acquisition and suitability record](../../outputs/research_extension/20261114_v2/copenhagen_source.json).
 
-![Copenhagen six-metric comparison](../../outputs/publication_figures/20261115_v6_1/19_copenhagen_transfer.png)
+![Copenhagen sampling stress test (five displayed metrics; all six tabulated)](../../outputs/publication_figures/20261118_v6_2/19_copenhagen_transfer.png)
 
 All numbers below are mean W1 at n=50; smaller is closer on that metric alone.
 LLM values average four model-specific distances after equal weighting of seven

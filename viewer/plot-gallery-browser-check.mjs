@@ -10,7 +10,9 @@ try{
   await page.goto(base+'/layers.html');await page.waitForSelector('#layers button');
   assert.ok(!requests.some(u=>u.includes('saved-networks.json')),'Catalog should load on demand');
   await page.getByRole('link',{name:'896 networks in 3D'}).click();
-  await page.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('896 matching'));
+  await page.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('890 matching'));
+  await page.locator('#plot-cohort').selectOption('all');
+  assert.match(await page.locator('#plot-status').innerText(),/896 matching/);
   assert.equal(await page.locator('.plot-card').count(),8);assert.equal(await page.locator('#plot-grid img').count(),0);
   for(const method of ['global','local','sequential','iterative']){
     await page.locator('#plot-method').selectOption(method);
@@ -18,6 +20,7 @@ try{
   }
   await page.locator('#plot-clear').click();
   const before=await page.locator('#timeline').inputValue(),layers=await page.locator('#layers').innerText();
+  assert.equal(await page.locator('#plot-cohort').inputValue(),'primary');
   await page.locator('.network-open').first().click();await page.waitForSelector('#network-stage canvas[data-run]');
   const canvas=page.locator('#network-stage canvas');
   assert.equal(await canvas.getAttribute('data-nodes'),'50');assert.equal(await page.locator('#plot-replay').isVisible(),true);
@@ -64,7 +67,7 @@ try{
   await retry.goto(base+'/layers.html#saved-plots');await retry.waitForSelector('#plot-retry:not([hidden])');
   assert.match(await retry.locator('#plot-status').innerText(),/could not be verified/);
   await retry.unroute('**/data/saved-networks.json');await retry.locator('#plot-retry').click();
-  await retry.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('896 matching'));
+  await retry.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('890 matching'));
   const corrupt=await browser.newPage();
   await corrupt.route('**/data/saved-networks.json',r=>r.fulfill({status:200,contentType:'application/json',body:'{}'}));
   await corrupt.goto(base+'/layers.html#saved-plots');await corrupt.waitForSelector('#plot-retry:not([hidden])');

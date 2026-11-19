@@ -1,6 +1,6 @@
 # Current Demo And Deployment
 
-[Open Network Observatory](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)
+[Open the Cross-Cultural and Linguistic LLM Network Study demo](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)
 or [explore all 896 networks in 3D](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
 
 ## Scope
@@ -16,6 +16,10 @@ and select a persona to inspect its actual saved neighbors. One reusable canvas
 renders one selected graph; graphs are never merged into a fictitious network.
 Supplements never enter primary replay, comparisons or statistics. Twelve primary
 and one supplemental graph are valid empty graphs and retain all 50 nodes.
+
+For the next deployment, opening or clearing the browser must show **890 primary
+graphs**. Select the combined display explicitly to see all 896 valid graphs.
+The local browser test covers both counts; recheck the hosted URL after promotion.
 Original PNG and adjacency links remain in GitHub; PNG tiles are no longer deployed.
 
 Calibration, engineering pilots and their old interface live in

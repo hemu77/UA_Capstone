@@ -62,7 +62,7 @@ class FigureReviewFixes(unittest.TestCase):
         nb = notebook()
         setup = next(c.source for c in nb.cells if c.id == 'integrity')
         self.assertLess(setup.index('sys.path.insert(0, str(root))'),
-                        setup.index('from analysis_figures.reviewed_v6 import show'))
+                        setup.index('from analysis_figures.reviewed_v62 import show'))
         self.assertIn('ratios do NOT sum to one', next(c.source for c in nb.cells if c.id == 'matrices-intro'))
 
     def test_no_overwrite_of_published_or_outside_directory(self):
