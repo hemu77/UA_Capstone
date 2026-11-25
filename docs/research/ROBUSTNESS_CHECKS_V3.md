@@ -50,3 +50,37 @@ schedule blocks. Each needs new generation.
 
 `paper/icml2026/` holds the manuscript source that reports these results (figures are read from
 `outputs/publication_figures/20261118_v6_2/` and this release).
+
+---
+
+# Tie-level checks v4 (exploratory, offline)
+
+Release: `outputs/research_extension/20261125_v4/`. Rebuild with
+`python scripts/run_tie_level_checks.py --output outputs/research_extension/<new>` (under ten seconds). Same boundary as v3.
+
+## 4. Joint dyadic model (878 nonempty graphs, 1,225 pairs each)
+
+Ridge-penalised logistic regression (C = 10) of tie presence on shared politics, shared religion, shared gender and
+age gap. Mean log-odds; 95% block-bootstrap interval over eight schedule blocks for politics minus religion.
+
+| Procedure | Politics | Religion | Gender | Politics minus religion | Cells with politics largest (of 28) |
+|---|---|---|---|---|---|
+| Global | 2.16 | 3.79 | 1.59 | -1.63 [-1.88, -1.35] | 0 |
+| Local | 2.67 | 2.24 | 0.82 | 0.43 [0.29, 0.58] | 22 |
+| Sequential | 2.34 | 2.09 | 0.70 | 0.25 [0.15, 0.35] | 20 |
+| Iterative | 3.51 | 1.48 | 0.58 | 2.03 [1.82, 2.28] | 28 |
+
+The sign of the gap agrees in 8 of 8 blocks for every procedure. Note the qualification: under the joint model politics
+leads in 22 and 20 cells for Local and Sequential, not 28. Eight blocks make the bootstrap intervals optimistic.
+
+## 5. Tie overlap across settings
+
+Jaccard overlap of edge sets between runs on different blocks. Within a setting: 0.32 to 0.41. Reference versus another
+setting, as a fraction of the within-setting value: Global 1.01, Local 0.99, Iterative 0.99, Sequential 0.97
+(Sequential under Hindi 0.91, Japanese 0.94).
+
+## 6. Detectable differences for the planned contrasts
+
+80% power, two-sided paired t at 0.05/24, observed block variability. Median detectable clustering difference: Local
+0.029, Sequential 0.045, Iterative 0.051 (6% to 9% of the reference mean). Global density: 0.031 against a reference
+mean of 0.059, so the Global nulls are not informative about moderate effects.

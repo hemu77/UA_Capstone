@@ -1,0 +1,209 @@
+method,model,setting,kind,pairs,mean_jaccard
+global,gpt-4.1,brazil:english,within setting,28,0.2943119807414387
+global,gpt-4.1,brazil:english,reference vs setting,56,0.30157780106516696
+global,gpt-4.1,india:english,within setting,28,0.2951197129205455
+global,gpt-4.1,india:english,reference vs setting,56,0.30744252868198
+global,gpt-4.1,japan:english,within setting,28,0.28078206681821793
+global,gpt-4.1,japan:english,reference vs setting,56,0.2986979542695537
+global,gpt-4.1,us:english,within setting,28,0.30220443653454226
+global,gpt-4.1,us:hindi,within setting,28,0.30277067694183996
+global,gpt-4.1,us:hindi,reference vs setting,56,0.31214889059739764
+global,gpt-4.1,us:japanese,within setting,28,0.30864411928676905
+global,gpt-4.1,us:japanese,reference vs setting,56,0.30430543692753875
+global,gpt-4.1,us:portuguese,within setting,28,0.32901590738306224
+global,gpt-4.1,us:portuguese,reference vs setting,56,0.32009231890776785
+global,gpt-5.6-luna,brazil:english,within setting,28,0.27038072275403124
+global,gpt-5.6-luna,brazil:english,reference vs setting,56,0.27678720513695615
+global,gpt-5.6-luna,india:english,within setting,21,0.25539158468735224
+global,gpt-5.6-luna,india:english,reference vs setting,49,0.2706750221531748
+global,gpt-5.6-luna,japan:english,within setting,28,0.27633714398903725
+global,gpt-5.6-luna,japan:english,reference vs setting,56,0.2804267754639694
+global,gpt-5.6-luna,us:english,within setting,28,0.2859385520936333
+global,gpt-5.6-luna,us:hindi,within setting,21,0.2797802248576038
+global,gpt-5.6-luna,us:hindi,reference vs setting,49,0.2837501767211692
+global,gpt-5.6-luna,us:japanese,within setting,21,0.2860004968594155
+global,gpt-5.6-luna,us:japanese,reference vs setting,49,0.2872200289460131
+global,gpt-5.6-luna,us:portuguese,within setting,15,0.2791709020983841
+global,gpt-5.6-luna,us:portuguese,reference vs setting,42,0.2911732062255309
+global,gpt-6-luna,brazil:english,within setting,15,0.23474225180921945
+global,gpt-6-luna,brazil:english,reference vs setting,31,0.26035340227848824
+global,gpt-6-luna,india:english,within setting,21,0.2834007731337131
+global,gpt-6-luna,india:english,reference vs setting,36,0.277742289014913
+global,gpt-6-luna,japan:english,within setting,15,0.22996240400023488
+global,gpt-6-luna,japan:english,reference vs setting,32,0.26438271131223334
+global,gpt-6-luna,us:english,within setting,15,0.27117528528014206
+global,gpt-6-luna,us:hindi,within setting,21,0.2871235940734822
+global,gpt-6-luna,us:hindi,reference vs setting,36,0.2795473897945048
+global,gpt-6-luna,us:japanese,within setting,21,0.298001817672492
+global,gpt-6-luna,us:japanese,reference vs setting,36,0.2819392395507007
+global,gpt-6-luna,us:portuguese,within setting,15,0.273234445767203
+global,gpt-6-luna,us:portuguese,reference vs setting,32,0.2748621892438944
+global,gpt-6-sol,brazil:english,within setting,28,0.5189664741139015
+global,gpt-6-sol,brazil:english,reference vs setting,56,0.5126662641764875
+global,gpt-6-sol,india:english,within setting,28,0.4873129347328673
+global,gpt-6-sol,india:english,reference vs setting,56,0.49351556382660305
+global,gpt-6-sol,japan:english,within setting,28,0.45350962874350925
+global,gpt-6-sol,japan:english,reference vs setting,56,0.47757544512468886
+global,gpt-6-sol,us:english,within setting,28,0.5090752895419143
+global,gpt-6-sol,us:hindi,within setting,28,0.5403237115780818
+global,gpt-6-sol,us:hindi,reference vs setting,56,0.5143869186615205
+global,gpt-6-sol,us:japanese,within setting,21,0.5120956272248642
+global,gpt-6-sol,us:japanese,reference vs setting,49,0.5023790166209777
+global,gpt-6-sol,us:portuguese,within setting,28,0.513346786445544
+global,gpt-6-sol,us:portuguese,reference vs setting,56,0.5062068834853604
+iterative,gpt-4.1,brazil:english,within setting,28,0.27173278090438574
+iterative,gpt-4.1,brazil:english,reference vs setting,56,0.27476060676523834
+iterative,gpt-4.1,india:english,within setting,28,0.26754525913764077
+iterative,gpt-4.1,india:english,reference vs setting,56,0.2718548368617795
+iterative,gpt-4.1,japan:english,within setting,28,0.2724340700418138
+iterative,gpt-4.1,japan:english,reference vs setting,56,0.27506157894243055
+iterative,gpt-4.1,us:english,within setting,28,0.28072438262462024
+iterative,gpt-4.1,us:hindi,within setting,28,0.2056774953419706
+iterative,gpt-4.1,us:hindi,reference vs setting,56,0.23087904264170472
+iterative,gpt-4.1,us:japanese,within setting,21,0.23274536033598023
+iterative,gpt-4.1,us:japanese,reference vs setting,49,0.2487571454858745
+iterative,gpt-4.1,us:portuguese,within setting,28,0.2745370913389536
+iterative,gpt-4.1,us:portuguese,reference vs setting,56,0.27635332868319107
+iterative,gpt-5.6-luna,brazil:english,within setting,28,0.4323607856709226
+iterative,gpt-5.6-luna,brazil:english,reference vs setting,56,0.4421118396787978
+iterative,gpt-5.6-luna,india:english,within setting,28,0.45549069707845635
+iterative,gpt-5.6-luna,india:english,reference vs setting,56,0.4536500311588551
+iterative,gpt-5.6-luna,japan:english,within setting,28,0.45850737023090876
+iterative,gpt-5.6-luna,japan:english,reference vs setting,56,0.4540294341868155
+iterative,gpt-5.6-luna,us:english,within setting,28,0.45192630944201345
+iterative,gpt-5.6-luna,us:hindi,within setting,28,0.3278902716047289
+iterative,gpt-5.6-luna,us:hindi,reference vs setting,56,0.3724554739271455
+iterative,gpt-5.6-luna,us:japanese,within setting,28,0.4059329382495929
+iterative,gpt-5.6-luna,us:japanese,reference vs setting,56,0.42483683513636145
+iterative,gpt-5.6-luna,us:portuguese,within setting,28,0.40034428715266884
+iterative,gpt-5.6-luna,us:portuguese,reference vs setting,56,0.42267778325498045
+iterative,gpt-6-luna,brazil:english,within setting,28,0.45606787606379645
+iterative,gpt-6-luna,brazil:english,reference vs setting,56,0.44911141114805003
+iterative,gpt-6-luna,india:english,within setting,28,0.43582830872330336
+iterative,gpt-6-luna,india:english,reference vs setting,56,0.435455682872373
+iterative,gpt-6-luna,japan:english,within setting,28,0.4453951298476087
+iterative,gpt-6-luna,japan:english,reference vs setting,56,0.4441078547649022
+iterative,gpt-6-luna,us:english,within setting,28,0.4423589381830553
+iterative,gpt-6-luna,us:hindi,within setting,28,0.36543461268371863
+iterative,gpt-6-luna,us:hindi,reference vs setting,56,0.39408075288747835
+iterative,gpt-6-luna,us:japanese,within setting,28,0.36545406394047264
+iterative,gpt-6-luna,us:japanese,reference vs setting,56,0.3988110652384206
+iterative,gpt-6-luna,us:portuguese,within setting,28,0.4034380222344828
+iterative,gpt-6-luna,us:portuguese,reference vs setting,56,0.4191938380205085
+iterative,gpt-6-sol,brazil:english,within setting,28,0.5317950333198156
+iterative,gpt-6-sol,brazil:english,reference vs setting,56,0.519239688689421
+iterative,gpt-6-sol,india:english,within setting,28,0.5062089203240099
+iterative,gpt-6-sol,india:english,reference vs setting,56,0.5124804296286196
+iterative,gpt-6-sol,japan:english,within setting,28,0.5073798167389586
+iterative,gpt-6-sol,japan:english,reference vs setting,56,0.5091331185489457
+iterative,gpt-6-sol,us:english,within setting,28,0.517717076574808
+iterative,gpt-6-sol,us:hindi,within setting,28,0.512323695388468
+iterative,gpt-6-sol,us:hindi,reference vs setting,56,0.5095313588886304
+iterative,gpt-6-sol,us:japanese,within setting,28,0.5578729426331809
+iterative,gpt-6-sol,us:japanese,reference vs setting,56,0.5303744628932864
+iterative,gpt-6-sol,us:portuguese,within setting,28,0.5463969086771052
+iterative,gpt-6-sol,us:portuguese,reference vs setting,56,0.526107638558491
+local,gpt-4.1,brazil:english,within setting,28,0.3359780080892384
+local,gpt-4.1,brazil:english,reference vs setting,56,0.33776084423531255
+local,gpt-4.1,india:english,within setting,28,0.3358159320101469
+local,gpt-4.1,india:english,reference vs setting,56,0.33657216454839173
+local,gpt-4.1,japan:english,within setting,28,0.32691005523965433
+local,gpt-4.1,japan:english,reference vs setting,56,0.33073706015234133
+local,gpt-4.1,us:english,within setting,28,0.3425867299812417
+local,gpt-4.1,us:hindi,within setting,28,0.2664788467393542
+local,gpt-4.1,us:hindi,reference vs setting,56,0.2944185096472185
+local,gpt-4.1,us:japanese,within setting,28,0.29130952967549717
+local,gpt-4.1,us:japanese,reference vs setting,56,0.31132384236895116
+local,gpt-4.1,us:portuguese,within setting,28,0.3492693671738519
+local,gpt-4.1,us:portuguese,reference vs setting,56,0.34463397099580145
+local,gpt-5.6-luna,brazil:english,within setting,28,0.3190290582808449
+local,gpt-5.6-luna,brazil:english,reference vs setting,56,0.3229907350463037
+local,gpt-5.6-luna,india:english,within setting,28,0.30726837247152566
+local,gpt-5.6-luna,india:english,reference vs setting,56,0.31485598727910347
+local,gpt-5.6-luna,japan:english,within setting,28,0.3146890587034211
+local,gpt-5.6-luna,japan:english,reference vs setting,56,0.3187909284304476
+local,gpt-5.6-luna,us:english,within setting,28,0.32511836983469733
+local,gpt-5.6-luna,us:hindi,within setting,28,0.29082369008940256
+local,gpt-5.6-luna,us:hindi,reference vs setting,56,0.3062197571532815
+local,gpt-5.6-luna,us:japanese,within setting,28,0.3117788338628119
+local,gpt-5.6-luna,us:japanese,reference vs setting,56,0.3156617046470263
+local,gpt-5.6-luna,us:portuguese,within setting,28,0.3092079505616689
+local,gpt-5.6-luna,us:portuguese,reference vs setting,56,0.3150768163538956
+local,gpt-6-luna,brazil:english,within setting,28,0.35256785844991917
+local,gpt-6-luna,brazil:english,reference vs setting,56,0.3475949627145655
+local,gpt-6-luna,india:english,within setting,28,0.34904261617834115
+local,gpt-6-luna,india:english,reference vs setting,56,0.34223294914342667
+local,gpt-6-luna,japan:english,within setting,28,0.34347785532783837
+local,gpt-6-luna,japan:english,reference vs setting,56,0.3423556712154695
+local,gpt-6-luna,us:english,within setting,28,0.34419714475538565
+local,gpt-6-luna,us:hindi,within setting,28,0.3228934355323357
+local,gpt-6-luna,us:hindi,reference vs setting,56,0.32922716885301817
+local,gpt-6-luna,us:japanese,within setting,28,0.3335614563560024
+local,gpt-6-luna,us:japanese,reference vs setting,56,0.3375830503488049
+local,gpt-6-luna,us:portuguese,within setting,28,0.32765025637368433
+local,gpt-6-luna,us:portuguese,reference vs setting,56,0.33422166784237656
+local,gpt-6-sol,brazil:english,within setting,28,0.40551131387489764
+local,gpt-6-sol,brazil:english,reference vs setting,56,0.40895221816347277
+local,gpt-6-sol,india:english,within setting,28,0.4056598394455336
+local,gpt-6-sol,india:english,reference vs setting,56,0.40901977853191646
+local,gpt-6-sol,japan:english,within setting,28,0.4028280818924848
+local,gpt-6-sol,japan:english,reference vs setting,56,0.4092534941236912
+local,gpt-6-sol,us:english,within setting,28,0.41914026206443367
+local,gpt-6-sol,us:hindi,within setting,28,0.4120283683370224
+local,gpt-6-sol,us:hindi,reference vs setting,56,0.413125636434552
+local,gpt-6-sol,us:japanese,within setting,28,0.3906201476550728
+local,gpt-6-sol,us:japanese,reference vs setting,56,0.4011596400095016
+local,gpt-6-sol,us:portuguese,within setting,28,0.40499534675657844
+local,gpt-6-sol,us:portuguese,reference vs setting,56,0.4126312663505751
+sequential,gpt-4.1,brazil:english,within setting,28,0.29839544255201483
+sequential,gpt-4.1,brazil:english,reference vs setting,56,0.2900559471090478
+sequential,gpt-4.1,india:english,within setting,28,0.28644365387752585
+sequential,gpt-4.1,india:english,reference vs setting,56,0.27764014243460805
+sequential,gpt-4.1,japan:english,within setting,28,0.2966905659319732
+sequential,gpt-4.1,japan:english,reference vs setting,56,0.2872179591073816
+sequential,gpt-4.1,us:english,within setting,28,0.28370306903880566
+sequential,gpt-4.1,us:hindi,within setting,28,0.12366552239601347
+sequential,gpt-4.1,us:hindi,reference vs setting,56,0.13870038934308923
+sequential,gpt-4.1,us:japanese,within setting,28,0.14042664320176879
+sequential,gpt-4.1,us:japanese,reference vs setting,56,0.16502944850357762
+sequential,gpt-4.1,us:portuguese,within setting,28,0.259910624273879
+sequential,gpt-4.1,us:portuguese,reference vs setting,56,0.2680769478227233
+sequential,gpt-5.6-luna,brazil:english,within setting,28,0.2915972729490604
+sequential,gpt-5.6-luna,brazil:english,reference vs setting,56,0.2916690464143157
+sequential,gpt-5.6-luna,india:english,within setting,28,0.27134364089028207
+sequential,gpt-5.6-luna,india:english,reference vs setting,56,0.2821513743286173
+sequential,gpt-5.6-luna,japan:english,within setting,28,0.2908245027710579
+sequential,gpt-5.6-luna,japan:english,reference vs setting,56,0.2911335037953637
+sequential,gpt-5.6-luna,us:english,within setting,28,0.2909812266337908
+sequential,gpt-5.6-luna,us:hindi,within setting,28,0.2285091213563797
+sequential,gpt-5.6-luna,us:hindi,reference vs setting,56,0.25466072498912373
+sequential,gpt-5.6-luna,us:japanese,within setting,28,0.2713860806251958
+sequential,gpt-5.6-luna,us:japanese,reference vs setting,56,0.2822287953493806
+sequential,gpt-5.6-luna,us:portuguese,within setting,28,0.28898600937772656
+sequential,gpt-5.6-luna,us:portuguese,reference vs setting,56,0.28746799269693063
+sequential,gpt-6-luna,brazil:english,within setting,28,0.31249032735872834
+sequential,gpt-6-luna,brazil:english,reference vs setting,56,0.32023675818605196
+sequential,gpt-6-luna,india:english,within setting,28,0.318282894122191
+sequential,gpt-6-luna,india:english,reference vs setting,56,0.3213122493661116
+sequential,gpt-6-luna,japan:english,within setting,28,0.32707383674043466
+sequential,gpt-6-luna,japan:english,reference vs setting,56,0.322630741717311
+sequential,gpt-6-luna,us:english,within setting,28,0.32661450525662267
+sequential,gpt-6-luna,us:hindi,within setting,28,0.2611540180616264
+sequential,gpt-6-luna,us:hindi,reference vs setting,56,0.28869673771312815
+sequential,gpt-6-luna,us:japanese,within setting,28,0.28613704023047115
+sequential,gpt-6-luna,us:japanese,reference vs setting,56,0.3013662215260613
+sequential,gpt-6-luna,us:portuguese,within setting,28,0.32588305326981476
+sequential,gpt-6-luna,us:portuguese,reference vs setting,56,0.321527268509616
+sequential,gpt-6-sol,brazil:english,within setting,28,0.41055637338361695
+sequential,gpt-6-sol,brazil:english,reference vs setting,56,0.41026803883737545
+sequential,gpt-6-sol,india:english,within setting,28,0.4057385483747869
+sequential,gpt-6-sol,india:english,reference vs setting,56,0.4074377368511766
+sequential,gpt-6-sol,japan:english,within setting,28,0.40787866704335596
+sequential,gpt-6-sol,japan:english,reference vs setting,56,0.4085514856137629
+sequential,gpt-6-sol,us:english,within setting,28,0.41051928806097004
+sequential,gpt-6-sol,us:hindi,within setting,28,0.3905697820813896
+sequential,gpt-6-sol,us:hindi,reference vs setting,56,0.4010600723601709
+sequential,gpt-6-sol,us:japanese,within setting,28,0.40610079978475133
+sequential,gpt-6-sol,us:japanese,reference vs setting,56,0.40539902517662724
+sequential,gpt-6-sol,us:portuguese,within setting,28,0.404485380071072
+sequential,gpt-6-sol,us:portuguese,reference vs setting,56,0.4057695393500715
