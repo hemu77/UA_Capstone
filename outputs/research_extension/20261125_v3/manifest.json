@@ -1,0 +1,35 @@
+{
+  "artifacts": {
+    "20_sampling_scheme.pdf": "68d199f08ec510f4fe103f35e214ef5c94ea1fee95b91c622afd6fc4a0343e33",
+    "20_sampling_scheme.png": "153c5b91c8d5af6d7b8d1b29663daa20b61d4a5d9944bc509a51db2dd9487e80",
+    "20_sampling_scheme.svg": "873af70522f02327ee93c890013826e09bc17b85ccd1806e212069b0bfe8b8f2",
+    "mixing_stratified_cells.csv": "593915d899eb3806ae58b6ba0f874677438fe963d55b1765b89c1492f9bed3f6",
+    "mixing_stratified_permutation.csv": "b837446cacf24b3b234f3ed689f1b30cf665eb7a1c397cd7f47f63e28991e414",
+    "mixing_stratified_summary.csv": "fb52fad1b5f3cb42e16e2e0169421edb2da8b52854167b5042819171e47122e6",
+    "sampling_scheme_distances.csv": "480e26e6a3181e60bac1281a4784b03b19d5767f1291e0dbddfb7011a0ae83ed",
+    "snowball_sample_metrics.csv": "cb603f6650f5a33e70acdd54788e48c60f7a2c53133d01ccd62c010b27de2b39",
+    "target_er_all_metrics_banks.csv": "23555a0daacd812e85cc31fa224db8ff8648f8b5818937bb3bb6e10624950441",
+    "target_er_all_metrics_records.csv": "047d3ac94a27405b5e1a4076198eb4a90dfcc3350ec4c36ff5ee0c0e7763f74b",
+    "target_er_graph_metrics.csv": "324740bac0580ef97a35fc26a11eb3885d5e640cdb22323a708b8869f35fc90f"
+  },
+  "code_sha256": {
+    "analysis_robustness/__init__.py": "a1e1559301e4888244e22a542e6e9c1b9de65e870d620c90bb4117d9ac039ee9",
+    "analysis_robustness/core.py": "4f7646deda5b2734214af8709a4f7a12b7f981133f40203327df9cd5004cf605",
+    "analysis_robustness/figures.py": "869620d3c5b49205702a2216f90022ad3e7afc31bdbb20e50a1abfb9923a17df",
+    "scripts/run_robustness_checks.py": "af7bee4e380f640ad43cbe16805e06ea93d0294117602d618a6df87767b7c8d9"
+  },
+  "created_utc": "2026-11-25T21:11:38.648532+00:00",
+  "ledger_queries": 0,
+  "new_generation": 0,
+  "paid_calls": 0,
+  "permutations_per_graph": 500,
+  "preregistered": false,
+  "primary_attempts": 896,
+  "primary_empty": 12,
+  "primary_failed": 6,
+  "primary_valid": 890,
+  "python_version": "3.11.9",
+  "snowball_draws_per_record": 32,
+  "status": "COMPLETE_EXPLORATORY_ROBUSTNESS_CHECKS",
+  "supplemental_graphs": 0
+}
