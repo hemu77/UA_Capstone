@@ -2,9 +2,9 @@
 
 How does a language model decide who becomes friends? We held a roster of 50 fictional adults fixed and varied the model, generation method, country framing and instruction language. The study extends [Stanford SNAP's social-network generator](https://github.com/snap-stanford/llm-social-network).
 
-**[Open the live 3D demo](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)** · **[Browse saved networks](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots)** · **[Read the research brief](docs/PROFESSOR_RESEARCH_BRIEF.md)**
+**[Open the live 3D demo](https://hemu77.github.io/UA_Capstone/layers.html)** · **[Browse saved networks](https://hemu77.github.io/UA_Capstone/layers.html#saved-plots)** · **[Read the research brief](docs/PROFESSOR_RESEARCH_BRIEF.md)**
 
-[![A saved primary friendship network rotating in the live 3D viewer](docs/media/primary-network.gif)](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots)
+[![A saved primary friendship network rotating in the live 3D viewer](docs/media/primary-network.gif)](https://hemu77.github.io/UA_Capstone/layers.html#saved-plots)
 
 *Drag to rotate; select a person to inspect their neighbors. The edges are saved study results, not a live simulation or a new model call.*
 
