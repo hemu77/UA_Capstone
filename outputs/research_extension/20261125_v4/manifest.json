@@ -1,0 +1,35 @@
+{
+  "artifacts": {
+    "detectable_differences.csv": "7bf20939977aa517f1c8290a2cb6b47c4bc74b504261d5e2b7a233ab17f3671f",
+    "detectable_summary.csv": "385770005fcb045756007487dbb7ffa8b6316f5d65d4d019a55b4c671e398383",
+    "dyad_cells.csv": "18edaa506d0cb80d541cbe25b4e1309296f83655eba2f899c34b0b491d97d7a5",
+    "dyad_contrasts.csv": "7c1ecd85bbc8d6234dff38055e971e7624f991f47acca9e5b8cd7ca2dcc4f489",
+    "dyad_models.csv": "ede79ece7d7f4b1c17e274dc91fcd0d87c3f0fbdd07e15e4ed57ccfdfced9da1",
+    "dyad_terms.csv": "e388045a06fd0f3651cd38229788c1a87cfffb02c376f2d1c229c5d8de4045bc",
+    "tie_overlap_by_setting.csv": "f9f406793a68e25d6dc230ea4e45bda422e2ab742dc087c343202491c3b46184",
+    "tie_overlap_cells.csv": "efb4469ccd288c249ff55554552fe66ba01d39b349c88d47a68c89abee4b8a34",
+    "tie_overlap_pairs.csv": "145dda0a60206b0a190a697be71bfe539745984f2cf0df74adb743f6fbb3297e",
+    "tie_overlap_summary.csv": "f266f3df4439a9965ddecc0c18ae215629de486d605a2d9d59f9504cdd840028"
+  },
+  "bootstrap_draws": 10000,
+  "code_sha256": {
+    "analysis_robustness/__init__.py": "a1e1559301e4888244e22a542e6e9c1b9de65e870d620c90bb4117d9ac039ee9",
+    "analysis_robustness/core.py": "4f7646deda5b2734214af8709a4f7a12b7f981133f40203327df9cd5004cf605",
+    "analysis_robustness/dyads.py": "8d85b66125619c6b75b12a68cc57a336fdee4d011e7542b106d0d9983e67b8cc",
+    "analysis_robustness/figures.py": "869620d3c5b49205702a2216f90022ad3e7afc31bdbb20e50a1abfb9923a17df",
+    "scripts/run_tie_level_checks.py": "5954f82748ff4389db59bb7715939ab8374b9715490f06cfd498c4279ef013cd"
+  },
+  "created_utc": "2026-11-25T21:30:05.756257+00:00",
+  "graphs_modelled": 878,
+  "ledger_queries": 0,
+  "new_generation": 0,
+  "paid_calls": 0,
+  "preregistered": false,
+  "primary_attempts": 896,
+  "primary_empty": 12,
+  "primary_failed": 6,
+  "primary_valid": 890,
+  "python_version": "3.11.9",
+  "status": "COMPLETE_EXPLORATORY_TIE_LEVEL_CHECKS",
+  "supplemental_graphs": 0
+}
