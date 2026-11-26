@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0f10"><meta name="color-scheme" content="dark"><title>Cross-Cultural and Linguistic LLM Network Study / Recorded network lab</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230b0f10%27/%3E%3Cpath d=%27M16 6 27 11 16 16 5 11Z%27 fill=%27none%27 stroke=%27%237fe3c4%27 stroke-width=%272%27/%3E%3Cpath d=%27M5 16 16 21 27 16M5 21 16 26 27 21%27 fill=%27none%27 stroke=%27%237fe3c4%27 stroke-width=%272%27 opacity=%27.6%27/%3E%3C/svg%3E"><link rel="stylesheet" href="./layers.css?v=8fa1a1a66ea0"><link rel="stylesheet" href="./layers-3d.css?v=8fa1a1a66ea0"><link rel="stylesheet" href="./layers-filters.css?v=8fa1a1a66ea0"><link rel="stylesheet" href="./layers-insight.css?v=8fa1a1a66ea0"><script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script><link rel="modulepreload" href="./vendor/three.module.js"><link rel="modulepreload" href="./vendor/three.core.js"></head>
+<body data-view="stack">
+<a class="skip" href="#stage">Skip to the 3D stage</a><a class="skip" href="#panel-filters">Skip to filters</a>
+<header class="shell-header" id="shell-header">
+  <a class="brand" href="./layers.html" aria-label="Cross-Cultural and Linguistic LLM Network Study"><span>Cross-Cultural and Linguistic<span class="brand-sub">LLM Network Study</span></span></a>
+  <span class="brand-tag" aria-hidden="true">Recorded network lab</span>
+  <nav class="site-nav" aria-label="Site">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <ul class="site-menu" id="site-menu">
+      <li><a href="#study-ledger" data-panel-link="study">Study ledger</a></li>
+      <li><a href="#primary-findings">Findings</a></li>
+      <li><a href="https://github.com/hemu77/UA_Capstone/blob/main/ANALYSIS_START_HERE.md" target="_blank" rel="noopener">Research &amp; files<span class="vh"> (opens in a new tab)</span></a></li>
+      <li><button id="help-open" type="button" aria-haspopup="dialog" aria-keyshortcuts="?" title="Keyboard shortcuts and gestures (?)">Shortcuts</button></li>
+    </ul>
+    <button id="share" type="button" class="primary" title="Copy a link to the current view: runs, filters, persona and replay position">Share view</button>
+  </nav>
+</header>
+<main id="main">
+<h1 class="vh">Recorded network lab: saved LLM-generated social networks in 3D</h1>
+<!-- Sticky active-filter bar (SPEC C.1). Filled by layers-filters.js; workstream 4 places and styles the box. -->
+<div id="active-filters" class="active-filters" role="group" aria-label="Active filters"></div>
+<div class="shell-alert"><p id="evidence-notice" class="evidence-notice" role="note"></p><button id="retry-load" hidden type="button">Retry saved evidence</button><a id="reset-view" hidden href="./layers.html">Open default comparison</a></div>
+
+<div class="laboratory" id="workspace">
+  <!-- Below 1150 px the panel tabs move here (layers-shell.js); below 700 px this bar is the bottom-sheet handle. -->
+  <div class="shell-tabs" id="shell-tabs" role="tablist" aria-label="Panels"></div>
+
+  <aside class="dock dock-left" id="dock-left" data-dock="left" data-open="true" aria-label="Study ledger, filters and results">
+    <div class="sheet-head"><h2 class="sheet-title" tabindex="-1"></h2><button class="dock-close" type="button" aria-label="Close panel">Close</button></div>
+    <section class="shell-panel panel-study" id="panel-study" data-panel="study" role="tabpanel" aria-labelledby="tab-study" tabindex="-1">
+      <h2 class="panel-heading">Study ledger</h2>
+      <!-- Shown only until layers-insight.js fills the ledger, so the population is stated exactly once. -->
+      <p id="dataset-summary" class="ledger-fallback" role="status">Loading saved evidence...</p>
+      <div id="study-ledger" class="study-ledger" role="group" aria-label="Primary study population"></div>
+    </section>
+    <div class="dock-head">
+      <div class="dock-tabs" role="tablist" aria-label="Explore">
+        <button class="shell-tab tab-study" id="tab-study" type="button" role="tab" data-panel="study" data-dock="left" aria-controls="panel-study" aria-selected="false" tabindex="-1">Study</button>
+        <button class="shell-tab" id="tab-filters" type="button" role="tab" data-panel="filters" data-dock="left" aria-controls="panel-filters" aria-selected="true">Filters</button>
+        <button class="shell-tab" id="tab-results" type="button" role="tab" data-panel="results" data-dock="left" aria-controls="panel-results" aria-selected="false" tabindex="-1">Results</button>
+      </div>
+      <button class="dock-toggle" type="button" data-dock="left" aria-expanded="true" aria-controls="dock-left" aria-label="Hide filters and results"><span aria-hidden="true"></span></button>
+    </div>
+    <section class="shell-panel panel-filters" id="panel-filters" data-panel="filters" role="tabpanel" aria-labelledby="tab-filters" tabindex="-1">
+      <h2 class="vh">Filters</h2>
+      <div id="filter-root" class="filter-root" role="group" aria-label="Filter primary graphs"></div>
+      <div class="comparison-shortcuts" role="group" aria-labelledby="match-heading">
+        <h3 class="panel-subhead" id="match-heading">Matched comparisons</h3>
+        <p class="hint">Stack the active run with its counterparts, holding every other recorded field fixed.</p>
+        <div class="match-buttons">
+          <button type="button" data-match="model" title="Vary model; hold method, framing, language, seed, roster and prompt/source version fixed">Model <span>RQ3</span></button>
+          <button type="button" data-match="culture" title="Vary country framing with English instructions; hold other recorded fields fixed">Country <span>RQ1</span></button>
+          <button type="button" data-match="language" title="Vary instruction language; hold other recorded fields fixed">Language <span>RQ4</span></button>
+          <button type="button" data-match="method" title="Compare generation methods under the same model, framing, language, seed and roster">Method</button>
+        </div>
+        <p id="match-note" role="status"></p>
+      </div>
+    </section>
+    <section class="shell-panel panel-results" id="panel-results" data-panel="results" role="tabpanel" aria-labelledby="tab-results" hidden>
+      <h2 class="vh">Results</h2>
+      <div id="run-results" class="run-results" role="group" aria-label="Matching primary graphs"></div>
+    </section>
+  </aside>
+
+  <div class="stage-column">
+    <div class="stage" id="stage" tabindex="-1" role="region" aria-label="3D stage">
+      <section class="transport" aria-label="Recorded event playback">
+      <div class="transport-buttons"><button id="rewind" type="button" aria-label="Restart at event zero" aria-keyshortcuts="Home">Start</button><button id="previous" type="button" aria-label="Previous recorded event" aria-keyshortcuts="ArrowLeft">Back</button><button id="play" type="button" class="primary" aria-keyshortcuts="Space">Play active run</button><button id="next" type="button" aria-label="Next recorded event" aria-keyshortcuts="ArrowRight">Next</button></div>
+      <div class="scrub"><div class="scrub-labels"><strong id="step-label">Event 0 / 0</strong><span id="playback-scope">Generation order, not elapsed time</span></div><input id="timeline" aria-label="Recorded event position (generation order)" type="range" min="0" max="0" value="0"></div>
+      <label class="inline-field">Speed<select id="speed" title="Presentation speed, not time between API calls"><option value="1400">Slow</option><option value="800" selected>Normal</option><option value="400">Fast</option></select></label>
+      <button id="show-final" type="button" title="Jump to the last recorded state" aria-keyshortcuts="End">Final</button>
+    </section>
+      <div class="stage-tools">
+        <div class="mode-switch" role="group" aria-label="View"><button id="atlas-mode" type="button" aria-pressed="false" hidden title="Every primary attempt slot: 112 condition towers of 8 seed planes. Failed attempts are hollow frames.">Atlas</button><button id="compare-mode" type="button" aria-pressed="false" title="Stack saved final networks; corresponding nodes are the same persona">Stack</button><button id="formation-mode" type="button" aria-pressed="true" title="Step through one run's recorded generation order">Replay</button></div>
+        <div class="navigation-bar" role="group" aria-label="Camera and persona"><label class="inline-field">Drag to<select id="drag-mode"><option value="orbit">Rotate</option><option value="pan">Pan</option></select></label><button id="focus-person" type="button" disabled aria-label="Center selected persona" aria-keyshortcuts="F" title="Center the camera on the selected persona (F)">Center persona</button><button id="clear-person" type="button" aria-label="Clear persona selection" aria-keyshortcuts="Escape" title="Return to all personas without changing the selected runs or camera (Esc)">Clear persona</button></div>
+      </div>
+      <div class="stage-heading"><div><span id="active-badge">ACTIVE EXPERIMENT</span><p id="stage-title"></p><p id="event-delta"></p></div><span id="stage-state">Final snapshot</span></div>
+      <div id="viewport" role="img" aria-label="Interactive saved network. Drag to orbit; scroll or pinch to zoom when navigation is on. Use camera buttons and the Persona selector as keyboard alternatives."></div><div id="plane-labels"></div><div id="stage-overlay" class="stage-overlay"></div><div id="node-tooltip" role="status" hidden></div>
+      <div class="stage-key">
+        <p id="replay-note" class="replay-note" role="status"></p>
+        <div class="legend-strip"><div id="legend"></div><span class="legend-note">Same mapping in every run. Positions are a layout, not geography.</span></div>
+        <div class="canvas-legend"><span class="new-key">New ties</span><span class="removed-key">Removed: dashed</span><span>Outline: recorded event actor</span></div>
+        <span id="status" role="status">Loading evidence...</span>
+      </div>
+      <div class="stage-footer"><div class="camera" role="group" aria-label="Camera"><button id="expand-stage" type="button" aria-pressed="false" title="Give the graph the full window width; panels stay one click away">Expand graph</button><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in (+)">+</button><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out (-)">&minus;</button><button id="orbit" type="button" title="Oblique view; restores a readable angle (0)">3D</button><button id="top" type="button" title="View from above; stacked runs can overlap">Top</button><button id="front" type="button" title="Oblique front view; avoids edge-on planes">Front</button><button id="rotate" type="button" aria-pressed="false" title="Slowly rotate the camera, not the recorded data">Orbit</button></div></div>
+    </div>
+    <!-- The one polite live region (app.announce). Shown briefly as a toast; the text stays for assistive technology. -->
+    <p id="action-status" class="toast" role="status" aria-live="polite"></p>
+  </div>
+
+  <aside class="dock dock-right" id="dock-right" data-dock="right" data-open="false" aria-label="Stack, persona and comparison">
+    <div class="sheet-head"><h2 class="sheet-title" tabindex="-1"></h2><button class="dock-close" type="button" aria-label="Close panel">Close</button></div>
+    <div class="dock-head">
+      <button class="dock-toggle" type="button" data-dock="right" aria-expanded="false" aria-controls="dock-right" aria-label="Show stack, persona and comparison"><span aria-hidden="true"></span></button>
+      <div class="dock-tabs" role="tablist" aria-label="Inspect">
+        <button class="shell-tab" id="tab-stack" type="button" role="tab" data-panel="stack" data-dock="right" aria-controls="panel-stack" aria-selected="true">Stack</button>
+        <button class="shell-tab" id="tab-persona" type="button" role="tab" data-panel="persona" data-dock="right" aria-controls="panel-persona" aria-selected="false" tabindex="-1">Persona</button>
+        <button class="shell-tab" id="tab-compare" type="button" role="tab" data-panel="compare" data-dock="right" aria-controls="panel-compare" aria-selected="false" tabindex="-1">Compare</button>
+      </div>
+    </div>
+    <section class="shell-panel panel-stack controls" id="panel-stack" data-panel="stack" role="tabpanel" aria-labelledby="tab-stack">
+      <div class="rail-title"><h2>Stacked runs</h2><span id="layer-count"></span></div>
+      <p class="hint">Select a run to inspect or replay it. Each plane is one saved run.</p>
+      <ol id="layers" aria-label="Stacked runs"></ol>
+      <div class="action-row"><button id="undo" type="button" disabled>Undo remove</button><button id="restore" type="button">Restore</button></div>
+      <h3 class="panel-subhead">Display</h3>
+      <label class="check"><input type="checkbox" id="graph-interaction" checked>Graph gestures</label><p class="hint">Turn off to scroll the page over the graph. Click a node for its neighbors in every visible run.</p>
+      <label>Color nodes by<select id="color" title="The same attribute value uses the same color in every run"><option value="layer">Run identity</option><option value="age" selected>age</option><option value="gender">gender</option><option value="religion">religion</option><option value="political orientation">political orientation</option></select></label>
+      <label>Persona ID labels<select id="node-labels"><option value="auto">Whole graph or selected neighborhood</option><option value="all">Every visible persona</option><option value="none" selected>On hover only</option></select></label>
+      <label>Space between planes <output id="spacing-value">55</output><input id="separation" type="range" min="20" max="100" value="55" title="Visual spacing only. Not a measured social distance."></label>
+      <label>Ties shown<select id="ties" title="Shared means present in every stacked final graph"><option value="all">All recorded ties</option><option value="shared">Shared by every run</option><option value="different">Not shared by every run</option></select></label>
+      <label>Tie opacity<input id="opacity" type="range" min="10" max="90" value="50" title="Display opacity only; does not remove edges from analysis"></label>
+      <p id="comparison-scope" class="hint"></p>
+      <button id="download-selection" type="button" class="wide" title="Download the stacked final graphs, recorded events, measurements and provenance as JSON. No API calls.">Export stacked runs (JSON)</button>
+    </section>
+    <section class="shell-panel panel-persona inspector" id="panel-persona" data-panel="persona" role="tabpanel" aria-labelledby="tab-persona" hidden>
+      <h2 class="vh">Persona</h2>
+      <label>Persona<select id="person" aria-label="Persona"><option value="">Whole network</option></select></label>
+      <div class="persona-actions"><button id="person-prev" type="button" aria-label="Previous persona" aria-keyshortcuts="[" title="Previous persona ([)">Previous</button><button id="person-next" type="button" aria-label="Next persona" aria-keyshortcuts="]" title="Next persona (])">Next</button></div>
+      <div id="person-detail"></div>
+      <button id="play-persona" type="button" class="wide" aria-pressed="false" disabled>Select a persona to follow</button>
+      <label class="check"><input type="checkbox" id="incident" title="Hide edges not involving the selected persona; graph measurements stay unchanged">Only this persona's ties</label>
+      <div id="quick-summary"></div><div id="person-degrees"></div>
+      <h3 class="panel-subhead">Current recorded update</h3>
+      <p id="event-heading" class="event-heading"></p><p id="event-explanation"></p><div id="event-changes"></div>
+    </section>
+    <section class="shell-panel panel-compare" id="panel-compare" data-panel="compare" role="tabpanel" aria-labelledby="tab-compare" hidden>
+      <h2 class="vh">Compare</h2>
+      <div id="insight-root" class="insight-root" role="group" aria-label="Attribute lens and layer comparison"></div>
+    </section>
+  </aside>
+</div>
+
+<div class="analysis">
+<section class="analysis-grid" aria-label="Recorded history of the active run"><article class="analysis-card"><div class="section-top"><div><span class="eyebrow">Recorded trajectory</span><h2 id="trajectory-title">Connections through generation</h2></div><span class="small-tag">Exact counts</span></div><div id="trajectory"></div><p class="hint">The trace includes future recorded steps; the cursor marks the displayed state. Animation blends a batch visually and never invents tie order.</p></article><article class="analysis-card" id="event-ledger"><div class="section-top"><div><span class="eyebrow">Decision ledger</span><h2>Inspect each graph update</h2></div><span id="ledger-count" class="small-tag"></span></div><div id="events" class="event-list" tabindex="0" aria-label="Recorded decisions; select one to seek"></div></article></section>
+<section id="measurements" class="analysis-card"><div class="section-top"><div><span class="eyebrow">Research questions</span><h2>What can these runs tell us?</h2></div><label>Research question<select id="research-question"><option value="method">Generation method / descriptive</option><option value="rq1">RQ1 / Country framing</option><option value="rq2">RQ2 / Demographic homophily</option><option value="rq3">RQ3 / Model consistency</option><option value="rq4">RQ4 / Instruction language</option></select></label></div><p id="rq-explanation"></p><p id="rq-status" role="status"></p><ul id="rq-issues"></ul><div id="rq-pairs"></div><div id="rq-homophily" class="table-wrap" hidden></div><p id="roster-limitations" class="hint"></p>
+<label class="metric-choice">Topology descriptor<select id="metric" title="Saved final-network measurement. Higher does not mean better."></select></label><p id="metric-definition"></p><div id="plot" class="plot" tabindex="0" aria-label="Final network descriptor comparison"></div><p id="metric-deltas" class="hint"></p><p id="comparison"></p><p id="warning"></p><details><summary>Exact final values</summary><div class="table-wrap"><table><caption>Final saved networks, not the current playback state.</caption><thead><tr><th>Experiment</th><th>Nodes</th><th>Edges</th><th>Density</th><th>Clustering</th><th>Final persona neighbors</th></tr></thead><tbody id="rows"></tbody></table></div></details></section>
+<section class="analysis-card evidence-panel" aria-labelledby="tie-heading"><div class="section-top"><div><span class="eyebrow">Tie comparison</span><h2 id="tie-heading">Which connections do the runs share?</h2></div></div><p id="aggregate-note"></p><div id="aggregate-graph"></div><p class="hint">Each row is one undirected connection. Present / Absent refers to the saved final graph, not the playback frame. Selecting a persona restricts the table to their connections.</p><div id="source-gallery" class="source-gallery"></div><details><summary>Source files and limitations</summary><h3>Provenance of the active run</h3><p class="hint">The table uses all stacked runs; this receipt describes the active run.</p><p id="provenance-summary"></p><dl id="provenance-fields"></dl><a id="source-png" hidden target="_blank" rel="noopener">Open original archived PNG</a><details><summary>Identifiers and integrity hashes</summary><pre id="provenance-hashes"></pre></details><p class="hint">The 3D view uses saved adjacency data. Original PNGs are preserved separately. Replay parity does not independently audit API responses.</p></details></section>
+<section class="analysis-card coverage-card" aria-labelledby="coverage-heading"><div class="section-top"><div><span class="eyebrow">Study coverage</span><h2 id="coverage-heading">Valid graphs per condition</h2></div></div>
+<details class="coverage-panel" id="coverage-panel"><summary>Show the condition table</summary><p class="hint">Counts are valid graphs / planned attempts. Valid empty graphs count; failed attempts do not. This table is the non-WebGL equivalent of the atlas. <a href="https://github.com/hemu77/UA_Capstone/blob/main/NETWORKS.md" target="_blank" rel="noopener">Original graphs, separate supplements &amp; failure audit</a>.</p><div id="coverage-table" class="table-wrap"></div></details></section>
+<section id="primary-findings" class="analysis-card findings" hidden><div class="section-top"><div><span class="eyebrow">What the full study supports</span><h2>A closer-looking network is not necessarily a better social model.</h2></div><a href="https://github.com/hemu77/UA_Capstone/blob/main/docs/PROFESSOR_RESEARCH_BRIEF.md" target="_blank" rel="noopener">Methods, tables &amp; limitations <span aria-hidden="true">↗</span></a></div>
+<div class="finding-grid"><article><span class="finding-number">01</span><h3>Density explains part of the apparent advantage</h3><p>Giving random graphs each observed network's density closed 86% of the fixed-baseline-to-Global efficiency gap. Global was closer on the Facebook mean; the random reference was closer at school. In the post-hoc density split, mean W1 was Global 0.1484 / ER 0.1103 in five sparse records, and Global 0.0949 / ER 0.1886 in six denser records. This diagnostic uses target information, not blind prediction. The gap-closed ratio is not bounded (school: 105%) or causal.</p></article><article><span class="finding-number">02</span><h3>Rankings depend on the comparison</h3><p>Classical models remained competitive on clustering. The top-two gap was just 0.0037 at 40 nodes on Facebook. Neither one metric nor one network size establishes an overall winner.</p></article><article><span class="finding-number">03</span><h3>Attribute scores are not causal preferences</h3><p>Political orientation led all person-level conditions on two scores. For Global it led 6/28 on Coleman and 1/28 on excess edge share. All graphs use one designed roster; politics and religion co-vary and prompt order was fixed.</p></article></div>
+<details><summary>Inspect the comparative evidence</summary><p class="hint">These figures summarize the full primary dataset, not just the stacked runs. Ranges are descriptive, not population confidence intervals.</p><div class="finding-plots"><figure><img src="./data/study-figures/15_efficiency_density.png" loading="lazy" alt="Paired efficiency distances by real-world record; density-matched random reference narrows the fixed-baseline gap."><figcaption>Reachability: fixed-baseline comparison versus target-informed density diagnostic.</figcaption></figure><figure><img src="./data/study-figures/14_demographic_mixing.png" loading="lazy" alt="28 model and instruction condition means per method and attribute; Global rank changes between two scoring rules."><figcaption>RQ2: spread across conditions and sensitivity to how mixing is scored.</figcaption></figure></div></details>
+<p class="hint">Only one of 24 planned contrasts passed the original correction: iterative US-Hindi minus US-English clustering −0.0453; familywise 95% interval [−0.0850, −0.0056], adjusted p = 0.0238. Significance persisted in only 3/8 leave-one-block-out fits. This is not evidence about Hindi speakers. Facebook records overlap; the school is one incomplete survey. Structural similarity is not behavioral validation.</p></section>
+<section id="saved-plots" class="analysis-card saved-plots" aria-label="Supplemental graphs, shown separately from the primary study">
+<!-- layers-insight.js mounts the supplement-only panel here; its module loads on demand. -->
+<div id="supplement-root"></div></section>
+</div>
+
+</main>
+<footer class="site-footer"><p>Saved model outputs about fictional personas. Nothing on this page calls a model; replay shows recorded updates only and never invents ties.</p></footer>
+<dialog id="help" aria-labelledby="help-title">
+  <form method="dialog"><div class="help-top"><h2 id="help-title">Shortcuts &amp; gestures</h2><button id="help-close" value="close" aria-label="Close shortcuts">Close</button></div>
+  <p class="hint">Shortcuts are ignored while you type in a field. Every action also has a visible button.</p>
+  <div class="help-grid">
+    <section><h3>Playback</h3><dl>
+      <dt><kbd>Space</kbd></dt><dd>Play / pause recorded events</dd>
+      <dt><kbd>&larr;</kbd> <kbd>&rarr;</kbd></dt><dd>Previous / next recorded event</dd>
+      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>Event zero / final saved state</dd>
+      <dt><kbd>C</kbd></dt><dd>Switch replay and stack</dd>
+      <dt><kbd>1</kbd>&ndash;<kbd>8</kbd></dt><dd>Replay that stacked run</dd>
+    </dl></section>
+    <section><h3>Persona</h3><dl>
+      <dt><kbd>[</kbd> <kbd>]</kbd></dt><dd>Previous / next persona</dd>
+      <dt><kbd>F</kbd></dt><dd>Center camera on the persona</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close a panel, then clear the persona</dd>
+      <dt>Click a node</dt><dd>Select; click again or empty space to clear</dd>
+    </dl></section>
+    <section><h3>Camera</h3><dl>
+      <dt>Drag</dt><dd>Rotate (or pan, per &ldquo;Drag to&rdquo;)</dd>
+      <dt><kbd>Shift</kbd> + drag / scroll</dt><dd>Pan</dd>
+      <dt>Scroll / pinch</dt><dd>Zoom toward the pointer</dd>
+      <dt>Arrow keys on the canvas</dt><dd>Pan; <kbd>Shift</kbd> + arrows rotate</dd>
+      <dt><kbd>+</kbd> <kbd>-</kbd> <kbd>0</kbd></dt><dd>Zoom in / out / reset to 3D view</dd>
+      <dt><kbd>/</kbd></dt><dd>Focus the filter search</dd>
+      <dt><kbd>?</kbd></dt><dd>Open this panel</dd>
+    </dl></section>
+  </div>
+  <p class="hint">Playback steps through the generation order that was actually recorded. It is not elapsed time, human motion, or a simulation of simultaneous agents.</p></form>
+</dialog>
+<script type="module" src="./layers.js?v=8fa1a1a66ea0"></script><script type="module" src="./layers-ui.js?v=8fa1a1a66ea0"></script>
+<script type="module">import {app} from './layers.js?v=8fa1a1a66ea0';import {mountShell} from './layers-shell.js?v=8fa1a1a66ea0';mountShell(app);</script></body></html>
