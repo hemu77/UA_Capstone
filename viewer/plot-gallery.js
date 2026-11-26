@@ -1,5 +1,8 @@
-// This final-graph browser is isolated from primary replay and statistical comparisons.
-import {SAVED_NETWORKS_SHA256,validateNetworkCatalog} from './network-catalog.js';
+// Supplement-only panel (SPEC.md C.7). The six supplemental graphs live here and nowhere else: never in the
+// atlas, the stack, filters, counts, overlaps or the consensus. Primary graphs are browsed in the layered 3D view.
+// validatePlotCatalog / filterPlots still guard the pinned saved-plots.json fixture used by the build.
+import * as dataModule from './layers-data-all.js';
+import {runLabel,runParts,plural,LABEL_SEPARATOR} from './formation-charts.js';
 const folders={primary:'outputs/final_study/060dcd3a86d5/main/runs',supplement_initial:'outputs/supplement_20261105_v1/runs',supplement_completion:'outputs/supplement_completion_20261105_v1/runs'};
 const sameKeys=(value,keys)=>Object.keys(value).sort().join(',')===[...keys].sort().join(',');
 export function validatePlotCatalog(data){
@@ -20,87 +23,133 @@ export function filterPlots(plots,cohort,method,query){
   const words=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   return plots.filter(p=>(cohort==='all'||(cohort==='primary'?p.cohort==='primary':p.cohort!=='primary'))&&(!method||p.method===method)&&words.every(w=>[p.run_id,p.model,p.culture,p.language,String(p.seed)].join(' ').toLowerCase().includes(w)));
 }
-if(typeof document!=='undefined')initGallery();
-function initGallery(){
-  const $=id=>document.getElementById(id),section=$('saved-plots');
-  if(!section)return;
-  const drawer=$('plot-drawer'),grid=$('plot-grid'),dialog=$('plot-dialog'),status=$('plot-status'),pageSize=8;
-  let plots,graphs,primary,stage,filtered=[],page=0,current=0,loading=false,viewToken=0;
-  const label=p=>p.cohort==='primary'?'Primary study':'Supplement / excluded from primary analysis';
-  const title=p=>p.method+' / '+p.model+' / '+p.culture+' / '+p.language+' / seed '+p.seed;
-  const element=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;};
-  const source=p=>'https://github.com/hemu77/UA_Capstone/blob/main/'+p.source_path;
+
+export const SUPPLEMENT_COHORTS=Object.freeze({supplement_initial:'Initial supplement run',supplement_completion:'Completion supplement run'});
+const SUPPLEMENT_FOLDERS={supplement_initial:'outputs/supplement_20261105_v1/runs/',supplement_completion:'outputs/supplement_completion_20261105_v1/runs/'};
+// Accepts the loadSupplements() result ({graphs:[...]} or an array) and refuses anything that could leak into, or
+// be confused with, the primary study: wrong count, a primary or failed-slot run_id, unknown cohort, foreign
+// personas, self or duplicate ties. Returns normalised records with ties as sorted [a,b] string pairs.
+export function validateSupplements(value,dataset) {
+  const graphs=Array.isArray(value)?value:value?.graphs;
+  const expected=dataModule.COUNTS.supplements_excluded;
+  if(!Array.isArray(graphs)||graphs.length!==expected)throw Error(`Expected exactly ${expected} supplemental graphs.`);
+  const primary=new Set([...(dataset.runs||[]).map(run=>run.run_id),...(dataset.failures||[]).map(run=>run.run_id),...(dataset.slots||[]).map(slot=>slot?.run_id)]);
+  const people=new Set((dataset.personas||[]).map(person=>String(person.id))),seen=new Set();
+  return graphs.map(graph=>{
+    if(!graph||typeof graph.run_id!=='string'||!/^[a-zA-Z0-9_.-]+$/.test(graph.run_id)||seen.has(graph.run_id))throw Error('Invalid supplemental graph identity.');
+    if(primary.has(graph.run_id))throw Error('A primary run was offered as a supplement.');
+    if(!Object.hasOwn(SUPPLEMENT_COHORTS,graph.cohort))throw Error('Unknown supplement cohort.');
+    if(typeof graph.source!=='string'||graph.source!==SUPPLEMENT_FOLDERS[graph.cohort]+graph.run_id+'.adj')throw Error('Invalid supplement source path.');
+    if(graph.source_sha256!==undefined&&!/^[a-f0-9]{64}$/.test(graph.source_sha256))throw Error('Invalid supplement source hash.');
+    if(!['model','method','culture','language'].every(key=>typeof graph[key]==='string'&&graph[key].length>0&&graph[key].length<80)||!Number.isInteger(Number(graph.seed)))throw Error('Invalid supplement metadata.');
+    if(!Array.isArray(graph.edges))throw Error('Invalid supplement ties.');
+    const ties=new Set(),edges=graph.edges.map(edge=>{
+      if(!Array.isArray(edge)||edge.length!==2)throw Error('Invalid supplement tie.');
+      const [a,b]=edge.map(String).sort((x,y)=>Number(x)-Number(y));
+      if(a===b||!people.has(a)||!people.has(b))throw Error('Supplement tie outside the roster.');
+      const key=a+'|'+b;if(ties.has(key))throw Error('Duplicate supplement tie.');ties.add(key);return [a,b];
+    }).sort((x,y)=>Number(x[0])-Number(y[0])||Number(x[1])-Number(y[1]));
+    seen.add(graph.run_id);
+    return {run_id:graph.run_id,cohort:graph.cohort,model:graph.model,method:graph.method,culture:graph.culture,language:graph.language,seed:Number(graph.seed),
+      edges,source:graph.source,source_sha256:graph.source_sha256??null};
+  });
+}
+// How a supplement relates to the primary design, computed from the loaded slots. It never fills or replaces a slot.
+export function supplementContext(graph,dataset) {
+  let slot=null;
+  try{slot=dataModule.slotOf(dataset.design,graph);}catch{return {slot:null,status:'outside',text:'Condition outside the primary design.'};}
+  const record=dataset.slots?.[slot],status=record?.status||'unknown';
+  const text=status==='failed'?`Same condition as failed primary slot ${slot}. It does not fill that slot; the primary attempt stays a failure.`
+    :status==='valid'||status==='empty'?`Same condition as primary slot ${slot}, which has its own graph. This one is not counted.`
+    :`Primary slot ${slot}.`;
+  return {slot,status,text};
+}
+
+// Builds the panel inside the #saved-plots section. Data loads only when the panel is opened.
+export function mountSupplementPanel(section,{dataset,announce=()=>{},loadSupplements=dataModule.loadSupplements,stageModule=()=>import('./network-stage.js')}={}) {
+  const h=(tag,props={},...children)=>{const node=document.createElement(tag);
+    for(const [key,value] of Object.entries(props)){if(value===undefined||value===null||value===false)continue;if(key==='class')node.className=value;else if(key==='text')node.textContent=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else node.setAttribute(key,value===true?'':String(value));}
+    for(const child of children.flat())if(child!==null&&child!==undefined&&child!==false)node.append(child);return node;};
+  // The legacy primary gallery in this section is retired; its controls would otherwise sit there dead.
+  for(const id of ['plot-drawer','plot-status','plot-retry'])section.querySelector('#'+id)?.setAttribute('hidden','');
+  const count=dataModule.COUNTS.supplements_excluded;
+  const list=h('ol',{class:'ins-supp-list','aria-label':'Supplemental graphs'});
+  const stageHost=h('div',{class:'ins-supp-stage'});
+  const status=h('p',{class:'ins-supp-status',role:'status'});
+  const meta=h('div',{class:'ins-supp-meta'});
+  const tools=h('div',{class:'ins-supp-tools',role:'group','aria-label':'Supplement camera'});
+  const viewer=h('div',{class:'ins-supp-viewer',hidden:true},h('div',{class:'ins-supp-frame'},stageHost,h('span',{class:'ins-supp-watermark',text:'Supplement · not primary'})),status,tools,meta);
+  const message=h('p',{class:'ins-supp-message',role:'status',text:'Opening loads the six supplemental graphs. Nothing is fetched before.'});
+  const retry=h('button',{type:'button',class:'ins-supp-retry',hidden:true,text:'Retry loading supplements'});
+  const drawer=h('details',{class:'ins-supp-drawer'},
+    h('summary',{class:'ins-supp-summary'},h('span',{class:'ins-supp-summary-title',text:`Open the ${count} supplemental graphs`}),h('span',{class:'ins-supp-summary-hint',text:'Separate canvas · loads on demand'})),
+    h('div',{class:'ins-supp-body'},message,retry,h('div',{class:'ins-supp-layout'},list,viewer)));
+  const panel=h('div',{class:'ins-supp'},
+    h('p',{class:'ins-supp-eyebrow',text:'Excluded from the primary study'}),
+    h('h3',{class:'ins-supp-title',text:`${count} supplemental graphs`}),
+    h('p',{class:'ins-supp-lede',text:'Saved by two later supplement runs. They are not among the primary attempts and never enter the atlas, the stack, filters, counts, overlaps or the consensus. Personas are the same 50 fictional adults.'}),
+    drawer);
+  const anchor=section.querySelector('#supplement-root');
+  (anchor||section).append(panel);
+  let graphs=null,stage=null,current=-1,loading=false,destroyed=false;
+  const buttons=[];
+  const describe=graph=>{const parts=runParts(graph);return {title:[parts.model,parts.method].join(LABEL_SEPARATOR),detail:[parts.setting,parts.seed].join(LABEL_SEPARATOR)};};
+  function setStatus(selected='',peers=[]){
+    const graph=graphs?.[current];if(!graph)return;
+    status.textContent=selected?`Persona ${selected}: ${plural(peers.length,'tie')} in this supplement${peers.length?` (${peers.join(', ')})`:''}.`
+      :graph.edges.length?`${plural(graph.edges.length,'generated tie')} among 50 fictional personas. Select a persona to see its ties.`:'Valid graph with no ties: 50 unlinked personas.';
+  }
   async function show(index){
-    current=index;const p=filtered[current],graph=graphs.get(p.run_id),token=++viewToken;
-    $('plot-dialog-title').textContent=title(p);$('plot-dialog-cohort').dataset.cohort=p.cohort;$('plot-dialog-cohort').textContent=label(p)+(p.empty_graph?' / valid empty graph':'');
-    $('plot-record').textContent=p.run_id;$('plot-source').href=source(p).replace(/\.png$/,'.adj');
-    $('plot-original').href=source(p);
-    $('plot-replay').hidden=p.cohort!=='primary';
-    $('plot-replay').href='./layers.html?dataset=primary&view='+encodeURIComponent(JSON.stringify({runs:[p.run_id],active:p.run_id,mode:'formation',frame:0}));
-    $('plot-dialog-position').textContent=(current+1)+' / '+filtered.length+' matching networks';
-    $('plot-back').disabled=current===0;$('plot-forward').disabled=current===filtered.length-1;
-    if(!dialog.open)dialog.showModal();
-    $('network-status').textContent='Loading final 3D graph...';
+    current=index;const graph=graphs[index],context=supplementContext(graph,dataset),text=describe(graph);
+    buttons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+    viewer.hidden=false;
+    meta.replaceChildren(
+      h('p',{class:'ins-supp-label',text:runLabel(graph)}),
+      h('p',{class:'ins-supp-context',text:context.text}),
+      h('dl',{},h('dt',{text:'Run ID'}),h('dd',{class:'ins-mono',text:graph.run_id}),
+        h('dt',{text:'Source'}),h('dd',{},h('a',{href:'https://github.com/hemu77/UA_Capstone/blob/main/'+graph.source,target:'_blank',rel:'noopener',text:graph.source.split('/').pop()})),
+        graph.source_sha256?h('dt',{text:'Adjacency SHA-256'}):null,graph.source_sha256?h('dd',{class:'ins-mono',text:graph.source_sha256}):null));
     try{
       if(!stage){
-        const {createNetworkStage}=await import('./network-stage.js');
-        if(token!==viewToken||!dialog.open)return;
-        stage=createNetworkStage($('network-stage'),primary.personas,(id,peers)=>{
-          $('network-person').value=id;
-          $('network-status').textContent=id?'Persona '+id+' / '+peers.length+' neighbors: '+(peers.join(', ')||'none'):'50 fictional personas / '+graphs.get(filtered[current].run_id).edges.length+' recorded ties. Positions are a layout, not social distance.';
-        });
+        const {createNetworkStage}=await stageModule();
+        if(destroyed||current!==index)return;
+        stage=createNetworkStage(stageHost,dataset.personas,setStatus);
+        tools.replaceChildren(
+          h('button',{type:'button',text:'Reset view',onclick:()=>stage.reset()}),
+          h('button',{type:'button',text:'Zoom in','aria-label':'Zoom in',onclick:()=>stage.zoom(.8)}),
+          h('button',{type:'button',text:'Zoom out','aria-label':'Zoom out',onclick:()=>stage.zoom(1.25)}),
+          h('button',{type:'button',text:'Clear persona',onclick:()=>stage.select('')}));
       }
-      if(token!==viewToken||!dialog.open)return;
-      stage.show(graph,p.method);
-    }catch{if(token===viewToken){$('network-status').textContent='3D unavailable in this browser. Original adjacency and PNG remain available below. Try reopening the graph.';}}
-  }
-  function render(){
-    filtered=filterPlots(plots,$('plot-cohort').value,$('plot-method').value,$('plot-search').value);
-    const start=page*pageSize;grid.replaceChildren();
-    for(const [offset,p] of filtered.slice(start,start+pageSize).entries()){
-      const card=element('article',undefined,'plot-card'),badge=element('p',label(p),'plot-badge'),button=element('button','Explore in 3D','network-open');
-      badge.dataset.cohort=p.cohort;card.dataset.method=p.method;button.type='button';button.setAttribute('aria-label','Explore in 3D '+title(p));button.addEventListener('click',()=>show(start+offset));
-      card.append(badge,element('h3',title(p)),element('p',p.empty_graph?'50 personas / valid empty graph':'50 personas / '+p.edges+' recorded ties','hint'),button);grid.append(card);
+      stage.show(graph);setStatus();
+      announce(`Showing supplemental graph ${index+1} of ${graphs.length}: ${text.title}, ${text.detail}. Excluded from the primary study.`);
+    }catch{
+      stageHost.replaceChildren(h('p',{class:'ins-supp-fallback',text:'3D is unavailable in this browser. The tie list under this box is the complete graph.'}));
+      tools.replaceChildren();
+      status.textContent=graph.edges.length?`${plural(graph.edges.length,'generated tie')}: ${graph.edges.map(([a,b])=>a+'–'+b).join(', ')}.`:'Valid graph with no ties.';
     }
-    status.textContent=filtered.length?('Showing '+(start+1)+'-'+Math.min(start+pageSize,filtered.length)+' of '+filtered.length+' matching networks. 896 saved networks total.'):'No matching networks. Clear the search or change the filters.';
-    $('plot-page-back').disabled=page===0;$('plot-page-next').disabled=start+pageSize>=filtered.length;
   }
   async function load(){
-    if(plots||loading)return;
-    loading=true;$('plot-retry').hidden=true;status.textContent='Verifying saved network catalog...';
+    if(graphs||loading)return;
+    loading=true;retry.hidden=true;message.textContent='Loading and checking the supplemental graphs…';
     try{
-      const get=async name=>{const r=await fetch('./data/'+name);if(!r.ok)throw Error('Catalog unavailable');return r;};
-      const metadata=validatePlotCatalog(await (await get('saved-plots.json')).json());
-      const raw=await (await get('saved-networks.json')).arrayBuffer();
-      const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',raw))].map(b=>b.toString(16).padStart(2,'0')).join('');
-      if(hash!==SAVED_NETWORKS_SHA256)throw Error('Final graph checksum mismatch');
-      primary=await (await get('primary-viewer.json')).json();
-      graphs=validateNetworkCatalog(JSON.parse(new TextDecoder().decode(raw)),metadata,primary);
-      plots=metadata;
-      $('network-person').replaceChildren(new Option('Whole network',''));
-      for(const person of primary.personas)$('network-person').add(new Option('Persona '+person.id,person.id));
-      render();$('plot-filters').disabled=false;
-    }catch{status.textContent='Saved networks could not be verified. Primary replay above is unaffected.';$('plot-retry').hidden=false;}
-    finally{loading=false;}
+      if(typeof loadSupplements!=='function')throw Error('Supplement loader is not available in this build.');
+      graphs=validateSupplements(await loadSupplements(),dataset);
+      if(destroyed)return;
+      list.replaceChildren(...graphs.map((graph,i)=>{const text=describe(graph);
+        const button=h('button',{type:'button',class:'ins-supp-item','aria-pressed':'false',onclick:()=>show(i)},
+          h('span',{class:'ins-supp-item-title',text:text.title}),h('span',{class:'ins-supp-item-detail',text:text.detail}),
+          h('span',{class:'ins-supp-item-meta',text:`${SUPPLEMENT_COHORTS[graph.cohort]} · ${graph.edges.length?plural(graph.edges.length,'tie'):'no ties'}`}));
+        buttons.push(button);return h('li',{},button);}));
+      message.textContent=`${plural(graphs.length,'supplemental graph')}, checked against the primary roster and run list. Select one to view it.`;
+    }catch(error){
+      graphs=null;message.textContent=`Supplemental graphs could not be loaded: ${error.message} The primary study is unaffected.`;retry.hidden=false;
+    }finally{loading=false;}
   }
   drawer.addEventListener('toggle',()=>{if(drawer.open)load();});
-  function openFromLink(){if(location.hash==='#saved-plots'||location.hash==='#saved-networks'){drawer.open=true;load();}}
+  retry.addEventListener('click',load);
+  const openFromLink=()=>{if(['#saved-plots','#saved-networks','#supplements'].includes(location.hash)){drawer.open=true;load();}};
   window.addEventListener('hashchange',openFromLink);openFromLink();
-  $('plot-retry').addEventListener('click',load);
-  $('plot-filters').addEventListener('input',()=>{if(plots){page=0;render();}});
-  $('plot-clear').addEventListener('click',()=>{$('plot-search').value='';$('plot-cohort').selectedIndex=0;$('plot-method').value='';page=0;render();});
-  for(const [id,delta] of [['plot-page-back',-1],['plot-page-next',1]])$(id).addEventListener('click',()=>{page+=delta;render();status.scrollIntoView({block:'nearest'});});
-  $('plot-back').addEventListener('click',()=>show(current-1));$('plot-forward').addEventListener('click',()=>show(current+1));
-  $('plot-close').addEventListener('click',()=>dialog.close());
-  $('network-person').addEventListener('change',()=>stage?.select($('network-person').value));
-  $('network-reset').addEventListener('click',()=>stage?.reset());
-  $('network-zoom-in').addEventListener('click',()=>stage?.zoom(.8));
-  $('network-zoom-out').addEventListener('click',()=>stage?.zoom(1.25));
-  dialog.addEventListener('close',()=>{viewToken++;});
-  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-  dialog.addEventListener('keydown',e=>{
-    if(e.target.tagName!=='CANVAS'&&e.target.tagName!=='SELECT'&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();const next=current+(e.key==='ArrowLeft'?-1:1);if(next>=0&&next<filtered.length)show(next);}
-    e.stopPropagation();
-  });
-  window.addEventListener('pagehide',event=>{if(!event.persisted){stage?.dispose();stage=null;}});
+  const pagehide=event=>{if(!event.persisted){stage?.dispose();stage=null;}};
+  window.addEventListener('pagehide',pagehide);
+  return {destroy(){destroyed=true;window.removeEventListener('hashchange',openFromLink);window.removeEventListener('pagehide',pagehide);stage?.dispose();stage=null;panel.remove();}};
 }

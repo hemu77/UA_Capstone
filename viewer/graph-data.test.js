@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {validateData, differences, replayEdges, neighbors, comparisonLayout, layerComparison, layerCandidates, applyLayerSelection, replayFrames, personaSteps} from './graph-data.js';
+import {validateData, differences, replayEdges, neighbors, comparisonLayout, edgeKey, layerComparison, MAX_LAYERS, layerCandidates, applyLayerSelection, replayFrames, personaSteps} from './graph-data.js';
 import {filterRuns, conditionRows, coverage, measurement, topologySvg, homophilySvg, selectionCsv} from './research-plots.js';
 import {trajectorySvg, metricBars, researchEvidence, homophilyMatrix, runLabel, layerLabel} from './formation-charts.js';
 const data = JSON.parse(readFileSync(new URL('./archive/public/data/networks.json', import.meta.url)));
@@ -22,8 +22,8 @@ test('persona reset remains beside camera controls above the graph',()=>{
 test('layer labels identify the comparison rather than hiding country or repetition',()=>{
   const run={model:'gpt-6-luna',method:'sequential',culture:'us',language:'english',seed:11000,repetition:0};
   assert.equal(layerLabel([run,{...run,culture:'japan'}],1),'2. Japan');
-  assert.equal(layerLabel([run,{...run,language:'portuguese'}],1),'2. portuguese');
-  assert.equal(layerLabel([run,{...run,seed:11001,repetition:1}],1),'2. rep 2 / seed 11001');
+  assert.equal(layerLabel([run,{...run,language:'portuguese'}],1),'2. Portuguese');
+  assert.equal(layerLabel([run,{...run,seed:11001,repetition:1}],1),'2. seed 11001');
 });
 import {personaView, personaTag, edgeFrequencies, personaComparison} from './graph-data.js';
 import {loadPresentation,frequencySvg} from './formation-charts.js';
@@ -172,8 +172,8 @@ test('applying filters selects exact saved runs without truncation or mutating c
   const recoverable=layerCandidates(data.runs,filters).find(r=>r.run_id===removed.run_id);
   assert.equal(recoverable,removed);
   assert.equal(applyLayerSelection([...applied,recoverable]).length,3);
-  assert.throws(()=>applyLayerSelection(layerCandidates(data.runs,{collection:'engineering_pilot'})),/one and six/);
-  assert.throws(()=>applyLayerSelection(layerCandidates(data.runs,{...filters,culture:'japan'})),/one and six/);
+  assert.throws(()=>applyLayerSelection(layerCandidates(data.runs,{collection:'engineering_pilot'})),/between 1 and 8 layers/);
+  assert.throws(()=>applyLayerSelection(layerCandidates(data.runs,{...filters,culture:'japan'})),/between 1 and 8 layers/);
   assert.equal(applied.length,2);
   assert.equal(layerCandidates(data.runs,{...filters,seed:'0'}).length,0);
   assert.equal(layerCandidates(data.runs,{collection:'historical',model:'gpt-6-sol'}).length,0);
@@ -184,10 +184,12 @@ test('layer comparisons count undirected ties and reject incompatible identities
   assert.equal(layerComparison([a,b]).shared,1);
   assert.equal(layerComparison([a,b]).union,3);
   assert.equal(layerComparison([a]).shared,2);
-  assert.throws(()=>layerComparison([]),/one and six/);
+  assert.throws(()=>layerComparison([]),/between 1 and 8 layers/);
   assert.throws(()=>layerComparison([a,a]),/Duplicate/);
   assert.throws(()=>layerComparison([a,{...b,roster_id:'different'}]),/same roster/);
-  assert.throws(()=>layerComparison(Array.from({length:7},(_,i)=>({...a,run_id:String(i)}))),/one and six/);
+  assert.equal(MAX_LAYERS,8);
+  assert.equal(layerComparison(Array.from({length:8},(_,i)=>({...a,run_id:String(i)}))).shared,2);
+  assert.throws(()=>layerComparison(Array.from({length:9},(_,i)=>({...a,run_id:String(i)}))),/between 1 and 8 layers/);
 });
 
 test('multi-select filters use real intersections and never silently change conditions', () => {
@@ -231,6 +233,17 @@ test('union layout is deterministic, finite and independent of pane order', () =
     first.get(person.id).forEach((v,k)=>assert.ok(Math.abs(v-second.get(person.id)[k])<1e-8));
   }
   assert.throws(()=>comparisonLayout(data.personas,[['invalid','other']],[]),/Invalid layout edge/);
+});
+test('weighted planar layout stays flat, weight 1 reproduces the unweighted springs, bad weights are refused', () => {
+  const edges=data.runs[0].edges,ones=new Map(edges.map(e=>[edgeKey(e),1]));
+  const planar=comparisonLayout(data.personas,edges,[],{weights:ones,planar:true});
+  assert.ok([...planar.values()].every(p=>p[2]===0&&Number.isFinite(p[0])&&Number.isFinite(p[1])));
+  const unweighted=comparisonLayout(data.personas,edges,[]),weighted=comparisonLayout(data.personas,edges,[],{weights:ones});
+  for(const person of data.personas)assert.deepEqual(weighted.get(person.id),unweighted.get(person.id));
+  const halves=new Map(edges.map(e=>[edgeKey(e),.5]));
+  assert.notDeepEqual(comparisonLayout(data.personas,edges,[],{weights:halves}).get(data.personas[0].id),unweighted.get(data.personas[0].id));
+  for(const bad of [0,1.5,NaN])assert.throws(()=>comparisonLayout(data.personas,edges,[],{weights:new Map(edges.map(e=>[edgeKey(e),bad]))}),/Invalid layout weight/);
+  assert.throws(()=>comparisonLayout(data.personas,edges,[],{weights:new Map()}),/Invalid layout weight/);
 });
 test('all exported historical graphs satisfy the display contract', () => {
   validateData(data);

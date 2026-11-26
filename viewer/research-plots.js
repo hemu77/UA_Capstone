@@ -1,12 +1,14 @@
 // Filtering and figure preparation use exported Python measurements only.
 // Keep each source/prompt/roster condition separate; seeds are individual dots.
+import {modelName,methodName,settingName,LABEL_SEPARATOR} from './formation-charts.js';
 export const dimensions = ['model', 'method', 'culture', 'language', 'seed'];
 export const topology = {
   density: 'Density', avg_clustering_coef: 'Mean clustering',
   prop_nodes_lcc: 'Largest component share', modularity: 'Modularity',
   global_efficiency: 'Global efficiency', num_components: 'Connected components',
 };
-export const demographics = ['gender', 'race/ethnicity', 'religion', 'political affiliation', 'age'];
+// Recorded roster attributes only (the roster has no race/ethnicity or party field). Age uses a numeric assortativity.
+export const demographics = ['gender', 'religion', 'political orientation', 'age'];
 
 export function studyRuns(runs, study) {
   return runs.filter(run => study === 'historical' ? run.status === 'historical_reanalyzed' : run.study === study);
@@ -37,10 +39,9 @@ export function coverage(runs, selection) {
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;'}[char]));
 const number = value => value == null ? 'NA' : value.toFixed(3);
-const shortModel = model => model.replace('gpt-', '');
 function rowLabel(row, variants) {
   const run = row.run;
-  return `${shortModel(run.model)} / ${run.method} / ${run.culture.toUpperCase()} / ${run.language} / ${run.study} / v${variants.indexOf(run.prompt_variant ?? 'legacy_pre_source_hash') + 1}`;
+  return [modelName(run.model), methodName(run.method), settingName(run.culture, run.language), run.study, `v${variants.indexOf(run.prompt_variant ?? 'legacy_pre_source_hash') + 1}`].join(LABEL_SEPARATOR);
 }
 function shell(title, caption, width, height, body) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escape(title)}"><title>${escape(title)}</title><desc>${escape(caption)}</desc><rect width="100%" height="100%" fill="#fff"/><g font-family="sans-serif" font-size="12" fill="#172c3d"><text x="16" y="24" font-size="16" font-weight="bold">${escape(title)}</text><text x="16" y="45" fill="#526372">${escape(caption)}</text>${body}</g></svg>`;
@@ -74,7 +75,7 @@ export function topologySvg(rows, metric, caption) {
 
 export function homophilySvg(rows, caption) {
   const variants = [...new Set(rows.map(row => row.run.prompt_variant ?? 'legacy_pre_source_hash'))];
-  let body = demographics.map((demo, j) => `<text x="${580 + j * 112}" y="72" text-anchor="middle">${escape(demo === 'political affiliation' ? 'Politics' : demo === 'race/ethnicity' ? 'Race/ethnicity' : demo === 'age' ? 'Age (numeric)' : demo)}</text>`).join('');
+  let body = demographics.map((demo, j) => `<text x="${580 + j * 112}" y="72" text-anchor="middle">${escape(demo === 'political orientation' ? 'Politics' : demo === 'age' ? 'Age (numeric)' : demo[0].toUpperCase() + demo.slice(1))}</text>`).join('');
   rows.forEach((row, i) => {
     const y = 86 + i * 34;
     body += `<text x="16" y="${y + 20}">${escape(rowLabel(row, variants))}</text>`;
@@ -87,7 +88,7 @@ export function homophilySvg(rows, caption) {
     });
   });
   if (!rows.length) body += '<text x="16" y="105">No saved runs for this selection.</text>';
-  return shell('Demographic mixing', caption + ' | Mean (valid n). Teal: positive; orange: negative; NA: undefined. Age uses a different metric.', 1110, 130 + rows.length * 34, body);
+  return shell('Demographic mixing', caption + ' | Mean (valid n). Teal: positive; orange: negative; NA: undefined. Age uses a different metric.', 530 + demographics.length * 112 + 20, 130 + rows.length * 34, body);
 }
 
 export function selectionCsv(runs) {

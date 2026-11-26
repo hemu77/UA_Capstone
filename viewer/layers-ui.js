@@ -1,7 +1,11 @@
 // Presentation-only helpers for layers.html: keyboard shortcuts, the shortcut
-// dialog, persona stepping and tooltip placement. Everything here drives the
-// existing controls (click / change events), so replay, data loading, saved
-// links and provenance stay owned by layers.js.
+// dialog, persona stepping and tooltip placement. Camera and playback keys drive
+// the existing controls (click / change events); run selection (1-8) goes
+// through the shared store, so replay, data loading and provenance stay owned by
+// layers.js and filters by layers-filters.js.
+import {app} from './layers.js';
+import {MAX_STACK_LAYERS} from './layers-app.js';
+import {replayRun} from './layers-filters.js';
 const $ = id => document.getElementById(id);
 const press = id => {const el=$(id);if(el&&!el.disabled){el.click();return true;}return false;};
 
@@ -50,8 +54,13 @@ document.addEventListener('keydown',event=>{
     case '+':case '=':press('zoom-in');break;
     case '-':case '_':press('zoom-out');break;
     case '0':press('orbit');break;
+    case '/':{const search=document.querySelector('input[data-flt-search]');if(search&&search.offsetParent!==null){search.focus();search.select();}else handled=false;break;}
     default:
-      if(/^[1-6]$/.test(event.key)){const run=$('layers').querySelectorAll('.select-run')[Number(event.key)-1];if(run)run.click();else handled=false;}
+      // 1-8: replay that stacked run (recorded generation order).
+      if(new RegExp(`^[1-${MAX_STACK_LAYERS}]$`).test(event.key)&&app.data){
+        const id=app.getState().layers[Number(event.key)-1];
+        if(id)replayRun(app,id,'layers-ui');else handled=false;
+      }
       else handled=false;
   }
   if(handled)event.preventDefault();
@@ -82,27 +91,3 @@ const paint=()=>{const max=Number(timeline.max)||0;timeline.style.setProperty('-
 timeline.addEventListener('input',paint);
 new MutationObserver(paint).observe($('step-label'),{childList:true,characterData:true,subtree:true});
 paint();
-
-// --- Filter summary --------------------------------------------------------
-// The five run filters stay readable while the drawer is closed. Each chip
-// mirrors a select that layers.js owns and opens the drawer on that field.
-const chipHost=$('filter-chips'),drawer=document.querySelector('.run-drawer');
-const filterFields=[['model','Model'],['method','Method'],['culture','Country framing'],['language','Language'],['seed','Repetition']];
-function paintChips(){
-  chipHost.replaceChildren();
-  for(const [id,name] of filterFields){
-    const select=$(id),chosen=select.selectedOptions[0];if(!chosen||select.options.length<2)continue; // A single-option field is not a choice.
-    const chip=document.createElement('button'),key=document.createElement('span'),value=document.createElement('strong');
-    chip.type='button';chip.className='filter-chip';chip.dataset.narrowed=String(!!select.value&&id!=='collection');
-    key.textContent=name;value.textContent=chosen.textContent;chip.append(key,value);
-    chip.title=`Change ${name.toLowerCase()} filter`;
-    chip.addEventListener('click',()=>{drawer.open=true;select.focus();select.scrollIntoView({block:'nearest'});});
-    chipHost.append(chip);
-  }
-  const countPrefix=document.createElement('span');countPrefix.className='filter-count';countPrefix.textContent='Filter query — Apply to replace layers';chipHost.prepend(countPrefix);
-  const preview=$('filter-preview').textContent.match(/^\d+ saved runs? match/);
-  if(preview){const count=document.createElement('span');count.className='filter-count';count.textContent=preview[0];chipHost.append(count);}
-}
-new MutationObserver(paintChips).observe($('filter-preview'),{childList:true,characterData:true,subtree:true});
-$('filter-form').addEventListener('change',paintChips);
-paintChips();
