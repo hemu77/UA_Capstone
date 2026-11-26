@@ -1,5 +1,5 @@
 // Small, labeled SVGs keep the recorded values inspectable without a chart library.
-import {neighbors, edgeFrequencies, edgeKey} from './graph-data.js?v=8fa1a1a66ea0';
+import {neighbors, edgeFrequencies, edgeKey} from './graph-data.js?v=d068babb8c4c';
 // ONE run-label format for the whole page (SPEC.md B.6 / C.7). Every module formats run identity through these
 // helpers, never from raw keys: "GPT-4.1 · Local · United States / English · seed 44000".
 export const countryNames={us:'United States',india:'India',japan:'Japan',brazil:'Brazil'};
@@ -72,14 +72,19 @@ export function homophilyMatrix(runs) {
   return `<table><caption>RQ2 / Saved final networks. Coleman: 0 = random-mixing reference, positive = more within-group ties. Undefined values stay NA.</caption><thead><tr><th>Run</th>${demos.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Age assortativity (different measure)</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><th>${i+1}. ${esc(runLabel(r))}</th>${[...demos.map(d=>r.homophily?.[d]),r.age_assortativity].map(v=>`<td>${Number.isFinite(v)?`<span class="coefficient ${v>0?'positive':v<0?'negative':''}">${v.toFixed(3)}</span>`:'NA'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-export function frequencySvg(personas,runs,layout,selected='') {
-  const rows=edgeFrequencies(runs).filter(row=>!selected||row.edge.includes(selected));
+// Symmetric persona x persona matrix of tie frequency; one cell pair per undirected tie.
+export function frequencyMatrix(personas,runs,selected='',rows=edgeFrequencies(runs).filter(row=>!selected||row.edge.includes(selected))) {
   // A fixed-order matrix avoids projecting a dense 3D layout into a hairball.
   const ids=[...new Set(selected?[selected,...rows.flatMap(row=>row.edge)]:personas.map(p=>p.id))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
   const size=600,cell=size/Math.max(1,ids.length),at=id=>55+ids.indexOf(id)*cell;
   const labels=ids.map(id=>`<text x="${at(id)+cell/2}" y="43" text-anchor="middle" font-size="8">${esc(id)}</text><text x="43" y="${at(id)+cell/2+3}" text-anchor="end" font-size="9">${esc(id)}</text>`).join('');
   const cells=rows.flatMap(row=>[row.edge,[...row.edge].reverse()].map(([a,b])=>`<rect x="${at(a)}" y="${at(b)}" width="${cell-.5}" height="${cell-.5}" fill="#213d32" fill-opacity="${row.frequency}" tabindex="0"><title>Personas ${esc(a)} and ${esc(b)}: ${row.count}/${row.total} selected runs</title></rect>`)).join('');
   const chart=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 705" role="img" aria-label="Tie frequency matrix"><title>${plural(rows.length,`distinct ${selected?'persona '+esc(selected)+' incident ':''}tie`)} across ${plural(runs.length,'saved run')}. Symmetric cells represent one undirected tie.</title><rect width="710" height="705" fill="#f2f3ef"/><rect x="55" y="55" width="600" height="600" fill="#dce2dc"/>${labels}${cells}<text x="55" y="680" font-size="12">Row / column: persona ID. Darker = more runs. Blank = no recorded tie.</text></svg>`;
+  return chart;
+}
+export function frequencySvg(personas,runs,layout,selected='') {
+  const rows=edgeFrequencies(runs).filter(row=>!selected||row.edge.includes(selected));
+  const chart=frequencyMatrix(personas,runs,selected,rows);
   const sets=runs.map(run=>new Set(run.edges.map(edgeKey)));
   return `<p>${plural(rows.length,'distinct tie')}. Each count is the number of saved graphs containing that tie, out of ${plural(runs.length,'selected run')}. It is descriptive, not a probability or accuracy score.</p><div class="tie-table"><table><caption>Exact recorded connections${selected?' involving persona '+esc(selected):''}. Run columns follow the experiment list above.</caption><thead><tr><th>Personas</th><th>Runs containing tie</th>${runs.map((r,i)=>`<th>Run ${i+1}<br>${esc(modelName(r.model))}<br>${esc(methodName(r.method))}</th>`).join('')}</tr></thead><tbody>${rows.sort((a,b)=>b.count-a.count).map(row=>`<tr><th>${row.edge.map(esc).join(' - ')}</th><td>${row.count} / ${row.total}</td>${sets.map(set=>`<td>${set.has(JSON.stringify([...row.edge].sort()))?'Present':'Absent'}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${runs.length+2}">No recorded connections for this selection.</td></tr>`}</tbody></table></div><details><summary>Optional matrix view</summary>${chart}</details>`;
 }

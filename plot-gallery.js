@@ -1,8 +1,8 @@
 // Supplement-only panel (SPEC.md C.7). The six supplemental graphs live here and nowhere else: never in the
 // atlas, the stack, filters, counts, overlaps or the consensus. Primary graphs are browsed in the layered 3D view.
 // validatePlotCatalog / filterPlots still guard the pinned saved-plots.json fixture used by the build.
-import * as dataModule from './layers-data-all.js?v=8fa1a1a66ea0';
-import {runLabel,runParts,plural,LABEL_SEPARATOR} from './formation-charts.js?v=8fa1a1a66ea0';
+import * as dataModule from './layers-data-all.js?v=d068babb8c4c';
+import {runLabel,runParts,plural,LABEL_SEPARATOR} from './formation-charts.js?v=d068babb8c4c';
 const folders={primary:'outputs/final_study/060dcd3a86d5/main/runs',supplement_initial:'outputs/supplement_20261105_v1/runs',supplement_completion:'outputs/supplement_completion_20261105_v1/runs'};
 const sameKeys=(value,keys)=>Object.keys(value).sort().join(',')===[...keys].sort().join(',');
 export function validatePlotCatalog(data){
@@ -66,7 +66,7 @@ export function supplementContext(graph,dataset) {
 }
 
 // Builds the panel inside the #saved-plots section. Data loads only when the panel is opened.
-export function mountSupplementPanel(section,{dataset,announce=()=>{},loadSupplements=dataModule.loadSupplements,stageModule=()=>import('./network-stage.js?v=8fa1a1a66ea0')}={}) {
+export function mountSupplementPanel(section,{dataset,announce=()=>{},loadSupplements=dataModule.loadSupplements,stageModule=()=>import('./network-stage.js?v=d068babb8c4c')}={}) {
   const h=(tag,props={},...children)=>{const node=document.createElement(tag);
     for(const [key,value] of Object.entries(props)){if(value===undefined||value===null||value===false)continue;if(key==='class')node.className=value;else if(key==='text')node.textContent=value;else if(key.startsWith('on'))node.addEventListener(key.slice(2),value);else node.setAttribute(key,value===true?'':String(value));}
     for(const child of children.flat())if(child!==null&&child!==undefined&&child!==false)node.append(child);return node;};
@@ -79,15 +79,15 @@ export function mountSupplementPanel(section,{dataset,announce=()=>{},loadSupple
   const meta=h('div',{class:'ins-supp-meta'});
   const tools=h('div',{class:'ins-supp-tools',role:'group','aria-label':'Supplement camera'});
   const viewer=h('div',{class:'ins-supp-viewer',hidden:true},h('div',{class:'ins-supp-frame'},stageHost,h('span',{class:'ins-supp-watermark',text:'Supplement · not primary'})),status,tools,meta);
-  const message=h('p',{class:'ins-supp-message',role:'status',text:'Opening loads the six supplemental graphs. Nothing is fetched before.'});
+  const message=h('p',{class:'ins-supp-message',role:'status',text:'Loading the supplemental graphs…'});
   const retry=h('button',{type:'button',class:'ins-supp-retry',hidden:true,text:'Retry loading supplements'});
   const drawer=h('details',{class:'ins-supp-drawer'},
-    h('summary',{class:'ins-supp-summary'},h('span',{class:'ins-supp-summary-title',text:`Open the ${count} supplemental graphs`}),h('span',{class:'ins-supp-summary-hint',text:'Separate canvas · loads on demand'})),
+    h('summary',{class:'ins-supp-summary'},h('span',{class:'ins-supp-summary-title',text:'Show supplemental graphs'}),h('span',{class:'ins-supp-summary-hint',text:'Separate canvas · loads only when opened'})),
     h('div',{class:'ins-supp-body'},message,retry,h('div',{class:'ins-supp-layout'},list,viewer)));
   const panel=h('div',{class:'ins-supp'},
-    h('p',{class:'ins-supp-eyebrow',text:'Excluded from the primary study'}),
-    h('h3',{class:'ins-supp-title',text:`${count} supplemental graphs`}),
-    h('p',{class:'ins-supp-lede',text:'Saved by two later supplement runs. They are not among the primary attempts and never enter the atlas, the stack, filters, counts, overlaps or the consensus. Personas are the same 50 fictional adults.'}),
+    h('p',{class:'ins-supp-eyebrow',text:'Supplements'}),
+    h('h3',{class:'ins-supp-title',text:`${count} supplemental graphs, excluded from the primary study`}),
+    h('p',{class:'ins-supp-lede',text:'Saved by two later runs on the same fictional roster. They never enter the atlas, stack, filters, counts or comparisons above.'}),
     drawer);
   const anchor=section.querySelector('#supplement-root');
   (anchor||section).append(panel);

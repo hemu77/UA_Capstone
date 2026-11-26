@@ -2,7 +2,7 @@
 // Reads ./data/graphs/ written by build-primary-graphs.mjs: index.json and edges.bin at start,
 // metrics.json and supplements.json only on request. Every file is checked; any mismatch throws and
 // no substitute data is ever loaded. The returned Dataset is a superset of what validateData() accepts.
-import {validateData} from './graph-data.js?v=8fa1a1a66ea0';
+import {validateData} from './graph-data.js?v=d068babb8c4c';
 // Study facts. Tests pin these; a mismatch with the loaded data must throw, never be papered over.
 export const COUNTS=Object.freeze({attempts:896,valid:890,empty:12,failures:6,supplements_excluded:6,personas:50,cells:112,repetitions:8});
 export const settingKey=(culture,language)=>`${culture}-${language}`;

@@ -3,9 +3,9 @@
 // the existing controls (click / change events); run selection (1-8) goes
 // through the shared store, so replay, data loading and provenance stay owned by
 // layers.js and filters by layers-filters.js.
-import {app} from './layers.js?v=8fa1a1a66ea0';
-import {MAX_STACK_LAYERS} from './layers-app.js?v=8fa1a1a66ea0';
-import {replayRun} from './layers-filters.js?v=8fa1a1a66ea0';
+import {app} from './layers.js?v=d068babb8c4c';
+import {MAX_STACK_LAYERS} from './layers-app.js?v=d068babb8c4c';
+import {replayRun} from './layers-filters.js?v=d068babb8c4c';
 const $ = id => document.getElementById(id);
 const press = id => {const el=$(id);if(el&&!el.disabled){el.click();return true;}return false;};
 

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {comparisonLayout,neighbors,tapTracker} from './graph-data.js?v=8fa1a1a66ea0';
-import {configureNavigation} from './navigation.js?v=8fa1a1a66ea0';
+import {comparisonLayout,neighbors,tapTracker} from './graph-data.js?v=d068babb8c4c';
+import {configureNavigation} from './navigation.js?v=d068babb8c4c';
 
 // Single-graph renderer for the supplement panel only (SPEC.md C.7). Primary graphs are drawn by the layered 3D
 // engine; this canvas never shows them. One on-demand WebGL context, three draw calls (instanced lit personas,

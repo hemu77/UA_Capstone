@@ -1,6 +1,6 @@
 // Filtering and figure preparation use exported Python measurements only.
 // Keep each source/prompt/roster condition separate; seeds are individual dots.
-import {modelName,methodName,settingName,LABEL_SEPARATOR} from './formation-charts.js?v=8fa1a1a66ea0';
+import {modelName,methodName,settingName,LABEL_SEPARATOR} from './formation-charts.js?v=d068babb8c4c';
 export const dimensions = ['model', 'method', 'culture', 'language', 'seed'];
 export const topology = {
   density: 'Density', avg_clustering_coef: 'Mean clustering',

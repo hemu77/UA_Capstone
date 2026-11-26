@@ -7,10 +7,10 @@
 // generated, not human preferences; aggregates are descriptive, not significance tests; the consensus is an
 // aggregate of graphs, never a run; supplements are never part of any figure computed here (app.data.runs holds the
 // 890 primary graphs only). Saved Coleman / assortativity values are read from the frozen analysis, never recomputed.
-import {LAYER_COLORS,LENSES,MAX_STACK_LAYERS} from './layers-app.js?v=8fa1a1a66ea0';
-import * as dataModule from './layers-data-all.js?v=8fa1a1a66ea0';
-import {applyFilters} from './layers-filters.js?v=8fa1a1a66ea0';
-import {runLabel,layerLabel,runParts,plural,LABEL_SEPARATOR} from './formation-charts.js?v=8fa1a1a66ea0';
+import {LAYER_COLORS,LENSES,MAX_STACK_LAYERS} from './layers-app.js?v=d068babb8c4c';
+import * as dataModule from './layers-data-all.js?v=d068babb8c4c';
+import {applyFilters} from './layers-filters.js?v=d068babb8c4c';
+import {runLabel,layerLabel,runParts,plural,LABEL_SEPARATOR} from './formation-charts.js?v=d068babb8c4c';
 
 // ---------------------------------------------------------------------------------------------------------------
 // Attribute palettes. Categorical hues follow Okabe & Ito (2008), chosen to stay distinguishable under
@@ -192,6 +192,195 @@ export function ledgerFacts(dataset,counts=dataModule.COUNTS) {
   if(facts.models*facts.methods*facts.settings*facts.seeds!==facts.attempts)problems.push('design');
   if(problems.length)throw new Error(`Study ledger mismatch (${problems.join(', ')}). No counts are shown rather than unverified ones.`);
   return facts;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Analysis sections below the stage (trajectory, decision ledger, research question, metric bars, tie comparison).
+// Pure: every number these sections display is computed here from the loaded runs and covered by unit tests.
+const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DESIGN_KEYS=['model','method','culture','language','seed'];
+const FIELD_NOUN={model:'model',method:'generation method',culture:'country framing',language:'instruction language',setting:'setting',seed:'seed'};
+const AXIS_NAME={model:'Model',method:'Method',culture:'Country',language:'Language',setting:'Setting',seed:'Seed'};
+// Which study fields vary across the stacked runs. Country and language form one "setting" when both vary.
+export function comparisonDesign(runs) {
+  const list=runs||[],varying=DESIGN_KEYS.filter(key=>new Set(list.map(run=>run[key])).size>1);
+  const fields=varying.includes('culture')&&varying.includes('language')?varying.filter(key=>key!=='language').map(key=>key==='culture'?'setting':key):varying;
+  const kind=list.length<2?'single':!fields.length?'identical':fields.length===1?fields[0]:'mixed';
+  const first=list[0],parts=first?runParts(first):null;
+  const fixedParts=!parts?[]:[
+    !varying.includes('model')&&parts.model,
+    !varying.includes('method')&&parts.method,
+    !varying.includes('culture')&&!varying.includes('language')?parts.setting:!varying.includes('culture')?countryOnly(first):!varying.includes('language')?`${languageOnly(first)} instructions`:null,
+    !varying.includes('seed')&&parts.seed].filter(Boolean);
+  const short=run=>{
+    const p=runParts(run),out=[];
+    if(varying.includes('model'))out.push(p.model);
+    if(varying.includes('method'))out.push(p.method);
+    if(fields.includes('setting'))out.push(p.setting);else if(varying.includes('culture'))out.push(countryOnly(run));else if(varying.includes('language'))out.push(languageOnly(run));
+    if(varying.includes('seed'))out.push(fields.length===1?String(run.seed):p.seed);
+    return out.join(LABEL_SEPARATOR)||'Run';
+  };
+  return {kind,fields,varying,runs:list.length,shared:fixedParts.join(LABEL_SEPARATOR),
+    axis:fields.length===1?AXIS_NAME[fields[0]]:'Run',labels:list.map(short)};
+}
+const countryOnly=run=>runParts(run).setting.split(' / ')[0];
+const languageOnly=run=>runParts(run).setting.split(' / ')[1]||'';
+const listWords=words=>words.length<2?words.join(''):`${words.slice(0,-1).join(', ')} and ${words[words.length-1]}`;
+// The research question each kind of stack can answer. RQ2 (attribute mixing) applies to any stack.
+export const QUESTION_FOR={seed:'seed',method:'method',model:'rq3',culture:'rq1',language:'rq4'};
+const QUESTION_FIELD={seed:'seed',method:'method',rq3:'model',rq1:'culture',rq4:'language'};
+const MATCH_BUTTON={method:'Method',rq3:'Model',rq1:'Country',rq4:'Language'};
+// One sentence for what the stack shows and at most one caveat. Design problems outrank a question mismatch,
+// which outranks the caveat that belongs to the comparison itself.
+export function comparisonReading(runs,question='') {
+  const design=comparisonDesign(runs),n=design.runs,first=runs?.[0];
+  const p=first?runParts(first):{};
+  const sentence={
+    single:'One run is stacked. Add runs that differ in one field to compare them.',
+    identical:`These ${n} runs record the same condition and seed.`,
+    seed:`These ${n} runs differ only in seed, so they show run-to-run variation at a fixed condition.`,
+    method:`These ${n} runs differ only in generation method, at one model, setting and seed.`,
+    model:`These ${n} runs differ only in model, at one method, setting and seed.`,
+    culture:`These ${n} runs differ only in country framing, with ${languageOnly(first||{})} instructions throughout.`,
+    language:`These ${n} runs differ only in instruction language, at ${countryOnly(first||{})} framing.`,
+    setting:`These ${n} runs differ in country framing and language together.`,
+    mixed:`These ${n} runs differ in ${listWords(design.fields.map(f=>FIELD_NOUN[f]))}, so no single factor is isolated.`
+  }[design.kind];
+  const own={
+    method:'Methods differ in call budget and interaction order, so differences are descriptive.',
+    model:'Model configurations support different decoding settings; this compares configurations, not architectures.',
+    culture:first&&first.language!=='english'?'RQ1 is defined with English instructions; this framing comparison uses another language.':null,
+    language:'Translations have not been independently reviewed for equivalence.',
+    setting:'Country and language change together, so their effects cannot be separated.',
+    mixed:'Use a matched comparison to vary one field at a time.'
+  }[design.kind]||null;
+  let issue=null;
+  if(runs?.length){
+    if(new Set(runs.map(r=>r.roster_id)).size>1)issue='The runs use different persona rosters.';
+    else if(new Set(runs.map(r=>r.study)).size>1)issue='The runs come from different study collections.';
+    else if(new Set(runs.map(r=>r.prompt_variant||'unrecorded')).size>1)issue='The runs use different prompt or source versions.';
+    else if(runs.some(r=>r.language_confound))issue='Historical language prompts also changed the persona language.';
+  }
+  const wanted=QUESTION_FIELD[question];
+  const fits=!wanted||n<2||design.kind===wanted;
+  const mismatch=fits?null:`This stack does not vary ${FIELD_NOUN[wanted]} alone${MATCH_BUTTON[question]?`; use the ${MATCH_BUTTON[question]} matched comparison for it`:''}.`;
+  const caveat=issue||mismatch||own;
+  return {design,sentence,caveat,matched:!issue&&!mismatch&&n>1&&design.kind!=='mixed'&&design.kind!=='setting',suggested:QUESTION_FOR[design.kind]||null};
+}
+// Grammatical overlap line: "1 tie shared by all 8 runs · 780 distinct ties".
+export function overlapLine(shared,union,runs) {
+  if(runs<2)return `${plural(union,'distinct tie')} in one run.`;
+  return `${plural(shared,'tie')} shared by ${runs===2?'both':'all '+runs} runs · ${plural(union,'distinct tie')}`;
+}
+
+// Axis with round tick values covering [lo, hi]; always includes 0.
+export function niceAxis(lo,hi,count=4) {
+  let min=Math.min(0,Number.isFinite(lo)?lo:0),max=Math.max(0,Number.isFinite(hi)?hi:0);
+  if(min===max)max=min+1;
+  const raw=(max-min)/count,power=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(f=>f*power).find(s=>s>=raw-1e-12);
+  min=Math.floor(min/step+1e-9)*step;max=Math.ceil(max/step-1e-9)*step;
+  const round=v=>Number(v.toFixed(10)),ticks=[];
+  for(let i=0;min+i*step<=max+step/2;i++)ticks.push(round(min+i*step));
+  return {min:round(min),max:round(max),step:round(step),ticks,decimals:(String(round(step)).split('.')[1]||'').length};
+}
+const decimalsFor=values=>values.every(v=>Number.isInteger(v))?0:3;
+// Values, mean, range and signed difference from the active run for one saved metric.
+export function metricSummary(runs,metric,activeId) {
+  const rows=(runs||[]).map(run=>({run_id:run.run_id,value:Number.isFinite(run.metrics?.[metric])?run.metrics[metric]:null}));
+  const finite=rows.map(r=>r.value).filter(v=>v!==null);
+  const active=rows.find(r=>r.run_id===activeId)?.value??null;
+  for(const row of rows){row.active=row.run_id===activeId;row.delta=row.value!==null&&active!==null&&!row.active?row.value-active:null;}
+  const mean=finite.length?finite.reduce((a,b)=>a+b,0)/finite.length:null;
+  return {rows,n:finite.length,missing:rows.length-finite.length,mean,min:finite.length?Math.min(...finite):null,max:finite.length?Math.max(...finite):null,
+    decimals:decimalsFor(finite),axis:niceAxis(finite.length?Math.min(...finite):0,finite.length?Math.max(...finite):1)};
+}
+const fmtNumber=(value,decimals)=>value===null?'NA':value.toFixed(decimals).replace(/^-/,'−');
+const fmtSigned=(value,decimals)=>value===null?'':`${value>0?'+':value<0?'−':'±'}${Math.abs(value).toFixed(decimals)}`;
+// Aligned horizontal bars on one labelled axis. Rows are labelled only by what differs between the runs.
+export function metricChartHtml(runs,metric,{activeId,title='Value'}={}) {
+  const s=metricSummary(runs,metric,activeId),design=comparisonDesign(runs),{min,max}=s.axis,span=max-min;
+  const pos=v=>100*(v-min)/span,zero=pos(0),d=s.decimals;
+  const many=runs.length>1;
+  const grid=s.axis.ticks.map(t=>`<span class="mchart-grid" style="left:${pos(t).toFixed(2)}%" aria-hidden="true"></span>`).join('');
+  const meanMark=s.mean!==null&&many?`<span class="mchart-mean" style="left:${pos(s.mean).toFixed(2)}%" aria-hidden="true"></span>`:'';
+  const head=`<div class="mchart-row mchart-head" aria-hidden="true"><span>${escapeHtml(design.axis)}</span><span class="mchart-axis">${s.axis.ticks.map(t=>`<span style="left:${pos(t).toFixed(2)}%">${escapeHtml(fmtNumber(t,s.axis.decimals))}</span>`).join('')}</span><span>${many?'vs active':''}</span></div>`;
+  const body=s.rows.map((row,i)=>{
+    const v=row.value,left=v===null?zero:Math.min(zero,pos(v)),width=v===null?0:Math.abs(pos(v)-zero);
+    return `<div class="mchart-row${row.active?' is-active':''}" role="row"><span role="rowheader" class="mchart-label"><i class="mchart-swatch" style="background:var(--layer-${i%8+1})" aria-hidden="true"></i>${escapeHtml(design.labels[i])}${row.active?'<em class="mchart-active">active</em>':''}</span>`+
+      `<span role="cell" class="mchart-track">${grid}${meanMark}${v===null?'<span class="mchart-na">NA</span>':`<span class="mchart-bar" style="left:${left.toFixed(2)}%;width:${width.toFixed(2)}%"></span><span class="mchart-value" style="left:${(v>=0?left+width:left).toFixed(2)}%" data-side="${v>=0?'end':'start'}">${escapeHtml(fmtNumber(v,d))}</span>`}</span>`+
+      `<span role="cell" class="mchart-delta${row.delta>0?' up':row.delta<0?' down':''}">${many?escapeHtml(row.active?'—':fmtSigned(row.delta,d)||'NA'):''}</span></div>`;
+  }).join('');
+  const summary=s.n?(many?`Mean ${fmtNumber(s.mean,d)} · range ${fmtNumber(s.min,d)} to ${fmtNumber(s.max,d)} · ${plural(s.n,'run')}${s.missing?` (${s.missing} NA)`:''}`:`${plural(1,'run')}: ${fmtNumber(s.min,d)}`):'No defined values for this measure.';
+  return `<div class="mchart" role="table" aria-label="${escapeHtml(title)} by ${escapeHtml(design.axis.toLowerCase())}">${head}<div class="mchart-body" role="rowgroup">${body}</div><p class="mchart-summary">${escapeHtml(summary)}${many&&s.mean!==null?' <span class="mchart-mean-key" aria-hidden="true"></span> dashed line = mean':''}</p></div>`;
+}
+
+// Persona pairs written lower id first with an en dash: "7 – 46".
+export const pairLabel=edge=>normal(edge).join(' – ');
+// Tie presence across runs, sorted by count (desc) then numeric pair; optionally only ties of one persona.
+export function tieRows(runs,selected='') {
+  const list=runs||[],sets=list.map(run=>new Set((run.edges||[]).map(keyOf)));
+  return consensus(list).filter(row=>!selected||row.edge.includes(String(selected))).map(row=>{
+    const key=row.edge.join('|');
+    return {edge:row.edge,label:pairLabel(row.edge),count:row.count,total:row.total,present:sets.map(set=>set.has(key))};
+  });
+}
+export const TIE_ROW_LIMIT=12;
+export function tieTableHtml(runs,{selected='',showAll=false,limit=TIE_ROW_LIMIT}={}) {
+  const rows=tieRows(runs,selected),design=comparisonDesign(runs),n=runs.length,shown=showAll?rows:rows.slice(0,limit);
+  if(!rows.length)return `<p class="empty-note">${selected?`Persona ${escapeHtml(selected)} has no ties in these runs.`:'These runs have no ties.'}</p>`;
+  const cols=design.labels.map((text,i)=>`<th scope="col" class="tie-run"><span style="--swatch:var(--layer-${i%8+1})">${escapeHtml(text)}</span></th>`).join('');
+  const body=shown.map(row=>`<tr><th scope="row">${escapeHtml(row.label)}</th><td class="tie-count"><span class="tie-meter" aria-hidden="true"><span style="width:${(100*row.count/row.total).toFixed(1)}%"></span></span>${row.count} / ${row.total}</td>${row.present.map((on,i)=>`<td class="tie-dot"><span class="dot${on?' on':''}" aria-hidden="true"></span><span class="vh">${on?'present':'absent'} in ${escapeHtml(design.labels[i])}</span></td>`).join('')}</tr>`).join('');
+  const more=rows.length>limit?`<button type="button" class="tie-more" data-action="toggle-ties" aria-expanded="${showAll}">${showAll?`Show first ${limit}`:`Show all ${rows.length}`}</button>`:'';
+  return `<div class="tie-table"><table><caption class="vh">Ties${selected?` of persona ${escapeHtml(selected)}`:''} by run. Filled dot: the tie is in that run's saved final graph.</caption><thead><tr><th scope="col" rowspan="2">Personas</th><th scope="col" rowspan="2">Runs with tie</th><th scope="colgroup" colspan="${n}" class="tie-group">${escapeHtml(design.axis)}</th></tr><tr>${cols}</tr></thead><tbody>${body}</tbody></table></div><div class="tie-foot"><p class="hint"><span class="dot on" aria-hidden="true"></span> in the saved final graph <span class="dot" aria-hidden="true"></span> absent · showing ${shown.length} of ${plural(rows.length,'tie')}</p>${more}</div>`;
+}
+
+// Decision ledger rows: one per recorded update (only those touching the persona, when one is selected).
+const PHASES={local:'Local','iterative-add':'Iterative add','iterative-drop':'Iterative drop',sequential:'Sequential',global:'Global batch',iterative:'Iterative'};
+export const phaseName=method=>PHASES[method]||capitalWords(method);
+const capitalWords=value=>String(value??'').replace(/(^|[\s-])([a-z])/g,(m,lead,c)=>(lead==='-'?' ':lead)+c.toUpperCase());
+export function ledgerRows(events,selected='') {
+  const person=selected?String(selected):'';
+  const rows=[];
+  (events||[]).forEach((event,i)=>{
+    const touches=edge=>!person||edge.map(String).includes(person);
+    const added=(event.added||[]).filter(touches).length,removed=(event.removed||[]).filter(touches).length;
+    if(person&&!added&&!removed&&String(event.persona)!==person)return;
+    rows.push({step:i+1,persona:event.persona==null?null:String(event.persona),phase:event.persona==null?'Global batch':phaseName(event.method),
+      method:event.method||'',added,removed,batchAdded:(event.added||[]).length,batchRemoved:(event.removed||[]).length,pair:null});
+  });
+  for(let i=1;i<rows.length;i++){const a=rows[i-1],b=rows[i];
+    if(!a.pair&&b.step===a.step+1&&a.persona!==null&&a.persona===b.persona&&/add$/.test(a.method)&&/drop$/.test(b.method)){a.pair='start';b.pair='end';}}
+  return rows;
+}
+
+// Connection count by recorded event, plus the stats printed beside the chart.
+export function trajectorySeries(frames,person='') {
+  if(!frames?.length)return null;
+  const values=frames.map(frame=>person?neighbors(frame.edges,person):frame.edges.length);
+  return {values,events:values.length-1,final:values[values.length-1],peak:Math.max(...values)};
+}
+function neighbors(edges,person){const p=String(person),seen=new Set();for(const [a,b] of edges){if(String(a)===p)seen.add(String(b));else if(String(b)===p)seen.add(String(a));}return seen.size;}
+export function trajectoryChartHtml(frames,person,step,{width=680}={}) {
+  const series=trajectorySeries(frames,person);
+  if(!series)return '<p class="empty-note">No recorded history for this run; only its final graph was saved.</p>';
+  // One recorded response (Global): there is no trajectory, only "nothing" and "everything". Say so; draw no line.
+  if(series.events===1&&frames[1].event?.persona==null)return `<p class="empty-note">${person?`Persona ${escapeHtml(person)}’s ${plural(series.final,'tie')} `:`All ${plural(series.final,'tie')} `}arrived in one recorded response, so there is no step-by-step trajectory to plot.</p>`;
+  const at=Math.max(0,Math.min(series.events,step|0)),values=series.values,w=Math.max(300,Math.round(width)),h=200,left=48,right=16,top=14,bottom=44;
+  const yAxis=niceAxis(0,series.peak,4),xAxis=niceAxis(0,Math.max(1,series.events),w<480?3:5);
+  const x=i=>left+i*(w-left-right)/Math.max(1,series.events),y=v=>h-bottom-(v-yAxis.min)*(h-top-bottom)/(yAxis.max-yAxis.min);
+  const path=values.map((v,i)=>i?`H${x(i).toFixed(1)}V${y(v).toFixed(1)}`:`M${x(0).toFixed(1)},${y(v).toFixed(1)}`).join('');
+  const what=person?`Ties of persona ${escapeHtml(person)}`:'Ties in the network';
+  const yTicks=yAxis.ticks.map(v=>`<line class="grid" x1="${left}" x2="${w-right}" y1="${y(v)}" y2="${y(v)}"/><text class="tick" x="${left-8}" y="${y(v)+4}" text-anchor="end">${v}</text>`).join('');
+  const xTicks=xAxis.ticks.filter(v=>v<=series.events&&Number.isInteger(v)).map(v=>`<text class="tick" x="${x(v)}" y="${h-bottom+16}" text-anchor="middle">${v}</text>`).join('');
+  const cx=x(at),labelRight=cx>w-150;
+  const stats=[['Cursor',`event ${at} of ${series.events}`],['Ties at cursor',plural(values[at],'tie')],['Final',plural(series.final,'tie')],['Peak',plural(series.peak,'tie')]];
+  return `<dl class="traj-stats">${stats.map(([k,v])=>`<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl>`+
+    `<svg class="traj-chart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${what} by recorded event: ${values[0]} at event 0, ${values[at]} at event ${at}, ${series.final} at event ${series.events}."><title>${what} by recorded event</title>`+
+    `${yTicks}${xTicks}<path class="traj-line" d="${path}"/>`+
+    `<line class="traj-cursor" x1="${cx}" x2="${cx}" y1="${top}" y2="${h-bottom}"/><circle class="traj-dot" cx="${cx}" cy="${y(values[at])}" r="4.5"/>`+
+    `<text class="traj-cursor-label" x="${labelRight?cx-8:cx+8}" y="${top+10}" text-anchor="${labelRight?'end':'start'}">Event ${at} · ${plural(values[at],'tie')}</text>`+
+    `<text class="axis-title" x="${left+(w-left-right)/2}" y="${h-6}" text-anchor="middle">Recorded event (generation order)</text>`+
+    `<text class="axis-title" transform="translate(13 ${top+(h-top-bottom)/2}) rotate(-90)" text-anchor="middle">Ties</text></svg>`;
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -546,7 +735,7 @@ export function mountInsight(app,{root,ledger,legend}={}) {
     data=dataset;state=app.getState();
     if(state.consensus){consensusScope=state.consensus.scope;threshold=state.consensus.min;thresholdInput.value=String(Math.round(threshold*100));} // a link may carry the aggregate plane
     renderLedger();queue(...Object.keys(renderers));ensureMetrics();
-    import('./plot-gallery.js?v=8fa1a1a66ea0').then(({mountSupplementPanel})=>{
+    import('./plot-gallery.js?v=d068babb8c4c').then(({mountSupplementPanel})=>{
       if(destroyed)return;
       const section=document.getElementById('saved-plots');
       if(section&&typeof mountSupplementPanel==='function'){const panel=mountSupplementPanel(section,{dataset,announce:message=>app.announce(message)});cleanups.push(()=>panel.destroy());}

@@ -4,9 +4,10 @@
 // short readable URL grammar that still opens legacy ?view=<json> links.
 // The pure functions at the top are DOM-free so node:test can import this file; mountFilters() is the
 // only part that touches the document, and it talks to the rest of the page only through the store.
-import {EMPTY_FILTERS,GRAPH_STATES,VIEWS,LENSES,MAX_STACK_LAYERS,LAYER_COLORS,INITIAL_STATE} from './layers-app.js?v=8fa1a1a66ea0';
-import {evidenceDataset} from './graph-data.js?v=8fa1a1a66ea0';
-import {countryNames,runLabel,layerLabel,modelName} from './formation-charts.js?v=8fa1a1a66ea0';
+import {EMPTY_FILTERS,GRAPH_STATES,VIEWS,LENSES,MAX_STACK_LAYERS,LAYER_COLORS,INITIAL_STATE} from './layers-app.js?v=d068babb8c4c';
+import {evidenceDataset} from './graph-data.js?v=d068babb8c4c';
+import {countryNames,runLabel,layerLabel,modelName} from './formation-charts.js?v=d068babb8c4c';
+import {replayStart} from './layers-replay.js?v=d068babb8c4c';
 
 export const FACETS=Object.freeze(['model','method','setting','seed']);
 export const FACET_NAMES=Object.freeze({model:'Model',method:'Method',setting:'Setting',seed:'Seed',graph:'Graph',search:'Search'});
@@ -332,7 +333,8 @@ function decodeLegacy(raw,dataset) {
 export function replayRun(app,id,source=SOURCE) {
   const s=app.getState();
   if(!s.layers.includes(id))throw new Error('Only a stacked run can be replayed; add it to the stack first.');
-  app.update({active:id,view:'replay'},source);
+  // Replay opens at the start of the record (event 0); a single-response run opens on its saved graph.
+  app.update({active:id,view:'replay',frame:replayStart(app.data?.runs.find(run=>run.run_id===id))},source);
 }
 
 // Keeps the address bar in the short grammar. Enabled by mountFilters({writeUrl:true}) once layers.js
@@ -471,7 +473,7 @@ function build(app,{chips,root,results,search,writeUrl}) {
     const s=state();
     if(s.layers.includes(run.run_id)){replayRun(app,run.run_id);app.announce(`Replaying ${runLabel(run)} in recorded generation order.`);return;}
     if(s.layers.length>=MAX_STACK_LAYERS){app.announce(`The stack is full (${MAX_STACK_LAYERS} of ${MAX_STACK_LAYERS}). Remove a run before replaying ${runLabel(run)}.`);return;}
-    app.update({layers:[...s.layers,run.run_id],active:run.run_id,view:'replay'},SOURCE);
+    app.update({layers:[...s.layers,run.run_id],active:run.run_id,view:'replay',frame:replayStart(run)},SOURCE);
     app.announce(`Replaying ${runLabel(run)} in recorded generation order. It was added to the stack.`);
   }
   function stackThese() {
