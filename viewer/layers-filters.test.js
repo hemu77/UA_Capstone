@@ -7,6 +7,7 @@ import {loadPrimaryDataset,COUNTS} from './layers-data-all.js';
 import {applyFilters,facetCounts,failuresInScope,activeChips,encodeState,decodeState,stateQuery,normalizeFilters,filtersActive,
   toggleValue,withoutChip,sortRuns,scopeSummary,slotMask,isPrimaryRun,matchesSearch,facetValues,valueLabel,FACETS,ARCHIVED_LINK_MESSAGE,ABSENT_RUN_MESSAGE,mountFilters,replayRun,syncUrl} from './layers-filters.js';
 import {createStore} from './layers-app.js';
+import {replayStart} from './layers-replay.js';
 
 // Serve public/data/ to the real loader, whatever files it asks for (monolith today, compact graphs/ after WS1).
 const fetchImpl=async url=>{
@@ -211,7 +212,9 @@ test('replayRun ends in replay of a stacked run, in one update',()=>{
   app.update({layers:ids,active:ids[0],view:'stack'});
   app.subscribe((state,changed)=>seen.push([...changed]));
   replayRun(app,ids[2]);
-  assert.deepEqual(seen.map(keys=>keys.sort()),[['active','view']]);
+  // One update: the run, the view and the replay position (event 0, or the saved graph of a one-response run).
+  assert.equal(seen.length,1);assert.ok(['active','view'].every(key=>seen[0].includes(key)));assert.ok(seen[0].every(key=>['active','view','frame'].includes(key)));
+  assert.equal(app.getState().frame,replayStart(data.runs[2]));
   assert.equal(app.getState().active,ids[2]);assert.equal(app.getState().view,'replay');
   assert.throws(()=>replayRun(app,data.runs[5].run_id),/stacked run/);
 });

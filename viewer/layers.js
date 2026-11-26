@@ -7,18 +7,19 @@
 import * as THREE from 'three';
 import {comparisonLayout, layerComparison, neighbors, replayFrames, personaSteps, personaView, personaTag, personaComparison, togglePersona, tapTracker, matchedRuns, evidenceDataset, conditionCoverage, MAX_LAYERS, edgeKey} from './graph-data.js';
 import {topology as topologyMetrics} from './research-plots.js';
-import {trajectorySvg, metricBars, runLabel, runParts, layerLabel, researchEvidence, homophilyMatrix, frequencySvg, modelName, methodName, settingName, plural} from './formation-charts.js';
+import {runLabel, runParts, layerLabel, homophilyMatrix, frequencyMatrix, modelName, methodName, settingName, plural} from './formation-charts.js';
 import {configureNavigation, panCamera} from './navigation.js';
 import {decodeVerifiedEvents} from './verified-events.js';
 import {createStore, EMPTY_FILTERS, LAYER_COLORS, MAX_STACK_LAYERS, VIEWS} from './layers-app.js';
 import {loadPrimaryDataset, loadMetrics, settingKey} from './layers-data-all.js';
 import {mountFilters, applyFilters, decodeState, slotMask} from './layers-filters.js';
-import {mountInsight, nodeEncoding, edgeEncoding, consensus as consensusOf} from './layers-insight.js';
+import {mountInsight, nodeEncoding, edgeEncoding, consensus as consensusOf, comparisonDesign, comparisonReading, overlapLine, metricChartHtml, tieTableHtml, ledgerRows, trajectoryChartHtml} from './layers-insight.js';
 import {mountShell} from './layers-shell.js';
-import {createStage3D, STAGE_COLORS} from './layers-3d-scene.js';
+import {createStage3D, STAGE_COLORS, boxCorners} from './layers-3d-scene.js';
 import {createAtlas} from './layers-3d-atlas.js';
-import {createStack} from './layers-3d-stack.js';
+import {createStack, spreadLayout} from './layers-3d-stack.js';
 import {createLabels} from './layers-3d-labels.js';
+import {REPLAY_FINAL,hasStepRecord,replayStart,replayPick,busiestPersona,eventSummary,tickStripSvg,phaseLine,singleRecordState} from './layers-replay.js';
 export const app=createStore();
 // Diagnostics for checks: the drawable objects currently submitted to the GPU (name, type, instance/vertex count).
 export function drawables(){
@@ -30,7 +31,7 @@ export function drawables(){
 const $=id=>document.getElementById(id);
 // The address bar belongs to layers-filters.js (short grammar, SPEC.md B.4 / C.5); this file only reads links.
 const STACK_LIMIT=Math.min(MAX_STACK_LAYERS,MAX_LAYERS);
-const FINAL=Number.MAX_SAFE_INTEGER; // "final recorded state"; clamped to the real index once the history is verified
+const FINAL=REPLAY_FINAL; // "final recorded state"; clamped to the real index once the history is verified
 const SOURCE='layers.js';
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const url=new URL(location.href);
@@ -46,8 +47,9 @@ let stage=null,atlas=null,stack=null,labels=null,raycaster=null;
 let runs=[],stackLayout=null,stackLayoutKey='',trace=null;
 let journey=false,playing=false,timer=null,removed=[],startingRuns=[],animateNext=false,keepUndo=false;
 let consensusLive=false;
-let ledgerKey='',aggregateKey='',lastView=null,lastPlaneKey='',entering=null,loadNotice='';
-const view3d={lift:false,ribbons:true};
+let ticksKey='',singleKey='',replayNotice='',replayNoticeFor='';
+let ledgerKey='',aggregateKey='',tieShowAll=false,questionKey='',lastView=null,lastPlaneKey='',entering=null,loadNotice='';
+const view3d={lift:false,ribbons:false}; // ribbons are opt-in: with many shared ties they cover the planes
 const traceCache=new Map(),historyLoads=new Map();
 
 // Saved measurements beyond density and clustering (and the saved homophily scores) arrive with metrics.json.
@@ -132,7 +134,8 @@ function loadTrace() {
   if(!traceCache.has(id))traceCache.set(id,run.replay_status==='actual_recorded_graph_changes'?replayFrames(run,data.personas.map(p=>p.id)):null);
   trace=traceCache.get(id);clampFrame();
 }
-const currentFrame=()=>trace?Math.min(S().frame,trace.length-1):0;
+// A one-response record has nothing between "nothing" and "everything": its replay position is always the saved graph.
+const currentFrame=()=>!trace?0:hasStepRecord(activeRun())?Math.min(S().frame,trace.length-1):trace.length-1;
 
 // ---------------------------------------------------------------------------------------------
 // Actions. Each one writes the store; render() reacts.
@@ -142,24 +145,35 @@ function selectPersona(id,toggle=true){
   if($('incident'))$('incident').checked=!!next;
   if(!commit({persona:next}).size)render(new Set(['local']));
 }
-function activate(run){stop();journey=false;commit({active:run.run_id,view:'replay',frame:FINAL});}
+// Replay always opens at the start of the record (event 0); a single-response run opens on its saved graph.
+function activate(run,notice=''){stop();journey=false;replayNotice=notice;replayNoticeFor=run.run_id;commit({active:run.run_id,view:'replay',frame:replayStart(run)});}
+// "Replay" without naming a run: the active run when it has a step-by-step record, otherwise the first stacked run
+// that has one (and the page says which run that is).
+function openReplay(){
+  stop();journey=false;if($('incident'))$('incident').checked=false;
+  const pick=replayPick(runs,S().active),run=pick.run,index=runs.indexOf(run)+1;
+  replayNoticeFor=run.run_id;replayNotice=pick.switched?`Replaying run ${index} (${methodName(run.method)}): run ${runs.indexOf(pick.from)+1} (${methodName(pick.from.method)}) was returned in one response and has no steps.`:'';
+  if(!commit({view:'replay',active:run.run_id,frame:replayStart(run),persona:''}).size)render(new Set(['local']));
+  announce(`Replaying run ${index} of ${runs.length}: ${label(run)}.`);
+  stage?.pose('orbit');
+}
 function seek(step,preserveScope=false){
-  stop();if(!preserveScope){journey=false;if($('incident'))$('incident').checked=false;}
+  stop();replayNotice='';if(!preserveScope){journey=false;if($('incident'))$('incident').checked=false;}
   if(!commit({frame:Math.max(0,Math.min(trace?.length-1||0,step))}).size)render(new Set(['local']));
 }
 function steps(){return journey?personaSteps(activeRun().events,selectedPersona()):Array.from({length:trace?.length-1||0},(_,i)=>i+1);}
 function advance(){
   const frame=currentFrame(),next=steps().find(step=>step>frame);
   if(next===undefined){stop();render(new Set(['local']));return;}
-  animateNext=true;commit({frame:next});
+  animateNext=true;replayNotice='';commit({frame:next});
   timer=setTimeout(advance,Number($('speed')?.value||800));
 }
 function play(){
-  if(!trace)return;
   if(playing){stop();render(new Set(['local']));return;}
-  stop();
+  if(!isReplay())openReplay();
+  if(!trace||!hasStepRecord(activeRun()))return;
+  stop();replayNotice='';
   const patch={view:'replay'};
-  if(!isReplay()){journey=false;patch.frame=0;if($('incident'))$('incident').checked=false;}
   commit(patch);
   if(!steps().some(step=>step>currentFrame()))commit({frame:0});
   playing=true;render(new Set(['local']));timer=setTimeout(advance,Number($('speed')?.value||800));
@@ -210,7 +224,7 @@ function encodings(){
 // ---------------------------------------------------------------------------------------------
 // 3D stage.
 function setupStage(){
-  labels=createLabels($('plane-labels'));
+  labels=createLabels($('plane-labels'),{onRemeasure:()=>stage?.requestRender()});
   try{stage=createStage3D($('viewport'),{labels,reducedMotion:reducedMotion.matches});}
   catch{stage=null;labels.dispose();labels=null;document.body.dataset.renderer='unavailable';if($('status'))$('status').textContent='WebGL unavailable. Measurements and condition plots remain usable.';return;}
   reducedMotion.addEventListener?.('change',event=>{stage.setReducedMotion(event.matches);paintTools();});
@@ -229,16 +243,18 @@ function setupStage(){
     const view=$('viewport').getBoundingClientRect(),host=$('plane-labels').getBoundingClientRect();
     stage.setOffset(view.left-host.left,view.top-host.top);
     let top=0,bottom=0;
-    // On narrow stages the encoding toggles sit in a row above the camera bar and count as bottom chrome too.
-    for(const element of document.querySelectorAll('.stage-heading,.stage-tools,.stage-key,.stage-footer'+(view.width<700?',#stage-overlay .g3-tools':''))){
+    // The 3D key and encoding toggles (#stage-overlay) sit above the camera bar and count as bottom chrome too.
+    for(const element of document.querySelectorAll('.stage-heading,.stage-tools,.stage-key,.stage-footer,#stage-overlay .g3-hud')){
       const r=element.getBoundingClientRect();if(!r.height||r.bottom<view.top||r.top>view.bottom)continue;
       if(r.top-view.top<view.height*.35&&r.bottom-view.top<view.height*.5)top=Math.max(top,r.bottom-view.top);
       else if(view.bottom-r.bottom<view.height*.35)bottom=Math.max(bottom,view.bottom-r.top);
     }
-    // Text overlays stay readable over the scene; give them most, not all, of their height.
-    stage.setSafeArea({top:top*.8,bottom:bottom*.92});
+    // The heading is quiet text and may overlap the far edge of the scene a little; the bottom band (legend, key,
+    // toggles, camera bar) never covers it.
+    stage.setSafeArea({top:top*.85,bottom});
   };
   const observer=new ResizeObserver(align);observer.observe($('viewport'));observer.observe($('plane-labels'));
+  stage.observeChrome=element=>observer.observe(element);
   for(const element of document.querySelectorAll('.stage-heading,.stage-tools,.stage-key,.stage-footer'))observer.observe(element);
   const interaction=$('graph-interaction'),dragMode=$('drag-mode');
   const configureInteraction=()=>{const enabled=interaction?interaction.checked:true;configureNavigation(stage.controls,enabled,dragMode?.value||'orbit');stage.controls.enableDamping=!stage.reducedMotion;canvas.style.setProperty('touch-action',enabled?'none':'pan-y','important');};
@@ -322,24 +338,34 @@ const filterMask=filters=>slotMask(data,filters);
 function environment(view){
   if(!stage)return;
   if(view==='atlas'){
-    // Room on the left for the setting labels (full names on wide canvases, codes on narrow ones); the camera
-    // sits slightly off-axis so tower sides and row depth read as volume.
-    const b=atlas.layout.bounds,narrow=stage.size.width<700,pad=b.width*(narrow?.2:Math.min(.4,Math.max(.22,270/stage.size.width)));
-    stage.setBounds({center:[b.center[0]-pad*.5,b.center[1]*.5,b.center[2]],radius:b.width*.5,extent:[b.width*.5+pad*.5,b.depth*.36+b.height*.5],margin:narrow?1.1:1.2,fov:26,poses:{orbit:narrow?[0,1.15,1]:[.14,.6,1],front:[0,.22,1],top:[0,1,.05]}});
-    stage.setEnvironment({fogDensity:.00125,groundY:0,groundRadius:Math.max(b.width,b.depth)*.78,cell:6.5,center:[0,0]});return;
+    // Room on the left for the setting labels (full names on wide canvases, codes on narrow ones) and a little on the
+    // right for the seed axis. The camera looks down at about 57 degrees (62 on phones): steep enough that every row
+    // clears the row in front of it, shallow enough that tower height (seed order) still reads.
+    // Label room is reserved in screen pixels (a view offset), so the camera still looks straight down the middle.
+    const b=atlas.layout.bounds,narrow=stage.size.width<700;
+    const padPx=narrow?[54,8]:[Math.min(190,stage.size.width*.17),96];
+    const direction=narrow?[0,1.9,1]:[0,1.55,1],front=narrow?14:21; // model and method labels in front of the first row
+    const center=[0,b.height*.3,front/2],points=boxCorners([-b.width/2,0,-b.depth/2],[b.width/2,b.height,b.depth/2+front],center);
+    stage.setBounds({center,radius:b.width*.5,points,margin:1.02,fov:22,padPx,fogScale:.36,poses:{orbit:direction,front:[0,.4,1],top:[0,1,.02]}});
+    stage.setEnvironment({groundY:0,groundRadius:Math.max(b.width,b.depth)*.85,cell:5.3,center:[0,0]});return;
   }
-  // Portrait canvases are width-limited: back off so the plane corners stay inside the frame.
-  const b=stack.bounds(),plane=isReplay()?150:110,portrait=stage.size.width<stage.size.height*1.35;
-  // Replay is one flat plane: fit its projected box (wide, shallow) rather than a sphere, so it fills the stage.
-  if(isReplay())stage.setBounds({center:b.center,radius:b.radius,extent:[plane*1.4,plane*.62+(view3d.lift?30:6)],margin:1.04,fov:38,poses:null});
-  else stage.setBounds({center:b.center,radius:b.radius,extent:null,margin:portrait?Math.max(1,plane*1.45/b.radius):1,fov:38,poses:null});
-  stage.setEnvironment({fogDensity:isReplay()?.0009:.00105,groundY:b.floor,groundRadius:plane*2.7,cell:plane/5.5,center:[0,0],shadow:{x:0,z:0,halfX:plane*.9,halfZ:plane*.9,soft:plane*.35,strength:.5}});
+  // Stack and Replay fit the exact projected box of the planes (perspective included). The camera looks down more
+  // steeply when there are few planes (graphs read best from above) and flatter for tall stacks (planes separate).
+  // Plane labels get a reserved column on the left (a view offset, so perspective stays symmetric).
+  const b=stack.bounds(),plane=isReplay()?150:110,narrow=stage.size.width<700,L=Math.max(1,stack.planes);
+  const elevation=isReplay()?.78:L<=2?.8:L<=4?.6:.38;
+  const direction=isReplay()?[.22,elevation,1]:[.42,elevation,.9],padPx=isReplay()?[0,0]:narrow?[100,4]:[Math.min(150,stage.size.width*.13),16];
+  stage.setBounds({center:[0,(b.box.min[1]+b.box.max[1])/2,0],radius:b.radius,points:b.points,margin:1.02,fov:34,padPx,fogScale:L>4?.5:.42,poses:{orbit:direction,front:[.02,.32,1],top:[0,1,.02]}});
+  stage.setEnvironment({groundY:b.floor,groundRadius:plane*2.7,cell:plane/5.5,center:[0,0],shadow:{x:0,z:0,halfX:plane*.9,halfZ:plane*.9,soft:plane*.35,strength:.5}});
 }
 function stackLayoutFor(list){
   const key=list.map(r=>r.run_id).join('|');
-  if(key!==stackLayoutKey){stackLayoutKey=key;stackLayout=comparisonLayout(data.personas,list.flatMap(r=>r.edges),[]);}
+  if(key!==stackLayoutKey){stackLayoutKey=key;stackLayout=comparisonLayout(data.personas,list.flatMap(r=>r.edges),[]);stackSpread=null;}
   return stackLayout;
 }
+// The 3D planes use the same layout spread evenly over the plane (direction and distance order kept).
+let stackSpread=null;
+function stackPlaneLayout(list){const layout=stackLayoutFor(list);if(!stackSpread)stackSpread=spreadLayout(layout);return stackSpread;}
 function sync3D(changed){
   const s=S(),canvas=stage?.canvas;
   if(!stage)return;
@@ -369,10 +395,11 @@ function sync3D(changed){
   atlas?.setVisible(false);
   const replay=s.view==='replay',run=activeRun(),list=replay?[run]:runs;
   const frame=replay&&trace?trace[currentFrame()]:null;
-  const spacing=Number($('separation')?.value||55);
-  stack.configure({runs:list,activeId:run.run_id,layout:stackLayoutFor(runs),
-    options:{replay,spacing,scale:replay?1.8:1.25,plane:replay?150:110,lift:view3d.lift,opacity:Number($('opacity')?.value||50)/100},
-    frame:replay?(frame?{edges:frame.edges,event:frame.event}:null):null,animate:animateNext,duration:Math.min(550,Number($('speed')?.value||800)*.7),
+  // Tall stacks get a little more room between planes; the camera also looks flatter at them (environment()).
+  const spacing=Number($('separation')?.value||55)*(replay||runs.length<=4?1:1.12);
+  stack.configure({runs:list,activeId:run.run_id,layout:stackPlaneLayout(runs),
+    options:{replay,spacing,scale:replay?150*.88:110*.88,plane:replay?150:110,lift:view3d.lift,opacity:Number($('opacity')?.value||50)/100},
+    frame:replay?(frame?{edges:frame.edges,event:hasStepRecord(run)?frame.event:null}:null):null,animate:animateNext,duration:Math.min(550,Number($('speed')?.value||800)*.7),
     persona:s.persona,isolate:incidentOnly(),ties:replay?'all':$('ties')?.value||'all',ribbons:view3d.ribbons,encoding:enc,
     consensus:!replay&&s.consensus&&consensusLive?consensusPlane():null});
   stack.setVisible(true);
@@ -397,17 +424,23 @@ function consensusPlane(){
 }
 const consensusCaption=()=>{const setting=S().consensus,n=consensusScope().length;return `Aggregate of ${plural(n,setting?.scope==='stack'?'stacked graph':'filtered graph')} · ties in ≥ ${Math.round((setting?.min||0)*100)}% · not a run`;};
 function atlasLabels(){
-  const text={model:modelName,method:methodName,setting:([c,l])=>settingName(c,l),seed:seed=>String(seed),'seed-axis':()=>'Seed ↑'};
-  const priority={model:6,setting:5,'seed-axis':5.5,seed:2,method:1},anchor={model:'center',method:'center',setting:'left',seed:'right','seed-axis':'right'};
-  // Narrow canvases have no room for full setting names beside the towers: use country / language codes there.
   const compact=stage.size.width<700,codes={us:'US',india:'IN',japan:'JP',brazil:'BR',english:'EN',hindi:'HI',japanese:'JA',portuguese:'PT'};
-  if(compact)text.setting=([c,l])=>`${codes[c]||c} / ${codes[l]||l}`;
-  return atlas.layout.axes.filter(axis=>!(compact&&(axis.kind==='method'||axis.kind==='seed'))).map((axis,order)=>({id:`axis-${axis.id}`,text:text[axis.kind](axis.key),title:axis.kind==='setting'?settingName(...axis.key):undefined,position:axis.position,priority:priority[axis.kind],anchor:anchor[axis.kind],column:axis.kind==='setting'?'settings':undefined,className:`g3-axis g3-axis-${axis.kind}${compact?' g3-compact':''}`}));
+  // Full method names need about 45 px per column; below that each column gets its initial (key in the legend).
+  const letters={global:'G',local:'L',sequential:'S',iterative:'I'},short=methodLetters();
+  const text={model:modelName,method:key=>short?letters[key]||methodName(key):methodName(key),setting:([c,l])=>compact?`${codes[c]||c} / ${codes[l]||l}`:settingName(c,l),seed:seed=>String(seed),'seed-axis':()=>'Seed order ↑\nnot time'};
+  const priority={model:6,setting:5,'seed-axis':5.5,seed:2,method:4},anchor={model:'center',method:'center',setting:'left',seed:'right','seed-axis':'right'};
+  const seeds=data.design.seeds,ends=new Set([seeds[0],seeds.at(-1)]);
+  // Every method name is shown under its own column (two staggered lines on wide canvases, initials otherwise);
+  // seeds show only the first and last plane so the axis never crowds; setting names sit at the end of their own row.
+  return atlas.layout.axes.filter(axis=>!((axis.kind==='seed'||axis.kind==='seed-axis')&&compact)&&!(axis.kind==='seed'&&!ends.has(axis.key))).map(axis=>({id:`axis-${axis.id}`,text:text[axis.kind](axis.key),
+    title:axis.kind==='setting'?settingName(...axis.key):axis.kind==='method'?methodName(axis.key):undefined,position:short&&axis.kind==='method'?[axis.position[0],0,axis.position[2]-(axis.stagger?6.8:0)]:axis.position,
+    priority:priority[axis.kind],anchor:anchor[axis.kind],className:`g3-axis g3-axis-${axis.kind}${compact||short&&axis.kind==='method'?' g3-compact':''}`}));
 }
+const methodLetters=()=>!!stage&&stage.size.width<1000;
 function stackLabels(list,frame){
   const s=S(),items=[],replay=s.view==='replay',selected=s.persona,mode=$('node-labels')?.value||'none';
   const event=replay?frame?.event:null;
-  if(!replay)list.forEach((run,index)=>{const anchor=stack.planeAnchor(index);if(anchor)items.push({id:`plane-${run.run_id}`,text:layerLabel(runs,index),position:anchor,priority:4,cull:false,clamp:true,anchor:['left','right'],column:stage.size.width<700?'planes':undefined,color:LAYER_COLORS[index],title:label(run),ariaLabel:`Replay layer ${index+1}: ${label(run)}`,className:'plane-label run-label g3-plane',pressed:run.run_id===s.active,onClick:()=>activate(run)});});
+  if(!replay)list.forEach((run,index)=>{const anchor=stack.planeAnchor(index);if(anchor)items.push({id:`plane-${run.run_id}`,text:layerLabel(runs,index),position:anchor,priority:4,cull:false,clamp:true,anchor:['left','right'],column:'planes',leader:true,color:LAYER_COLORS[index],title:label(run),ariaLabel:`Replay layer ${index+1}: ${label(run)}`,className:'plane-label run-label g3-plane',pressed:run.run_id===s.active,onClick:()=>activate(run)});});
   if(!replay&&stack.consensusPlane>=0){items.push({id:'plane-consensus',text:consensusCaption(),position:stack.planeAnchor(stack.consensusPlane),priority:4,cull:false,clamp:true,anchor:['left','right'],color:STAGE_COLORS.gold,className:'plane-label run-label g3-plane g3-consensus'});}
   list.forEach((run,index)=>{
     const edges=replay&&run.run_id===s.active&&frame?frame.edges:run.edges;
@@ -440,13 +473,14 @@ function buildHud(){
   toggle('g3-ribbons','Shared-tie ribbons','Draw a translucent ribbon between adjacent planes for every tie present in both.',()=>{view3d.ribbons=!view3d.ribbons;render(new Set(['local']));});
   toggle('g3-consensus','Aggregate plane','Add an aggregate plane above the stack: ties present in at least half of the filtered graphs, brighter when in more of them. Descriptive; not a run. Scope and share are set under Compare.',()=>{const on=!S().consensus;commit({consensus:on?{scope:'filters',min:.5}:null});announce(on?'Aggregate plane added above the stack: ties present in at least half of the filtered graphs. It is not a run.':'Aggregate plane removed.');});
   hud.append(caption,key,tools);root.append(hud);
+  stage.observeChrome?.(hud);
 }
 function paintHud(){
   const s=S(),caption=$('g3-caption'),key=$('g3-key');if(!caption){paintTools();return;}
   caption.textContent='';caption.hidden=true;
   key.replaceChildren();
   const swatch=(cls,text)=>{const span=document.createElement('span');span.className=`g3-swatch ${cls}`;span.textContent=text;key.append(span);};
-  if(s.view==='atlas'){swatch('g3-valid','Graph');swatch('g3-empty','Valid, no ties');swatch('g3-failed','Failed attempt, no graph');swatch('g3-stacked','In your stack');}
+  if(s.view==='atlas'){swatch('g3-valid','Graph · brighter = more ties');swatch('g3-empty','Valid graph, no ties');swatch('g3-failed','Failed attempt, no graph');swatch('g3-stacked','In your stack');swatch('g3-zoom','Zoom into a tower to see nodes and ties');}
   else if(s.view==='stack'){const aggregate=!!s.consensus&&stack?.consensusPlane>=0;if(view3d.ribbons&&runs.length>1&&!aggregate)swatch('g3-ribbon','Ribbon: tie shared with next plane');if(aggregate)swatch('g3-consensus-key',`Top plane: aggregate, brighter = in more of the ${s.consensus.scope==='stack'?'stacked':'filtered'} graphs`);if(view3d.lift)swatch('g3-lift','Height above plane: ties of that node');}
   else if(view3d.lift)swatch('g3-lift','Height above plane: ties of that node');
   key.hidden=!key.childElementCount;
@@ -498,17 +532,18 @@ function paintSelection(){
   const s=S(),selected=s.persona,comparison=layerComparison(runs),replay=s.view==='replay';
   if($('person')&&$('person').value!==selected)$('person').value=selected;
   if($('color')&&$('color').value!==s.colorBy&&[...$('color').options].some(o=>o.value===s.colorBy))$('color').value=s.colorBy;
-  const rows=$('rows'),degrees=$('person-degrees');rows?.replaceChildren();degrees?.replaceChildren();
+  const rows=$('rows'),degrees=$('person-degrees'),design=comparisonDesign(runs);rows?.replaceChildren();degrees?.replaceChildren();
+  if($('rows-axis'))$('rows-axis').textContent=design.axis;
   runs.forEach((run,index)=>{
     const renderedEdges=replay&&run.run_id===s.active&&trace?trace[currentFrame()].edges:run.edges,adjacent=personaView(renderedEdges,selected,incidentOnly()).neighbors;
     if(degrees&&selected&&(!replay||run.run_id===s.active)){const item=document.createElement('p');item.textContent=`Run ${index+1} / ${modelName(run.model)}: ${adjacent.length} ${replay?'current':'final'} neighbors${adjacent.length?'':' (isolated)'}`;item.style.borderLeft=`3px solid ${LAYER_COLORS[index]}`;for(const id of [...adjacent].sort((a,b)=>Number(a)-Number(b))){const button=document.createElement('button');button.className='neighbor';button.textContent=id;button.title=`Inspect persona ${id} across selected runs`;button.onclick=()=>{selectPersona(id,false);$('person')?.focus({preventScroll:true});};item.append(button);}degrees.append(item);}
     const finalAdjacent=selected?[...neighbors(run.edges,selected)].sort():[];
-    if(rows){const row=document.createElement('tr');for(const value of [`${index+1}. ${label(run)}`,data.personas.length,run.edges.length,fmt(run.metrics.density),fmt(run.metrics.avg_clustering_coef),selected?`${finalAdjacent.length}: ${finalAdjacent.join(', ')||'none'}`:'Select a persona']){const td=document.createElement('td');td.textContent=value;row.append(td);}rows.append(row);}
+    if(rows){const row=document.createElement('tr');for(const value of [design.labels[index]+(run.run_id===s.active?' (active)':''),data.personas.length,run.edges.length,fmt(run.metrics.density),fmt(run.metrics.avg_clustering_coef),selected?`${finalAdjacent.length}: ${finalAdjacent.sort((a,b)=>a-b).join(', ')||'none'}`:'—']){const td=document.createElement('td');td.textContent=value;row.append(td);}rows.append(row);}
   });
   const person=data.personas.find(p=>p.id===selected);
   if($('person-detail')){if(person)$('person-detail').replaceChildren(personaCard(person));else $('person-detail').textContent='Choose a node or persona to compare their neighbors.';}
   if(stage&&$('status'))$('status').textContent=s.view==='atlas'?'':`${plural(runs.length,'layer')} · ${data.personas.length} people per layer · ${plural(comparison.shared,'tie')} shared across all layers`;
-  if($('comparison'))$('comparison').textContent=`${comparison.shared} shared ties / ${comparison.union} distinct ties across selected final networks.`;
+  if($('comparison'))$('comparison').textContent=overlapLine(comparison.shared,comparison.union,runs.length);
   const summary=$('quick-summary');
   if(summary){
     summary.replaceChildren();
@@ -528,11 +563,10 @@ function paintSelection(){
   }
   const metric=$('metric')?.value||'density';
   const measured=BASIC_METRICS.has(metric)||metricsReady();
-  if($('plot'))$('plot').innerHTML=measured?metricBars(runs,metric,topologyMetrics[metric]):metricsNote();
-  const reference=activeRun(),baseline=reference.metrics[metric];
-  const contrasts=runs.filter(run=>run!==reference).map(run=>{const value=run.metrics[metric];return `${layerLabel(runs,runs.indexOf(run))}: ${Number.isFinite(value)&&Number.isFinite(baseline)?`${value-baseline>=0?'+':''}${(value-baseline).toFixed(4)}`:'undefined'}`;});
-  if($('metric-deltas'))$('metric-deltas').textContent=!measured?'':contrasts.length?`Signed difference from active run (${label(reference)}): ${contrasts.join('; ')}. Each value is that run minus the active run. Descriptive differences, not significance or accuracy.`:'Add another run for a metric difference. No comparison is defined for one run.';
-  const definitions={density:'Density: observed edges divided by all possible undirected pairs. Higher means denser, not better.',avg_clustering_coef:'Mean clustering: how often a person\'s neighbors are connected to one another. Higher means more closed triangles, not greater accuracy.',prop_nodes_lcc:'Largest component share: fraction of people in the largest connected group.',modularity:'Modularity: community structure relative to the metric\'s null model. It is not a validation score.',global_efficiency:'Global efficiency: mean inverse shortest-path distance, with disconnected pairs contributing zero.',num_components:'Connected components: separate groups with no path between them.'};
+  const reference=activeRun();
+  if($('plot'))$('plot').innerHTML=measured?metricChartHtml(runs,metric,{activeId:reference.run_id,title:topologyMetrics[metric]}):metricsNote();
+  if($('metric-deltas'))$('metric-deltas').textContent=!measured||runs.length<2?'':`“vs active” is each run minus the active run (${design.labels[runs.indexOf(reference)]}). Descriptive, not a significance test.`;
+  const definitions={density:'Ties present out of all possible persona pairs. Higher means denser, not better.',avg_clustering_coef:'How often two neighbors of a persona are also tied. Higher means more closed triangles, not greater accuracy.',prop_nodes_lcc:'Share of personas in the largest connected group.',modularity:'Strength of community structure against the measure’s null model. Not a validation score.',global_efficiency:'Mean inverse shortest-path length; disconnected pairs count as zero.',num_components:'Number of separate groups with no path between them.'};
   if($('metric-definition'))$('metric-definition').textContent=definitions[metric]||'';
   if($('ties'))$('ties').disabled=replay||s.view==='atlas';
   if($('separation')){$('separation').disabled=s.view!=='stack'||runs.length<2;if($('spacing-value'))$('spacing-value').textContent=$('separation').disabled?'(comparison only)':$('separation').value;}
@@ -547,23 +581,35 @@ function renderPlayback(){
   const current=trace?.[frame],event=replay?current?.event:null,edges=current?.edges||run.edges;
   const set=(id,text)=>{const el=$(id);if(el)el.textContent=text;};
   set('stage-title',replay?label(run):atlasView?`${data.counts.cells??112} conditions × ${data.design.seeds.length} seed planes`:`${plural(runs.length,'final network')} · shared persona positions`);
-  set('stage-state',atlasView?'Every primary attempt slot':!replay?'Final snapshots':trace?`Event ${frame} / ${trace.length-1}`:pending?'Loading verified replay…':'History unavailable');
-  if($('play')){$('play').textContent=playing?'Pause':!replay?'Play active run':journey?'Play persona journey':'Play / resume';$('play').disabled=!trace;}
-  for(const id of ['rewind','previous','next','timeline','show-final','speed'])if($(id))$(id).disabled=!available;
-  if($('previous'))$('previous').disabled=!available||frame===0;if($('next'))$('next').disabled=!available||!steps().some(step=>step>frame);
+  const single=replay&&!hasStepRecord(run),total=trace?trace.length-1:0,more=steps().some(step=>step>frame);
+  document.body.dataset.replayRecord=!replay?'':single?'single':'steps';
+  set('stage-state',atlasView?'Every primary attempt slot':!replay?'Final snapshots':single?'One response':trace?`Event ${frame} of ${total}`:pending?'Loading verified replay…':'History unavailable');
+  const playButton=$('play');
+  if(playButton){
+    const text=playing?'Pause':!replay?'Play active run':journey?`Play persona ${selected}`:available&&!more&&frame>0?'Play again':'Play';
+    if($('play-text'))$('play-text').textContent=text;else playButton.textContent=text;
+    playButton.dataset.state=playing?'playing':'paused';playButton.disabled=!trace||single;
+    playButton.title=playing?'Pause (Space)':available&&!more&&frame>0?'Replay the recorded events from the start (Space)':'Play the recorded events in generation order (Space)';
+  }
+  for(const id of ['rewind','previous','next','timeline','show-final','speed'])if($(id))$(id).disabled=!available||single;
+  if($('previous'))$('previous').disabled=!available||single||frame===0;if($('next'))$('next').disabled=!available||single||!more;
+  if($('rewind'))$('rewind').disabled=!available||single||frame===0;if($('show-final'))$('show-final').disabled=!available||single||frame>=total;
+  paintTicks(run,selected,replay&&!single?frame:-1);
+  paintSingle(run,single);
   const play=$('play-persona');
   if(play){play.disabled=!trace||!selected||!personaSteps(run.events,selected).length;play.textContent=journey?`Following persona ${selected}`:selected?`Follow persona ${selected}`:'Select a persona to follow';play.setAttribute('aria-pressed',String(journey));}
   if($('timeline')){$('timeline').max=trace?trace.length-1:0;$('timeline').value=replay?frame:trace?trace.length-1:0;}
-  set('step-label',!replay?'Final networks':trace?`Event ${frame} / ${trace.length-1}`:'No recorded history');
+  set('step-label',!replay?'Final networks':trace?`Event ${frame} of ${total}`:pending?'Loading recorded events…':'No recorded history');
+  if($('timeline')&&trace)$('timeline').setAttribute('aria-valuetext',`Event ${frame} of ${total}`);
   const relevantSteps=personaSteps(run.events,selected);
-  set('playback-scope',!replay?'Saved outputs / no shared timeline':journey?`Persona ${selected}: ${relevantSteps.filter(step=>step<=frame).length} / ${relevantSteps.length} relevant events`:incidentOnly()&&selected?`All events / only persona ${selected}'s ties visible`:'All events / whole network');
+  set('playback-scope',!replay?'Saved outputs / no shared timeline':journey?`Following persona ${selected}: ${relevantSteps.filter(step=>step<=frame).length} of ${relevantSteps.length} of its events`:incidentOnly()&&selected?`Only persona ${selected}'s ties visible`:trace&&run.events?`${phaseLine(run.events)} · generation order, not time`:'Generation order, not time');
   const legend=document.querySelector('.canvas-legend');
   if(legend){
-    legend.innerHTML=atlasView?'<span>Columns: model × method</span><span>Rows: country framing / language</span><span>Tower height: seed order, not time</span>':!replay?'<span>Each plane: one saved run, not a time slice</span>':'<span class="new-key">New ties</span><span class="removed-key">Removed: dashed</span><span>Outline: actor / larger: selected</span>';
+    legend.innerHTML=atlasView?`<span>Columns: model × method${methodLetters()?' (G global · L local · S sequential · I iterative)':''}</span>`+'<span>Rows: country framing / language</span><span>Tower height: seed order, not time</span>':!replay?'<span>Each plane: one saved run, not a time slice</span>':single?'<span>Saved graph of one response; no recorded order within it</span>':'<span class="new-key">Added in this event</span><span class="removed-key">Removed: dashed</span><span>Ring: acting persona</span>';
   }
   const note=$('replay-note');
   if(note){
-    note.textContent=!replay?'':!trace?'Playback unavailable: only the final graph exists. Its history cannot be reconstructed honestly.':run.method==='global'?'Global generation recorded the whole network in one batch; no per-person order exists.':`${run.method==='sequential'?'Sequential: one persona is asked per recorded update.':run.method==='local'?'Local: each recorded update holds one persona\'s choices.':'Iterative: each recorded update adds and removes ties.'} Ties within one update appear together because their internal order was not recorded. Not simultaneous agents.`;
+    note.textContent=!replay?'':!trace?'Playback unavailable: only the final graph exists. Its history cannot be reconstructed honestly.':single?'':`${run.method==='sequential'?'Sequential: one persona is asked per recorded update.':run.method==='local'?'Local: each recorded update holds one persona\'s choices.':'Iterative: each recorded update adds and removes ties.'} Ties within one update appear together because their internal order was not recorded. Not simultaneous agents.`;
     if(replay&&pending)note.textContent='Loading and verifying this run’s recorded events. Final graph remains visible; playback will become available after the checks pass.';
     if(replay&&failed)note.textContent='Recorded history could not be verified. Playback is disabled; the saved final graph remains available. Reload the page to retry.';
     if(journey&&available)note.textContent+=' Following a persona skips unrelated updates on screen; the graph still includes them.';
@@ -573,8 +619,9 @@ function renderPlayback(){
   const incidentChange=event&&selected&&[...event.added,...event.removed].some(edge=>edge.includes(selected));
   const relevance=!event||!selected?'':event.persona===selected?' The selected persona made this recorded decision.':incidentChange?` ${event.persona==null?'The batch':'Another persona'} changed a tie involving persona ${selected}.`:' This event does not change the selected persona\'s ties.';
   set('event-explanation',!replay?'Select Replay to inspect the active run.':!trace?'Only the final edges are available.':!event?'Press Play or choose a decision below.':`${methodName(event.method)}: ${plural(event.added.length,'new tie')}; ${event.removed.length} removed.${!event.added.length&&!event.removed.length?' No net change.':''}${relevance}${event.attempts?` Recorded attempts: ${event.attempts}.`:''} Ties are undirected.`);
-  set('event-delta',atlasView?(matchMedia('(hover: none)').matches?'Tap a tower to stack its seeds':'Hover a tower · click to stack its seeds'):!replay?'':!event?trace?'Ready to replay recorded decisions':'No event history':`EVENT ${frame} / +${event.added.length} added / -${event.removed.length} removed${event.persona==null?' / batch':` / actor ${event.persona}`}`);
-  set('active-badge',atlasView?'Atlas · every primary attempt slot':!replay?'Stack · saved final graphs':'Replay · one saved run, generation order');
+  if(replay)paintEventCard(run,{event,frame,total,ties:edges.length,single,pending,failed});
+  else{const card=$('event-delta');if(card){card.className='';card.textContent=atlasView?(matchMedia('(hover: none)').matches?'Tap a tower to stack its seeds':'Hover a tower · click to stack its seeds'):'';}}
+  set('active-badge',atlasView?'Atlas · every primary attempt slot':!replay?'Stack · saved final graphs':single?`Run ${runs.indexOf(run)+1} of ${runs.length} · one recorded response`:`Replaying run ${runs.indexOf(run)+1} of ${runs.length} · generation order`);
   const changes=$('event-changes');
   if(changes){changes.replaceChildren();if(event)for(const [kind,list] of [['add',event.added],['remove',event.removed]]){
     const relevant=selected?list.filter(edge=>edge.includes(selected)):list;
@@ -586,29 +633,96 @@ function renderPlayback(){
     set('status',`${data.personas.length} roster members / ${plural(edges.length,'current tie')}${selected?` / persona ${selected}: ${degree} neighbors`:''}`);
   }
   if(!stage)set('status','WebGL unavailable. Playback counts, the ledger and tables remain available.');
-  set('trajectory-title',`${modelName(run.model)}: ${selected?`persona ${selected} connections`:'network growth'}`);
-  if($('trajectory'))$('trajectory').innerHTML=trajectorySvg(trace,selected,!replay&&trace?trace.length-1:frame);
+  set('trajectory-title',selected?`Persona ${selected}’s ties over the run`:'Network ties over the run');
+  if($('trajectory-purpose'))$('trajectory-purpose').textContent=`Active run: ${label(run)}. The cursor marks the ${replay?'replay position':'final state'}.`;
+  if($('trajectory'))$('trajectory').innerHTML=trajectoryChartHtml(trace,selected,!replay&&trace?trace.length-1:frame,{width:$('trajectory').clientWidth||680});
   const events=$('events'),key=`${run.run_id}|${selected}|${run.events?.length||0}|${pending}`;
-  if(events&&ledgerKey!==key){ledgerKey=key;events.replaceChildren();const indices=selected?personaSteps(run.events,selected):Array.from({length:run.events?.length||0},(_,i)=>i+1);
-    set('ledger-count',plural(indices.length,`${selected?'relevant':'recorded'} event`));
-    if(!indices.length){const p=document.createElement('p');p.className='empty-note';p.textContent=pending?'Verifying recorded decisions…':failed?'Recorded decisions unavailable; playback is disabled.':trace?'No recorded decisions involve this persona.':'No event log was saved for this run.';events.append(p);}
-    for(const index of indices){const e=run.events[index-1],button=document.createElement('button');button.className='event-row';button.dataset.step=index;const n=document.createElement('span'),who=document.createElement('span'),delta=document.createElement('span');n.textContent=String(index).padStart(3,'0');who.textContent=e.persona==null?'Global batch':`Persona ${e.persona} / ${methodName(e.method)}`;const added=selected?e.added.filter(edge=>edge.includes(selected)).length:e.added.length,removedCount=selected?e.removed.filter(edge=>edge.includes(selected)).length:e.removed.length;delta.textContent=`${selected?'Person':'Run'} +${added} / -${removedCount}`;button.title=`Whole recorded batch: ${e.added.length} added, ${e.removed.length} removed. No within-batch ordering exists.`;button.append(n,who,delta);button.onclick=()=>{if(S().view!=='replay')commit({view:'replay'});seek(index);};events.append(button);}
+  if(events&&ledgerKey!==key){ledgerKey=key;events.replaceChildren();
+    const rowsLedger=trace||run.events?ledgerRows(run.events||[],selected):[],total=run.events?.length||0;
+    set('ledger-count',selected?`${rowsLedger.length} of ${plural(total,'event')}`:plural(total,'event'));
+    if($('ledger-purpose'))$('ledger-purpose').textContent=selected?`Recorded events that changed persona ${selected}’s ties; counts are ties involving persona ${selected}. Select a row to replay to it.`:'Every recorded event of the active run, in generation order. Select a row to replay to it.';
+    if(!rowsLedger.length){const p=document.createElement('p');p.className='empty-note';p.textContent=pending?'Verifying recorded events…':failed?'Recorded events unavailable; playback is disabled.':trace?`No recorded event involves persona ${selected}.`:'No event log was saved for this run.';events.append(p);}
+    else{const head=document.createElement('div');head.className='event-row event-head';head.setAttribute('aria-hidden','true');for(const text of ['Step','Persona','Phase','Added','Removed']){const span=document.createElement('span');span.textContent=text;head.append(span);}events.append(head);}
+    for(const row of rowsLedger){const button=document.createElement('button');button.type='button';button.className='event-row'+(row.pair?` pair-${row.pair}`:'');button.dataset.step=row.step;
+      const cells=[String(row.step),row.persona??'All',row.phase,row.added?`+${row.added}`:'0',row.removed?`−${row.removed}`:'0'];
+      cells.forEach((text,i)=>{const span=document.createElement('span');span.textContent=text;if(i===1&&row.persona===selected&&selected)span.className='is-selected';if(i===3&&row.added)span.className='add';if(i===4&&row.removed)span.className='remove';button.append(span);});
+      button.dataset.label=`step ${row.step}, ${row.persona==null?'global batch':'persona '+row.persona}, ${row.phase}, ${row.added} added, ${row.removed} removed${selected?` involving persona ${selected}`:''}`;
+      button.title=`Whole event: ${plural(row.batchAdded,'tie')} added, ${row.batchRemoved} removed. Order within an event was not recorded.`;
+      button.onclick=()=>{if(S().view!=='replay')commit({view:'replay'});seek(row.step);};events.append(button);}
   }
-  if(events)for(const button of events.querySelectorAll('button')){button.setAttribute('aria-current',String(Number(button.dataset.step)===(!replay&&trace?trace.length-1:frame)));button.setAttribute('aria-label',`Seek event ${button.dataset.step}: ${[...button.children].slice(1).map(child=>child.textContent).join('; ')}`);}
+  if(events)for(const button of events.querySelectorAll('button')){button.setAttribute('aria-current',String(Number(button.dataset.step)===(!replay&&trace?trace.length-1:frame)));button.setAttribute('aria-label',`Replay to ${button.dataset.label}`);}
+}
+// The card beside the stage: which event the cursor is on and what it did (persona, phase, ties added and removed).
+function paintEventCard(run,{event,frame,total,ties,single,pending,failed}){
+  const card=$('event-delta');if(!card)return;
+  const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
+  card.className='event-card';card.replaceChildren();
+  if(replayNotice&&replayNoticeFor===run.run_id)card.append(el('span','ev-notice',replayNotice));
+  if(single){
+    card.append(el('span','ev-pos','One response'),el('strong','ev-actor','Whole network'),el('span','ev-change',`${plural(run.edges.length,'tie')} returned together${run.edges.length?'':' (a valid, empty graph)'}`));
+    return;
+  }
+  if(!trace){card.append(el('span','ev-pos',pending?'Loading recorded events…':failed?'Replay unavailable':'No event log'));return;}
+  const info=eventSummary(event,{frame,total,ties});
+  card.append(el('span','ev-pos',info.position));
+  const who=el('span','ev-who');who.append(el('strong','ev-actor',info.actor),el('span','ev-phase',info.phase));card.append(who);
+  const change=el('span','ev-change');
+  if(!event)change.append(el('span','',playing?'No ties yet':'No ties yet · press Play'));
+  else{change.append(el('b','add',`+${info.added} added`),el('b',info.removed?'remove':'none',`−${info.removed} removed`),el('span','',`${plural(ties,'tie')} now`));}
+  card.append(change);
+  if(info.list.length){const list=el('span','ev-ties');for(const tie of info.list)list.append(el('i',tie.kind,tie.text));if(info.more)list.append(el('i','more',`+${info.more} more`));card.append(list);}
+}
+// Scrubber ticks: one per recorded event (height = ties changed). Rebuilt only when the run or persona changes.
+function paintTicks(run,selected,frame){
+  const host=$('timeline-ticks');if(!host)return;
+  const events=frame>=0&&trace?run.events:null,key=events?`${run.run_id}|${selected}|${events.length}`:'';
+  if(key!==ticksKey){ticksKey=key;const svg=events?tickStripSvg(events,{persona:selected}):'';host.innerHTML=svg+svg;}
+  // Events up to the cursor are drawn at full strength.
+  host.style.setProperty('--done',events?`${100*frame/Math.max(1,events.length)}%`:'0%');
+}
+// A run recorded as one response has nothing to step through: say so and offer what does work.
+function paintSingle(run,single){
+  const host=$('replay-single');if(!host)return;
+  host.hidden=!single;
+  const key=single?run.run_id:'';if(key===singleKey)return;singleKey=key;host.replaceChildren();
+  if(!single)return;
+  const info=singleRecordState(data.runs,run),text=document.createElement('p'),hint=document.createElement('p'),actions=document.createElement('div');
+  text.className='single-text';text.id='replay-single-text';text.textContent=info.text;
+  hint.className='hint';hint.textContent=info.hint;actions.className='single-actions';
+  for(const option of info.alternatives){
+    const other=runById.get(option.run_id),button=document.createElement('button');button.type='button';button.className='primary';button.dataset.replayAlt=option.method;button.textContent=option.label;
+    button.title=`${label(other)} · same model, setting and seed`;
+    button.onclick=()=>{const replaced=!runs.includes(other)&&runs.length>=STACK_LIMIT;activate(other,`Replaying the ${methodName(other.method)} run of the same model, setting and seed.`);announce(`Replaying ${label(other)} from event 0.${replaced?' The stack was full, so it now holds this run only.':''}`);$('play')?.focus({preventScroll:true});};
+    actions.append(button);
+  }
+  const byPersona=document.createElement('button');byPersona.type='button';byPersona.id='single-by-persona';byPersona.textContent='View ties by persona';
+  byPersona.title='Select the persona with the most ties in this graph and show only its ties; step through personas with [ and ]';
+  byPersona.disabled=!run.edges.length;
+  byPersona.onclick=()=>{const id=busiestPersona(run.edges);if(!id)return;selectPersona(id,false);if($('incident')){$('incident').checked=true;render(new Set(['local']));}$('tab-persona')?.click();announce(`Showing persona ${id}, which has the most ties in this graph. Use [ and ] to step through personas.`);};
+  actions.append(byPersona);
+  host.append(text,hint,actions);
 }
 function renderEvidence(){
-  const run=activeRun(),question=$('research-question')?.value||'method',result=researchEvidence(runs,question),selected=S().persona;
+  const run=activeRun(),selected=S().persona,select=$('research-question');
   const selectionKey=runs.map(r=>r.run_id).join('|'),summaryKey=selectionKey+'|'+selected;
-  if(summaryKey!==aggregateKey&&$('aggregate-graph')){aggregateKey=summaryKey;$('aggregate-graph').innerHTML=frequencySvg(data.personas,runs,stackLayoutFor(runs),selected);if($('aggregate-note'))$('aggregate-note').textContent=`Based on ${plural(runs.length,'selected final graph')}${selected?`, showing persona ${selected}'s direct ties`:''}. It does not follow the playback cursor. Inputs: ${runs.map(label).join('; ')}.`;}
-  const descriptions={method:'Method comparison: hold model, roster, seed and instructions fixed while the generation procedure changes. This is a descriptive view; the computational budget and interaction sequence differ by procedure.',rq1:'RQ1: Does changing country framing alter topology and homophily with English instructions held constant? Match model, method, seed and roster. This tests prompt framing, not entire national cultures.',rq2:'RQ2: Which recorded attributes show within-group mixing? Compare categorical Coleman homophily within each run. Age uses a separate assortativity measure. These descriptive scores cannot establish what caused a tie.',rq3:'RQ3: How similar are different models under otherwise matched conditions? Compare final topology and exact shared edges. Code/prompt changes prevent clean model-only attribution.',rq4:'RQ4: Does instruction language change the graph at a fixed country framing? Match model, method, seed and roster. Translation equivalence still needs independent review.'};
-  if($('rq-explanation'))$('rq-explanation').textContent=descriptions[question];
-  if($('rq-status')){$('rq-status').textContent=result.matched?'Selection matches the recorded comparison fields. Still exploratory, not a significance test.':'Comparison is not controlled for this research question.';$('rq-status').className=result.matched?'selection-matched':'selection-unmatched';}
+  // A new stack selects the one question it can answer; the reader may still pick another (RQ2 fits any stack).
+  if(select&&selectionKey!==questionKey){questionKey=selectionKey;const fit=comparisonReading(runs).suggested;if(fit&&[...select.options].some(o=>o.value===fit))select.value=fit;}
+  const question=select?.value||'method',reading=comparisonReading(runs,question==='rq2'?'':question);
+  if(summaryKey!==aggregateKey){aggregateKey=summaryKey;tieShowAll=false;}
+  if($('aggregate-graph')){
+    $('aggregate-graph').innerHTML=tieTableHtml(runs,{selected,showAll:tieShowAll})+(runs.length?`<details class="tie-matrix"><summary>Matrix view</summary>${frequencyMatrix(data.personas,runs,selected)}</details>`:'');
+    const button=$('aggregate-graph').querySelector('[data-action="toggle-ties"]');if(button)button.onclick=()=>{tieShowAll=!tieShowAll;renderEvidence();$('aggregate-graph').querySelector('[data-action="toggle-ties"]')?.focus({preventScroll:true});};
+  }
+  if($('aggregate-note'))$('aggregate-note').textContent=`${selected?`Persona ${selected}’s ties`:'Every tie'} in the saved final graphs of ${plural(runs.length,'stacked run')}${reading.design.shared&&runs.length>1?` (${reading.design.shared})`:''}, sorted by how many runs contain it. Final graphs, not the replay position.`;
+  const descriptions={seed:'Run-to-run variation: the same condition repeated with different seeds.',method:'Generation method: the procedure changes while model, setting and seed stay fixed.',rq1:'RQ1 · Country framing: does the framing change the graph with English instructions held fixed?',rq2:'RQ2 · Attribute mixing: which recorded attributes show within-group ties? Scores describe mixing, not causes.',rq3:'RQ3 · Model consistency: how similar are different models under matched conditions?',rq4:'RQ4 · Instruction language: does the language change the graph at a fixed country framing?'};
+  if($('rq-explanation'))$('rq-explanation').textContent=question===reading.suggested?'':descriptions[question]||'';
+  if($('rq-condition')){const parts=reading.design;$('rq-condition').replaceChildren();if(runs.length){for(const [k,v] of [['Held fixed',parts.shared||'nothing'],['Varies',runs.length<2?'nothing (one run)':`${parts.fields.map(f=>({setting:'country and language',culture:'country framing',language:'instruction language',method:'generation method'}[f]||f)).join(', ')||'nothing'} · ${plural(runs.length,'run')}`]]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;$('rq-condition').append(dt,dd);}}}
+  if($('rq-status')){$('rq-status').textContent=reading.sentence;$('rq-status').className=reading.caveat?'selection-unmatched':'selection-matched';}
   const issues=$('rq-issues');
-  if(issues){issues.replaceChildren();for(const issue of result.issues){const li=document.createElement('li');li.textContent=issue;issues.append(li);}
-    if(question==='rq3'){const config=document.createElement('li');config.textContent='Model configurations differ in supported decoding settings. Treat this as configuration comparison, not a causal model-architecture test.';issues.append(config);}}
+  if(issues){issues.replaceChildren();if(reading.caveat){const li=document.createElement('li');li.textContent=reading.caveat;issues.append(li);}issues.hidden=!reading.caveat;}
   if($('rq-homophily')){$('rq-homophily').hidden=question!=='rq2';$('rq-homophily').innerHTML=question!=='rq2'?'':metricsReady()?homophilyMatrix(runs):metricsNote();}
   const pairs=$('rq-pairs');
-  if(pairs){pairs.replaceChildren();if(question==='rq3')for(const pair of result.pairs){const p=document.createElement('p');p.textContent=`Runs ${pair.a} and ${pair.b}: ${pair.shared} shared / ${pair.union} distinct ties. Edge Jaccard ${pair.jaccard===null?'NA':(100*pair.jaccard).toFixed(1)+'%'} (100% means identical edges; not accuracy).`;pairs.append(p);}}
+  if(pairs){pairs.replaceChildren();}
   if($('provenance-summary'))$('provenance-summary').textContent=data.verification;
   const fields=$('provenance-fields');
   if(fields){fields.replaceChildren();
@@ -620,7 +734,7 @@ function renderCoverage(){
   if($('primary-findings'))$('primary-findings').hidden=false;
   const host=$('coverage-table');if(!host)return;
   const table=document.createElement('table'),caption=document.createElement('caption'),head=document.createElement('thead'),body=document.createElement('tbody'),header=document.createElement('tr');
-  caption.textContent='Valid graphs / 8 planned attempts per condition. Failed attempts remain in the repository audit, never rendered as graphs. Select a cell to stack its valid seeds (the same as clicking its tower in the Atlas).';
+  caption.className='vh';caption.textContent='Valid graphs / planned attempts per condition. Select a cell to stack its valid seeds.';
   for(const text of ['Model / method',...data.settings.map(([country,language])=>settingName(country,language))]){const th=document.createElement('th');th.scope='col';th.textContent=text;header.append(th);}head.append(header);
   for(const model of data.models)for(const method of data.methods){
     const row=document.createElement('tr'),name=document.createElement('th');name.scope='row';name.textContent=`${modelName(model)} / ${methodName(method)}`;row.append(name);
@@ -681,6 +795,8 @@ function initialState(saved,params){
         if(!VIEWS.includes(state.view))state.view='atlas';
         if(stackProblem((state.layers||[]).map(id=>runById.get(id))))throw new Error('This link names runs that cannot be stacked. The default view is shown instead.');
         if(!state.layers.includes(state.active))state.active=state.layers[0];
+        // A replay link without a position opens at the start of the record, like the Replay button.
+        if(state.view==='replay'&&!('frame' in decoded))state.frame=replayStart(runById.get(state.active));
         return state;
       }
     }catch(error){if(/archived/i.test(error.message))throw error;loadNotice=error.message;}
@@ -691,7 +807,7 @@ function initialState(saved,params){
   if(list.some(run=>!run))throw Error('The saved selection contains a run absent from this dataset. Open the default comparison to choose again.');
   const problem=stackProblem(list);if(problem)throw Error(problem);
   const layers=list.map(r=>r.run_id);
-  const state={...base,layers,view:saved.mode==='formation'?'replay':saved.mode==='atlas'?'atlas':'stack',active:layers.includes(saved.active)?saved.active:layers[0],frame:Number.isSafeInteger(saved.frame)&&saved.frame>=0?saved.frame:FINAL};
+  const state={...base,layers,view:saved.mode==='formation'?'replay':saved.mode==='atlas'?'atlas':'stack',active:layers.includes(saved.active)?saved.active:layers[0],frame:Number.isSafeInteger(saved.frame)&&saved.frame>=0?saved.frame:saved.mode==='formation'?replayStart(runById.get(layers.includes(saved.active)?saved.active:layers[0])):FINAL};
   if(saved.person&&data.personas.some(p=>p.id===saved.person))state.persona=saved.person;
   if(typeof saved.color==='string'&&(saved.color==='layer'||saved.color in data.personas[0].attributes))state.colorBy=saved.color;
   if(saved.filters&&typeof saved.filters==='object')state.filters=legacyFilters(saved.filters);
@@ -719,7 +835,7 @@ function wireControls(){
   on('opacity','input',()=>{const value=Number($('opacity').value)/100;stack?.setOpacity(value);atlas?.setOpacity(value*.6);});
   for(const id of ['metric','research-question'])on(id,'input',()=>paintSelection());
   on('atlas-mode','click',()=>{stop();journey=false;commit({view:'atlas'});});
-  on('formation-mode','click',()=>{stop();journey=false;if($('incident'))$('incident').checked=false;if(!commit({view:'replay',frame:0,persona:''}).size)render(new Set(['local']));stage?.pose('orbit');});
+  on('formation-mode','click',openReplay);
   on('compare-mode','click',()=>{stop();if(!commit({view:'stack'}).size)stage?.pose('orbit');});
   on('play','click',()=>play());
   on('play-persona','click',()=>{stop();journey=!journey;if($('incident'))$('incident').checked=journey;const patch={view:'replay'};if(journey)patch.frame=0;if(!commit(patch).size)render(new Set(['local']));});
@@ -736,7 +852,20 @@ function wireControls(){
     stage.markUserMoved();stage.flyTo({position:controls.target.clone().add(offset.setLength(distance)),target:controls.target.clone()},{duration:220});
   });
   on('rotate','click',()=>{if(!stage)return;stage.setAutoRotate(!stage.controls.autoRotate);paintTools();});
-  on('share','click',async()=>{try{await navigator.clipboard.writeText(location.href);$('share').textContent='Link copied';}catch{$('share').textContent='Copy the URL from your address bar';}});
+  // Share view: clipboard API, then a hidden-textarea copy; the label always returns to "Share view" after 2 s.
+  let shareTimer=0;
+  on('share','click',async()=>{
+    const button=$('share'),href=location.href;let copied=false;
+    if(!button.dataset.label)button.dataset.label=button.textContent; // the width is fixed in layers.css, so the header never jumps
+    try{await navigator.clipboard.writeText(href);copied=true;}
+    catch{
+      try{const area=document.createElement('textarea');area.value=href;area.setAttribute('readonly','');area.setAttribute('aria-hidden','true');area.style.cssText='position:fixed;top:0;left:-9999px;opacity:0';
+        document.body.append(area);area.select();copied=document.execCommand('copy');area.remove();button.focus({preventScroll:true});}catch{copied=false;}
+    }
+    button.textContent=copied?'Link copied':'Not copied';button.dataset.state=copied?'copied':'failed';
+    announce(copied?'Link to this view copied.':'The link could not be copied automatically. Copy the URL from your address bar.');
+    clearTimeout(shareTimer);shareTimer=setTimeout(()=>{button.textContent=button.dataset.label;delete button.dataset.state;},2000);
+  });
   on('download-selection','click',async()=>{
     const selected=[...runs],owner=data,exportView={...S(),runs:selected.map(r=>r.run_id)};
     $('download-selection').disabled=true;

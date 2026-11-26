@@ -71,7 +71,10 @@ try{
     await p.waitForFunction(()=>document.querySelector('#action-status').textContent.includes('Reload to retry'));
     assert.equal(await p.locator('#play').isDisabled(),true);
     await p.evaluate(()=>document.querySelector('#formation-mode').click());
+    // Replay now opens the first stacked run with a step-by-step record; its history fails the same way and says so.
+    await p.waitForFunction(()=>/could not be verified/.test(document.querySelector('#replay-note').textContent));
     assert.match(await p.locator('#replay-note').innerText(),/could not be verified/);
+    assert.equal(await p.locator('#play').isDisabled(),true);
     assert.equal(await p.locator('#layers li').count(),4);
     await p.close();
   }

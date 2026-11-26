@@ -2,7 +2,10 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {ATTRIBUTES,AGE_BANDS,PANEL_COLOR,NEUTRAL_COLOR,TIE_CLASS_COLORS,ageBand,groupOf,attributeGroups,nodeEncoding,edgeEncoding,
-  tieMixing,consensus,consensusStats,overlapMatrix,ledgerFacts,mountInsight} from './layers-insight.js';
+  tieMixing,consensus,consensusStats,overlapMatrix,ledgerFacts,mountInsight,
+  comparisonDesign,comparisonReading,overlapLine,niceAxis,metricSummary,metricChartHtml,pairLabel,tieRows,tieTableHtml,TIE_ROW_LIMIT,
+  ledgerRows,phaseName,trajectorySeries,trajectoryChartHtml} from './layers-insight.js';
+import {layerComparison,personaSteps} from './graph-data.js';
 import {runLabel,layerLabel,modelName,settingName,plural,runParts} from './formation-charts.js';
 import {researchEvidence} from './formation-charts.js';
 import {loadPrimaryDataset,COUNTS} from './layers-data-all.js';
@@ -197,4 +200,146 @@ test('the primary set used for every aggregate contains no supplement',()=>{
 test('mountInsight is a no-op without a DOM',()=>{
   assert.equal(typeof mountInsight({getState:()=>INITIAL_STATE,subscribe:()=>()=>{},ready:Promise.resolve(data)},{}).destroy,'function');
   assert.deepEqual(EMPTY_FILTERS.model,[]);
+});
+
+// --- Sections below the stage ---------------------------------------------------------------------------------
+const hindi=data.runs.filter(r=>r.model==='gpt-4.1'&&r.method==='iterative'&&r.culture==='us'&&r.language==='hindi').sort((a,b)=>a.seed-b.seed);
+const visible=html=>html.replace(/<span class="vh">[^<]*<\/span>/g,'').replace(/<caption class="vh">[\s\S]*?<\/caption>/g,'').replace(/<[^>]+>/g,' ');
+
+test('a seeds-only stack is read as run-to-run variation, stated once, with no contradictory warnings',()=>{
+  assert.equal(hindi.length,8);
+  const design=comparisonDesign(hindi);
+  assert.equal(design.kind,'seed');
+  assert.deepEqual(design.fields,['seed']);
+  assert.equal(design.shared,'GPT-4.1 · Iterative · United States / Hindi');
+  assert.equal(design.axis,'Seed');
+  assert.deepEqual(design.labels,hindi.map(r=>String(r.seed)));
+  for(const question of ['seed','']){
+    const reading=comparisonReading(hindi,question);
+    assert.equal(reading.sentence,'These 8 runs differ only in seed, so they show run-to-run variation at a fixed condition.');
+    assert.equal(reading.caveat,null);
+    assert.equal(reading.suggested,'seed');
+    assert.equal(reading.matched,true);
+  }
+  // A question the stack cannot answer yields exactly one caveat, naming the control that can.
+  const rq4=comparisonReading(hindi,'rq4');
+  assert.match(rq4.caveat,/does not vary instruction language alone; use the Language matched comparison/);
+  assert.equal(rq4.matched,false);
+});
+
+test('the comparison reading detects method, model, framing, language, setting and mixed stacks',()=>{
+  const one=hindi[0],same=r=>r.seed===one.seed&&r.culture===one.culture&&r.language===one.language;
+  const methods=data.runs.filter(r=>r.model===one.model&&same(r));
+  assert.equal(comparisonReading(methods).design.kind,'method');
+  assert.equal(comparisonReading(methods).suggested,'method');
+  assert.equal(comparisonDesign(methods).shared,'GPT-4.1 · United States / Hindi · seed 44000');
+  assert.match(comparisonReading(methods).caveat,/call budget/);
+  const models=data.runs.filter(r=>r.method===one.method&&same(r));
+  assert.equal(comparisonReading(models).design.kind,'model');
+  assert.equal(comparisonReading(models).suggested,'rq3');
+  const english=data.runs.filter(r=>r.model===one.model&&r.method===one.method&&r.seed===one.seed&&r.language==='english');
+  if(new Set(english.map(r=>r.culture)).size>1){const reading=comparisonReading(english);assert.equal(reading.design.kind,'culture');assert.equal(reading.caveat,null);assert.match(reading.sentence,/English instructions/);}
+  const languages=data.runs.filter(r=>r.model===one.model&&r.method===one.method&&r.seed===one.seed&&r.culture==='us');
+  assert.equal(comparisonReading(languages).design.kind,'language');
+  assert.equal(comparisonReading(languages).design.axis,'Language');
+  const mixed=[hindi[0],{...hindi[1],method:'local'}];
+  const reading=comparisonReading(mixed);
+  assert.equal(reading.design.kind,'mixed');
+  assert.match(reading.sentence,/differ in generation method and seed, so no single factor is isolated/);
+  // A design problem outranks everything else and is still the only caveat.
+  assert.equal(comparisonReading([hindi[0],{...hindi[1],roster_id:'other'}],'rq4').caveat,'The runs use different persona rosters.');
+  assert.equal(comparisonReading([hindi[0]]).design.kind,'single');
+  assert.equal(comparisonReading([hindi[0]],'rq4').caveat,null);
+});
+
+test('overlap line is grammatical and matches the pairwise comparison and a brute-force count',()=>{
+  const counts=brute(hindi),values=Object.values(counts);
+  const shared=values.filter(v=>v===8).length,union=values.length,cmp=layerComparison(hindi);
+  assert.deepEqual([cmp.shared,cmp.union],[shared,union]);
+  assert.equal(overlapLine(shared,union,8),`${plural(shared,'tie')} shared by all 8 runs · ${plural(union,'distinct tie')}`);
+  assert.equal(overlapLine(1,780,8),'1 tie shared by all 8 runs · 780 distinct ties');
+  assert.equal(overlapLine(0,2,2),'0 ties shared by both runs · 2 distinct ties');
+  assert.equal(overlapLine(0,1,1),'1 distinct tie in one run.');
+});
+
+test('metric summary: exact mean, range and signed differences on a round, labelled axis',()=>{
+  const s=metricSummary(hindi,'density',hindi[0].run_id),values=hindi.map(r=>r.metrics.density);
+  assert.equal(s.n,8);
+  assert.ok(Math.abs(s.mean-values.reduce((a,b)=>a+b)/8)<1e-12);
+  assert.equal(s.min,Math.min(...values));assert.equal(s.max,Math.max(...values));
+  assert.equal(s.rows[0].delta,null);assert.equal(s.rows[0].active,true);
+  assert.ok(Math.abs(s.rows[1].delta-(values[1]-values[0]))<1e-12);
+  assert.ok(s.axis.min<=s.min&&s.axis.max>=s.max&&s.axis.ticks.includes(0));
+  assert.deepEqual(niceAxis(0,24),{min:0,max:30,step:10,ticks:[0,10,20,30],decimals:0});
+  assert.deepEqual(niceAxis(.156,.224).ticks,[0,.1,.2,.3]);
+  assert.deepEqual(niceAxis(-.2,.5).ticks,[-.2,0,.2,.4,.6]);
+  const empty=metricSummary([{run_id:'a',metrics:{x:null}}],'x','a');
+  assert.deepEqual([empty.n,empty.mean,empty.missing],[0,null,1]);
+});
+
+test('metric chart labels rows only by what differs and prints each value at its bar',()=>{
+  const html=metricChartHtml(hindi,'density',{activeId:hindi[0].run_id,title:'Density'});
+  assert.doesNotMatch(html,/GPT-4\.1|Iterative|Hindi/,'the shared condition is stated by the section, not per row');
+  assert.equal((html.match(/class="mchart-row( is-active)?" role="row"/g)||[]).length,8);
+  for(const run of hindi){assert.ok(html.includes(`>${run.seed}<`));assert.ok(html.includes(`>${run.metrics.density.toFixed(3)}<`));}
+  const s=metricSummary(hindi,'density',hindi[0].run_id);
+  assert.ok(html.includes(`Mean ${s.mean.toFixed(3)} · range ${s.min.toFixed(3)} to ${s.max.toFixed(3)} · 8 runs`));
+  assert.ok(!/NaN|undefined|width:-/.test(html));
+  const odd=metricChartHtml([{run_id:'a',model:'<b>',method:'local',culture:'us',language:'english',seed:1,metrics:{m:-.2}},{run_id:'b',model:'x',method:'local',culture:'us',language:'english',seed:1,metrics:{m:null}}],'m',{activeId:'a'});
+  assert.ok(!odd.includes('<b>'));assert.match(odd,/−0\.200/);assert.match(odd,/>NA</);
+});
+
+test('tie table: lower id first with an en dash, sorted by count, dots instead of words, capped with a show-all control',()=>{
+  assert.equal(pairLabel(['46','7']),'7 – 46');
+  assert.equal(pairLabel(['10','9']),'9 – 10');
+  const rows=tieRows(hindi,'46'),counts=brute(hindi);
+  const expected=Object.entries(counts).filter(([k])=>k.split('-').includes('46'));
+  assert.equal(rows.length,expected.length);
+  for(const row of rows){
+    assert.equal(row.count,counts[row.edge.join('-')]);
+    assert.equal(row.count,row.present.filter(Boolean).length);
+    assert.ok(Number(row.edge[0])<Number(row.edge[1]));
+    assert.equal(row.label,`${row.edge[0]} – ${row.edge[1]}`);
+  }
+  for(let i=1;i<rows.length;i++)assert.ok(rows[i-1].count>=rows[i].count);
+  const html=tieTableHtml(hindi,{selected:'46'});
+  assert.equal((html.match(/<tr><th scope="row">/g)||[]).length,Math.min(TIE_ROW_LIMIT,rows.length));
+  if(rows.length>TIE_ROW_LIMIT)assert.ok(html.includes(`Show all ${rows.length}`));
+  assert.doesNotMatch(visible(html),/Present|Absent|GPT-4\.1/);
+  assert.match(html,/colspan="8" class="tie-group">Seed</);
+  for(const run of hindi)assert.ok(html.includes(`>${run.seed}</span></th>`));
+  assert.equal((html.match(/<span class="vh">(present|absent) in /g)||[]).length,8*Math.min(TIE_ROW_LIMIT,rows.length));
+  const all=tieTableHtml(hindi,{selected:'46',showAll:true});
+  assert.equal((all.match(/<tr><th scope="row">/g)||[]).length,rows.length);
+  assert.match(tieTableHtml(hindi,{selected:'nobody'}),/has no ties/);
+});
+
+test('ledger rows: step, persona, phase, added and removed, with add/drop pairs grouped',()=>{
+  const events=[
+    {persona:'6',method:'local',added:[['6','1'],['6','2']],removed:[]},
+    {persona:'46',method:'iterative-add',added:[['46','3']],removed:[]},
+    {persona:'46',method:'iterative-drop',added:[],removed:[['46','7']]},
+    {persona:'2',method:'iterative-add',added:[['2','46']],removed:[]},
+    {persona:'9',method:'iterative-drop',added:[],removed:[['9','8']]},
+    {persona:null,method:'global',added:[['1','2']],removed:[]}];
+  const all=ledgerRows(events);
+  assert.deepEqual(all.map(r=>[r.step,r.persona,r.phase,r.added,r.removed,r.pair]),[
+    [1,'6','Local',2,0,null],[2,'46','Iterative add',1,0,'start'],[3,'46','Iterative drop',0,1,'end'],
+    [4,'2','Iterative add',1,0,null],[5,'9','Iterative drop',0,1,null],[6,null,'Global batch',1,0,null]]);
+  const mine=ledgerRows(events,'46');
+  assert.deepEqual(mine.map(r=>r.step),personaSteps(events,'46'));
+  assert.deepEqual(mine.map(r=>[r.added,r.removed]),[[1,0],[0,1],[1,0]]);
+  assert.equal(phaseName('sequential'),'Sequential');
+});
+
+test('trajectory: exact series, labelled stats and axes, cursor clamped to the recorded range',()=>{
+  const frames=[{edges:[]},{edges:[['1','2']]},{edges:[['1','2'],['2','3']]},{edges:[['2','3']]}];
+  assert.deepEqual(trajectorySeries(frames),{values:[0,1,2,1],events:3,final:1,peak:2});
+  assert.deepEqual(trajectorySeries(frames,'2').values,[0,1,2,1]);
+  assert.deepEqual(trajectorySeries(frames,'1').values,[0,1,1,0]);
+  const html=trajectoryChartHtml(frames,'1',2,{width:600});
+  for(const text of ['<dt>Cursor</dt><dd>event 2 of 3</dd>','<dt>Ties at cursor</dt><dd>1 tie</dd>','<dt>Final</dt><dd>0 ties</dd>','<dt>Peak</dt><dd>1 tie</dd>','Recorded event (generation order)','>Ties<','Event 2 · 1 tie'])assert.ok(html.includes(text),text);
+  assert.ok(!/NaN|undefined/.test(html));
+  assert.match(trajectoryChartHtml(frames,'',99),/event 3 of 3/);
+  assert.match(trajectoryChartHtml(null,'',0),/No recorded history/);
 });

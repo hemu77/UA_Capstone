@@ -17,7 +17,7 @@ await rm(destination,{recursive:true,force:true});
 await mkdir('dist/vendor/addons/controls', {recursive: true});
 const files=['graph-data.js', 'research-plots.js', 'layers.html', 'layers.css', 'layers.js', 'formation-charts.js', 'navigation.js', 'layers-ui.js', 'plot-gallery.js', 'verified-events.js', 'network-catalog.js', 'network-stage.js',
   // 3D upgrade modules (docs/qa/viewer-3d-2026-11-25/SPEC.md). One owner per file.
-  'layers-app.js', 'layers-data-all.js', 'layers-3d-scene.js', 'layers-3d-atlas.js', 'layers-3d-stack.js', 'layers-3d-labels.js', 'layers-filters.js', 'layers-insight.js', 'layers-shell.js',
+  'layers-app.js', 'layers-data-all.js', 'layers-3d-scene.js', 'layers-3d-atlas.js', 'layers-3d-stack.js', 'layers-3d-labels.js', 'layers-filters.js', 'layers-insight.js', 'layers-shell.js', 'layers-replay.js',
   'layers-3d.css', 'layers-filters.css', 'layers-insight.css'];
 const sources=[];
 for(const file of files)sources.push([file,await readFile(file,'utf8')]);

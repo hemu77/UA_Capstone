@@ -4,9 +4,13 @@ How does a language model decide who becomes friends? We held a roster of 50 fic
 
 **[Open the live 3D demo](https://hemu77.github.io/UA_Capstone/layers.html)** · **[Browse saved networks](https://hemu77.github.io/UA_Capstone/layers.html#saved-plots)** · **[Read the research brief](docs/PROFESSOR_RESEARCH_BRIEF.md)**
 
-[![A saved primary friendship network rotating in the live 3D viewer](docs/media/primary-network.gif)](https://hemu77.github.io/UA_Capstone/layers.html#saved-plots)
+[![The atlas of all 896 primary attempt slots, then a fly-in to one condition's eight stacked seed planes](docs/media/atlas-to-stack.gif)](https://hemu77.github.io/UA_Capstone/layers.html)
 
-*Drag to rotate; select a person to inspect their neighbors. The edges are saved study results, not a live simulation or a new model call.*
+*Atlas: 112 conditions × 8 seeds — 890 valid graphs (12 empty) and 6 failures shown as failures. Click a tower to stack its seeds.*
+
+[![Replay of one sequential run: ties appear in recorded generation order](docs/media/replay.gif)](https://hemu77.github.io/UA_Capstone/layers.html)
+
+*Replay shows recorded generation order, not elapsed time. The edges are saved study results, not a live simulation or a new model call.*
 
 ## Research for the paper
 

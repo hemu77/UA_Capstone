@@ -12,16 +12,25 @@ export const raw=hex=>new THREE.Color().setStyle(hex,THREE.LinearSRGBColorSpace)
 export const easeInOutCubic=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
 // Pure: camera placement that fits a sphere of `radius` around `center` for a viewing direction.
-// With `extent` ([half width, half height] in view space) the fit uses that box instead of a bounding sphere,
-// which frames wide, flat content such as the Atlas far more tightly.
+// With `extent` ([half width, half height] in view space) the fit uses that box instead of a bounding sphere.
+// With `points` (world offsets from `center`, e.g. the corners of the content box) the fit is exact under
+// perspective: every point lands inside the frame, near points included.
 // `usable` ([width, height] fractions of the frame not covered by page chrome) shrinks the fit accordingly.
-export function framing({center=[0,0,0],radius=1,extent=null,direction=[.55,.62,.85],fov=38,aspect=1.6,margin=1.08,usable=[1,1]}) {
+export function framing({center=[0,0,0],radius=1,extent=null,points=null,direction=[.55,.62,.85],fov=38,aspect=1.6,margin=1.08,usable=[1,1]}) {
   const v=new THREE.Vector3(...direction).normalize(),tanHalf=Math.tan(THREE.MathUtils.degToRad(fov/2));
   const tanV=tanHalf*usable[1],tanH=tanHalf*aspect*usable[0];
   const limit=Math.min(Math.atan(tanV),Math.atan(tanH));
-  const distance=extent?Math.max(extent[0]/tanH,extent[1]/tanV)*margin+radius*.15:radius*margin/Math.sin(limit);
+  let distance;
+  if(points?.length){
+    const up=Math.abs(v.y)>.999?new THREE.Vector3(0,0,-1):new THREE.Vector3(0,1,0);
+    const right=new THREE.Vector3().crossVectors(up,v).normalize(),upV=new THREE.Vector3().crossVectors(v,right).normalize(),p=new THREE.Vector3();
+    distance=0;
+    for(const point of points){p.set(...point);const x=Math.abs(p.dot(right))*margin,y=Math.abs(p.dot(upV))*margin,z=p.dot(v);distance=Math.max(distance,x/tanH+z,y/tanV+z);}
+  }else distance=extent?Math.max(extent[0]/tanH,extent[1]/tanV)*margin+radius*.15:radius*margin/Math.sin(limit);
   return {position:v.multiplyScalar(distance).add(new THREE.Vector3(...center)).toArray(),target:[...center],distance};
 }
+// Pure: the 8 corners of an axis-aligned box as offsets from `center` (input for framing({points})).
+export const boxCorners=(min,max,center=[0,0,0])=>{const out=[];for(const x of [min[0],max[0]])for(const y of [min[1],max[1]])for(const z of [min[2],max[2]])out.push([x-center[0],y-center[1],z-center[2]]);return out;};
 export const POSES=Object.freeze({orbit:[.55,.5,.95],top:[0,1,.035],front:[0,.16,1]});
 
 const groundVertex=`
@@ -85,13 +94,20 @@ export function createStage3D(host,{labels=null,reducedMotion=false,onRender=nul
   // Page chrome drawn over the canvas (heading, legend). Framing centres content in the free area: the projection
   // centre is shifted with a view offset, and the fit uses only the unobstructed fraction of the frame.
   const safe={top:0,bottom:0};
+  // A view may also reserve screen space beside the content for its own labels (bounds.padPx = [left, right] px).
+  // Both are applied with a view offset, so the camera still looks straight at the content centre and perspective
+  // stays symmetric (no skew from aiming the camera off-centre).
+  function shifts(){
+    const [left,right]=bounds.padPx||[0,0];
+    return {x:Math.round(left-right),y:Math.round(safe.bottom-safe.top),freeX:Math.max(.35,(size.width-left-right)/(size.width+Math.abs(left-right)))};
+  }
   function applyProjection(){
-    const {width,height}=size,shift=Math.round(safe.bottom-safe.top),full=height+Math.abs(shift);
-    camera.aspect=width/full;
-    if(shift)camera.setViewOffset(width,full,0,shift>0?shift:0,width,height);else camera.clearViewOffset();
+    const {width,height}=size,{x,y}=shifts(),fullW=width+Math.abs(x),fullH=height+Math.abs(y);
+    camera.aspect=fullW/fullH;
+    if(x||y)camera.setViewOffset(fullW,fullH,x<0?-x:0,y>0?y:0,width,height);else camera.clearViewOffset();
     camera.updateProjectionMatrix();
   }
-  const usable=()=>{const full=size.height+Math.abs(safe.bottom-safe.top);return [1,Math.max(.35,(size.height-safe.top-safe.bottom)/full)];};
+  const usable=()=>{const full=size.height+Math.abs(safe.bottom-safe.top);return [shifts().freeX,Math.max(.35,(size.height-safe.top-safe.bottom)/full)];};
   const lastMatrix=new THREE.Matrix4(),lastProjection=new THREE.Matrix4();
   const frameStats={calls:0,triangles:0,points:0,lines:0,frames:0};
 
@@ -154,12 +170,16 @@ export function createStage3D(host,{labels=null,reducedMotion=false,onRender=nul
   }
   function poseTarget(name){
     const direction=Array.isArray(name)?name:bounds.poses?.[name]||POSES[name]||POSES.orbit;
-    return framing({center:bounds.center,radius:bounds.radius,extent:name==='orbit'||name==='front'?bounds.extent:null,direction,fov:camera.fov,aspect:camera.aspect,margin:bounds.margin||1.05,usable:usable()});
+    return framing({center:bounds.center,radius:bounds.radius,extent:name==='orbit'||name==='front'?bounds.extent:null,points:bounds.points||null,direction,fov:camera.fov,aspect:camera.aspect,margin:bounds.margin||1.05,usable:usable()});
   }
   function pose(name='orbit',options={}){
     if(typeof name==='string')lastPose=name;
     userMoved=false;
-    return flyTo(poseTarget(name),options);
+    const target=poseTarget(name);
+    // Depth fog scales with the framing distance, so a tall stack framed from far away is not drowned in fog while
+    // its far planes still recede behind the near ones.
+    if(bounds.fogScale)scene.fog.density=bounds.fogScale/Math.max(1,target.distance);
+    return flyTo(target,options);
   }
   return {
     scene,camera,controls,renderer,canvas,size,ground,
@@ -167,7 +187,7 @@ export function createStage3D(host,{labels=null,reducedMotion=false,onRender=nul
     get reducedMotion(){return reducedMotion;},
     setReducedMotion(value){reducedMotion=!!value;controls.enableDamping=!reducedMotion;if(reducedMotion)controls.autoRotate=false;},
     // A view declares what the camera frames and how the ground and fog are tuned for its scale.
-    setBounds(next){bounds={...bounds,...next};if(next.fov&&next.fov!==camera.fov){camera.fov=next.fov;applyProjection();}},
+    setBounds(next){bounds={...bounds,padPx:null,points:null,extent:null,...next};if(next.fov)camera.fov=next.fov;applyProjection();},
     // Pixels of the canvas covered by page chrome at the top and bottom (measured by the page, never per frame).
     setSafeArea({top=0,bottom=0}={}){
       top=Math.max(0,Math.round(top));bottom=Math.max(0,Math.round(bottom));
@@ -241,7 +261,11 @@ void main(){
   vec3 n=normalize(vNormalV);
   float isTop=step(.499,vLocal.y),isBottom=step(vLocal.y,-.499),side=1.-isTop-isBottom;
   vec2 uv=vLocal.xz+.5;
-  float edge=min(min(uv.x,1.-uv.x),min(uv.y,1.-uv.y));
+  #ifdef DISC
+    float edge=.5-length(vLocal.xz);
+  #else
+    float edge=min(min(uv.x,1.-uv.x),min(uv.y,1.-uv.y));
+  #endif
   float px=edge/max(fwidth(edge),1e-6);
   float rim=(1.-smoothstep(uRimWidth*.5,uRimWidth*1.5,px))*isTop;
   float glow=exp(-px*.35)*isTop;
@@ -258,11 +282,12 @@ void main(){
   gl_FragColor=vec4(col,clamp(a,0.,1.));
   #include <fog_fragment>
 }`;
-// Glass slab: thin lit box with a bright rim in the given instance colour and a faint inner grid.
-export function createSlabMaterial(state,{fill=.07,dim=.12,grid=8,rimWidth=2,rimAlpha=.9}={}) {
+// Glass slab: thin lit box (or disc, with shape:'disc' on a unit cylinder) with a bright rim in the given instance
+// colour and a faint inner grid.
+export function createSlabMaterial(state,{fill=.07,dim=.12,grid=8,rimWidth=2,rimAlpha=.9,shape='box'}={}) {
   const material=new THREE.ShaderMaterial({
     uniforms:THREE.UniformsUtils.merge([THREE.UniformsLib.fog,{uState:{value:null},uLightV:{value:new THREE.Vector3(0,1,0)},uFill:{value:fill},uDim:{value:dim},uGrid:{value:grid},uGold:{value:raw(STAGE_COLORS.gold)},uRimWidth:{value:rimWidth},uRimAlpha:{value:rimAlpha}}]),
-    vertexShader:slabVertex,fragmentShader:slabFragment,transparent:true,depthWrite:false,fog:true
+    vertexShader:slabVertex,fragmentShader:slabFragment,transparent:true,depthWrite:false,fog:true,defines:shape==='disc'?{DISC:''}:{}
   });
   // Assigned after merge(): merge() clones textures, and the clone would not see in-place updates.
   material.uniforms.uState.value=state.texture;

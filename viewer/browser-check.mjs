@@ -50,7 +50,15 @@ try{
   await page.locator('#run-results .flt-stack-these').click();
   await page.waitForFunction(async()=>{const {app}=await window.__layersModule();return app.getState().layers.length===1;});
   await page.waitForFunction(()=>!document.querySelector('#play').disabled);
-  await page.locator('#formation-mode').click();await page.locator('#next').click();
+  // The first coverage cell is a Global condition: its record is one response, so Replay states that and offers
+  // the person-level run of the same model, setting and seed, which then steps event by event from event 0.
+  await page.locator('#formation-mode').click();
+  await page.waitForFunction(()=>document.body.dataset.replayRecord==='single');
+  assert.equal(await page.locator('#next').isVisible(),false);
+  await page.locator('#replay-single [data-replay-alt=local]').click();
+  await page.waitForFunction(()=>!document.querySelector('#play').disabled);
+  assert.equal(await page.locator('#timeline').inputValue(),'0');
+  await page.locator('#next').click();
   assert.equal(await page.locator('#timeline').inputValue(),'1');
   await reveal(page,'persona');
   await page.locator('#person').selectOption('12');
@@ -65,8 +73,12 @@ try{
   await page.locator('#run-results .flt-row .flt-replay').first().click();
   const replay=await state(page);
   assert.equal(replay.view,'replay');assert.equal(replay.runs.find(run=>run.run_id===replay.active).edges.length,0);
-  await page.waitForFunction(()=>!document.querySelector('#play').disabled);
-  await page.locator('#show-final').click();
+  // A Global record is one response: the explanatory state replaces the transport (no dead play button),
+  // and a valid empty graph still says that it has no ties.
+  await page.waitForFunction(()=>document.body.dataset.replayRecord==='single');
+  assert.equal(await page.locator('#replay-single-text').innerText(),'Global generation returned the whole network in one response — there is no step-by-step record to replay.');
+  assert.equal(await page.locator('#play').isVisible(),false);
+  await page.waitForFunction(()=>/valid run has no ties/.test(document.querySelector('#replay-note').textContent));
   assert.match(await page.locator('#replay-note').innerText(),/valid run has no ties/);
 
   // Failures are counted, never rendered: the gpt-5.6-luna global US-Portuguese cell lost two of eight seeds.
