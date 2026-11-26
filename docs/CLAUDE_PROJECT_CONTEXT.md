@@ -11,8 +11,8 @@ the project "Network Observatory" merely because that phrase remains in the
 hosting address or older interface branding.
 
 - Repository: <https://github.com/hemu77/UA_Capstone>
-- Deployed Three.js workspace: <https://ua-network-observatory.handm01042024.chatgpt.site/layers.html>
-- All valid saved networks: <https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots>
+- Deployed Three.js workspace: <https://hemu77.github.io/UA_Capstone/layers.html>
+- All valid saved networks: <https://hemu77.github.io/UA_Capstone/layers.html#saved-plots>
 - Professor brief: <https://github.com/hemu77/UA_Capstone/blob/main/docs/PROFESSOR_RESEARCH_BRIEF.md>
 - Analysis guide: <https://github.com/hemu77/UA_Capstone/blob/main/ANALYSIS_START_HERE.md>
 - Notebooks: <https://github.com/hemu77/UA_Capstone/tree/main/analysis>

@@ -12,6 +12,10 @@ How does a language model decide who becomes friends? We held a roster of 50 fic
 
 *Replay shows recorded generation order, not elapsed time. The edges are saved study results, not a live simulation or a new model call.*
 
+[![A saved primary friendship network rotating in the live 3D viewer](docs/media/primary-network.gif)](https://hemu77.github.io/UA_Capstone/layers.html)
+
+*Drag to rotate; select a person to inspect their neighbors.*
+
 ## Research for the paper
 
 | To review | Start here |

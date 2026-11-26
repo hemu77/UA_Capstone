@@ -1,7 +1,7 @@
 # Current Demo And Deployment
 
-[Open the Cross-Cultural and Linguistic LLM Network Study demo](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html)
-or [explore all 896 networks in 3D](https://ua-network-observatory.handm01042024.chatgpt.site/layers.html#saved-plots).
+[Open the Cross-Cultural and Linguistic LLM Network Study demo](https://hemu77.github.io/UA_Capstone/layers.html)
+or [explore all 896 networks in 3D](https://hemu77.github.io/UA_Capstone/layers.html#saved-plots).
 
 ## Scope
 
