@@ -63,7 +63,11 @@ try{
   await store(page,(app,ids)=>app.update({layers:ids,active:ids[0],view:'stack'},'check'),ids);await settle(page);
   data=await canvasData(page);assert.equal(data.layers,'8');assert.equal(data.planes,'8');
   assert.ok(Number(data.drawCalls)<=48,`Stack of 8: ${data.drawCalls} draw calls`);
-  const stackGeometries=Number(data.geometries);
+  // Shared-tie ribbons are off by default; their buffer is allocated with the stack but first uploaded when shown.
+  // Show them once so the baseline counts every buffer the stack owns.
+  await page.evaluate(()=>document.getElementById('g3-ribbons')?.click());await frames(page);
+  await page.evaluate(()=>document.getElementById('g3-ribbons')?.click());await frames(page);
+  const stackGeometries=Number((await canvasData(page)).geometries);
   const extra=await store(page,app=>app.data.runs.find(r=>r.model==='gpt-4.1').run_id);
   await store(page,(app,[ids,extra])=>app.update({layers:[...ids,extra]},'check'),[ids,extra]);await frames(page);await page.waitForTimeout(50);
   assert.match(await page.locator('#action-status').innerText(),/at most 8/);

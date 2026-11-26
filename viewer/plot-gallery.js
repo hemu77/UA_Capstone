@@ -79,15 +79,15 @@ export function mountSupplementPanel(section,{dataset,announce=()=>{},loadSupple
   const meta=h('div',{class:'ins-supp-meta'});
   const tools=h('div',{class:'ins-supp-tools',role:'group','aria-label':'Supplement camera'});
   const viewer=h('div',{class:'ins-supp-viewer',hidden:true},h('div',{class:'ins-supp-frame'},stageHost,h('span',{class:'ins-supp-watermark',text:'Supplement · not primary'})),status,tools,meta);
-  const message=h('p',{class:'ins-supp-message',role:'status',text:'Opening loads the six supplemental graphs. Nothing is fetched before.'});
+  const message=h('p',{class:'ins-supp-message',role:'status',text:'Loading the supplemental graphs…'});
   const retry=h('button',{type:'button',class:'ins-supp-retry',hidden:true,text:'Retry loading supplements'});
   const drawer=h('details',{class:'ins-supp-drawer'},
-    h('summary',{class:'ins-supp-summary'},h('span',{class:'ins-supp-summary-title',text:`Open the ${count} supplemental graphs`}),h('span',{class:'ins-supp-summary-hint',text:'Separate canvas · loads on demand'})),
+    h('summary',{class:'ins-supp-summary'},h('span',{class:'ins-supp-summary-title',text:'Show supplemental graphs'}),h('span',{class:'ins-supp-summary-hint',text:'Separate canvas · loads only when opened'})),
     h('div',{class:'ins-supp-body'},message,retry,h('div',{class:'ins-supp-layout'},list,viewer)));
   const panel=h('div',{class:'ins-supp'},
-    h('p',{class:'ins-supp-eyebrow',text:'Excluded from the primary study'}),
-    h('h3',{class:'ins-supp-title',text:`${count} supplemental graphs`}),
-    h('p',{class:'ins-supp-lede',text:'Saved by two later supplement runs. They are not among the primary attempts and never enter the atlas, the stack, filters, counts, overlaps or the consensus. Personas are the same 50 fictional adults.'}),
+    h('p',{class:'ins-supp-eyebrow',text:'Supplements'}),
+    h('h3',{class:'ins-supp-title',text:`${count} supplemental graphs, excluded from the primary study`}),
+    h('p',{class:'ins-supp-lede',text:'Saved by two later runs on the same fictional roster. They never enter the atlas, stack, filters, counts or comparisons above.'}),
     drawer);
   const anchor=section.querySelector('#supplement-root');
   (anchor||section).append(panel);

@@ -15,6 +15,21 @@ const PAIRS=n=>n*(n-1)/2;
 // Order-independent tie key on persona ids (ids are numeric strings).
 export const keyOf=(a,b)=>Number(a)<Number(b)||(Number(a)===Number(b)&&String(a)<String(b))?`${a}|${b}`:`${b}|${a}`;
 
+// Pure: spread a force layout evenly over the unit disc, keeping every persona's direction from the centre and the
+// order of distances (radial rank equalisation). Force layouts of dense graphs pack most people into a small core
+// with a few outliers on the rim; this fills the plane instead. Positions remain a layout, not geography.
+// layout: Map(id -> [x, z, ...]) -> Map(id -> [x, z]) with radius <= 1.
+export function spreadLayout(layout,{even=.7}={}) {
+  const entries=[...layout.entries()].map(([id,p])=>[id,p[0],p[1]]);
+  if(!entries.length)return new Map();
+  const cx=entries.reduce((s,e)=>s+e[1],0)/entries.length,cz=entries.reduce((s,e)=>s+e[2],0)/entries.length;
+  const polar=entries.map(([id,x,z])=>({id,r:Math.hypot(x-cx,z-cz),a:Math.atan2(z-cz,x-cx)}));
+  const max=Math.max(1e-9,...polar.map(p=>p.r)),order=[...polar].sort((a,b)=>a.r-b.r||String(a.id).localeCompare(String(b.id)));
+  order.forEach((p,rank)=>{p.r2=even*Math.sqrt((rank+.5)/order.length)+(1-even)*p.r/max;});
+  const scale=1/Math.max(1e-9,...order.map(p=>p.r2));
+  return new Map(polar.map(p=>[p.id,[Math.cos(p.a)*p.r2*scale,Math.sin(p.a)*p.r2*scale]]));
+}
+
 // Pure: typed arrays for one stack. runs: [{run_id, edges:[[a,b]]}]; layout: Map(id -> [x, z, ...]) in layout units.
 // options: {personas:[id], spacing, scale, plane (half size), lift, liftMax, rMin, rMax, ties:'all'|'shared'|'different',
 //           persona, incident, edgesOf(run, index) -> edges}
@@ -157,10 +172,10 @@ export function createStack(stage,dataset,{colors={}}={}) {
   const indexOf=new Map(personas.map((p,i)=>[p.id,i]));
   const group=new THREE.Group();group.name='stack';
   const state=createStateTexture(CAP);
-  // 1. Glass slabs, one instance per plane.
-  const slabGeometry=new THREE.BoxGeometry(1,1,1);
+  // 1. Glass discs, one instance per plane. The layout is spread over a disc, so a round plane carries no empty corners.
+  const slabGeometry=new THREE.CylinderGeometry(.5,.5,1,128,1);
   slabGeometry.setAttribute('aSlot',new THREE.InstancedBufferAttribute(new Float32Array([...Array(CAP).keys()]),1));
-  const slabMaterial=createSlabMaterial(state,{fill:.07,dim:.25,grid:10,rimWidth:1.8,rimAlpha:.85});
+  const slabMaterial=createSlabMaterial(state,{fill:.05,dim:.25,grid:8,rimWidth:1.3,rimAlpha:.85,shape:'disc'});
   const slabs=new THREE.InstancedMesh(slabGeometry,slabMaterial,CAP);slabs.count=0;slabs.renderOrder=1;slabs.frustumCulled=false;
   // 2. Sprites: contact shadows + outline rings.
   const spriteCount=CAP*N+HALOS;
@@ -175,15 +190,18 @@ export function createStack(stage,dataset,{colors={}}={}) {
   const sprites=new THREE.Points(spriteGeometry,spriteMaterial);sprites.frustumCulled=false;sprites.renderOrder=5;
   // 3. Nodes: lit instanced spheres. uNodeScale enforces a legibility floor when the camera is far away.
   const nodeScale={value:1};
-  const nodeMaterial=new THREE.MeshStandardMaterial({roughness:.38,metalness:.08});
-  nodeMaterial.onBeforeCompile=shader=>{shader.uniforms.uNodeScale=nodeScale;shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nuniform float uNodeScale;').replace('#include <begin_vertex>','#include <begin_vertex>\ntransformed*=uNodeScale;');};
-  const nodes=new THREE.InstancedMesh(new THREE.SphereGeometry(1,22,16),nodeMaterial,CAP*N);nodes.count=0;nodes.frustumCulled=false;
+  const nodeMaterial=new THREE.MeshStandardMaterial({roughness:.55,metalness:0});
+  nodeMaterial.onBeforeCompile=shader=>{shader.uniforms.uNodeScale=nodeScale;shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nuniform float uNodeScale;').replace('#include <begin_vertex>','#include <begin_vertex>\ntransformed*=uNodeScale;');
+    // A share of the node's own colour as emission: nodes read as their encoded colour, not as dark lit blobs.
+    shader.fragmentShader=shader.fragmentShader.replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance+=diffuseColor.rgb*.38;');};
+  const nodes=new THREE.InstancedMesh(new THREE.SphereGeometry(1,20,14),nodeMaterial,CAP*N);nodes.count=0;nodes.frustumCulled=false;
   nodes.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(CAP*N*3),3);
-  // 4. Thin lines: every tie plus the stems of lifted nodes. 5. Wide lines: ties incident to the persona, majority
+  // 4. Thin lines: every tie plus the stems of lifted nodes. 5. Wide lines: ties incident to the persona, three-quarter
   // consensus ties, ties added by the current recorded update, and dashed pieces (removed ties, identity thread).
   const maxTies=CAP*PAIRS(N);
-  const thin=new DynamicLines(maxTies+CAP*N,{width:1.3});thin.object.renderOrder=3;
-  const wide=new DynamicLines(maxTies+PAIRS(N)*24+CAP*40,{width:2.5});wide.object.renderOrder=4;
+  // Normal blending (not additive): overlapping ties stay crisp instead of burning out to white in dense cores.
+  const thin=new DynamicLines(maxTies+CAP*N,{width:1.15,additive:false});thin.object.renderOrder=3;
+  const wide=new DynamicLines(maxTies+PAIRS(N)*24+CAP*40,{width:2.4,additive:false});wide.object.renderOrder=4;
   // 6. Shared-tie ribbons between adjacent planes (Stack only).
   const ribbonCapacity=(CAP-1)*PAIRS(N);
   const ribbonPositions=new Float32Array(ribbonCapacity*18),ribbonT=new Float32Array(ribbonCapacity*6),ribbonColor=new Float32Array(ribbonCapacity*18);
@@ -192,7 +210,7 @@ export function createStack(stage,dataset,{colors={}}={}) {
   ribbonGeometry.setAttribute('aT',new THREE.BufferAttribute(ribbonT,1));
   ribbonGeometry.setAttribute('color',new THREE.BufferAttribute(ribbonColor,3));
   ribbonGeometry.setDrawRange(0,0);
-  const ribbonMaterial=new THREE.ShaderMaterial({uniforms:{uAlpha:{value:.075},uFogDensity:{value:.001}},vertexShader:ribbonVertex,fragmentShader:ribbonFragment,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,vertexColors:true});
+  const ribbonMaterial=new THREE.ShaderMaterial({uniforms:{uAlpha:{value:.045},uFogDensity:{value:.001}},vertexShader:ribbonVertex,fragmentShader:ribbonFragment,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,vertexColors:true});
   const ribbons=new THREE.Mesh(ribbonGeometry,ribbonMaterial);ribbons.frustumCulled=false;ribbons.renderOrder=2;
   group.add(slabs,ribbons,thin.object,wide.object,nodes,sprites);
   group.visible=false;stage.scene.add(group);
@@ -200,14 +218,14 @@ export function createStack(stage,dataset,{colors={}}={}) {
   const offResize=stage.onResize(size=>{for(const line of lines)line.material.resolution.set(size.width,size.height);});
   for(const line of lines)line.material.resolution.set(stage.size.width,stage.size.height);
 
-  let runs=[],activeId='',layout=null,geometry=null,frame=null,persona='',incident=false,tieMode='all',showRibbons=true,consensus=null;
+  let runs=[],activeId='',layout=null,geometry=null,frame=null,persona='',incident=false,tieMode='all',showRibbons=false,consensus=null;
   let options={spacing:55,scale:1.25,plane:110,lift:false,replay:false,opacity:.5};
   let encoding={colorOf:(id,l)=>colors.layers?.[l]||STAGE_COLORS.accent,dimmed:()=>false,classOf:null};
   // Animated segments of the wide set (fade-in of new ties, fade-out of removed ones) and their full colours.
   let animation=null,animated={fresh:[],removed:[],colors:null};
   const lightV=new THREE.Vector3(),tmp=new THREE.Color(),matrix=new THREE.Matrix4(),back=new THREE.Color('#0f171b');
   const hueOf=l=>new THREE.Color(colors.layers?.[l%(colors.layers?.length||1)]||STAGE_COLORS.accent);
-  const neutral=new THREE.Color(STAGE_COLORS.tie),same=new THREE.Color(colors.same||'#80e2c4'),mixed=new THREE.Color(colors.mixed||'#f2c078');
+  const neutral=new THREE.Color('#d6eaef'),same=new THREE.Color(colors.same||'#80e2c4'),mixed=new THREE.Color(colors.mixed||'#f2c078');
   function animate(k){
     const set=(segments,scale)=>{for(const s of segments)for(let v=0;v<6;v++)wide.colors[s*6+v]=animated.colors[s*6+v]*scale;};
     set(animated.fresh,.05+.95*k);set(animated.removed,1-.75*k);
@@ -226,6 +244,8 @@ export function createStack(stage,dataset,{colors={}}={}) {
     }
   });
 
+  // The tie-opacity slider (0..1, default .5) maps onto a range where normal-blended hairlines stay legible.
+  const tieOpacity=value=>Math.min(1,.15+value*1.3)*(options.replay?1:Math.min(1,Math.sqrt(2.5/Math.max(1,runs.length))));
   function planeCount(){return runs.length+(consensus?1:0);}
   function rebuild() {
     if(!runs.length||!layout){group.visible=false;stage.requestRender();return;}
@@ -233,28 +253,33 @@ export function createStack(stage,dataset,{colors={}}={}) {
     const edgesOf=(run)=>options.replay&&frame&&run.run_id===activeId?frame.edges:run.edges;
     const stackRuns=consensus?[...runs,{run_id:'__consensus__',edges:consensus.list.map(item=>item.edge)}]:runs;
     geometry=stackGeometry(stackRuns,layout,{personas:personas.map(p=>p.id),spacing:options.spacing,scale:options.scale,lift:options.lift,
-      liftMax:options.replay?34:Math.min(24,options.spacing*.36),rMin:options.replay?3:1.7,rMax:options.replay?7.5:4.4,ties:consensus?'all':tieMode,persona,incident,edgesOf});
+      liftMax:options.replay?34:Math.min(24,options.spacing*.36),rMin:options.replay?2.6:1.9,rMax:options.replay?5.6:4.2,ties:consensus?'all':tieMode,persona,incident,edgesOf});
     const L=geometry.layers,half=options.plane,isConsensusLayer=l=>!!consensus&&l===L-1;
-    // Slabs: run hue rim, active plane in focus; consensus plane in neutral gold.
+    // Slabs: run hue rim; the active plane (and the single Replay plane) in focus; consensus plane in neutral gold.
     slabs.count=L;
     for(let l=0;l<L;l++){
       matrix.makeScale(half*2,1.6,half*2).setPosition(0,geometry.planeY[l]-.85,0);slabs.setMatrixAt(l,matrix);
       slabs.setColorAt(l,raw(isConsensusLayer(l)?STAGE_COLORS.gold:colors.layers?.[l]||STAGE_COLORS.accent));
-      state.set(l,0,255);state.set(l,1,!options.replay&&l===active&&L>1?255:0);state.set(l,2,0);
+      state.set(l,0,255);state.set(l,1,options.replay||l===active&&L>1?255:0);state.set(l,2,0);
     }
     state.commit();slabs.instanceMatrix.needsUpdate=true;if(slabs.instanceColor)slabs.instanceColor.needsUpdate=true;
     // Nodes, contact shadows, outline rings and stems.
     const event=options.replay?frame?.event:null,activeNodes=options.replay&&frame?new Set(frame.edges.flat()):null;
     const stems=[];let halo=0;nodes.count=L*N;
+    // With a persona selected, its neighbours keep their colour and every other node recedes.
+    const near=persona?new Uint8Array(L*N):null;
+    if(near){const t=geometry.ties;for(let s=0;s<t.count;s++)if(t.kind[s]===2){near[t.layer[s]*N+t.pair[2*s]]=1;near[t.layer[s]*N+t.pair[2*s+1]]=1;}}
     spriteSize.fill(0);
     for(let l=0;l<L;l++)for(let i=0;i<N;i++){
       const k=l*N+i,id=personas[i].id,visible=geometry.nodes.visible[k],consensusNode=isConsensusLayer(l),r=consensusNode?1.5:geometry.nodes.radius[k];
       const [x,y,z]=geometry.nodes.positions.subarray(k*3,k*3+3),[fx,fy,fz]=geometry.nodes.feet.subarray(k*3,k*3+3);
-      const actor=event?.persona===id,focus=!consensusNode&&(id===persona||actor),size=visible?r*(focus?1.25:1):0;
+      const actor=event?.persona===id,focus=!consensusNode&&(id===persona||actor),recede=!!near&&!focus&&!near[k]&&!consensusNode,size=visible?r*(focus?1.6:recede?.8:1):0;
       matrix.makeScale(size,size,size).setPosition(x,consensusNode?fy+r:y,z);nodes.setMatrixAt(k,matrix);
       tmp.set(consensusNode?'#9c968a':encoding.colorOf(id,l));
       if(encoding.dimmed(id)&&id!==persona)tmp.lerp(back,.72);
       if(activeNodes&&!activeNodes.has(id)&&!focus)tmp.lerp(back,.38);
+      if(recede)tmp.lerp(back,.58);
+      if(id===persona&&!consensusNode)tmp.lerp(new THREE.Color('#fff4d6'),.35);
       nodes.setColorAt(k,tmp);
       spritePositions.set([fx,fy+.05,fz],k*3);spriteKind[k]=0;spriteSize[k]=visible&&!consensusNode?r*2.6+(options.lift?2:0):0;
       if(options.lift&&visible&&!consensusNode&&y-r>fy+.5)stems.push(fx,fy,fz,x,y-r,z);
@@ -271,22 +296,24 @@ export function createStack(stage,dataset,{colors={}}={}) {
     const lens=encoding.classOf;
     const tieColor=s=>{
       const l=t.layer[s],a=personas[t.pair[2*s]].id,b=personas[t.pair[2*s+1]].id;
-      if(isConsensusLayer(l)){const share=consensus.share.get(keyOf(a,b))||0;return tmp.set(STAGE_COLORS.gold).multiplyScalar(.03+.97*share*share).toArray();}
+      // Aggregate plane: a light overlay of thin lines only; strength rises steeply with the share of graphs
+      // that contain the tie (lines are additive, so a tie in half of the graphs is a faint trace).
+      if(isConsensusLayer(l)){const share=consensus.share.get(keyOf(a,b))||0;return tmp.set(STAGE_COLORS.gold).multiplyScalar(.12+.88*share*share*share).toArray();}
       let c;const edge=[a,b],cls=lens?lens(edge):null,hex=encoding.tieColor?.(edge);
       if(hex)c=new THREE.Color(hex);else if(cls==='same')c=same.clone();else if(cls==='mixed')c=mixed.clone();
-      else c=neutral.clone().lerp(hueOf(l),runs.length>1?.38:.18).multiplyScalar(lens?.35:1);
-      if(encoding.tieDimmed?.(edge))c.multiplyScalar(.14);
-      if(t.kind[s]===1)c.multiplyScalar(.42);
+      else c=neutral.clone().lerp(hueOf(l),runs.length>1?.42:.2).lerp(back,lens?.6:0);
+      if(encoding.tieDimmed?.(edge))c.lerp(back,.85);
+      if(t.kind[s]===1)c.lerp(back,.78);
       return c.toArray();
     };
     const thinPos=[],thinCol=[],widePos=[],wideCol=[],fresh=[],removed=[];
     for(let s=0;s<t.count;s++){
       const l=t.layer[s],a=personas[t.pair[2*s]].id,b=personas[t.pair[2*s+1]].id,segment=t.positions.subarray(s*6,s*6+6);
-      if(options.replay&&freshKeys.has(keyOf(a,b))){fresh.push(widePos.length/6);widePos.push(...segment);wideCol.push(tmp.set(STAGE_COLORS.accent).multiplyScalar(1.2).toArray());}
-      else if(isConsensusLayer(l)&&(consensus.share.get(keyOf(a,b))||0)>=.5||t.kind[s]===2&&!isConsensusLayer(l)){widePos.push(...segment);wideCol.push(isConsensusLayer(l)?tieColor(s):tmp.set('#9fe8d0').toArray());}
+      if(options.replay&&freshKeys.has(keyOf(a,b))){fresh.push(widePos.length/6);widePos.push(...segment);wideCol.push(tmp.set('#a8ffe3').toArray());}
+      else if(t.kind[s]===2&&!isConsensusLayer(l)){widePos.push(...segment);wideCol.push(tmp.set('#ffe2a0').toArray());}
       else{thinPos.push(...segment);thinCol.push(tieColor(s));}
     }
-    const stemColor=tmp.set('#5f7a85').toArray();
+    const stemColor=tmp.set('#4d6670').toArray();
     for(let q=0;q<stems.length/6;q++){thinPos.push(...stems.slice(q*6,q*6+6));thinCol.push(stemColor);}
     // Removed ties of the current update (Replay) and the selected persona's identity thread (Stack), dashed.
     const dash=(a,b,color,list)=>{const pieces=dashSegments(a,b);for(let q=0;q<pieces.length/6;q++){list?.push(widePos.length/6);widePos.push(...pieces.slice(q*6,q*6+6));wideCol.push(color);}};
@@ -303,7 +330,7 @@ export function createStack(stage,dataset,{colors={}}={}) {
     if(animation)animate(0);
     else for(const q of removed)for(let v=0;v<6;v++)wide.colors[q*6+v]*=.65; // resting state: removed ties drawn dim
     if(!animation&&removed.length)wide.geometry.attributes.instanceColorStart.data.needsUpdate=true;
-    thin.material.opacity=options.opacity;wide.material.opacity=.95;
+    thin.material.opacity=tieOpacity(options.opacity);wide.material.opacity=.95;
     // Ribbons between adjacent planes (Stack only).
     const rb=geometry.ribbons,count=showRibbons&&!options.replay&&!consensus?rb.count:0;
     ribbonPositions.set(rb.positions.subarray(0,count*18));ribbonT.set(rb.t.subarray(0,count*6));
@@ -351,16 +378,20 @@ export function createStack(stage,dataset,{colors={}}={}) {
       consensus={list,share,total:total||list[0].total};rebuild();
     },
     get consensusPlane(){return consensus&&geometry?geometry.layers-1:-1;},
-    setOpacity(value){options.opacity=value;thin.material.opacity=value;stage.requestRender();},
+    setOpacity(value){options.opacity=value;thin.material.opacity=tieOpacity(value);stage.requestRender();},
     setVisible(visible){group.visible=!!visible&&!!runs.length;stage.requestRender();},
     get visible(){return group.visible;},
     // World position of a persona's node on a plane, and the label anchor of a plane (back-left corner).
     nodePosition(layer,id){const i=personas.findIndex(p=>p.id===id);if(!geometry||i<0||layer>=geometry.layers)return null;const k=(layer*N+i)*3,p=geometry.nodes.positions;return [p[k],p[k+1]+geometry.nodes.radius[layer*N+i]*nodeScale.value,p[k+2]];},
     nodeVisible(layer,id){const i=personas.findIndex(p=>p.id===id);return !!geometry&&i>=0&&layer<geometry.layers&&!!geometry.nodes.visible[layer*N+i];},
-    planeAnchor(layer){return geometry?[-options.plane,geometry.planeY[layer]+1,options.plane]:null;},
+    // Label anchor: the rim point on the left of the default camera (azimuth of the Stack pose).
+    planeAnchor(layer){return geometry?[-options.plane*.906,geometry.planeY[layer],options.plane*.423]:null;},
     bounds(){
-      const L=Math.max(1,planeCount()),height=(L-1)*options.spacing;
-      return {center:[0,0,0],radius:Math.hypot(options.plane*1.05,height/2+(options.lift?20:6)),floor:-(height/2)-(options.replay?24:28)};
+      const L=Math.max(1,planeCount()),height=(L-1)*options.spacing,half=options.plane*.97,top=height/2+(options.lift?(options.replay?34:24):(options.replay?9:6));
+      return {center:[0,0,0],radius:Math.hypot(half*1.05,height/2+(options.lift?20:6)),floor:-(height/2)-(options.replay?24:28),
+        box:{min:[-half,-height/2-1.7,-half],max:[half,top,half]},
+        // Rim samples of the bottom and top discs (offsets from the centre), for an exact perspective fit.
+        points:Array.from({length:48},(_,k)=>{const a=k%24/24*Math.PI*2,y=k<24?-height/2-1.7:top;return [Math.cos(a)*half,y-(top-height/2-1.7)/2,Math.sin(a)*half];})};
     },
     // Ray picking with a pixel tolerance: nodes first (nearest along the ray), then plane surfaces.
     pick(ray,{pixelTolerance=7}={}){
@@ -381,7 +412,7 @@ export function createStack(stage,dataset,{colors={}}={}) {
         if(Math.abs(d.y)<1e-9)continue;
         const t=(geometry.planeY[l]-o.y)/d.y;if(t<0)continue;
         const x=o.x+d.x*t,z=o.z+d.z*t;
-        if(Math.abs(x)<=options.plane&&Math.abs(z)<=options.plane&&(!best||t<best.t))best={t,layer:l};
+        if(x*x+z*z<=options.plane*options.plane&&(!best||t<best.t))best={t,layer:l};
       }
       return best?{run_id:runs[best.layer].run_id,person:null,layer:best.layer,distance:best.t}:null;
     },

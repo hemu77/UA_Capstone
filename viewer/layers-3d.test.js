@@ -1,10 +1,10 @@
 // Unit tests for the pure parts of the 3D engine (workstream 2). No DOM, no WebGL.
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {atlasLayout,pickSlot,rayBox,personaPlanePositions,ATLAS_GEOMETRY} from './layers-3d-atlas.js';
-import {stackGeometry,identityThread,keyOf,dashSegments,STACK_CAPACITY} from './layers-3d-stack.js';
+import {atlasLayout,pickSlot,rayBox,personaPlanePositions,tieTint,ATLAS_GEOMETRY} from './layers-3d-atlas.js';
+import {stackGeometry,identityThread,keyOf,dashSegments,spreadLayout,STACK_CAPACITY} from './layers-3d-stack.js';
 import {cullBoxes} from './layers-3d-labels.js';
-import {framing,easeInOutCubic,POSES} from './layers-3d-scene.js';
+import {framing,easeInOutCubic,POSES,boxCorners} from './layers-3d-scene.js';
 import {MAX_STACK_LAYERS} from './layers-app.js';
 
 const design={models:['gpt-4.1','gpt-5.6-luna','gpt-6-luna','gpt-6-sol'],methods:['global','local','sequential','iterative'],
@@ -140,4 +140,46 @@ test('camera framing fits the content and easing is monotone',()=>{
   assert.ok(box.distance<framing({center:[0,0,0],radius:100,direction:[0,.5,1],fov:26,aspect:1.6}).distance+1e-9);
   let previous=-1;for(let t=0;t<=1;t+=.05){const v=easeInOutCubic(t);assert.ok(v>=previous);previous=v;}
   assert.equal(easeInOutCubic(0),0);assert.equal(easeInOutCubic(1),1);
+});
+
+test('layout spread fills the unit disc and keeps direction and distance order',()=>{
+  const raw=new Map([['a',[1,0]],['b',[0,2]],['c',[-.2,0]],['d',[0,-.1]],['e',[30,30]]]);
+  const out=spreadLayout(raw);
+  assert.equal(out.size,5);
+  const cx=(1+0-.2+0+30)/5,cz=(0+2+0-.1+30)/5,radius=id=>Math.hypot(...out.get(id));
+  for(const [id,[x,z]] of raw){
+    const [u,v]=out.get(id);
+    assert.ok(Math.abs(Math.atan2(v,u)-Math.atan2(z-cz,x-cx))<1e-9,'direction from the centre is kept');
+    assert.ok(radius(id)<=1+1e-12);
+  }
+  assert.ok(Math.abs(Math.max(...[...out.keys()].map(radius))-1)<1e-12,'the outermost persona reaches the rim');
+  const byRaw=[...raw].sort((p,q)=>Math.hypot(p[1][0]-cx,p[1][1]-cz)-Math.hypot(q[1][0]-cx,q[1][1]-cz)).map(([id])=>id);
+  byRaw.forEach((id,i)=>i&&assert.ok(radius(id)>=radius(byRaw[i-1]),'distance order is kept'));
+  // A far outlier no longer squeezes everyone else into the centre.
+  assert.ok(radius(byRaw[1])>.3);
+  assert.equal(spreadLayout(new Map()).size,0);
+});
+
+test('atlas tile tint grows with tie count and is 0 for an empty graph',()=>{
+  assert.equal(tieTint(0,279),0);assert.equal(tieTint(279,279),1);
+  assert.ok(tieTint(50,279)<tieTint(51,279));assert.equal(tieTint(400,279),1);assert.equal(tieTint(5,0),0);
+});
+
+test('point framing keeps every corner inside the frustum, near corners included',()=>{
+  const center=[0,5,0],points=boxCorners([-90,0,-60],[90,20,70],center);
+  assert.equal(points.length,8);
+  const fov=22,aspect=1.7,usable=[.8,.7],direction=[0,1.55,1];
+  const fit=framing({center,points,direction,fov,aspect,usable,margin:1});
+  // Project with the same camera basis and check every corner lands inside the usable frame.
+  const len=Math.hypot(...direction),v=direction.map(c=>c/len),right=[v[2],0,-v[0]].map((c,_,a)=>c/Math.hypot(...a)||0);
+  const up=[v[1]*right[2]-v[2]*right[1],v[2]*right[0]-v[0]*right[2],v[0]*right[1]-v[1]*right[0]];
+  const tanV=Math.tan(fov*Math.PI/360)*usable[1],tanH=Math.tan(fov*Math.PI/360)*aspect*usable[0];
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  let tight=0;
+  for(const p of points){
+    const depth=fit.distance-dot(p,v);
+    const x=Math.abs(dot(p,right))/depth/tanH,y=Math.abs(dot(p,up))/depth/tanV;
+    assert.ok(x<=1+1e-9&&y<=1+1e-9);tight=Math.max(tight,x,y);
+  }
+  assert.ok(tight>.999,'the fit is tight, not merely safe');
 });
