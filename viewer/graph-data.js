@@ -41,22 +41,28 @@ export function applyLayerSelection(candidates) {
   layerComparison(candidates);
   return [...candidates];
 }
+// Single source for the plane limit: one condition has 8 seeds, so a whole condition fits in one stack.
+export const MAX_LAYERS = 8;
 export function layerComparison(runs) {
   // Identity links only make sense when the same roster appears in every layer.
-  if (!runs.length || runs.length > 6) throw new Error('Choose between one and six layers.');
+  if (!runs.length || runs.length > MAX_LAYERS) throw new Error(`Choose between 1 and ${MAX_LAYERS} layers.`);
   if (new Set(runs.map(r => r.run_id)).size !== runs.length) throw new Error('Duplicate layer.');
   if (runs.some(r => !r.roster_id || r.roster_id !== runs[0].roster_id)) throw new Error('Layers require the same roster.');
   const counts = new Map();
   for (const run of runs) for (const key of new Set(run.edges.map(edgeKey))) counts.set(key, (counts.get(key) || 0) + 1);
   return {counts, shared: [...counts.values()].filter(n => n === runs.length).length, union: counts.size};
 }
-export function comparisonLayout(personas, leftEdges, rightEdges) {
+export function comparisonLayout(personas, leftEdges, rightEdges, {weights = null, planar = false} = {}) {
   // Both panes use the same union layout. Differences cannot be layout drift.
+  // `weights` (Map edgeKey -> (0,1]) scales each spring, e.g. by how often a tie recurs across graphs.
+  // `planar` starts every point at z=0; no force has a z component then, so the result is flat.
   // ponytail: O(150*n^2), bounded to this 50-person viewer; use a worker for larger rosters.
   const ids = personas.map(p => p.id).sort(), points = new Map();
-  ids.forEach((id, i) => points.set(id, [55*Math.cos(2*Math.PI*i/ids.length), 55*Math.sin(2*Math.PI*i/ids.length), (i%5-2)*8]));
+  ids.forEach((id, i) => points.set(id, [55*Math.cos(2*Math.PI*i/ids.length), 55*Math.sin(2*Math.PI*i/ids.length), planar ? 0 : (i%5-2)*8]));
   const edges = [...new Map([...leftEdges, ...rightEdges].map(e => [edgeKey(e), e])).values()];
   for (const edge of edges) if (edge[0] === edge[1] || !edge.every(id => points.has(id))) throw new Error('Invalid layout edge.');
+  const strength = edges.map(edge => weights ? weights.get(edgeKey(edge)) : 1);
+  if (!strength.every(w => Number.isFinite(w) && w > 0 && w <= 1)) throw new Error('Invalid layout weight.');
   for (let step=0; step<150; step++) {
     const force = new Map(ids.map(id => [id, [0,0,0]]));
     for (let i=0;i<ids.length;i++) for (let j=i+1;j<ids.length;j++) {
@@ -64,10 +70,10 @@ export function comparisonLayout(personas, leftEdges, rightEdges) {
       const distance=Math.max(1,Math.hypot(...delta));
       delta.forEach((v,k)=>{const f=500*v/(distance*distance);force.get(ids[i])[k]+=f;force.get(ids[j])[k]-=f;});
     }
-    for (const [u,v] of edges) {
+    edges.forEach(([u,v], e) => {
       const a=points.get(u),b=points.get(v),delta=a.map((x,k)=>b[k]-x),distance=Math.max(1,Math.hypot(...delta));
-      delta.forEach((x,k)=>{const f=.025*(distance-23)*x/distance;force.get(u)[k]+=f;force.get(v)[k]-=f;});
-    }
+      delta.forEach((x,k)=>{const f=.025*strength[e]*(distance-23)*x/distance;force.get(u)[k]+=f;force.get(v)[k]-=f;});
+    });
     const temperature=3*(1-step/150)+.05;
     for (const id of ids) {
       const point=points.get(id),f=force.get(id).map((v,k)=>v-.02*point[k]),length=Math.max(1,Math.hypot(...f));

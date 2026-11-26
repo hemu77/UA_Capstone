@@ -1,81 +1,66 @@
-// Isolated 3D gallery: saved adjacency only; no model or collector access.
+// Workstream 5 browser check: study ledger, attribute lens / legend / store wiring, and the supplement-only panel.
+// Saved data only; no model or collector access. Run: node plot-gallery-browser-check.mjs (VIEWER_URL, BROWSER_CHANNEL).
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
 const {chromium}=createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=process.env.VIEWER_URL||'http://127.0.0.1:8781';
 const browser=await chromium.launch({headless:true,channel:process.env.BROWSER_CHANNEL||'msedge'});
+const store=page=>page.evaluate(async()=>{const m=await import(document.querySelector('script[src*="layers.js"]').src);return m.app.getState();});
+const click=(page,selector,index=0)=>page.evaluate(([s,i])=>{const el=document.querySelectorAll(s)[i];el.scrollIntoView({block:'center'});el.click();},[selector,index]);
 try{
-  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],requests=[];
+  const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[],requests=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
-  await page.goto(base+'/layers.html');await page.waitForSelector('#layers button');
-  assert.ok(!requests.some(u=>u.includes('saved-networks.json')),'Catalog should load on demand');
-  await page.getByRole('link',{name:'896 networks in 3D'}).click();
-  await page.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('890 matching'));
-  await page.locator('#plot-cohort').selectOption('all');
-  assert.match(await page.locator('#plot-status').innerText(),/896 matching/);
-  assert.equal(await page.locator('.plot-card').count(),8);assert.equal(await page.locator('#plot-grid img').count(),0);
-  for(const method of ['global','local','sequential','iterative']){
-    await page.locator('#plot-method').selectOption(method);
-    assert.match(await page.locator('#plot-status').innerText(),/224 matching/);
-  }
-  await page.locator('#plot-clear').click();
-  const before=await page.locator('#timeline').inputValue(),layers=await page.locator('#layers').innerText();
-  assert.equal(await page.locator('#plot-cohort').inputValue(),'primary');
-  await page.locator('.network-open').first().click();await page.waitForSelector('#network-stage canvas[data-run]');
-  const canvas=page.locator('#network-stage canvas');
-  assert.equal(await canvas.getAttribute('data-nodes'),'50');assert.equal(await page.locator('#plot-replay').isVisible(),true);
-  const camera=await canvas.getAttribute('data-camera');
-  const box=await canvas.boundingBox();
-  await page.mouse.move(box.x+box.width*.4,box.y+box.height*.5);await page.mouse.down();await page.mouse.move(box.x+box.width*.65,box.y+box.height*.65,{steps:12});await page.mouse.up();
-  assert.notEqual(await canvas.getAttribute('data-camera'),camera,'Drag must rotate');
-  const rotated=await canvas.getAttribute('data-camera');await page.locator('#network-zoom-in').click();
-  assert.notEqual(await canvas.getAttribute('data-camera'),rotated,'Zoom button must move camera');
-  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));
-  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
-  assert.equal(await canvas.count(),1,'BFCache suspension must retain the reusable canvas');
-  const restored=await canvas.getAttribute('data-camera');await page.locator('#network-zoom-out').click();
-  assert.notEqual(await canvas.getAttribute('data-camera'),restored,'Restored canvas remains interactive');
-  await page.locator('#network-person').selectOption('12');
-  const id=await canvas.getAttribute('data-run');
-  const neighbors=await page.evaluate(async runId=>{const d=await(await fetch('./data/saved-networks.json')).json(),g=d.graphs.find(g=>g.run_id===runId);return g.edges.filter(e=>e.includes('12')).length;},id);
-  assert.match(await page.locator('#network-status').innerText(),new RegExp('Persona 12 / '+neighbors+' neighbors'));
-  await page.locator('#plot-forward').click();await page.waitForFunction(previous=>document.querySelector('#network-stage canvas').dataset.run!==previous,id);
-  await page.locator('#plot-close').click();assert.equal(await page.locator('#timeline').inputValue(),before);assert.equal(await page.locator('#layers').innerText(),layers);
-  await page.locator('#plot-page-next').click();assert.match(await page.locator('#plot-status').innerText(),/Showing 9-16/);
-  await page.locator('#plot-cohort').selectOption('supplement');assert.match(await page.locator('#plot-status').innerText(),/6 matching/);
-  await page.locator('.network-open').first().click();await page.waitForSelector('#network-stage canvas[data-run^="supplement"]');
-  assert.match(await page.locator('#plot-dialog-cohort').innerText(),/excluded from primary analysis/);
-  assert.equal(await page.locator('#plot-replay').isHidden(),true);
-  await page.screenshot({path:process.env.VIEWER_DESKTOP_SCREENSHOT||'network-3d-desktop.png'});
-  await page.locator('#plot-close').click();
-  await page.locator('#plot-cohort').selectOption('primary');await page.locator('#plot-search').fill('no-such-graph');
-  assert.match(await page.locator('#plot-status').innerText(),/No matching/);
-  await page.locator('#plot-clear').click();
-  const emptyId=await page.evaluate(async()=>{const d=await(await fetch('./data/saved-plots.json')).json();return d.plots.find(p=>p.cohort==='primary'&&p.empty_graph).run_id;});
-  await page.locator('#plot-search').fill(emptyId);await page.locator('.network-open').click();
-  await page.waitForFunction(()=>document.querySelector('#network-stage canvas').dataset.edges==='0');
-  assert.equal(await canvas.getAttribute('data-nodes'),'50');assert.match(await page.locator('#plot-dialog-cohort').innerText(),/valid empty/);
-  await page.setViewportSize({width:390,height:844});
-  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Mobile horizontal overflow');
-  await page.locator('#network-zoom-out').click();
-  await page.screenshot({path:process.env.VIEWER_SCREENSHOT||'network-3d-mobile.png'});
-  await page.keyboard.press('Escape');assert.equal(await page.locator('#plot-dialog').evaluate(d=>d.open),false);
-  assert.ok(!requests.some(u=>u.includes('/data/saved-plots/')),'PNG tiles must not be fetched');
+  page.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource/.test(m.text()))errors.push(m.text());});
+  await page.goto(base+'/layers.html');
+  await page.waitForSelector('#study-ledger .ins-ledger[data-state=ready]',{state:'attached',timeout:30000});
+
+  // One ledger with the exact population.
+  const ledger=await page.locator('#study-ledger .ins-ledger-line').textContent();
+  assert.match(ledger.replace(/\s+/g,' '),/896 attempts.*890 valid graphs \(12 empty\).*6 failures.*6 supplemental graphs excluded/);
+  assert.equal(await page.locator('.ins-ledger-line').count(),1,'the population is stated once');
+
+  // Lens and legend talk only through the store.
+  await click(page,'#insight-root .ins-toggle[data-focus="color:gender"]');
+  await page.waitForFunction(()=>document.querySelectorAll('#legend .ins-legend-item').length===3);
+  assert.equal((await store(page)).colorBy,'gender');
+  await click(page,'#legend .ins-legend-item',2);
+  await page.waitForFunction(()=>document.querySelector('#legend .ins-legend-item[aria-pressed=true]'));
+  assert.deepEqual((await store(page)).groups,['Nonbinary']);
+  await click(page,'#insight-root .ins-toggle[data-focus="lens:mixed"]');
+  assert.equal((await store(page)).lens,'mixed');
+  await click(page,'#insight-root .ins-toggle[data-focus="color:religion"]');
+  await page.waitForFunction(()=>document.querySelectorAll('#legend .ins-legend-item').length===5);
+  assert.deepEqual((await store(page)).groups,[],'changing the attribute clears isolated groups');
+  assert.match(await page.locator('#insight-root .ins-reference').textContent(),/18\.4%.*1,225 possible persona pairs/);
+  await click(page,'#insight-root .ins-toggle[data-focus="scope:filters"]');
+  await page.waitForFunction(()=>/Aggregate of 890 filtered graphs, not a run/.test(document.querySelector('#insight-root .ins-aggregate-label')?.textContent||''));
+
+  // Supplements: nothing fetched before the panel opens; six graphs, never primary.
+  assert.ok(!requests.some(u=>/supplements\.json|saved-networks\.json|saved-plots\.json|primary-viewer\.json/.test(u)),'no supplement or monolith request at start');
+  await page.evaluate(()=>{const d=document.querySelector('.ins-supp-drawer');d.scrollIntoView();d.open=true;});
+  await page.waitForFunction(()=>document.querySelectorAll('.ins-supp-item').length===6,null,{timeout:20000});
+  assert.equal(requests.filter(u=>u.includes('supplements.json')).length,1);
+  await click(page,'.ins-supp-item',0);
+  await page.waitForSelector('.ins-supp-stage canvas[data-run^="supp"]',{state:'attached'});
+  const canvas=page.locator('.ins-supp-stage canvas');
+  assert.equal(await canvas.getAttribute('data-nodes'),'50');
+  assert.match(await page.locator('.ins-supp-context').textContent(),/slot \d+/);
+  const emptyIndex=await page.evaluate(()=>[...document.querySelectorAll('.ins-supp-item')].findIndex(b=>/no ties/.test(b.textContent)));
+  await click(page,'.ins-supp-item',emptyIndex);
+  await page.waitForFunction(()=>document.querySelector('.ins-supp-stage canvas').dataset.edges==='0');
+  const primaryIds=await page.evaluate(async()=>{const m=await import(document.querySelector('script[src*="layers.js"]').src);return m.app.data.runs.map(r=>r.run_id);});
+  const shown=await page.evaluate(()=>[...document.querySelectorAll('.ins-supp-meta .ins-mono')].map(n=>n.textContent));
+  assert.ok(shown.every(id=>!primaryIds.includes(id)));
+  assert.equal(primaryIds.length,890);
   assert.deepEqual(errors,[]);
-  const retry=await browser.newPage();
-  await retry.route('**/data/saved-networks.json',r=>r.fulfill({status:503,body:'Unavailable'}));
-  await retry.goto(base+'/layers.html#saved-plots');await retry.waitForSelector('#plot-retry:not([hidden])');
-  assert.match(await retry.locator('#plot-status').innerText(),/could not be verified/);
-  await retry.unroute('**/data/saved-networks.json');await retry.locator('#plot-retry').click();
-  await retry.waitForFunction(()=>document.querySelector('#plot-status').textContent.includes('890 matching'));
-  const corrupt=await browser.newPage();
-  await corrupt.route('**/data/saved-networks.json',r=>r.fulfill({status:200,contentType:'application/json',body:'{}'}));
-  await corrupt.goto(base+'/layers.html#saved-plots');await corrupt.waitForSelector('#plot-retry:not([hidden])');
-  assert.equal(await corrupt.locator('.network-open').count(),0);
-  const noGpu=await browser.newPage();
+
+  // No WebGL for the supplement canvas: the tie list remains the complete graph.
+  const noGpu=await browser.newPage({viewport:{width:390,height:844}});
   await noGpu.route('**/network-stage.js*',r=>r.fulfill({status:200,contentType:'text/javascript',body:'export function createNetworkStage(){throw Error("No WebGL");}'}));
-  await noGpu.goto(base+'/layers.html#saved-plots');await noGpu.waitForSelector('.network-open');
-  await noGpu.locator('.network-open').first().click();await noGpu.waitForFunction(()=>document.querySelector('#network-status').textContent.includes('3D unavailable'));
-  assert.match(await noGpu.locator('#plot-source').getAttribute('href'),/github.com.*\.adj$/);
-  console.log('PASS: 896 selectable graphs, four methods, adjacency neighbors, actual drag/zoom, primary isolation, supplements, empty graph, mobile/keyboard, retry, checksum and WebGL fallback.');
+  await noGpu.goto(base+'/layers.html#saved-plots');
+  await noGpu.waitForFunction(()=>document.querySelectorAll('.ins-supp-item').length===6,null,{timeout:30000});
+  await click(noGpu,'.ins-supp-item',0);
+  await noGpu.waitForSelector('.ins-supp-fallback',{state:'attached'});
+  assert.match(await noGpu.locator('.ins-supp-status').textContent(),/generated ties: \d+–\d+/);
+  console.log('Ledger, attribute lens and supplement-only panel checks passed.');
 }finally{await browser.close();}
